@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 interface Particle {
   x: number;
@@ -18,24 +18,68 @@ const CustomCursor: React.FC = () => {
   const mousePos = useRef({ x: 0, y: 0 });
   const lastPos = useRef({ x: 0, y: 0 });
   const animationRef = useRef<number>();
-  const [isMobile, setIsMobile] = useState(false);
+  const [shouldRender, setShouldRender] = useState(false);
 
   useEffect(() => {
-    // Check if device is mobile or has touch capabilities
-    const checkMobile = () => {
+    // Check accessibility preferences and device capabilities
+    const checkShouldRender = () => {
       const hasTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
       const isSmallScreen = window.innerWidth < 768;
-      setIsMobile(hasTouch || isSmallScreen);
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const hasCoarsePointer = window.matchMedia('(pointer: coarse)').matches;
+      
+      const isMobile = hasTouch || isSmallScreen;
+      const hasMotionRestrictions = prefersReducedMotion || hasCoarsePointer;
+      
+      const shouldShow = !isMobile && !hasMotionRestrictions;
+      setShouldRender(shouldShow);
+      
+      // Toggle cursor hiding class based on whether custom cursor should render
+      if (shouldShow) {
+        document.body.classList.add('custom-cursor-active');
+      } else {
+        document.body.classList.remove('custom-cursor-active');
+      }
     };
 
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
+    checkShouldRender();
+    
+    // Set up event listeners
+    const handleResize = () => checkShouldRender();
+    const handleMotionChange = () => checkShouldRender();
+    
+    window.addEventListener('resize', handleResize);
+    
+    // Listen for changes to motion preferences
+    const motionMediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const pointerMediaQuery = window.matchMedia('(pointer: coarse)');
+    
+    motionMediaQuery.addEventListener('change', handleMotionChange);
+    pointerMediaQuery.addEventListener('change', handleMotionChange);
+
+    // Cleanup function for event listeners
+    const cleanup = () => {
+      window.removeEventListener('resize', handleResize);
+      motionMediaQuery.removeEventListener('change', handleMotionChange);
+      pointerMediaQuery.removeEventListener('change', handleMotionChange);
+      // Always remove the cursor hiding class on cleanup
+      document.body.classList.remove('custom-cursor-active');
+    };
+
+    // Early return if cursor shouldn't render
+    if (!shouldRender) {
+      return cleanup;
+    }
 
     const canvas = canvasRef.current;
-    if (!canvas || isMobile) return;
+    if (!canvas) {
+      return cleanup;
+    }
 
     const ctx = canvas.getContext('2d');
-    if (!ctx) return;
+    if (!ctx) {
+      return cleanup;
+    }
 
     // Set canvas size
     const resizeCanvas = () => {
@@ -48,8 +92,6 @@ const CustomCursor: React.FC = () => {
 
     // Mouse move handler
     const handleMouseMove = (e: MouseEvent) => {
-      if (isMobile) return;
-      
       lastPos.current = { ...mousePos.current };
       mousePos.current = { x: e.clientX, y: e.clientY };
       
@@ -60,7 +102,11 @@ const CustomCursor: React.FC = () => {
       );
       
       if (distance > 2) {
-        for (let i = 0; i < 3; i++) {
+        // Cap particles at 300 to prevent unbounded arrays
+        const maxParticles = 300;
+        const particlesToAdd = Math.min(3, maxParticles - particles.current.length);
+        
+        for (let i = 0; i < particlesToAdd; i++) {
           particles.current.push(createParticle(mousePos.current.x, mousePos.current.y));
         }
       }
@@ -76,7 +122,7 @@ const CustomCursor: React.FC = () => {
         y,
         vx: Math.cos(angle) * speed,
         vy: Math.sin(angle) * speed,
-        life: 1,
+        life: Math.random() * 60 + 40,
         maxLife: Math.random() * 60 + 40,
         size: Math.random() * 3 + 1,
       };
@@ -84,7 +130,7 @@ const CustomCursor: React.FC = () => {
 
     // Animation loop
     const animate = () => {
-      if (!ctx || isMobile) return;
+      if (!ctx) return;
       
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
@@ -98,16 +144,17 @@ const CustomCursor: React.FC = () => {
         particle.vy *= 0.98;
         
         // Draw particle
-        const alpha = particle.life / particle.maxLife;
-        const size = particle.size * alpha;
+        const alpha = Math.max(0, particle.life / particle.maxLife);
+        const size = Math.max(0.1, particle.size * alpha);
         
         ctx.save();
         ctx.globalAlpha = alpha * 0.6;
         
         // Create gradient for smoky effect
+        const gradientRadius = Math.max(1, size * 2); // Ensure minimum radius of 1
         const gradient = ctx.createRadialGradient(
           particle.x, particle.y, 0,
-          particle.x, particle.y, size * 2
+          particle.x, particle.y, gradientRadius
         );
         gradient.addColorStop(0, 'rgba(255, 255, 255, 0.8)');
         gradient.addColorStop(0.5, 'rgba(100, 149, 237, 0.4)');
@@ -115,7 +162,7 @@ const CustomCursor: React.FC = () => {
         
         ctx.fillStyle = gradient;
         ctx.beginPath();
-        ctx.arc(particle.x, particle.y, size * 2, 0, Math.PI * 2);
+        ctx.arc(particle.x, particle.y, gradientRadius, 0, Math.PI * 2);
         ctx.fill();
         ctx.restore();
         
@@ -159,17 +206,17 @@ const CustomCursor: React.FC = () => {
     animate();
 
     return () => {
+      cleanup();
       window.removeEventListener('resize', resizeCanvas);
-      window.removeEventListener('resize', checkMobile);
       document.removeEventListener('mousemove', handleMouseMove);
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [isMobile]);
+  }, [shouldRender]);
 
-  // Don't render on mobile devices
-  if (isMobile) {
+  // Don't render if conditions aren't met
+  if (!shouldRender) {
     return null;
   }
 

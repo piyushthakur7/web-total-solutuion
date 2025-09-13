@@ -1,16 +1,26 @@
-import React from 'react'
+import CustomCursor from '../components/CustomCursor'
+import SmoothScrollProvider from '../components/SmoothScrollProvider'
+import Hero from '../components/Hero'
+import Services from '../components/Services'
+import Approach from '../components/Approach'
+import Portfolio from '../components/Portfolio'
+import Contact from '../components/Contact'
+import Footer from '../components/Footer'
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-black text-white">
-      <div className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold text-center">
-          Web Total Solution
-        </h1>
-        <p className="text-xl text-center mt-4 text-gray-300">
-          We Build Digital Experiences
-        </p>
-      </div>
-    </main>
+    <>
+      <CustomCursor />
+      <SmoothScrollProvider>
+        <main className="min-h-screen bg-black text-white">
+          <Hero />
+          <Services />
+          <Approach />
+          <Portfolio />
+          <Contact />
+          <Footer />
+        </main>
+      </SmoothScrollProvider>
+    </>
   )
 }

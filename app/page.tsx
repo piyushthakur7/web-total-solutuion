@@ -3,11 +3,7 @@
 import CustomCursor from '../components/CustomCursor'
 import SmoothScrollProvider from '../components/SmoothScrollProvider'
 import Hero from '../components/Hero'
-import Services from '../components/Services'
-import Approach from '../components/Approach'
-import Portfolio from '../components/Portfolio'
-import Contact from '../components/Contact'
-import Footer from '../components/Footer'
+import WhatsAppButton from '../components/WhatsAppButton'
 
 export default function Home() {
   return (
@@ -16,11 +12,12 @@ export default function Home() {
       <SmoothScrollProvider>
         <main className="min-h-screen bg-black text-white">
           <Hero />
-          <Services />
-          <Approach />
-          <Portfolio />
-          <Contact />
-          <Footer />
+          
+          {/* Floating WhatsApp Button */}
+          <WhatsAppButton 
+            variant="floating"
+            message="Hello! I'm interested in your web development services. Can we discuss my project?"
+          />
         </main>
       </SmoothScrollProvider>
     </>

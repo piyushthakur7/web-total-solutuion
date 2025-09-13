@@ -1,3 +1,5 @@
+'use client';
+
 import CustomCursor from '../components/CustomCursor'
 import SmoothScrollProvider from '../components/SmoothScrollProvider'
 import Hero from '../components/Hero'

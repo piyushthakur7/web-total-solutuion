@@ -78,7 +78,7 @@ export default function ContactPage() {
                   <p className="text-gray-300">
                     123 Business Street<br />
                     Digital City, DC 12345<br />
-                    United States
+                    United States 
                   </p>
                 </motion.div>
 
@@ -94,11 +94,30 @@ export default function ContactPage() {
                   </div>
                   <h3 className="text-xl font-bold text-white mb-4">Phone</h3>
                   <p className="text-gray-300">
-                    +1 (234) 567-8900<br />
+                    +91 9748894719<br />
                     Mon - Fri: 9AM - 6PM<br />
                     Weekend: On Call
                   </p>
                 </motion.div>
+                <motion.div
+  className="text-center"
+  initial={{ opacity: 0, y: 30 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6, delay: 0.2 }}
+  viewport={{ once: true }}
+>
+  <div className="bg-blue-500 text-black text-2xl w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+    📞
+  </div>
+  <h3 className="text-xl font-bold text-white mb-4">Phone</h3>
+  <p className="text-gray-300">
+    +91 9748894719 <br />
+    +91 8583039357 <br />
+    Mon - Fri: 9AM - 6PM <br />
+    Weekend: On Call
+  </p>
+</motion.div>
+
 
                 <motion.div
                   className="text-center"

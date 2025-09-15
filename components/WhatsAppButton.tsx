@@ -12,7 +12,7 @@ interface WhatsAppButtonProps {
 }
 
 const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
-  phoneNumber = "1234567890", // Replace with your business number
+  phoneNumber = "9748894719", // Replace with your business number
   message = "Hello! I'm interested in your web development services.",
   className = "",
   variant = "button"

@@ -53,8 +53,23 @@ export default function ContactPage() {
                 >
                   Call Us
                 </a>
+                 <button
+    onClick={() => {
+      const upiId = "yourupiid@upi"; // replace with your UPI ID
+      const name = "Web Total Solution"; // your business name
+      const note = "Payment"; 
+      const upiLink = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(
+        name
+      )}&cu=INR&tn=${encodeURIComponent(note)}`;
+      window.location.href = upiLink;
+    }}
+    className="px-6 py-3 bg-green-500 hover:bg-green-600 text-white font-medium rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl w-full sm:w-auto text-center"
+  >
+    Pay Now
+  </button>
               </motion.div>
             </div>
+            
           </section>
 
           {/* Contact Form Section */}

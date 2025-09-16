@@ -42,13 +42,13 @@ export default function ContactPage() {
                   className="w-full sm:w-auto"
                 />
                 <a
-                  href="mailto:info@webtotalsolution.com"
+                  href="mailto:webtotalsolution@gmail.com"
                   className="bg-blue-500 hover:bg-blue-600 text-white font-medium px-6 py-3 rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl w-full sm:w-auto text-center"
                 >
                   Send Email
                 </a>
                 <a
-                  href="tel:+1234567890"
+                  href="tel:+9748894719"
                   className="bg-gray-700 hover:bg-gray-600 text-white font-medium px-6 py-3 rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl w-full sm:w-auto text-center"
                 >
                   Call Us

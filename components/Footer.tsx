@@ -43,8 +43,8 @@ const Footer: React.FC = () => {
               <li><a href="/about" className="hover:text-white">About Us</a></li>
               <li><a href="/services" className="hover:text-white">Services</a></li>
               <li><a href="/contact" className="hover:text-white">Contact</a></li>
-              <li><a href="/clients" className="hover:text-white">Clients</a></li>
-              <li><a href="/testimonials" className="hover:text-white">Testimonials</a></li>
+              {/* <li><a href="/clients" className="hover:text-white">Clients</a></li>
+              <li><a href="/testimonials" className="hover:text-white">Testimonials</a></li> */}
             </ul>
           </div>
         </motion.div>

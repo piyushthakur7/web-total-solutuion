@@ -76,13 +76,13 @@ export default function ContactPage() {
                   </div>
                   <h3 className="text-xl font-bold text-white mb-4">Our Location</h3>
                   <p className="text-gray-300">
-                    123 Business Street<br />
-                    Digital City, DC 12345<br />
-                    United States 
+                    Garia south 24 pgs <br />
+                    Kolkata-700152<br />
+                    West Bengal, India 
                   </p>
                 </motion.div>
 
-                <motion.div
+                {/* <motion.div
                   className="text-center"
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -98,7 +98,7 @@ export default function ContactPage() {
                     Mon - Fri: 9AM - 6PM<br />
                     Weekend: On Call
                   </p>
-                </motion.div>
+                </motion.div> */}
                 <motion.div
   className="text-center"
   initial={{ opacity: 0, y: 30 }}
@@ -131,8 +131,10 @@ export default function ContactPage() {
                   </div>
                   <h3 className="text-xl font-bold text-white mb-4">Email</h3>
                   <p className="text-gray-300">
-                    info@webtotalsolution.com<br />
-                    support@webtotalsolution.com<br />
+                    infowebtotalsolution@gmail.com<br />
+                    tpiyush300@gmail.com<br />
+                    ariesaugust23@gmail.com<br />
+                    We aim to respond within
                     Response within 24 hours
                   </p>
                 </motion.div>

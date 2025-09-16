@@ -55,7 +55,7 @@ export default function ContactPage() {
                 </a>
                  <button
     onClick={() => {
-      const upiId = "yourupiid@upi"; // replace with your UPI ID
+      const upiId = "ariesaugust23@okhdfcbank"; // replace with your UPI ID
       const name = "Web Total Solution"; // your business name
       const note = "Payment"; 
       const upiLink = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(

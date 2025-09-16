@@ -50,7 +50,7 @@ const Navigation: React.FC = () => {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
             <Image
-              src="/logo.jpg" // 👈 your logo file in /public
+              src="/logo.jpg" 
               alt="Web Total Solution"
               width={90}
               height={90}

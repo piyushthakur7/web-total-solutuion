@@ -30,7 +30,7 @@ const Navigation: React.FC = () => {
     { href: '/', label: 'Home' },
     { href: '/about', label: 'About Us' },
     { href: '/services', label: 'Services' },
-    // { href: '/work', label: 'Our Work' },
+    { href: '/work', label: 'Our Work' },
     { href: '/contact', label: 'Contact Us' },
   ]
 

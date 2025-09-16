@@ -1,7 +1,8 @@
-'use client';
+'use client'
 
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FaWhatsapp, FaBars, FaTimes } from 'react-icons/fa'
 
@@ -18,7 +19,7 @@ const Navigation: React.FC = () => {
   }, [])
 
   const handleWhatsApp = () => {
-    const phoneNumber = "1234567890" // Replace with your business number
+    const phoneNumber = '+919748894719' // Replace with your business number
     const message = "Hello! I'm interested in your web development services."
     const encodedMessage = encodeURIComponent(message)
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`
@@ -36,8 +37,8 @@ const Navigation: React.FC = () => {
   return (
     <motion.nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled 
-          ? 'bg-black/90 backdrop-blur-md border-b border-gray-800' 
+        scrolled
+          ? 'bg-black/90 backdrop-blur-md border-b border-gray-800'
           : 'bg-transparent'
       }`}
       initial={{ y: -100 }}
@@ -47,8 +48,17 @@ const Navigation: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between py-4">
           {/* Logo */}
-          <Link href="/" className="text-2xl font-bold text-white">
-            <span className="text-blue-500">Web</span> Total Solution
+          <Link href="/" className="flex items-center gap-2">
+            <Image
+              src="/logo.jpg" // 👈 your logo file in /public
+              alt="Web Total Solution"
+              width={90}
+              height={90}
+              priority
+            />
+            <span className="text-2xl font-bold text-white">
+              <span className="text-blue-500">Web</span> Total Solution
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -62,7 +72,7 @@ const Navigation: React.FC = () => {
                 {item.label}
               </Link>
             ))}
-            
+
             {/* WhatsApp Button */}
             <button
               onClick={handleWhatsApp}
@@ -103,7 +113,7 @@ const Navigation: React.FC = () => {
                     {item.label}
                   </Link>
                 ))}
-                
+
                 {/* Mobile WhatsApp Button */}
                 <div className="px-4">
                   <button

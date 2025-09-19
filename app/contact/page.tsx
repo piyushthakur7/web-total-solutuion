@@ -53,7 +53,7 @@ export default function ContactPage() {
                 >
                   Call Us
                 </a>
-                 <button
+                 {/* <button
     onClick={() => {
       const upiId = "ariesaugust23@okhdfcbank"; // replace with your UPI ID
       const name = "Web Total Solution"; // your business name
@@ -66,7 +66,7 @@ export default function ContactPage() {
     className="px-6 py-3 bg-green-500 hover:bg-green-600 text-white font-medium rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl w-full sm:w-auto text-center"
   >
     Pay Now
-  </button>
+  </button> */}
               </motion.div>
             </div>
             
@@ -147,8 +147,7 @@ export default function ContactPage() {
                   <h3 className="text-xl font-bold text-white mb-4">Email</h3>
                   <p className="text-gray-300">
                     infowebtotalsolution@gmail.com<br />
-                    tpiyush300@gmail.com<br />
-                    ariesaugust23@gmail.com<br />
+                    
                     We aim to respond within
                     Response within 24 hours
                   </p>

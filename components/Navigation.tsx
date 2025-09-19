@@ -71,7 +71,7 @@ const Navigation: React.FC = () => {
               className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full flex items-center gap-2 transition-all duration-300 hover:scale-105"
             >
               <FaWhatsapp className="w-4 h-4" />
-              WhatsApp
+              WhAtsApp
             </button>
           </div>
 

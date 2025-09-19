@@ -93,6 +93,61 @@ export default function WorkPage() {
               </div>
             </div>
           </section>
+
+          {/* Clients Testimonials */}
+          <section className="py-20 bg-black">
+            <div className="container mx-auto px-4">
+              <motion.div
+                className="text-center mb-16"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+              >
+                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                  What Our Clients Say
+                </h2>
+                <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+                  Hear directly from our clients about their experience working with us.
+                </p>
+              </motion.div>
+
+              <div className="grid md:grid-cols-3 gap-8">
+                {[
+                  {
+                    name: "Amit Sharma",
+                    role: "CEO, TechVision",
+                    feedback: "They transformed our outdated website into a modern, sleek platform that boosted our conversions by 40%. Outstanding work!"
+                  },
+                  {
+                    name: "Sofia Khan",
+                    role: "Founder, GreenLeaf",
+                    feedback: "The team understood our vision perfectly and delivered a product that exceeded expectations. Communication was seamless throughout."
+                  },
+                  {
+                    name: "David Wilson",
+                    role: "Marketing Head, FinEdge",
+                    feedback: "Professional, reliable, and creative. Their development process made everything smooth and stress-free. Highly recommend!"
+                  }
+                ].map((testimonial, index) => (
+                  <motion.div
+                    key={index}
+                    className="bg-gray-900 p-8 rounded-2xl shadow-lg"
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.2 }}
+                    viewport={{ once: true }}
+                  >
+                    <p className="text-gray-300 mb-6">“{testimonial.feedback}”</p>
+                    <div>
+                      <h4 className="text-lg font-bold text-white">{testimonial.name}</h4>
+                      <p className="text-blue-500">{testimonial.role}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </section>
         </main>
       </SmoothScrollProvider>
     </>

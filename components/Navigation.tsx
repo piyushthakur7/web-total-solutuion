@@ -11,19 +11,16 @@ const Navigation: React.FC = () => {
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
-    }
+    const handleScroll = () => setScrolled(window.scrollY > 50)
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   const handleWhatsApp = () => {
-    const phoneNumber = '+919748894719' // Replace with your business number
+    const phoneNumber = '+919748894719'
     const message = "Hello! I'm interested in your web development services."
     const encodedMessage = encodeURIComponent(message)
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`
-    window.open(whatsappUrl, '_blank', 'noopener,noreferrer')
+    window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank')
   }
 
   const navItems = [
@@ -37,28 +34,24 @@ const Navigation: React.FC = () => {
   return (
     <motion.nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-black/90 backdrop-blur-md border-b border-gray-800'
-          : 'bg-transparent'
+        scrolled ? 'bg-black/90 backdrop-blur-md border-b border-gray-800' : 'bg-transparent'
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between py-4">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
             <Image
-              src="/logo_new.png" 
+              src="/logo_new.png"
               alt="Web Total Solution"
-              width={90}
-              height={90}
+              width={240}   // logo width
+              height={64}   // navbar height
+              className="object-contain"
               priority
             />
-            <span className="text-2xl font-bold text-white">
-              <span className="text-blue-500">Web</span> Total Solution
-            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -73,7 +66,6 @@ const Navigation: React.FC = () => {
               </Link>
             ))}
 
-            {/* WhatsApp Button */}
             <button
               onClick={handleWhatsApp}
               className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full flex items-center gap-2 transition-all duration-300 hover:scale-105"
@@ -114,7 +106,6 @@ const Navigation: React.FC = () => {
                   </Link>
                 ))}
 
-                {/* Mobile WhatsApp Button */}
                 <div className="px-4">
                   <button
                     onClick={handleWhatsApp}

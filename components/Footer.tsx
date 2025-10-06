@@ -26,13 +26,13 @@ const Footer: React.FC = () => {
 
             {/* Social Icons */}
             <div className="flex mt-4 space-x-4 justify-center md:justify-start">
-              <a href="https://twitter.com/yourprofile" target="_blank" rel="noopener noreferrer" className="hover:text-white">
+              <a href="https://x.com/webtotal1234" target="_blank" rel="noopener noreferrer" className="hover:text-white">
                 <FaTwitter size={20} />
               </a>
-              <a href="https://facebook.com/yourpage" target="_blank" rel="noopener noreferrer" className="hover:text-white">
+              <a href="https://www.facebook.com/profile.php?id=61581002265105" target="_blank" rel="noopener noreferrer" className="hover:text-white">
                 <FaFacebookF size={20} />
               </a>
-              <a href="https://instagram.com/yourprofile" target="_blank" rel="noopener noreferrer" className="hover:text-white">
+              <a href="https://www.instagram.com/webtotalsolution/" target="_blank" rel="noopener noreferrer" className="hover:text-white">
                 <FaInstagram size={20} />
               </a>
             </div>

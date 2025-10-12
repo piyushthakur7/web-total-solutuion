@@ -18,6 +18,7 @@ export default function Home() {
             variant="floating"
             message="Hello! I'm interested in your web development services. Can we discuss my project?"
           />
+          
         </main>
       </SmoothScrollProvider>
     </>

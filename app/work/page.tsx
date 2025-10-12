@@ -6,7 +6,7 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import CustomCursor from '../../components/CustomCursor';
 import SmoothScrollProvider from '../../components/SmoothScrollProvider';
-import Portfolio from '../../components/Portfolio';
+import Image from 'next/image';
 
 export default function WorkPage() {
   // Particle System for "Creation in Motion"
@@ -49,13 +49,39 @@ export default function WorkPage() {
     );
   };
 
+  // Portfolio Projects
+  const projects = [
+    {
+      title: "Healthcare Platform",
+      description: "A seamless portal for patients and doctors to manage healthcare services.",
+      image: "",
+    },
+    {
+      title: "E-commerce Store",
+      description: "A modern online store with smooth UI and fast checkout experience.",
+      image: "",
+    },
+    {
+      title: "FinTech Dashboard",
+      description: "Interactive financial dashboard with real-time analytics and reporting.",
+      image: "",
+    },
+    {
+      title: "Education App",
+      description: "Learning platform connecting teachers and students with gamified features.",
+      image: "",
+    },
+  ];
+
   return (
     <>
       <CustomCursor />
       <SmoothScrollProvider>
-        <main className="min-h-screen bg-black text-white pt-20 relative overflow-hidden">
+        <main className="min-h-screen bg-black text-white relative overflow-hidden">
+
           {/* Hero Section with Particle Animation */}
-          <section className="py-20 bg-gradient-to-br from-black via-gray-900 to-black relative overflow-hidden">
+          <section className="relative overflow-hidden min-h-[80vh] lg:min-h-screen bg-gradient-to-br from-black via-gray-900 to-black">
+            {/* Particle Background */}
             <div className="absolute inset-0 z-0 opacity-70">
               <Canvas camera={{ position: [0, 0, 7], fov: 60 }}>
                 <ambientLight intensity={0.4} />
@@ -66,17 +92,18 @@ export default function WorkPage() {
               </Canvas>
             </div>
 
-            <div className="container mx-auto px-4 relative z-10">
+            {/* Hero Content - Fully Centered */}
+            <div className="absolute inset-0 flex items-center justify-center">
               <motion.div
-                className="text-center mb-16"
+                className="text-center px-4"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
               >
-                <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
+                <h1 className="text-6xl md:text-8xl font-bold text-white mb-6">
                   Our <span className="text-blue-500">Work</span>
                 </h1>
-                <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                <p className="text-2xl md:text-3xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
                   As a reliable web development firm, we design smooth digital experiences specific to your business requirements.
                 </p>
               </motion.div>
@@ -84,7 +111,50 @@ export default function WorkPage() {
           </section>
 
           {/* Portfolio Showcase */}
-          <Portfolio />
+          <section className="py-20 bg-gray-900/50">
+            <div className="container mx-auto px-4">
+              <motion.div
+                className="text-center mb-16"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+              >
+                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                  Our Projects
+                </h2>
+                <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+                  Showcasing our work across multiple industries and domains.
+                </p>
+              </motion.div>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {projects.map((project, index) => (
+                  <motion.div
+                    key={index}
+                    className="bg-gray-800 rounded-2xl overflow-hidden shadow-lg"
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.2 }}
+                    viewport={{ once: true }}
+                  >
+                    <div className="relative w-full h-48">
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
+                      <p className="text-gray-300">{project.description}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </section>
 
           {/* Framework Section */}
           <section className="py-20 bg-gray-900/50">

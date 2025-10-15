@@ -1,10 +1,11 @@
 'use client';
 
-import React, { Suspense, useRef } from 'react';
-import { motion } from 'framer-motion';
+import React, { Suspense, useRef, useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Points, PointMaterial } from '@react-three/drei';
 import * as THREE from 'three';
+import Link from 'next/link';
 
 const Stars = () => {
   const ref = useRef<THREE.Points>(null!);
@@ -22,7 +23,7 @@ const Stars = () => {
     return new Float32Array(points);
   }, []);
 
-  useFrame((state) => {
+  useFrame(() => {
     ref.current.rotation.x -= 0.0005;
     ref.current.rotation.y -= 0.001;
   });
@@ -42,7 +43,29 @@ const Stars = () => {
   );
 };
 
+const taglines = [
+  'Landing Pages that Convert',
+  'E-Commerce Experiences that Sell',
+  'Web Solutions Built for Growth'
+];
+
 const Hero: React.FC = () => {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % taglines.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const scrollToWork = () => {
+    const section = document.getElementById('our-work');
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-black via-gray-900 to-black">
       {/* Three.js Animated Background */}
@@ -63,20 +86,24 @@ const Hero: React.FC = () => {
 
       <div className="container mx-auto px-4 text-center relative z-10">
         <motion.h1
-          className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight"
+          className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight text-blue-500"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <span className="block text-white">We Build</span>
-          <motion.span
-            className="block bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            Digital Experiences
-          </motion.span>
+          <span className="block">We Build</span>
+          <AnimatePresence mode="wait">
+            <motion.span
+              key={index}
+              className="block"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.8 }}
+            >
+              {taglines[index]}
+            </motion.span>
+          </AnimatePresence>
         </motion.h1>
 
         <motion.p
@@ -95,44 +122,27 @@ const Hero: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.0 }}
         >
-          <motion.button
-            className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transform transition-all duration-300"
-            whileHover={{ 
-              scale: 1.05, 
-              boxShadow: "0 25px 50px -12px rgba(59, 130, 246, 0.5)" 
-            }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Start Your Project
-          </motion.button>
+          <Link href="/contact">
+            <motion.button
+              className="px-8 py-4 bg-blue-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transform transition-all duration-300"
+              whileHover={{ 
+                scale: 1.05, 
+                boxShadow: "0 25px 50px -12px rgba(59, 130, 246, 0.5)" 
+              }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Start Your Project
+            </motion.button>
+          </Link>
 
           <motion.button
             className="px-8 py-4 border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-black transition-all duration-300"
+            onClick={scrollToWork}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             View Our Work
           </motion.button>
-        </motion.div>
-
-        <motion.div
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1.5 }}
-        >
-          <motion.div
-            className="w-6 h-10 border-2 border-white rounded-full flex justify-center"
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          >
-            <motion.div
-              className="w-1 h-3 bg-white rounded-full mt-2"
-              animate={{ opacity: [1, 0, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
-          </motion.div>
-          <p className="text-sm text-gray-400 mt-2">Scroll to explore</p>
         </motion.div>
       </div>
     </section>

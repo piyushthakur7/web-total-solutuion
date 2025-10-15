@@ -48,7 +48,7 @@ export default function ContactPage() {
                   Send Email
                 </a>
                 <a
-                  href="tel:+919748894719"
+                  href="tel:+91 6291 519 364"
                   className="bg-gray-700 hover:bg-gray-600 text-white font-medium px-6 py-3 rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl w-full sm:w-auto text-center"
                 >
                   Call Us
@@ -126,8 +126,8 @@ export default function ContactPage() {
   </div>
   <h3 className="text-xl font-bold text-white mb-4">Phone</h3>
   <p className="text-gray-300">
-    +91 9748894719 <br />
-    +91 8583039357 <br />
+    +91  6291 519 364 <br />
+    {/* +91 8583039357 <br /> */}
     Mon - Fri: 9AM - 6PM <br />
     Weekend: On Call
   </p>

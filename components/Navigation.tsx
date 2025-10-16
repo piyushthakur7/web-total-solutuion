@@ -18,7 +18,7 @@ const Navigation: React.FC = () => {
   }, [])
 
   const handleWhatsApp = () => {
-    const phoneNumber = '+919748894719'
+    const phoneNumber = '+916291519364'
     const message = "Hello! I'm interested in your web development services."
     const encodedMessage = encodeURIComponent(message)
     window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank')

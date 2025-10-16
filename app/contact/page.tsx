@@ -48,7 +48,7 @@ export default function ContactPage() {
                   Send Email
                 </a>
                 <a
-                  href="tel:+91 6291 519 364"
+                  href="tel:+916291519364"
                   className="bg-gray-700 hover:bg-gray-600 text-white font-medium px-6 py-3 rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl w-full sm:w-auto text-center"
                 >
                   Call Us
@@ -97,7 +97,7 @@ export default function ContactPage() {
                   </p>
                 </motion.div>
 
-                {/* <motion.div
+                <motion.div
                   className="text-center"
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -109,30 +109,11 @@ export default function ContactPage() {
                   </div>
                   <h3 className="text-xl font-bold text-white mb-4">Phone</h3>
                   <p className="text-gray-300">
-                    +91 9748894719<br />
-                    Mon - Fri: 9AM - 6PM<br />
+                    +91 6291 519 364 <br />
+                    Mon - Fri: 9AM - 6PM <br />
                     Weekend: On Call
                   </p>
-                </motion.div> */}
-                <motion.div
-  className="text-center"
-  initial={{ opacity: 0, y: 30 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.6, delay: 0.2 }}
-  viewport={{ once: true }}
->
-  <div className="bg-blue-500 text-black text-2xl w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-    📞
-  </div>
-  <h3 className="text-xl font-bold text-white mb-4">Phone</h3>
-  <p className="text-gray-300">
-    +91  6291 519 364 <br />
-    {/* +91 8583039357 <br /> */}
-    Mon - Fri: 9AM - 6PM <br />
-    Weekend: On Call
-  </p>
-</motion.div>
-
+                </motion.div>
 
                 <motion.div
                   className="text-center"
@@ -147,8 +128,6 @@ export default function ContactPage() {
                   <h3 className="text-xl font-bold text-white mb-4">Email</h3>
                   <p className="text-gray-300">
                     infowebtotalsolution@gmail.com<br />
-                    
-                    We aim to respond within
                     Response within 24 hours
                   </p>
                 </motion.div>

@@ -8,9 +8,9 @@ import * as THREE from 'three';
 import CustomCursor from '../../components/CustomCursor';
 import SmoothScrollProvider from '../../components/SmoothScrollProvider';
 import Approach from '../../components/Approach';
+import Link from 'next/link';
 
 export default function AboutPage() {
-  // --- Three.js Globe ---
   const NetworkGlobe = () => {
     const group = useRef<THREE.Group>(null!);
 
@@ -42,12 +42,9 @@ export default function AboutPage() {
 
     return (
       <group ref={group}>
-        {/* Wireframe Sphere */}
         <Sphere args={[1.2, 64, 64]}>
           <meshBasicMaterial color="#3b82f6" wireframe opacity={0.15} transparent />
         </Sphere>
-
-        {/* Network Lines */}
         {lines.map((l, i) => (
           <Line
             key={i}
@@ -67,9 +64,9 @@ export default function AboutPage() {
       <CustomCursor />
       <SmoothScrollProvider>
         <main className="min-h-screen bg-black text-white pt-20 relative overflow-hidden">
-
+          
           {/* About Hero Section */}
-          <section className="py-20 bg-gradient-to-br from-black via-gray-900 to-black relative overflow-hidden">
+          <section className="py-24 bg-gradient-to-br from-black via-gray-900 to-black relative overflow-hidden">
             
             {/* Three.js Animated Globe */}
             <div className="absolute inset-0 z-0 opacity-70">
@@ -87,12 +84,25 @@ export default function AboutPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
               >
-                <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
-                  Web Development <span className="text-blue-500">Company in Kolkata</span>
+                <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                  We Build Websites That
+                  <span className="text-blue-500"> Drive Growth.</span>
                 </h1>
                 <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                  At Web Total Solution, we design SEO-friendly websites to fuel business growth.
+                  Not just code — strategy, speed, and results that move the needle for your business.
                 </p>
+
+                <div className="mt-10">
+                  <Link
+                    href="/contact"
+                    className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300"
+                  >
+                    Start a Project
+                  </Link>
+                  <p className="text-sm text-gray-400 mt-4">
+                    Trusted by startups & businesses across industries.
+                  </p>
+                </div>
               </motion.div>
 
               <motion.div
@@ -102,27 +112,28 @@ export default function AboutPage() {
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
                 <div>
-                  <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                    Story
+                  <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                    Our Story
                   </h2>
                   <p className="text-lg text-gray-300 mb-6 leading-relaxed">
-                    Our innovative web developers and talented digital marketing experts provide performance-driven solutions with managed IT services and creative digital solutions. 
+                    We started with one simple goal — build digital experiences that don’t just look good, but *perform*. 
+                    Every project we take on is designed to help our clients grow faster, sell smarter, and scale easier.
                   </p>
                   <p className="text-lg text-gray-300 leading-relaxed">
-                    For every project, we center our efforts on growth so that our clients receive top-notch IT solutions and effective digital marketing strategies.
+                    From high-performance websites to conversion-focused marketing, we combine creativity with technical depth to deliver measurable results.
                   </p>
                 </div>
 
                 <div className="grid grid-cols-2 gap-6">
                   {[
-                    { num: 'Discovery & Planning', label: 'We begin by understanding your business goals and target audience through in-depth consultation.' },
-                    { num: 'Design & Prototyping', label: 'We ensure your website development and digital marketing strategy are user-focused and outcome-oriented.' },
-                    { num: 'Development & Testing', label: 'We deliver high-quality web development using modern technologies and rigorous testing.' },
-                    { num: 'Launch & Support', label: 'After launch, we provide round-the-clock managed IT services and ongoing support.' }
+                    { num: 'Discovery & Strategy', label: 'We dig deep to understand your goals and challenges before we design a single pixel.' },
+                    { num: 'Design & Experience', label: 'We craft interfaces that not only look beautiful but make users take action.' },
+                    { num: 'Development & Testing', label: 'Modern stacks, clean code, and obsessive performance testing.' },
+                    { num: 'Launch & Growth', label: 'We don’t disappear after launch — we help you scale what works.' }
                   ].map((step, i) => (
                     <motion.div
                       key={i}
-                      className="bg-gray-900/50 backdrop-blur-sm border border-gray-700 rounded-lg p-6 text-left"
+                      className="bg-gray-900/50 backdrop-blur-sm border border-gray-700 rounded-xl p-6 text-left"
                       whileHover={{ scale: 1.05 }}
                       transition={{ duration: 0.3 }}
                     >

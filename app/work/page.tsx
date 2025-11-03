@@ -7,9 +7,10 @@ import * as THREE from 'three';
 import CustomCursor from '../../components/CustomCursor';
 import SmoothScrollProvider from '../../components/SmoothScrollProvider';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function WorkPage() {
-  // Particle System for "Creation in Motion"
+  // --- Particle Animation ---
   const Particles = () => {
     const ref = useRef<THREE.Points>(null!);
     const count = 1000;
@@ -49,7 +50,7 @@ export default function WorkPage() {
     );
   };
 
-  // Portfolio Projects
+  // --- Projects ---
   const projects = [
     {
       title: "Healthcare Platform",
@@ -73,15 +74,33 @@ export default function WorkPage() {
     },
   ];
 
+  // --- Mock Google Reviews ---
+  const reviews = [
+    {
+      name: "Amit Sharma",
+      text: "Outstanding web development team! They built our platform exactly how we envisioned it.",
+      rating: 5
+    },
+    {
+      name: "Sofia Khan",
+      text: "Great experience — fast delivery, excellent communication, and top-tier design quality.",
+      rating: 5
+    },
+    {
+      name: "David Wilson",
+      text: "The team was responsive and creative. Our website performance skyrocketed after launch.",
+      rating: 4.5
+    },
+  ];
+
   return (
     <>
       <CustomCursor />
       <SmoothScrollProvider>
         <main className="min-h-screen bg-black text-white relative overflow-hidden">
 
-          {/* Hero Section with Particle Animation */}
+          {/* Hero Section */}
           <section className="relative overflow-hidden min-h-[80vh] lg:min-h-screen bg-gradient-to-br from-black via-gray-900 to-black">
-            {/* Particle Background */}
             <div className="absolute inset-0 z-0 opacity-70">
               <Canvas camera={{ position: [0, 0, 7], fov: 60 }}>
                 <ambientLight intensity={0.4} />
@@ -92,25 +111,23 @@ export default function WorkPage() {
               </Canvas>
             </div>
 
-            {/* Hero Content - Fully Centered */}
-            <div className="absolute inset-0 flex items-center justify-center">
+            <div className="absolute inset-0 flex items-center justify-center text-center px-4">
               <motion.div
-                className="text-center px-4"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
               >
-                <h1 className="text-6xl md:text-8xl font-bold text-white mb-6">
+                <h1 className="text-6xl md:text-8xl font-bold mb-6">
                   Our <span className="text-blue-500">Work</span>
                 </h1>
-                <p className="text-2xl md:text-3xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                  As a reliable web development firm, we design smooth digital experiences specific to your business requirements.
+                <p className="text-2xl md:text-3xl text-gray-300 max-w-3xl mx-auto">
+                  We craft seamless digital experiences designed for business growth.
                 </p>
               </motion.div>
             </div>
           </section>
 
-          {/* Portfolio Showcase */}
+          {/* Projects */}
           <section className="py-20 bg-gray-900/50">
             <div className="container mx-auto px-4">
               <motion.div
@@ -120,11 +137,9 @@ export default function WorkPage() {
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
               >
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                  Our Projects
-                </h2>
+                <h2 className="text-4xl md:text-5xl font-bold mb-6">Our Projects</h2>
                 <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-                  Showcasing our work across multiple industries and domains.
+                  Showcasing our work across industries and technologies.
                 </p>
               </motion.div>
 
@@ -138,16 +153,11 @@ export default function WorkPage() {
                     transition={{ duration: 0.6, delay: index * 0.2 }}
                     viewport={{ once: true }}
                   >
-                    <div className="relative w-full h-48">
-                      <Image
-                        src={project.image}
-                        alt={project.title}
-                        fill
-                        className="object-cover"
-                      />
+                    <div className="relative w-full h-48 bg-gray-700 flex items-center justify-center text-gray-500">
+                      <span>No Image</span>
                     </div>
                     <div className="p-6">
-                      <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
+                      <h3 className="text-xl font-bold mb-2">{project.title}</h3>
                       <p className="text-gray-300">{project.description}</p>
                     </div>
                   </motion.div>
@@ -156,119 +166,74 @@ export default function WorkPage() {
             </div>
           </section>
 
-          {/* Framework Section */}
-          <section className="py-20 bg-gray-900/50">
-            <div className="container mx-auto px-4">
-              <motion.div
-                className="text-center mb-16"
+          {/* Google Reviews Section */}
+          <section className="py-20 bg-black border-t border-gray-800">
+            <div className="container mx-auto px-4 text-center">
+              <motion.h2
+                className="text-4xl md:text-5xl font-bold mb-10"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
               >
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                  Our Framework
-                </h2>
-                <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-                  As a web development service provider, we collaborate with our development process to bring your vision to life with business success.
-                </p>
-              </motion.div>
+                What Our Clients Say
+              </motion.h2>
 
-              <div className="grid md:grid-cols-4 gap-8">
-                {[
-                  {
-                    step: "01",
-                    title: "Discovery",
-                    description: "Detailed consultation to explore your vision and requirements to grow your business."
-                  },
-                  {
-                    step: "02",
-                    title: "Planning",
-                    description: "Solidly planned roadmap developed by our professional web developers and strategists for transparency and coherence."
-                  },
-                  {
-                    step: "03",
-                    title: "Development",
-                    description: "Your project is built using the latest frameworks and best practices by our expert team."
-                  },
-                  {
-                    step: "04",
-                    title: "Launch",
-                    description: "We also provide integrated digital marketing services to help your new website gain traction and visibility."
-                  }
-                ].map((process, index) => (
+              <div className="grid md:grid-cols-3 gap-8 mb-12">
+                {reviews.map((r, i) => (
                   <motion.div
-                    key={index}
-                    className="text-center"
+                    key={i}
+                    className="bg-gray-900 p-8 rounded-2xl border border-gray-700"
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: index * 0.2 }}
+                    transition={{ duration: 0.6, delay: i * 0.2 }}
                     viewport={{ once: true }}
                   >
-                    <div className="bg-blue-500 text-black text-2xl font-bold w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                      {process.step}
+                    <div className="flex justify-center mb-4">
+                      {Array.from({ length: Math.floor(r.rating) }).map((_, j) => (
+                        <span key={j} className="text-yellow-400 text-xl">★</span>
+                      ))}
+                      {r.rating % 1 !== 0 && <span className="text-yellow-400 text-xl">☆</span>}
                     </div>
-                    <h3 className="text-xl font-bold text-white mb-4">{process.title}</h3>
-                    <p className="text-gray-300">{process.description}</p>
+                    <p className="text-gray-300 mb-6 italic">“{r.text}”</p>
+                    <p className="text-blue-500 font-bold">{r.name}</p>
                   </motion.div>
                 ))}
               </div>
+
+              <Link
+                href="https://share.google/sjqw4AX5wN2lW168j"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-blue-700 transition"
+              >
+                View All Reviews on Google
+              </Link>
             </div>
           </section>
 
-          {/* Testimonials */}
-          <section className="py-20 bg-black">
-            <div className="container mx-auto px-4">
-              <motion.div
-                className="text-center mb-16"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
+          {/* Start a Project CTA */}
+          <section className="py-24 bg-gradient-to-br from-blue-600 to-blue-800 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="container mx-auto px-4"
+            >
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                Ready to Start Your Project?
+              </h2>
+              <p className="text-lg text-blue-100 mb-10 max-w-2xl mx-auto">
+                Let’s build something powerful together — we turn ideas into digital experiences that deliver results.
+              </p>
+              <Link
+                href="/contact"
+                className="inline-block bg-white text-blue-700 font-bold py-4 px-10 rounded-full text-lg hover:bg-blue-100 transition"
               >
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                  What Our Clients Say
-                </h2>
-                <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-                  Hear directly from our clients about their experience working with us.
-                </p>
-              </motion.div>
-
-              <div className="grid md:grid-cols-3 gap-8">
-                {[
-                  {
-                    name: "Amit Sharma",
-                    role: "CEO, TechVision",
-                    feedback: "They transformed our outdated website into a sleek, modern platform that boosted our conversions by 40%. Outstanding work!"
-                  },
-                  {
-                    name: "Sofia Khan",
-                    role: "Founder, GreenLeaf",
-                    feedback: "The team understood our vision perfectly and delivered a product that exceeded expectations. Communication was seamless throughout."
-                  },
-                  {
-                    name: "David Wilson",
-                    role: "Marketing Head, FinEdge",
-                    feedback: "Professional, reliable, and creative. Their process made everything smooth and stress-free. Highly recommend!"
-                  }
-                ].map((testimonial, index) => (
-                  <motion.div
-                    key={index}
-                    className="bg-gray-900 p-8 rounded-2xl shadow-lg"
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: index * 0.2 }}
-                    viewport={{ once: true }}
-                  >
-                    <p className="text-gray-300 mb-6">“{testimonial.feedback}”</p>
-                    <div>
-                      <h4 className="text-lg font-bold text-white">{testimonial.name}</h4>
-                      <p className="text-blue-500">{testimonial.role}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
+                Start a Project
+              </Link>
+            </motion.div>
           </section>
         </main>
       </SmoothScrollProvider>

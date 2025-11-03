@@ -4,12 +4,12 @@ import React, { useRef, Suspense, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
+import Link from 'next/link';
 import CustomCursor from '../../components/CustomCursor';
 import SmoothScrollProvider from '../../components/SmoothScrollProvider';
 import Services from '../../components/Services';
 
 export default function ServicesPage() {
-  // --- Three.js Animated Digital Grid ---
   const FloatingGrid = () => {
     const group = useRef<THREE.Group>(null!);
     const cubes = useMemo(() => {
@@ -58,8 +58,8 @@ export default function ServicesPage() {
       <CustomCursor />
       <SmoothScrollProvider>
         <main className="min-h-screen bg-black text-white pt-20 relative overflow-hidden">
-          {/* Hero Section with Custom Grid Animation */}
-          <section className="py-20 bg-gradient-to-br from-black via-gray-900 to-black relative overflow-hidden">
+          {/* Hero Section */}
+          <section className="py-24 bg-gradient-to-br from-black via-gray-900 to-black relative overflow-hidden">
             <div className="absolute inset-0 z-0 opacity-70">
               <Canvas camera={{ position: [0, 0, 10], fov: 60 }}>
                 <ambientLight intensity={0.3} />
@@ -70,62 +70,76 @@ export default function ServicesPage() {
               </Canvas>
             </div>
 
-            <div className="container mx-auto px-4 relative z-10">
+            <div className="container mx-auto px-4 relative z-10 text-center">
               <motion.div
-                className="text-center mb-16"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
               >
-                <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
-                  Our <span className="text-blue-500">Services</span>
+                <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                  Services That <span className="text-blue-500">Build, Scale,</span> and Convert
                 </h1>
                 <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                  We offer an extensive range of web development solutions and online marketing services 
-                  to propel your business success in today's digital world.
+                  From design to deployment, we craft digital solutions that grow your business — not your workload.
                 </p>
+                <div className="mt-10">
+                  <Link
+                    href="/contact"
+                    className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300"
+                  >
+                    Start a Project
+                  </Link>
+                  <p className="text-sm text-gray-400 mt-4">
+                    Get a free consultation — see what’s possible for your brand.
+                  </p>
+                </div>
               </motion.div>
+            </div>
+          </section>
 
-              {/* Core Services */}
+          {/* Core Services */}
+          <section className="py-20 bg-black relative z-10">
+            <div className="container mx-auto px-4">
               <motion.div
-                className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16"
+                className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
                 initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
               >
                 {[
                   {
-                    title: "Website Development",
-                    desc: "Tailored websites and web applications designed by professional developers using modern tools and best practices."
+                    title: "Web Development",
+                    desc: "High-performance websites and web apps built with modern frameworks to convert visitors into customers.",
                   },
                   {
                     title: "UI/UX Design",
-                    desc: "User-friendly and design-driven experiences that elevate your brand and engage your audience."
+                    desc: "Human-centered designs that blend aesthetics and usability to create seamless digital experiences.",
                   },
                   {
                     title: "SEO Optimization",
-                    desc: "Advanced SEO strategies to boost your website’s visibility and dominate search engine rankings."
+                    desc: "Search-first strategies that put your business ahead of competitors and keep it there.",
                   },
                   {
-                    title: "Branding",
-                    desc: "Strategic brand identity design that tells your story and resonates deeply with your audience."
-                  }
+                    title: "Brand Identity",
+                    desc: "Strategic branding that builds trust, recognition, and long-term customer loyalty.",
+                  },
                 ].map((service, i) => (
                   <motion.div
                     key={i}
-                    className="bg-gray-900/50 backdrop-blur-sm border border-gray-700 rounded-lg p-8 text-center"
+                    className="bg-gray-900/50 border border-gray-700 rounded-xl p-8 text-center backdrop-blur-sm"
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.3 }}
                   >
                     <h3 className="text-2xl font-bold text-blue-500 mb-4">{service.title}</h3>
-                    <p className="text-gray-300">{service.desc}</p>
+                    <p className="text-gray-300 text-base">{service.desc}</p>
                   </motion.div>
                 ))}
               </motion.div>
             </div>
           </section>
 
-          {/* Why Choose Us Section */}
+          {/* Why Choose Us */}
           <section className="py-20 bg-gray-900/50">
             <div className="container mx-auto px-4">
               <motion.div
@@ -135,44 +149,44 @@ export default function ServicesPage() {
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
               >
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                  Why Select Our Web Development Solutions?
+                <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                  Why Choose <span className="text-blue-500">Us</span>
                 </h2>
                 <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                  As a top web development and digital marketing agency, we position your business for success through our dedication to quality and innovation.
+                  We don’t just deliver websites — we deliver measurable business results backed by strategy and precision.
                 </p>
               </motion.div>
 
               <div className="grid md:grid-cols-3 gap-8">
                 {[
                   {
-                    title: "Quality Assurance",
-                    desc: "Stringent testing and high standards to ensure your website performs flawlessly."
+                    title: "On-Time, Every Time",
+                    desc: "Your deadlines matter. We deliver without compromising quality.",
                   },
                   {
-                    title: "On-Time Delivery",
-                    desc: "We honor deadlines and deliver projects on time, every single time."
+                    title: "Performance Obsessed",
+                    desc: "Fast load times, flawless UI, and zero guesswork. Every pixel has purpose.",
                   },
                   {
-                    title: "Extended Support",
-                    desc: "Ongoing support and upkeep to ensure your website remains reliable after launch."
+                    title: "Growth-Focused",
+                    desc: "Our work is built to help your brand grow faster, smarter, and more sustainably.",
                   },
                   {
-                    title: "Scalable Solutions",
-                    desc: "Our sites evolve with your business, scaling smoothly as your needs grow."
+                    title: "Future-Proof Tech",
+                    desc: "We build with modern stacks that scale as your business expands.",
                   },
                   {
-                    title: "Modern Technology",
-                    desc: "We leverage advanced frameworks and tools for long-term performance and security."
+                    title: "Transparent Process",
+                    desc: "No jargon, no fluff — just clear communication and accountability.",
                   },
                   {
-                    title: "Custom Approach",
-                    desc: "Each project gets a personalized strategy aligned with your goals and brand identity."
-                  }
+                    title: "Dedicated Support",
+                    desc: "We stay with you post-launch to optimize, maintain, and keep everything running smoothly.",
+                  },
                 ].map((item, index) => (
                   <motion.div
                     key={index}
-                    className="bg-black/50 backdrop-blur-sm border border-gray-700 rounded-lg p-8 text-center"
+                    className="bg-black/50 border border-gray-700 rounded-lg p-8 text-center backdrop-blur-sm"
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -180,7 +194,7 @@ export default function ServicesPage() {
                     whileHover={{ scale: 1.05 }}
                   >
                     <h3 className="text-xl font-bold text-blue-500 mb-4">{item.title}</h3>
-                    <p className="text-gray-300">{item.desc}</p>
+                    <p className="text-gray-300 text-sm">{item.desc}</p>
                   </motion.div>
                 ))}
               </div>
@@ -191,7 +205,7 @@ export default function ServicesPage() {
           <section className="py-20 bg-gradient-to-br from-black via-gray-900 to-black">
             <div className="container mx-auto px-4 text-center">
               <motion.h2
-                className="text-4xl md:text-5xl font-bold text-white mb-8"
+                className="text-4xl md:text-5xl font-bold mb-8"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
@@ -206,7 +220,8 @@ export default function ServicesPage() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                Web Total Solution is a reputable web development and digital marketing firm that specializes in scalable digital solutions and builds strong, effective websites.
+                We’re a team of designers, developers, and strategists building digital products that actually perform.
+                From startups to established brands, we help businesses turn ideas into impact.
               </motion.p>
 
               <motion.div
@@ -216,15 +231,38 @@ export default function ServicesPage() {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 viewport={{ once: true }}
               >
-                <h3 className="text-2xl font-bold text-blue-500 mb-4">Our Services Include</h3>
+                <h3 className="text-2xl font-bold text-blue-500 mb-4">What We Deliver</h3>
                 <ul className="text-gray-300 space-y-3 text-left inline-block">
-                  <li>- Website Development</li>
-                  <li>- UI/UX Design</li>
-                  <li>- Digital Marketing</li>
-                  <li>- Website Maintenance</li>
+                  <li>✓ Custom Websites & Web Apps</li>
+                  <li>✓ UI/UX Design</li>
+                  <li>✓ SEO & Performance Optimization</li>
+                  <li>✓ Ongoing Maintenance & Growth Support</li>
                 </ul>
               </motion.div>
             </div>
+          </section>
+
+          {/* Final CTA */}
+          <section className="py-20 bg-black text-center border-t border-gray-800">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-4xl font-bold mb-6">
+                Ready to Build Something That Performs?
+              </h2>
+              <Link
+                href="/contact"
+                className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-10 py-4 rounded-full transition-all duration-300"
+              >
+                Start a Project
+              </Link>
+              <p className="text-gray-400 text-sm mt-4">
+                No pressure — just a quick chat about your goals.
+              </p>
+            </motion.div>
           </section>
         </main>
       </SmoothScrollProvider>

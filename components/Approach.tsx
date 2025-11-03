@@ -6,7 +6,6 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { approachSteps } from '../data/approach';
 
-// Register GSAP plugin
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
@@ -19,16 +18,12 @@ const Approach: React.FC = () => {
     if (typeof window === 'undefined') return;
 
     const ctx = gsap.context(() => {
-      // Animate steps on scroll
-      stepsRef.current.forEach((step, index) => {
+      stepsRef.current.forEach((step) => {
         if (step) {
+          // Fade + pop animation
           gsap.fromTo(
             step,
-            {
-              opacity: 0,
-              y: 100,
-              scale: 0.8,
-            },
+            { opacity: 0, y: 100, scale: 0.9 },
             {
               opacity: 1,
               y: 0,
@@ -38,19 +33,15 @@ const Approach: React.FC = () => {
               scrollTrigger: {
                 trigger: step,
                 start: 'top bottom-=100',
-                end: 'bottom center',
                 toggleActions: 'play none none reverse',
               },
             }
           );
 
-          // Add stagger effect for icons
+          // Icon animation
           gsap.fromTo(
             step.querySelector('.step-icon'),
-            {
-              scale: 0,
-              rotation: -180,
-            },
+            { scale: 0, rotation: -180 },
             {
               scale: 1,
               rotation: 0,
@@ -59,28 +50,24 @@ const Approach: React.FC = () => {
               ease: 'back.out(1.7)',
               scrollTrigger: {
                 trigger: step,
-                start: 'top bottom-=50',
+                start: 'top bottom-=80',
               },
             }
           );
         }
       });
 
-      // Animate connecting lines
+      // Line animation
       gsap.fromTo(
         '.step-connector',
-        {
-          scaleY: 0,
-        },
+        { scaleY: 0 },
         {
           scaleY: 1,
           duration: 0.8,
-          stagger: 0.3,
           ease: 'power2.out',
           scrollTrigger: {
             trigger: sectionRef.current,
             start: 'top center',
-            end: 'bottom center',
           },
         }
       );
@@ -92,7 +79,7 @@ const Approach: React.FC = () => {
   return (
     <section ref={sectionRef} className="py-20 bg-black relative" id="approach">
       <div className="container mx-auto px-4">
-        {/* Section Header */}
+        {/* Header */}
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
@@ -100,17 +87,17 @@ const Approach: React.FC = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Our Approach
           </h2>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            A proven process that delivers exceptional results for every project
+          <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
+            A proven process that delivers exceptional results every time.
           </p>
         </motion.div>
 
         {/* Steps */}
-        <div className="relative max-w-4xl mx-auto">
-          {/* Connecting line */}
+        <div className="relative max-w-5xl mx-auto">
+          {/* Center line for large screens */}
           <div className="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 to-purple-500 hidden lg:block">
             <div className="step-connector h-full w-full origin-top bg-gradient-to-b from-blue-500 to-purple-500"></div>
           </div>
@@ -121,32 +108,40 @@ const Approach: React.FC = () => {
               ref={(el) => {
                 stepsRef.current[index] = el;
               }}
-              className={`flex items-center mb-16 ${
-                index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
-              } flex-col lg:mb-24`}
+              className={`flex flex-col lg:flex-row items-center mb-16 lg:mb-24 ${
+                index % 2 === 0 ? '' : 'lg:flex-row-reverse'
+              }`}
             >
-              {/* Content */}
-              <div className={`lg:w-5/12 ${index % 2 === 0 ? 'lg:pr-12' : 'lg:pl-12'} mb-8 lg:mb-0`}>
-                <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-800 hover:border-blue-500/50 transition-all duration-300">
+              {/* Text Block */}
+              <div
+                className={`lg:w-5/12 mb-8 lg:mb-0 ${
+                  index % 2 === 0 ? 'lg:pr-12' : 'lg:pl-12'
+                }`}
+              >
+                <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-gray-800 hover:border-blue-500/50 transition-all duration-300">
                   <div className="flex items-center mb-4">
                     <span className="text-3xl font-bold text-blue-400 mr-4">
                       {step.step.toString().padStart(2, '0')}
                     </span>
-                    <h3 className="text-2xl font-bold text-white">{step.title}</h3>
+                    <h3 className="text-2xl font-semibold text-white">
+                      {step.title}
+                    </h3>
                   </div>
-                  <p className="text-gray-300 leading-relaxed">{step.description}</p>
+                  <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
+                    {step.description}
+                  </p>
                 </div>
               </div>
 
               {/* Icon */}
-              <div className="lg:w-2/12 flex justify-center">
-                <div className="step-icon w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-3xl shadow-lg shadow-blue-500/25 relative z-10">
+              <div className="lg:w-2/12 flex justify-center mb-6 lg:mb-0">
+                <div className="step-icon w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-3xl text-white shadow-lg shadow-blue-500/30 relative z-10">
                   {step.icon}
                 </div>
               </div>
 
-              {/* Spacer */}
-              <div className="lg:w-5/12"></div>
+              {/* Empty spacer for layout balance */}
+              <div className="lg:w-5/12 hidden lg:block"></div>
             </div>
           ))}
         </div>

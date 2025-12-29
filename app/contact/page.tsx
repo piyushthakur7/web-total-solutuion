@@ -2,10 +2,12 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import CustomCursor from '../../components/CustomCursor'
 import SmoothScrollProvider from '../../components/SmoothScrollProvider'
 import Contact from '../../components/Contact'
-import WhatsAppButton from '../../components/WhatsAppButton'
+import dynamic from 'next/dynamic'
+
+const CustomCursor = dynamic(() => import('../../components/CustomCursor'), { ssr: false })
+const WhatsAppButton = dynamic(() => import('../../components/WhatsAppButton'), { ssr: false })
 
 export default function ContactPage() {
   return (
@@ -37,7 +39,7 @@ export default function ContactPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                <WhatsAppButton 
+                <WhatsAppButton
                   message="Hi! I'd like to discuss a web development project."
                   className="w-full sm:w-auto"
                 />
@@ -53,7 +55,7 @@ export default function ContactPage() {
                 >
                   Call Us
                 </a>
-                 {/* <button
+                {/* <button
     onClick={() => {
       const upiId = "ariesaugust23@okhdfcbank"; // replace with your UPI ID
       const name = "Web Total Solution"; // your business name
@@ -69,7 +71,7 @@ export default function ContactPage() {
   </button> */}
               </motion.div>
             </div>
-            
+
           </section>
 
           {/* Contact Form Section */}
@@ -93,7 +95,7 @@ export default function ContactPage() {
                   <p className="text-gray-300">
                     Garia south 24 pgs <br />
                     Kolkata-700152<br />
-                    West Bengal, India 
+                    West Bengal, India
                   </p>
                 </motion.div>
 
@@ -136,7 +138,7 @@ export default function ContactPage() {
           </section>
 
           {/* Floating WhatsApp Button */}
-          <WhatsAppButton 
+          <WhatsAppButton
             variant="floating"
             message="Hello! I'm interested in your web development services. Can we discuss my project?"
           />

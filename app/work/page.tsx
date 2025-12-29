@@ -1,76 +1,45 @@
 'use client';
 
-import React, { useRef, Suspense, useMemo } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { Canvas, useFrame } from '@react-three/fiber';
-import * as THREE from 'three';
 import CustomCursor from '../../components/CustomCursor';
 import SmoothScrollProvider from '../../components/SmoothScrollProvider';
-import Image from 'next/image';
 import Link from 'next/link';
+import Image from 'next/image';
+import dynamic from 'next/dynamic';
+
+const WorkParticles = dynamic(() => import('../../components/WorkParticles'), {
+  ssr: false,
+  loading: () => <div className="absolute inset-0 bg-black" />
+});
 
 export default function WorkPage() {
-  // --- Particle Animation ---
-  const Particles = () => {
-    const ref = useRef<THREE.Points>(null!);
-    const count = 1000;
-    const positions = useMemo(() => {
-      const arr = new Float32Array(count * 3);
-      for (let i = 0; i < count; i++) {
-        arr[i * 3] = (Math.random() - 0.5) * 8;
-        arr[i * 3 + 1] = (Math.random() - 0.5) * 4;
-        arr[i * 3 + 2] = (Math.random() - 0.5) * 8;
-      }
-      return arr;
-    }, [count]);
-
-    useFrame(({ clock }) => {
-      const t = clock.getElapsedTime();
-      ref.current.rotation.y = t * 0.1;
-    });
-
-    return (
-      <points ref={ref}>
-        <bufferGeometry>
-          <bufferAttribute
-            attach="attributes-position"
-            count={count}
-            array={positions}
-            itemSize={3}
-          />
-        </bufferGeometry>
-        <pointsMaterial
-          size={0.05}
-          color="#3b82f6"
-          opacity={0.8}
-          transparent
-          depthWrite={false}
-        />
-      </points>
-    );
-  };
 
   // --- Projects ---
   const projects = [
     {
-      title: "Healthcare Platform",
-      description: "A seamless portal for patients and doctors to manage healthcare services.",
-      image: "",
+      title: "Banerjee Academy",
+      description: "Professional EdTech platform offering virtual accounting, tax compliance training, and SAP certification.",
+      image: "/projects/banerjee.png",
+      link: "https://www.banerjeeacademy.com"
     },
     {
-      title: "E-commerce Store",
-      description: "A modern online store with smooth UI and fast checkout experience.",
-      image: "",
+      title: "Fairmount Photographys",
+      description: "High-end photography portfolio showcasing cinematic portraits, editorials, and architectural work.",
+      image: "/projects/fairmount.png",
+      link: "https://www.fairmountphotographys.com"
     },
     {
-      title: "FinTech Dashboard",
-      description: "Interactive financial dashboard with real-time analytics and reporting.",
-      image: "",
+      title: "BMS Scrubber",
+      description: "Industrial cleaning solutions website featuring advanced scrubber technology and enterprise equipment.",
+      image: "/projects/bms.png",
+      link: "https://www.bmsscrubber.com"
     },
     {
-      title: "Education App",
-      description: "Learning platform connecting teachers and students with gamified features.",
-      image: "",
+      title: "Amiora Diamonds",
+      description: "Luxury e-commerce experience for fine jewelry, featuring timeless designs and premium craftsmanship.",
+      image: "/projects/amiora.png",
+      link: "https://www.amioradiamonds.com"
     },
   ];
 
@@ -101,21 +70,15 @@ export default function WorkPage() {
 
           {/* Hero Section */}
           <section className="relative overflow-hidden min-h-[80vh] lg:min-h-screen bg-gradient-to-br from-black via-gray-900 to-black">
-            <div className="absolute inset-0 z-0 opacity-70">
-              <Canvas camera={{ position: [0, 0, 7], fov: 60 }}>
-                <ambientLight intensity={0.4} />
-                <pointLight position={[5, 5, 5]} intensity={1.2} />
-                <Suspense fallback={null}>
-                  <Particles />
-                </Suspense>
-              </Canvas>
-            </div>
 
-            <div className="absolute inset-0 flex items-center justify-center text-center px-4">
+            <WorkParticles />
+
+            <div className="absolute inset-0 flex items-center justify-center text-center px-4 pointer-events-none z-10">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
+                className="pointer-events-auto"
               >
                 <h1 className="text-6xl md:text-8xl font-bold mb-6">
                   Our <span className="text-blue-500">Work</span>
@@ -147,18 +110,33 @@ export default function WorkPage() {
                 {projects.map((project, index) => (
                   <motion.div
                     key={index}
-                    className="bg-gray-800 rounded-2xl overflow-hidden shadow-lg"
+                    className="bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: index * 0.2 }}
                     viewport={{ once: true }}
                   >
-                    <div className="relative w-full h-48 bg-gray-700 flex items-center justify-center text-gray-500">
-                      <span>No Image</span>
+                    <div className="relative w-full aspect-video bg-gray-700 text-gray-500 overflow-hidden">
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        className="object-cover hover:scale-105 transition-transform duration-500"
+                      />
                     </div>
-                    <div className="p-6">
-                      <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                      <p className="text-gray-300">{project.description}</p>
+                    <div className="p-6 flex flex-col justify-between flex-grow">
+                      <div>
+                        <h3 className="text-xl font-bold mb-2">{project.title}</h3>
+                        <p className="text-gray-300 text-sm leading-relaxed mb-4">{project.description}</p>
+                      </div>
+                      <Link
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-400 hover:text-blue-300 text-sm font-semibold inline-flex items-center gap-2 mt-auto"
+                      >
+                        Visit Website <span>→</span>
+                      </Link>
                     </div>
                   </motion.div>
                 ))}

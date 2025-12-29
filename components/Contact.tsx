@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -9,12 +9,17 @@ const Contact: React.FC = () => {
     email: '',
     message: '',
   });
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here - integrate with your preferred service
-    // Example: await submitForm(formData);
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    setIsSubmitted(true);
     setFormData({ name: '', email: '', message: '' });
+
+    // Reset success message after 5 seconds
+    setTimeout(() => setIsSubmitted(false), 5000);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -51,7 +56,21 @@ const Contact: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           viewport={{ once: true }}
         >
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6 relative">
+
+            <AnimatePresence>
+              {isSubmitted && (
+                <motion.div
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  className="absolute -top-16 left-0 right-0 bg-green-500/20 border border-green-500 text-green-100 px-4 py-3 rounded-lg text-center font-medium"
+                >
+                  Message sent successfully! We'll get back to you soon.
+                </motion.div>
+              )}
+            </AnimatePresence>
+
             {/* Name Field */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -129,9 +148,9 @@ const Contact: React.FC = () => {
               <motion.button
                 type="submit"
                 className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transform transition-all duration-300"
-                whileHover={{ 
-                  scale: 1.05, 
-                  boxShadow: "0 25px 50px -12px rgba(59, 130, 246, 0.5)" 
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: "0 25px 50px -12px rgba(59, 130, 246, 0.5)"
                 }}
                 whileTap={{ scale: 0.95 }}
               >

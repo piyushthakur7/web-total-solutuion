@@ -53,11 +53,11 @@ function Network() {
             <Float speed={2} rotationIntensity={0.5} floatIntensity={1}>
                 <mesh>
                     <icosahedronGeometry args={[1, 1]} />
-                    <meshBasicMaterial color="#6366f1" wireframe transparent opacity={0.3} />
+                    <meshBasicMaterial color="#3b82f6" wireframe transparent opacity={0.3} />
                 </mesh>
                 <mesh scale={0.5}>
                     <icosahedronGeometry args={[1, 0]} />
-                    <meshBasicMaterial color="#a855f7" wireframe transparent opacity={0.5} />
+                    <meshBasicMaterial color="#06b6d4" wireframe transparent opacity={0.5} />
                 </mesh>
             </Float>
         </group>

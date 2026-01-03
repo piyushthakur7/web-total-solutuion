@@ -20,25 +20,25 @@ export default function WorkPage() {
     {
       title: "Banerjee Academy",
       description: "Professional EdTech platform offering virtual accounting, tax compliance training, and SAP certification.",
-      image: "/projects/banerjee.png",
+      image: "/projects/education.png",
       link: "https://www.banerjeeacademy.com"
     },
     {
       title: "Fairmount Photographys",
       description: "High-end photography portfolio showcasing cinematic portraits, editorials, and architectural work.",
-      image: "/projects/fairmount.png",
+      image: "/projects/fintech.png",
       link: "https://www.fairmountphotographys.com"
     },
     {
       title: "BMS Scrubber",
       description: "Industrial cleaning solutions website featuring advanced scrubber technology and enterprise equipment.",
-      image: "/projects/bms.png",
+      image: "/projects/healthcare.png",
       link: "https://www.bmsscrubber.com"
     },
     {
       title: "Amiora Diamonds",
       description: "Luxury e-commerce experience for fine jewelry, featuring timeless designs and premium craftsmanship.",
-      image: "/projects/amiora.png",
+      image: "/projects/ecommerce.png",
       link: "https://www.amioradiamonds.com"
     },
   ];

@@ -42,169 +42,161 @@ const Navigation: React.FC = () => {
   ]
 
   return (
-    <motion.nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300`}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ type: 'spring', stiffness: 100, damping: 15 }}
-    >
-      <motion.div
-        className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-0 blur-3xl pointer-events-none"
-        animate={{ opacity: scrolled ? 0.15 : 0 }}
-        transition={{ duration: 0.5 }}
-      />
-
-      <div className={`relative container mx-auto px-4 ${scrolled ? 'bg-black/90 backdrop-blur-md border-b border-gray-800' : 'bg-transparent'}`}>
-        <div className="flex items-center justify-between h-16 relative z-10">
+    <>
+      <motion.nav
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'glass-nav py-0' : 'bg-transparent py-2'
+          }`}
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      >
+        <div className="container mx-auto px-0 flex items-center justify-between h-16">
 
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
+          <Link href="/" className="relative z-50 group flex-shrink-0">
             <Image
               src="/logo_new.png"
-              alt="Web Total Solution"
-              width={240}
-              height={64}
-              className="object-contain"
+              alt="WebTotalSolution"
+              width={160}
+              height={45}
+              className="object-contain transition-transform duration-300 group-hover:scale-105"
               priority
             />
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8 relative">
+          {/* Desktop Nav */}
+          <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <div key={item.label} className="relative group">
-                {!item.dropdown ? (
-                  <Link
-                    href={item.href}
-                    className="text-white font-medium text-sm transition-colors duration-300"
+                {item.dropdown ? (
+                  <div
+                    onMouseEnter={() => setServicesOpen(true)}
+                    onMouseLeave={() => setServicesOpen(false)}
+                    className="relative"
                   >
-                    {item.label}
-                  </Link>
-                ) : (
-                  <>
-                    <span
-                      onMouseEnter={() => setServicesOpen(true)}
-                      onMouseLeave={() => setServicesOpen(false)}
-                      className="text-white font-medium text-sm cursor-pointer"
-                    >
+                    <button className="text-sm font-medium text-white hover:text-blue-400 transition-colors">
                       {item.label}
-                    </span>
+                    </button>
 
-                    {/* Dropdown */}
                     <AnimatePresence>
                       {servicesOpen && (
                         <motion.div
-                          className="absolute top-full left-0 mt-2 w-60 bg-black/95 backdrop-blur-md rounded-lg shadow-lg border border-gray-800 overflow-hidden z-50"
-                          initial={{ opacity: 0, y: -10 }}
+                          initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -10 }}
-                          transition={{ duration: 0.3 }}
-                          onMouseEnter={() => setServicesOpen(true)}
-                          onMouseLeave={() => setServicesOpen(false)}
+                          exit={{ opacity: 0, y: 10 }}
+                          transition={{ duration: 0.2 }}
+                          className="absolute top-full left-0 mt-2 w-56 bg-black/95 backdrop-blur-md border border-white/10 rounded-xl shadow-2xl overflow-hidden"
                         >
-                          {item.dropdown.map((service, idx) => (
+                          {item.dropdown.map((subItem) => (
                             <Link
-                              key={idx}
-                              href={service.href}
-                              className="block px-4 py-2 text-gray-300 hover:text-blue-500 hover:bg-gray-900 transition-colors duration-200 text-sm"
+                              key={subItem.href}
+                              href={subItem.href}
+                              className="block px-4 py-3 text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-all duration-200"
                             >
-                              {service.label}
+                              {subItem.label}
                             </Link>
                           ))}
                         </motion.div>
                       )}
                     </AnimatePresence>
-                  </>
+                  </div>
+                ) : (
+                  <Link
+                    href={item.href}
+                    className="text-sm font-medium text-white hover:text-blue-400 transition-colors"
+                  >
+                    {item.label}
+                  </Link>
                 )}
               </div>
             ))}
-
-            <motion.button
-              onClick={handleWhatsApp}
-              className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full flex items-center gap-2 transition-all duration-300"
-              whileHover={{ scale: 1.1, boxShadow: '0 8px 20px rgba(0,255,0,0.4)' }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <FaWhatsapp className="w-4 h-4" />
-              WhatsApp
-            </motion.button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-white hover:text-blue-500 transition-colors"
-          >
-            {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
-          </button>
-        </div>
-
-        {/* Mobile Navigation */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              className="md:hidden bg-black/95 backdrop-blur-md border-t border-gray-800 overflow-hidden"
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
+          {/* CTA & Mobile Toggle */}
+          <div className="flex items-center gap-4">
+            <motion.button
+              onClick={handleWhatsApp}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="hidden md:flex items-center gap-2 px-4 py-2 bg-green-500 text-white text-sm font-semibold rounded-full hover:bg-green-600 transition-colors"
             >
-              <motion.div
-                className="py-4 flex flex-col"
-                initial="hidden"
-                animate="visible"
-                exit="hidden"
-                variants={{
-                  visible: { transition: { staggerChildren: 0.1 } },
-                  hidden: { transition: { staggerChildren: 0.05, staggerDirection: -1 } }
-                }}
-              >
-                {navItems.map((item) =>
-                  !item.dropdown ? (
-                    <motion.div key={item.label} variants={{ visible: { opacity: 1, x: 0 }, hidden: { opacity: 0, x: -20 } }}>
+              <FaWhatsapp className="text-base" />
+              <span>WhatsApp</span>
+            </motion.button>
+
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="md:hidden text-white p-2 hover:bg-white/10 rounded-full transition-colors"
+            >
+              {isOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
+            </button>
+          </div>
+
+        </div>
+      </motion.nav>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-40 bg-black/80 backdrop-blur-xl md:hidden"
+            onClick={() => setIsOpen(false)}
+          >
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              className="absolute right-0 top-0 bottom-0 w-[80%] max-w-sm bg-black border-l border-white/10 p-6 flex flex-col"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="mt-20 flex flex-col gap-2">
+                {navItems.map((item) => (
+                  <div key={item.label}>
+                    {item.dropdown ? (
+                      <div className="flex flex-col gap-2">
+                        <span className="text-sm font-semibold text-gray-500 uppercase tracking-wider px-4 mt-4 mb-2">{item.label}</span>
+                        {item.dropdown.map(sub => (
+                          <Link
+                            key={sub.href}
+                            href={sub.href}
+                            onClick={() => setIsOpen(false)}
+                            className="block px-4 py-3 text-base text-gray-300 hover:text-white hover:bg-white/5 rounded-xl transition-all"
+                          >
+                            {sub.label}
+                          </Link>
+                        ))}
+                      </div>
+                    ) : (
                       <Link
                         href={item.href}
-                        className="block text-white hover:text-blue-500 transition-colors duration-300 text-sm font-medium px-4 py-2"
                         onClick={() => setIsOpen(false)}
+                        className="block px-4 py-3 text-base font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-xl transition-all"
                       >
                         {item.label}
                       </Link>
-                    </motion.div>
-                  ) : (
-                    item.dropdown.map((service, idx) => (
-                      <motion.div key={idx} variants={{ visible: { opacity: 1, x: 0 }, hidden: { opacity: 0, x: -20 } }}>
-                        <Link
-                          href={service.href}
-                          className="block text-white hover:text-blue-500 transition-colors duration-300 text-sm font-medium px-4 py-2"
-                          onClick={() => setIsOpen(false)}
-                        >
-                          {service.label}
-                        </Link>
-                      </motion.div>
-                    ))
-                  )
-                )}
+                    )}
+                  </div>
+                ))}
+              </div>
 
-                <motion.div
-                  variants={{ visible: { opacity: 1, x: 0 }, hidden: { opacity: 0, x: -20 } }}
-                  className="px-4 mt-2"
+              <div className="mt-auto">
+                <button
+                  onClick={handleWhatsApp}
+                  className="w-full py-4 bg-green-500 text-white font-bold rounded-xl flex items-center justify-center gap-2 hover:bg-green-600 transition-colors"
                 >
-                  <motion.button
-                    onClick={handleWhatsApp}
-                    className="w-full bg-green-500 hover:bg-green-600 text-white px-4 py-3 rounded-full flex items-center justify-center gap-2 transition-all duration-300"
-                    whileHover={{ scale: 1.1, boxShadow: '0 8px 20px rgba(0,255,0,0.4)' }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <FaWhatsapp className="w-4 h-4" />
-                    Contact via WhatsApp
-                  </motion.button>
-                </motion.div>
-              </motion.div>
+                  <FaWhatsapp size={20} />
+                  Contact via WhatsApp
+                </button>
+              </div>
             </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-    </motion.nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   )
 }
 

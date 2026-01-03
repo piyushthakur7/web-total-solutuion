@@ -22,13 +22,11 @@ const SmoothScrollProvider: React.FC<SmoothScrollProviderProps> = ({ children })
     if (typeof window === 'undefined' || window.innerWidth < 1024) return;
 
     const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: 'vertical',
-      gestureOrientation: 'vertical',
+      lerp: 0.07, // Heavier, more controlled scroll (Premium feel)
+      duration: 1.5,
       smoothWheel: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 2,
+      wheelMultiplier: 0.9,
+      touchMultiplier: 1.5,
     });
 
     lenisRef.current = lenis;

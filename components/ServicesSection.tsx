@@ -3,106 +3,120 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { ArrowUpRight } from 'lucide-react';
 
 const services = [
   {
-    id: 'web-dev',
+    id: '01',
     title: 'Web Development',
-    subtitle: 'Custom web apps & platforms',
-    desc: 'React / Next.js / Node — scalable, SEO-friendly, and fast. We handle integrations, security, and performance tuning.',
-    bullets: ['Next.js', 'SSR & Static', 'API integrations', 'Performance budgets'],
-    cta: '/services/web-development',
+    subtitle: 'Scalable Systems',
+    desc: 'High-performance web applications built with Next.js and React. We focus on speed, security, and scalability.',
+    tags: ['Next.js', 'React', 'Node.js'],
+    href: '/services/web-development',
   },
   {
-    id: 'ecom',
+    id: '02',
     title: 'E-Commerce',
-    subtitle: 'Conversion-first stores',
-    desc: 'Shopify, WooCommerce or headless storefronts — optimized catalog, checkout, and analytics for growth.',
-    bullets: ['Shopify', 'Headless', 'Checkout optimization', 'Analytics'],
-    cta: '/services/ecommerce',
+    subtitle: 'Revenue Driven',
+    desc: 'Custom Shopify and headless commerce solutions designed to convert visitors into loyal customers.',
+    tags: ['Shopify', 'Woocommerce', 'Stripe'],
+    href: '/services/e-commerce-solution',
   },
   {
-    id: 'uiux',
-    title: 'UI / UX Design',
-    subtitle: 'Design that converts',
-    desc: 'User research, wireframes, and high-fidelity UI that reduces friction and increases conversion rates.',
-    bullets: ['User flows', 'Figma prototypes', 'Design systems', 'Usability testing'],
-    cta: '/services/ui-ux',
+    id: '03',
+    title: 'UI/UX Design',
+    subtitle: 'Visual storytelling',
+    desc: 'User-centric interfaces that blend aesthetics with functionality. We design for clarity and impact.',
+    tags: ['Figma', 'Prototyping', 'Design Systems'],
+    href: '/services/ui-ux-design',
   },
   {
-    id: 'seo',
-    title: 'SEO & Growth',
-    subtitle: 'Sustained organic growth',
-    desc: 'Technical SEO, content strategy and analytics work together to increase visibility and qualified traffic.',
-    bullets: ['Technical audits', 'Content strategy', 'Slow to fast wins', 'Core Web Vitals'],
-    cta: '/services/seo',
+    id: '04',
+    title: 'Growth & SEO',
+    subtitle: 'Organic Traffic',
+    desc: 'Data-driven strategies to increase your visibility and drive qualified leads to your digital products.',
+    tags: ['Technical SEO', 'Analytics', 'Content'],
+    href: '/services/digital-marketing',
   },
 ];
 
 const ServicesSection: React.FC = () => {
   return (
-    <section id="services" className="py-20 bg-black text-white">
-      <div className="container mx-auto px-6">
-        <motion.h2
-          className="text-3xl md:text-4xl font-bold mb-8 text-blue-400 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          Our Core Services
-        </motion.h2>
+    <section id="services" className="py-32 bg-black relative overflow-hidden">
+      <div className="container mx-auto px-6 relative z-10">
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+              Our Expertise
+            </h2>
+            <p className="text-gray-400 max-w-xl text-lg">
+              We translate business goals into digital reality through code and design.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="hidden md:block"
+          >
+            <Link href="/services" className="text-white border-b border-white pb-1 hover:text-blue-400 hover:border-blue-400 transition-colors">
+              View all services
+            </Link>
+          </motion.div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {services.map((s, idx) => (
-            <motion.article
+            <motion.div
               key={s.id}
-              whileHover={{ scale: 1.03 }}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.08 }}
               viewport={{ once: true }}
-              className="bg-gradient-to-b from-gray-900/60 to-black/40 border border-gray-800 rounded-2xl p-6 backdrop-blur-sm"
+              transition={{ delay: idx * 0.1, duration: 0.5 }}
             >
-              <div className="flex items-center justify-between mb-4">
-                <div>
-                  <h3 className="text-xl font-semibold text-blue-300">{s.title}</h3>
-                  <p className="text-sm text-gray-400">{s.subtitle}</p>
+              <Link href={s.href} className="group block h-full">
+                <div className="glass-panel p-10 rounded-3xl h-full transition-all duration-500 hover:bg-white/[0.08] hover:scale-[1.01] relative overflow-hidden">
+
+                  <div className="absolute top-8 right-8 text-gray-600 font-mono text-sm group-hover:text-white transition-colors">
+                    /{s.id}
+                  </div>
+
+                  <div className="mb-8">
+                    <h3 className="text-3xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">{s.title}</h3>
+                    <p className="text-sm font-mono text-gray-500 uppercase tracking-wider">{s.subtitle}</p>
+                  </div>
+
+                  <p className="text-gray-400 mb-8 leading-relaxed group-hover:text-gray-300 transition-colors">
+                    {s.desc}
+                  </p>
+
+                  <div className="flex items-center justify-between mt-auto">
+                    <div className="flex gap-3">
+                      {s.tags.map(tag => (
+                        <span key={tag} className="text-xs text-gray-500 border border-white/10 px-3 py-1 rounded-full">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-blue-500 group-hover:text-white transition-all duration-300 transform group-hover:-rotate-45">
+                      <ArrowUpRight size={18} />
+                    </div>
+                  </div>
+
                 </div>
-                <div className="text-sm text-gray-500 font-mono">{s.id.toUpperCase()}</div>
-              </div>
-
-              <p className="text-gray-300 mb-4 text-sm">{s.desc}</p>
-
-              <ul className="text-xs text-gray-400 mb-6 space-y-1">
-                {s.bullets.map((b) => (
-                  <li key={b} className="flex items-center gap-2">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="flex-none">
-                      <path
-                        d="M5 13l4 4L19 7"
-                        stroke="#7C3AED"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                    <span>{b}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <div className="flex items-center justify-between">
-                <Link
-                  href="/services"
-                  className="text-sm font-semibold text-white bg-blue-600/90 px-4 py-2 rounded-full hover:opacity-95"
-                >
-                  Learn More
-                </Link>
-                <span className="text-xs text-gray-500">Avg start: ₹3k+</span>
-              </div>
-            </motion.article>
+              </Link>
+            </motion.div>
           ))}
         </div>
+
       </div>
     </section>
   );

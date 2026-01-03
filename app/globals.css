@@ -4,22 +4,79 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 :root {
+  /* Semantic Color System */
+  --bg-primary: #0a0a0a;
+  /* Matte charcoal, premium dark */
+  --bg-secondary: #171717;
+  --surface-glass: rgba(255, 255, 255, 0.05);
+  /* Subtle border/surface */
+  --surface-glass-hover: rgba(255, 255, 255, 0.08);
+
+  --text-primary: #ededed;
+  /* Softer white for easier reading */
+  --text-secondary: #a1a1aa;
+  /* Muted grey */
+  --text-tertiary: #52525b;
+
+  --accent-primary: #3b82f6;
+  /* Modern SaaS blue, can be adjusted */
+  --accent-glow: rgba(59, 130, 246, 0.5);
+
+  /* Typography */
   --font-sans: 'Outfit', sans-serif;
   --font-mono: 'Space Grotesk', monospace;
+
+  /* Motion */
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  /* iOS-like smooth spring */
 }
 
-body {
-  font-family: var(--font-sans);
-  background-color: #030014; /* Deep space dark */
-  color: #ffffff;
-  overflow-x: hidden;
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--accent-primary);
+    color: #ffffff;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Glassmorphism Utilities */
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .glass-nav {
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .custom-cursor-active {
@@ -32,16 +89,4 @@ body {
   left: 0;
   pointer-events: none;
   z-index: 9999;
-}
-
-@layer base {
-  html {
-    font-family: 'Inter', system-ui, sans-serif;
-  }
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
 }

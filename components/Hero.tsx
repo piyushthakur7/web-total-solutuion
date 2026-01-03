@@ -21,8 +21,11 @@ const Hero: React.FC = () => {
       className="min-h-screen flex items-center justify-center relative overflow-hidden bg-black"
       role="banner"
     >
-      {/* 3D Background Scene */}
+      {/* 3D Background Scene - PRESERVED */}
       <ThreeScene />
+
+      {/* Atmospheric Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/10 to-black/80 pointer-events-none z-0" />
 
       {/* Content Layer */}
       <div className="container mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-12 items-center pointer-events-none">
@@ -32,52 +35,50 @@ const Hero: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="inline-block px-3 py-1 mb-6 border border-blue-500/30 rounded-full bg-blue-500/10 backdrop-blur-sm">
-              <span className="text-blue-400 font-mono text-xs tracking-widest uppercase">
-                Premium Web Solutions
+            <div className="inline-flex items-center gap-2 px-3 py-1 mb-8 border border-white/10 rounded-full bg-white/5 backdrop-blur-md">
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-500/80 animate-pulse" />
+              <span className="text-white/80 text-xs font-medium tracking-wide">
+                WEB TOTAL SOLUTION
               </span>
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight tracking-tight">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-8 tracking-tight leading-[1.1]">
               Crafting <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 animate-gradient-x">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-gray-500">
                 Digital Excellence
               </span>
             </h1>
 
             <p className="text-gray-400 text-lg md:text-xl mb-10 max-w-lg mx-auto lg:mx-0 font-light leading-relaxed">
-              We are a team of visionary developers and designers building the future of the web.
-              Elevate your brand with our bespoke, high-performance applications.
+              We engineer bespoke digital experiences that blend performance, beauty, and function.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <Link
                 href="/contact"
-                className="px-8 py-4 bg-white text-black font-bold rounded-full hover:bg-gray-200 transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(255,255,255,0.3)]"
+                className="group relative px-8 py-4 bg-white text-black font-semibold rounded-full overflow-hidden transition-all hover:scale-105"
               >
-                Start Your Project
+                <span className="relative z-10">Start Project</span>
+                <div className="absolute inset-0 bg-gray-200 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
               </Link>
               <button
                 onClick={scrollToWork}
-                className="px-8 py-4 border border-white/20 hover:border-white text-white backdrop-blur-md rounded-full transition-all hover:bg-white/10"
+                className="px-8 py-4 border border-white/10 text-white rounded-full hover:bg-white/5 transition-colors backdrop-blur-sm"
               >
-                View Our Work
+                View Work
               </button>
             </div>
           </motion.div>
         </div>
 
-        {/* Right Column: Empty for 3D visual to shine through, or add floating overlay stats */}
+        {/* Right Column: Empty for 3D visual */}
         <div className="hidden lg:block relative h-[500px] pointer-events-none">
           {/* The 3D scene occupies this space visually */}
         </div>
 
       </div>
-
-      {/* Bottom fade for smooth transition */}
-      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black to-transparent pointer-events-none" />
     </section>
   );
 };

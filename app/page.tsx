@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import CustomCursor from '../components/CustomCursor'
-import SmoothScrollProvider from '../components/SmoothScrollProvider'
+
 import Hero from '../components/Hero'
 import dynamic from 'next/dynamic'
 
@@ -38,22 +38,20 @@ export default function Home() {
         {loading && <Preloader onComplete={() => setLoading(false)} />}
       </AnimatePresence>
 
-      <SmoothScrollProvider>
-        <main className="min-h-screen bg-black text-white">
-          <Hero />
-          <ServicesSection />
-          <PortfolioSection />
-          <AboutSection />
-          <ClientsSection />
-          <CTASection />
+      <main className="min-h-screen bg-black text-white">
+        <Hero />
+        <ServicesSection />
+        <PortfolioSection />
+        <AboutSection />
+        <ClientsSection />
+        <CTASection />
 
-          {/* Floating WhatsApp Button */}
-          <WhatsAppButton
-            variant="floating"
-            message="Hello! I'm interested in your web development services. Can we discuss my project?"
-          />
-        </main>
-      </SmoothScrollProvider>
+        {/* Floating WhatsApp Button */}
+        <WhatsAppButton
+          variant="floating"
+          message="Hello! I'm interested in your web development services. Can we discuss my project?"
+        />
+      </main>
     </>
   )
 }

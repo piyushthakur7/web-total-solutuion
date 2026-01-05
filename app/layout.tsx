@@ -5,6 +5,8 @@ import './globals.css'
 import Navigation from '../components/Navigation'
 import Footer from '../components/Footer'
 
+import SmoothScrollProvider from '../components/SmoothScrollProvider'
+
 const outfit = Outfit({
   subsets: ['latin'],
   variable: '--font-sans',
@@ -30,9 +32,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${outfit.variable} ${spaceGrotesk.variable} font-sans antialiased`}>
-        <Navigation />
-        {children}
-        <Footer />
+        <SmoothScrollProvider>
+          <Navigation />
+          {children}
+          <Footer />
+        </SmoothScrollProvider>
       </body>
     </html>
   )

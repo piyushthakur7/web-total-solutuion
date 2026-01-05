@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { FaReact, FaNodeJs, FaRocket, FaMobileAlt, FaSearch, FaLaptopCode, FaCogs, FaServer } from 'react-icons/fa';
-import { SiNextdotjs, SiTypescript, SiTailwindcss, SiGraphql, SiMongodb, SiPostgresql, SiVercel } from 'react-icons/si';
+import { SiNextdotjs, SiTypescript, SiTailwindcss, SiGraphql, SiPostgresql, SiVercel } from 'react-icons/si';
 
 // Metadata needs to be in a separate layout or handled differently in 'use client' components
 // Since this is a page component, we'll focus on the UI. Metadata export works in server components.
@@ -156,7 +156,7 @@ export default function WebDevelopmentPage() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-3xl md:text-5xl font-bold mb-6">Why Choose Our <span className="text-blue-500">Solutions</span></h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">We don't just write code; we build improved digital capabilities for your organization.</p>
+            <p className="text-gray-400 max-w-2xl mx-auto">We don&apos;t just write code; we build improved digital capabilities for your organization.</p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -279,7 +279,7 @@ export default function WebDevelopmentPage() {
           >
             <h2 className="text-5xl font-bold mb-6">Ready to Build Your <br /><span className="text-blue-500">Digital Future?</span></h2>
             <p className="text-gray-300 text-lg mb-10">
-              Let's create a web experience that sets you apart from the competition.
+              Let&apos;s create a web experience that sets you apart from the competition.
               Schedule a consultation today.
             </p>
             <Link

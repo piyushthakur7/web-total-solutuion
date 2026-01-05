@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useMemo } from 'react';
+import React, { useRef, useMemo, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Points, PointMaterial, Float } from '@react-three/drei';
 import * as random from 'maath/random/dist/maath-random.cjs';
@@ -77,6 +77,6 @@ const ThreeScene: React.FC = () => {
 }
 
 // Need to import useState from react, it was missing in the top import
-import { useState } from 'react';
+
 
 export default ThreeScene;

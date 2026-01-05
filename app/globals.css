@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
-
 :root {
   /* Semantic Color System */
   --bg-primary: #0a0a0a;
@@ -23,9 +21,7 @@
   /* Modern SaaS blue, can be adjusted */
   --accent-glow: rgba(59, 130, 246, 0.5);
 
-  /* Typography */
-  --font-sans: 'Outfit', sans-serif;
-  --font-mono: 'Space Grotesk', monospace;
+  /* Typography variables are now handled by next/font in layout.tsx */
 
   /* Motion */
   --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);

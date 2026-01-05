@@ -21,13 +21,13 @@ const Preloader: React.FC<{ onComplete: () => void }> = ({ onComplete }) => {
             const timeout = setTimeout(() => {
                 setLines((prev) => [...prev, terminalLines[currentLineIndex]]);
                 setCurrentLineIndex((prev) => prev + 1);
-            }, 400 + Math.random() * 400); // Random delay for realism
+            }, 50); // Fast animation
 
             return () => clearTimeout(timeout);
         } else {
             const timeout = setTimeout(() => {
                 onComplete();
-            }, 800);
+            }, 200);
             return () => clearTimeout(timeout);
         }
     }, [currentLineIndex, onComplete]);

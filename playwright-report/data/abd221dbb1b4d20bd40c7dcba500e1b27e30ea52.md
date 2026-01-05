@@ -1,0 +1,98 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - link "WebTotalSolution" [ref=e4]:
+        - /url: /
+        - img "WebTotalSolution" [ref=e5]
+      - button [ref=e7] [cursor=pointer]:
+        - img [ref=e8]
+  - main [ref=e10]:
+    - generic [ref=e12]:
+      - generic [ref=e13]:
+        - heading "Contact Us" [level=1] [ref=e14]
+        - paragraph [ref=e15]: Ready to start your next project? Get in touch and let's create something amazing together.
+      - generic [ref=e16]:
+        - link "Send Email" [ref=e17]:
+          - /url: mailto:info@webtotalsolution.com
+        - link "Call Us" [ref=e18]:
+          - /url: tel:+916291519364
+    - generic [ref=e20]:
+      - generic [ref=e21]:
+        - heading "Let's Work Together" [level=2] [ref=e22]
+        - paragraph [ref=e23]: Ready to transform your digital presence? Get in touch and let's discuss your project.
+      - generic [ref=e25]:
+        - generic [ref=e26]:
+          - generic [ref=e27]: Name
+          - textbox "Name" [ref=e28]:
+            - /placeholder: Your full name
+        - generic [ref=e29]:
+          - generic [ref=e30]: Email
+          - textbox "Email" [ref=e31]:
+            - /placeholder: your@email.com
+        - generic [ref=e32]:
+          - generic [ref=e33]: Message
+          - textbox "Message" [ref=e34]:
+            - /placeholder: Tell us about your project...
+        - button "Send Message" [ref=e36] [cursor=pointer]
+    - generic [ref=e39]:
+      - generic [ref=e40]:
+        - generic [ref=e41]: 📍
+        - heading "Our Location" [level=3] [ref=e42]
+        - paragraph [ref=e43]:
+          - text: Garia south 24 pgs
+          - text: Kolkata-700152
+          - text: West Bengal, India
+      - generic [ref=e44]:
+        - generic [ref=e45]: 📞
+        - heading "Phone" [level=3] [ref=e46]
+        - paragraph [ref=e47]:
+          - text: +91 6291 519 364
+          - text: "Mon - Fri: 9AM - 6PM"
+          - text: "Weekend: On Call"
+      - generic [ref=e48]:
+        - generic [ref=e49]: ✉️
+        - heading "Email" [level=3] [ref=e50]
+        - paragraph [ref=e51]:
+          - text: infowebtotalsolution@gmail.com
+          - text: Response within 24 hours
+  - contentinfo [ref=e52]:
+    - generic [ref=e53]:
+      - generic [ref=e54]:
+        - generic [ref=e55]:
+          - heading "Web Total Solution" [level=3] [ref=e56]
+          - paragraph [ref=e57]: We’re a web development agency building scalable digital products using Next.js, React, MERN, WordPress, UI/UX design, and digital marketing solutions.
+          - generic [ref=e58]:
+            - link [ref=e59]:
+              - /url: https://x.com/webtotal1234
+              - img [ref=e60]
+            - link [ref=e62]:
+              - /url: https://www.facebook.com/profile.php?id=61581002265105
+              - img [ref=e63]
+            - link [ref=e65]:
+              - /url: https://www.instagram.com/webtotalsolution/
+              - img [ref=e66]
+        - generic [ref=e68]:
+          - heading "Our Services" [level=4] [ref=e69]
+          - list [ref=e70]:
+            - listitem [ref=e71]: Web Development (Next.js, React, MERN, WordPress)
+            - listitem [ref=e72]: UI/UX Design
+            - listitem [ref=e73]: Digital Marketing
+            - listitem [ref=e74]: E-Commerce Solutions
+            - listitem [ref=e75]: Website Maintenance
+        - generic [ref=e76]:
+          - heading "Quick Links" [level=4] [ref=e77]
+          - list [ref=e78]:
+            - listitem [ref=e79]:
+              - link "About Us" [ref=e80]:
+                - /url: /about
+            - listitem [ref=e81]:
+              - link "Services" [ref=e82]:
+                - /url: /services
+            - listitem [ref=e83]:
+              - link "Contact" [ref=e84]:
+                - /url: /contact
+      - generic [ref=e85]: © 2026 Web Total Solution. All Rights Reserved.
+```

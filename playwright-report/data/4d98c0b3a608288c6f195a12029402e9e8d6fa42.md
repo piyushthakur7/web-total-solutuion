@@ -1,0 +1,291 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - link "WebTotalSolution" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "WebTotalSolution" [ref=e5]
+      - generic [ref=e6]:
+        - link "Home" [ref=e8] [cursor=pointer]:
+          - /url: /
+        - link "About Us" [ref=e10] [cursor=pointer]:
+          - /url: /about
+        - button "Services" [ref=e13] [cursor=pointer]
+        - link "Our Work" [ref=e15] [cursor=pointer]:
+          - /url: /work
+        - link "Contact Us" [ref=e17] [cursor=pointer]:
+          - /url: /contact
+      - button "WhatsApp" [ref=e19] [cursor=pointer]:
+        - img [ref=e20]
+        - generic [ref=e22]: WhatsApp
+  - main [ref=e23]:
+    - banner [ref=e24]:
+      - generic [ref=e30]:
+        - generic [ref=e33]: WEB TOTAL SOLUTION
+        - heading "Crafting Digital Excellence" [level=1] [ref=e34]:
+          - text: Crafting
+          - text: Digital Excellence
+        - paragraph [ref=e35]: We engineer bespoke digital experiences that blend performance, beauty, and function.
+        - generic [ref=e36]:
+          - link "Start Project" [active] [ref=e37] [cursor=pointer]:
+            - /url: /contact
+            - text: Start Project
+          - button "View Work" [ref=e38] [cursor=pointer]
+    - generic [ref=e40]:
+      - generic [ref=e41]:
+        - generic [ref=e42]:
+          - heading "Our Expertise" [level=2] [ref=e43]
+          - paragraph [ref=e44]: We translate business goals into digital reality through code and design.
+        - link "View all services" [ref=e46] [cursor=pointer]:
+          - /url: /services
+      - generic [ref=e47]:
+        - link "/01 Web Development Scalable Systems High-performance web applications built with Next.js and React. We focus on speed, security, and scalability. Next.js React Node.js" [ref=e49] [cursor=pointer]:
+          - /url: /services/web-development
+          - generic [ref=e50]:
+            - generic [ref=e51]: /01
+            - generic [ref=e52]:
+              - heading "Web Development" [level=3] [ref=e53]
+              - paragraph [ref=e54]: Scalable Systems
+            - paragraph [ref=e55]: High-performance web applications built with Next.js and React. We focus on speed, security, and scalability.
+            - generic [ref=e56]:
+              - generic [ref=e57]:
+                - generic [ref=e58]: Next.js
+                - generic [ref=e59]: React
+                - generic [ref=e60]: Node.js
+              - img [ref=e62]
+        - link "/02 E-Commerce Revenue Driven Custom Shopify and headless commerce solutions designed to convert visitors into loyal customers. Shopify Woocommerce Stripe" [ref=e66] [cursor=pointer]:
+          - /url: /services/e-commerce-solution
+          - generic [ref=e67]:
+            - generic [ref=e68]: /02
+            - generic [ref=e69]:
+              - heading "E-Commerce" [level=3] [ref=e70]
+              - paragraph [ref=e71]: Revenue Driven
+            - paragraph [ref=e72]: Custom Shopify and headless commerce solutions designed to convert visitors into loyal customers.
+            - generic [ref=e73]:
+              - generic [ref=e74]:
+                - generic [ref=e75]: Shopify
+                - generic [ref=e76]: Woocommerce
+                - generic [ref=e77]: Stripe
+              - img [ref=e79]
+        - link "/03 UI/UX Design Visual storytelling User-centric interfaces that blend aesthetics with functionality. We design for clarity and impact. Figma Prototyping Design Systems" [ref=e83] [cursor=pointer]:
+          - /url: /services/ui-ux-design
+          - generic [ref=e84]:
+            - generic [ref=e85]: /03
+            - generic [ref=e86]:
+              - heading "UI/UX Design" [level=3] [ref=e87]
+              - paragraph [ref=e88]: Visual storytelling
+            - paragraph [ref=e89]: User-centric interfaces that blend aesthetics with functionality. We design for clarity and impact.
+            - generic [ref=e90]:
+              - generic [ref=e91]:
+                - generic [ref=e92]: Figma
+                - generic [ref=e93]: Prototyping
+                - generic [ref=e94]: Design Systems
+              - img [ref=e96]
+        - link "/04 Growth & SEO Organic Traffic Data-driven strategies to increase your visibility and drive qualified leads to your digital products. Technical SEO Analytics Content" [ref=e100] [cursor=pointer]:
+          - /url: /services/digital-marketing
+          - generic [ref=e101]:
+            - generic [ref=e102]: /04
+            - generic [ref=e103]:
+              - heading "Growth & SEO" [level=3] [ref=e104]
+              - paragraph [ref=e105]: Organic Traffic
+            - paragraph [ref=e106]: Data-driven strategies to increase your visibility and drive qualified leads to your digital products.
+            - generic [ref=e107]:
+              - generic [ref=e108]:
+                - generic [ref=e109]: Technical SEO
+                - generic [ref=e110]: Analytics
+                - generic [ref=e111]: Content
+              - img [ref=e113]
+    - generic [ref=e117]:
+      - generic [ref=e118]:
+        - generic [ref=e119]:
+          - heading "Selected Works" [level=2] [ref=e120]
+          - heading "Digital products that solve real business problems." [level=3] [ref=e121]
+        - link "View All Projects" [ref=e123] [cursor=pointer]:
+          - /url: /work
+          - text: View All Projects
+          - img [ref=e124]
+      - generic [ref=e127]:
+        - generic [ref=e130]:
+          - img "Banerjee Academy" [ref=e132]
+          - generic [ref=e134]:
+            - generic [ref=e135]:
+              - generic [ref=e136]:
+                - heading "Banerjee Academy" [level=4] [ref=e137]
+                - paragraph [ref=e138]: EdTech Platform
+              - link [ref=e139] [cursor=pointer]:
+                - /url: https://www.banerjeeacademy.com
+                - img [ref=e140]
+            - paragraph [ref=e143]: Full-stack platform for virtual accounting training with SAP integration.
+            - generic [ref=e144]:
+              - generic [ref=e145]: Next.js
+              - generic [ref=e146]: Postgres
+              - generic [ref=e147]: Stripe
+        - generic [ref=e150]:
+          - img "Fairmount Photographys" [ref=e152]
+          - generic [ref=e154]:
+            - generic [ref=e155]:
+              - generic [ref=e156]:
+                - heading "Fairmount Photographys" [level=4] [ref=e157]
+                - paragraph [ref=e158]: Creative Portfolio
+              - link [ref=e159] [cursor=pointer]:
+                - /url: https://www.fairmountphotographys.com
+                - img [ref=e160]
+            - paragraph [ref=e163]: Cinematic photography portfolio with immersive gallery interactions.
+            - generic [ref=e164]:
+              - generic [ref=e165]: React
+              - generic [ref=e166]: Framer Motion
+              - generic [ref=e167]: Vite
+        - generic [ref=e170]:
+          - img "BMS Scrubber" [ref=e172]
+          - generic [ref=e174]:
+            - generic [ref=e175]:
+              - generic [ref=e176]:
+                - heading "BMS Scrubber" [level=4] [ref=e177]
+                - paragraph [ref=e178]: Industrial E-commerce
+              - link [ref=e179] [cursor=pointer]:
+                - /url: https://www.bmsscrubber.com
+                - img [ref=e180]
+            - paragraph [ref=e183]: Enterprise catalog for industrial cleaning solutions and equipment.
+            - generic [ref=e184]:
+              - generic [ref=e185]: Next.js
+              - generic [ref=e186]: Sanity CMS
+              - generic [ref=e187]: Tailwind
+        - generic [ref=e190]:
+          - img "Amiora Diamonds" [ref=e192]
+          - generic [ref=e194]:
+            - generic [ref=e195]:
+              - generic [ref=e196]:
+                - heading "Amiora Diamonds" [level=4] [ref=e197]
+                - paragraph [ref=e198]: Luxury E-commerce
+              - link [ref=e199] [cursor=pointer]:
+                - /url: https://www.amioradiamonds.com
+                - img [ref=e200]
+            - paragraph [ref=e203]: Premium shopping experience for fine jewelry with 3D product view.
+            - generic [ref=e204]:
+              - generic [ref=e205]: Shopify Headless
+              - generic [ref=e206]: Three.js
+              - generic [ref=e207]: React
+    - generic [ref=e212]:
+      - generic [ref=e213]:
+        - generic [ref=e214]: WHO WE ARE
+        - heading "About Us" [level=2] [ref=e215]
+        - paragraph [ref=e216]: We partner with startups and growth-stage companies to ship high-quality web products. Our team focuses on simplicity, performance, and measurable business results — not bells and whistles.
+      - generic [ref=e217]:
+        - generic [ref=e220]:
+          - generic [ref=e221]: 🏆
+          - generic [ref=e222]: 18+
+          - generic [ref=e223]: Years Collective
+        - generic [ref=e226]:
+          - generic [ref=e227]: 🚀
+          - generic [ref=e228]: 320+
+          - generic [ref=e229]: Projects Delivered
+        - generic [ref=e232]:
+          - generic [ref=e233]: 📈
+          - generic [ref=e234]: 2.4x
+          - generic [ref=e235]: Avg. Conversion Lift
+        - generic [ref=e238]:
+          - generic [ref=e239]: ⚡
+          - generic [ref=e240]: ≤ 1.6s
+          - generic [ref=e241]: Avg. Page Speed
+      - generic [ref=e242]:
+        - generic [ref=e243]:
+          - heading "How We Work" [level=3] [ref=e244]
+          - paragraph [ref=e245]: Our proven process ensures exceptional results at every stage of your project
+        - generic [ref=e246]:
+          - generic [ref=e249]:
+            - img [ref=e251]
+            - generic [ref=e253]: "01"
+            - heading "Discovery" [level=4] [ref=e254]
+            - paragraph [ref=e255]: Clarify goals, users, and success metrics.
+          - generic [ref=e258]:
+            - img [ref=e260]
+            - generic [ref=e262]: "02"
+            - heading "Design" [level=4] [ref=e263]
+            - paragraph [ref=e264]: Prototypes and tests, not guesses.
+          - generic [ref=e267]:
+            - img [ref=e269]
+            - generic [ref=e271]: "03"
+            - heading "Build" [level=4] [ref=e272]
+            - paragraph [ref=e273]: Solid engineering, CI, and observability.
+          - generic [ref=e276]:
+            - img [ref=e278]
+            - generic [ref=e280]: "04"
+            - heading "Optimize" [level=4] [ref=e281]
+            - paragraph [ref=e282]: Data-driven iteration after launch.
+        - generic [ref=e283]:
+          - link "Start a Project" [ref=e284] [cursor=pointer]:
+            - /url: /contact
+            - generic [ref=e285]:
+              - img [ref=e286]
+              - text: Start a Project
+          - link "Our Process" [ref=e289] [cursor=pointer]:
+            - /url: /about
+    - generic [ref=e291]:
+      - heading "Trusted by" [level=3] [ref=e292]
+      - generic [ref=e293]:
+        - generic [ref=e295]: Novus Retail
+        - generic [ref=e297]: Blue Harbor
+        - generic [ref=e299]: Astra Health
+        - generic [ref=e301]: Bloom Studio
+        - generic [ref=e303]: RevLift
+      - generic [ref=e304]:
+        - blockquote [ref=e305]:
+          - paragraph [ref=e306]: “They rebuilt our store and the result was immediate — faster load, cleaner UX, and a direct uplift in AOV. Not flashy, just effective.”
+          - generic [ref=e307]: Anita Rao — Head of eCommerce, RevLift
+        - blockquote [ref=e308]:
+          - paragraph [ref=e309]: “Delivered a complex portal on schedule. Security and performance were treated as first-class citizens. Great communication.”
+          - generic [ref=e310]: Dr. Suresh Patel — CTO, PulseHealth
+        - blockquote [ref=e311]:
+          - paragraph [ref=e312]: “Clear process, clear milestones, and high-quality engineering. Our retention improved after the redesign.”
+          - generic [ref=e313]: Maya Singh — Founder, Bloom Studio
+    - generic [ref=e316]:
+      - heading "Ready to build something exceptional?" [level=2] [ref=e317]
+      - paragraph [ref=e318]: Tell us about your project and we'll propose a plan with timeline and predictable costs.
+      - generic [ref=e319]:
+        - link "Request Proposal" [ref=e320] [cursor=pointer]:
+          - /url: /contact
+        - link "Book a Call" [ref=e321] [cursor=pointer]:
+          - /url: /contact
+    - button "Contact us on WhatsApp" [ref=e323] [cursor=pointer]:
+      - img [ref=e324]
+  - contentinfo [ref=e326]:
+    - generic [ref=e327]:
+      - generic [ref=e328]:
+        - generic [ref=e329]:
+          - heading "Web Total Solution" [level=3] [ref=e330]
+          - paragraph [ref=e331]: We’re a web development agency building scalable digital products using Next.js, React, MERN, WordPress, UI/UX design, and digital marketing solutions.
+          - generic [ref=e332]:
+            - link [ref=e333] [cursor=pointer]:
+              - /url: https://x.com/webtotal1234
+              - img [ref=e334]
+            - link [ref=e336] [cursor=pointer]:
+              - /url: https://www.facebook.com/profile.php?id=61581002265105
+              - img [ref=e337]
+            - link [ref=e339] [cursor=pointer]:
+              - /url: https://www.instagram.com/webtotalsolution/
+              - img [ref=e340]
+        - generic [ref=e342]:
+          - heading "Our Services" [level=4] [ref=e343]
+          - list [ref=e344]:
+            - listitem [ref=e345]: Web Development (Next.js, React, MERN, WordPress)
+            - listitem [ref=e346]: UI/UX Design
+            - listitem [ref=e347]: Digital Marketing
+            - listitem [ref=e348]: E-Commerce Solutions
+            - listitem [ref=e349]: Website Maintenance
+        - generic [ref=e350]:
+          - heading "Quick Links" [level=4] [ref=e351]
+          - list [ref=e352]:
+            - listitem [ref=e353]:
+              - link "About Us" [ref=e354] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e355]:
+              - link "Services" [ref=e356] [cursor=pointer]:
+                - /url: /services
+            - listitem [ref=e357]:
+              - link "Contact" [ref=e358] [cursor=pointer]:
+                - /url: /contact
+      - generic [ref=e359]: © 2026 Web Total Solution. All Rights Reserved.
+  - alert [ref=e360]
+```

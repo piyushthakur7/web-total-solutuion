@@ -1,0 +1,109 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - link "WebTotalSolution" [ref=e4]:
+        - /url: /
+        - img "WebTotalSolution" [ref=e5]
+      - generic [ref=e6]:
+        - link "Home" [ref=e8]:
+          - /url: /
+        - link "About Us" [ref=e10]:
+          - /url: /about
+        - button "Services" [ref=e13] [cursor=pointer]
+        - link "Our Work" [ref=e15]:
+          - /url: /work
+        - link "Contact Us" [ref=e17]:
+          - /url: /contact
+      - button "WhatsApp" [ref=e19] [cursor=pointer]:
+        - img [ref=e20]
+        - generic [ref=e22]: WhatsApp
+  - main [ref=e23]:
+    - generic [ref=e25]:
+      - generic [ref=e26]:
+        - heading "Contact Us" [level=1] [ref=e27]
+        - paragraph [ref=e28]: Ready to start your next project? Get in touch and let's create something amazing together.
+      - generic [ref=e29]:
+        - link "Send Email" [ref=e30]:
+          - /url: mailto:info@webtotalsolution.com
+        - link "Call Us" [ref=e31]:
+          - /url: tel:+916291519364
+    - generic [ref=e33]:
+      - generic [ref=e34]:
+        - heading "Let's Work Together" [level=2] [ref=e35]
+        - paragraph [ref=e36]: Ready to transform your digital presence? Get in touch and let's discuss your project.
+      - generic [ref=e38]:
+        - generic [ref=e39]:
+          - generic [ref=e40]: Name
+          - textbox "Name" [ref=e41]:
+            - /placeholder: Your full name
+        - generic [ref=e42]:
+          - generic [ref=e43]: Email
+          - textbox "Email" [ref=e44]:
+            - /placeholder: your@email.com
+        - generic [ref=e45]:
+          - generic [ref=e46]: Message
+          - textbox "Message" [ref=e47]:
+            - /placeholder: Tell us about your project...
+        - button "Send Message" [ref=e49] [cursor=pointer]
+    - generic [ref=e52]:
+      - generic [ref=e53]:
+        - generic [ref=e54]: 📍
+        - heading "Our Location" [level=3] [ref=e55]
+        - paragraph [ref=e56]:
+          - text: Garia south 24 pgs
+          - text: Kolkata-700152
+          - text: West Bengal, India
+      - generic [ref=e57]:
+        - generic [ref=e58]: 📞
+        - heading "Phone" [level=3] [ref=e59]
+        - paragraph [ref=e60]:
+          - text: +91 6291 519 364
+          - text: "Mon - Fri: 9AM - 6PM"
+          - text: "Weekend: On Call"
+      - generic [ref=e61]:
+        - generic [ref=e62]: ✉️
+        - heading "Email" [level=3] [ref=e63]
+        - paragraph [ref=e64]:
+          - text: infowebtotalsolution@gmail.com
+          - text: Response within 24 hours
+  - contentinfo [ref=e65]:
+    - generic [ref=e66]:
+      - generic [ref=e67]:
+        - generic [ref=e68]:
+          - heading "Web Total Solution" [level=3] [ref=e69]
+          - paragraph [ref=e70]: We’re a web development agency building scalable digital products using Next.js, React, MERN, WordPress, UI/UX design, and digital marketing solutions.
+          - generic [ref=e71]:
+            - link [ref=e72]:
+              - /url: https://x.com/webtotal1234
+              - img [ref=e73]
+            - link [ref=e75]:
+              - /url: https://www.facebook.com/profile.php?id=61581002265105
+              - img [ref=e76]
+            - link [ref=e78]:
+              - /url: https://www.instagram.com/webtotalsolution/
+              - img [ref=e79]
+        - generic [ref=e81]:
+          - heading "Our Services" [level=4] [ref=e82]
+          - list [ref=e83]:
+            - listitem [ref=e84]: Web Development (Next.js, React, MERN, WordPress)
+            - listitem [ref=e85]: UI/UX Design
+            - listitem [ref=e86]: Digital Marketing
+            - listitem [ref=e87]: E-Commerce Solutions
+            - listitem [ref=e88]: Website Maintenance
+        - generic [ref=e89]:
+          - heading "Quick Links" [level=4] [ref=e90]
+          - list [ref=e91]:
+            - listitem [ref=e92]:
+              - link "About Us" [ref=e93]:
+                - /url: /about
+            - listitem [ref=e94]:
+              - link "Services" [ref=e95]:
+                - /url: /services
+            - listitem [ref=e96]:
+              - link "Contact" [ref=e97]:
+                - /url: /contact
+      - generic [ref=e98]: © 2026 Web Total Solution. All Rights Reserved.
+```

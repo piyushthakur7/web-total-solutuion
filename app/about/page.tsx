@@ -116,7 +116,7 @@ export default function AboutPage() {
     {
       num: '04',
       title: 'Launch & Growth',
-      description: 'We don\'t disappear after launch — we help you scale what works and optimize continuously.',
+      description: 'We don&apos;t disappear after launch — we help you scale what works and optimize continuously.',
       color: 'green'
     }
   ];
@@ -248,7 +248,7 @@ export default function AboutPage() {
                     </span>
                   </h2>
                   <p className="text-lg text-gray-300 mb-6 leading-relaxed">
-                    We started with one simple goal — build digital experiences that don't just look good, but <span className="text-white font-semibold">perform</span>.
+                    We started with one simple goal — build digital experiences that don&apos;t just look good, but <span className="text-white font-semibold">perform</span>.
                     Every project we take on is designed to help our clients grow faster, sell smarter, and scale easier.
                   </p>
                   <p className="text-lg text-gray-300 leading-relaxed">

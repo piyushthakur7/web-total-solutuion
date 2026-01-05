@@ -28,7 +28,7 @@ export default function ContactPage() {
                   Contact <span className="text-blue-500">Us</span>
                 </h1>
                 <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                  Ready to start your next project? Get in touch and let's create something amazing together.
+                  Ready to start your next project? Get in touch and let&apos;s create something amazing together.
                 </p>
               </motion.div>
 

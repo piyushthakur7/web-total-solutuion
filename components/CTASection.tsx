@@ -16,7 +16,7 @@ const CTASection: React.FC = () => {
                 >
                     <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to build something exceptional?</h2>
                     <p className="text-gray-100 mb-8 max-w-2xl mx-auto">
-                        Tell us about your project and we'll propose a plan with timeline and predictable costs.
+                        Tell us about your project and we&apos;ll propose a plan with timeline and predictable costs.
                     </p>
                     <div className="flex items-center justify-center gap-4">
                         <Link

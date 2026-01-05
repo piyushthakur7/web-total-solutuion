@@ -7,7 +7,7 @@ import * as THREE from 'three';
 import Link from 'next/link';
 import CustomCursor from '../../components/CustomCursor';
 import SmoothScrollProvider from '../../components/SmoothScrollProvider';
-import Services from '../../components/Services';
+
 
 export default function ServicesPage() {
   const FloatingGrid = () => {

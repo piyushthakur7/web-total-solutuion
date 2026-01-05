@@ -41,7 +41,7 @@ const Portfolio: React.FC = () => {
             Our Work
           </h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Showcasing some of our recent projects and the impact we've made for our clients
+            Showcasing some of our recent projects and the impact we&apos;ve made for our clients
           </p>
         </motion.div>
 

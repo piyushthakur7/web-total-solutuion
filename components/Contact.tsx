@@ -41,10 +41,10 @@ const Contact: React.FC = () => {
           viewport={{ once: true }}
         >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Let's Work Together
+            Let&apos;s Work Together
           </h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Ready to transform your digital presence? Get in touch and let's discuss your project.
+            Ready to transform your digital presence? Get in touch and let&apos;s discuss your project.
           </p>
         </motion.div>
 
@@ -66,7 +66,7 @@ const Contact: React.FC = () => {
                   exit={{ opacity: 0, y: -20 }}
                   className="absolute -top-16 left-0 right-0 bg-green-500/20 border border-green-500 text-green-100 px-4 py-3 rounded-lg text-center font-medium"
                 >
-                  Message sent successfully! We'll get back to you soon.
+                  Message sent successfully! We&apos;ll get back to you soon.
                 </motion.div>
               )}
             </AnimatePresence>

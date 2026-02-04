@@ -44,6 +44,33 @@ const portfolio = [
         img: '/projects/ecommerce.png',
         link: 'https://www.amioradiamonds.com',
     },
+    {
+        id: 'jhorley',
+        title: 'Jhorley',
+        type: 'Communication Services',
+        short: 'Strategic communication and business process solutions.',
+        tech: ['Next.js', 'Tailwind', 'Framer Motion'],
+        img: '/projects/fintech.png',
+        link: 'https://jhorley.com',
+    },
+    {
+        id: 'sri-mahlingeshwara',
+        title: 'Sri Mahlingeshwara Trust',
+        type: 'Non-Profit Organization',
+        short: 'Charitable trust dedicated to social welfare and community service.',
+        tech: ['React', 'Node.js', 'MongoDB'],
+        img: '/projects/healthcare.png',
+        link: 'https://srimahlingeshwaraalayamutrust.com',
+    },
+    {
+        id: 'mechverses',
+        title: 'Mechverses',
+        type: 'Educational Platform',
+        short: 'Comprehensive learning hub for mechanical engineering students.',
+        tech: ['Next.js', 'PostgreSQL', 'Stripe'],
+        img: '/projects/education.png',
+        link: 'https://mechverses.in',
+    },
 ];
 
 const PortfolioSection: React.FC = () => {

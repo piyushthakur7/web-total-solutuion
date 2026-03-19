@@ -4,8 +4,8 @@ import { Outfit, Space_Grotesk } from 'next/font/google'
 import './globals.css'
 import Navigation from '../components/Navigation'
 import Footer from '../components/Footer'
-
 import SmoothScrollProvider from '../components/SmoothScrollProvider'
+import { siteConfig } from '../data/siteConfig'
 
 const outfit = Outfit({
   subsets: ['latin'],
@@ -19,9 +19,12 @@ const spaceGrotesk = Space_Grotesk({
   display: 'swap',
 })
 
+import { siteConfig } from '../data/siteConfig'
+
 export const metadata: Metadata = {
-  title: 'Web Total Solution - We Build Digital Experiences',
-  description: 'Professional web development agency specializing in modern digital solutions',
+  title: siteConfig.name + ' - We Build Digital Experiences',
+  description: siteConfig.description,
+  metadataBase: new URL(siteConfig.url),
 }
 
 export default function RootLayout({
@@ -36,8 +39,4 @@ export default function RootLayout({
           <Navigation />
           {children}
           <Footer />
-        </SmoothScrollProvider>
-      </body>
-    </html>
-  )
-}
+        </Smooth

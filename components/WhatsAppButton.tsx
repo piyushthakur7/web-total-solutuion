@@ -4,6 +4,8 @@ import React from 'react'
 import { FaWhatsapp } from 'react-icons/fa'
 import { motion } from 'framer-motion'
 
+import { siteConfig } from '../data/siteConfig'
+
 interface WhatsAppButtonProps {
   phoneNumber?: string
   message?: string
@@ -12,7 +14,7 @@ interface WhatsAppButtonProps {
 }
 
 const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
-  phoneNumber = "+91 6291 519 364", // Replace with your business number
+  phoneNumber = siteConfig.contact.phone, // Use siteConfig default
   message = "Hello! I'm interested in your web development services.",
   className = "",
   variant = "button"

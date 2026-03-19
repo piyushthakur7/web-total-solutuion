@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FaWhatsapp, FaBars, FaTimes } from 'react-icons/fa'
+import { siteConfig } from '../data/siteConfig'
 
 const Navigation: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -17,29 +18,14 @@ const Navigation: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const handleWhatsApp = () => {
-    const phoneNumber = '+916291519364'
-    const message = "Hello! I'm interested in your web development services."
-    const encodedMessage = encodeURIComponent(message)
-    window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank')
-  }
+  const navItems = siteConfig.navigation;
 
-  const navItems = [
-    { href: '/', label: 'Home' },
-    { href: '/about', label: 'About Us' },
-    {
-      label: 'Services',
-      dropdown: [
-        { label: "Web Development", href: "/services/web-development" },
-        { label: "UI/UX Design", href: "/services/ui-ux-design" },
-        { label: "Digital Marketing", href: "/services/digital-marketing" },
-        { label: "E-Commerce Solutions", href: "/services/e-commerce-solution" },
-        { label: "Website Maintenance", href: "/services/website-maintenance" },
-      ],
-    },
-    { href: '/work', label: 'Our Work' },
-    { href: '/contact', label: 'Contact Us' },
-  ]
+  const handleWhatsApp = () => {
+    const phoneNumber = siteConfig.contact.whatsapp;
+    const message = "Hello! I'm interested in your web development services.";
+    const encodedMessage = encodeURIComponent(message);
+    window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
+  };
 
   return (
     <>
@@ -49,11 +35,13 @@ const Navigation: React.FC = () => {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        role="navigation"
+        aria-label="Main Navigation"
       >
-        <div className="container mx-auto px-0 flex items-center justify-between h-16">
+        <div className="container mx-auto px-4 flex items-center justify-between h-16">
 
           {/* Logo */}
-          <Link href="/" className="relative z-50 group flex-shrink-0">
+          <Link href="/" className="relative z-50 group flex-shrink-0" aria-label="Web Total Solution Home">
             <Image
               src="/logo_new.png"
               alt="WebTotalSolution"
@@ -74,7 +62,12 @@ const Navigation: React.FC = () => {
                     onMouseLeave={() => setServicesOpen(false)}
                     className="relative"
                   >
-                    <button className="text-sm font-medium text-white hover:text-blue-400 transition-colors">
+                    <button
+                      className="text-sm font-medium text-white hover:text-blue-400 transition-colors flex items-center gap-1"
+                      aria-haspopup="true"
+                      aria-expanded={servicesOpen}
+                      onFocus={() => setServicesOpen(true)}
+                    >
                       {item.label}
                     </button>
 
@@ -86,12 +79,14 @@ const Navigation: React.FC = () => {
                           exit={{ opacity: 0, y: 10 }}
                           transition={{ duration: 0.2 }}
                           className="absolute top-full left-0 mt-2 w-56 bg-black/95 backdrop-blur-md border border-white/10 rounded-xl shadow-2xl overflow-hidden"
+                          onMouseLeave={() => setServicesOpen(false)}
                         >
                           {item.dropdown.map((subItem) => (
                             <Link
                               key={subItem.href}
                               href={subItem.href}
                               className="block px-4 py-3 text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-all duration-200"
+                              onClick={() => setServicesOpen(false)}
                             >
                               {subItem.label}
                             </Link>
@@ -102,7 +97,7 @@ const Navigation: React.FC = () => {
                   </div>
                 ) : (
                   <Link
-                    href={item.href}
+                    href={item.href || '/'}
                     className="text-sm font-medium text-white hover:text-blue-400 transition-colors"
                   >
                     {item.label}
@@ -119,6 +114,7 @@ const Navigation: React.FC = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="hidden md:flex items-center gap-2 px-4 py-2 bg-green-500 text-white text-sm font-semibold rounded-full hover:bg-green-600 transition-colors"
+              aria-label="Contact via WhatsApp"
             >
               <FaWhatsapp className="text-base" />
               <span>WhatsApp</span>
@@ -127,6 +123,8 @@ const Navigation: React.FC = () => {
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="md:hidden text-white p-2 hover:bg-white/10 rounded-full transition-colors"
+              aria-expanded={isOpen}
+              aria-label="Toggle Menu"
             >
               {isOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
             </button>
@@ -153,11 +151,11 @@ const Navigation: React.FC = () => {
               className="absolute right-0 top-0 bottom-0 w-[80%] max-w-sm bg-black border-l border-white/10 p-6 flex flex-col"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="mt-20 flex flex-col gap-2">
+              <div className="mt-20 flex flex-col gap-2 overflow-y-auto">
                 {navItems.map((item) => (
                   <div key={item.label}>
                     {item.dropdown ? (
-                      <div className="flex flex-col gap-2">
+                      <div className="flex flex-col gap-1">
                         <span className="text-sm font-semibold text-gray-500 uppercase tracking-wider px-4 mt-4 mb-2">{item.label}</span>
                         {item.dropdown.map(sub => (
                           <Link
@@ -172,7 +170,7 @@ const Navigation: React.FC = () => {
                       </div>
                     ) : (
                       <Link
-                        href={item.href}
+                        href={item.href || '/'}
                         onClick={() => setIsOpen(false)}
                         className="block px-4 py-3 text-base font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-xl transition-all"
                       >
@@ -182,6 +180,7 @@ const Navigation: React.FC = () => {
                   </div>
                 ))}
               </div>
+
 
               <div className="mt-auto">
                 <button

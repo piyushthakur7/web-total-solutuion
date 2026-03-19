@@ -19,8 +19,6 @@ const spaceGrotesk = Space_Grotesk({
   display: 'swap',
 })
 
-import { siteConfig } from '../data/siteConfig'
-
 export const metadata: Metadata = {
   title: siteConfig.name + ' - We Build Digital Experiences',
   description: siteConfig.description,
@@ -39,4 +37,8 @@ export default function RootLayout({
           <Navigation />
           {children}
           <Footer />
-        </Smooth
+        </SmoothScrollProvider>
+      </body>
+    </html>
+  )
+}

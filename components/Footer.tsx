@@ -56,6 +56,7 @@ const Footer: React.FC = () => {
               <li><a href="/about" className="hover:text-white">About Us</a></li>
               <li><a href="/services" className="hover:text-white">Services</a></li>
               <li><a href="/contact" className="hover:text-white">Contact</a></li>
+              <li><a href="/terms" className="hover:text-white">Terms &amp; Conditions</a></li>
             </ul>
           </div>
         </motion.div>

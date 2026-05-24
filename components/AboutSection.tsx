@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { FaRocket, FaChartLine, FaBolt, FaCheckCircle } from 'react-icons/fa';
 
 const metrics = [
-    { label: 'Years Collective', value: '18+', icon: '🏆' },
+    { label: 'Years Combined Experience', value: '18+', icon: '🏆' },
     { label: 'Projects Delivered', value: '320+', icon: '🚀' },
     { label: 'Avg. Conversion Lift', value: '2.4x', icon: '📈' },
     { label: 'Avg. Page Speed', value: '≤ 1.6s', icon: '⚡' },

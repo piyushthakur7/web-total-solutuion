@@ -64,7 +64,7 @@ export default function AboutPage() {
     { icon: FaTrophy, value: '320+', label: 'Projects Delivered' },
     { icon: FaUsers, value: '150+', label: 'Happy Clients' },
     { icon: FaChartLine, value: '2.4x', label: 'Avg. ROI Increase' },
-    { icon: FaRocket, value: '18+', label: 'Years Experience' },
+    { icon: FaRocket, value: '18+', label: 'Years Combined Experience' },
   ];
 
   const values = [

@@ -14,6 +14,8 @@ export const siteConfig = {
     facebook: "https://www.facebook.com/profile.php?id=61581002265105",
     instagram: "https://www.instagram.com/webtotalsolution/",
     linkedin: "https://www.linkedin.com/company/web-total-solution",
+    // TODO: Replace with actual GitHub organization URL when available
+    github: "https://github.com/webtotalsolution",
   },
   navigation: [
     { href: '/', label: 'Home' },

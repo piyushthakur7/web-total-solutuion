@@ -15,16 +15,16 @@ const portfolio = [
         short: 'Full-stack platform for virtual accounting training with SAP integration.',
         tech: ['Next.js', 'Postgres', 'Stripe'],
         img: '/projects/education.png',
-        link: 'https://www.banerjeeacademy.com',
+        liveUrl: 'https://www.banerjeeacademy.com',
     },
     {
         id: 'fairmount',
-        title: 'Fairmount Photographys',
+        title: 'Fairmount Photography',
         type: 'Creative Portfolio',
         short: 'Cinematic photography portfolio with immersive gallery interactions.',
         tech: ['React', 'Framer Motion', 'Vite'],
-        img: '/projects/fintech.png',
-        link: 'https://www.fairmountphotographys.com',
+        img: '/projects/photography.png',
+        liveUrl: 'https://www.fairmountphotographys.com',
     },
     {
         id: 'bms-scrubbers',
@@ -33,7 +33,7 @@ const portfolio = [
         short: 'Enterprise catalog for industrial cleaning solutions and equipment.',
         tech: ['Next.js', 'Sanity CMS', 'Tailwind'],
         img: '/projects/healthcare.png',
-        link: 'https://www.bmsscrubber.com',
+        liveUrl: 'https://www.bmsscrubber.com',
     },
     {
         id: 'amiora',
@@ -42,7 +42,7 @@ const portfolio = [
         short: 'Premium shopping experience for fine jewelry with 3D product view.',
         tech: ['Shopify Headless', 'Three.js', 'React'],
         img: '/projects/ecommerce.png',
-        link: 'https://www.amioradiamonds.com',
+        liveUrl: 'https://www.amioradiamonds.com',
     },
     {
         id: 'jhorley',
@@ -50,8 +50,8 @@ const portfolio = [
         type: 'Communication Services',
         short: 'Strategic communication and business process solutions.',
         tech: ['Next.js', 'Tailwind', 'Framer Motion'],
-        img: '/projects/fintech.png',
-        link: 'https://jhorley.com',
+        img: '/projects/communication.png',
+        liveUrl: 'https://jhorley.com',
     },
     {
         id: 'sri-mahlingeshwara',
@@ -59,8 +59,8 @@ const portfolio = [
         type: 'Non-Profit Organization',
         short: 'Charitable trust dedicated to social welfare and community service.',
         tech: ['React', 'Node.js', 'MongoDB'],
-        img: '/projects/healthcare.png',
-        link: 'https://srimahlingeshwaraalayamutrust.com',
+        img: '/projects/nonprofit.png',
+        liveUrl: 'https://srimahlingeshwaraalayamutrust.com',
     },
     {
         id: 'mechverses',
@@ -68,8 +68,8 @@ const portfolio = [
         type: 'Educational Platform',
         short: 'Comprehensive learning hub for mechanical engineering students.',
         tech: ['Next.js', 'PostgreSQL', 'Stripe'],
-        img: '/projects/education.png',
-        link: 'https://mechverses.in',
+        img: '/projects/mechverses.png',
+        liveUrl: 'https://mechverses.in',
     },
 ];
 
@@ -109,22 +109,15 @@ const PortfolioSection: React.FC = () => {
                 </div>
 
                 <div className="grid gap-12 md:grid-cols-2">
-                    {portfolio.map((p, i) => (
-                        <motion.div
-                            key={p.id}
-                            initial={{ opacity: 0, y: 40 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.7, delay: i * 0.1, ease: [0.21, 0.47, 0.32, 0.98] }}
-                            className="group h-full"
-                        >
+                    {portfolio.map((p, i) => {
+                        const cardContent = (
                             <SpotlightCard className="h-full bg-white/[0.02] border-white/5 hover:border-white/20 transition-all duration-500 rounded-3xl overflow-hidden flex flex-col">
 
                                 {/* Image Area */}
                                 <div className="relative w-full aspect-[16/10] overflow-hidden bg-gray-900">
                                     <Image
                                         src={p.img}
-                                        alt={p.title}
+                                        alt={`${p.title} — ${p.type} project screenshot`}
                                         fill
                                         className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                                         onError={(e) => {
@@ -142,14 +135,13 @@ const PortfolioSection: React.FC = () => {
                                             <h4 className="text-2xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">{p.title}</h4>
                                             <p className="text-sm font-mono text-gray-500 uppercase tracking-widest">{p.type}</p>
                                         </div>
-                                        <Link
-                                            href={p.link}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="w-12 h-12 flex items-center justify-center rounded-full bg-white/5 text-white transform group-hover:scale-110 group-hover:bg-white/10 transition-all"
-                                        >
-                                            <ArrowUpRight size={20} />
-                                        </Link>
+                                        {p.liveUrl && (
+                                            <span
+                                                className="w-12 h-12 flex items-center justify-center rounded-full bg-white/5 text-white transform group-hover:scale-110 group-hover:bg-white/10 transition-all"
+                                            >
+                                                <ArrowUpRight size={20} />
+                                            </span>
+                                        )}
                                     </div>
 
                                     <p className="text-gray-400 leading-relaxed mb-8">
@@ -165,8 +157,27 @@ const PortfolioSection: React.FC = () => {
                                     </div>
                                 </div>
                             </SpotlightCard>
-                        </motion.div>
-                    ))}
+                        );
+
+                        return (
+                            <motion.div
+                                key={p.id}
+                                initial={{ opacity: 0, y: 40 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.7, delay: i * 0.1, ease: [0.21, 0.47, 0.32, 0.98] }}
+                                className="group h-full"
+                            >
+                                {p.liveUrl ? (
+                                    <a href={p.liveUrl} target="_blank" rel="noopener noreferrer" className="block h-full">
+                                        {cardContent}
+                                    </a>
+                                ) : (
+                                    cardContent
+                                )}
+                            </motion.div>
+                        );
+                    })}
                 </div>
 
                 <div className="text-center mt-16 md:hidden">

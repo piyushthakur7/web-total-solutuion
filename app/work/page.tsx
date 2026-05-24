@@ -21,25 +21,43 @@ export default function WorkPage() {
       title: "Banerjee Academy",
       description: "Professional EdTech platform offering virtual accounting, tax compliance training, and SAP certification.",
       image: "/projects/education.png",
-      link: "https://www.banerjeeacademy.com"
+      liveUrl: "https://www.banerjeeacademy.com"
     },
     {
-      title: "Fairmount Photographys",
+      title: "Fairmount Photography",
       description: "High-end photography portfolio showcasing cinematic portraits, editorials, and architectural work.",
-      image: "/projects/fintech.png",
-      link: "https://www.fairmountphotographys.com"
+      image: "/projects/photography.png",
+      liveUrl: "https://www.fairmountphotographys.com"
     },
     {
       title: "BMS Scrubber",
       description: "Industrial cleaning solutions website featuring advanced scrubber technology and enterprise equipment.",
       image: "/projects/healthcare.png",
-      link: "https://www.bmsscrubber.com"
+      liveUrl: "https://www.bmsscrubber.com"
     },
     {
       title: "Amiora Diamonds",
       description: "Luxury e-commerce experience for fine jewelry, featuring timeless designs and premium craftsmanship.",
       image: "/projects/ecommerce.png",
-      link: "https://www.amioradiamonds.com"
+      liveUrl: "https://www.amioradiamonds.com"
+    },
+    {
+      title: "Jhorley",
+      description: "Strategic communication and business process solutions for modern enterprises.",
+      image: "/projects/communication.png",
+      liveUrl: "https://jhorley.com"
+    },
+    {
+      title: "Sri Mahlingeshwara Trust",
+      description: "Charitable trust dedicated to social welfare, community service, and spiritual upliftment.",
+      image: "/projects/nonprofit.png",
+      liveUrl: "https://srimahlingeshwaraalayamutrust.com"
+    },
+    {
+      title: "Mechverses",
+      description: "Comprehensive learning hub for mechanical engineering students with courses and resources.",
+      image: "/projects/mechverses.png",
+      liveUrl: "https://mechverses.in"
     },
   ];
 
@@ -106,20 +124,20 @@ export default function WorkPage() {
                 </p>
               </motion.div>
 
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {projects.map((project, index) => (
                   <motion.div
                     key={index}
-                    className="bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
+                    className="bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group"
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: index * 0.2 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
                     viewport={{ once: true }}
                   >
                     <div className="relative w-full aspect-video bg-gray-700 text-gray-500 overflow-hidden">
                       <Image
                         src={project.image}
-                        alt={project.title}
+                        alt={`${project.title} project screenshot`}
                         fill
                         className="object-cover hover:scale-105 transition-transform duration-500"
                       />
@@ -129,14 +147,18 @@ export default function WorkPage() {
                         <h3 className="text-xl font-bold mb-2">{project.title}</h3>
                         <p className="text-gray-300 text-sm leading-relaxed mb-4">{project.description}</p>
                       </div>
-                      <Link
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-400 hover:text-blue-300 text-sm font-semibold inline-flex items-center gap-2 mt-auto"
-                      >
-                        Visit Website <span>→</span>
-                      </Link>
+                      {project.liveUrl ? (
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-400 hover:text-blue-300 text-sm font-semibold inline-flex items-center gap-2 mt-auto"
+                        >
+                          Visit Website <span>→</span>
+                        </a>
+                      ) : (
+                        <span className="text-gray-500 text-sm mt-auto">Coming soon</span>
+                      )}
                     </div>
                   </motion.div>
                 ))}
@@ -173,7 +195,7 @@ export default function WorkPage() {
                       ))}
                       {r.rating % 1 !== 0 && <span className="text-yellow-400 text-xl">☆</span>}
                     </div>
-                    <p className="text-gray-300 mb-6 italic">“{r.text}”</p>
+                    <p className="text-gray-300 mb-6 italic">&ldquo;{r.text}&rdquo;</p>
                     <p className="text-blue-500 font-bold">{r.name}</p>
                   </motion.div>
                 ))}
@@ -203,7 +225,7 @@ export default function WorkPage() {
                 Ready to Start Your Project?
               </h2>
               <p className="text-lg text-blue-100 mb-10 max-w-2xl mx-auto">
-                Let’s build something powerful together — we turn ideas into digital experiences that deliver results.
+                Let&apos;s build something powerful together — we turn ideas into digital experiences that deliver results.
               </p>
               <Link
                 href="/contact"

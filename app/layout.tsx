@@ -20,9 +20,41 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
-  title: siteConfig.name + ' - We Build Digital Experiences',
-  description: siteConfig.description,
+  title: {
+    default: siteConfig.name + ' — Premium Web Development Agency',
+    template: `%s | ${siteConfig.name}`,
+  },
+  description: 'Web Total Solution is a premium web development agency based in Kolkata, India. We build high-performance websites, web apps, and e-commerce solutions using Next.js, React, and modern technologies.',
   metadataBase: new URL(siteConfig.url),
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    title: siteConfig.name + ' — Premium Web Development Agency',
+    description: 'We engineer bespoke digital experiences that blend performance, beauty, and function. 320+ projects delivered with 2.4x average conversion lift.',
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: 1200,
+        height: 630,
+        alt: siteConfig.name,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: siteConfig.name + ' — Premium Web Development Agency',
+    description: 'We engineer bespoke digital experiences that blend performance, beauty, and function.',
+    images: [siteConfig.ogImage],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 }
 
 export default function RootLayout({

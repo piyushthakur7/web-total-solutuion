@@ -656,7 +656,7 @@ function HomeView() {
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "border-8 border-white bg-white rounded-3xl overflow-hidden shadow-2xl",
                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                                src: "https://lh3.googleusercontent.com/aida/AP1WRLv-1T1J-2xLUCncwAXHoTfxGx4N8q-JCKiSPH_hfnLr0rMdegLFBxCSS7JQITPfm9JnJFRPgKkHlENht9H4S2YzVcyQqtpd7ms2ZbfzMuUxL3blYofPzTI8Hx-ByO7Mzv9R0pKZYhqXQs9CEzR8MAxETDMLuXPtPvtNi-r0lZ_ec7nkl2R__v70tC86zGBkVCZ0YItpFnfSN0K6QKaiEpG033xM58hJRBcdtIYGhX-nrZJSGUIzRbKzz2k",
+                                                src: "https://images.pexels.com/photos/6476257/pexels-photo-6476257.jpeg",
                                                 alt: "High Performance Digital Agency Illustration",
                                                 className: "w-full h-auto object-cover max-h-[500px]",
                                                 referrerPolicy: "no-referrer"

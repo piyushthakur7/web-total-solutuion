@@ -106,7 +106,7 @@ export default function HomeView() {
               <div className="absolute inset-0 bg-slate-200/50 rounded-2xl filter blur-xl transform translate-x-3 translate-y-3 -z-10" />
               <div className="border-8 border-white bg-white rounded-3xl overflow-hidden shadow-2xl">
                 <img
-                  src="https://lh3.googleusercontent.com/aida/AP1WRLv-1T1J-2xLUCncwAXHoTfxGx4N8q-JCKiSPH_hfnLr0rMdegLFBxCSS7JQITPfm9JnJFRPgKkHlENht9H4S2YzVcyQqtpd7ms2ZbfzMuUxL3blYofPzTI8Hx-ByO7Mzv9R0pKZYhqXQs9CEzR8MAxETDMLuXPtPvtNi-r0lZ_ec7nkl2R__v70tC86zGBkVCZ0YItpFnfSN0K6QKaiEpG033xM58hJRBcdtIYGhX-nrZJSGUIzRbKzz2k"
+                  src="https://images.pexels.com/photos/6476257/pexels-photo-6476257.jpeg"
                   alt="High Performance Digital Agency Illustration"
                   className="w-full h-auto object-cover max-h-[500px]"
                   referrerPolicy="no-referrer"

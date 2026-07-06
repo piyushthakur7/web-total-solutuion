@@ -2,13 +2,11 @@
 
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
-import { ViewType } from '../types';
 import { CLIENT_LOGOS } from '../data';
 import { 
   Zap, Shield, PieChart, Database, ArrowRight, CheckCircle2, 
-  Sparkles, Star, ChevronRight, Server, Flame, Cpu 
+  Sparkles, ChevronRight
 } from 'lucide-react';
-import { motion } from 'motion/react';
 
 export default function HomeView() {
   const router = useRouter();

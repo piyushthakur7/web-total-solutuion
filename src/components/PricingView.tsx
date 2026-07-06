@@ -2,7 +2,6 @@
 
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
-import { ViewType } from '../types';
 import { Check, Plus, Minus, ArrowRight, HelpCircle, Star, Sparkles } from 'lucide-react';
 
 export default function PricingView() {

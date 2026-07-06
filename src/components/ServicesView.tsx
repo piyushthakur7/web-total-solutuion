@@ -2,7 +2,6 @@
 
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
-import { ViewType } from '../types';
 import { 
   CheckCircle2, ArrowRight, Laptop, ShoppingCart, Cpu, 
   Sparkles, ExternalLink, RefreshCw, Smartphone, Layers

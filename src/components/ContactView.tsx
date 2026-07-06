@@ -1,14 +1,12 @@
 "use client";
 
 import { useRouter } from 'next/navigation';
-import React, { useState, useEffect } from 'react';
-import { ProjectInquiry } from '../types';
+import React, { useState } from 'react';
 import { Mail, Phone, MapPin, CheckCircle, ArrowRight, MessageSquare, Shield, Clock, HelpCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 export default function ContactView() {
   const router = useRouter();
-  const initialContext = null;
   // Form states
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -19,18 +17,6 @@ export default function ContactView() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [inquiryCode, setInquiryCode] = useState('');
-
-  // Handle context injections when navigating with presets
-  useEffect(() => {
-    if (initialContext) {
-      if (initialContext.projectType) {
-        setProjectType(initialContext.projectType);
-      }
-      if (initialContext.details) {
-        setDetails(initialContext.details);
-      }
-    }
-  }, [initialContext]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

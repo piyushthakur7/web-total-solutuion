@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
-import { ViewType, PortfolioItem } from '../types';
+import { PortfolioItem } from '../types';
 import { PORTFOLIO_ITEMS } from '../data';
 import { Sparkles, ArrowUpRight, Filter, MessageSquare, TrendingUp, ExternalLink } from 'lucide-react';
 

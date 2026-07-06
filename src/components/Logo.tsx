@@ -152,11 +152,10 @@ export default function Logo({
         transition={{ type: 'spring', stiffness: 400, damping: 15 }}
         className="shrink-0 flex items-center justify-center"
       >
-        <img 
-          src="/images/image.png" 
-          alt="Web Total Solution" 
-          style={{ width: iconSizeMap[size], height: 'auto', maxHeight: iconSizeMap[size] }}
-          className="object-contain"
+        <LogoIcon
+          size={iconSizeMap[size]}
+          iconColorPrimary={primaryColor}
+          iconColorSecondary={isDarkBg ? '#38BDF8' : secondaryColor} // lighter blue on dark bg, or navy
         />
       </motion.div>
       <div className="flex flex-col justify-center select-none">

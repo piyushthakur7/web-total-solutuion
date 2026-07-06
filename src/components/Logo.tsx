@@ -15,10 +15,11 @@ export default function Logo({
   theme = 'light',
 }: LogoProps) {
   // Sizing map defining strict heights to ensure navbar breadth isn't increased
+  // We increased the base height slightly, but will rely on CSS scale to make it pop.
   const heightMap = {
-    sm: 'h-8',   // 32px
-    md: 'h-11',  // 44px
-    lg: 'h-14',  // 56px
+    sm: 'h-10',
+    md: 'h-16', // 64px
+    lg: 'h-20',
   };
 
   return (
@@ -26,12 +27,13 @@ export default function Logo({
       <motion.div
         whileHover={{ scale: 1.05 }}
         transition={{ type: 'spring', stiffness: 400, damping: 15 }}
-        className="shrink-0 flex items-center justify-center"
+        className="shrink-0 flex items-center justify-center relative"
       >
         <img
-          src="/images/image.png"
+          src="/bhaskar_logo_1.png"
           alt="Web Total Solution Logo"
-          className={`${heightMap[size]} w-auto object-contain drop-shadow-sm`}
+          // scale-[2] makes it 2x larger visually without taking up more physical space!
+          className={`${heightMap[size]} w-auto object-contain drop-shadow-sm scale-[2.2] origin-left`}
         />
       </motion.div>
     </div>

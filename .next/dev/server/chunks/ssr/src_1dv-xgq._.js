@@ -431,14 +431,14 @@ function HomeView() {
                         className: "absolute top-0 left-1/4 w-[500px] h-[500px] bg-brand-blue/5 rounded-full filter blur-3xl -z-10"
                     }, void 0, false, {
                         fileName: "[project]/src/components/HomeView.tsx",
-                        lineNumber: 52,
+                        lineNumber: 50,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "absolute bottom-10 right-1/4 w-[300px] h-[300px] bg-brand-blue/10 rounded-full filter blur-2xl -z-10"
                     }, void 0, false, {
                         fileName: "[project]/src/components/HomeView.tsx",
-                        lineNumber: 53,
+                        lineNumber: 51,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -456,20 +456,20 @@ function HomeView() {
                                                     className: "w-3.5 h-3.5"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                    lineNumber: 60,
+                                                    lineNumber: 58,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                     children: "Next-Gen Web Engineering"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                    lineNumber: 61,
+                                                    lineNumber: 59,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/HomeView.tsx",
-                                            lineNumber: 59,
+                                            lineNumber: 57,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -478,7 +478,7 @@ function HomeView() {
                                                 "Building High-Performance Websites ",
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                    lineNumber: 65,
+                                                    lineNumber: 63,
                                                     columnNumber: 52
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -486,13 +486,13 @@ function HomeView() {
                                                     children: "That Grow Your Business"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                    lineNumber: 66,
+                                                    lineNumber: 64,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/HomeView.tsx",
-                                            lineNumber: 64,
+                                            lineNumber: 62,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -500,7 +500,7 @@ function HomeView() {
                                             children: "We engineer bespoke, lightning-fast digital solutions. Combining pristine interactive UI, tailored SEO mechanics, and military-grade architecture."
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/HomeView.tsx",
-                                            lineNumber: 69,
+                                            lineNumber: 67,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -514,20 +514,20 @@ function HomeView() {
                                                             children: "Start Your Project"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/HomeView.tsx",
-                                                            lineNumber: 78,
+                                                            lineNumber: 76,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$right$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowRight$3e$__["ArrowRight"], {
                                                             className: "w-5 h-5"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/HomeView.tsx",
-                                                            lineNumber: 79,
+                                                            lineNumber: 77,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                    lineNumber: 74,
+                                                    lineNumber: 72,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -537,18 +537,18 @@ function HomeView() {
                                                         children: "View Portfolio"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/HomeView.tsx",
-                                                        lineNumber: 85,
+                                                        lineNumber: 83,
                                                         columnNumber: 19
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                    lineNumber: 81,
+                                                    lineNumber: 79,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/HomeView.tsx",
-                                            lineNumber: 73,
+                                            lineNumber: 71,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -561,7 +561,7 @@ function HomeView() {
                                                             children: "99%"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/HomeView.tsx",
-                                                            lineNumber: 92,
+                                                            lineNumber: 90,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -569,13 +569,13 @@ function HomeView() {
                                                             children: "Avg Speed Score"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/HomeView.tsx",
-                                                            lineNumber: 93,
+                                                            lineNumber: 91,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                    lineNumber: 91,
+                                                    lineNumber: 89,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -585,7 +585,7 @@ function HomeView() {
                                                             children: "4.9/5"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/HomeView.tsx",
-                                                            lineNumber: 96,
+                                                            lineNumber: 94,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -593,13 +593,13 @@ function HomeView() {
                                                             children: "Clutch Rating"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/HomeView.tsx",
-                                                            lineNumber: 97,
+                                                            lineNumber: 95,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                    lineNumber: 95,
+                                                    lineNumber: 93,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -609,7 +609,7 @@ function HomeView() {
                                                             children: "100%"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/HomeView.tsx",
-                                                            lineNumber: 100,
+                                                            lineNumber: 98,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -617,25 +617,25 @@ function HomeView() {
                                                             children: "SLA Commitment"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/HomeView.tsx",
-                                                            lineNumber: 101,
+                                                            lineNumber: 99,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                    lineNumber: 99,
+                                                    lineNumber: 97,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/HomeView.tsx",
-                                            lineNumber: 90,
+                                            lineNumber: 88,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/HomeView.tsx",
-                                    lineNumber: 58,
+                                    lineNumber: 56,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -645,7 +645,7 @@ function HomeView() {
                                             className: "absolute inset-0 bg-slate-200/50 rounded-2xl filter blur-xl transform translate-x-3 translate-y-3 -z-10"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/HomeView.tsx",
-                                            lineNumber: 108,
+                                            lineNumber: 106,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -657,35 +657,35 @@ function HomeView() {
                                                 referrerPolicy: "no-referrer"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/HomeView.tsx",
-                                                lineNumber: 110,
+                                                lineNumber: 108,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/HomeView.tsx",
-                                            lineNumber: 109,
+                                            lineNumber: 107,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/HomeView.tsx",
-                                    lineNumber: 107,
+                                    lineNumber: 105,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/HomeView.tsx",
-                            lineNumber: 56,
+                            lineNumber: 54,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/HomeView.tsx",
-                        lineNumber: 55,
+                        lineNumber: 53,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/HomeView.tsx",
-                lineNumber: 50,
+                lineNumber: 48,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -698,7 +698,7 @@ function HomeView() {
                             children: "Engineered For Dynamic Growth and Trusted by Leading Teams"
                         }, void 0, false, {
                             fileName: "[project]/src/components/HomeView.tsx",
-                            lineNumber: 125,
+                            lineNumber: 123,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -711,7 +711,7 @@ function HomeView() {
                                             children: "★"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/HomeView.tsx",
-                                            lineNumber: 131,
+                                            lineNumber: 129,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -719,29 +719,29 @@ function HomeView() {
                                             children: logo.name
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/HomeView.tsx",
-                                            lineNumber: 132,
+                                            lineNumber: 130,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, idx, true, {
                                     fileName: "[project]/src/components/HomeView.tsx",
-                                    lineNumber: 130,
+                                    lineNumber: 128,
                                     columnNumber: 15
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/src/components/HomeView.tsx",
-                            lineNumber: 128,
+                            lineNumber: 126,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/HomeView.tsx",
-                    lineNumber: 124,
+                    lineNumber: 122,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/HomeView.tsx",
-                lineNumber: 123,
+                lineNumber: 121,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -755,7 +755,7 @@ function HomeView() {
                                 children: "Performance Architecture"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/HomeView.tsx",
-                                lineNumber: 142,
+                                lineNumber: 140,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -763,7 +763,7 @@ function HomeView() {
                                 children: "Designed for Performance, Built for Scalability"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/HomeView.tsx",
-                                lineNumber: 145,
+                                lineNumber: 143,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -771,13 +771,13 @@ function HomeView() {
                                 children: "We abandon boilerplate templates to build highly optimized platforms customized to power business velocity and dynamic enterprise operations."
                             }, void 0, false, {
                                 fileName: "[project]/src/components/HomeView.tsx",
-                                lineNumber: 148,
+                                lineNumber: 146,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/HomeView.tsx",
-                        lineNumber: 141,
+                        lineNumber: 139,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -790,7 +790,7 @@ function HomeView() {
                                         className: "absolute right-0 top-0 w-64 h-64 bg-brand-blue/10 rounded-full filter blur-3xl"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/HomeView.tsx",
-                                        lineNumber: 157,
+                                        lineNumber: 155,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -802,12 +802,12 @@ function HomeView() {
                                                     className: "w-6 h-6 text-yellow-400"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                    lineNumber: 161,
+                                                    lineNumber: 159,
                                                     columnNumber: 17
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/HomeView.tsx",
-                                                lineNumber: 160,
+                                                lineNumber: 158,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -815,7 +815,7 @@ function HomeView() {
                                                 children: "Lightning Fast Load Times"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/HomeView.tsx",
-                                                lineNumber: 163,
+                                                lineNumber: 161,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -823,13 +823,13 @@ function HomeView() {
                                                 children: "Page speed directly affects search indexing and user conversion. Our structures deliver near-instant loading through advanced SSR, static caching, and fine-tuned asset pipelines."
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/HomeView.tsx",
-                                                lineNumber: 164,
+                                                lineNumber: 162,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/HomeView.tsx",
-                                        lineNumber: 159,
+                                        lineNumber: 157,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -845,7 +845,7 @@ function HomeView() {
                                                                 children: "SITE AUDIT SIMULATOR"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/HomeView.tsx",
-                                                                lineNumber: 173,
+                                                                lineNumber: 171,
                                                                 columnNumber: 19
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -853,13 +853,13 @@ function HomeView() {
                                                                 children: "Lighthouse Performance Report"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/HomeView.tsx",
-                                                                lineNumber: 174,
+                                                                lineNumber: 172,
                                                                 columnNumber: 19
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/HomeView.tsx",
-                                                        lineNumber: 172,
+                                                        lineNumber: 170,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -869,13 +869,13 @@ function HomeView() {
                                                         children: isAuditing ? 'Auditing...' : 'Run Performance Audit'
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/HomeView.tsx",
-                                                        lineNumber: 176,
+                                                        lineNumber: 174,
                                                         columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/HomeView.tsx",
-                                                lineNumber: 171,
+                                                lineNumber: 169,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -888,7 +888,7 @@ function HomeView() {
                                                                 children: "Server Response Rate"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/HomeView.tsx",
-                                                                lineNumber: 192,
+                                                                lineNumber: 190,
                                                                 columnNumber: 19
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -896,13 +896,13 @@ function HomeView() {
                                                                 children: isAuditing ? `${auditProgress}%` : auditComplete ? '100%' : 'Ready'
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/HomeView.tsx",
-                                                                lineNumber: 193,
+                                                                lineNumber: 191,
                                                                 columnNumber: 19
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/HomeView.tsx",
-                                                        lineNumber: 191,
+                                                        lineNumber: 189,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -914,12 +914,12 @@ function HomeView() {
                                                             }
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/HomeView.tsx",
-                                                            lineNumber: 196,
+                                                            lineNumber: 194,
                                                             columnNumber: 19
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/HomeView.tsx",
-                                                        lineNumber: 195,
+                                                        lineNumber: 193,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -930,7 +930,7 @@ function HomeView() {
                                                                 children: "Calculated Speed Score"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/HomeView.tsx",
-                                                                lineNumber: 202,
+                                                                lineNumber: 200,
                                                                 columnNumber: 19
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -941,7 +941,7 @@ function HomeView() {
                                                                         children: isAuditing ? 'Calculating...' : `${auditScore}/100`
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/HomeView.tsx",
-                                                                        lineNumber: 204,
+                                                                        lineNumber: 202,
                                                                         columnNumber: 21
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -949,37 +949,37 @@ function HomeView() {
                                                                         children: "(90+ is Ideal)"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/HomeView.tsx",
-                                                                        lineNumber: 209,
+                                                                        lineNumber: 207,
                                                                         columnNumber: 21
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/HomeView.tsx",
-                                                                lineNumber: 203,
+                                                                lineNumber: 201,
                                                                 columnNumber: 19
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/HomeView.tsx",
-                                                        lineNumber: 201,
+                                                        lineNumber: 199,
                                                         columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/HomeView.tsx",
-                                                lineNumber: 190,
+                                                lineNumber: 188,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/HomeView.tsx",
-                                        lineNumber: 170,
+                                        lineNumber: 168,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/HomeView.tsx",
-                                lineNumber: 156,
+                                lineNumber: 154,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -994,12 +994,12 @@ function HomeView() {
                                                     className: "w-6 h-6"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                    lineNumber: 220,
+                                                    lineNumber: 218,
                                                     columnNumber: 17
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/HomeView.tsx",
-                                                lineNumber: 219,
+                                                lineNumber: 217,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -1007,7 +1007,7 @@ function HomeView() {
                                                 children: "Enterprise Security"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/HomeView.tsx",
-                                                lineNumber: 222,
+                                                lineNumber: 220,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1015,13 +1015,13 @@ function HomeView() {
                                                 children: "Military-grade architecture with zero trust models. Protected from bots, scrapers, and malicious injection attacks."
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/HomeView.tsx",
-                                                lineNumber: 223,
+                                                lineNumber: 221,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/HomeView.tsx",
-                                        lineNumber: 218,
+                                        lineNumber: 216,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1034,7 +1034,7 @@ function HomeView() {
                                                         children: "FIREWALL SYSTEM"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/HomeView.tsx",
-                                                        lineNumber: 231,
+                                                        lineNumber: 229,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1042,13 +1042,13 @@ function HomeView() {
                                                         children: firewallOn ? 'Active Shielding' : 'Shielding Suspended'
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/HomeView.tsx",
-                                                        lineNumber: 232,
+                                                        lineNumber: 230,
                                                         columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/HomeView.tsx",
-                                                lineNumber: 230,
+                                                lineNumber: 228,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1058,24 +1058,24 @@ function HomeView() {
                                                     className: `w-5 h-5 bg-white rounded-full shadow-sm transform transition-transform duration-200 ${firewallOn ? 'translate-x-6' : 'translate-x-0'}`
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                    lineNumber: 242,
+                                                    lineNumber: 240,
                                                     columnNumber: 17
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/HomeView.tsx",
-                                                lineNumber: 236,
+                                                lineNumber: 234,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/HomeView.tsx",
-                                        lineNumber: 229,
+                                        lineNumber: 227,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/HomeView.tsx",
-                                lineNumber: 217,
+                                lineNumber: 215,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1090,12 +1090,12 @@ function HomeView() {
                                                     className: "w-6 h-6"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                    lineNumber: 253,
+                                                    lineNumber: 251,
                                                     columnNumber: 17
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/HomeView.tsx",
-                                                lineNumber: 252,
+                                                lineNumber: 250,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -1103,7 +1103,7 @@ function HomeView() {
                                                 children: "Data-Driven Design"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/HomeView.tsx",
-                                                lineNumber: 255,
+                                                lineNumber: 253,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1111,13 +1111,13 @@ function HomeView() {
                                                 children: "Visual aesthetics are empty without conversions. Every asset placement, call-to-action flow, and text block is backed by core analytical models."
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/HomeView.tsx",
-                                                lineNumber: 256,
+                                                lineNumber: 254,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/HomeView.tsx",
-                                        lineNumber: 251,
+                                        lineNumber: 249,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1131,7 +1131,7 @@ function HomeView() {
                                                         children: "CONVERSION BOOST"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/HomeView.tsx",
-                                                        lineNumber: 263,
+                                                        lineNumber: 261,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1139,13 +1139,13 @@ function HomeView() {
                                                         children: "+14.2%"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/HomeView.tsx",
-                                                        lineNumber: 264,
+                                                        lineNumber: 262,
                                                         columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/HomeView.tsx",
-                                                lineNumber: 262,
+                                                lineNumber: 260,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1155,60 +1155,60 @@ function HomeView() {
                                                         className: "w-full bg-slate-100 h-[25%] rounded-t-sm"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/HomeView.tsx",
-                                                        lineNumber: 267,
+                                                        lineNumber: 265,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                         className: "w-full bg-slate-100 h-[40%] rounded-t-sm"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/HomeView.tsx",
-                                                        lineNumber: 268,
+                                                        lineNumber: 266,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                         className: "w-full bg-slate-100 h-[35%] rounded-t-sm"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/HomeView.tsx",
-                                                        lineNumber: 269,
+                                                        lineNumber: 267,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                         className: "w-full bg-slate-100 h-[65%] rounded-t-sm"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/HomeView.tsx",
-                                                        lineNumber: 270,
+                                                        lineNumber: 268,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                         className: "w-full bg-slate-100 h-[55%] rounded-t-sm"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/HomeView.tsx",
-                                                        lineNumber: 271,
+                                                        lineNumber: 269,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                         className: "w-full bg-brand-blue h-[90%] rounded-t-sm animate-pulse"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/HomeView.tsx",
-                                                        lineNumber: 272,
+                                                        lineNumber: 270,
                                                         columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/HomeView.tsx",
-                                                lineNumber: 266,
+                                                lineNumber: 264,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/HomeView.tsx",
-                                        lineNumber: 261,
+                                        lineNumber: 259,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/HomeView.tsx",
-                                lineNumber: 250,
+                                lineNumber: 248,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1218,7 +1218,7 @@ function HomeView() {
                                         className: "absolute left-0 top-0 w-64 h-64 bg-slate-800 rounded-full filter blur-3xl -z-10"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/HomeView.tsx",
-                                        lineNumber: 279,
+                                        lineNumber: 277,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1230,12 +1230,12 @@ function HomeView() {
                                                     className: "w-6 h-6 text-brand-blue"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                    lineNumber: 283,
+                                                    lineNumber: 281,
                                                     columnNumber: 17
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/HomeView.tsx",
-                                                lineNumber: 282,
+                                                lineNumber: 280,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -1243,7 +1243,7 @@ function HomeView() {
                                                 children: "Scalable Architecture"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/HomeView.tsx",
-                                                lineNumber: 285,
+                                                lineNumber: 283,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1251,13 +1251,13 @@ function HomeView() {
                                                 children: "Whether you serve 100 visitors or millions of concurrent sessions, our serverless, CDN-cached infrastructures scale automatically with absolute reliability and predictability."
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/HomeView.tsx",
-                                                lineNumber: 286,
+                                                lineNumber: 284,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/HomeView.tsx",
-                                        lineNumber: 281,
+                                        lineNumber: 279,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1275,7 +1275,7 @@ function HomeView() {
                                                         children: node
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/HomeView.tsx",
-                                                        lineNumber: 295,
+                                                        lineNumber: 293,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1285,7 +1285,7 @@ function HomeView() {
                                                                 className: "w-2 h-2 rounded-full bg-green-400 inline-block animate-ping"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/HomeView.tsx",
-                                                                lineNumber: 297,
+                                                                lineNumber: 295,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1293,42 +1293,42 @@ function HomeView() {
                                                                 children: "99.9%"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/HomeView.tsx",
-                                                                lineNumber: 298,
+                                                                lineNumber: 296,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/HomeView.tsx",
-                                                        lineNumber: 296,
+                                                        lineNumber: 294,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, i, true, {
                                                 fileName: "[project]/src/components/HomeView.tsx",
-                                                lineNumber: 294,
+                                                lineNumber: 292,
                                                 columnNumber: 17
                                             }, this))
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/HomeView.tsx",
-                                        lineNumber: 292,
+                                        lineNumber: 290,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/HomeView.tsx",
-                                lineNumber: 278,
+                                lineNumber: 276,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/HomeView.tsx",
-                        lineNumber: 154,
+                        lineNumber: 152,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/HomeView.tsx",
-                lineNumber: 140,
+                lineNumber: 138,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -1347,7 +1347,7 @@ function HomeView() {
                                             children: "Enterprise Execution"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/HomeView.tsx",
-                                            lineNumber: 312,
+                                            lineNumber: 310,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -1355,7 +1355,7 @@ function HomeView() {
                                             children: "Comprehensive Digital Solutions"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/HomeView.tsx",
-                                            lineNumber: 315,
+                                            lineNumber: 313,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1363,13 +1363,13 @@ function HomeView() {
                                             children: "From sleek corporate portfolios to elaborate enterprise-ready software. We engineer platforms with precision and clarity."
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/HomeView.tsx",
-                                            lineNumber: 318,
+                                            lineNumber: 316,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/HomeView.tsx",
-                                    lineNumber: 311,
+                                    lineNumber: 309,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1380,26 +1380,26 @@ function HomeView() {
                                             children: "Explore All Capabilities"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/HomeView.tsx",
-                                            lineNumber: 326,
+                                            lineNumber: 324,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$right$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowRight$3e$__["ArrowRight"], {
                                             className: "w-4 h-4"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/HomeView.tsx",
-                                            lineNumber: 327,
+                                            lineNumber: 325,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/HomeView.tsx",
-                                    lineNumber: 322,
+                                    lineNumber: 320,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/HomeView.tsx",
-                            lineNumber: 310,
+                            lineNumber: 308,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1416,7 +1416,7 @@ function HomeView() {
                                                     children: "🏢"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                    lineNumber: 335,
+                                                    lineNumber: 333,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -1424,7 +1424,7 @@ function HomeView() {
                                                     children: "Corporate Websites"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                    lineNumber: 336,
+                                                    lineNumber: 334,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1432,7 +1432,7 @@ function HomeView() {
                                                     children: "Beautiful, fast showcase platforms designed to display your brand power, connect with prospective clients, and streamline recruitment processes."
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                    lineNumber: 337,
+                                                    lineNumber: 335,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -1445,20 +1445,20 @@ function HomeView() {
                                                                     className: "w-4 h-4 text-brand-blue shrink-0"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                                    lineNumber: 342,
+                                                                    lineNumber: 340,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                     children: "Tailored Premium Visual Designs"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                                    lineNumber: 343,
+                                                                    lineNumber: 341,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/HomeView.tsx",
-                                                            lineNumber: 341,
+                                                            lineNumber: 339,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -1468,32 +1468,32 @@ function HomeView() {
                                                                     className: "w-4 h-4 text-brand-blue shrink-0"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                                    lineNumber: 346,
+                                                                    lineNumber: 344,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                     children: "Search Engine Architecture"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                                    lineNumber: 347,
+                                                                    lineNumber: 345,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/HomeView.tsx",
-                                                            lineNumber: 345,
+                                                            lineNumber: 343,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                    lineNumber: 340,
+                                                    lineNumber: 338,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/HomeView.tsx",
-                                            lineNumber: 334,
+                                            lineNumber: 332,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1504,26 +1504,26 @@ function HomeView() {
                                                     children: "Learn More"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                    lineNumber: 355,
+                                                    lineNumber: 353,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$right$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronRight$3e$__["ChevronRight"], {
                                                     className: "w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                    lineNumber: 356,
+                                                    lineNumber: 354,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/HomeView.tsx",
-                                            lineNumber: 351,
+                                            lineNumber: 349,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/HomeView.tsx",
-                                    lineNumber: 333,
+                                    lineNumber: 331,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1537,7 +1537,7 @@ function HomeView() {
                                                     children: "💻"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                    lineNumber: 363,
+                                                    lineNumber: 361,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -1545,7 +1545,7 @@ function HomeView() {
                                                     children: "SaaS & Apps"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                    lineNumber: 364,
+                                                    lineNumber: 362,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1553,7 +1553,7 @@ function HomeView() {
                                                     children: "Interactive administrative systems, cloud services, and tailored multi-tenant web tools styled with flawless speed and absolute data integrity."
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                    lineNumber: 365,
+                                                    lineNumber: 363,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -1566,20 +1566,20 @@ function HomeView() {
                                                                     className: "w-4 h-4 text-brand-blue shrink-0"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                                    lineNumber: 370,
+                                                                    lineNumber: 368,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                     children: "Highly Responsive Systems"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                                    lineNumber: 371,
+                                                                    lineNumber: 369,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/HomeView.tsx",
-                                                            lineNumber: 369,
+                                                            lineNumber: 367,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -1589,32 +1589,32 @@ function HomeView() {
                                                                     className: "w-4 h-4 text-brand-blue shrink-0"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                                    lineNumber: 374,
+                                                                    lineNumber: 372,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                     children: "Third-Party API Integrations"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                                    lineNumber: 375,
+                                                                    lineNumber: 373,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/HomeView.tsx",
-                                                            lineNumber: 373,
+                                                            lineNumber: 371,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                    lineNumber: 368,
+                                                    lineNumber: 366,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/HomeView.tsx",
-                                            lineNumber: 362,
+                                            lineNumber: 360,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1625,26 +1625,26 @@ function HomeView() {
                                                     children: "Learn More"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                    lineNumber: 383,
+                                                    lineNumber: 381,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$right$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronRight$3e$__["ChevronRight"], {
                                                     className: "w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                    lineNumber: 384,
+                                                    lineNumber: 382,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/HomeView.tsx",
-                                            lineNumber: 379,
+                                            lineNumber: 377,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/HomeView.tsx",
-                                    lineNumber: 361,
+                                    lineNumber: 359,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1658,7 +1658,7 @@ function HomeView() {
                                                     children: "🛒"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                    lineNumber: 391,
+                                                    lineNumber: 389,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -1666,7 +1666,7 @@ function HomeView() {
                                                     children: "E-Commerce Platforms"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                    lineNumber: 392,
+                                                    lineNumber: 390,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1674,7 +1674,7 @@ function HomeView() {
                                                     children: "Tailored storefronts with quick load sequences, automated checkout models, and fluid inventory structures designed to drive checkout conversion."
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                    lineNumber: 393,
+                                                    lineNumber: 391,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -1687,20 +1687,20 @@ function HomeView() {
                                                                     className: "w-4 h-4 text-brand-blue shrink-0"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                                    lineNumber: 398,
+                                                                    lineNumber: 396,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                     children: "Fluid Checkout Sequences"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                                    lineNumber: 399,
+                                                                    lineNumber: 397,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/HomeView.tsx",
-                                                            lineNumber: 397,
+                                                            lineNumber: 395,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -1710,32 +1710,32 @@ function HomeView() {
                                                                     className: "w-4 h-4 text-brand-blue shrink-0"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                                    lineNumber: 402,
+                                                                    lineNumber: 400,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                     children: "Stripe & Payment Configurations"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                                    lineNumber: 403,
+                                                                    lineNumber: 401,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/HomeView.tsx",
-                                                            lineNumber: 401,
+                                                            lineNumber: 399,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                    lineNumber: 396,
+                                                    lineNumber: 394,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/HomeView.tsx",
-                                            lineNumber: 390,
+                                            lineNumber: 388,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1746,43 +1746,43 @@ function HomeView() {
                                                     children: "Learn More"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                    lineNumber: 411,
+                                                    lineNumber: 409,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$right$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronRight$3e$__["ChevronRight"], {
                                                     className: "w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                    lineNumber: 412,
+                                                    lineNumber: 410,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/HomeView.tsx",
-                                            lineNumber: 407,
+                                            lineNumber: 405,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/HomeView.tsx",
-                                    lineNumber: 389,
+                                    lineNumber: 387,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/HomeView.tsx",
-                            lineNumber: 331,
+                            lineNumber: 329,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/HomeView.tsx",
-                    lineNumber: 309,
+                    lineNumber: 307,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/HomeView.tsx",
-                lineNumber: 308,
+                lineNumber: 306,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -1797,7 +1797,7 @@ function HomeView() {
                                     className: "absolute inset-0 bg-slate-100 rounded-2xl -z-10 transform -rotate-2"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/HomeView.tsx",
-                                    lineNumber: 424,
+                                    lineNumber: 422,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1809,18 +1809,18 @@ function HomeView() {
                                         referrerPolicy: "no-referrer"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/HomeView.tsx",
-                                        lineNumber: 426,
+                                        lineNumber: 424,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/HomeView.tsx",
-                                    lineNumber: 425,
+                                    lineNumber: 423,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/HomeView.tsx",
-                            lineNumber: 423,
+                            lineNumber: 421,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1834,7 +1834,7 @@ function HomeView() {
                                             children: "Our Methodology"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/HomeView.tsx",
-                                            lineNumber: 438,
+                                            lineNumber: 436,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -1842,7 +1842,7 @@ function HomeView() {
                                             children: "The Architectural Approach"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/HomeView.tsx",
-                                            lineNumber: 441,
+                                            lineNumber: 439,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1850,13 +1850,13 @@ function HomeView() {
                                             children: "We believe exceptional software is a product of absolute clarity, systematic prototyping, and continuous stress auditing."
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/HomeView.tsx",
-                                            lineNumber: 444,
+                                            lineNumber: 442,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/HomeView.tsx",
-                                    lineNumber: 437,
+                                    lineNumber: 435,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1870,7 +1870,7 @@ function HomeView() {
                                                     children: "01"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                    lineNumber: 453,
+                                                    lineNumber: 451,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1881,7 +1881,7 @@ function HomeView() {
                                                             children: "Discovery & Strategy"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/HomeView.tsx",
-                                                            lineNumber: 457,
+                                                            lineNumber: 455,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1889,19 +1889,19 @@ function HomeView() {
                                                             children: "We deep-dive into your analytics, define target conversions, outline system architectures, and create an absolute project scope blueprint."
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/HomeView.tsx",
-                                                            lineNumber: 458,
+                                                            lineNumber: 456,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                    lineNumber: 456,
+                                                    lineNumber: 454,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/HomeView.tsx",
-                                            lineNumber: 452,
+                                            lineNumber: 450,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1912,7 +1912,7 @@ function HomeView() {
                                                     children: "02"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                    lineNumber: 466,
+                                                    lineNumber: 464,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1923,7 +1923,7 @@ function HomeView() {
                                                             children: "Design & Prototyping"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/HomeView.tsx",
-                                                            lineNumber: 470,
+                                                            lineNumber: 468,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1931,19 +1931,19 @@ function HomeView() {
                                                             children: "Our team develops clean, custom visual boards and functional layouts, testing interactive UX and content hierarchies before a single line of server code is written."
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/HomeView.tsx",
-                                                            lineNumber: 471,
+                                                            lineNumber: 469,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                    lineNumber: 469,
+                                                    lineNumber: 467,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/HomeView.tsx",
-                                            lineNumber: 465,
+                                            lineNumber: 463,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1954,7 +1954,7 @@ function HomeView() {
                                                     children: "03"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                    lineNumber: 479,
+                                                    lineNumber: 477,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1965,7 +1965,7 @@ function HomeView() {
                                                             children: "Development & Quality Assurance"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/HomeView.tsx",
-                                                            lineNumber: 483,
+                                                            lineNumber: 481,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1973,42 +1973,42 @@ function HomeView() {
                                                             children: "We code with absolute precision, utilizing highly modular systems, rigorous speed auditing, and comprehensive security testing to ensure pristine production code."
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/HomeView.tsx",
-                                                            lineNumber: 484,
+                                                            lineNumber: 482,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/HomeView.tsx",
-                                                    lineNumber: 482,
+                                                    lineNumber: 480,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/HomeView.tsx",
-                                            lineNumber: 478,
+                                            lineNumber: 476,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/HomeView.tsx",
-                                    lineNumber: 450,
+                                    lineNumber: 448,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/HomeView.tsx",
-                            lineNumber: 436,
+                            lineNumber: 434,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/HomeView.tsx",
-                    lineNumber: 421,
+                    lineNumber: 419,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/HomeView.tsx",
-                lineNumber: 420,
+                lineNumber: 418,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -2018,7 +2018,7 @@ function HomeView() {
                         className: "absolute right-0 top-0 w-80 h-80 bg-brand-blue/10 rounded-full filter blur-3xl"
                     }, void 0, false, {
                         fileName: "[project]/src/components/HomeView.tsx",
-                        lineNumber: 496,
+                        lineNumber: 494,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2029,7 +2029,7 @@ function HomeView() {
                                 children: "Ready to Build Your High-Performance Digital Platform?"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/HomeView.tsx",
-                                lineNumber: 498,
+                                lineNumber: 496,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2037,7 +2037,7 @@ function HomeView() {
                                 children: "Inquire today to schedule an architecture alignment call. Let’s map out a customized digital solution that elevates conversions, speed, and market reach."
                             }, void 0, false, {
                                 fileName: "[project]/src/components/HomeView.tsx",
-                                lineNumber: 501,
+                                lineNumber: 499,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2050,43 +2050,43 @@ function HomeView() {
                                             children: "Initiate Free Discovery Call"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/HomeView.tsx",
-                                            lineNumber: 509,
+                                            lineNumber: 507,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$right$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowRight$3e$__["ArrowRight"], {
                                             className: "w-4 h-4"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/HomeView.tsx",
-                                            lineNumber: 510,
+                                            lineNumber: 508,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/HomeView.tsx",
-                                    lineNumber: 505,
+                                    lineNumber: 503,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/HomeView.tsx",
-                                lineNumber: 504,
+                                lineNumber: 502,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/HomeView.tsx",
-                        lineNumber: 497,
+                        lineNumber: 495,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/HomeView.tsx",
-                lineNumber: 495,
+                lineNumber: 493,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/HomeView.tsx",
-        lineNumber: 48,
+        lineNumber: 46,
         columnNumber: 5
     }, this);
 }

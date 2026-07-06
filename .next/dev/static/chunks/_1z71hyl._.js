@@ -60,7 +60,7 @@ function ServicesView() {
                         className: "absolute inset-0 bg-brand-blue/5 opacity-50 filter blur-3xl -z-10"
                     }, void 0, false, {
                         fileName: "[project]/src/components/ServicesView.tsx",
-                        lineNumber: 28,
+                        lineNumber: 27,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -78,20 +78,20 @@ function ServicesView() {
                                                     className: "w-3.5 h-3.5"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ServicesView.tsx",
-                                                    lineNumber: 34,
+                                                    lineNumber: 33,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                     children: "Precision Engineering"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ServicesView.tsx",
-                                                    lineNumber: 35,
+                                                    lineNumber: 34,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/ServicesView.tsx",
-                                            lineNumber: 33,
+                                            lineNumber: 32,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -100,7 +100,7 @@ function ServicesView() {
                                                 "Technical Expertise, ",
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                                     fileName: "[project]/src/components/ServicesView.tsx",
-                                                    lineNumber: 38,
+                                                    lineNumber: 37,
                                                     columnNumber: 38
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -108,13 +108,13 @@ function ServicesView() {
                                                     children: "Architectural Precision."
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ServicesView.tsx",
-                                                    lineNumber: 39,
+                                                    lineNumber: 38,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/ServicesView.tsx",
-                                            lineNumber: 37,
+                                            lineNumber: 36,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -122,7 +122,7 @@ function ServicesView() {
                                             children: "We engineer scalable, high-performance digital platforms for enterprise stakeholders, fast-growing startups, and ecommerce companies requiring extreme speed and robust architecture."
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/ServicesView.tsx",
-                                            lineNumber: 41,
+                                            lineNumber: 40,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -135,31 +135,31 @@ function ServicesView() {
                                                         children: "Discuss Your Requirements"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/ServicesView.tsx",
-                                                        lineNumber: 49,
+                                                        lineNumber: 48,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$right$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowRight$3e$__["ArrowRight"], {
                                                         className: "w-4 h-4"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/ServicesView.tsx",
-                                                        lineNumber: 50,
+                                                        lineNumber: 49,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/ServicesView.tsx",
-                                                lineNumber: 45,
+                                                lineNumber: 44,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/ServicesView.tsx",
-                                            lineNumber: 44,
+                                            lineNumber: 43,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/ServicesView.tsx",
-                                    lineNumber: 32,
+                                    lineNumber: 31,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -173,34 +173,34 @@ function ServicesView() {
                                             referrerPolicy: "no-referrer"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/ServicesView.tsx",
-                                            lineNumber: 58,
+                                            lineNumber: 57,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/ServicesView.tsx",
-                                        lineNumber: 57,
+                                        lineNumber: 56,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/ServicesView.tsx",
-                                    lineNumber: 56,
+                                    lineNumber: 55,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/ServicesView.tsx",
-                            lineNumber: 30,
+                            lineNumber: 29,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/ServicesView.tsx",
-                        lineNumber: 29,
+                        lineNumber: 28,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/ServicesView.tsx",
-                lineNumber: 27,
+                lineNumber: 26,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -214,7 +214,7 @@ function ServicesView() {
                                 children: "OUR TECHNOLOGIES"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/ServicesView.tsx",
-                                lineNumber: 73,
+                                lineNumber: 72,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -222,7 +222,7 @@ function ServicesView() {
                                 children: "Standardized Core Stacks"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/ServicesView.tsx",
-                                lineNumber: 74,
+                                lineNumber: 73,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -230,13 +230,13 @@ function ServicesView() {
                                 children: "We operate only with high-performance, standardized stacks to guarantee stability, security, and velocity."
                             }, void 0, false, {
                                 fileName: "[project]/src/components/ServicesView.tsx",
-                                lineNumber: 75,
+                                lineNumber: 74,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/ServicesView.tsx",
-                        lineNumber: 72,
+                        lineNumber: 71,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -252,12 +252,12 @@ function ServicesView() {
                                 children: tab === 'all' ? 'All Stacks' : tab
                             }, tab, false, {
                                 fileName: "[project]/src/components/ServicesView.tsx",
-                                lineNumber: 81,
+                                lineNumber: 80,
                                 columnNumber: 13
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/src/components/ServicesView.tsx",
-                        lineNumber: 79,
+                        lineNumber: 78,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -274,20 +274,20 @@ function ServicesView() {
                                                         className: "w-1.5 h-1.5 rounded-full bg-blue-500"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/ServicesView.tsx",
-                                                        lineNumber: 102,
+                                                        lineNumber: 101,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                         children: badge
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/ServicesView.tsx",
-                                                        lineNumber: 103,
+                                                        lineNumber: 102,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, badge, true, {
                                                 fileName: "[project]/src/components/ServicesView.tsx",
-                                                lineNumber: 101,
+                                                lineNumber: 100,
                                                 columnNumber: 19
                                             }, this)),
                                         techBadgeSet.backend.map((badge)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -297,20 +297,20 @@ function ServicesView() {
                                                         className: "w-1.5 h-1.5 rounded-full bg-purple-500"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/ServicesView.tsx",
-                                                        lineNumber: 108,
+                                                        lineNumber: 107,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                         children: badge
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/ServicesView.tsx",
-                                                        lineNumber: 109,
+                                                        lineNumber: 108,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, badge, true, {
                                                 fileName: "[project]/src/components/ServicesView.tsx",
-                                                lineNumber: 107,
+                                                lineNumber: 106,
                                                 columnNumber: 19
                                             }, this)),
                                         techBadgeSet.ecommerce.map((badge)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -320,20 +320,20 @@ function ServicesView() {
                                                         className: "w-1.5 h-1.5 rounded-full bg-emerald-500"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/ServicesView.tsx",
-                                                        lineNumber: 114,
+                                                        lineNumber: 113,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                         children: badge
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/ServicesView.tsx",
-                                                        lineNumber: 115,
+                                                        lineNumber: 114,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, badge, true, {
                                                 fileName: "[project]/src/components/ServicesView.tsx",
-                                                lineNumber: 113,
+                                                lineNumber: 112,
                                                 columnNumber: 19
                                             }, this))
                                     ]
@@ -345,20 +345,20 @@ function ServicesView() {
                                                 className: "w-2 h-2 rounded-full bg-blue-500"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/ServicesView.tsx",
-                                                lineNumber: 122,
+                                                lineNumber: 121,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                 children: badge
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/ServicesView.tsx",
-                                                lineNumber: 123,
+                                                lineNumber: 122,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, badge, true, {
                                         fileName: "[project]/src/components/ServicesView.tsx",
-                                        lineNumber: 121,
+                                        lineNumber: 120,
                                         columnNumber: 15
                                     }, this)),
                                 activeTab === 'backend' && techBadgeSet.backend.map((badge)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -368,20 +368,20 @@ function ServicesView() {
                                                 className: "w-2 h-2 rounded-full bg-purple-500"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/ServicesView.tsx",
-                                                lineNumber: 128,
+                                                lineNumber: 127,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                 children: badge
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/ServicesView.tsx",
-                                                lineNumber: 129,
+                                                lineNumber: 128,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, badge, true, {
                                         fileName: "[project]/src/components/ServicesView.tsx",
-                                        lineNumber: 127,
+                                        lineNumber: 126,
                                         columnNumber: 15
                                     }, this)),
                                 activeTab === 'ecommerce' && techBadgeSet.ecommerce.map((badge)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -391,37 +391,37 @@ function ServicesView() {
                                                 className: "w-2 h-2 rounded-full bg-emerald-500"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/ServicesView.tsx",
-                                                lineNumber: 134,
+                                                lineNumber: 133,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                 children: badge
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/ServicesView.tsx",
-                                                lineNumber: 135,
+                                                lineNumber: 134,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, badge, true, {
                                         fileName: "[project]/src/components/ServicesView.tsx",
-                                        lineNumber: 133,
+                                        lineNumber: 132,
                                         columnNumber: 15
                                     }, this))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/ServicesView.tsx",
-                            lineNumber: 97,
+                            lineNumber: 96,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/ServicesView.tsx",
-                        lineNumber: 96,
+                        lineNumber: 95,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/ServicesView.tsx",
-                lineNumber: 71,
+                lineNumber: 70,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -441,12 +441,12 @@ function ServicesView() {
                                                 className: "w-6 h-6"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/ServicesView.tsx",
-                                                lineNumber: 150,
+                                                lineNumber: 149,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/ServicesView.tsx",
-                                            lineNumber: 149,
+                                            lineNumber: 148,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -457,7 +457,7 @@ function ServicesView() {
                                                     children: "Website Development"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ServicesView.tsx",
-                                                    lineNumber: 153,
+                                                    lineNumber: 152,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -465,13 +465,13 @@ function ServicesView() {
                                                     children: "Tailored corporate dashboards and platform views built to display your brand, optimize SEO, and streamline performance."
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ServicesView.tsx",
-                                                    lineNumber: 154,
+                                                    lineNumber: 153,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/ServicesView.tsx",
-                                            lineNumber: 152,
+                                            lineNumber: 151,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -484,20 +484,20 @@ function ServicesView() {
                                                             className: "w-4 h-4 text-brand-blue shrink-0"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/ServicesView.tsx",
-                                                            lineNumber: 160,
+                                                            lineNumber: 159,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                             children: "Headless CMS integrations"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/ServicesView.tsx",
-                                                            lineNumber: 161,
+                                                            lineNumber: 160,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/ServicesView.tsx",
-                                                    lineNumber: 159,
+                                                    lineNumber: 158,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -507,20 +507,20 @@ function ServicesView() {
                                                             className: "w-4 h-4 text-brand-blue shrink-0"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/ServicesView.tsx",
-                                                            lineNumber: 164,
+                                                            lineNumber: 163,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                             children: "Server-Side Rendering (SSR) & Speed Tuning"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/ServicesView.tsx",
-                                                            lineNumber: 165,
+                                                            lineNumber: 164,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/ServicesView.tsx",
-                                                    lineNumber: 163,
+                                                    lineNumber: 162,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -530,32 +530,32 @@ function ServicesView() {
                                                             className: "w-4 h-4 text-brand-blue shrink-0"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/ServicesView.tsx",
-                                                            lineNumber: 168,
+                                                            lineNumber: 167,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                             children: "Custom Analytics Dashboards"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/ServicesView.tsx",
-                                                            lineNumber: 169,
+                                                            lineNumber: 168,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/ServicesView.tsx",
-                                                    lineNumber: 167,
+                                                    lineNumber: 166,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/ServicesView.tsx",
-                                            lineNumber: 158,
+                                            lineNumber: 157,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/ServicesView.tsx",
-                                    lineNumber: 148,
+                                    lineNumber: 147,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -567,18 +567,18 @@ function ServicesView() {
                                         referrerPolicy: "no-referrer"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/ServicesView.tsx",
-                                        lineNumber: 175,
+                                        lineNumber: 174,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/ServicesView.tsx",
-                                    lineNumber: 174,
+                                    lineNumber: 173,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/ServicesView.tsx",
-                            lineNumber: 147,
+                            lineNumber: 146,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -593,12 +593,12 @@ function ServicesView() {
                                                 className: "w-6 h-6"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/ServicesView.tsx",
-                                                lineNumber: 188,
+                                                lineNumber: 187,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/ServicesView.tsx",
-                                            lineNumber: 187,
+                                            lineNumber: 186,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -609,7 +609,7 @@ function ServicesView() {
                                                     children: "E-Commerce & Apps"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ServicesView.tsx",
-                                                    lineNumber: 191,
+                                                    lineNumber: 190,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -617,13 +617,13 @@ function ServicesView() {
                                                     children: "Engineered ecommerce checkouts and sales funnels. Optimized to eliminate lag and maximize cart completions."
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ServicesView.tsx",
-                                                    lineNumber: 192,
+                                                    lineNumber: 191,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/ServicesView.tsx",
-                                            lineNumber: 190,
+                                            lineNumber: 189,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -636,20 +636,20 @@ function ServicesView() {
                                                             className: "w-4 h-4 text-emerald-600 shrink-0"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/ServicesView.tsx",
-                                                            lineNumber: 198,
+                                                            lineNumber: 197,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                             children: "Stripe API, Apple Pay, & Wallet setups"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/ServicesView.tsx",
-                                                            lineNumber: 199,
+                                                            lineNumber: 198,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/ServicesView.tsx",
-                                                    lineNumber: 197,
+                                                    lineNumber: 196,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -659,20 +659,20 @@ function ServicesView() {
                                                             className: "w-4 h-4 text-emerald-600 shrink-0"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/ServicesView.tsx",
-                                                            lineNumber: 202,
+                                                            lineNumber: 201,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                             children: "Inventory systems & CRM syncs"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/ServicesView.tsx",
-                                                            lineNumber: 203,
+                                                            lineNumber: 202,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/ServicesView.tsx",
-                                                    lineNumber: 201,
+                                                    lineNumber: 200,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -682,32 +682,32 @@ function ServicesView() {
                                                             className: "w-4 h-4 text-emerald-600 shrink-0"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/ServicesView.tsx",
-                                                            lineNumber: 206,
+                                                            lineNumber: 205,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                             children: "Fluid Checkout Flows & Cart Funnels"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/ServicesView.tsx",
-                                                            lineNumber: 207,
+                                                            lineNumber: 206,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/ServicesView.tsx",
-                                                    lineNumber: 205,
+                                                    lineNumber: 204,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/ServicesView.tsx",
-                                            lineNumber: 196,
+                                            lineNumber: 195,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/ServicesView.tsx",
-                                    lineNumber: 186,
+                                    lineNumber: 185,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -719,18 +719,18 @@ function ServicesView() {
                                         referrerPolicy: "no-referrer"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/ServicesView.tsx",
-                                        lineNumber: 213,
+                                        lineNumber: 212,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/ServicesView.tsx",
-                                    lineNumber: 212,
+                                    lineNumber: 211,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/ServicesView.tsx",
-                            lineNumber: 185,
+                            lineNumber: 184,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -745,12 +745,12 @@ function ServicesView() {
                                                 className: "w-6 h-6"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/ServicesView.tsx",
-                                                lineNumber: 226,
+                                                lineNumber: 225,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/ServicesView.tsx",
-                                            lineNumber: 225,
+                                            lineNumber: 224,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -761,7 +761,7 @@ function ServicesView() {
                                                     children: "Full SaaS Applications"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ServicesView.tsx",
-                                                    lineNumber: 229,
+                                                    lineNumber: 228,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -769,13 +769,13 @@ function ServicesView() {
                                                     children: "Interactive multi-tenant administration systems, web products, and secure APIs built with performance at the core."
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ServicesView.tsx",
-                                                    lineNumber: 230,
+                                                    lineNumber: 229,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/ServicesView.tsx",
-                                            lineNumber: 228,
+                                            lineNumber: 227,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -788,20 +788,20 @@ function ServicesView() {
                                                             className: "w-4 h-4 text-purple-600 shrink-0"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/ServicesView.tsx",
-                                                            lineNumber: 236,
+                                                            lineNumber: 235,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                             children: "Robust User Auth & Session Tokens"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/ServicesView.tsx",
-                                                            lineNumber: 237,
+                                                            lineNumber: 236,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/ServicesView.tsx",
-                                                    lineNumber: 235,
+                                                    lineNumber: 234,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -811,20 +811,20 @@ function ServicesView() {
                                                             className: "w-4 h-4 text-purple-600 shrink-0"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/ServicesView.tsx",
-                                                            lineNumber: 240,
+                                                            lineNumber: 239,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                             children: "Secure Multi-Tenant Databases"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/ServicesView.tsx",
-                                                            lineNumber: 241,
+                                                            lineNumber: 240,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/ServicesView.tsx",
-                                                    lineNumber: 239,
+                                                    lineNumber: 238,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -834,32 +834,32 @@ function ServicesView() {
                                                             className: "w-4 h-4 text-purple-600 shrink-0"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/ServicesView.tsx",
-                                                            lineNumber: 244,
+                                                            lineNumber: 243,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                             children: "Dynamic reporting & analytics loops"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/ServicesView.tsx",
-                                                            lineNumber: 245,
+                                                            lineNumber: 244,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/ServicesView.tsx",
-                                                    lineNumber: 243,
+                                                    lineNumber: 242,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/ServicesView.tsx",
-                                            lineNumber: 234,
+                                            lineNumber: 233,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/ServicesView.tsx",
-                                    lineNumber: 224,
+                                    lineNumber: 223,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -871,18 +871,18 @@ function ServicesView() {
                                         referrerPolicy: "no-referrer"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/ServicesView.tsx",
-                                        lineNumber: 251,
+                                        lineNumber: 250,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/ServicesView.tsx",
-                                    lineNumber: 250,
+                                    lineNumber: 249,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/ServicesView.tsx",
-                            lineNumber: 223,
+                            lineNumber: 222,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -892,7 +892,7 @@ function ServicesView() {
                                     className: "absolute right-0 top-0 w-80 h-80 bg-brand-blue/10 rounded-full filter blur-3xl -z-10"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/ServicesView.tsx",
-                                    lineNumber: 262,
+                                    lineNumber: 261,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -906,7 +906,7 @@ function ServicesView() {
                                                     children: "Conversion Engine"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ServicesView.tsx",
-                                                    lineNumber: 267,
+                                                    lineNumber: 266,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -914,7 +914,7 @@ function ServicesView() {
                                                     children: "High-Converting Landing Pages"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ServicesView.tsx",
-                                                    lineNumber: 270,
+                                                    lineNumber: 269,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -922,13 +922,13 @@ function ServicesView() {
                                                     children: "Speed-optimized promopages styled around your value proposition. We craft custom analytics meters, visual charts, and clear checkout buttons to convert traffic."
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ServicesView.tsx",
-                                                    lineNumber: 271,
+                                                    lineNumber: 270,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/ServicesView.tsx",
-                                            lineNumber: 266,
+                                            lineNumber: 265,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -941,7 +941,7 @@ function ServicesView() {
                                                             children: "99+"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/ServicesView.tsx",
-                                                            lineNumber: 278,
+                                                            lineNumber: 277,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -949,13 +949,13 @@ function ServicesView() {
                                                             children: "Mobile Audits"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/ServicesView.tsx",
-                                                            lineNumber: 279,
+                                                            lineNumber: 278,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/ServicesView.tsx",
-                                                    lineNumber: 277,
+                                                    lineNumber: 276,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -965,7 +965,7 @@ function ServicesView() {
                                                             children: "34.8%"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/ServicesView.tsx",
-                                                            lineNumber: 282,
+                                                            lineNumber: 281,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -973,25 +973,25 @@ function ServicesView() {
                                                             children: "Avg Conversion Boost"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/ServicesView.tsx",
-                                                            lineNumber: 283,
+                                                            lineNumber: 282,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/ServicesView.tsx",
-                                                    lineNumber: 281,
+                                                    lineNumber: 280,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/ServicesView.tsx",
-                                            lineNumber: 276,
+                                            lineNumber: 275,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/ServicesView.tsx",
-                                    lineNumber: 265,
+                                    lineNumber: 264,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1003,29 +1003,29 @@ function ServicesView() {
                                         referrerPolicy: "no-referrer"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/ServicesView.tsx",
-                                        lineNumber: 290,
+                                        lineNumber: 289,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/ServicesView.tsx",
-                                    lineNumber: 289,
+                                    lineNumber: 288,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/ServicesView.tsx",
-                            lineNumber: 261,
+                            lineNumber: 260,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/ServicesView.tsx",
-                    lineNumber: 144,
+                    lineNumber: 143,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/ServicesView.tsx",
-                lineNumber: 143,
+                lineNumber: 142,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -1035,7 +1035,7 @@ function ServicesView() {
                         className: "absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-emerald-500/5 rounded-full filter blur-3xl -z-10"
                     }, void 0, false, {
                         fileName: "[project]/src/components/ServicesView.tsx",
-                        lineNumber: 303,
+                        lineNumber: 302,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1046,7 +1046,7 @@ function ServicesView() {
                                 children: "Ready to Build Your Custom Digital Solution?"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/ServicesView.tsx",
-                                lineNumber: 305,
+                                lineNumber: 304,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1054,7 +1054,7 @@ function ServicesView() {
                                 children: "Connect with our system architecture team to align on feature scopes, code specifications, and product delivery schedules."
                             }, void 0, false, {
                                 fileName: "[project]/src/components/ServicesView.tsx",
-                                lineNumber: 306,
+                                lineNumber: 305,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1067,43 +1067,43 @@ function ServicesView() {
                                             children: "Start a Conversation"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/ServicesView.tsx",
-                                            lineNumber: 314,
+                                            lineNumber: 313,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$right$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowRight$3e$__["ArrowRight"], {
                                             className: "w-4 h-4"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/ServicesView.tsx",
-                                            lineNumber: 315,
+                                            lineNumber: 314,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/ServicesView.tsx",
-                                    lineNumber: 310,
+                                    lineNumber: 309,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/ServicesView.tsx",
-                                lineNumber: 309,
+                                lineNumber: 308,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/ServicesView.tsx",
-                        lineNumber: 304,
+                        lineNumber: 303,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/ServicesView.tsx",
-                lineNumber: 302,
+                lineNumber: 301,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/ServicesView.tsx",
-        lineNumber: 25,
+        lineNumber: 24,
         columnNumber: 5
     }, this);
 }

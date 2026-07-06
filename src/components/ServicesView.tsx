@@ -1,3 +1,6 @@
+"use client";
+
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { ViewType } from '../types';
 import { 
@@ -5,11 +8,11 @@ import {
   Sparkles, ExternalLink, RefreshCw, Smartphone, Layers
 } from 'lucide-react';
 
-interface ServicesViewProps {
-  onNavigate: (view: ViewType) => void;
-}
-
-export default function ServicesView({ onNavigate }: ServicesViewProps) {
+export default function ServicesView() {
+  const router = useRouter();
+  const onNavigate = (view: string, context?: any) => {
+    router.push(view === 'home' ? '/' : `/${view}`);
+  };
   const [activeTab, setActiveTab] = useState<'all' | 'frontend' | 'backend' | 'ecommerce'>('all');
 
   const techBadgeSet = {

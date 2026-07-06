@@ -1,13 +1,16 @@
+"use client";
+
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { ViewType, PortfolioItem } from '../types';
 import { PORTFOLIO_ITEMS } from '../data';
 import { Sparkles, ArrowUpRight, Filter, MessageSquare, TrendingUp, ExternalLink } from 'lucide-react';
 
-interface PortfolioViewProps {
-  onNavigate: (view: ViewType, context?: any) => void;
-}
-
-export default function PortfolioView({ onNavigate }: PortfolioViewProps) {
+export default function PortfolioView() {
+  const router = useRouter();
+  const onNavigate = (view: string, context?: any) => {
+    router.push(view === 'home' ? '/' : `/${view}`);
+  };
   const [selectedFilter, setSelectedFilter] = useState<'All' | 'SaaS' | 'E-Commerce' | 'Corporate' | 'Landing Page'>('All');
 
   const categories: ('All' | 'SaaS' | 'E-Commerce' | 'Corporate' | 'Landing Page')[] = [

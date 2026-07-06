@@ -1,12 +1,15 @@
+"use client";
+
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { ViewType } from '../types';
 import { Check, Plus, Minus, ArrowRight, HelpCircle, Star, Sparkles } from 'lucide-react';
 
-interface PricingViewProps {
-  onNavigate: (view: ViewType, context?: any) => void;
-}
-
-export default function PricingView({ onNavigate }: PricingViewProps) {
+export default function PricingView() {
+  const router = useRouter();
+  const onNavigate = (view: string, context?: any) => {
+    router.push(view === 'home' ? '/' : `/${view}`);
+  };
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'annual'>('monthly');
 
   // Interactive Addon states

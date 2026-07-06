@@ -1,16 +1,14 @@
+"use client";
+
+import { useRouter } from 'next/navigation';
 import React, { useState, useEffect } from 'react';
 import { ProjectInquiry } from '../types';
 import { Mail, Phone, MapPin, CheckCircle, ArrowRight, MessageSquare, Shield, Clock, HelpCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
-interface ContactViewProps {
-  initialContext?: {
-    projectType?: string;
-    details?: string;
-  } | null;
-}
-
-export default function ContactView({ initialContext }: ContactViewProps) {
+export default function ContactView() {
+  const router = useRouter();
+  const initialContext = null;
   // Form states
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');

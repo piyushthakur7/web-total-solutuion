@@ -1,3 +1,6 @@
+"use client";
+
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { ViewType } from '../types';
 import { CLIENT_LOGOS } from '../data';
@@ -7,11 +10,11 @@ import {
 } from 'lucide-react';
 import { motion } from 'motion/react';
 
-interface HomeViewProps {
-  onNavigate: (view: ViewType) => void;
-}
-
-export default function HomeView({ onNavigate }: HomeViewProps) {
+export default function HomeView() {
+  const router = useRouter();
+  const onNavigate = (view: string, context?: any) => {
+    router.push(view === 'home' ? '/' : `/${view}`);
+  };
   // Speed simulator states
   const [isAuditing, setIsAuditing] = useState(false);
   const [auditProgress, setAuditProgress] = useState(0);

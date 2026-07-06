@@ -1,13 +1,9 @@
 import React from 'react';
-import { ViewType } from '../types';
+import Link from 'next/link';
 import { Mail, Phone, MapPin, ArrowUpRight } from 'lucide-react';
 import Logo from './Logo';
 
-interface FooterProps {
-  onNavigate: (view: ViewType) => void;
-}
-
-export default function Footer({ onNavigate }: FooterProps) {
+export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -16,12 +12,12 @@ export default function Footer({ onNavigate }: FooterProps) {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           {/* Brand Col */}
           <div className="space-y-4">
-            <div 
+            <Link 
+              href="/"
               className="flex items-center cursor-pointer group"
-              onClick={() => onNavigate('home')}
             >
               <Logo size="md" theme="dark" />
-            </div>
+            </Link>
             <p className="text-sm text-slate-400 leading-relaxed pt-2">
               Bespoke digital architecture. We engineer high-performance, conversion-oriented platforms for businesses worldwide.
             </p>
@@ -34,40 +30,40 @@ export default function Footer({ onNavigate }: FooterProps) {
             </h4>
             <ul className="space-y-3 text-sm">
               <li>
-                <button 
-                  onClick={() => onNavigate('services')} 
+                <Link 
+                  href="/services" 
                   className="hover:text-white transition-colors flex items-center group cursor-pointer"
                 >
                   <span>SaaS Platforms</span>
                   <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all ml-1" />
-                </button>
+                </Link>
               </li>
               <li>
-                <button 
-                  onClick={() => onNavigate('services')} 
+                <Link 
+                  href="/services" 
                   className="hover:text-white transition-colors flex items-center group cursor-pointer"
                 >
                   <span>E-Commerce Integration</span>
                   <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all ml-1" />
-                </button>
+                </Link>
               </li>
               <li>
-                <button 
-                  onClick={() => onNavigate('services')} 
+                <Link 
+                  href="/services" 
                   className="hover:text-white transition-colors flex items-center group cursor-pointer"
                 >
                   <span>Corporate Platforms</span>
                   <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all ml-1" />
-                </button>
+                </Link>
               </li>
               <li>
-                <button 
-                  onClick={() => onNavigate('services')} 
+                <Link 
+                  href="/services" 
                   className="hover:text-white transition-colors flex items-center group cursor-pointer"
                 >
                   <span>High-Converting Landers</span>
                   <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all ml-1" />
-                </button>
+                </Link>
               </li>
             </ul>
           </div>
@@ -79,24 +75,24 @@ export default function Footer({ onNavigate }: FooterProps) {
             </h4>
             <ul className="space-y-3 text-sm">
               <li>
-                <button onClick={() => onNavigate('home')} className="hover:text-white transition-colors cursor-pointer">
+                <Link href="/" className="hover:text-white transition-colors cursor-pointer block">
                   About Our Agency
-                </button>
+                </Link>
               </li>
               <li>
-                <button onClick={() => onNavigate('portfolio')} className="hover:text-white transition-colors cursor-pointer">
+                <Link href="/portfolio" className="hover:text-white transition-colors cursor-pointer block">
                   Our Work (Portfolio)
-                </button>
+                </Link>
               </li>
               <li>
-                <button onClick={() => onNavigate('pricing')} className="hover:text-white transition-colors cursor-pointer">
+                <Link href="/pricing" className="hover:text-white transition-colors cursor-pointer block">
                   Service Packages
-                </button>
+                </Link>
               </li>
               <li>
-                <button onClick={() => onNavigate('contact')} className="hover:text-white transition-colors cursor-pointer">
+                <Link href="/contact" className="hover:text-white transition-colors cursor-pointer block">
                   Inquire & Contact
-                </button>
+                </Link>
               </li>
             </ul>
           </div>

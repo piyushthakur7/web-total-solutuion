@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import Header from '../src/components/Header';
 import Footer from '../src/components/Footer';
+import Preloader from '../src/components/Preloader';
 
 export const metadata: Metadata = {
   title: 'Web Total Solution',
@@ -46,6 +47,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen flex flex-col bg-white">
+        <Preloader />
         <Header />
         <main className="flex-grow">
           {children}

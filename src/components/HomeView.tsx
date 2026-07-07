@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
-import { CLIENT_LOGOS } from '../data';
+import { PORTFOLIO_ITEMS } from '../data';
 import { 
   Zap, Shield, PieChart, Database, ArrowRight, CheckCircle2, 
   Sparkles, ChevronRight
@@ -118,16 +118,18 @@ export default function HomeView() {
       </section>
 
       {/* 2. Brand Trust Loop */}
-      <section className="bg-slate-50 py-10 border-y border-slate-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-6">
+      <section className="bg-slate-50 py-10 border-y border-slate-100 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-6">
+          <p className="text-xs font-bold uppercase tracking-widest text-slate-400">
             Engineered For Dynamic Growth and Trusted by Leading Teams
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-12 md:gap-20 opacity-70">
-            {CLIENT_LOGOS.map((logo, idx) => (
-              <div key={idx} className="flex items-center space-x-2 text-slate-600 hover:text-slate-900 transition-colors">
-                <div className="w-5 h-5 rounded bg-brand-blue/10 flex items-center justify-center text-brand-blue font-bold">★</div>
-                <span className="text-sm font-semibold tracking-wider font-mono">{logo.name}</span>
+        </div>
+        <div className="relative flex overflow-hidden w-full group">
+          <div className="flex whitespace-nowrap animate-marquee group-hover:[animation-play-state:paused]">
+            {[...PORTFOLIO_ITEMS, ...PORTFOLIO_ITEMS].map((item, idx) => (
+              <div key={idx} className="flex items-center space-x-2 text-slate-600 hover:text-slate-900 transition-colors mx-8 md:mx-12 opacity-70 hover:opacity-100 shrink-0">
+                <div className="w-5 h-5 rounded bg-brand-blue/10 flex items-center justify-center text-brand-blue font-bold shrink-0">★</div>
+                <span className="text-sm font-semibold tracking-wider font-mono">{item.title}</span>
               </div>
             ))}
           </div>

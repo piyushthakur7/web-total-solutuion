@@ -10,6 +10,13 @@
   --color-brand-ice: #F8FAFC;
   --color-brand-slate: #64748B;
   --color-brand-dark: #0F172A;
+
+  --animate-marquee: marquee 40s linear infinite;
+
+  @keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+  }
 }
 
 @layer base {

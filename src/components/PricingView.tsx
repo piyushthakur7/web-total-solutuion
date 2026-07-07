@@ -32,7 +32,7 @@ export default function PricingView() {
   const liveTotalEstimate = selectedBasePrice + extraPagesCost + cmsCost + logoCost + ecomCost;
 
   const handleSelectPlan = (planName: string, planPrice: number) => {
-    const cycleText = billingCycle === 'annual' ? 'billed annually' : 'billed monthly';
+    const cycleText = billingCycle === 'annual' ? 'one-time payment' : 'billed monthly';
     onNavigate('contact', {
       projectType: planName === 'Premium Plan' ? 'SaaS Platforms' : 'Corporate Websites',
       details: `Hi! I would like to choose the "${planName} (₹${planPrice.toLocaleString()}/mo, ${cycleText})". Let's align on the roadmap!`
@@ -77,14 +77,14 @@ export default function PricingView() {
           <button
             onClick={() => setBillingCycle(billingCycle === 'monthly' ? 'annual' : 'monthly')}
             className="w-12 h-6 bg-slate-200 rounded-full p-0.5 transition-colors relative cursor-pointer"
-            aria-label="Toggle annual pricing"
+            aria-label="Toggle one-time payment"
           >
             <div className={`w-5 h-5 bg-brand-blue rounded-full shadow-sm transform transition-transform duration-200 ${
               billingCycle === 'annual' ? 'translate-x-6' : 'translate-x-0'
             }`} />
           </button>
           <span className={`text-sm font-semibold flex items-center space-x-1 ${billingCycle === 'annual' ? 'text-slate-900' : 'text-slate-400'}`}>
-            <span>Annual Billing</span>
+            <span>One-Time Payment</span>
             <span className="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-full">Save 20%</span>
           </span>
         </div>
@@ -358,7 +358,7 @@ export default function PricingView() {
                   <span className="text-sm font-semibold">Total Estimated Cost:</span>
                   <div className="text-right">
                     <span className="text-3xl font-extrabold text-white font-mono">₹{liveTotalEstimate.toLocaleString()}</span>
-                    <span className="text-slate-500 block text-[9px] mt-0.5">({billingCycle === 'annual' ? 'billed annually' : 'billed monthly'})</span>
+                    <span className="text-slate-500 block text-[9px] mt-0.5">({billingCycle === 'annual' ? 'one-time payment' : 'billed monthly'})</span>
                   </div>
                 </div>
               </div>

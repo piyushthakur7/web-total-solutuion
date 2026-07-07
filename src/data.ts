@@ -58,16 +58,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     techStack: ['React', 'Vite', 'Tailwind CSS', 'Responsive Grid'],
     websiteUrl: 'https://www.fawdubai.com/',
   },
-  {
-    id: 'kashmirsinthantoptour',
-    title: 'Kashmir Sinthan Top Tour & Travels',
-    category: 'Landing Page',
-    description: 'Immersive regional tourism platform showcasing customized booking forms, travel packages, and high-contrast scenic destination galleries.',
-    metrics: { label: 'Direct Trip Bookings', value: '+115%' },
-    imageUrl: 'https://api.microlink.io/?url=https%3A%2F%2Fwww.kashmirsinthantoptourandtravels.com%2F&screenshot=true&embed=screenshot.url',
-    techStack: ['Vite', 'React', 'Tailwind CSS', 'Custom Forms'],
-    websiteUrl: 'https://www.kashmirsinthantoptourandtravels.com/',
-  },
+
   {
     id: 'bmscrubber',
     title: 'BM Scrubber',
@@ -98,16 +89,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     techStack: ['React', 'Vite', 'Tailwind CSS', 'Image Optimization'],
     websiteUrl: 'https://www.fairmountphotographys.com/',
   },
-  {
-    id: 'amioradiamonds',
-    title: 'Amiora Diamonds',
-    category: 'E-Commerce',
-    description: 'A luxurious digital showroom and secure shopping experience for high-end diamonds, jewelry crafting, and bespoke custom orders.',
-    metrics: { label: 'Cart Conversion Rate', value: '+48%' },
-    imageUrl: 'https://api.microlink.io/?url=https%3A%2F%2Fwww.amioradiamonds.com%2F&screenshot=true&embed=screenshot.url',
-    techStack: ['React', 'Tailwind CSS', 'Stripe', 'State Engine'],
-    websiteUrl: 'https://www.amioradiamonds.com/',
-  },
+
   {
     id: 'bonnyvelvet',
     title: 'Bonny Velvet Textiles',

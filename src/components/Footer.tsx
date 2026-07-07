@@ -19,7 +19,7 @@ export default function Footer() {
               <Logo size="md" theme="dark" />
             </Link>
             <p className="text-sm text-slate-400 leading-relaxed pt-2">
-              Bespoke digital architecture. We engineer high-performance, conversion-oriented platforms for businesses worldwide.
+              We are a trusted web development agency in Kolkata, engineering high-performance, conversion-oriented platforms for businesses worldwide.
             </p>
           </div>
 
@@ -123,8 +123,8 @@ export default function Footer() {
         <div className="pt-8 mt-12 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500">
           <p>© {currentYear} Web Total Solution. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 sm:mt-0">
-            <span className="hover:text-slate-400 transition-colors cursor-pointer">Privacy Policy</span>
-            <span className="hover:text-slate-400 transition-colors cursor-pointer">Terms of Service</span>
+            <Link href="/privacy" className="hover:text-slate-400 transition-colors cursor-pointer">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-slate-400 transition-colors cursor-pointer">Terms of Service</Link>
             <span className="hover:text-slate-400 transition-colors cursor-pointer">Security Standards</span>
           </div>
         </div>

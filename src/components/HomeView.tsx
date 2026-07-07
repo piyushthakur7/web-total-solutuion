@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import { PORTFOLIO_ITEMS } from '../data';
 import { 
   Zap, Shield, PieChart, Database, ArrowRight, CheckCircle2, 
-  Sparkles, ChevronRight
+  Sparkles, ChevronRight, Monitor, TrendingUp, PenTool, Layout, Smartphone, Cpu
 } from 'lucide-react';
 
 export default function HomeView() {
@@ -45,7 +45,7 @@ export default function HomeView() {
   return (
     <div className="space-y-24 pb-20 overflow-x-hidden">
       {/* 1. Hero Section */}
-      <section className="relative pt-16 lg:pt-24">
+      <section className="relative pt-16 lg:pt-24 pb-48 bg-slate-900">
         {/* Background Gradients */}
         <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-brand-blue/5 rounded-full filter blur-3xl -z-10" />
         <div className="absolute bottom-10 right-1/4 w-[300px] h-[300px] bg-brand-blue/10 rounded-full filter blur-2xl -z-10" />
@@ -54,50 +54,49 @@ export default function HomeView() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
             {/* Left Content */}
             <div className="lg:col-span-6 space-y-6 text-center lg:text-left">
-              <div className="inline-flex items-center space-x-2 bg-brand-blue/10 border border-brand-blue/20 px-3.5 py-1.5 rounded-full text-brand-blue text-xs font-semibold uppercase tracking-wider">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>Next-Gen Web Engineering</span>
+              <div className="inline-flex items-center space-x-2 bg-brand-blue/10 border border-brand-blue/20 px-3.5 py-1.5 rounded-full text-brand-blue text-[10px] sm:text-xs font-bold uppercase tracking-wider">
+                <Sparkles className="w-3.5 h-3.5 shrink-0" />
+                <span>Web Total Solution | Web Development Agency in Kolkata</span>
               </div>
               
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.1]">
-                Building High-Performance Websites <br />
-                <span className="text-brand-blue bg-clip-text">That Grow Your Business</span>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.1]">
+                Your Business Growth <br />
+                <span className="text-brand-blue bg-clip-text">Is Our Ultimate Goal</span>
               </h1>
               
-              <p className="text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
-                We engineer bespoke, lightning-fast digital solutions. Combining pristine interactive UI, tailored SEO mechanics, and military-grade architecture.
-              </p>
+              <ul className="space-y-2.5 text-slate-300 text-left mx-auto lg:mx-0 max-w-sm pt-2">
+                {[
+                  'Bespoke UI/UX Design',
+                  'Lightning-Fast Performance',
+                  'SEO & Mobile Optimized',
+                  'Enterprise-Grade Security',
+                  'Fluid Responsive Layouts',
+                  'Intuitive User Experiences',
+                  'Scalable Cloud Architecture'
+                ].map((item, i) => (
+                  <li key={i} className="flex items-center space-x-3">
+                    <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0" />
+                    <span className="font-semibold">{item}</span>
+                  </li>
+                ))}
+              </ul>
 
-              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-6">
                 <button
                   onClick={() => onNavigate('contact')}
-                  className="w-full sm:w-auto bg-brand-blue hover:bg-brand-blue/95 text-white px-8 py-4 rounded-xl font-bold tracking-wide shadow-md hover:shadow-lg transition-all flex items-center justify-center space-x-2 cursor-pointer"
+                  className="w-full sm:w-auto bg-brand-blue hover:bg-brand-blue/90 text-white px-8 py-3.5 rounded-xl font-bold tracking-wide shadow-md hover:shadow-lg transition-all flex items-center justify-center space-x-2 cursor-pointer"
                 >
-                  <span>Start Your Project</span>
+                  <span>Contact Now</span>
                   <ArrowRight className="w-5 h-5" />
                 </button>
-                <button
-                  onClick={() => onNavigate('portfolio')}
-                  className="w-full sm:w-auto bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 px-8 py-4 rounded-xl font-semibold tracking-wide shadow-sm hover:shadow-md transition-all flex items-center justify-center space-x-2 cursor-pointer"
+                <a
+                  href="https://wa.me/916291519364"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto bg-slate-800 hover:bg-slate-700 text-white border-2 border-slate-700 px-8 py-3.5 rounded-xl font-bold tracking-wide shadow-sm hover:shadow-md transition-all flex items-center justify-center space-x-2 cursor-pointer"
                 >
-                  <span>View Portfolio</span>
-                </button>
-              </div>
-
-              {/* Minimal metrics row */}
-              <div className="grid grid-cols-3 gap-6 pt-10 border-t border-slate-100 max-w-md mx-auto lg:mx-0">
-                <div>
-                  <span className="block text-2xl font-bold text-slate-900">99%</span>
-                  <span className="text-xs text-slate-500 font-medium">Avg Speed Score</span>
-                </div>
-                <div>
-                  <span className="block text-2xl font-bold text-slate-900">4.9/5</span>
-                  <span className="text-xs text-slate-500 font-medium">Clutch Rating</span>
-                </div>
-                <div>
-                  <span className="block text-2xl font-bold text-slate-900">100%</span>
-                  <span className="text-xs text-slate-500 font-medium">SLA Commitment</span>
-                </div>
+                  <span>WhatsApp Us Now</span>
+                </a>
               </div>
             </div>
 
@@ -144,6 +143,38 @@ export default function HomeView() {
             </div>
           </div>
         </div>
+
+        {/* Wave Divider */}
+        <div className="absolute bottom-[-2px] left-0 right-0 z-10 pointer-events-none">
+          <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto text-slate-50" preserveAspectRatio="none">
+            <path d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z" fill="currentColor"></path>
+          </svg>
+        </div>
+      </section>
+
+      {/* 1.5 Quick Services Grid (Overlapping Hero) */}
+      <section className="relative z-20 -mt-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
+          {[
+            { title: 'UI/UX Design', icon: <Monitor className="w-6 h-6 text-white" />, link: '/services/landing-pages', desc: 'Designing immersive experiences that captivate users.' },
+            { title: 'SEO & Digital Marketing', icon: <TrendingUp className="w-6 h-6 text-white" />, link: '/services/digital-marketing', desc: 'Boosting brand awareness with targeted SEO.' },
+            { title: 'Graphics Design', icon: <PenTool className="w-6 h-6 text-white" />, link: '/services/landing-pages', desc: 'Visually striking graphics conveying your brand.' },
+            { title: 'Web Development', icon: <Layout className="w-6 h-6 text-white" />, link: '/services/saas', desc: 'Dynamic websites optimized for performance.' },
+            { title: 'App Development', icon: <Smartphone className="w-6 h-6 text-white" />, link: '/services/mobile-apps', desc: 'Dynamic app development and reliable tech.' },
+            { title: 'Software Development', icon: <Cpu className="w-6 h-6 text-white" />, link: '/services/saas', desc: 'Innovative software solutions driving business.' },
+          ].map((service, idx) => (
+            <div key={idx} className="bg-white rounded-2xl p-6 shadow-xl border border-slate-100 flex flex-col items-center text-center hover:-translate-y-2 hover:shadow-2xl transition-all duration-300">
+              <div className="w-14 h-14 bg-slate-900 rounded-full flex items-center justify-center mb-4">
+                {service.icon}
+              </div>
+              <h3 className="font-bold text-slate-900 mb-2 leading-tight">{service.title}</h3>
+              <p className="text-xs text-slate-500 mb-4 flex-grow">{service.desc}</p>
+              <button onClick={() => router.push(service.link)} className="text-brand-blue text-xs font-bold uppercase tracking-wide flex items-center group">
+                Explore More <ChevronRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </div>
+          ))}
+        </div>
       </section>
 
       {/* 2. Brand Trust Loop */}
@@ -175,7 +206,7 @@ export default function HomeView() {
             Designed for Performance, Built for Scalability
           </h2>
           <p className="text-slate-600">
-            We abandon boilerplate templates to build highly optimized platforms customized to power business velocity and dynamic enterprise operations.
+            As a top-rated web development agency in Kolkata, we abandon boilerplate templates to build highly optimized platforms customized to power business velocity and dynamic enterprise operations.
           </p>
         </div>
 

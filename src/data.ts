@@ -177,3 +177,84 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     techStack: ['Vite', 'D3.js', 'Motion', 'Tailwind CSS'],
   },
 ];
+
+export const SERVICES_DATA: Record<string, import('./types').ServiceData> = {
+  'landing-pages': {
+    slug: 'landing-pages',
+    title: 'Landing & Informative Pages',
+    subtitle: 'High-Converting Single Page Solutions',
+    priceText: 'Starting from ₹7,999',
+    heroImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop',
+    content: {
+      overview: 'We build high-performance, single-page informative websites specifically designed for your business. Our team of experts designs simple to navigate and mobile-compatible landing pages to help you receive more customers.',
+      whyChooseUs: 'Our responsive designs work perfectly on any device without any problem, allowing you to reach more customers. We provide affordable, quality services with clear communication and guaranteed delivery. Our courteous customer support team is always ready to help.',
+      features: ['Custom Website Development', 'Responsive Layouts', 'SEO & Mobile Friendly', 'Fast Load Time', 'Secure Solutions'],
+      techStack: ['HTML5', 'CSS3', 'JavaScript', 'React', 'Next.js', 'Tailwind CSS']
+    }
+  },
+  'saas-development': {
+    slug: 'saas-development',
+    title: 'Full SaaS Development',
+    subtitle: 'Scalable Software as a Service Platforms',
+    priceText: 'Custom Price',
+    heroImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop',
+    content: {
+      overview: 'Comprehensive web application development tailored to your enterprise. From authentication and routing to complex data modeling, we build robust SaaS platforms that scale securely.',
+      whyChooseUs: 'We write clean, well-commented and reusable code that makes your web app a very easy platform to amend any new functionality in the later phase. We utilize cutting-edge technologies like Node.js and React.',
+      features: ['Agile Project Management', 'User-Centric Design', 'Comprehensive Web Application Development', 'Post-Development Support', 'Secure Architecture'],
+      techStack: ['React', 'Next.js', 'Node.js', 'PostgreSQL', 'Tailwind CSS', 'AWS']
+    }
+  },
+  'content-writing': {
+    slug: 'content-writing',
+    title: 'Content Writing',
+    subtitle: 'Engaging, SEO-Optimized Copywriting',
+    priceText: 'Starting from ₹1,000',
+    heroImage: 'https://images.unsplash.com/photo-1455390582262-044cdead27d8?q=80&w=2346&auto=format&fit=crop',
+    content: {
+      overview: 'High-quality content is the foundation of any digital strategy. We provide well-researched, engaging, and SEO-optimized content that resonates with your audience and drives conversions.',
+      whyChooseUs: 'Our dedicated team of writers understands your industry nuances and crafts compelling narratives. We ensure all content aligns with your brand voice and is meticulously proofread and edited.',
+      features: ['SEO-Optimized Articles', 'Website Copywriting', 'Blog Post Creation', 'Product Descriptions', 'Engaging Social Media Content'],
+      techStack: ['Grammarly', 'Hemingway', 'Ahrefs', 'SurferSEO', 'Google Docs']
+    }
+  },
+  'ecommerce-development': {
+    slug: 'ecommerce-development',
+    title: 'E-commerce Development',
+    subtitle: 'High-Converting Online Stores',
+    priceText: 'Starting from ₹12,999',
+    heroImage: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=2370&auto=format&fit=crop',
+    content: {
+      overview: 'We develop secure, scalable, and responsive e-commerce sites for online retailers. Whether you are selling a few products or thousands, we build platforms that drive sales and provide a seamless checkout experience.',
+      whyChooseUs: 'From customized theme development to complex integrations, we handle the entire e-commerce lifecycle. Our solutions include secure payment gateways, inventory management, and fast-loading product pages.',
+      features: ['E-Commerce Theme Customization', 'Responsive E-Commerce Sites', 'Secure Payment Gateways', 'E-Commerce Migration', 'Cart Optimization'],
+      techStack: ['Shopify', 'React', 'Next.js', 'Stripe API', 'Tailwind CSS', 'Node.js']
+    }
+  },
+  'app-development': {
+    slug: 'app-development',
+    title: 'Android & iOS Apps',
+    subtitle: 'Native and Cross-Platform Mobile Solutions',
+    priceText: 'Custom Price',
+    heroImage: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=2340&auto=format&fit=crop',
+    content: {
+      overview: 'Transform your business with cutting-edge mobile applications. We build highly intuitive and performant apps for both Android and iOS platforms, ensuring a flawless user experience.',
+      whyChooseUs: 'Our team uses the latest frameworks like React Native and Flutter to deliver high-quality apps efficiently. We handle everything from UI/UX design to App Store deployment and ongoing maintenance.',
+      features: ['Cross-Platform Development', 'Native App Performance', 'Intuitive Mobile UI/UX', 'API Integration', 'App Store Optimization'],
+      techStack: ['React Native', 'Flutter', 'Swift', 'Kotlin', 'Firebase', 'Node.js']
+    }
+  },
+  'digital-marketing': {
+    slug: 'digital-marketing',
+    title: 'Digital Marketing',
+    subtitle: 'Data-Driven Growth Strategies',
+    priceText: 'Custom Price',
+    heroImage: 'https://images.unsplash.com/photo-1432821596592-e2c18b78144f?q=80&w=2340&auto=format&fit=crop',
+    content: {
+      overview: 'Maximize your online visibility and drive targeted traffic with our comprehensive digital marketing services. From SEO to paid campaigns, we engineer strategies that deliver measurable ROI.',
+      whyChooseUs: 'We don\'t just run ads; we analyze data, optimize conversion funnels, and continuously refine our approach. Our transparent reporting keeps you informed every step of the way.',
+      features: ['Search Engine Optimization (SEO)', 'Pay-Per-Click Advertising (PPC)', 'Social Media Management', 'Conversion Rate Optimization', 'Analytics & Reporting'],
+      techStack: ['Google Analytics', 'Google Ads', 'Facebook Ads', 'Ahrefs', 'SEMrush', 'HubSpot']
+    }
+  }
+};

@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { Menu, X, MessageSquare, ArrowRight } from 'lucide-react';
+import { Menu, X, MessageSquare, ArrowRight, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import Logo from './Logo';
 
@@ -31,6 +31,15 @@ export default function Header() {
     { label: 'Contact', path: '/contact' },
   ];
 
+  const servicesDropdown = [
+    { label: 'Landing & Informative Pages', subtext: 'Starting from ₹7,999', path: '/services/landing-pages' },
+    { label: 'Full SaaS Development', subtext: 'Custom Price', path: '/services/saas-development' },
+    { label: 'Content Writing', subtext: 'Starting from ₹1,000', path: '/services/content-writing' },
+    { label: 'E-commerce Development', subtext: 'Starting from ₹12,999', path: '/services/ecommerce-development' },
+    { label: 'Android & iOS Apps', subtext: 'Custom Price', path: '/services/app-development' },
+    { label: 'Digital Marketing', subtext: 'Custom Price', path: '/services/digital-marketing' },
+  ];
+
   return (
     <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -48,6 +57,47 @@ export default function Header() {
           <nav className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => {
               const isActive = pathname === item.path;
+              if (item.label === 'Services') {
+                return (
+                  <div key={item.path} className="relative group py-2">
+                    <Link
+                      href={item.path}
+                      className={`relative text-sm font-medium tracking-wide transition-colors duration-200 cursor-pointer flex items-center space-x-1 ${
+                        isActive 
+                          ? 'text-brand-blue font-semibold' 
+                          : 'text-slate-600 hover:text-slate-900'
+                      }`}
+                    >
+                      <span>{item.label}</span>
+                      <ChevronDown className="w-3.5 h-3.5 opacity-70 group-hover:rotate-180 transition-transform duration-200" />
+                      {isActive && (
+                        <motion.div 
+                          layoutId="activeNavIndicator"
+                          className="absolute -bottom-2 left-0 right-0 h-0.5 bg-brand-blue rounded-full"
+                          transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                        />
+                      )}
+                    </Link>
+
+                    {/* Desktop Dropdown */}
+                    <div className="absolute top-full -left-4 w-72 bg-white rounded-2xl shadow-xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50 pt-2">
+                      <div className="py-2 bg-white rounded-2xl overflow-hidden">
+                        {servicesDropdown.map((service, idx) => (
+                          <Link 
+                            key={idx} 
+                            href={service.path}
+                            className="block px-5 py-3 hover:bg-slate-50 transition-colors group/item"
+                          >
+                            <span className="block text-sm font-bold text-slate-800 group-hover/item:text-brand-blue transition-colors">{service.label}</span>
+                            <span className="block text-[11px] font-semibold text-slate-500 uppercase tracking-wide mt-0.5">{service.subtext}</span>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                );
+              }
+
               return (
                 <Link
                   key={item.path}

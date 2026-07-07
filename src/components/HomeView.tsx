@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import { PORTFOLIO_ITEMS } from '../data';
 import { 
   Zap, Shield, PieChart, Database, ArrowRight, CheckCircle2, 
-  Sparkles, ChevronRight, Monitor, TrendingUp, PenTool, Layout, Smartphone, Cpu
+  Sparkles, ChevronRight, Monitor, TrendingUp, PenTool, Layout, Smartphone, Cpu, ShoppingCart
 } from 'lucide-react';
 
 export default function HomeView() {
@@ -156,12 +156,12 @@ export default function HomeView() {
       <section className="relative z-20 -mt-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
           {[
-            { title: 'UI/UX Design', icon: <Monitor className="w-6 h-6 text-white" />, link: '/services/landing-pages', desc: 'Designing immersive experiences that captivate users.' },
-            { title: 'SEO & Digital Marketing', icon: <TrendingUp className="w-6 h-6 text-white" />, link: '/services/digital-marketing', desc: 'Boosting brand awareness with targeted SEO.' },
-            { title: 'Graphics Design', icon: <PenTool className="w-6 h-6 text-white" />, link: '/services/landing-pages', desc: 'Visually striking graphics conveying your brand.' },
-            { title: 'Web Development', icon: <Layout className="w-6 h-6 text-white" />, link: '/services/saas', desc: 'Dynamic websites optimized for performance.' },
-            { title: 'App Development', icon: <Smartphone className="w-6 h-6 text-white" />, link: '/services/mobile-apps', desc: 'Dynamic app development and reliable tech.' },
-            { title: 'Software Development', icon: <Cpu className="w-6 h-6 text-white" />, link: '/services/saas', desc: 'Innovative software solutions driving business.' },
+            { title: 'Landing & Informative Pages', icon: <Monitor className="w-6 h-6 text-white" />, link: '/services/landing-pages', desc: 'High-conversion landing pages engineered for speed and clarity.' },
+            { title: 'Full SaaS Development', icon: <Layout className="w-6 h-6 text-white" />, link: '/services/saas', desc: 'Scalable, complex SaaS platforms tailored to your business.' },
+            { title: 'Content Writing', icon: <PenTool className="w-6 h-6 text-white" />, link: '/services/content-writing', desc: 'SEO-driven copy that engages audiences and drives action.' },
+            { title: 'E-commerce Development', icon: <ShoppingCart className="w-6 h-6 text-white" />, link: '/services/ecommerce', desc: 'Secure, dynamic e-commerce stores maximizing sales.' },
+            { title: 'Android & iOS Apps', icon: <Smartphone className="w-6 h-6 text-white" />, link: '/services/mobile-apps', desc: 'Native and cross-platform apps with flawless UX/UI.' },
+            { title: 'Digital Marketing', icon: <TrendingUp className="w-6 h-6 text-white" />, link: '/services/digital-marketing', desc: 'Data-driven marketing campaigns accelerating brand growth.' },
           ].map((service, idx) => (
             <div key={idx} className="bg-white rounded-2xl p-6 shadow-xl border border-slate-100 flex flex-col items-center text-center hover:-translate-y-2 hover:shadow-2xl transition-all duration-300">
               <div className="w-14 h-14 bg-slate-900 rounded-full flex items-center justify-center mb-4">

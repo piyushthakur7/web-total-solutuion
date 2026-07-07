@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { Check, Plus, Minus, ArrowRight, HelpCircle, Star, Sparkles } from 'lucide-react';
 
-export default function PricingView() {
+export default function PricingView({ serviceSlug }: { serviceSlug?: string }) {
   const router = useRouter();
   const onNavigate = (view: string, context?: any) => {
     router.push(view === 'home' ? '/' : `/${view}`);
@@ -17,10 +17,27 @@ export default function PricingView() {
   const [logoDesign, setLogoDesign] = useState(false);
   const [ecommerceIntegration, setEcommerceIntegration] = useState(false);
 
+  let basePrices = { starter: 7999, growth: 14999, premium: 35000 };
+  let customFeatures = null;
+
+  if (serviceSlug === 'content-writing') {
+    basePrices = { starter: 1000, growth: 3000, premium: 8000 };
+    customFeatures = {
+      starter: ['SEO Optimized Blog Post', 'Basic Copywriting', '1 Revision', '48-Hour Delivery SLA'],
+      growth: ['4 Weekly Blog Posts', 'Social Media Copy', 'Unlimited Revisions', '24-Hour Priority SLA'],
+      premium: ['Full Content Strategy', 'Whitepapers & PR', 'Dedicated Editor', 'Immediate Response SLA']
+    };
+  } else if (serviceSlug === 'ecommerce') {
+    basePrices = { starter: 12999, growth: 24999, premium: 45000 };
+  } else if (serviceSlug === 'saas' || serviceSlug === 'mobile-apps' || serviceSlug === 'digital-marketing') {
+    // Custom price flag
+    basePrices = { starter: -1, growth: -1, premium: -1 };
+  }
+
   // Package base pricing
-  const starterPrice = billingCycle === 'monthly' ? 7999 : Math.round(7999 * 0.8);
-  const growthPrice = billingCycle === 'monthly' ? 14999 : Math.round(14999 * 0.8);
-  const premiumPrice = billingCycle === 'monthly' ? 35000 : Math.round(35000 * 0.8);
+  const starterPrice = billingCycle === 'monthly' ? basePrices.starter : Math.round(basePrices.starter * 0.8);
+  const growthPrice = billingCycle === 'monthly' ? basePrices.growth : Math.round(basePrices.growth * 0.8);
+  const premiumPrice = billingCycle === 'monthly' ? basePrices.premium : Math.round(basePrices.premium * 0.8);
 
   // Live estimate math
   const extraPagesCost = extraPages * 2500;
@@ -103,27 +120,42 @@ export default function PricingView() {
               </div>
               
               <div className="flex items-baseline">
-                <span className="text-4xl font-extrabold text-slate-950">₹{starterPrice.toLocaleString()}</span>
-                <span className="text-slate-400 text-sm ml-1">/ mo</span>
+                {starterPrice === -1 ? (
+                  <span className="text-4xl font-extrabold text-slate-950">Custom</span>
+                ) : (
+                  <>
+                    <span className="text-4xl font-extrabold text-slate-950">₹{starterPrice.toLocaleString()}</span>
+                    <span className="text-slate-400 text-sm ml-1">/ mo</span>
+                  </>
+                )}
               </div>
 
               <ul className="space-y-3.5 text-xs text-slate-600 pt-6 border-t border-slate-200/50">
-                <li className="flex items-start space-x-2.5">
-                  <Check className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />
-                  <span>1 High-Performance Landing Page</span>
-                </li>
-                <li className="flex items-start space-x-2.5">
-                  <Check className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />
-                  <span>Basic SEO Architecture</span>
-                </li>
-                <li className="flex items-start space-x-2.5">
-                  <Check className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />
-                  <span>1 Year Complimentary Support</span>
-                </li>
-                <li className="flex items-start space-x-2.5">
-                  <Check className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />
-                  <span>48-Hour Response SLA</span>
-                </li>
+                {customFeatures ? customFeatures.starter.map((feat, i) => (
+                  <li key={i} className="flex items-start space-x-2.5">
+                    <Check className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />
+                    <span>{feat}</span>
+                  </li>
+                )) : (
+                  <>
+                    <li className="flex items-start space-x-2.5">
+                      <Check className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />
+                      <span>1 High-Performance Landing Page</span>
+                    </li>
+                    <li className="flex items-start space-x-2.5">
+                      <Check className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />
+                      <span>Basic SEO Architecture</span>
+                    </li>
+                    <li className="flex items-start space-x-2.5">
+                      <Check className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />
+                      <span>1 Year Complimentary Support</span>
+                    </li>
+                    <li className="flex items-start space-x-2.5">
+                      <Check className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />
+                      <span>48-Hour Response SLA</span>
+                    </li>
+                  </>
+                )}
               </ul>
             </div>
 
@@ -151,31 +183,46 @@ export default function PricingView() {
               </div>
               
               <div className="flex items-baseline">
-                <span className="text-5xl font-extrabold text-white">₹{growthPrice.toLocaleString()}</span>
-                <span className="text-slate-500 text-sm ml-1">/ mo</span>
+                {growthPrice === -1 ? (
+                  <span className="text-5xl font-extrabold text-white">Custom</span>
+                ) : (
+                  <>
+                    <span className="text-5xl font-extrabold text-white">₹{growthPrice.toLocaleString()}</span>
+                    <span className="text-slate-500 text-sm ml-1">/ mo</span>
+                  </>
+                )}
               </div>
 
               <ul className="space-y-3.5 text-xs text-slate-300 pt-6 border-t border-white/5">
-                <li className="flex items-start space-x-2.5">
-                  <Check className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />
-                  <span>Up to 5 Responsive Sub-pages</span>
-                </li>
-                <li className="flex items-start space-x-2.5">
-                  <Check className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />
-                  <span>Headless Content Management (CMS)</span>
-                </li>
-                <li className="flex items-start space-x-2.5">
-                  <Check className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />
-                  <span>Advanced Conversion Funnel setup</span>
-                </li>
-                <li className="flex items-start space-x-2.5">
-                  <Check className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />
-                  <span>24-Hour Response SLA</span>
-                </li>
-                <li className="flex items-start space-x-2.5">
-                  <Check className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />
-                  <span>Custom Analytics Integration</span>
-                </li>
+                {customFeatures ? customFeatures.growth.map((feat, i) => (
+                  <li key={i} className="flex items-start space-x-2.5">
+                    <Check className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />
+                    <span>{feat}</span>
+                  </li>
+                )) : (
+                  <>
+                    <li className="flex items-start space-x-2.5">
+                      <Check className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />
+                      <span>Up to 5 Responsive Sub-pages</span>
+                    </li>
+                    <li className="flex items-start space-x-2.5">
+                      <Check className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />
+                      <span>Headless Content Management (CMS)</span>
+                    </li>
+                    <li className="flex items-start space-x-2.5">
+                      <Check className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />
+                      <span>Advanced Conversion Funnel setup</span>
+                    </li>
+                    <li className="flex items-start space-x-2.5">
+                      <Check className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />
+                      <span>24-Hour Response SLA</span>
+                    </li>
+                    <li className="flex items-start space-x-2.5">
+                      <Check className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />
+                      <span>Custom Analytics Integration</span>
+                    </li>
+                  </>
+                )}
               </ul>
             </div>
 
@@ -198,31 +245,46 @@ export default function PricingView() {
               </div>
               
               <div className="flex items-baseline">
-                <span className="text-4xl font-extrabold text-slate-950">₹{premiumPrice.toLocaleString()}</span>
-                <span className="text-slate-400 text-sm ml-1">/ mo</span>
+                {premiumPrice === -1 ? (
+                  <span className="text-4xl font-extrabold text-slate-950">Custom</span>
+                ) : (
+                  <>
+                    <span className="text-4xl font-extrabold text-slate-950">₹{premiumPrice.toLocaleString()}</span>
+                    <span className="text-slate-400 text-sm ml-1">/ mo</span>
+                  </>
+                )}
               </div>
 
               <ul className="space-y-3.5 text-xs text-slate-600 pt-6 border-t border-slate-200/50">
-                <li className="flex items-start space-x-2.5">
-                  <Check className="w-4 h-4 text-brand-blue shrink-0" />
-                  <span>Up to 10 Advanced Pages</span>
-                </li>
-                <li className="flex items-start space-x-2.5">
-                  <Check className="w-4 h-4 text-brand-blue shrink-0" />
-                  <span>Advanced Database & Auth Schemes</span>
-                </li>
-                <li className="flex items-start space-x-2.5">
-                  <Check className="w-4 h-4 text-brand-blue shrink-0" />
-                  <span>Extreme SEO & Performance Audits</span>
-                </li>
-                <li className="flex items-start space-x-2.5">
-                  <Check className="w-4 h-4 text-brand-blue shrink-0" />
-                  <span>Priority 24/7 Phone Support</span>
-                </li>
-                <li className="flex items-start space-x-2.5">
-                  <Check className="w-4 h-4 text-brand-blue shrink-0" />
-                  <span>Immediate Emergency Mitigation SLA</span>
-                </li>
+                {customFeatures ? customFeatures.premium.map((feat, i) => (
+                  <li key={i} className="flex items-start space-x-2.5">
+                    <Check className="w-4 h-4 text-brand-blue shrink-0" />
+                    <span>{feat}</span>
+                  </li>
+                )) : (
+                  <>
+                    <li className="flex items-start space-x-2.5">
+                      <Check className="w-4 h-4 text-brand-blue shrink-0" />
+                      <span>Up to 10 Advanced Pages</span>
+                    </li>
+                    <li className="flex items-start space-x-2.5">
+                      <Check className="w-4 h-4 text-brand-blue shrink-0" />
+                      <span>Advanced Database & Auth Schemes</span>
+                    </li>
+                    <li className="flex items-start space-x-2.5">
+                      <Check className="w-4 h-4 text-brand-blue shrink-0" />
+                      <span>Extreme SEO & Performance Audits</span>
+                    </li>
+                    <li className="flex items-start space-x-2.5">
+                      <Check className="w-4 h-4 text-brand-blue shrink-0" />
+                      <span>Priority 24/7 Phone Support</span>
+                    </li>
+                    <li className="flex items-start space-x-2.5">
+                      <Check className="w-4 h-4 text-brand-blue shrink-0" />
+                      <span>Immediate Emergency Mitigation SLA</span>
+                    </li>
+                  </>
+                )}
               </ul>
             </div>
 

@@ -122,7 +122,7 @@ export default function ServiceDetailView({ service }: { service: ServiceData })
 
       {/* Pricing Section */}
       <div className="bg-slate-50 pt-10 pb-20 border-t border-slate-100">
-        <PricingView />
+        <PricingView serviceSlug={service.slug} />
       </div>
     </div>
   );

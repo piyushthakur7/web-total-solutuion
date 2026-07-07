@@ -236,7 +236,7 @@ export default function ContactView() {
                 <div>
                   <span className="block text-[10px] text-slate-400 uppercase tracking-widest font-bold">WhatsApp Direct</span>
                   <span className="text-sm font-semibold text-slate-800">
-                    +1 (555) 019-2837
+                    +91 6291 519 364
                   </span>
                 </div>
               </div>
@@ -248,7 +248,7 @@ export default function ContactView() {
                 <div>
                   <span className="block text-[10px] text-slate-400 uppercase tracking-widest font-bold">Headquarters</span>
                   <span className="text-sm font-semibold text-slate-800">
-                    Tech District, Building 4,<br />San Francisco, CA 94105
+                    Pachpota, Garia,<br />Kolkata, West Bengal 700152
                   </span>
                 </div>
               </div>
@@ -259,7 +259,7 @@ export default function ContactView() {
           <div className="border border-slate-150 rounded-3xl overflow-hidden bg-white shadow-sm relative group aspect-video">
             <img
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpPUtL1l6N-Hol-fBqsvSbAXTM9CBjo0p0HRX7VaQ38CMZ3q4kwqxeMonZsihaAFfomEU6cR7jYBuaiUuhufq74XEeccPQzZk4EJDaBddUMON4TNz40Knmg8-zrFiQCX4nCAjV7HXj9OZ0_WGeWxDaRXj1zm8m2MErjL7r7loFvQWEK89whWjoNkWapP5lBQ9PllqBzaimTnmAYqL8AwPtFTl0u7zWxA0u2S2ADO7BzhvRJI9OLGKWMU84N4NGBQMGW4Er4gEWk0Q"
-              alt="Web Total Solution San Francisco Headquarters Map Location"
+              alt="Web Total Solution Kolkata Headquarters Map Location"
               className="w-full h-full object-cover grayscale transition-all duration-300 group-hover:grayscale-0"
               referrerPolicy="no-referrer"
             />

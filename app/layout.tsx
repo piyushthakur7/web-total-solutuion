@@ -31,9 +31,9 @@ export default function RootLayout({
               "priceRange": "₹",
               "address": {
                 "@type": "PostalAddress",
-                "streetAddress": "Srikhanda, Garia, Kolkata, Rajpur Sonarpur, West Bengal",
+                "streetAddress": "Pachpota, Garia",
                 "addressLocality": "Kolkata",
-                "postalCode": "700150",
+                "postalCode": "700152",
                 "addressCountry": "IN"
               },
               "geo": {

@@ -109,11 +109,11 @@ export default function Footer() {
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="w-4 h-4 text-brand-blue shrink-0" />
-                <span className="hover:text-white transition-colors">+1 (555) 019-2837</span>
+                <span className="hover:text-white transition-colors">+91 6291 519 364</span>
               </li>
               <li className="flex items-start space-x-3">
                 <MapPin className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />
-                <span>Tech District, Building 4,<br />San Francisco, CA 94105</span>
+                <span>Pachpota, Garia,<br />Kolkata, West Bengal 700152</span>
               </li>
             </ul>
           </div>

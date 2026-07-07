@@ -223,8 +223,8 @@ export default function ContactView() {
                 </div>
                 <div>
                   <span className="block text-[10px] text-slate-400 uppercase tracking-widest font-bold">Email Address</span>
-                  <a href="mailto:hello@webtotalsolution.com" className="text-sm font-semibold text-slate-800 hover:text-brand-blue hover:underline">
-                    hello@webtotalsolution.com
+                  <a href="mailto:info@webtotalsolution.com" className="text-sm font-semibold text-slate-800 hover:text-brand-blue hover:underline">
+                    info@webtotalsolution.com
                   </a>
                 </div>
               </div>

@@ -105,7 +105,7 @@ export default function Footer() {
             <ul className="space-y-3.5 text-sm text-slate-400">
               <li className="flex items-center space-x-3">
                 <Mail className="w-4 h-4 text-brand-blue shrink-0" />
-                <span className="hover:text-white transition-colors">hello@webtotalsolution.com</span>
+                <span className="hover:text-white transition-colors">info@webtotalsolution.com</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="w-4 h-4 text-brand-blue shrink-0" />

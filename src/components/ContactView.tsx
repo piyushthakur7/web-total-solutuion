@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, CheckCircle, ArrowRight, MessageSquare, Shield, Clock, HelpCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, CheckCircle, ArrowRight, MessageSquare, Shield, Clock, HelpCircle, Instagram, Linkedin, Youtube } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 export default function ContactView() {
@@ -250,6 +250,29 @@ export default function ContactView() {
                   <span className="text-sm font-semibold text-slate-800">
                     Pachpota, Garia,<br />Kolkata, West Bengal 700152
                   </span>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-4">
+                <div className="w-10 h-10 bg-white border border-slate-100 rounded-xl flex items-center justify-center text-brand-blue shrink-0">
+                  <Instagram className="w-5 h-5" />
+                </div>
+                <div>
+                  <span className="block text-[10px] text-slate-400 uppercase tracking-widest font-bold">Social Media</span>
+                  <div className="flex space-x-4 mt-0.5">
+                    <a href="https://www.instagram.com/webtotalsolution/?hl=en" target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-slate-800 hover:text-brand-blue transition-colors flex items-center">
+                      <Instagram className="w-4 h-4 mr-1 text-slate-400" />
+                      Instagram
+                    </a>
+                    <a href="https://www.linkedin.com/company/web-total-solutions/" target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-slate-800 hover:text-brand-blue transition-colors flex items-center">
+                      <Linkedin className="w-4 h-4 mr-1 text-slate-400" />
+                      LinkedIn
+                    </a>
+                    <a href="https://www.youtube.com/channel/UCNlUYW1RyevmpKY1xUQKatA" target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-slate-800 hover:text-brand-blue transition-colors flex items-center">
+                      <Youtube className="w-4 h-4 mr-1 text-slate-400" />
+                      YouTube
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>

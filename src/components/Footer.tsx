@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Mail, Phone, MapPin, ArrowUpRight } from 'lucide-react';
+import { Mail, Phone, MapPin, ArrowUpRight, Instagram, Linkedin, Youtube } from 'lucide-react';
 import Logo from './Logo';
 
 export default function Footer() {
@@ -21,6 +21,35 @@ export default function Footer() {
             <p className="text-sm text-slate-400 leading-relaxed pt-2">
               We are a trusted web development agency in Kolkata, engineering high-performance, conversion-oriented platforms for businesses worldwide.
             </p>
+            <div className="flex items-center space-x-4 pt-2">
+              <a 
+                href="https://www.instagram.com/webtotalsolution/?hl=en" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-slate-400 hover:text-brand-blue transition-colors cursor-pointer"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a 
+                href="https://www.linkedin.com/company/web-total-solutions/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-slate-400 hover:text-brand-blue transition-colors cursor-pointer"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="w-5 h-5" />
+              </a>
+              <a 
+                href="https://www.youtube.com/channel/UCNlUYW1RyevmpKY1xUQKatA" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-slate-400 hover:text-brand-blue transition-colors cursor-pointer"
+                aria-label="YouTube"
+              >
+                <Youtube className="w-6 h-6" />
+              </a>
+            </div>
           </div>
 
           {/* Solutions Column */}

@@ -18,11 +18,26 @@ export default function ContactView() {
   const [submitted, setSubmitted] = useState(false);
   const [inquiryCode, setInquiryCode] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!name || !email) return;
+  const handleExternalSubmit = (method: 'email' | 'whatsapp') => {
+    if (!name || !email) {
+      alert("Please fill in your Full Name and Work Email.");
+      return;
+    }
 
     setIsSubmitting(true);
+
+    const message = `Name: ${name}
+Email: ${email}
+Project Scope: ${projectType}
+
+Details:
+${details}`;
+
+    if (method === 'email') {
+      window.location.href = `mailto:info@webtotalsolution.com?subject=New Inquiry from ${encodeURIComponent(name)}&body=${encodeURIComponent(message)}`;
+    } else if (method === 'whatsapp') {
+      window.open(`https://wa.me/916291519364?text=${encodeURIComponent(message)}`, '_blank');
+    }
 
     // Simulate database write & security handshake
     setTimeout(() => {
@@ -64,7 +79,6 @@ export default function ContactView() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
-                onSubmit={handleSubmit} 
                 className="space-y-6"
               >
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -140,24 +154,27 @@ export default function ContactView() {
                   <span>Data is encrypted strictly under our privacy policies. We never sell, distribute, or share lead metrics.</span>
                 </div>
 
-                {/* Submit trigger */}
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-brand-blue hover:bg-brand-blue/90 text-white font-bold py-4 rounded-xl text-sm tracking-wide shadow-sm hover:shadow-md transition-all flex items-center justify-center space-x-2 disabled:opacity-50 cursor-pointer"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <span className="animate-spin border-2 border-white border-t-transparent w-4 h-4 rounded-full mr-2" />
-                      <span>Transmitting Blueprint specs...</span>
-                    </>
-                  ) : (
-                    <>
-                      <span>Submit Inquiry</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </>
-                  )}
-                </button>
+                {/* Submit triggers */}
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <button
+                    type="button"
+                    onClick={() => handleExternalSubmit('email')}
+                    disabled={isSubmitting}
+                    className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-4 rounded-xl text-sm tracking-wide shadow-sm hover:shadow-md transition-all flex items-center justify-center space-x-2 disabled:opacity-50 cursor-pointer"
+                  >
+                    <Mail className="w-4 h-4" />
+                    <span>Email Us</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleExternalSubmit('whatsapp')}
+                    disabled={isSubmitting}
+                    className="w-full bg-[#25D366] hover:bg-[#1ebd5a] text-white font-bold py-4 rounded-xl text-sm tracking-wide shadow-sm hover:shadow-md transition-all flex items-center justify-center space-x-2 disabled:opacity-50 cursor-pointer"
+                  >
+                    <MessageSquare className="w-4 h-4" />
+                    <span>WhatsApp Us</span>
+                  </button>
+                </div>
               </motion.form>
             ) : (
               <motion.div 

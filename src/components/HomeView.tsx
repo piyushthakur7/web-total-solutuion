@@ -7,6 +7,8 @@ import {
   Zap, Shield, PieChart, Database, ArrowRight, CheckCircle2, 
   Sparkles, ChevronRight, Monitor, TrendingUp, PenTool, Layout, Smartphone, Cpu, ShoppingCart
 } from 'lucide-react';
+import FAQSection from './FAQSection';
+import IndustriesAndTech from './IndustriesAndTech';
 
 export default function HomeView() {
   const router = useRouter();
@@ -156,11 +158,11 @@ export default function HomeView() {
       <section className="relative z-20 -mt-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
           {[
-            { title: 'Landing & Informative Pages', icon: <Monitor className="w-6 h-6 text-white" />, link: '/services/landing-pages', desc: 'High-conversion landing pages engineered for speed and clarity.' },
-            { title: 'Full SaaS Development', icon: <Layout className="w-6 h-6 text-white" />, link: '/services/saas', desc: 'Scalable, complex SaaS platforms tailored to your business.' },
+            { title: 'Corporate Websites', icon: <Layout className="w-6 h-6 text-white" />, link: '/services/corporate', desc: 'Premium, high-performance portfolios and company portals.' },
+            { title: 'Landing Pages', icon: <Monitor className="w-6 h-6 text-white" />, link: '/services/landing-pages', desc: 'High-conversion, single-page sites engineered for lead generation.' },
+            { title: 'Informative Pages', icon: <PieChart className="w-6 h-6 text-white" />, link: '/services/informative', desc: 'Detailed, highly structured platforms for brand storytelling.' },
             { title: 'Content Writing', icon: <PenTool className="w-6 h-6 text-white" />, link: '/services/content-writing', desc: 'SEO-driven copy that engages audiences and drives action.' },
-            { title: 'E-commerce Development', icon: <ShoppingCart className="w-6 h-6 text-white" />, link: '/services/ecommerce', desc: 'Secure, dynamic e-commerce stores maximizing sales.' },
-            { title: 'Android & iOS Apps', icon: <Smartphone className="w-6 h-6 text-white" />, link: '/services/mobile-apps', desc: 'Native and cross-platform apps with flawless UX/UI.' },
+            { title: 'Maintenance & Support', icon: <Shield className="w-6 h-6 text-white" />, link: '/services/maintenance', desc: 'Ongoing technical support to keep your platform flawless.' },
             { title: 'Digital Marketing', icon: <TrendingUp className="w-6 h-6 text-white" />, link: '/services/digital-marketing', desc: 'Data-driven marketing campaigns accelerating brand growth.' },
           ].map((service, idx) => (
             <div key={idx} className="bg-white rounded-2xl p-6 shadow-xl border border-slate-100 flex flex-col items-center text-center hover:-translate-y-2 hover:shadow-2xl transition-all duration-300">
@@ -196,173 +198,8 @@ export default function HomeView() {
         </div>
       </section>
 
-      {/* 3. Engineered for Performance (Bento Grid) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center space-y-4 max-w-3xl mx-auto mb-16">
-          <span className="text-xs uppercase tracking-widest font-extrabold text-brand-blue">
-            Performance Architecture
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Designed for Performance, Built for Scalability
-          </h2>
-          <p className="text-slate-600">
-            As a top-rated web development agency in Kolkata, we abandon boilerplate templates to build highly optimized platforms customized to power business velocity and dynamic enterprise operations.
-          </p>
-        </div>
-
-        {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Card 1: Lightning Fast (Spans 2 columns) */}
-          <div className="md:col-span-2 bg-slate-900 text-white rounded-3xl p-8 shadow-md relative overflow-hidden flex flex-col justify-between group">
-            <div className="absolute right-0 top-0 w-64 h-64 bg-brand-blue/10 rounded-full filter blur-3xl" />
-            
-            <div className="space-y-4">
-              <div className="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center text-brand-blue">
-                <Zap className="w-6 h-6 text-yellow-400" />
-              </div>
-              <h3 className="text-2xl font-bold">Lightning Fast Load Times</h3>
-              <p className="text-slate-400 max-w-xl text-sm leading-relaxed">
-                Page speed directly affects search indexing and user conversion. Our structures deliver near-instant loading through advanced SSR, static caching, and fine-tuned asset pipelines.
-              </p>
-            </div>
-
-            {/* Interactive Live Speed Simulator */}
-            <div className="mt-8 bg-slate-800/80 border border-white/10 rounded-2xl p-6 relative">
-              <div className="flex justify-between items-center mb-4">
-                <div>
-                  <span className="text-xs text-slate-400 block font-mono">SITE AUDIT SIMULATOR</span>
-                  <span className="text-sm font-bold text-white">Lighthouse Performance Report</span>
-                </div>
-                <button
-                  onClick={startPerformanceAudit}
-                  disabled={isAuditing}
-                  className={`text-xs px-3.5 py-1.5 rounded-lg font-bold tracking-wide transition-all ${
-                    isAuditing 
-                      ? 'bg-slate-700 text-slate-400 cursor-not-allowed' 
-                      : 'bg-brand-blue text-white hover:bg-brand-blue/95 cursor-pointer'
-                  }`}
-                >
-                  {isAuditing ? 'Auditing...' : 'Run Performance Audit'}
-                </button>
-              </div>
-
-              {/* Progress/Score Display */}
-              <div className="space-y-3">
-                <div className="flex justify-between text-xs text-slate-400">
-                  <span>Server Response Rate</span>
-                  <span className="font-mono">{isAuditing ? `${auditProgress}%` : auditComplete ? '100%' : 'Ready'}</span>
-                </div>
-                <div className="h-2.5 bg-slate-700/50 rounded-full overflow-hidden">
-                  <div 
-                    className="h-full bg-brand-blue rounded-full transition-all duration-150"
-                    style={{ width: `${isAuditing ? auditProgress : auditComplete ? 100 : 40}%` }}
-                  />
-                </div>
-                <div className="flex items-center justify-between pt-2 border-t border-white/5">
-                  <span className="text-xs text-slate-400">Calculated Speed Score</span>
-                  <div className="flex items-center space-x-2">
-                    <span className={`text-lg font-extrabold font-mono ${
-                      auditComplete ? 'text-green-400' : 'text-yellow-400'
-                    }`}>
-                      {isAuditing ? 'Calculating...' : `${auditScore}/100`}
-                    </span>
-                    <span className="text-[10px] text-slate-500">(90+ is Ideal)</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Card 2: Enterprise Security */}
-          <div className="bg-slate-50 border border-slate-100 rounded-3xl p-8 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
-            <div className="space-y-4">
-              <div className="w-12 h-12 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600">
-                <Shield className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-bold text-slate-950">Enterprise Security</h3>
-              <p className="text-slate-600 text-sm leading-relaxed">
-                Military-grade architecture with zero trust models. Protected from bots, scrapers, and malicious injection attacks.
-              </p>
-            </div>
-
-            {/* Interactive Security Switch */}
-            <div className="mt-8 bg-white border border-slate-100 rounded-2xl p-4 flex items-center justify-between">
-              <div>
-                <span className="text-xs text-slate-400 block font-mono">FIREWALL SYSTEM</span>
-                <span className="text-sm font-bold text-slate-800">
-                  {firewallOn ? 'Active Shielding' : 'Shielding Suspended'}
-                </span>
-              </div>
-              <button
-                onClick={() => setFirewallOn(!firewallOn)}
-                className={`w-12 h-6 rounded-full p-0.5 transition-colors duration-200 cursor-pointer ${
-                  firewallOn ? 'bg-emerald-500' : 'bg-slate-300'
-                }`}
-              >
-                <div className={`w-5 h-5 bg-white rounded-full shadow-sm transform transition-transform duration-200 ${
-                  firewallOn ? 'translate-x-6' : 'translate-x-0'
-                }`} />
-              </button>
-            </div>
-          </div>
-
-          {/* Card 3: Data-Driven Design */}
-          <div className="bg-slate-50 border border-slate-100 rounded-3xl p-8 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
-            <div className="space-y-4">
-              <div className="w-12 h-12 bg-brand-blue/5 rounded-2xl flex items-center justify-center text-brand-blue">
-                <PieChart className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-bold text-slate-950">Data-Driven Design</h3>
-              <p className="text-slate-600 text-sm leading-relaxed">
-                Visual aesthetics are empty without conversions. Every asset placement, call-to-action flow, and text block is backed by core analytical models.
-              </p>
-            </div>
-
-            <div className="mt-8 bg-white border border-slate-100 rounded-2xl p-4">
-              <div className="flex justify-between items-center mb-1">
-                <span className="text-[10px] text-slate-400 font-mono">CONVERSION BOOST</span>
-                <span className="text-xs font-bold text-emerald-600 font-mono">+14.2%</span>
-              </div>
-              <div className="flex space-x-1.5 h-10 items-end">
-                <div className="w-full bg-slate-100 h-[25%] rounded-t-sm" />
-                <div className="w-full bg-slate-100 h-[40%] rounded-t-sm" />
-                <div className="w-full bg-slate-100 h-[35%] rounded-t-sm" />
-                <div className="w-full bg-slate-100 h-[65%] rounded-t-sm" />
-                <div className="w-full bg-slate-100 h-[55%] rounded-t-sm" />
-                <div className="w-full bg-brand-blue h-[90%] rounded-t-sm animate-pulse" />
-              </div>
-            </div>
-          </div>
-
-          {/* Card 4: Scalable Architecture (Spans 2 columns) */}
-          <div className="md:col-span-2 bg-slate-900 text-white rounded-3xl p-8 shadow-md relative overflow-hidden flex flex-col justify-between group">
-            <div className="absolute left-0 top-0 w-64 h-64 bg-slate-800 rounded-full filter blur-3xl -z-10" />
-            
-            <div className="space-y-4">
-              <div className="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center text-brand-blue">
-                <Database className="w-6 h-6 text-brand-blue" />
-              </div>
-              <h3 className="text-2xl font-bold">Scalable Architecture</h3>
-              <p className="text-slate-400 max-w-xl text-sm leading-relaxed">
-                Whether you serve 100 visitors or millions of concurrent sessions, our serverless, CDN-cached infrastructures scale automatically with absolute reliability and predictability.
-              </p>
-            </div>
-
-            {/* Simulated server nodes */}
-            <div className="mt-8 grid grid-cols-4 gap-4">
-              {['US-West Edge', 'EU-Central Node', 'AP-South Ingress', 'US-East Replica'].map((node, i) => (
-                <div key={i} className="bg-slate-800/80 border border-white/5 rounded-xl p-3 text-center">
-                  <span className="text-[9px] font-mono text-slate-500 block uppercase">{node}</span>
-                  <div className="flex items-center justify-center space-x-1 mt-1">
-                    <span className="w-2 h-2 rounded-full bg-green-400 inline-block animate-ping" />
-                    <span className="text-[11px] font-bold text-slate-300">99.9%</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* 3. Industries & Technologies */}
+      <IndustriesAndTech />
 
       {/* 4. Comprehensive Digital Solutions (Services Preview) */}
       <section className="bg-slate-50/60 py-24 border-y border-slate-100">
@@ -420,19 +257,19 @@ export default function HomeView() {
             {/* Service Item 2 */}
             <div className="bg-white border border-slate-100 rounded-3xl p-8 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
               <div className="space-y-6">
-                <span className="text-3xl">💻</span>
-                <h3 className="text-xl font-bold text-slate-950">SaaS & Apps</h3>
+                <span className="text-3xl">🎯</span>
+                <h3 className="text-xl font-bold text-slate-950">High-Conversion Landing Pages</h3>
                 <p className="text-slate-600 text-sm leading-relaxed">
-                  Interactive administrative systems, cloud services, and tailored multi-tenant web tools styled with flawless speed and absolute data integrity.
+                  Laser-focused single-page platforms engineered with one ultimate goal: maximizing leads, driving sales, and capturing user intent instantly.
                 </p>
                 <ul className="space-y-2.5 text-xs text-slate-600 pt-2 border-t border-slate-50">
                   <li className="flex items-center space-x-2">
                     <CheckCircle2 className="w-4 h-4 text-brand-blue shrink-0" />
-                    <span>Highly Responsive Systems</span>
+                    <span>Optimized Call-to-Action Flows</span>
                   </li>
                   <li className="flex items-center space-x-2">
                     <CheckCircle2 className="w-4 h-4 text-brand-blue shrink-0" />
-                    <span>Third-Party API Integrations</span>
+                    <span>A/B Tested User Journeys</span>
                   </li>
                 </ul>
               </div>
@@ -448,19 +285,19 @@ export default function HomeView() {
             {/* Service Item 3 */}
             <div className="bg-white border border-slate-100 rounded-3xl p-8 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
               <div className="space-y-6">
-                <span className="text-3xl">🛒</span>
-                <h3 className="text-xl font-bold text-slate-950">E-Commerce Platforms</h3>
+                <span className="text-3xl">📖</span>
+                <h3 className="text-xl font-bold text-slate-950">Informative Websites</h3>
                 <p className="text-slate-600 text-sm leading-relaxed">
-                  Tailored storefronts with quick load sequences, automated checkout models, and fluid inventory structures designed to drive checkout conversion.
+                  Structured, content-rich platforms ideal for educational institutions, or intricate service explanations with fluid navigation.
                 </p>
                 <ul className="space-y-2.5 text-xs text-slate-600 pt-2 border-t border-slate-50">
                   <li className="flex items-center space-x-2">
                     <CheckCircle2 className="w-4 h-4 text-brand-blue shrink-0" />
-                    <span>Fluid Checkout Sequences</span>
+                    <span>Intuitive Content Hierarchies</span>
                   </li>
                   <li className="flex items-center space-x-2">
                     <CheckCircle2 className="w-4 h-4 text-brand-blue shrink-0" />
-                    <span>Stripe & Payment Configurations</span>
+                    <span>Lightning Fast Asset Delivery</span>
                   </li>
                 </ul>
               </div>
@@ -550,6 +387,9 @@ export default function HomeView() {
           </div>
         </div>
       </section>
+
+      {/* FAQ Section */}
+      <FAQSection />
 
       {/* 6. Static CTA Section */}
       <section className="bg-slate-900 text-white rounded-3xl max-w-7xl mx-auto px-8 py-12 md:py-16 text-center space-y-6 relative overflow-hidden">

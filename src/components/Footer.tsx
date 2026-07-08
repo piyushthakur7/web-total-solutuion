@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Mail, Phone, MapPin, ArrowUpRight, Instagram, Linkedin, Youtube } from 'lucide-react';
+import { Mail, Phone, MapPin, ArrowUpRight, Instagram, Linkedin, Youtube, Twitter } from 'lucide-react';
 import Logo from './Logo';
 
 export default function Footer() {
@@ -47,7 +47,16 @@ export default function Footer() {
                 className="text-slate-400 hover:text-brand-blue transition-colors cursor-pointer"
                 aria-label="YouTube"
               >
-                <Youtube className="w-6 h-6" />
+                <Youtube className="w-5 h-5" />
+              </a>
+              <a 
+                href="https://x.com/webtotalindia" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-slate-400 hover:text-brand-blue transition-colors cursor-pointer"
+                aria-label="X (Twitter)"
+              >
+                <Twitter className="w-5 h-5" />
               </a>
             </div>
           </div>

@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, CheckCircle, ArrowRight, MessageSquare, Shield, Clock, HelpCircle, Instagram, Linkedin, Youtube } from 'lucide-react';
+import { Mail, Phone, MapPin, CheckCircle, ArrowRight, MessageSquare, Shield, Clock, HelpCircle, Instagram, Linkedin, Youtube, Twitter } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 export default function ContactView() {
@@ -271,6 +271,10 @@ export default function ContactView() {
                     <a href="https://www.youtube.com/channel/UCNlUYW1RyevmpKY1xUQKatA" target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-slate-800 hover:text-brand-blue transition-colors flex items-center">
                       <Youtube className="w-4 h-4 mr-1 text-slate-400" />
                       YouTube
+                    </a>
+                    <a href="https://x.com/webtotalindia" target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-slate-800 hover:text-brand-blue transition-colors flex items-center">
+                      <Twitter className="w-4 h-4 mr-1 text-slate-400" />
+                      X (Twitter)
                     </a>
                   </div>
                 </div>

@@ -9,9 +9,9 @@ export const metadata: Metadata = {
   title: 'Web Total Solution',
   description: 'Building High-Performance Websites That Grow Your Business',
   icons: {
-    icon: '/bhaskar_logo_1.png',
-    shortcut: '/bhaskar_logo_1.png',
-    apple: '/bhaskar_logo_1.png',
+    icon: '/images/image.png',
+    shortcut: '/images/image.png',
+    apple: '/images/image.png',
   },
 };
 

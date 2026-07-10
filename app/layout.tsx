@@ -6,12 +6,56 @@ import Preloader from '../src/components/Preloader';
 import LenisProvider from '../src/components/LenisProvider';
 
 export const metadata: Metadata = {
-  title: 'Web Total Solution',
-  description: 'Building High-Performance Websites That Grow Your Business',
+  metadataBase: new URL('https://www.webtotalsolution.com'),
+  title: {
+    default: 'Web Total Solution | High-Performance Websites & Digital Services',
+    template: '%s | Web Total Solution',
+  },
+  description: 'Web Total Solution builds high-performance websites, scalable SaaS applications, and e-commerce platforms that drive growth and conversions for modern businesses.',
+  keywords: ['web development', 'SaaS development', 'e-commerce', 'digital marketing', 'mobile apps', 'Web Total Solution', 'Kolkata', 'software agency'],
+  authors: [{ name: 'Web Total Solution' }],
+  creator: 'Web Total Solution',
+  publisher: 'Web Total Solution',
+  openGraph: {
+    type: 'website',
+    locale: 'en_IN',
+    url: 'https://www.webtotalsolution.com',
+    siteName: 'Web Total Solution',
+    title: 'Web Total Solution | High-Performance Websites & Digital Services',
+    description: 'We build high-performance websites, scalable SaaS applications, and e-commerce platforms that drive growth.',
+    images: [
+      {
+        url: '/logo_new.png',
+        width: 1200,
+        height: 630,
+        alt: 'Web Total Solution Logo',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Web Total Solution | High-Performance Websites & Digital Services',
+    description: 'We build high-performance websites, scalable SaaS applications, and e-commerce platforms that drive growth.',
+    images: ['/logo_new.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   icons: {
     icon: '/images/image.png',
     shortcut: '/images/image.png',
     apple: '/images/image.png',
+  },
+  alternates: {
+    canonical: 'https://www.webtotalsolution.com',
   },
 };
 
@@ -28,13 +72,13 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "LocalBusiness",
+              "@type": ["Organization", "ProfessionalService", "LocalBusiness"],
               "name": "Web Total Solution",
               "image": "https://www.webtotalsolution.com/_next/image?url=%2Flogo_new.png&w=384&q=75",
               "@id": "https://www.webtotalsolution.com/",
               "url": "https://www.webtotalsolution.com/",
               "telephone": "+91 6291 519 364",
-              "priceRange": "₹",
+              "priceRange": "₹₹",
               "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "Pachpota, Garia",
@@ -47,7 +91,10 @@ export default function RootLayout({
                 "latitude": 22.4571905,
                 "longitude": 88.4215653
               },
-              "sameAs": "https://www.facebook.com/webtotalsolution" 
+              "sameAs": [
+                "https://www.facebook.com/webtotalsolution",
+                "https://www.linkedin.com/company/web-total-solution"
+              ]
             })
           }}
         />

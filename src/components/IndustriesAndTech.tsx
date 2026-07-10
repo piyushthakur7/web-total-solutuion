@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Image from 'next/image';
 import { 
   GraduationCap, HeartPulse, Truck, ShoppingCart, Scale, Home, 
   Building2, Plane, Utensils, Wallet, Users, Car
@@ -76,7 +77,7 @@ export default function IndustriesAndTech() {
               {technologies.map((tech, idx) => (
                 <div key={idx} className="flex flex-col items-center justify-center p-4 sm:p-6 rounded-2xl bg-slate-800/40 border border-slate-700/50 hover:bg-slate-800 hover:border-slate-500 transition-all duration-300 group cursor-pointer backdrop-blur-sm">
                   <div className={`w-12 h-12 rounded-xl bg-slate-900/80 border border-slate-700/50 flex items-center justify-center group-hover:scale-110 transition-all duration-300 mb-4 shadow-inner ${tech.shadowColor}`}>
-                    <img src={tech.logo} alt={tech.name} className={`w-6 h-6 object-contain transition-transform duration-300 ${tech.invert ? 'invert' : ''}`} />
+                    <Image src={tech.logo} alt={`${tech.name} logo`} width={24} height={24} className={`w-6 h-6 object-contain transition-transform duration-300 ${tech.invert ? 'invert' : ''}`} />
                   </div>
                   <span className="text-[11px] sm:text-xs font-semibold text-slate-300 text-center leading-tight group-hover:text-white transition-colors">{tech.name}</span>
                 </div>

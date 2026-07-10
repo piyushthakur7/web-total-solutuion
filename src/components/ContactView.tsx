@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, CheckCircle, ArrowRight, MessageSquare, Shield, Clock, HelpCircle, Instagram, Linkedin, Youtube, Twitter } from 'lucide-react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'motion/react';
 
 export default function ContactView() {
@@ -301,10 +302,12 @@ ${details}`;
 
           {/* Styled Map frame with marker overlay */}
           <div className="border border-slate-150 rounded-3xl overflow-hidden bg-white shadow-sm relative group aspect-video">
-            <img
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpPUtL1l6N-Hol-fBqsvSbAXTM9CBjo0p0HRX7VaQ38CMZ3q4kwqxeMonZsihaAFfomEU6cR7jYBuaiUuhufq74XEeccPQzZk4EJDaBddUMON4TNz40Knmg8-zrFiQCX4nCAjV7HXj9OZ0_WGeWxDaRXj1zm8m2MErjL7r7loFvQWEK89whWjoNkWapP5lBQ9PllqBzaimTnmAYqL8AwPtFTl0u7zWxA0u2S2ADO7BzhvRJI9OLGKWMU84N4NGBQMGW4Er4gEWk0Q"
+            <Image
+              src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=800"
               alt="Web Total Solution Kolkata Headquarters Map Location"
               className="w-full h-full object-cover grayscale transition-all duration-300 group-hover:grayscale-0"
+              width={800}
+              height={450}
               referrerPolicy="no-referrer"
             />
             {/* Pulsing Marker Overlay */}

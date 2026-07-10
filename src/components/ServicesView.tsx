@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { 
   CheckCircle2, ArrowRight, Laptop, ShoppingCart, Cpu, 
   Sparkles, ExternalLink, RefreshCw, Smartphone, Layers
@@ -54,10 +55,12 @@ export default function ServicesView() {
             {/* Right Column (Hero image matching mockup) */}
             <div className="lg:col-span-5">
               <div className="border-4 border-white bg-white rounded-2xl overflow-hidden shadow-xl relative">
-                <img
-                  src="https://lh3.googleusercontent.com/aida/AP1WRLtez1F_LlPcD5NzSXhgJrNtBdg3jZLt2zxfvtmWt7g-PibuZWDVfl7dt-NahpKcdj9O4oy2mVj4cIwAN_e5LCpWXwLEiTAdxmq3E-EWFBc-KziMDj18-ueOv1g2YJeL_jD1kl1PZ-_tIeDkWHctPTucjZrtuP_bj0La6uuNSOEss2lssyNa6_gQxD2HAINzRCuCeNfn9O5YqtCa8qz7TK4D-M-MUx3MBIgEHpc1y38VxMQ2mEDcJ9OAJQ"
+                <Image
+                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800"
                   alt="Precision Digital Architecture Showcase Dashboard"
                   className="w-full h-auto object-cover"
+                  width={800}
+                  height={500}
                   referrerPolicy="no-referrer"
                 />
               </div>
@@ -171,10 +174,12 @@ export default function ServicesView() {
             </div>
             
             <div className="mt-8 rounded-2xl overflow-hidden border border-slate-200">
-              <img
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD81TKGkMosvx34Z-jZE3PqQCWQteA-8q5DTnF-AJsoiNJphdOllXFQFgwR2jdDRe_gn7c3Y9OzbO1b7gjwRwnqiMnkVzv9r0B0fXtrCh7S7UU9A42lyXphKTf9CH4I5X7312Z7oFEkG5JLnrGU8cUgA9idKllyXG3NolRUj6JKXbqsxOomy7yp6p_Q6xKcrUPxlvH5NN611w09KywC9KB3CWpI2u3Lc3-zqr491yuGwYlkeEHpcJ54p36At1W0uGIZYVZIgUM8znM"
+              <Image
+                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"
                 alt="Corporate Website Showcase Layout"
                 className="w-full h-32 object-cover"
+                width={800}
+                height={128}
                 referrerPolicy="no-referrer"
               />
             </div>
@@ -209,10 +214,12 @@ export default function ServicesView() {
             </div>
             
             <div className="mt-8 rounded-2xl overflow-hidden border border-slate-200">
-              <img
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6q9xi8S_kkVSHtPGphrN_161Y-Sz6drSn5H76-zkg8YsTcjfMTKgKaDz9H1elj7OFTmuQixqrMcn5FjcImjfXErCgRneDxXsR6Cy9XY1VusSPszHdNO2XXE-MlIt2B6ZYT6KFikBOOKaBFq4fs_pb_DXo6My-yLjcylYDGFsz8Fd0t0o84KqNJ0Vme9fMY_JZThlEo6lGC_XHkRGzAQW5ciDy5flJst0nVGJIg4HJRWENCp3apYkCOieXlk7Z8nG2QtKdDkdBz4g"
+              <Image
+                src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800"
                 alt="E-Commerce Custom Storefront Layout"
                 className="w-full h-32 object-cover"
+                width={800}
+                height={128}
                 referrerPolicy="no-referrer"
               />
             </div>
@@ -247,10 +254,12 @@ export default function ServicesView() {
             </div>
             
             <div className="mt-8 rounded-2xl overflow-hidden border border-slate-200">
-              <img
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjKTXS0cB8XWOSdJ6YxiP-hlMr6NnJo-wQGJ9EpAMrrUo1oy95yW1ZPvQZhb_nvapfej8S9s1WAmK8XMUPAXuisiiW-fxNGPtBKPpgQrNvpajih93sS1EbE5SOG5hyomJIZj-lRXFpSEqQg-0vrbtMqovxLVCCFqnt2VGQre2lIXstt3Lt9_1OGeBKhp_CI8ooh2r_qFXJkeXenWsf6CmaEDfw-0D0njMab6yP3J920Bd5cvs6284rRqElezwKeBT_31HDop2QD68"
+              <Image
+                src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=800"
                 alt="SaaS Application Admin Dashboard Mockup"
                 className="w-full h-32 object-cover"
+                width={800}
+                height={128}
                 referrerPolicy="no-referrer"
               />
             </div>
@@ -286,10 +295,12 @@ export default function ServicesView() {
 
             {/* Asset right */}
             <div className="flex-1 rounded-2xl overflow-hidden border border-white/5 bg-slate-800/50 p-2 shadow-2xl relative self-center lg:self-auto max-w-xl lg:max-w-none w-full">
-              <img
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2qJ_r16K7-NLk-Z1-MimQ5n_YZLq9We_retGapH3bx4dfHkNgzMVFFoJ-9LZ4nSABl2HP0Cot2BWudtgrYfEDuZ2UOIprLiRK3tZVdFY_urOCak2F6sm5ROjfmspQCk0ZdMIpU4ZwvTQ1aigl_cMSRgHLviVGbiLC-Xx2ey9H12UfM85X1O_v1joUdbWz8aEbXdSVlZZVqIXYtOWBtYr-R2ejAd0j_UH4Xfd40IqZREiqei5ScMl5DKwO2jfK5Zn4O2iwGuyStHA"
+              <Image
+                src="https://images.unsplash.com/photo-1432888117426-1d6e1c668045?auto=format&fit=crop&q=80&w=800"
                 alt="High Converting Promo Dashboard Mockup"
                 className="w-full h-full object-cover rounded-xl max-h-[250px] lg:max-h-none"
+                width={800}
+                height={250}
                 referrerPolicy="no-referrer"
               />
             </div>

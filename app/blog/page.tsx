@@ -3,6 +3,16 @@ import Link from 'next/link';
 import { createClient } from '../../src/utils/supabase/server';
 import { Calendar, User, ArrowRight } from 'lucide-react';
 
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Blog & Insights | Web Total Solution',
+  description: 'Read the latest insights, tutorials, and news about web development, SaaS, e-commerce, and digital marketing.',
+  alternates: {
+    canonical: 'https://www.webtotalsolution.com/blog',
+  },
+};
+
 export const revalidate = 60; // Revalidate every minute
 
 export default async function BlogPage() {

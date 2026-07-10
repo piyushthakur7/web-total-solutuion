@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import Image from "next/image";
 
 export default function Preloader() {
   const [progress, setProgress] = useState(0);
@@ -144,9 +145,11 @@ export default function Preloader() {
               animate={{ scale: [1, 1.05, 1], opacity: [1, 0.85, 1] }}
               transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
             >
-              <img
+              <Image
                 src="/bhaskar_logo_1.png"
                 alt="Web Total Solution Logo"
+                width={200}
+                height={80}
                 className="h-16 md:h-20 w-auto object-contain scale-[1.5]"
               />
             </motion.div>

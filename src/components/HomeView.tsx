@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { PORTFOLIO_ITEMS } from '../data';
 import { 
   Zap, Shield, PieChart, Database, ArrowRight, CheckCircle2, 
@@ -136,10 +137,12 @@ export default function HomeView() {
               </a>
 
               <div className="border-8 border-white bg-white rounded-3xl overflow-hidden shadow-2xl">
-                <img
+                <Image
                   src="https://images.pexels.com/photos/6476257/pexels-photo-6476257.jpeg"
                   alt="High Performance Digital Agency Illustration"
                   className="w-full h-auto object-cover max-h-[500px]"
+                  width={800}
+                  height={500}
                   referrerPolicy="no-referrer"
                 />
               </div>
@@ -332,10 +335,12 @@ export default function HomeView() {
           <div className="lg:col-span-5 relative">
             <div className="absolute inset-0 bg-slate-800/50 rounded-2xl -z-10 transform -rotate-2" />
             <div className="border border-slate-700/50 rounded-2xl overflow-hidden shadow-lg bg-[#0F172B] p-2">
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=800"
                 alt="Product Engineering Process Methodology Diagram"
                 className="w-full h-auto rounded-xl object-cover max-h-[500px]"
+                width={800}
+                height={500}
                 referrerPolicy="no-referrer"
               />
             </div>

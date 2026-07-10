@@ -3,10 +3,48 @@ import { createClient } from '../../../src/utils/supabase/server';
 import { notFound } from 'next/navigation';
 import { Calendar, User, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
+import { Metadata } from 'next';
 
 export const revalidate = 60;
 
-export default async function BlogPostPage({ params }: { params: { slug: string } }) {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const resolvedParams = await params;
+  if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+    return { title: 'Blog | Web Total Solution' };
+  }
+
+  const supabase = await createClient();
+  const { data: blog } = await supabase
+    .from('blogs')
+    .select('*')
+    .eq('slug', resolvedParams.slug)
+    .eq('published', true)
+    .single();
+
+  if (!blog) {
+    return { title: 'Post Not Found | Web Total Solution' };
+  }
+
+  const excerpt = blog.excerpt || blog.content?.substring(0, 160).replace(/<[^>]+>/g, '') || 'Read this blog post by Web Total Solution.';
+
+  return {
+    title: `${blog.title} | Web Total Solution Blog`,
+    description: excerpt,
+    alternates: {
+      canonical: `https://www.webtotalsolution.com/blog/${resolvedParams.slug}`,
+    },
+    openGraph: {
+      title: blog.title,
+      description: excerpt,
+      url: `https://www.webtotalsolution.com/blog/${resolvedParams.slug}`,
+      type: 'article',
+      publishedTime: blog.created_at,
+    },
+  };
+}
+
+export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const resolvedParams = await params;
   if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
     return (
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
@@ -25,7 +63,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
   const { data: blog, error } = await supabase
     .from('blogs')
     .select('*')
-    .eq('slug', params.slug)
+    .eq('slug', resolvedParams.slug)
     .eq('published', true)
     .single();
 

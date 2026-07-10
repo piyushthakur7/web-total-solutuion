@@ -8,7 +8,9 @@ export function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+import { Metadata } from 'next';
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const resolvedParams = await params;
   const service = SERVICES_DATA[resolvedParams.slug];
   
@@ -19,6 +21,15 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: `${service.title} | Web Total Solution`,
     description: service.subtitle,
+    alternates: {
+      canonical: `https://www.webtotalsolution.com/services/${resolvedParams.slug}`,
+    },
+    openGraph: {
+      title: `${service.title} | Web Total Solution`,
+      description: service.subtitle,
+      url: `https://www.webtotalsolution.com/services/${resolvedParams.slug}`,
+      type: 'website',
+    },
   };
 }
 

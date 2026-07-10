@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import { ServiceData } from '../types';
 import { ArrowRight, CheckCircle2, LayoutTemplate } from 'lucide-react';
 import PricingView from './PricingView';
@@ -14,10 +15,13 @@ export default function ServiceDetailView({ service }: { service: ServiceData })
       {/* Hero Section with Wave */}
       <section className="relative pt-32 pb-40 overflow-hidden bg-slate-900">
         <div className="absolute inset-0 z-0">
-          <img 
+          <Image 
             src={service.heroImage} 
             alt={service.title} 
             className="w-full h-full object-cover opacity-20"
+            width={1920}
+            height={1080}
+            referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-900/60 to-slate-900/90" />
         </div>

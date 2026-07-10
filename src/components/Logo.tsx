@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'motion/react';
+import Image from 'next/image';
 
 interface LogoProps {
   className?: string;
@@ -29,9 +30,11 @@ export default function Logo({
         transition={{ type: 'spring', stiffness: 400, damping: 15 }}
         className="shrink-0 flex items-center justify-center relative"
       >
-        <img
+        <Image
           src="/bhaskar_logo_1.png"
           alt="Web Total Solution Logo"
+          width={240}
+          height={80}
           // scale-[2] makes it 2x larger visually without taking up more physical space!
           className={`${heightMap[size]} w-auto object-contain drop-shadow-sm scale-[2.2] origin-left`}
         />

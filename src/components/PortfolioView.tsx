@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { PortfolioItem } from '../types';
 import { PORTFOLIO_ITEMS } from '../data';
 import { Sparkles, ArrowUpRight, Filter, MessageSquare, TrendingUp, ExternalLink } from 'lucide-react';
@@ -90,10 +91,12 @@ export default function PortfolioView() {
                       rel="noopener noreferrer"
                       className="block w-full h-full relative"
                     >
-                      <img
+                      <Image
                         src={item.imageUrl}
                         alt={item.title}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                        width={600}
+                        height={400}
                         referrerPolicy="no-referrer"
                       />
                       {/* Hover Overlay with text */}
@@ -105,10 +108,12 @@ export default function PortfolioView() {
                       </div>
                     </a>
                   ) : (
-                    <img
+                    <Image
                       src={item.imageUrl}
                       alt={item.title}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                      width={600}
+                      height={400}
                       referrerPolicy="no-referrer"
                     />
                   )}

@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 import FAQSection from './FAQSection';
 import IndustriesAndTech from './IndustriesAndTech';
+import WhyNeedWebsite from './WhyNeedWebsite';
 
 export default function HomeView() {
   const router = useRouter();
@@ -198,11 +199,14 @@ export default function HomeView() {
         </div>
       </section>
 
+      {/* 2.5. Why Business Needs a Website */}
+      <WhyNeedWebsite />
+
       {/* 3. Industries & Technologies */}
       <IndustriesAndTech />
 
       {/* 4. Comprehensive Digital Solutions (Services Preview) */}
-      <section className="bg-slate-50/60 py-24 border-y border-slate-100">
+      <section className="bg-white py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-4">
             <div className="space-y-4 max-w-2xl">
@@ -314,14 +318,22 @@ export default function HomeView() {
       </section>
 
       {/* 5. Methodology Section (The Architectural Approach) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <section className="relative bg-[#0F172B] py-24 sm:py-32">
+        {/* Top Wave */}
+        <div className="absolute top-[-1px] left-0 right-0 z-10 pointer-events-none transform rotate-180">
+          <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-[60px] sm:h-[120px] text-white" preserveAspectRatio="none">
+            <path d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z" fill="currentColor"></path>
+          </svg>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left image banner */}
           <div className="lg:col-span-5 relative">
-            <div className="absolute inset-0 bg-slate-100 rounded-2xl -z-10 transform -rotate-2" />
-            <div className="border border-slate-100 rounded-2xl overflow-hidden shadow-lg bg-white p-2">
+            <div className="absolute inset-0 bg-slate-800/50 rounded-2xl -z-10 transform -rotate-2" />
+            <div className="border border-slate-700/50 rounded-2xl overflow-hidden shadow-lg bg-[#0F172B] p-2">
               <img
-                src="https://lh3.googleusercontent.com/aida/AP1WRLsRGmB7q_kxILfqZb9_PNNf50HTzwA1vDptiPLClxwY7Zj2T4LTN2gQRHSL_67McvPCE0gg7X_4mZ5LvYr4_yu9NTlnCcydCb3YuV5giPY-TCIvWAeRGj6sQMsWCfEdHWCtW9S3t8Vu5i_XTPigjier10MDIYSXMx-_u7rwugvM5mK2xCFY6124_XmlN5ZfXpaQlOJfABS9x7bO4FtlsMtuijlgbatKlB5IuhVxXV2oBtHUfQImEhR4PA"
+                src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=800"
                 alt="Product Engineering Process Methodology Diagram"
                 className="w-full h-auto rounded-xl object-cover max-h-[500px]"
                 referrerPolicy="no-referrer"
@@ -332,27 +344,27 @@ export default function HomeView() {
           {/* Right text steps timeline */}
           <div className="lg:col-span-7 space-y-8">
             <div className="space-y-4">
-              <span className="text-xs uppercase tracking-widest font-extrabold text-brand-blue">
+              <span className="text-xs uppercase tracking-widest font-extrabold text-blue-400">
                 Our Methodology
               </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
                 The Architectural Approach
               </h2>
-              <p className="text-slate-600">
+              <p className="text-slate-400">
                 We believe exceptional software is a product of absolute clarity, systematic prototyping, and continuous stress auditing.
               </p>
             </div>
 
             {/* Vertical timeline */}
-            <div className="space-y-8 relative before:absolute before:left-6 before:top-2 before:bottom-2 before:w-[2px] before:bg-slate-100">
+            <div className="space-y-8 relative before:absolute before:left-6 before:top-2 before:bottom-2 before:w-[2px] before:bg-slate-800">
               {/* Step 1 */}
               <div className="flex space-x-6 relative group">
-                <div className="w-12 h-12 bg-slate-50 border border-slate-200 rounded-full flex items-center justify-center text-slate-700 font-bold font-mono text-sm group-hover:border-brand-blue group-hover:bg-brand-blue/5 transition-all shrink-0 z-10">
+                <div className="w-12 h-12 bg-slate-800 border border-slate-700 rounded-full flex items-center justify-center text-slate-300 font-bold font-mono text-sm group-hover:border-blue-500 group-hover:bg-blue-500/10 group-hover:text-blue-400 transition-all shrink-0 z-10">
                   01
                 </div>
                 <div className="space-y-1.5 pt-1">
-                  <h3 className="text-lg font-bold text-slate-950">Discovery & Strategy</h3>
-                  <p className="text-slate-600 text-sm leading-relaxed">
+                  <h3 className="text-lg font-bold text-white">Discovery & Strategy</h3>
+                  <p className="text-slate-400 text-sm leading-relaxed">
                     We deep-dive into your analytics, define target conversions, outline system architectures, and create an absolute project scope blueprint.
                   </p>
                 </div>
@@ -360,12 +372,12 @@ export default function HomeView() {
 
               {/* Step 2 */}
               <div className="flex space-x-6 relative group">
-                <div className="w-12 h-12 bg-slate-50 border border-slate-200 rounded-full flex items-center justify-center text-slate-700 font-bold font-mono text-sm group-hover:border-brand-blue group-hover:bg-brand-blue/5 transition-all shrink-0 z-10">
+                <div className="w-12 h-12 bg-slate-800 border border-slate-700 rounded-full flex items-center justify-center text-slate-300 font-bold font-mono text-sm group-hover:border-blue-500 group-hover:bg-blue-500/10 group-hover:text-blue-400 transition-all shrink-0 z-10">
                   02
                 </div>
                 <div className="space-y-1.5 pt-1">
-                  <h3 className="text-lg font-bold text-slate-950">Design & Prototyping</h3>
-                  <p className="text-slate-600 text-sm leading-relaxed">
+                  <h3 className="text-lg font-bold text-white">Design & Prototyping</h3>
+                  <p className="text-slate-400 text-sm leading-relaxed">
                     Our team develops clean, custom visual boards and functional layouts, testing interactive UX and content hierarchies before a single line of server code is written.
                   </p>
                 </div>
@@ -373,18 +385,26 @@ export default function HomeView() {
 
               {/* Step 3 */}
               <div className="flex space-x-6 relative group">
-                <div className="w-12 h-12 bg-slate-50 border border-slate-200 rounded-full flex items-center justify-center text-slate-700 font-bold font-mono text-sm group-hover:border-brand-blue group-hover:bg-brand-blue/5 transition-all shrink-0 z-10">
+                <div className="w-12 h-12 bg-slate-800 border border-slate-700 rounded-full flex items-center justify-center text-slate-300 font-bold font-mono text-sm group-hover:border-blue-500 group-hover:bg-blue-500/10 group-hover:text-blue-400 transition-all shrink-0 z-10">
                   03
                 </div>
                 <div className="space-y-1.5 pt-1">
-                  <h3 className="text-lg font-bold text-slate-950">Development & Quality Assurance</h3>
-                  <p className="text-slate-600 text-sm leading-relaxed">
+                  <h3 className="text-lg font-bold text-white">Development & Quality Assurance</h3>
+                  <p className="text-slate-400 text-sm leading-relaxed">
                     We code with absolute precision, utilizing highly modular systems, rigorous speed auditing, and comprehensive security testing to ensure pristine production code.
                   </p>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+        </div>
+
+        {/* Bottom Wave */}
+        <div className="absolute bottom-[-1px] left-0 right-0 z-10 pointer-events-none">
+          <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-[60px] sm:h-[120px] text-white" preserveAspectRatio="none">
+            <path d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z" fill="currentColor"></path>
+          </svg>
         </div>
       </section>
 

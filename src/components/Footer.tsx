@@ -128,6 +128,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/blog" className="hover:text-white transition-colors cursor-pointer block">
+                  Blog & Insights
+                </Link>
+              </li>
+              <li>
                 <Link href="/contact" className="hover:text-white transition-colors cursor-pointer block">
                   Inquire & Contact
                 </Link>

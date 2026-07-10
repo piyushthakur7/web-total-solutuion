@@ -17,7 +17,7 @@ export default async function BlogPage() {
     );
   }
 
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: blogs, error } = await supabase
     .from('blogs')
     .select('*')

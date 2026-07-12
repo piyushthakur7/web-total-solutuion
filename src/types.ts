@@ -12,7 +12,7 @@ export interface PortfolioItem {
   title: string;
   category: 'SaaS' | 'E-Commerce' | 'Corporate' | 'Landing Page';
   description: string;
-  metrics: { label: string; value: string };
+  highlight: string;
   imageUrl: string;
   techStack: string[];
   websiteUrl?: string;

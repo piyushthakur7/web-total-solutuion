@@ -122,12 +122,12 @@ export default function PortfolioView() {
                     {item.category === 'Landing Page' ? 'Landing Page' : item.category}
                   </span>
 
-                  {/* Impact Metric Badge overlay */}
+                  {/* Highlight Badge overlay */}
                   <div className="absolute bottom-4 right-4 bg-emerald-500/95 backdrop-blur-sm text-white px-4 py-2 rounded-xl shadow-lg flex items-center space-x-1.5">
-                    <TrendingUp className="w-4 h-4" />
+                    <Sparkles className="w-4 h-4" />
                     <div>
-                      <span className="block text-[8px] font-bold text-white/70 uppercase tracking-widest leading-none">IMPACT</span>
-                      <span className="text-sm font-extrabold font-mono leading-none">{item.metrics.value} {item.metrics.label}</span>
+                      <span className="block text-[8px] font-bold text-white/70 uppercase tracking-widest leading-none">HIGHLIGHT</span>
+                      <span className="text-sm font-extrabold leading-none">{item.highlight}</span>
                     </div>
                   </div>
                 </div>

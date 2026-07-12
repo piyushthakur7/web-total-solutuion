@@ -32,7 +32,8 @@ export default async function BlogPage() {
     .from('blogs')
     .select('*')
     .eq('published', true)
-    .order('created_at', { ascending: false });
+    .lte('publish_date', new Date().toISOString())
+    .order('publish_date', { ascending: false });
 
   if (error) {
     console.error("Supabase Error fetching blogs:", error);
@@ -80,7 +81,7 @@ export default async function BlogPage() {
                   <div className="flex items-center space-x-4 text-xs text-slate-500 mb-3">
                     <div className="flex items-center space-x-1">
                       <Calendar className="w-3.5 h-3.5" />
-                      <span>{new Date(blog.created_at).toLocaleDateString()}</span>
+                      <span>{new Date(blog.publish_date || blog.created_at).toLocaleDateString()}</span>
                     </div>
                     {blog.author && (
                       <div className="flex items-center space-x-1">

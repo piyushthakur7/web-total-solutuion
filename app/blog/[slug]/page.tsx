@@ -19,6 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     .select('*')
     .eq('slug', resolvedParams.slug)
     .eq('published', true)
+    .lte('publish_date', new Date().toISOString())
     .single();
 
   if (!blog) {
@@ -65,6 +66,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     .select('*')
     .eq('slug', resolvedParams.slug)
     .eq('published', true)
+    .lte('publish_date', new Date().toISOString())
     .single();
 
   if (error || !blog) {
@@ -84,7 +86,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         <div className="flex items-center space-x-6 text-sm text-slate-500 border-b border-slate-100 pb-6">
           <div className="flex items-center space-x-2">
             <Calendar className="w-4 h-4 text-brand-blue" />
-            <span>{new Date(blog.created_at).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+            <span>{new Date(blog.publish_date || blog.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
           </div>
           {blog.author && (
             <div className="flex items-center space-x-2">

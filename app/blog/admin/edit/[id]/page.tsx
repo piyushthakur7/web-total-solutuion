@@ -13,9 +13,7 @@ export default function EditBlog({ params }: { params: { id: string } }) {
   const [author, setAuthor] = useState('');
   const [published, setPublished] = useState(false);
   
-  const [currentImageUrl, setCurrentImageUrl] = useState<string | null>(null);
-  const [imageFile, setImageFile] = useState<File | null>(null);
-  const [imagePreview, setImagePreview] = useState<string | null>(null);
+  const [imageUrl, setImageUrl] = useState<string>('');
   
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -36,10 +34,7 @@ export default function EditBlog({ params }: { params: { id: string } }) {
         setContent(data.content);
         setAuthor(data.author || '');
         setPublished(data.published);
-        setCurrentImageUrl(data.image_url);
-        if (data.image_url) {
-          setImagePreview(data.image_url);
-        }
+        setImageUrl(data.image_url || '');
       } else {
         alert('Blog not found or error loading.');
         router.push('/blog/admin');
@@ -54,12 +49,8 @@ export default function EditBlog({ params }: { params: { id: string } }) {
     setTitle(e.target.value);
   };
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      const file = e.target.files[0];
-      setImageFile(file);
-      setImagePreview(URL.createObjectURL(file));
-    }
+  const handleImageUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setImageUrl(e.target.value);
   };
 
   const handleSave = async (e: React.FormEvent) => {
@@ -67,23 +58,7 @@ export default function EditBlog({ params }: { params: { id: string } }) {
     setSaving(true);
 
     try {
-      let final_image_url = currentImageUrl;
-
-      // Upload new image if present
-      if (imageFile) {
-        const fileExt = imageFile.name.split('.').pop();
-        const fileName = `${Math.random()}.${fileExt}`;
-        const filePath = `${fileName}`;
-
-        const { error: uploadError } = await supabase.storage
-          .from('blog-images')
-          .upload(filePath, imageFile);
-
-        if (uploadError) throw uploadError;
-
-        const { data } = supabase.storage.from('blog-images').getPublicUrl(filePath);
-        final_image_url = data.publicUrl;
-      }
+      let final_image_url = imageUrl || null;
 
       // Update blog
       const { error } = await supabase
@@ -164,28 +139,19 @@ export default function EditBlog({ params }: { params: { id: string } }) {
           </div>
 
           <div className="space-y-1.5">
-            <label className="text-xs font-bold text-slate-700 uppercase tracking-wide">Cover Image</label>
-            <div className="border-2 border-dashed border-slate-200 rounded-xl p-6 flex flex-col items-center justify-center relative bg-slate-50 hover:bg-slate-100 transition-colors">
-              {imagePreview ? (
-                <div className="relative w-full aspect-[21/9] rounded-lg overflow-hidden">
-                  <img src={imagePreview} alt="Preview" className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
-                    <span className="text-white text-sm font-semibold">Click to change</span>
-                  </div>
-                </div>
-              ) : (
-                <>
-                  <ImageIcon className="w-8 h-8 text-slate-400 mb-2" />
-                  <span className="text-sm font-medium text-slate-600">Click to upload image</span>
-                </>
-              )}
-              <input 
-                type="file" 
-                accept="image/*" 
-                onChange={handleImageChange}
-                className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-              />
-            </div>
+            <label className="text-xs font-bold text-slate-700 uppercase tracking-wide">Cover Image URL</label>
+            <input
+              type="text"
+              value={imageUrl}
+              onChange={handleImageUrlChange}
+              className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue"
+              placeholder="https://images.pexels.com/..."
+            />
+            {imageUrl && (
+              <div className="mt-4 rounded-xl overflow-hidden border border-slate-200 aspect-[21/9] relative">
+                 <img src={imageUrl} alt="Preview" className="w-full h-full object-cover" />
+              </div>
+            )}
           </div>
 
           <div className="space-y-1.5">

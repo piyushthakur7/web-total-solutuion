@@ -1,7 +1,6 @@
 "use client";
 
 import React from 'react';
-import { motion } from 'motion/react';
 import Image from 'next/image';
 
 interface LogoProps {
@@ -25,10 +24,8 @@ export default function Logo({
 
   return (
     <div className={`flex items-center ${className}`}>
-      <motion.div
-        whileHover={{ scale: 1.05 }}
-        transition={{ type: 'spring', stiffness: 400, damping: 15 }}
-        className="shrink-0 flex items-center justify-center relative"
+      <div
+        className="shrink-0 flex items-center justify-center relative hover:scale-[1.05] transition-transform duration-300 ease-out"
       >
         <Image
           src="/bhaskar_logo_1.png"
@@ -38,7 +35,7 @@ export default function Logo({
           // scale-[2] makes it 2x larger visually without taking up more physical space!
           className={`${heightMap[size]} w-auto object-contain drop-shadow-sm scale-[2.2] origin-left`}
         />
-      </motion.div>
+      </div>
     </div>
   );
 }

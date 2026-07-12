@@ -28,6 +28,7 @@ export default function Preloader() {
 
   useEffect(() => {
     // WebGL Shader Background Logic
+    if (isLoaded) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -107,8 +108,9 @@ export default function Preloader() {
     const uTime = gl.getUniformLocation(prog, 'u_time');
     
     let animationFrameId: number;
+    let isRunning = true;
     function render(t: number) {
-      if (!gl || !canvas) return;
+      if (!gl || !isRunning) return;
       gl.viewport(0, 0, canvas.width, canvas.height);
       if (uTime) gl.uniform1f(uTime, t * 0.001);
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
@@ -117,10 +119,11 @@ export default function Preloader() {
     animationFrameId = requestAnimationFrame(render);
 
     return () => {
+      isRunning = false;
       window.removeEventListener('resize', syncSize);
       cancelAnimationFrame(animationFrameId);
     };
-  }, []);
+  }, [isLoaded]);
 
   return (
     <AnimatePresence>

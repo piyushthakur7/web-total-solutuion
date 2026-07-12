@@ -114,6 +114,8 @@ export default function HomeView() {
                   height={500}
                   referrerPolicy="no-referrer"
                   priority={true}
+                  quality={60}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
                 />
               </div>
             </div>

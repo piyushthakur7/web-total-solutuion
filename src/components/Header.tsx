@@ -49,6 +49,7 @@ export default function Header() {
             href="/"
             className="flex items-center cursor-pointer group"
             onClick={() => setIsOpen(false)}
+            aria-label="Home"
           >
             <Logo size="md" theme="light" />
           </Link>

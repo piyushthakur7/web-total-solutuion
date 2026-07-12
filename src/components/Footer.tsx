@@ -15,6 +15,7 @@ export default function Footer() {
             <Link 
               href="/"
               className="flex items-center cursor-pointer group"
+              aria-label="Home"
             >
               <Logo size="md" theme="dark" />
             </Link>
@@ -63,9 +64,9 @@ export default function Footer() {
 
           {/* Solutions Column */}
           <div>
-            <h4 className="text-white text-sm font-semibold uppercase tracking-wider mb-4">
+            <h3 className="text-white text-sm font-semibold uppercase tracking-wider mb-4">
               Solutions
-            </h4>
+            </h3>
             <ul className="space-y-3 text-sm">
               <li>
                 <Link 
@@ -108,9 +109,9 @@ export default function Footer() {
 
           {/* Navigation Column */}
           <div>
-            <h4 className="text-white text-sm font-semibold uppercase tracking-wider mb-4">
+            <h3 className="text-white text-sm font-semibold uppercase tracking-wider mb-4">
               Company
-            </h4>
+            </h3>
             <ul className="space-y-3 text-sm">
               <li>
                 <Link href="/" className="hover:text-white transition-colors cursor-pointer block">
@@ -142,9 +143,9 @@ export default function Footer() {
 
           {/* Contact Column */}
           <div>
-            <h4 className="text-white text-sm font-semibold uppercase tracking-wider mb-4">
+            <h3 className="text-white text-sm font-semibold uppercase tracking-wider mb-4">
               Connect
-            </h4>
+            </h3>
             <ul className="space-y-3.5 text-sm text-slate-400">
               <li className="flex items-center space-x-3">
                 <Mail className="w-4 h-4 text-brand-blue shrink-0" />

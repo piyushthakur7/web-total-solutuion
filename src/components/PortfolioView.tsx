@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
-import Image from 'next/image';
+import ImageWithPreloader from './ImageWithPreloader';
 import { PortfolioItem } from '../types';
 import { PORTFOLIO_ITEMS } from '../data';
 import { Sparkles, ArrowUpRight, Filter, MessageSquare, TrendingUp, ExternalLink } from 'lucide-react';
@@ -91,7 +91,7 @@ export default function PortfolioView() {
                       rel="noopener noreferrer"
                       className="block w-full h-full relative"
                     >
-                      <Image
+                      <ImageWithPreloader
                         src={item.imageUrl}
                         alt={item.title}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
@@ -108,7 +108,7 @@ export default function PortfolioView() {
                       </div>
                     </a>
                   ) : (
-                    <Image
+                    <ImageWithPreloader
                       src={item.imageUrl}
                       alt={item.title}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"

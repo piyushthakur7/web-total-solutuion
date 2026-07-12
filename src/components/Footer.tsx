@@ -163,12 +163,12 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 mt-12 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500">
+        <div className="pt-8 mt-12 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-400">
           <p>© {currentYear} Web Total Solution. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 sm:mt-0">
-            <Link href="/privacy" className="hover:text-slate-400 transition-colors cursor-pointer">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-slate-400 transition-colors cursor-pointer">Terms of Service</Link>
-            <span className="hover:text-slate-400 transition-colors cursor-pointer">Security Standards</span>
+            <Link href="/privacy" className="hover:text-slate-300 transition-colors cursor-pointer">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-slate-300 transition-colors cursor-pointer">Terms of Service</Link>
+            <span className="hover:text-slate-300 transition-colors cursor-pointer">Security Standards</span>
           </div>
         </div>
       </div>

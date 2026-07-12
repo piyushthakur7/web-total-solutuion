@@ -15,13 +15,13 @@ export default function Preloader() {
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(interval);
-          setTimeout(() => setIsLoaded(true), 800); // Final delay at 100%
+          setTimeout(() => setIsLoaded(true), 200); // Final delay at 100%
           return 100;
         }
-        const increment = Math.floor(Math.random() * 5) + 1;
+        const increment = Math.floor(Math.random() * 8) + 2;
         return Math.min(prev + increment, 100);
       });
-    }, 120);
+    }, 40);
 
     return () => clearInterval(interval);
   }, []);

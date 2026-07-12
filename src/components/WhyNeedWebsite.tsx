@@ -108,7 +108,7 @@ export default function WhyNeedWebsite() {
                       {benefit.stat}
                     </span>
                     <span className={`text-xs sm:text-sm font-medium uppercase tracking-wide leading-tight transition-colors duration-300 ${
-                      activeCard === index ? 'text-slate-400' : 'text-slate-500'
+                      activeCard === index ? 'text-slate-300' : 'text-slate-600'
                     }`}>
                       {benefit.statText}
                     </span>

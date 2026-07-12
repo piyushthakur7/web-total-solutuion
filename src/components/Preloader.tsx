@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import { motion, AnimatePresence } from "motion/react";
 import Image from "next/image";
 
 export default function Preloader() {
@@ -125,15 +124,21 @@ export default function Preloader() {
     };
   }, [isLoaded]);
 
+  const [hidden, setHidden] = useState(false);
+
+  useEffect(() => {
+    if (isLoaded) {
+      const timer = setTimeout(() => setHidden(true), 1000); // Wait for CSS fade out
+      return () => clearTimeout(timer);
+    }
+  }, [isLoaded]);
+
+  if (hidden) return null;
+
   return (
-    <AnimatePresence>
-      {!isLoaded && (
-        <motion.div
-          initial={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1, ease: [0.4, 0, 0.2, 1] }}
-          className="fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-[#213145]"
-        >
+      <div
+        className={`fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-[#213145] transition-opacity duration-1000 ease-in-out ${isLoaded ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+      >
           {/* WebGL Shader Background */}
           <div className="absolute inset-0 w-full h-full opacity-40 mix-blend-soft-light pointer-events-none">
             <canvas ref={canvasRef} className="block w-full h-full" />
@@ -143,10 +148,8 @@ export default function Preloader() {
           <div className="relative z-10 flex flex-col items-center w-full max-w-sm px-6">
             
             {/* Brand Logo Container */}
-            <motion.div 
-              className="mb-12 bg-white px-6 py-4 rounded-[2px] shadow-xl"
-              animate={{ scale: [1, 1.05, 1], opacity: [1, 0.85, 1] }}
-              transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+            <div 
+              className="mb-12 bg-white px-6 py-4 rounded-[2px] shadow-xl animate-pulse"
             >
               <Image
                 src="/bhaskar_logo_1.png"
@@ -155,7 +158,7 @@ export default function Preloader() {
                 height={80}
                 className="h-16 md:h-20 w-auto object-contain scale-[1.5]"
               />
-            </motion.div>
+            </div>
 
             {/* Progress Information */}
             <div className="w-full flex flex-col items-center">
@@ -168,11 +171,9 @@ export default function Preloader() {
               
               {/* Progress Bar */}
               <div className="w-full h-[1px] bg-[#bcc6e4]/30 overflow-hidden relative">
-                <motion.div 
-                  className="absolute top-0 left-0 h-full bg-[#0e70a6]"
-                  initial={{ width: 0 }}
-                  animate={{ width: `${progress}%` }}
-                  transition={{ ease: "easeOut", duration: 0.3 }}
+                <div 
+                  className="absolute top-0 left-0 h-full bg-[#0e70a6] transition-all duration-300 ease-out"
+                  style={{ width: `${progress}%` }}
                 />
               </div>
             </div>
@@ -184,8 +185,6 @@ export default function Preloader() {
               Architectural Precision for Digital Growth
             </p>
           </div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+        </div>
   );
 }

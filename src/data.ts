@@ -9,6 +9,16 @@ export const CLIENT_LOGOS = [
 
 export const PORTFOLIO_ITEMS: PortfolioItem[] = [
   {
+    id: 'arommaalfresco',
+    title: 'Aromma Alfresco Events',
+    category: 'Corporate',
+    description: 'An elegant digital presence for premium event management and catering services, highlighting immersive outdoor experiences and beautiful venue spaces.',
+    metrics: { label: 'Client Inquiries', value: '+45%' },
+    imageUrl: 'https://api.microlink.io/?url=https%3A%2F%2Fwww.arommaalfresco.com&screenshot=true&embed=screenshot.url',
+    techStack: ['React', 'Tailwind CSS', 'Framer Motion'],
+    websiteUrl: 'https://www.arommaalfresco.com/',
+  },
+  {
     id: 'mechverses',
     title: 'Mechverses',
     category: 'Corporate',

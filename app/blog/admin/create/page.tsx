@@ -11,7 +11,8 @@ export default function CreateBlog() {
   const [slug, setSlug] = useState('');
   const [content, setContent] = useState('');
   const [author, setAuthor] = useState('');
-  const [published, setPublished] = useState(false);
+  const [publishStatus, setPublishStatus] = useState<'draft' | 'immediate' | 'schedule'>('draft');
+  const [publishDate, setPublishDate] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [saving, setSaving] = useState(false);
   const router = useRouter();
@@ -36,13 +37,26 @@ export default function CreateBlog() {
     try {
       let final_image_url = imageUrl || null;
 
+      let finalPublished = false;
+      let finalPublishDate = new Date().toISOString();
+
+      if (publishStatus === 'immediate') {
+        finalPublished = true;
+      } else if (publishStatus === 'schedule') {
+        finalPublished = true;
+        if (publishDate) {
+          finalPublishDate = new Date(publishDate).toISOString();
+        }
+      }
+
       // Insert blog
       const { error } = await supabase.from('blogs').insert({
         title,
         slug,
         content,
         author,
-        published,
+        published: finalPublished,
+        publish_date: finalPublishDate,
         image_url: final_image_url
       });
 
@@ -133,17 +147,32 @@ export default function CreateBlog() {
             />
           </div>
 
-          <div className="flex items-center space-x-3 pt-4 border-t border-slate-100">
-            <label className="relative inline-flex items-center cursor-pointer">
-              <input 
-                type="checkbox" 
-                checked={published}
-                onChange={(e) => setPublished(e.target.checked)}
-                className="sr-only peer" 
-              />
-              <div className="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500"></div>
-              <span className="ml-3 text-sm font-medium text-slate-700">Publish immediately</span>
-            </label>
+          <div className="flex flex-col sm:flex-row sm:items-center space-y-4 sm:space-y-0 sm:space-x-6 pt-4 border-t border-slate-100">
+            <div className="space-y-1.5 flex-1 max-w-xs">
+              <label className="text-xs font-bold text-slate-700 uppercase tracking-wide">Publish Status</label>
+              <select
+                value={publishStatus}
+                onChange={(e) => setPublishStatus(e.target.value as any)}
+                className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue"
+              >
+                <option value="draft">Save as Draft</option>
+                <option value="immediate">Publish Immediately</option>
+                <option value="schedule">Schedule for Later</option>
+              </select>
+            </div>
+
+            {publishStatus === 'schedule' && (
+              <div className="space-y-1.5 flex-1 max-w-xs transition-all animate-in fade-in slide-in-from-top-2">
+                <label className="text-xs font-bold text-slate-700 uppercase tracking-wide">Schedule Date & Time</label>
+                <input
+                  type="datetime-local"
+                  required
+                  value={publishDate}
+                  onChange={(e) => setPublishDate(e.target.value)}
+                  className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue"
+                />
+              </div>
+            )}
           </div>
         </div>
 

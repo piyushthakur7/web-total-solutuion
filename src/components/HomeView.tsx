@@ -1,50 +1,18 @@
-"use client";
-
-import { useRouter } from 'next/navigation';
-import React, { useState } from 'react';
+import Link from 'next/link';
+import React from 'react';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import { PORTFOLIO_ITEMS } from '../data';
 import { 
   Zap, Shield, PieChart, Database, ArrowRight, CheckCircle2, 
   Sparkles, ChevronRight, Monitor, TrendingUp, PenTool, Layout, Smartphone, Cpu, ShoppingCart
 } from 'lucide-react';
-import FAQSection from './FAQSection';
-import IndustriesAndTech from './IndustriesAndTech';
-import WhyNeedWebsite from './WhyNeedWebsite';
+
+const FAQSection = dynamic(() => import('./FAQSection'));
+const IndustriesAndTech = dynamic(() => import('./IndustriesAndTech'));
+const WhyNeedWebsite = dynamic(() => import('./WhyNeedWebsite'));
 
 export default function HomeView() {
-  const router = useRouter();
-  const onNavigate = (view: string, context?: any) => {
-    router.push(view === 'home' ? '/' : `/${view}`);
-  };
-  // Speed simulator states
-  const [isAuditing, setIsAuditing] = useState(false);
-  const [auditProgress, setAuditProgress] = useState(0);
-  const [auditComplete, setAuditComplete] = useState(false);
-  const [auditScore, setAuditScore] = useState(72);
-
-  // Security firewall simulation state
-  const [firewallOn, setFirewallOn] = useState(true);
-
-  const startPerformanceAudit = () => {
-    if (isAuditing) return;
-    setIsAuditing(true);
-    setAuditComplete(false);
-    setAuditProgress(0);
-    
-    const interval = setInterval(() => {
-      setAuditProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(interval);
-          setIsAuditing(false);
-          setAuditComplete(true);
-          setAuditScore(99);
-          return 100;
-        }
-        return prev + 10;
-      });
-    }, 150);
-  };
 
   return (
     <div className="space-y-24 pb-20 overflow-x-hidden">
@@ -86,13 +54,13 @@ export default function HomeView() {
               </ul>
 
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-6">
-                <button
-                  onClick={() => onNavigate('contact')}
+                <Link
+                  href="/contact"
                   className="w-full sm:w-auto bg-brand-blue hover:bg-brand-blue/90 text-white px-8 py-3.5 rounded-xl font-bold tracking-wide shadow-md hover:shadow-lg transition-all flex items-center justify-center space-x-2 cursor-pointer"
                 >
                   <span>Contact Now</span>
                   <ArrowRight className="w-5 h-5" />
-                </button>
+                </Link>
                 <a
                   href="https://wa.me/916291519364"
                   target="_blank"
@@ -144,6 +112,7 @@ export default function HomeView() {
                   width={800}
                   height={500}
                   referrerPolicy="no-referrer"
+                  priority={true}
                 />
               </div>
             </div>
@@ -173,11 +142,11 @@ export default function HomeView() {
               <div className="w-14 h-14 bg-slate-900 rounded-full flex items-center justify-center mb-4">
                 {service.icon}
               </div>
-              <h3 className="font-bold text-slate-900 mb-2 leading-tight">{service.title}</h3>
+              <h2 className="font-bold text-slate-900 mb-2 leading-tight text-lg">{service.title}</h2>
               <p className="text-xs text-slate-500 mb-4 flex-grow">{service.desc}</p>
-              <button onClick={() => router.push(service.link)} className="text-brand-blue text-xs font-bold uppercase tracking-wide flex items-center group">
+              <Link href={service.link} className="text-brand-blue text-xs font-bold uppercase tracking-wide flex items-center group">
                 Explore More <ChevronRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
-              </button>
+              </Link>
             </div>
           ))}
         </div>
@@ -223,13 +192,13 @@ export default function HomeView() {
                 From sleek corporate portfolios to elaborate enterprise-ready software. We engineer platforms with precision and clarity.
               </p>
             </div>
-            <button
-              onClick={() => onNavigate('services')}
+            <Link
+              href="/services"
               className="inline-flex items-center space-x-1.5 text-brand-blue font-bold text-sm hover:underline cursor-pointer"
             >
               <span>Explore All Capabilities</span>
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -252,13 +221,13 @@ export default function HomeView() {
                   </li>
                 </ul>
               </div>
-              <button
-                onClick={() => onNavigate('services')}
+              <Link
+                href="/services"
                 className="mt-8 inline-flex items-center space-x-1 text-xs font-bold text-slate-800 hover:text-brand-blue group cursor-pointer"
               >
                 <span>Learn More</span>
                 <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-              </button>
+              </Link>
             </div>
 
             {/* Service Item 2 */}
@@ -280,13 +249,13 @@ export default function HomeView() {
                   </li>
                 </ul>
               </div>
-              <button
-                onClick={() => onNavigate('services')}
+              <Link
+                href="/services"
                 className="mt-8 inline-flex items-center space-x-1 text-xs font-bold text-slate-800 hover:text-brand-blue group cursor-pointer"
               >
                 <span>Learn More</span>
                 <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-              </button>
+              </Link>
             </div>
 
             {/* Service Item 3 */}
@@ -308,13 +277,13 @@ export default function HomeView() {
                   </li>
                 </ul>
               </div>
-              <button
-                onClick={() => onNavigate('services')}
+              <Link
+                href="/services"
                 className="mt-8 inline-flex items-center space-x-1 text-xs font-bold text-slate-800 hover:text-brand-blue group cursor-pointer"
               >
                 <span>Learn More</span>
                 <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -427,13 +396,13 @@ export default function HomeView() {
             Inquire today to schedule an architecture alignment call. Let’s map out a customized digital solution that elevates conversions, speed, and market reach.
           </p>
           <div className="pt-4">
-            <button
-              onClick={() => onNavigate('contact')}
+            <Link
+              href="/contact"
               className="bg-brand-blue hover:bg-brand-blue/90 text-white font-bold tracking-wide px-8 py-4 rounded-xl shadow-md transition-all inline-flex items-center space-x-2 cursor-pointer"
             >
               <span>Initiate Free Discovery Call</span>
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </div>
         </div>
       </section>

@@ -1,9 +1,28 @@
 import type { Metadata } from 'next';
+import { Hanken_Grotesk, Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import Header from '../src/components/Header';
 import Footer from '../src/components/Footer';
 import Preloader from '../src/components/Preloader';
 import LenisProvider from '../src/components/LenisProvider';
+
+const hanken = Hanken_Grotesk({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-hanken',
+});
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+});
+
+const jetbrains = JetBrains_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-jetbrains',
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.webtotalsolution.com'),
@@ -99,7 +118,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-screen flex flex-col bg-white">
+      <body className={`${hanken.variable} ${inter.variable} ${jetbrains.variable} min-h-screen flex flex-col bg-white`}>
         <LenisProvider>
           <Preloader />
           <Header />

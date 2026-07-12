@@ -18,28 +18,28 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
+const navItems = [
+  { label: 'Home', path: '/' },
+  { label: 'Services', path: '/services' },
+  { label: 'Portfolio', path: '/portfolio' },
+  { label: 'Pricing', path: '/pricing' },
+  // { label: 'Blog', path: '/blog' },
+  { label: 'Contact', path: '/contact' },
+];
+
+const servicesDropdown = [
+  { label: 'Landing & Informative Pages', subtext: 'Starting from ₹7,999', path: '/services/landing-pages' },
+  { label: 'Full SaaS Development', subtext: 'Custom Price', path: '/services/saas-development' },
+  { label: 'Content Writing', subtext: 'Starting from ₹1,000', path: '/services/content-writing' },
+  { label: 'E-commerce Development', subtext: 'Starting from ₹12,999', path: '/services/ecommerce-development' },
+  { label: 'Android & iOS Apps', subtext: 'Custom Price', path: '/services/app-development' },
+  { label: 'Digital Marketing', subtext: 'Custom Price', path: '/services/digital-marketing' },
+];
+
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
-
-  const navItems = [
-    { label: 'Home', path: '/' },
-    { label: 'Services', path: '/services' },
-    { label: 'Portfolio', path: '/portfolio' },
-    { label: 'Pricing', path: '/pricing' },
-    // { label: 'Blog', path: '/blog' },
-    { label: 'Contact', path: '/contact' },
-  ];
-
-  const servicesDropdown = [
-    { label: 'Landing & Informative Pages', subtext: 'Starting from ₹7,999', path: '/services/landing-pages' },
-    { label: 'Full SaaS Development', subtext: 'Custom Price', path: '/services/saas-development' },
-    { label: 'Content Writing', subtext: 'Starting from ₹1,000', path: '/services/content-writing' },
-    { label: 'E-commerce Development', subtext: 'Starting from ₹12,999', path: '/services/ecommerce-development' },
-    { label: 'Android & iOS Apps', subtext: 'Custom Price', path: '/services/app-development' },
-    { label: 'Digital Marketing', subtext: 'Custom Price', path: '/services/digital-marketing' },
-  ];
 
   return (
     <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
@@ -130,6 +130,7 @@ export default function Header() {
               rel="noopener noreferrer"
               className="flex items-center space-x-1 p-2.5 rounded-xl bg-slate-50 text-emerald-600 hover:text-white hover:bg-emerald-500 transition-all cursor-pointer"
               title="WhatsApp Consultation"
+              aria-label="Contact via WhatsApp"
             >
               <WhatsAppIcon className="w-5 h-5" />
             </a>
@@ -149,6 +150,7 @@ export default function Header() {
               target="_blank"
               rel="noopener noreferrer"
               className="p-2.5 rounded-xl bg-slate-50 text-emerald-600 hover:text-white hover:bg-emerald-500 transition-all cursor-pointer"
+              aria-label="Contact via WhatsApp"
             >
               <WhatsAppIcon className="w-5 h-5" />
             </a>

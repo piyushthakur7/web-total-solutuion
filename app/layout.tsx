@@ -3,7 +3,8 @@ import { Hanken_Grotesk, Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import Header from '../src/components/Header';
 import Footer from '../src/components/Footer';
-import Preloader from '../src/components/Preloader';
+import dynamic from 'next/dynamic';
+const Preloader = dynamic(() => import('../src/components/Preloader'), { ssr: false });
 import LenisProvider from '../src/components/LenisProvider';
 
 const hanken = Hanken_Grotesk({

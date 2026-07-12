@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { Menu, X, MessageSquare, ArrowRight, ChevronDown } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
 import Logo from './Logo';
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
@@ -72,10 +71,8 @@ export default function Header() {
                       <span>{item.label}</span>
                       <ChevronDown className="w-3.5 h-3.5 opacity-70 group-hover:rotate-180 transition-transform duration-200" />
                       {isActive && (
-                        <motion.div 
-                          layoutId="activeNavIndicator"
+                        <div 
                           className="absolute -bottom-2 left-0 right-0 h-0.5 bg-brand-blue rounded-full"
-                          transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                         />
                       )}
                     </Link>
@@ -111,10 +108,8 @@ export default function Header() {
                 >
                   {item.label}
                   {isActive && (
-                    <motion.div 
-                      layoutId="activeNavIndicator"
+                    <div 
                       className="absolute bottom-0 left-0 right-0 h-0.5 bg-brand-blue rounded-full"
-                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}
                 </Link>
@@ -128,11 +123,11 @@ export default function Header() {
               href="https://wa.me/916291519364"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center space-x-1 p-2.5 rounded-xl bg-slate-50 text-emerald-600 hover:text-white hover:bg-emerald-500 transition-all cursor-pointer"
+              className="flex items-center space-x-1 p-3 rounded-xl bg-slate-50 text-emerald-600 hover:text-white hover:bg-emerald-500 transition-all cursor-pointer"
               title="WhatsApp Consultation"
               aria-label="Contact via WhatsApp"
             >
-              <WhatsAppIcon className="w-5 h-5" />
+              <WhatsAppIcon className="w-6 h-6" />
             </a>
             <Link
               href="/contact"
@@ -149,14 +144,14 @@ export default function Header() {
               href="https://wa.me/916291519364"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2.5 rounded-xl bg-slate-50 text-emerald-600 hover:text-white hover:bg-emerald-500 transition-all cursor-pointer"
+              className="p-3 rounded-xl bg-slate-50 text-emerald-600 hover:text-white hover:bg-emerald-500 transition-all cursor-pointer"
               aria-label="Contact via WhatsApp"
             >
-              <WhatsAppIcon className="w-5 h-5" />
+              <WhatsAppIcon className="w-6 h-6" />
             </a>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2.5 rounded-xl text-slate-600 hover:text-slate-900 focus:outline-none"
+              className="p-3 rounded-xl text-slate-600 hover:text-slate-900 focus:outline-none"
               aria-label="Toggle menu"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -166,16 +161,10 @@ export default function Header() {
       </div>
 
       {/* Mobile Drawer */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.25, ease: 'easeInOut' }}
-            className="md:hidden border-t border-slate-100 bg-white overflow-hidden shadow-lg"
-          >
-            <div className="px-4 pt-4 pb-6 space-y-2">
+      <div
+        className={`md:hidden border-t border-slate-100 bg-white overflow-hidden shadow-lg transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}
+      >
+        <div className="px-4 pt-4 pb-6 space-y-2">
               {navItems.map((item) => {
                 const isActive = pathname === item.path;
                 return (
@@ -203,9 +192,8 @@ export default function Header() {
                 </Link>
               </div>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </div>
+      </div>
     </header>
   );
 }

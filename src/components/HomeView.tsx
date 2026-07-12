@@ -81,6 +81,7 @@ export default function HomeView() {
                 href="https://share.google/na7XhIzRCjwcQnh9J"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="View our Google Reviews"
                 className="absolute -top-8 -right-2 sm:-top-10 sm:-right-6 md:-right-8 bg-white p-3.5 sm:p-4 rounded-2xl shadow-2xl flex items-center space-x-3 hover:-translate-y-2 hover:shadow-3xl transition-all duration-300 z-20 border border-slate-100 group"
               >
                 <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center shrink-0 border border-slate-100">

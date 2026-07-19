@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { ServiceData } from '../types';
 import { ArrowRight, CheckCircle2, LayoutTemplate } from 'lucide-react';
-import PricingView from './PricingView';
 
 export default function ServiceDetailView({ service }: { service: ServiceData }) {
   const router = useRouter();
@@ -97,9 +96,6 @@ export default function ServiceDetailView({ service }: { service: ServiceData })
                     <span className="text-2xl font-bold text-brand-blue">₹</span>
                   </div>
                   <h3 className="text-2xl font-bold text-slate-900">Start Your Project</h3>
-                  <p className="text-slate-500 text-sm font-medium">
-                    {service.priceText}
-                  </p>
                   <div className="pt-4 space-y-4">
                     <button
                       onClick={() => router.push('/contact')}
@@ -123,11 +119,6 @@ export default function ServiceDetailView({ service }: { service: ServiceData })
           </div>
         </div>
       </section>
-
-      {/* Pricing Section */}
-      <div className="bg-slate-50 pt-10 pb-20 border-t border-slate-100">
-        <PricingView serviceSlug={service.slug} />
-      </div>
     </div>
   );
 }

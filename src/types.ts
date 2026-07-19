@@ -22,7 +22,6 @@ export interface ServiceData {
   slug: string;
   title: string;
   subtitle: string;
-  priceText: string;
   heroImage: string;
   content: {
     overview: string;

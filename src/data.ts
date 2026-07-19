@@ -193,7 +193,6 @@ export const SERVICES_DATA: Record<string, import('./types').ServiceData> = {
     slug: 'landing-pages',
     title: 'Landing & Informative Pages',
     subtitle: 'High-Converting Single Page Solutions',
-    priceText: 'Starting from ₹7,999',
     heroImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop',
     content: {
       overview: 'We build high-performance, single-page informative websites specifically designed for your business. Our team of experts designs simple to navigate and mobile-compatible landing pages to help you receive more customers.',
@@ -206,7 +205,6 @@ export const SERVICES_DATA: Record<string, import('./types').ServiceData> = {
     slug: 'saas-development',
     title: 'Full SaaS Development',
     subtitle: 'Scalable Software as a Service Platforms',
-    priceText: 'Custom Price',
     heroImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop',
     content: {
       overview: 'Comprehensive web application development tailored to your enterprise. From authentication and routing to complex data modeling, we build robust SaaS platforms that scale securely.',
@@ -219,7 +217,6 @@ export const SERVICES_DATA: Record<string, import('./types').ServiceData> = {
     slug: 'content-writing',
     title: 'Content Writing',
     subtitle: 'Engaging, SEO-Optimized Copywriting',
-    priceText: 'Starting from ₹1,000',
     heroImage: 'https://images.unsplash.com/photo-1455390582262-044cdead27d8?q=80&w=2346&auto=format&fit=crop',
     content: {
       overview: 'High-quality content is the foundation of any digital strategy. We provide well-researched, engaging, and SEO-optimized content that resonates with your audience and drives conversions.',
@@ -232,7 +229,6 @@ export const SERVICES_DATA: Record<string, import('./types').ServiceData> = {
     slug: 'ecommerce-development',
     title: 'E-commerce Development',
     subtitle: 'High-Converting Online Stores',
-    priceText: 'Starting from ₹12,999',
     heroImage: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=2370&auto=format&fit=crop',
     content: {
       overview: 'We develop secure, scalable, and responsive e-commerce sites for online retailers. Whether you are selling a few products or thousands, we build platforms that drive sales and provide a seamless checkout experience.',
@@ -245,7 +241,6 @@ export const SERVICES_DATA: Record<string, import('./types').ServiceData> = {
     slug: 'app-development',
     title: 'Android & iOS Apps',
     subtitle: 'Native and Cross-Platform Mobile Solutions',
-    priceText: 'Custom Price',
     heroImage: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=2340&auto=format&fit=crop',
     content: {
       overview: 'Transform your business with cutting-edge mobile applications. We build highly intuitive and performant apps for both Android and iOS platforms, ensuring a flawless user experience.',
@@ -258,7 +253,6 @@ export const SERVICES_DATA: Record<string, import('./types').ServiceData> = {
     slug: 'digital-marketing',
     title: 'Digital Marketing',
     subtitle: 'Data-Driven Growth Strategies',
-    priceText: 'Custom Price',
     heroImage: 'https://images.unsplash.com/photo-1432821596592-e2c18b78144f?q=80&w=2340&auto=format&fit=crop',
     content: {
       overview: 'Maximize your online visibility and drive targeted traffic with our comprehensive digital marketing services. From SEO to paid campaigns, we engineer strategies that deliver measurable ROI.',

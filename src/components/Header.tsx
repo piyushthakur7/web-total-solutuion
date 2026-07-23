@@ -37,11 +37,12 @@ const servicesDropdown = [
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
 
   return (
-    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
+    <header className={`sticky top-0 z-50 transition-all duration-300 ${isOpen ? 'bg-white/70 backdrop-blur-xl border-b border-white/40 shadow-sm' : 'bg-white/80 backdrop-blur-md border-b border-slate-100'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
@@ -79,13 +80,13 @@ export default function Header() {
                     </Link>
 
                     {/* Desktop Dropdown */}
-                    <div className="absolute top-full -left-4 w-72 bg-white rounded-2xl shadow-xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50 pt-2">
-                      <div className="py-2 bg-white rounded-2xl overflow-hidden">
+                    <div className="absolute top-full -left-4 w-72 bg-white/90 backdrop-blur-xl rounded-2xl shadow-xl border border-white/60 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50 pt-2">
+                      <div className="py-2 bg-white/80 backdrop-blur-xl rounded-2xl overflow-hidden">
                         {servicesDropdown.map((service, idx) => (
                           <Link 
                             key={idx} 
                             href={service.path}
-                            className="block px-5 py-3 hover:bg-slate-50 transition-colors group/item"
+                            className="block px-5 py-3 hover:bg-slate-50/80 transition-colors group/item"
                           >
                             <span className="block text-sm font-bold text-slate-800 group-hover/item:text-brand-blue transition-colors">{service.label}</span>
                             <span className="block text-[11px] font-semibold text-slate-500 uppercase tracking-wide mt-0.5">{service.subtext}</span>
@@ -145,14 +146,14 @@ export default function Header() {
               href="https://wa.me/916291519364"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-xl bg-slate-50 text-emerald-600 hover:text-white hover:bg-emerald-500 transition-all cursor-pointer"
+              className="p-3 rounded-xl bg-slate-50/80 backdrop-blur-md border border-white/60 text-emerald-600 hover:text-white hover:bg-emerald-500 transition-all cursor-pointer shadow-sm"
               aria-label="Contact via WhatsApp"
             >
               <WhatsAppIcon className="w-6 h-6" />
             </a>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-3 rounded-xl text-slate-600 hover:text-slate-900 focus:outline-none"
+              className="p-3 rounded-xl text-slate-700 hover:text-brand-blue bg-white/60 backdrop-blur-md border border-white/80 shadow-sm focus:outline-none transition-all active:scale-95"
               aria-label="Toggle menu"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -161,39 +162,90 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer (Glassmorphism design) */}
       <div
-        className={`md:hidden border-t border-slate-100 bg-white overflow-hidden shadow-lg transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}
+        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+          isOpen ? 'max-h-[800px] opacity-100 py-2' : 'max-h-0 opacity-0 py-0'
+        }`}
       >
-        <div className="px-4 pt-4 pb-6 space-y-2">
-              {navItems.map((item) => {
-                const isActive = pathname === item.path;
+        <div className="px-4 pb-4">
+          <div className="glass-nav-container p-3.5 rounded-2xl space-y-2">
+            {navItems.map((item) => {
+              const isActive = pathname === item.path;
+
+              if (item.label === 'Services') {
                 return (
-                  <Link
-                    key={item.path}
-                    href={item.path}
-                    onClick={() => setIsOpen(false)}
-                    className={`w-full text-left px-4 py-3 rounded-xl text-base font-semibold tracking-wide transition-all block ${
-                      isActive
-                        ? 'bg-brand-blue/5 text-brand-blue'
-                        : 'text-slate-600 hover:bg-slate-50'
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
+                  <div key={item.path} className="space-y-1.5">
+                    <div
+                      className={`w-full text-left px-4 py-3 rounded-xl text-base font-semibold tracking-wide transition-all flex items-center justify-between cursor-pointer ${
+                        isActive || mobileServicesOpen
+                          ? 'glass-nav-item-active text-brand-blue font-bold'
+                          : 'glass-nav-item text-slate-700 hover:text-brand-blue'
+                      }`}
+                      onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                    >
+                      <div className="flex items-center space-x-2">
+                        <span>{item.label}</span>
+                      </div>
+                      <ChevronDown
+                        className={`w-4 h-4 transition-transform duration-200 ${
+                          mobileServicesOpen ? 'rotate-180 text-brand-blue' : 'text-slate-400'
+                        }`}
+                      />
+                    </div>
+
+                    {/* Sub-menu accordion */}
+                    {mobileServicesOpen && (
+                      <div className="pl-2 pr-1 py-2 space-y-1.5 rounded-xl bg-white/40 border border-white/60 backdrop-blur-md">
+                        {servicesDropdown.map((service, idx) => (
+                          <Link
+                            key={idx}
+                            href={service.path}
+                            onClick={() => setIsOpen(false)}
+                            className="block px-3.5 py-2.5 rounded-lg hover:bg-white/70 transition-colors"
+                          >
+                            <span className="block text-sm font-bold text-slate-800">{service.label}</span>
+                            <span className="block text-[10px] font-semibold text-brand-blue/80 uppercase tracking-wider">{service.subtext}</span>
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 );
-              })}
-              <div className="pt-4 border-t border-slate-100 px-4">
+              }
+
+              return (
                 <Link
-                  href="/contact"
+                  key={item.path}
+                  href={item.path}
                   onClick={() => setIsOpen(false)}
-                  className="w-full bg-brand-blue hover:bg-brand-blue/90 text-white py-3 rounded-xl text-center font-bold tracking-wide shadow-sm transition-all block"
+                  className={`w-full text-left px-4 py-3 rounded-xl text-base font-semibold tracking-wide transition-all flex items-center justify-between block ${
+                    isActive
+                      ? 'glass-nav-item-active text-brand-blue font-bold'
+                      : 'glass-nav-item text-slate-700 hover:text-brand-blue'
+                  }`}
                 >
-                  Start Your Project
+                  <span>{item.label}</span>
+                  {isActive && (
+                    <span className="w-2 h-2 rounded-full bg-brand-blue shadow-[0_0_8px_#0E70A6]" />
+                  )}
                 </Link>
-              </div>
+              );
+            })}
+
+            <div className="pt-3 border-t border-white/60 px-1 mt-2">
+              <Link
+                href="/contact"
+                onClick={() => setIsOpen(false)}
+                className="w-full bg-gradient-to-r from-brand-blue to-sky-600 hover:from-brand-blue/90 hover:to-sky-600/90 text-white py-3 px-4 rounded-xl text-center font-bold tracking-wide shadow-lg shadow-brand-blue/20 transition-all flex items-center justify-center space-x-2 cursor-pointer"
+              >
+                <span>Start Your Project</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
             </div>
           </div>
+        </div>
+      </div>
     </header>
   );
 }

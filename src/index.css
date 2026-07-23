@@ -24,3 +24,34 @@
     @apply font-sans text-brand-navy bg-white antialiased;
   }
 }
+
+/* Glassmorphism custom utilities for mobile navigation */
+.glass-nav-container {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 20px 40px -15px rgba(14, 112, 166, 0.15), 0 1px 0 rgba(255, 255, 255, 0.8) inset;
+}
+
+.glass-nav-item {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+}
+
+.glass-nav-item:hover {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(255, 255, 255, 0.95);
+}
+
+.glass-nav-item-active {
+  background: rgba(14, 112, 166, 0.08);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(14, 112, 166, 0.25);
+  box-shadow: 0 4px 15px rgba(14, 112, 166, 0.12);
+}
+

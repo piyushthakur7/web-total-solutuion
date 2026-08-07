@@ -10,7 +10,7 @@ export const revalidate = 60;
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const resolvedParams = await params;
   if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
-    return { title: 'Blog | Web Total Solution' };
+    return { title: 'Blog' };
   }
 
   const supabase = await createClient();
@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     .single();
 
   if (!blog) {
-    return { title: 'Post Not Found | Web Total Solution' };
+    return { title: 'Post Not Found' };
   }
 
   const excerpt = blog.excerpt || blog.content?.substring(0, 160).replace(/<[^>]+>/g, '') || 'Read this blog post by Web Total Solution.';

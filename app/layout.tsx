@@ -5,6 +5,7 @@ import Header from '../src/components/Header';
 import Footer from '../src/components/Footer';
 import Preloader from '../src/components/Preloader';
 import LenisProvider from '../src/components/LenisProvider';
+import MobileCTABar from '../src/components/MobileCTABar';
 
 const hanken = Hanken_Grotesk({
   subsets: ['latin'],
@@ -24,37 +25,56 @@ const jetbrains = JetBrains_Mono({
   variable: '--font-jetbrains',
 });
 
+const SITE_TITLE = 'Professional Business Website Development | Web Total Solution';
+const SITE_DESCRIPTION =
+  'We build fast, modern, SEO-optimised business websites that help companies attract customers, build trust and generate more leads. Get a free consultation.';
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.webtotalsolution.com'),
   title: {
-    default: 'Web Total Solution | High-Performance Websites & Digital Services',
+    default: SITE_TITLE,
     template: '%s | Web Total Solution',
   },
-  description: 'Web Total Solution builds high-performance websites, scalable SaaS applications, and e-commerce platforms that drive growth and conversions for modern businesses.',
-  keywords: ['web development', 'SaaS development', 'e-commerce', 'digital marketing', 'mobile apps', 'Web Total Solution', 'Kolkata', 'software agency'],
+  description: SITE_DESCRIPTION,
+  keywords: [
+    'business website development',
+    'professional website design',
+    'website development company',
+    'website redesign services',
+    'ecommerce website development',
+    'lead generation website',
+    'web development agency Kolkata',
+    'Web Total Solution',
+  ],
   authors: [{ name: 'Web Total Solution' }],
   creator: 'Web Total Solution',
   publisher: 'Web Total Solution',
+  category: 'Web Development',
+  formatDetection: {
+    telephone: true,
+    email: true,
+    address: true,
+  },
   openGraph: {
     type: 'website',
     locale: 'en_IN',
     url: 'https://www.webtotalsolution.com',
     siteName: 'Web Total Solution',
-    title: 'Web Total Solution | High-Performance Websites & Digital Services',
-    description: 'We build high-performance websites, scalable SaaS applications, and e-commerce platforms that drive growth.',
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
     images: [
       {
         url: '/logo_new.png',
         width: 1200,
         height: 630,
-        alt: 'Web Total Solution Logo',
+        alt: 'Web Total Solution — professional business website development',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Web Total Solution | High-Performance Websites & Digital Services',
-    description: 'We build high-performance websites, scalable SaaS applications, and e-commerce platforms that drive growth.',
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
     images: ['/logo_new.png'],
   },
   robots: {
@@ -84,8 +104,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en-IN">
       <head>
+        {/* Warm up the connections used for above-the-fold and portfolio imagery */}
+        <link rel="preconnect" href="https://images.pexels.com" />
+        <link rel="preconnect" href="https://images.unsplash.com" />
+        <link rel="dns-prefetch" href="https://api.microlink.io" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -110,10 +134,73 @@ export default function RootLayout({
                 "latitude": 22.4571905,
                 "longitude": 88.4215653
               },
+              "description": SITE_DESCRIPTION,
+              "areaServed": [
+                { "@type": "Country", "name": "India" },
+                { "@type": "City", "name": "Kolkata" }
+              ],
+              "openingHoursSpecification": [
+                {
+                  "@type": "OpeningHoursSpecification",
+                  "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                  "opens": "10:00",
+                  "closes": "19:00"
+                }
+              ],
+              "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "Web Development Services",
+                "itemListElement": [
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Business Website Development",
+                      "url": "https://www.webtotalsolution.com/business-website-development"
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Website Redesign",
+                      "url": "https://www.webtotalsolution.com/website-redesign"
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "E-Commerce Development",
+                      "url": "https://www.webtotalsolution.com/ecommerce-development"
+                    }
+                  }
+                ]
+              },
               "sameAs": [
                 "https://www.facebook.com/webtotalsolution",
-                "https://www.linkedin.com/company/web-total-solution"
+                "https://www.linkedin.com/company/web-total-solutions/",
+                "https://www.instagram.com/webtotalsolution/",
+                "https://www.youtube.com/channel/UCNlUYW1RyevmpKY1xUQKatA",
+                "https://x.com/webtotalindia"
               ]
+            })
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "Web Total Solution",
+              "url": "https://www.webtotalsolution.com/",
+              "inLanguage": "en-IN",
+              "publisher": {
+                "@type": "Organization",
+                "name": "Web Total Solution",
+                "url": "https://www.webtotalsolution.com/"
+              }
             })
           }}
         />
@@ -126,13 +213,19 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
-          
-          {/* Floating WhatsApp Button */}
+
+          {/* Spacer so the sticky mobile bar never covers footer content */}
+          <div className="h-20 md:hidden" aria-hidden="true" />
+
+          {/* Persistent mobile action bar (phone-only) */}
+          <MobileCTABar />
+
+          {/* Floating WhatsApp Button — desktop only; mobile uses the action bar */}
           <a
             href="https://wa.me/916291519364"
             target="_blank"
             rel="noopener noreferrer"
-            className="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-xl hover:bg-[#1ebd5a] hover:scale-110 transition-all duration-300 flex items-center justify-center"
+            className="hidden md:flex fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-xl hover:bg-[#1ebd5a] hover:scale-110 transition-all duration-300 items-center justify-center"
             aria-label="Chat with us on WhatsApp"
           >
             <svg

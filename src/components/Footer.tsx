@@ -20,7 +20,8 @@ export default function Footer() {
               <Logo size="md" theme="dark" />
             </Link>
             <p className="text-sm text-slate-400 leading-relaxed pt-2">
-              We are a trusted web development agency in Kolkata, engineering high-performance, conversion-oriented platforms for businesses worldwide.
+              A premium web development agency in Kolkata building fast, SEO-optimised business
+              websites that help companies attract customers, build trust and grow online.
             </p>
             <div className="flex items-center space-x-4 pt-2">
               <a 
@@ -65,45 +66,27 @@ export default function Footer() {
           {/* Solutions Column */}
           <div>
             <h3 className="text-white text-sm font-semibold uppercase tracking-wider mb-4">
-              Solutions
+              Services
             </h3>
             <ul className="space-y-3 text-sm">
-              <li>
-                <Link 
-                  href="/services" 
-                  className="hover:text-white transition-colors flex items-center group cursor-pointer"
-                >
-                  <span>SaaS Platforms</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all ml-1" />
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  href="/services" 
-                  className="hover:text-white transition-colors flex items-center group cursor-pointer"
-                >
-                  <span>E-Commerce Integration</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all ml-1" />
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  href="/services" 
-                  className="hover:text-white transition-colors flex items-center group cursor-pointer"
-                >
-                  <span>Corporate Platforms</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all ml-1" />
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  href="/services" 
-                  className="hover:text-white transition-colors flex items-center group cursor-pointer"
-                >
-                  <span>High-Converting Landers</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all ml-1" />
-                </Link>
-              </li>
+              {[
+                { href: '/business-website-development', label: 'Business Website Development' },
+                { href: '/website-redesign', label: 'Website Redesign' },
+                { href: '/ecommerce-development', label: 'E-Commerce Development' },
+                { href: '/services/landing-pages', label: 'Landing Pages' },
+                { href: '/services/content-writing', label: 'Content Writing & SEO' },
+                { href: '/services/digital-marketing', label: 'Digital Marketing' },
+              ].map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="hover:text-white transition-colors flex items-center group cursor-pointer"
+                  >
+                    <span>{link.label}</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all ml-1 shrink-0" />
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -149,11 +132,15 @@ export default function Footer() {
             <ul className="space-y-3.5 text-sm text-slate-400">
               <li className="flex items-center space-x-3">
                 <Mail className="w-4 h-4 text-brand-blue shrink-0" />
-                <span className="hover:text-white transition-colors">info@webtotalsolution.com</span>
+                <a href="mailto:info@webtotalsolution.com" className="hover:text-white transition-colors break-all">
+                  info@webtotalsolution.com
+                </a>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="w-4 h-4 text-brand-blue shrink-0" />
-                <span className="hover:text-white transition-colors">+91 6291 519 364</span>
+                <a href="tel:+916291519364" className="hover:text-white transition-colors">
+                  +91 6291 519 364
+                </a>
               </li>
               <li className="flex items-start space-x-3">
                 <MapPin className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />

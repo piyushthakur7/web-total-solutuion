@@ -188,77 +188,124 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
   },
 ];
 
+/**
+ * Service copy is written around business outcomes, not technology.
+ * The tech stack is still listed, but it appears as supporting proof at the end
+ * of the page rather than as the pitch.
+ */
 export const SERVICES_DATA: Record<string, import('./types').ServiceData> = {
   'landing-pages': {
     slug: 'landing-pages',
     title: 'Landing & Informative Pages',
-    subtitle: 'High-Converting Single Page Solutions',
+    subtitle: 'Single Pages Built to Turn Clicks Into Enquiries',
     heroImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop',
     content: {
-      overview: 'We build high-performance, single-page informative websites specifically designed for your business. Our team of experts designs simple to navigate and mobile-compatible landing pages to help you receive more customers.',
-      whyChooseUs: 'Our responsive designs work perfectly on any device without any problem, allowing you to reach more customers. We provide affordable, quality services with clear communication and guaranteed delivery. Our courteous customer support team is always ready to help.',
-      features: ['Custom Website Development', 'Responsive Layouts', 'SEO & Mobile Friendly', 'Fast Load Time', 'Secure Solutions'],
-      techStack: ['HTML5', 'CSS3', 'JavaScript', 'React', 'Next.js', 'Tailwind CSS']
+      overview: 'A landing page has one job: convince the right visitor to contact you. We design focused, fast-loading pages that present your offer clearly, answer the objections that stop people from enquiring, and put the next step in front of them at exactly the right moment — so the money you spend on ads or SEO actually returns customers.',
+      whyChooseUs: 'We start with your customer, not a template. That means understanding who is landing on the page, what they are worried about, and what will make them act. The result is a page that looks premium, loads quickly on mobile data, and is structured so every section moves the visitor closer to picking up the phone. You get clear communication throughout, an agreed delivery date, and a team that is still available after launch.',
+      features: [
+        'Conversion-focused page structure',
+        'Mobile-first responsive design',
+        'Built-in SEO and schema markup',
+        'Fast load times on mobile data',
+        'Enquiry form and WhatsApp integration',
+        'Analytics configured from day one',
+      ],
+      techStack: ['React', 'Next.js', 'Tailwind CSS', 'HTML5', 'JavaScript']
     }
   },
   'saas-development': {
     slug: 'saas-development',
-    title: 'Full SaaS Development',
-    subtitle: 'Scalable Software as a Service Platforms',
+    title: 'Custom Web Applications & SaaS',
+    subtitle: 'Software That Removes the Bottleneck in Your Business',
     heroImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop',
     content: {
-      overview: 'Comprehensive web application development tailored to your enterprise. From authentication and routing to complex data modeling, we build robust SaaS platforms that scale securely.',
-      whyChooseUs: 'We write clean, well-commented and reusable code that makes your web app a very easy platform to amend any new functionality in the later phase. We utilize cutting-edge technologies like Node.js and React.',
-      features: ['Agile Project Management', 'User-Centric Design', 'Comprehensive Web Application Development', 'Post-Development Support', 'Secure Architecture'],
+      overview: 'When spreadsheets, WhatsApp groups and manual follow-ups start costing you time and orders, custom software pays for itself. We build secure web applications and SaaS platforms that automate the work your team repeats every day — customer portals, booking systems, internal dashboards and subscription products that grow with your business instead of holding it back.',
+      whyChooseUs: 'We build to be extended. Adding a new feature six months from now should take days, not a rebuild — so we write clean, well-documented, modular code and hand you full ownership of it. You get an agile process with regular working demos, so you see progress instead of waiting months for a reveal, and post-launch support while your team settles in.',
+      features: [
+        'Custom workflows built to your process',
+        'Secure user accounts and permissions',
+        'Reporting and analytics dashboards',
+        'Third-party and payment integrations',
+        'Built to scale as usage grows',
+        'Full source code ownership',
+      ],
       techStack: ['React', 'Next.js', 'Node.js', 'PostgreSQL', 'Tailwind CSS', 'AWS']
     }
   },
   'content-writing': {
     slug: 'content-writing',
-    title: 'Content Writing',
-    subtitle: 'Engaging, SEO-Optimized Copywriting',
+    title: 'Content Writing & SEO Copy',
+    subtitle: 'Words That Rank on Google and Persuade Customers',
     heroImage: 'https://images.unsplash.com/photo-1455390582262-044cdead27d8?q=80&w=2346&auto=format&fit=crop',
     content: {
-      overview: 'High-quality content is the foundation of any digital strategy. We provide well-researched, engaging, and SEO-optimized content that resonates with your audience and drives conversions.',
-      whyChooseUs: 'Our dedicated team of writers understands your industry nuances and crafts compelling narratives. We ensure all content aligns with your brand voice and is meticulously proofread and edited.',
-      features: ['SEO-Optimized Articles', 'Website Copywriting', 'Blog Post Creation', 'Product Descriptions', 'Engaging Social Media Content'],
-      techStack: ['Grammarly', 'Hemingway', 'Ahrefs', 'SurferSEO', 'Google Docs']
+      overview: 'A beautiful website with weak copy still loses the sale. We write content that does two jobs at once: it helps search engines understand what your business offers, and it convinces the person reading it that you are the right choice. Clear, credible, specific — written for the customer you actually want, not for a word count.',
+      whyChooseUs: 'We research your industry and your competitors before writing a line, so the content speaks the language your customers use when they search. Everything is structured for readability, optimised around real search intent, and edited to reflect the way your business wants to be seen. You review and approve before anything goes live.',
+      features: [
+        'SEO-optimised website copy',
+        'Service and product page content',
+        'Blog articles that target real searches',
+        'Clear, credible brand messaging',
+        'Keyword and competitor research',
+        'Editing and proofreading included',
+      ],
+      techStack: ['Keyword Research', 'Search Intent Mapping', 'On-Page SEO', 'Editorial Review']
     }
   },
   'ecommerce-development': {
     slug: 'ecommerce-development',
-    title: 'E-commerce Development',
-    subtitle: 'High-Converting Online Stores',
+    title: 'E-Commerce Development',
+    subtitle: 'Online Stores Built to Sell, Not Just Display',
     heroImage: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=2370&auto=format&fit=crop',
     content: {
-      overview: 'We develop secure, scalable, and responsive e-commerce sites for online retailers. Whether you are selling a few products or thousands, we build platforms that drive sales and provide a seamless checkout experience.',
-      whyChooseUs: 'From customized theme development to complex integrations, we handle the entire e-commerce lifecycle. Our solutions include secure payment gateways, inventory management, and fast-loading product pages.',
-      features: ['E-Commerce Theme Customization', 'Responsive E-Commerce Sites', 'Secure Payment Gateways', 'E-Commerce Migration', 'Cart Optimization'],
-      techStack: ['Shopify', 'React', 'Next.js', 'Stripe API', 'Tailwind CSS', 'Node.js']
+      overview: 'Most online stores lose customers somewhere between the product page and the payment screen. We build stores that close that gap — fast product pages, obvious pricing and delivery information, trusted payment options, and a checkout short enough that people finish it. Whether you sell ten products or ten thousand, the store stays quick and easy to manage.',
+      whyChooseUs: 'We handle the full lifecycle: design, product setup, payment and shipping integration, migration from your existing platform, and the launch itself. Your team gets an admin dashboard they can actually use, a walkthrough at handover, and support afterwards. Rankings and existing customer data are carried across carefully so nothing is lost in the move.',
+      features: [
+        'Secure payment gateway integration',
+        'Checkout designed to reduce drop-off',
+        'Mobile-first product browsing',
+        'Inventory and order management',
+        'Product schema for search visibility',
+        'Migration from your existing store',
+      ],
+      techStack: ['React', 'Next.js', 'Razorpay', 'Stripe API', 'Shopify', 'Node.js']
     }
   },
   'app-development': {
     slug: 'app-development',
     title: 'Android & iOS Apps',
-    subtitle: 'Native and Cross-Platform Mobile Solutions',
+    subtitle: 'Put Your Business in Your Customer\'s Pocket',
     heroImage: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=2340&auto=format&fit=crop',
     content: {
-      overview: 'Transform your business with cutting-edge mobile applications. We build highly intuitive and performant apps for both Android and iOS platforms, ensuring a flawless user experience.',
-      whyChooseUs: 'Our team uses the latest frameworks like React Native and Flutter to deliver high-quality apps efficiently. We handle everything from UI/UX design to App Store deployment and ongoing maintenance.',
-      features: ['Cross-Platform Development', 'Native App Performance', 'Intuitive Mobile UI/UX', 'API Integration', 'App Store Optimization'],
-      techStack: ['React Native', 'Flutter', 'Swift', 'Kotlin', 'Firebase', 'Node.js']
+      overview: 'A mobile app earns its place when it makes something meaningfully easier for your customers — reordering, booking, tracking, loyalty. We build apps for Android and iOS that feel fast and natural to use, keep your business one tap away, and give you a direct channel to customers that does not depend on an algorithm.',
+      whyChooseUs: 'We build once for both platforms where it makes sense, which means a faster launch and a lower total cost without compromising on how the app feels. We handle design, development, store submission and the updates afterwards, so you are not left managing app store requirements on your own.',
+      features: [
+        'Android and iOS from one build',
+        'Interfaces designed for real use',
+        'Push notifications and re-engagement',
+        'Integration with your existing systems',
+        'App Store and Play Store submission',
+        'Ongoing updates and maintenance',
+      ],
+      techStack: ['React Native', 'Flutter', 'Firebase', 'Node.js', 'REST APIs']
     }
   },
   'digital-marketing': {
     slug: 'digital-marketing',
-    title: 'Digital Marketing',
-    subtitle: 'Data-Driven Growth Strategies',
+    title: 'Digital Marketing & SEO',
+    subtitle: 'Bring the Right Customers to Your Website',
     heroImage: 'https://images.unsplash.com/photo-1432821596592-e2c18b78144f?q=80&w=2340&auto=format&fit=crop',
     content: {
-      overview: 'Maximize your online visibility and drive targeted traffic with our comprehensive digital marketing services. From SEO to paid campaigns, we engineer strategies that deliver measurable ROI.',
-      whyChooseUs: 'We don\'t just run ads; we analyze data, optimize conversion funnels, and continuously refine our approach. Our transparent reporting keeps you informed every step of the way.',
-      features: ['Search Engine Optimization (SEO)', 'Pay-Per-Click Advertising (PPC)', 'Social Media Management', 'Conversion Rate Optimization', 'Analytics & Reporting'],
-      techStack: ['Google Analytics', 'Google Ads', 'Facebook Ads', 'Ahrefs', 'SEMrush', 'HubSpot']
+      overview: 'A professional website only pays back when the right people find it. We build search visibility and run paid campaigns that target customers with genuine buying intent — the ones already searching for what you sell. The measure of success is enquiries and orders, not impressions.',
+      whyChooseUs: 'We do not just spend your budget and send a traffic report. We track which keywords and campaigns actually produce enquiries, cut what does not work, and reinvest in what does. You get plain-language reporting that shows what you spent, what came back, and what we are changing next month.',
+      features: [
+        'Search engine optimisation (SEO)',
+        'Google Ads campaign management',
+        'Local SEO and Google Business Profile',
+        'Conversion rate optimisation',
+        'Social media campaign management',
+        'Transparent monthly reporting',
+      ],
+      techStack: ['Google Analytics', 'Google Ads', 'Search Console', 'Meta Ads', 'SEMrush']
     }
   }
 };

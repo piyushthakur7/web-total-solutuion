@@ -26,13 +26,14 @@ const navItems = [
   { label: 'Contact', path: '/contact' },
 ];
 
+/** Subtext describes the business outcome — never a price. */
 const servicesDropdown = [
-  { label: 'Landing & Informative Pages', subtext: 'Starting from ₹7,999', path: '/services/landing-pages' },
-  { label: 'Full SaaS Development', subtext: 'Custom Price', path: '/services/saas-development' },
-  { label: 'Content Writing', subtext: 'Starting from ₹1,000', path: '/services/content-writing' },
-  { label: 'E-commerce Development', subtext: 'Starting from ₹12,999', path: '/services/ecommerce-development' },
-  { label: 'Android & iOS Apps', subtext: 'Custom Price', path: '/services/app-development' },
-  { label: 'Digital Marketing', subtext: 'Custom Price', path: '/services/digital-marketing' },
+  { label: 'Business Website Development', subtext: 'Win trust & generate leads', path: '/business-website-development' },
+  { label: 'Website Redesign', subtext: 'Modernise an existing site', path: '/website-redesign' },
+  { label: 'E-Commerce Development', subtext: 'Sell online with confidence', path: '/ecommerce-development' },
+  { label: 'Landing & Informative Pages', subtext: 'Built for ad campaigns', path: '/services/landing-pages' },
+  { label: 'Content Writing & SEO Copy', subtext: 'Rank higher, convert better', path: '/services/content-writing' },
+  { label: 'Digital Marketing', subtext: 'Bring qualified traffic', path: '/services/digital-marketing' },
 ];
 
 export default function Header() {
@@ -135,7 +136,7 @@ export default function Header() {
               href="/contact"
               className="bg-brand-blue hover:bg-brand-blue/90 text-white px-5 py-2.5 rounded-xl text-sm font-semibold tracking-wide shadow-sm hover:shadow-md transition-all flex items-center space-x-2 cursor-pointer"
             >
-              <span>Start Your Project</span>
+              <span>Free Consultation</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -219,7 +220,7 @@ export default function Header() {
                   key={item.path}
                   href={item.path}
                   onClick={() => setIsOpen(false)}
-                  className={`w-full text-left px-4 py-3 rounded-xl text-base font-semibold tracking-wide transition-all flex items-center justify-between block ${
+                  className={`w-full text-left px-4 py-3 rounded-xl text-base font-semibold tracking-wide transition-all flex items-center justify-between ${
                     isActive
                       ? 'glass-nav-item-active text-brand-blue font-bold'
                       : 'glass-nav-item text-slate-700 hover:text-brand-blue'
@@ -239,7 +240,7 @@ export default function Header() {
                 onClick={() => setIsOpen(false)}
                 className="w-full bg-gradient-to-r from-brand-blue to-sky-600 hover:from-brand-blue/90 hover:to-sky-600/90 text-white py-3 px-4 rounded-xl text-center font-bold tracking-wide shadow-lg shadow-brand-blue/20 transition-all flex items-center justify-center space-x-2 cursor-pointer"
               >
-                <span>Start Your Project</span>
+                <span>Get Free Consultation</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>

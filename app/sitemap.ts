@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { SERVICES_DATA } from '../src/data';
+import { LANDING_PAGE_SLUGS } from '../src/landingPages';
 import { createClient } from '../src/utils/supabase/server';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -19,6 +20,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
     priority: route === '' ? 1 : 0.8,
+  }));
+
+  // Conversion landing pages — high priority, they are the paid-traffic targets.
+  const landingRoutes = LANDING_PAGE_SLUGS.map((slug) => ({
+    url: `${baseUrl}/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as const,
+    priority: 0.9,
   }));
 
   const serviceRoutes = Object.keys(SERVICES_DATA).map((slug) => ({
@@ -49,5 +58,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.error('Error fetching blogs for sitemap:', error);
   }
 
-  return [...staticRoutes, ...serviceRoutes, ...blogRoutes];
+  return [...staticRoutes, ...landingRoutes, ...serviceRoutes, ...blogRoutes];
 }

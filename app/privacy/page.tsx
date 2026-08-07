@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Privacy Policy | Web Total Solution',
+  title: 'Privacy Policy',
   description: 'Privacy Policy and data handling practices for Web Total Solution.',
 };
 

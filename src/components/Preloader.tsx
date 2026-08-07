@@ -1,29 +1,57 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 
+/**
+ * Paid-traffic landing pages skip the intro entirely. A full-screen overlay on
+ * an ad destination delays the hero, becomes the LCP element, and costs
+ * conversions — none of which is worth the brand moment there.
+ */
+const SKIP_ON_PATHS = [
+  '/business-website-development',
+  '/website-redesign',
+  '/ecommerce-development',
+  '/contact',
+];
+
+const SESSION_KEY = 'wts-intro-shown';
+
 export default function Preloader() {
+  const pathname = usePathname();
   const [progress, setProgress] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    // Mechanical progress logic
+    const skipPath = SKIP_ON_PATHS.some((path) => pathname?.startsWith(path));
+    const alreadyShown = sessionStorage.getItem(SESSION_KEY) === '1';
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Show the intro once per session, and never where it would cost a lead.
+    if (skipPath || alreadyShown || reducedMotion) {
+      setProgress(100);
+      setIsLoaded(true);
+      return;
+    }
+
+    sessionStorage.setItem(SESSION_KEY, '1');
+
     const interval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(interval);
-          setTimeout(() => setIsLoaded(true), 200); // Final delay at 100%
+          setTimeout(() => setIsLoaded(true), 100);
           return 100;
         }
-        const increment = Math.floor(Math.random() * 8) + 2;
+        const increment = Math.floor(Math.random() * 12) + 8;
         return Math.min(prev + increment, 100);
       });
-    }, 40);
+    }, 30);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [pathname]);
 
   useEffect(() => {
     // WebGL Shader Background Logic
@@ -128,7 +156,7 @@ export default function Preloader() {
 
   useEffect(() => {
     if (isLoaded) {
-      const timer = setTimeout(() => setHidden(true), 1000); // Wait for CSS fade out
+      const timer = setTimeout(() => setHidden(true), 500); // Wait for CSS fade out
       return () => clearTimeout(timer);
     }
   }, [isLoaded]);
@@ -137,7 +165,8 @@ export default function Preloader() {
 
   return (
       <div
-        className={`fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-[#213145] transition-opacity duration-1000 ease-in-out ${isLoaded ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+        aria-hidden="true"
+        className={`fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-[#213145] transition-opacity duration-500 ease-in-out ${isLoaded ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
       >
           {/* WebGL Shader Background */}
           <div className="absolute inset-0 w-full h-full opacity-40 mix-blend-soft-light pointer-events-none">

@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Terms of Service | Web Total Solution',
+  title: 'Terms of Service',
   description: 'Terms of Service and usage conditions for Web Total Solution.',
 };
 

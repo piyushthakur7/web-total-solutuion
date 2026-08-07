@@ -1,14 +1,47 @@
 import { Metadata } from 'next';
 import HomeView from '../src/components/HomeView';
+import JsonLd, { faqSchema } from '../src/components/JsonLd';
+import { HOME_FAQS } from '../src/siteContent';
+
+const title = 'Professional Business Website Development | Web Total Solution';
+const description =
+  'We build fast, modern, SEO-optimised business websites that help businesses attract customers, build trust and generate more leads. Book a free consultation.';
 
 export const metadata: Metadata = {
-  title: 'Web Total Solution | Premier Web Development Agency',
-  description: 'Elevate your brand with Web Total Solution. We build high-performance websites, scalable SaaS platforms, and enterprise E-commerce solutions.',
+  title,
+  description,
   alternates: {
     canonical: 'https://www.webtotalsolution.com',
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_IN',
+    url: 'https://www.webtotalsolution.com',
+    siteName: 'Web Total Solution',
+    title,
+    description,
+    images: [
+      {
+        url: '/logo_new.png',
+        width: 1200,
+        height: 630,
+        alt: 'Web Total Solution — professional business website development',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title,
+    description,
+    images: ['/logo_new.png'],
   },
 };
 
 export default function Home() {
-  return <HomeView />;
+  return (
+    <>
+      <JsonLd data={faqSchema(HOME_FAQS)} />
+      <HomeView />
+    </>
+  );
 }

@@ -1,30 +1,33 @@
-"use client";
-
 import React from 'react';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import Image from 'next/image';
 import { ServiceData } from '../types';
 import { ArrowRight, CheckCircle2, LayoutTemplate } from 'lucide-react';
+import { HERO_TRUST_BADGES, WHATSAPP_URL } from '../siteContent';
+import WhatsAppIcon from './WhatsAppIcon';
+import FinalCTA from './FinalCTA';
 
 export default function ServiceDetailView({ service }: { service: ServiceData }) {
-  const router = useRouter();
-
   return (
     <div className="bg-white min-h-screen">
       {/* Hero Section with Wave */}
-      <section className="relative pt-32 pb-40 overflow-hidden bg-slate-900">
+      <section className="relative pt-28 pb-40 overflow-hidden bg-slate-900">
         <div className="absolute inset-0 z-0">
-          <Image 
-            src={service.heroImage} 
-            alt={service.title} 
+          <Image
+            src={service.heroImage}
+            alt=""
+            aria-hidden="true"
             className="w-full h-full object-cover opacity-20"
             width={1920}
             height={1080}
+            quality={55}
+            sizes="100vw"
+            priority
             referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-900/60 to-slate-900/90" />
         </div>
-        
+
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight mb-6">
             {service.title}
@@ -32,6 +35,15 @@ export default function ServiceDetailView({ service }: { service: ServiceData })
           <p className="text-xl text-slate-300 font-medium max-w-2xl mx-auto">
             {service.subtitle}
           </p>
+
+          <ul className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2.5">
+            {HERO_TRUST_BADGES.map((badge) => (
+              <li key={badge} className="flex items-center space-x-1.5 text-sm font-semibold text-slate-300">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span>{badge}</span>
+              </li>
+            ))}
+          </ul>
         </div>
 
         {/* Wave Divider */}
@@ -77,7 +89,7 @@ export default function ServiceDetailView({ service }: { service: ServiceData })
               </div>
 
               <div>
-                <h2 className="text-3xl font-bold text-slate-900 mb-6">Technology Stack</h2>
+                <h2 className="text-3xl font-bold text-slate-900 mb-6">How We Build It</h2>
                 <div className="flex flex-wrap gap-3">
                   {service.content.techStack.map((tech, idx) => (
                     <span key={idx} className="px-4 py-2 bg-slate-900 text-white rounded-full text-sm font-semibold tracking-wide">
@@ -85,32 +97,78 @@ export default function ServiceDetailView({ service }: { service: ServiceData })
                     </span>
                   ))}
                 </div>
+                <p className="mt-5 text-sm text-slate-500 leading-relaxed max-w-xl">
+                  You never have to think about any of this — it is simply the foundation that keeps
+                  your website fast, secure and easy to extend as your business grows.
+                </p>
+              </div>
+
+              {/* Internal links keep visitors moving and help search crawl depth */}
+              <div className="pt-4 border-t border-slate-100">
+                <h2 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4">
+                  Related Services
+                </h2>
+                <nav className="flex flex-wrap gap-x-6 gap-y-3 text-sm">
+                  {[
+                    { href: '/business-website-development', label: 'Business Website Development' },
+                    { href: '/website-redesign', label: 'Website Redesign' },
+                    { href: '/ecommerce-development', label: 'E-Commerce Development' },
+                    { href: '/portfolio', label: 'Our Portfolio' },
+                    { href: '/pricing', label: 'Pricing' },
+                  ].map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="font-semibold text-slate-600 hover:text-brand-blue transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </nav>
               </div>
             </div>
 
             {/* Sticky Sidebar CTA */}
             <div className="lg:col-span-4">
-              <div className="sticky top-32 bg-white rounded-3xl p-8 border border-slate-200 shadow-xl shadow-slate-200/50">
-                <div className="text-center space-y-6">
-                  <div className="w-16 h-16 bg-brand-blue/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                    <span className="text-2xl font-bold text-brand-blue">₹</span>
-                  </div>
-                  <h3 className="text-2xl font-bold text-slate-900">Start Your Project</h3>
-                  <div className="pt-4 space-y-4">
-                    <button
-                      onClick={() => router.push('/contact')}
+              <div className="sticky top-28 bg-white rounded-3xl p-8 border border-slate-200 shadow-xl shadow-slate-200/50">
+                <div className="space-y-5">
+                  <h2 className="text-2xl font-bold text-slate-900 leading-tight">
+                    Get a Custom Quote
+                  </h2>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Tell us what your business needs and we will come back within 24 hours with a
+                    clear recommendation and a fixed price.
+                  </p>
+
+                  <ul className="space-y-2.5 py-2">
+                    {['Free, no-obligation consultation', 'Fixed written quote', 'Full code ownership'].map(
+                      (point) => (
+                        <li key={point} className="flex items-start space-x-2.5 text-xs text-slate-700">
+                          <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-px" />
+                          <span>{point}</span>
+                        </li>
+                      )
+                    )}
+                  </ul>
+
+                  <div className="space-y-3">
+                    <Link
+                      href={`/contact?details=${encodeURIComponent(
+                        `I would like a quote for: ${service.title}.`
+                      )}`}
                       className="w-full bg-brand-blue hover:bg-brand-blue/90 text-white py-4 rounded-xl font-bold tracking-wide shadow-md transition-all flex items-center justify-center space-x-2"
                     >
-                      <span>Get a Free Quote</span>
+                      <span>Request Free Quote</span>
                       <ArrowRight className="w-5 h-5" />
-                    </button>
+                    </Link>
                     <a
-                      href="https://wa.me/916291519364"
+                      href={WHATSAPP_URL}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full bg-slate-50 hover:bg-slate-100 text-slate-900 border border-slate-200 py-4 rounded-xl font-bold tracking-wide transition-all flex items-center justify-center block text-center"
+                      className="w-full bg-slate-50 hover:bg-slate-100 text-slate-900 border border-slate-200 py-4 rounded-xl font-bold tracking-wide transition-all flex items-center justify-center space-x-2.5"
                     >
-                      WhatsApp Us Now
+                      <WhatsAppIcon className="w-4 h-4 text-emerald-600" />
+                      <span>WhatsApp Us</span>
                     </a>
                   </div>
                 </div>
@@ -119,6 +177,10 @@ export default function ServiceDetailView({ service }: { service: ServiceData })
           </div>
         </div>
       </section>
+
+      <div className="pb-20">
+        <FinalCTA />
+      </div>
     </div>
   );
 }

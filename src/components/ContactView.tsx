@@ -1,328 +1,187 @@
-"use client";
-
-import { useRouter } from 'next/navigation';
-import React, { useState } from 'react';
-import { Mail, Phone, MapPin, CheckCircle, ArrowRight, MessageSquare, Shield, Clock, HelpCircle, Instagram, Linkedin, Youtube, Twitter } from 'lucide-react';
+import React from 'react';
+import Link from 'next/link';
 import Image from 'next/image';
-import { motion, AnimatePresence } from 'motion/react';
+import { Mail, MapPin, Clock, Instagram, Linkedin, Youtube, Twitter, CheckCircle2 } from 'lucide-react';
+import LeadForm from './LeadForm';
+import WhatsAppIcon from './WhatsAppIcon';
+import { EMAIL, PHONE_DISPLAY, WHATSAPP_URL } from '../siteContent';
+
+const SOCIALS = [
+  { href: 'https://www.instagram.com/webtotalsolution/?hl=en', label: 'Instagram', Icon: Instagram },
+  { href: 'https://www.linkedin.com/company/web-total-solutions/', label: 'LinkedIn', Icon: Linkedin },
+  { href: 'https://www.youtube.com/channel/UCNlUYW1RyevmpKY1xUQKatA', label: 'YouTube', Icon: Youtube },
+  { href: 'https://x.com/webtotalindia', label: 'X (Twitter)', Icon: Twitter },
+];
+
+const REASSURANCE = [
+  'A free consultation with no obligation to proceed',
+  'A fixed written quote — never an open-ended estimate',
+  'Honest advice, even if that means you do not need us',
+  'You own the domain, hosting, content and source code',
+];
 
 export default function ContactView() {
-  const router = useRouter();
-  // Form states
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [projectType, setProjectType] = useState('Corporate Websites');
-  const [details, setDetails] = useState('');
-
-  // Submission process state
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-  const [inquiryCode, setInquiryCode] = useState('');
-
-  const handleExternalSubmit = (method: 'email' | 'whatsapp') => {
-    if (!name || !email) {
-      alert("Please fill in your Full Name and Work Email.");
-      return;
-    }
-
-    setIsSubmitting(true);
-
-    const message = `Name: ${name}
-Email: ${email}
-Project Scope: ${projectType}
-
-Details:
-${details}`;
-
-    if (method === 'email') {
-      window.location.href = `mailto:info@webtotalsolution.com?subject=New Inquiry from ${encodeURIComponent(name)}&body=${encodeURIComponent(message)}`;
-    } else if (method === 'whatsapp') {
-      window.open(`https://wa.me/916291519364?text=${encodeURIComponent(message)}`, '_blank');
-    }
-
-    // Simulate database write & security handshake
-    setTimeout(() => {
-      const code = `WTS-${Math.floor(100000 + Math.random() * 900000)}`;
-      setInquiryCode(code);
-      setIsSubmitting(false);
-      setSubmitted(true);
-    }, 1200);
-  };
-
-  const handleResetForm = () => {
-    setName('');
-    setEmail('');
-    setDetails('');
-    setSubmitted(false);
-  };
-
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-14">
       {/* Title */}
       <div className="text-center space-y-4 max-w-2xl mx-auto">
-        <span className="text-xs uppercase tracking-widest font-extrabold text-brand-blue">Contact Our Team</span>
-        <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-none">
-          Ready to Grow Your Business?
+        <span className="text-xs uppercase tracking-widest font-extrabold text-brand-blue">
+          Free Consultation
+        </span>
+        <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-[1.1]">
+          Let&apos;s Build Something That Grows Your Business
         </h1>
-        <p className="text-slate-600 text-sm">
-          Submit your scope details below. Our engineering team will review your specifications and follow up within 24 hours.
+        <p className="text-slate-600 text-base leading-relaxed">
+          Tell us about your business and what you want the website to achieve. We will come back
+          within 24 hours with a recommended approach and a clear, fixed quote.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
-        
-        {/* Left Side: Form */}
-        <div className="lg:col-span-7 bg-white border border-slate-100 rounded-3xl p-8 shadow-sm relative">
-          <AnimatePresence mode="wait">
-            {!submitted ? (
-              <motion.form 
-                key="contact-form"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                className="space-y-6"
-              >
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  {/* Name field */}
-                  <div className="space-y-1.5">
-                    <label htmlFor="fullName" className="text-xs font-bold text-slate-700 uppercase tracking-wide">
-                      Full Name *
-                    </label>
-                    <input
-                      id="fullName"
-                      type="text"
-                      required
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      placeholder="John Doe"
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-colors"
-                    />
-                  </div>
-
-                  {/* Email field */}
-                  <div className="space-y-1.5">
-                    <label htmlFor="workEmail" className="text-xs font-bold text-slate-700 uppercase tracking-wide">
-                      Work Email *
-                    </label>
-                    <input
-                      id="workEmail"
-                      type="email"
-                      required
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="john@company.com"
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-colors"
-                    />
-                  </div>
-                </div>
-
-                {/* Scope dropdown select */}
-                <div className="space-y-1.5">
-                  <label htmlFor="projectType" className="text-xs font-bold text-slate-700 uppercase tracking-wide">
-                    Project Target Scope
-                  </label>
-                  <select
-                    id="projectType"
-                    value={projectType}
-                    onChange={(e) => setProjectType(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue bg-white transition-colors"
-                  >
-                    <option value="Corporate Websites">Corporate Website (Marketing & Brand Showcase)</option>
-                    <option value="SaaS Platforms">SaaS / Web Application Development</option>
-                    <option value="E-Commerce Platforms">E-Commerce Storefront (Checkout & Payment setup)</option>
-                    <option value="Landing Pages">High-Converting Landing Pages (Promo/Ad campaigns)</option>
-                  </select>
-                </div>
-
-                {/* Details text area */}
-                <div className="space-y-1.5">
-                  <label htmlFor="projectDetails" className="text-xs font-bold text-slate-700 uppercase tracking-wide">
-                    Project Details & Specs
-                  </label>
-                  <textarea
-                    id="projectDetails"
-                    rows={5}
-                    value={details}
-                    onChange={(e) => setDetails(e.target.value)}
-                    placeholder="Describe your design, feature requirements, and timeline parameters..."
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-colors resize-none"
-                  />
-                </div>
-
-                {/* Disclaimers */}
-                <div className="flex items-center space-x-3 text-[11px] text-slate-400 bg-slate-50 p-3.5 rounded-xl border border-slate-100">
-                  <Shield className="w-4 h-4 text-brand-blue shrink-0" />
-                  <span>Data is encrypted strictly under our privacy policies. We never sell, distribute, or share lead metrics.</span>
-                </div>
-
-                {/* Submit triggers */}
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <button
-                    type="button"
-                    onClick={() => handleExternalSubmit('email')}
-                    disabled={isSubmitting}
-                    className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-4 rounded-xl text-sm tracking-wide shadow-sm hover:shadow-md transition-all flex items-center justify-center space-x-2 disabled:opacity-50 cursor-pointer"
-                  >
-                    <Mail className="w-4 h-4" />
-                    <span>Email Us</span>
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => handleExternalSubmit('whatsapp')}
-                    disabled={isSubmitting}
-                    className="w-full bg-[#25D366] hover:bg-[#1ebd5a] text-white font-bold py-4 rounded-xl text-sm tracking-wide shadow-sm hover:shadow-md transition-all flex items-center justify-center space-x-2 disabled:opacity-50 cursor-pointer"
-                  >
-                    <MessageSquare className="w-4 h-4" />
-                    <span>WhatsApp Us</span>
-                  </button>
-                </div>
-              </motion.form>
-            ) : (
-              <motion.div 
-                key="submission-success"
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                className="text-center py-8 space-y-6"
-              >
-                <div className="w-16 h-16 bg-emerald-50 text-emerald-500 rounded-full flex items-center justify-center mx-auto shadow-sm border border-emerald-100">
-                  <CheckCircle className="w-10 h-10" />
-                </div>
-                
-                <div className="space-y-2">
-                  <h3 className="text-2xl font-bold text-slate-950">Inquiry Received!</h3>
-                  <p className="text-slate-600 text-sm max-w-md mx-auto">
-                    Hi <span className="font-semibold text-slate-900">{name}</span>, your scope blueprint was dispatched successfully. Our design and system architecture team has been notified.
-                  </p>
-                </div>
-
-                {/* Inquiry Code & SLA */}
-                <div className="bg-slate-50 border border-slate-100 rounded-2xl p-6 max-w-sm mx-auto text-left space-y-3">
-                  <div className="flex justify-between text-xs text-slate-500 border-b border-slate-200/50 pb-2.5">
-                    <span>TRANSMISSION ID</span>
-                    <span className="font-mono font-bold text-slate-800">{inquiryCode}</span>
-                  </div>
-                  <div className="flex justify-between text-xs text-slate-500 border-b border-slate-200/50 pb-2.5">
-                    <span>TARGET SCOPE</span>
-                    <span className="font-semibold text-slate-800 text-right">{projectType}</span>
-                  </div>
-                  <div className="flex justify-between text-xs text-slate-500">
-                    <span>RESPONSE SLA</span>
-                    <span className="font-bold text-emerald-600 flex items-center space-x-1">
-                      <Clock className="w-3.5 h-3.5 inline mr-0.5" />
-                      <span>&lt; 24 Hours</span>
-                    </span>
-                  </div>
-                </div>
-
-                <div className="pt-4">
-                  <button
-                    onClick={handleResetForm}
-                    className="text-xs font-bold text-brand-blue hover:underline cursor-pointer"
-                  >
-                    Submit Another Inquiry
-                  </button>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        {/* Form */}
+        <div className="lg:col-span-7">
+          <LeadForm source="Contact page" submitLabel="Get My Free Consultation" />
         </div>
 
-        {/* Right Side: Map & Direct Channels */}
-        <div className="lg:col-span-5 space-y-8 flex flex-col justify-between">
-          {/* Quick info rails */}
-          <div className="bg-slate-50 border border-slate-100 rounded-3xl p-6 md:p-8 space-y-6">
-            <h3 className="text-lg font-bold text-slate-950 tracking-tight">Direct Channels</h3>
-            
-            <div className="space-y-5">
-              <div className="flex items-start space-x-4">
-                <div className="w-10 h-10 bg-white border border-slate-100 rounded-xl flex items-center justify-center text-brand-blue shrink-0">
-                  <Mail className="w-5 h-5" />
-                </div>
-                <div>
-                  <span className="block text-[10px] text-slate-400 uppercase tracking-widest font-bold">Email Address</span>
-                  <a href="mailto:info@webtotalsolution.com" className="text-sm font-semibold text-slate-800 hover:text-brand-blue hover:underline">
-                    info@webtotalsolution.com
+        {/* Direct channels & reassurance */}
+        <div className="lg:col-span-5 space-y-6">
+          <div className="bg-slate-900 text-white rounded-3xl p-6 md:p-8 space-y-5 relative overflow-hidden">
+            <div className="absolute right-0 top-0 w-64 h-64 bg-brand-blue/15 rounded-full filter blur-3xl pointer-events-none" />
+            <div className="relative z-10 space-y-5">
+              <h2 className="text-lg font-bold tracking-tight">Prefer to Talk Right Now?</h2>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full bg-[#25D366] hover:bg-[#1ebd5a] text-white font-bold py-3.5 rounded-xl text-sm transition-all flex items-center justify-center space-x-2.5"
+              >
+                <WhatsAppIcon className="w-4 h-4" />
+                <span>Chat on WhatsApp</span>
+              </a>
+              <a
+                href="tel:+916291519364"
+                className="w-full bg-white/10 hover:bg-white/15 border border-white/20 text-white font-bold py-3.5 rounded-xl text-sm transition-all flex items-center justify-center"
+              >
+                Call {PHONE_DISPLAY}
+              </a>
+              <p className="flex items-center justify-center space-x-1.5 text-xs text-slate-400">
+                <Clock className="w-3.5 h-3.5" />
+                <span>Mon–Sat, 10:00 AM – 7:00 PM IST</span>
+              </p>
+            </div>
+          </div>
+
+          <div className="bg-slate-50 border border-slate-100 rounded-3xl p-6 md:p-8 space-y-5">
+            <h2 className="text-lg font-bold text-slate-950 tracking-tight">What You Can Expect</h2>
+            <ul className="space-y-3">
+              {REASSURANCE.map((item) => (
+                <li key={item} className="flex items-start space-x-3 text-sm text-slate-700">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0 mt-px" />
+                  <span className="leading-relaxed">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="bg-slate-50 border border-slate-100 rounded-3xl p-6 md:p-8 space-y-5">
+            <h2 className="text-lg font-bold text-slate-950 tracking-tight">Direct Channels</h2>
+
+            <div className="flex items-start space-x-4">
+              <span className="w-10 h-10 bg-white border border-slate-100 rounded-xl flex items-center justify-center text-brand-blue shrink-0">
+                <Mail className="w-5 h-5" />
+              </span>
+              <span>
+                <span className="block text-[10px] text-slate-400 uppercase tracking-widest font-bold">
+                  Email
+                </span>
+                <a
+                  href={`mailto:${EMAIL}`}
+                  className="text-sm font-semibold text-slate-800 hover:text-brand-blue hover:underline break-all"
+                >
+                  {EMAIL}
+                </a>
+              </span>
+            </div>
+
+            <div className="flex items-start space-x-4">
+              <span className="w-10 h-10 bg-white border border-slate-100 rounded-xl flex items-center justify-center text-brand-blue shrink-0">
+                <MapPin className="w-5 h-5" />
+              </span>
+              <span>
+                <span className="block text-[10px] text-slate-400 uppercase tracking-widest font-bold">
+                  Office
+                </span>
+                <span className="text-sm font-semibold text-slate-800">
+                  Pachpota, Garia,
+                  <br />
+                  Kolkata, West Bengal 700152
+                </span>
+              </span>
+            </div>
+
+            <div className="pt-2 border-t border-slate-200">
+              <span className="block text-[10px] text-slate-400 uppercase tracking-widest font-bold mb-3">
+                Follow Us
+              </span>
+              <div className="flex flex-wrap gap-x-5 gap-y-2">
+                {SOCIALS.map(({ href, label, Icon }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm font-semibold text-slate-700 hover:text-brand-blue transition-colors flex items-center space-x-1.5"
+                  >
+                    <Icon className="w-4 h-4 text-slate-400" />
+                    <span>{label}</span>
                   </a>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-4">
-                <div className="w-10 h-10 bg-white border border-slate-100 rounded-xl flex items-center justify-center text-brand-blue shrink-0">
-                  <MessageSquare className="w-5 h-5 animate-pulse" />
-                </div>
-                <div>
-                  <span className="block text-[10px] text-slate-400 uppercase tracking-widest font-bold">WhatsApp Direct</span>
-                  <span className="text-sm font-semibold text-slate-800">
-                    +91 6291 519 364
-                  </span>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-4">
-                <div className="w-10 h-10 bg-white border border-slate-100 rounded-xl flex items-center justify-center text-brand-blue shrink-0">
-                  <MapPin className="w-5 h-5" />
-                </div>
-                <div>
-                  <span className="block text-[10px] text-slate-400 uppercase tracking-widest font-bold">Headquarters</span>
-                  <span className="text-sm font-semibold text-slate-800">
-                    Pachpota, Garia,<br />Kolkata, West Bengal 700152
-                  </span>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-4">
-                <div className="w-10 h-10 bg-white border border-slate-100 rounded-xl flex items-center justify-center text-brand-blue shrink-0">
-                  <Instagram className="w-5 h-5" />
-                </div>
-                <div>
-                  <span className="block text-[10px] text-slate-400 uppercase tracking-widest font-bold">Social Media</span>
-                  <div className="flex space-x-4 mt-0.5">
-                    <a href="https://www.instagram.com/webtotalsolution/?hl=en" target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-slate-800 hover:text-brand-blue transition-colors flex items-center">
-                      <Instagram className="w-4 h-4 mr-1 text-slate-400" />
-                      Instagram
-                    </a>
-                    <a href="https://www.linkedin.com/company/web-total-solutions/" target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-slate-800 hover:text-brand-blue transition-colors flex items-center">
-                      <Linkedin className="w-4 h-4 mr-1 text-slate-400" />
-                      LinkedIn
-                    </a>
-                    <a href="https://www.youtube.com/channel/UCNlUYW1RyevmpKY1xUQKatA" target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-slate-800 hover:text-brand-blue transition-colors flex items-center">
-                      <Youtube className="w-4 h-4 mr-1 text-slate-400" />
-                      YouTube
-                    </a>
-                    <a href="https://x.com/webtotalindia" target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-slate-800 hover:text-brand-blue transition-colors flex items-center">
-                      <Twitter className="w-4 h-4 mr-1 text-slate-400" />
-                      X (Twitter)
-                    </a>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>
 
-          {/* Styled Map frame with marker overlay */}
-          <div className="border border-slate-150 rounded-3xl overflow-hidden bg-white shadow-sm relative group aspect-video">
+          {/* Location visual */}
+          <div className="border border-slate-200 rounded-3xl overflow-hidden bg-white shadow-sm relative group aspect-video">
             <Image
               src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=800"
-              alt="Web Total Solution Kolkata Headquarters Map Location"
+              alt="Web Total Solution office location in Kolkata"
               className="w-full h-full object-cover grayscale transition-all duration-300 group-hover:grayscale-0"
               width={800}
               height={450}
+              loading="lazy"
+              quality={60}
+              sizes="(max-width: 1024px) 100vw, 400px"
               referrerPolicy="no-referrer"
             />
-            {/* Pulsing Marker Overlay */}
-            <div className="absolute top-[48%] left-[51%] transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+            <div className="absolute top-[48%] left-[51%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
               <span className="w-3.5 h-3.5 bg-brand-blue border-2 border-white rounded-full inline-block animate-ping absolute" />
               <span className="w-3.5 h-3.5 bg-brand-blue border-2 border-white rounded-full inline-block relative z-10" />
-              <div className="bg-slate-900 text-white text-[9px] font-bold px-2 py-0.5 rounded shadow-md mt-1 font-mono uppercase tracking-wide">
-                WTS HQ
-              </div>
+              <span className="bg-slate-900 text-white text-[9px] font-bold px-2 py-0.5 rounded shadow-md mt-1 font-mono uppercase tracking-wide">
+                WTS Kolkata
+              </span>
             </div>
           </div>
-
         </div>
-
       </div>
+
+      {/* Internal links for crawl depth */}
+      <nav className="border-t border-slate-200 pt-8 flex flex-wrap gap-x-6 gap-y-3 text-sm justify-center">
+        {[
+          { href: '/business-website-development', label: 'Business Website Development' },
+          { href: '/website-redesign', label: 'Website Redesign' },
+          { href: '/ecommerce-development', label: 'E-Commerce Development' },
+          { href: '/portfolio', label: 'Portfolio' },
+          { href: '/pricing', label: 'Pricing' },
+        ].map((link) => (
+          <Link
+            key={link.href}
+            href={link.href}
+            className="font-semibold text-slate-600 hover:text-brand-blue transition-colors"
+          >
+            {link.label}
+          </Link>
+        ))}
+      </nav>
     </div>
   );
 }

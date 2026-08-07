@@ -6,7 +6,7 @@ import { Calendar, User, ArrowRight } from 'lucide-react';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Blog & Insights | Web Total Solution',
+  title: 'Blog & Insights',
   description: 'Read the latest insights, tutorials, and news about web development, SaaS, e-commerce, and digital marketing.',
   alternates: {
     canonical: 'https://www.webtotalsolution.com/blog',

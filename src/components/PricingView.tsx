@@ -1,455 +1,358 @@
 "use client";
 
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import React, { useState } from 'react';
-import { Check, Plus, Minus, ArrowRight, HelpCircle, Star, Sparkles } from 'lucide-react';
+import { Check, Plus, Minus, ArrowRight, Star, Sparkles, ShieldCheck } from 'lucide-react';
 
-export default function PricingView({ serviceSlug }: { serviceSlug?: string }) {
-  const router = useRouter();
-  const onNavigate = (view: string, context?: any) => {
-    router.push(view === 'home' ? '/' : `/${view}`);
-  };
-  const [billingCycle, setBillingCycle] = useState<'monthly' | 'annual'>('monthly');
+/**
+ * Investment page. Deliberately presents ranges and a custom-quote path rather
+ * than a low headline price — the objective is qualified enquiries, not the
+ * cheapest possible sale.
+ */
 
-  // Interactive Addon states
+const PACKAGES = [
+  {
+    name: 'Business Essential',
+    audience: 'For established businesses that need a credible, lead-generating presence online.',
+    from: 15000,
+    highlight: false,
+    features: [
+      'Up to 5 custom-designed pages',
+      'Mobile-first responsive build',
+      'On-page SEO & schema setup',
+      'Enquiry form + WhatsApp integration',
+      'Google Analytics & Search Console',
+      '30 days post-launch support',
+    ],
+  },
+  {
+    name: 'Business Growth',
+    audience: 'For businesses actively competing for search traffic and paid-ad conversions.',
+    from: 35000,
+    highlight: true,
+    features: [
+      'Up to 10 custom-designed pages',
+      'Conversion-focused page structure',
+      'Advanced SEO & content optimisation',
+      'Content management system (CMS)',
+      'Blog setup & landing page templates',
+      'Speed & Core Web Vitals tuning',
+      '90 days post-launch support',
+    ],
+  },
+  {
+    name: 'Premium & Custom',
+    audience: 'For e-commerce, multi-location brands and custom platform requirements.',
+    from: null,
+    highlight: false,
+    features: [
+      'Unlimited pages & custom modules',
+      'E-commerce or booking functionality',
+      'Payment gateway integration',
+      'Custom database & user accounts',
+      'Third-party & CRM integrations',
+      'Priority support & maintenance plan',
+    ],
+  },
+];
+
+const ADD_ONS = [
+  { id: 'pages', label: 'Additional Custom Pages', note: 'Per extra page', price: 3500 },
+  { id: 'cms', label: 'Content Management System', note: 'Edit your own content', price: 8000 },
+  { id: 'branding', label: 'Logo & Brand Identity', note: 'Custom brand assets', price: 7500 },
+  { id: 'ecommerce', label: 'E-Commerce & Payments', note: 'Products, cart, checkout', price: 20000 },
+  { id: 'seo', label: 'SEO Content Package', note: '5 optimised pages of copy', price: 12000 },
+];
+
+const BASE_INVESTMENT = 15000;
+
+export default function PricingView() {
   const [extraPages, setExtraPages] = useState(0);
-  const [cmsSetup, setCmsSetup] = useState(false);
-  const [logoDesign, setLogoDesign] = useState(false);
-  const [ecommerceIntegration, setEcommerceIntegration] = useState(false);
+  const [selected, setSelected] = useState<Record<string, boolean>>({});
 
-  let basePrices = { starter: 7999, growth: 14999, premium: 35000 };
-  let customFeatures = null;
+  const toggle = (id: string) =>
+    setSelected((prev) => ({ ...prev, [id]: !prev[id] }));
 
-  if (serviceSlug === 'content-writing') {
-    basePrices = { starter: 1000, growth: 3000, premium: 8000 };
-    customFeatures = {
-      starter: ['SEO Optimized Blog Post', 'Basic Copywriting', '1 Revision', '48-Hour Delivery SLA'],
-      growth: ['4 Weekly Blog Posts', 'Social Media Copy', 'Unlimited Revisions', '24-Hour Priority SLA'],
-      premium: ['Full Content Strategy', 'Whitepapers & PR', 'Dedicated Editor', 'Immediate Response SLA']
-    };
-  } else if (serviceSlug === 'ecommerce') {
-    basePrices = { starter: 12999, growth: 24999, premium: 45000 };
-  } else if (serviceSlug === 'saas' || serviceSlug === 'mobile-apps' || serviceSlug === 'digital-marketing') {
-    // Custom price flag
-    basePrices = { starter: -1, growth: -1, premium: -1 };
-  }
+  const addOnTotal = ADD_ONS.reduce((sum, addon) => {
+    if (addon.id === 'pages') return sum + extraPages * addon.price;
+    return selected[addon.id] ? sum + addon.price : sum;
+  }, 0);
 
-  // Package base pricing
-  const starterPrice = billingCycle === 'monthly' ? basePrices.starter : Math.round(basePrices.starter * 0.8);
-  const growthPrice = billingCycle === 'monthly' ? basePrices.growth : Math.round(basePrices.growth * 0.8);
-  const premiumPrice = billingCycle === 'monthly' ? basePrices.premium : Math.round(basePrices.premium * 0.8);
+  const estimate = BASE_INVESTMENT + addOnTotal;
 
-  // Live estimate math
-  const extraPagesCost = extraPages * 2500;
-  const cmsCost = cmsSetup ? 8000 : 0;
-  const logoCost = logoDesign ? 5000 : 0;
-  const ecomCost = ecommerceIntegration ? 15000 : 0;
-  
-  const selectedBasePrice = growthPrice; // base calculation on standard growth tier
-  const liveTotalEstimate = selectedBasePrice + extraPagesCost + cmsCost + logoCost + ecomCost;
+  const estimateQuery = () => {
+    const chosen = ADD_ONS.filter((addon) =>
+      addon.id === 'pages' ? extraPages > 0 : selected[addon.id]
+    ).map((addon) => (addon.id === 'pages' ? `${extraPages} extra pages` : addon.label));
 
-  const handleSelectPlan = (planName: string, planPrice: number) => {
-    const cycleText = billingCycle === 'annual' ? 'one-time payment' : 'billed monthly';
-    onNavigate('contact', {
-      projectType: planName === 'Premium Plan' ? 'SaaS Platforms' : 'Corporate Websites',
-      details: `Hi! I would like to choose the "${planName} (₹${planPrice.toLocaleString()}/mo, ${cycleText})". Let's align on the roadmap!`
-    });
-  };
+    const details = `I used the scope estimator on your website. Indicative total: ₹${estimate.toLocaleString(
+      'en-IN'
+    )}${chosen.length ? `, including: ${chosen.join(', ')}` : ''}. Please share a detailed quote.`;
 
-  const handleInquireEstimate = () => {
-    const activeAddons: string[] = [];
-    if (extraPages > 0) activeAddons.push(`${extraPages} Extra Pages`);
-    if (cmsSetup) activeAddons.push('Blog/CMS Setup');
-    if (logoDesign) activeAddons.push('Logo Design');
-    if (ecommerceIntegration) activeAddons.push('E-Commerce integration');
-
-    const addOnText = activeAddons.length > 0 
-      ? ` with the following additions: ${activeAddons.join(', ')}` 
-      : '';
-
-    onNavigate('contact', {
-      projectType: ecommerceIntegration ? 'E-Commerce Platforms' : 'Corporate Websites',
-      details: `Hi! I created a customized plan estimate on your website totaling ₹${liveTotalEstimate.toLocaleString()}. Let's discuss starting this scope${addOnText}!`
-    });
+    return `/contact?type=${encodeURIComponent(
+      selected.ecommerce ? 'E-Commerce Platform' : 'Business Website'
+    )}&details=${encodeURIComponent(details)}`;
   };
 
   return (
     <div className="space-y-24 pb-20 overflow-x-hidden">
       {/* Header */}
-      <section className="text-center pt-16 space-y-4 max-w-3xl mx-auto px-4">
-        <div className="inline-flex items-center space-x-2 bg-brand-blue/10 border border-brand-blue/20 px-3 py-1 rounded-full text-brand-blue text-xs font-semibold uppercase tracking-wider">
+      <section className="text-center pt-16 space-y-5 max-w-3xl mx-auto px-4">
+        <div className="inline-flex items-center space-x-2 bg-brand-blue/10 border border-brand-blue/20 px-3.5 py-1.5 rounded-full text-brand-blue text-xs font-bold uppercase tracking-wider">
           <Sparkles className="w-3.5 h-3.5" />
-          <span>Flexible Investing</span>
+          <span>Transparent Investment</span>
         </div>
-        <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-none">
-          Conversion-Focused Pricing
+        <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-[1.1]">
+          Custom Quotes, Built Around Your Business
         </h1>
-        <p className="text-slate-600 text-base max-w-xl mx-auto">
-          Honest pricing engineered strictly for your scope. No hidden retention fees, absolute code ownership.
+        <p className="text-slate-600 text-base max-w-xl mx-auto leading-relaxed">
+          We do not sell fixed templates, so we do not quote fixed template prices. Every project is
+          scoped to what your business actually needs — with the full cost confirmed in writing
+          before any work begins.
         </p>
-
-        {/* Cycle Toggle */}
-        <div className="pt-6 flex justify-center items-center space-x-4">
-          <span className={`text-sm font-semibold ${billingCycle === 'monthly' ? 'text-slate-900' : 'text-slate-400'}`}>Monthly Billing</span>
-          <button
-            onClick={() => setBillingCycle(billingCycle === 'monthly' ? 'annual' : 'monthly')}
-            className="w-12 h-6 bg-slate-200 rounded-full p-0.5 transition-colors relative cursor-pointer"
-            aria-label="Toggle one-time payment"
+        <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3.5">
+          <Link
+            href="/contact"
+            className="w-full sm:w-auto bg-brand-blue hover:bg-brand-blue/90 text-white px-7 py-4 rounded-xl font-bold tracking-wide shadow-lg shadow-brand-blue/20 transition-all inline-flex items-center justify-center space-x-2 cursor-pointer"
           >
-            <div className={`w-5 h-5 bg-brand-blue rounded-full shadow-sm transform transition-transform duration-200 ${
-              billingCycle === 'annual' ? 'translate-x-6' : 'translate-x-0'
-            }`} />
-          </button>
-          <span className={`text-sm font-semibold flex items-center space-x-1 ${billingCycle === 'annual' ? 'text-slate-900' : 'text-slate-400'}`}>
-            <span>One-Time Payment</span>
-            <span className="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-full">Save 20%</span>
-          </span>
+            <span>Request Your Custom Quote</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+          <Link
+            href="/portfolio"
+            className="w-full sm:w-auto bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 px-7 py-4 rounded-xl font-bold tracking-wide transition-all inline-flex items-center justify-center cursor-pointer"
+          >
+            See Our Work
+          </Link>
         </div>
       </section>
 
-      {/* Package Bento Cards */}
+      {/* Packages */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
-          
-          {/* Plan 1: Starter */}
-          <div className="bg-slate-50/50 border border-slate-100 rounded-3xl p-8 flex flex-col justify-between hover:border-slate-200 transition-all">
-            <div className="space-y-6">
-              <div>
-                <h3 className="text-lg font-bold text-slate-900">Starter Package</h3>
-                <p className="text-slate-500 text-xs">For clean, singular promopages requiring top-tier optimization.</p>
-              </div>
-              
-              <div className="flex items-baseline">
-                {starterPrice === -1 ? (
-                  <span className="text-4xl font-extrabold text-slate-950">Custom</span>
-                ) : (
-                  <>
-                    <span className="text-4xl font-extrabold text-slate-950">₹{starterPrice.toLocaleString()}</span>
-                    <span className="text-slate-400 text-sm ml-1">/ mo</span>
-                  </>
-                )}
-              </div>
+          {PACKAGES.map((pkg) => (
+            <div
+              key={pkg.name}
+              className={`rounded-3xl p-8 flex flex-col justify-between transition-all ${
+                pkg.highlight
+                  ? 'bg-slate-900 text-white shadow-xl border-2 border-brand-blue relative lg:-translate-y-2'
+                  : 'bg-slate-50/50 border border-slate-100 hover:border-slate-200'
+              }`}
+            >
+              {pkg.highlight && (
+                <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-brand-blue text-white text-[10px] uppercase tracking-widest font-extrabold px-3.5 py-1 rounded-full shadow-sm flex items-center space-x-1.5 whitespace-nowrap">
+                  <Star className="w-3 h-3 fill-white text-white" />
+                  <span>Most Chosen</span>
+                </span>
+              )}
 
-              <ul className="space-y-3.5 text-xs text-slate-600 pt-6 border-t border-slate-200/50">
-                {customFeatures ? customFeatures.starter.map((feat, i) => (
-                  <li key={i} className="flex items-start space-x-2.5">
-                    <Check className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />
-                    <span>{feat}</span>
-                  </li>
-                )) : (
-                  <>
-                    <li className="flex items-start space-x-2.5">
-                      <Check className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />
-                      <span>1 High-Performance Landing Page</span>
-                    </li>
-                    <li className="flex items-start space-x-2.5">
-                      <Check className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />
-                      <span>Basic SEO Architecture</span>
-                    </li>
-                    <li className="flex items-start space-x-2.5">
-                      <Check className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />
-                      <span>1 Year Complimentary Support</span>
-                    </li>
-                    <li className="flex items-start space-x-2.5">
-                      <Check className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />
-                      <span>48-Hour Response SLA</span>
-                    </li>
-                  </>
-                )}
-              </ul>
-            </div>
+              <div className="space-y-6">
+                <div>
+                  <h2 className={`text-xl font-extrabold ${pkg.highlight ? 'text-white' : 'text-slate-900'}`}>
+                    {pkg.name}
+                  </h2>
+                  <p className={`text-xs mt-1.5 leading-relaxed ${pkg.highlight ? 'text-slate-400' : 'text-slate-500'}`}>
+                    {pkg.audience}
+                  </p>
+                </div>
 
-            <div className="pt-8">
-              <button
-                onClick={() => handleSelectPlan('Starter Plan', starterPrice)}
-                className="w-full bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 py-3 rounded-xl font-bold text-xs tracking-wider uppercase transition-all cursor-pointer"
-              >
-                Choose Starter Scope
-              </button>
-            </div>
-          </div>
+                <div className="flex items-baseline flex-wrap gap-x-2">
+                  {pkg.from === null ? (
+                    <span className={`text-4xl font-extrabold ${pkg.highlight ? 'text-white' : 'text-slate-950'}`}>
+                      Custom Quote
+                    </span>
+                  ) : (
+                    <>
+                      <span className={`text-xs font-bold uppercase tracking-widest ${pkg.highlight ? 'text-slate-500' : 'text-slate-400'}`}>
+                        From
+                      </span>
+                      <span className={`text-4xl font-extrabold ${pkg.highlight ? 'text-white' : 'text-slate-950'}`}>
+                        ₹{pkg.from.toLocaleString('en-IN')}
+                      </span>
+                      <span className={`text-xs ${pkg.highlight ? 'text-slate-500' : 'text-slate-400'}`}>
+                        one-time project
+                      </span>
+                    </>
+                  )}
+                </div>
 
-          {/* Plan 2: Growth (Highlighted) */}
-          <div className="bg-slate-900 text-white rounded-3xl p-8 flex flex-col justify-between relative shadow-xl border-2 border-brand-blue transform lg:-translate-y-2">
-            <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-brand-blue text-white text-[10px] uppercase tracking-widest font-extrabold px-3.5 py-1 rounded-full shadow-sm flex items-center space-x-1.5">
-              <Star className="w-3 h-3 fill-white text-white" />
-              <span>Most Popular Choice</span>
-            </span>
-
-            <div className="space-y-6">
-              <div>
-                <h3 className="text-xl font-extrabold text-white">Growth Package</h3>
-                <p className="text-slate-400 text-xs">A comprehensive system optimized for fast-growing SMEs.</p>
-              </div>
-              
-              <div className="flex items-baseline">
-                {growthPrice === -1 ? (
-                  <span className="text-5xl font-extrabold text-white">Custom</span>
-                ) : (
-                  <>
-                    <span className="text-5xl font-extrabold text-white">₹{growthPrice.toLocaleString()}</span>
-                    <span className="text-slate-500 text-sm ml-1">/ mo</span>
-                  </>
-                )}
+                <ul className={`space-y-3.5 text-xs pt-6 border-t ${pkg.highlight ? 'text-slate-300 border-white/10' : 'text-slate-600 border-slate-200/60'}`}>
+                  {pkg.features.map((feature) => (
+                    <li key={feature} className="flex items-start space-x-2.5">
+                      <Check className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
 
-              <ul className="space-y-3.5 text-xs text-slate-300 pt-6 border-t border-white/5">
-                {customFeatures ? customFeatures.growth.map((feat, i) => (
-                  <li key={i} className="flex items-start space-x-2.5">
-                    <Check className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />
-                    <span>{feat}</span>
-                  </li>
-                )) : (
-                  <>
-                    <li className="flex items-start space-x-2.5">
-                      <Check className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />
-                      <span>Up to 5 Responsive Sub-pages</span>
-                    </li>
-                    <li className="flex items-start space-x-2.5">
-                      <Check className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />
-                      <span>Headless Content Management (CMS)</span>
-                    </li>
-                    <li className="flex items-start space-x-2.5">
-                      <Check className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />
-                      <span>Advanced Conversion Funnel setup</span>
-                    </li>
-                    <li className="flex items-start space-x-2.5">
-                      <Check className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />
-                      <span>24-Hour Response SLA</span>
-                    </li>
-                    <li className="flex items-start space-x-2.5">
-                      <Check className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />
-                      <span>Custom Analytics Integration</span>
-                    </li>
-                  </>
-                )}
-              </ul>
-            </div>
-
-            <div className="pt-8">
-              <button
-                onClick={() => handleSelectPlan('Growth Plan', growthPrice)}
-                className="w-full bg-brand-blue hover:bg-brand-blue/90 text-white py-3.5 rounded-xl font-bold text-xs tracking-wider uppercase shadow transition-all cursor-pointer"
-              >
-                Choose Growth Scope
-              </button>
-            </div>
-          </div>
-
-          {/* Plan 3: Premium */}
-          <div className="bg-slate-50/50 border border-slate-100 rounded-3xl p-8 flex flex-col justify-between hover:border-slate-200 transition-all">
-            <div className="space-y-6">
-              <div>
-                <h3 className="text-lg font-bold text-slate-900">Premium Package</h3>
-                <p className="text-slate-500 text-xs">For high-traffic platforms requiring advanced server configurations.</p>
+              <div className="pt-8">
+                <Link
+                  href={`/contact?type=${encodeURIComponent(
+                    pkg.name === 'Premium & Custom' ? 'E-Commerce Platform' : 'Business Website'
+                  )}&details=${encodeURIComponent(
+                    `I would like a custom quote for the ${pkg.name} scope. Here is a bit about my business:`
+                  )}`}
+                  className={`w-full py-3.5 rounded-xl font-bold text-xs tracking-wider uppercase transition-all cursor-pointer flex items-center justify-center space-x-2 ${
+                    pkg.highlight
+                      ? 'bg-brand-blue hover:bg-brand-blue/90 text-white shadow'
+                      : 'bg-white hover:bg-slate-50 text-slate-800 border border-slate-200'
+                  }`}
+                >
+                  <span>Request Custom Quote</span>
+                </Link>
               </div>
-              
-              <div className="flex items-baseline">
-                {premiumPrice === -1 ? (
-                  <span className="text-4xl font-extrabold text-slate-950">Custom</span>
-                ) : (
-                  <>
-                    <span className="text-4xl font-extrabold text-slate-950">₹{premiumPrice.toLocaleString()}</span>
-                    <span className="text-slate-400 text-sm ml-1">/ mo</span>
-                  </>
-                )}
-              </div>
-
-              <ul className="space-y-3.5 text-xs text-slate-600 pt-6 border-t border-slate-200/50">
-                {customFeatures ? customFeatures.premium.map((feat, i) => (
-                  <li key={i} className="flex items-start space-x-2.5">
-                    <Check className="w-4 h-4 text-brand-blue shrink-0" />
-                    <span>{feat}</span>
-                  </li>
-                )) : (
-                  <>
-                    <li className="flex items-start space-x-2.5">
-                      <Check className="w-4 h-4 text-brand-blue shrink-0" />
-                      <span>Up to 10 Advanced Pages</span>
-                    </li>
-                    <li className="flex items-start space-x-2.5">
-                      <Check className="w-4 h-4 text-brand-blue shrink-0" />
-                      <span>Advanced Database & Auth Schemes</span>
-                    </li>
-                    <li className="flex items-start space-x-2.5">
-                      <Check className="w-4 h-4 text-brand-blue shrink-0" />
-                      <span>Extreme SEO & Performance Audits</span>
-                    </li>
-                    <li className="flex items-start space-x-2.5">
-                      <Check className="w-4 h-4 text-brand-blue shrink-0" />
-                      <span>Priority 24/7 Phone Support</span>
-                    </li>
-                    <li className="flex items-start space-x-2.5">
-                      <Check className="w-4 h-4 text-brand-blue shrink-0" />
-                      <span>Immediate Emergency Mitigation SLA</span>
-                    </li>
-                  </>
-                )}
-              </ul>
             </div>
+          ))}
+        </div>
 
-            <div className="pt-8">
-              <button
-                onClick={() => handleSelectPlan('Premium Plan', premiumPrice)}
-                className="w-full bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 py-3 rounded-xl font-bold text-xs tracking-wider uppercase transition-all cursor-pointer"
-              >
-                Choose Premium Scope
-              </button>
-            </div>
-          </div>
-
+        <div className="mt-10 flex items-start justify-center space-x-2.5 text-xs text-slate-500 max-w-2xl mx-auto text-center">
+          <ShieldCheck className="w-4 h-4 text-brand-blue shrink-0 mt-px" />
+          <p className="text-left sm:text-center">
+            Ranges shown are starting points for planning. Your final quote is fixed in writing after
+            the free consultation — no hidden fees, and you own the code and content outright.
+          </p>
         </div>
       </section>
 
-      {/* Interactive Budget Estimator (Creative craftsmanship addition) */}
+      {/* Scope estimator */}
       <section className="max-w-4xl mx-auto px-4">
-        <div className="bg-white border border-slate-100 rounded-3xl p-8 shadow-sm space-y-8">
-          <div className="text-center space-y-1.5">
-            <span className="text-[10px] font-mono text-brand-blue uppercase tracking-widest font-extrabold">INTERACTIVE CALCULATOR</span>
-            <h2 className="text-2xl font-bold text-slate-900">Configure Modular Scope Add-Ons</h2>
-            <p className="text-slate-500 text-xs">Toggle individual modules onto the standard Growth base plan to calculate your live setup quote.</p>
+        <div className="bg-white border border-slate-100 rounded-3xl p-6 sm:p-8 shadow-sm space-y-8">
+          <div className="text-center space-y-2">
+            <span className="text-[10px] font-mono text-brand-blue uppercase tracking-widest font-extrabold">
+              Scope Estimator
+            </span>
+            <h2 className="text-2xl font-bold text-slate-900">Build an Indicative Scope</h2>
+            <p className="text-slate-500 text-xs max-w-md mx-auto">
+              Add what your business needs to see an indicative figure. It is a planning guide, not a
+              quote — send it to us and we will confirm the exact cost.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Left Controls */}
-            <div className="space-y-5">
-              {/* Addon 1: Extra pages */}
-              <div className="flex items-center justify-between p-4 bg-slate-50 rounded-2xl">
-                <div>
-                  <span className="text-xs font-bold text-slate-850 block">Extra Custom Pages</span>
-                  <span className="text-[10px] text-slate-400">₹2,500 per extra page</span>
-                </div>
-                <div className="flex items-center space-x-3.5">
-                  <button
-                    onClick={() => setExtraPages(Math.max(0, extraPages - 1))}
-                    className="w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:text-brand-blue hover:bg-slate-100 disabled:opacity-40"
-                    disabled={extraPages === 0}
+            <div className="space-y-4">
+              {ADD_ONS.map((addon) =>
+                addon.id === 'pages' ? (
+                  <div key={addon.id} className="flex items-center justify-between gap-3 p-4 bg-slate-50 rounded-2xl">
+                    <div className="min-w-0">
+                      <span className="text-xs font-bold text-slate-800 block">{addon.label}</span>
+                      <span className="text-[10px] text-slate-400">
+                        {addon.note} · ₹{addon.price.toLocaleString('en-IN')}
+                      </span>
+                    </div>
+                    <div className="flex items-center space-x-3 shrink-0">
+                      <button
+                        type="button"
+                        onClick={() => setExtraPages(Math.max(0, extraPages - 1))}
+                        disabled={extraPages === 0}
+                        aria-label="Remove a page"
+                        className="w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:text-brand-blue hover:bg-slate-100 disabled:opacity-40 cursor-pointer"
+                      >
+                        <Minus className="w-4 h-4" />
+                      </button>
+                      <span className="text-sm font-bold font-mono text-slate-800 w-4 text-center">
+                        {extraPages}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => setExtraPages(extraPages + 1)}
+                        aria-label="Add a page"
+                        className="w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:text-brand-blue hover:bg-slate-100 cursor-pointer"
+                      >
+                        <Plus className="w-4 h-4" />
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <label
+                    key={addon.id}
+                    className="flex items-center justify-between gap-3 p-4 bg-slate-50 rounded-2xl cursor-pointer hover:bg-slate-100/70 transition-colors"
                   >
-                    <Minus className="w-4 h-4" />
-                  </button>
-                  <span className="text-sm font-bold font-mono text-slate-800">{extraPages}</span>
-                  <button
-                    onClick={() => setExtraPages(extraPages + 1)}
-                    className="w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:text-brand-blue hover:bg-slate-100"
-                  >
-                    <Plus className="w-4 h-4" />
-                  </button>
-                </div>
-              </div>
-
-              {/* Addon 2: CMS setup */}
-              <label className="flex items-center justify-between p-4 bg-slate-50 rounded-2xl cursor-pointer">
-                <div>
-                  <span className="text-xs font-bold text-slate-850 block">Headless CMS Setup</span>
-                  <span className="text-[10px] text-slate-400">₹8,000 one-time setup</span>
-                </div>
-                <input
-                  type="checkbox"
-                  checked={cmsSetup}
-                  onChange={(e) => setCmsSetup(e.target.checked)}
-                  className="w-5 h-5 accent-brand-blue rounded border-slate-200"
-                />
-              </label>
-
-              {/* Addon 3: Logo design */}
-              <label className="flex items-center justify-between p-4 bg-slate-50 rounded-2xl cursor-pointer">
-                <div>
-                  <span className="text-xs font-bold text-slate-850 block">Branding & Logo Design</span>
-                  <span className="text-[10px] text-slate-400">₹5,000 custom assets</span>
-                </div>
-                <input
-                  type="checkbox"
-                  checked={logoDesign}
-                  onChange={(e) => setLogoDesign(e.target.checked)}
-                  className="w-5 h-5 accent-brand-blue rounded border-slate-200"
-                />
-              </label>
-
-              {/* Addon 4: E-commerce setup */}
-              <label className="flex items-center justify-between p-4 bg-slate-50 rounded-2xl cursor-pointer">
-                <div>
-                  <span className="text-xs font-bold text-slate-850 block">Stripe E-Commerce Setup</span>
-                  <span className="text-[10px] text-slate-400">₹15,000 complete custom checkout</span>
-                </div>
-                <input
-                  type="checkbox"
-                  checked={ecommerceIntegration}
-                  onChange={(e) => setEcommerceIntegration(e.target.checked)}
-                  className="w-5 h-5 accent-brand-blue rounded border-slate-200"
-                />
-              </label>
+                    <span className="min-w-0">
+                      <span className="text-xs font-bold text-slate-800 block">{addon.label}</span>
+                      <span className="text-[10px] text-slate-400">
+                        {addon.note} · ₹{addon.price.toLocaleString('en-IN')}
+                      </span>
+                    </span>
+                    <input
+                      type="checkbox"
+                      checked={Boolean(selected[addon.id])}
+                      onChange={() => toggle(addon.id)}
+                      className="w-5 h-5 accent-brand-blue rounded border-slate-200 shrink-0"
+                    />
+                  </label>
+                )
+              )}
             </div>
 
-            {/* Right Live Estimate Recalculator */}
             <div className="bg-slate-900 text-white rounded-2xl p-6 flex flex-col justify-between">
               <div className="space-y-4">
-                <span className="text-[9px] font-mono text-brand-blue uppercase tracking-widest font-extrabold">LIVE SETUP ESTIMATE</span>
-                
-                <div className="space-y-2 border-b border-white/5 pb-4">
+                <span className="text-[9px] font-mono text-brand-blue uppercase tracking-widest font-extrabold">
+                  Indicative Scope
+                </span>
+
+                <div className="space-y-2 border-b border-white/10 pb-4">
                   <div className="flex justify-between text-xs text-slate-400">
-                    <span>Base Tier (Growth)</span>
-                    <span>₹{selectedBasePrice.toLocaleString()}</span>
+                    <span>Core business website</span>
+                    <span>₹{BASE_INVESTMENT.toLocaleString('en-IN')}</span>
                   </div>
                   {extraPages > 0 && (
                     <div className="flex justify-between text-xs text-slate-400">
-                      <span>Extra Pages ({extraPages})</span>
-                      <span>+₹{extraPagesCost.toLocaleString()}</span>
+                      <span>Extra pages ({extraPages})</span>
+                      <span>+₹{(extraPages * 3500).toLocaleString('en-IN')}</span>
                     </div>
                   )}
-                  {cmsSetup && (
-                    <div className="flex justify-between text-xs text-slate-400">
-                      <span>CMS Setup</span>
-                      <span>+₹8,000</span>
+                  {ADD_ONS.filter((addon) => addon.id !== 'pages' && selected[addon.id]).map((addon) => (
+                    <div key={addon.id} className="flex justify-between text-xs text-slate-400">
+                      <span>{addon.label}</span>
+                      <span>+₹{addon.price.toLocaleString('en-IN')}</span>
                     </div>
-                  )}
-                  {logoDesign && (
-                    <div className="flex justify-between text-xs text-slate-400">
-                      <span>Logo & Brand assets</span>
-                      <span>+₹5,000</span>
-                    </div>
-                  )}
-                  {ecommerceIntegration && (
-                    <div className="flex justify-between text-xs text-slate-400">
-                      <span>E-Commerce System</span>
-                      <span>+₹15,000</span>
-                    </div>
-                  )}
+                  ))}
                 </div>
 
-                <div className="flex justify-between items-baseline pt-2">
-                  <span className="text-sm font-semibold">Total Estimated Cost:</span>
+                <div className="flex justify-between items-baseline pt-2 gap-3">
+                  <span className="text-sm font-semibold">Indicative total</span>
                   <div className="text-right">
-                    <span className="text-3xl font-extrabold text-white font-mono">₹{liveTotalEstimate.toLocaleString()}</span>
-                    <span className="text-slate-500 block text-[9px] mt-0.5">({billingCycle === 'annual' ? 'one-time payment' : 'billed monthly'})</span>
+                    <span className="text-3xl font-extrabold text-white font-mono">
+                      ₹{estimate.toLocaleString('en-IN')}
+                    </span>
+                    <span className="text-slate-500 block text-[9px] mt-0.5">
+                      one-time project investment
+                    </span>
                   </div>
                 </div>
               </div>
 
-              <button
-                onClick={handleInquireEstimate}
-                className="w-full mt-6 bg-brand-blue hover:bg-brand-blue/95 text-white py-3 rounded-xl text-xs font-bold uppercase tracking-wider shadow-sm transition-all flex items-center justify-center space-x-2 cursor-pointer"
+              <Link
+                href={estimateQuery()}
+                className="w-full mt-6 bg-brand-blue hover:bg-brand-blue/90 text-white py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider shadow-sm transition-all flex items-center justify-center space-x-2 cursor-pointer"
               >
-                <span>Inquire With Custom Quote</span>
+                <span>Send This Scope for a Quote</span>
                 <ArrowRight className="w-4 h-4" />
-              </button>
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Enterprise Bottom Callout */}
-      <section className="bg-slate-50/60 py-12 border-y border-slate-100 text-center max-w-7xl mx-auto rounded-3xl p-8 space-y-4">
-        <h2 className="text-xl font-bold text-slate-950">Require custom platform design or APIs?</h2>
-        <p className="text-slate-600 text-sm max-w-md mx-auto">
-          Our team provides custom serverless integrations, real-time message relays, secure databases, and bespoke platform templates.
-        </p>
-        <div className="pt-2">
-          <button
-            onClick={() => onNavigate('contact', { projectType: 'SaaS Platforms', details: 'Hi! We would like to discuss a custom Enterprise solution with proprietary API structures.' })}
-            className="text-sm font-bold text-brand-blue hover:underline cursor-pointer"
-          >
-            Discuss Enterprise Solutions →
-          </button>
+      {/* Enterprise callout */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-slate-50/60 border border-slate-100 py-12 text-center rounded-3xl p-8 space-y-4">
+          <h2 className="text-xl font-bold text-slate-950">
+            Need a custom platform, integration or web application?
+          </h2>
+          <p className="text-slate-600 text-sm max-w-lg mx-auto leading-relaxed">
+            We build custom booking systems, customer portals, CRM integrations and secure web
+            applications. Tell us the problem and we will scope the solution.
+          </p>
+          <div className="pt-2">
+            <Link
+              href="/contact?type=SaaS%20%2F%20Web%20Application"
+              className="text-sm font-bold text-brand-blue hover:underline cursor-pointer"
+            >
+              Discuss a custom project →
+            </Link>
+          </div>
         </div>
       </section>
     </div>

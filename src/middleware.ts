@@ -1,79 +1,42 @@
-import { createServerClient, type CookieOptions } from '@supabase/ssr';
 import { NextResponse, type NextRequest } from 'next/server';
+import { updateSession } from '@insforge/sdk/ssr/middleware';
+
+const ADMIN_ROOT = '/blog/admin';
+const ADMIN_LOGIN = '/blog/admin/login';
 
 export async function middleware(request: NextRequest) {
-  let response = NextResponse.next({
-    request: {
-      headers: request.headers,
-    },
-  });
+  const response = NextResponse.next({ request });
 
-  if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
-    // If navigating to admin without env vars, redirect to home or show error
-    if (request.nextUrl.pathname.startsWith('/blog/admin')) {
+  const isConfigured =
+    Boolean(process.env.NEXT_PUBLIC_INSFORGE_URL) &&
+    Boolean(process.env.NEXT_PUBLIC_INSFORGE_ANON_KEY);
+
+  if (!isConfigured) {
+    // Without a backend the admin area cannot authenticate anyone — keep it closed.
+    if (request.nextUrl.pathname.startsWith(ADMIN_ROOT)) {
       return NextResponse.redirect(new URL('/', request.url));
     }
     return response;
   }
 
-  const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
-    {
-      cookies: {
-        get(name: string) {
-          return request.cookies.get(name)?.value;
-        },
-        set(name: string, value: string, options: CookieOptions) {
-          request.cookies.set({
-            name,
-            value,
-            ...options,
-          });
-          response = NextResponse.next({
-            request: {
-              headers: request.headers,
-            },
-          });
-          response.cookies.set({
-            name,
-            value,
-            ...options,
-          });
-        },
-        remove(name: string, options: CookieOptions) {
-          request.cookies.set({
-            name,
-            value: '',
-            ...options,
-          });
-          response = NextResponse.next({
-            request: {
-              headers: request.headers,
-            },
-          });
-          response.cookies.set({
-            name,
-            value: '',
-            ...options,
-          });
-        },
-      },
-    }
-  );
+  // Refresh the session before Server Components render so they never read a
+  // stale or expired access token.
+  await updateSession({
+    requestCookies: request.cookies,
+    responseCookies: response.cookies,
+  });
 
-  const { data: { user } } = await supabase.auth.getUser();
+  const path = request.nextUrl.pathname;
+  const hasSession = Boolean(request.cookies.get('insforge_access_token')?.value);
 
-  // If going to admin routes but not logged in (and not already on login page)
-  if (request.nextUrl.pathname.startsWith('/blog/admin') && !request.nextUrl.pathname.startsWith('/blog/admin/login')) {
-    if (!user) {
-      return NextResponse.redirect(new URL('/blog/admin/login', request.url));
-    }
+  // Cheap cookie gate only. The authoritative checks are the admin layout's
+  // server-side session lookup and the database RLS policies.
+  if (path.startsWith(ADMIN_ROOT) && !path.startsWith(ADMIN_LOGIN) && !hasSession) {
+    return NextResponse.redirect(new URL(ADMIN_LOGIN, request.url));
   }
 
-  // If logged in and going to login page, redirect to admin
-  if (request.nextUrl.pathname.startsWith('/blog/admin/login') && user) {
-    return NextResponse.redirect(new URL('/blog/admin', request.url));
+  if (path.startsWith(ADMIN_LOGIN) && hasSession) {
+    return NextResponse.redirect(new URL(ADMIN_ROOT, request.url));
   }
 
   return response;

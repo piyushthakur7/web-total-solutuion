@@ -6,6 +6,9 @@ import { LANDING_PAGES } from '../../src/landingPages';
 const config = LANDING_PAGES['ecommerce-development'];
 const url = `https://www.webtotalsolution.com/${config.slug}`;
 
+// Portfolio content is served from InsForge; re-check every 5 minutes.
+export const revalidate = 300;
+
 export const metadata: Metadata = {
   title: { absolute: config.meta.title },
   description: config.meta.description,

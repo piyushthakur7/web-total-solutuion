@@ -1,7 +1,10 @@
 import { MetadataRoute } from 'next';
 import { SERVICES_DATA } from '../src/data';
 import { LANDING_PAGE_SLUGS } from '../src/landingPages';
-import { createClient } from '../src/utils/supabase/server';
+import { getBlogSitemapEntries } from '../src/utils/insforge/blogs';
+
+// Blog entries come from InsForge; refresh the sitemap hourly.
+export const revalidate = 3600;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://www.webtotalsolution.com';
@@ -37,26 +40,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  // Fetch blogs dynamically
-  let blogRoutes: MetadataRoute.Sitemap = [];
-  try {
-    const supabase = await createClient();
-    const { data: blogs } = await supabase
-      .from('blogs')
-      .select('slug, created_at')
-      .eq('published', true);
-
-    if (blogs) {
-      blogRoutes = blogs.map((blog) => ({
-        url: `${baseUrl}/blog/${blog.slug}`,
-        lastModified: new Date(blog.created_at),
-        changeFrequency: 'weekly' as const,
-        priority: 0.6,
-      }));
-    }
-  } catch (error) {
-    console.error('Error fetching blogs for sitemap:', error);
-  }
+  // Uses the anonymous client, so this stays statically renderable — the old
+  // Supabase client read cookies and forced the whole sitemap to be dynamic.
+  const blogRoutes = (await getBlogSitemapEntries()).map((blog) => ({
+    url: `${baseUrl}/blog/${blog.slug}`,
+    lastModified: new Date(blog.updated_at),
+    changeFrequency: 'weekly' as const,
+    priority: 0.6,
+  }));
 
   return [...staticRoutes, ...landingRoutes, ...serviceRoutes, ...blogRoutes];
 }

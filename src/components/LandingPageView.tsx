@@ -6,7 +6,7 @@ import {
   ShieldCheck, ShoppingCart, Smartphone, Sparkles, Target, TrendingUp
 } from 'lucide-react';
 import { LandingPageConfig, LandingBenefit } from '../landingPages';
-import { PORTFOLIO_ITEMS } from '../data';
+import { getPortfolioProjectsByCategory } from '../utils/insforge/portfolio';
 import { PHONE_DISPLAY, WHATSAPP_URL } from '../siteContent';
 import ImageWithPreloader from './ImageWithPreloader';
 import LeadForm from './LeadForm';
@@ -35,10 +35,12 @@ const BENEFIT_ICONS: Record<LandingBenefit['icon'], React.ElementType> = {
  * Section order follows the standard high-intent flow: promise → proof →
  * benefits → work → process → testimonials → objections → conversion.
  */
-export default function LandingPageView({ config }: { config: LandingPageConfig }) {
-  const projects = PORTFOLIO_ITEMS.filter(
-    (item) => config.portfolioCategories.includes(item.category) && item.websiteUrl
-  ).slice(0, 6);
+export default async function LandingPageView({ config }: { config: LandingPageConfig }) {
+  // Loaded from the InsForge `portfolio_projects` table, filtered to the
+  // categories relevant to this page. Only live client sites are shown.
+  const projects = (await getPortfolioProjectsByCategory(config.portfolioCategories))
+    .filter((item) => item.websiteUrl)
+    .slice(0, 6);
 
   return (
     <div className="pb-20 overflow-x-hidden">

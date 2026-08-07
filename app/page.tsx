@@ -7,6 +7,9 @@ const title = 'Professional Business Website Development | Web Total Solution';
 const description =
   'We build fast, modern, SEO-optimised business websites that help businesses attract customers, build trust and generate more leads. Book a free consultation.';
 
+// Portfolio content is served from InsForge; re-check every 5 minutes.
+export const revalidate = 300;
+
 export const metadata: Metadata = {
   title,
   description,

@@ -4,10 +4,14 @@ import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import ImageWithPreloader from './ImageWithPreloader';
 import { PortfolioItem } from '../types';
-import { PORTFOLIO_ITEMS } from '../data';
 import { Sparkles, ArrowUpRight, Filter, MessageSquare, TrendingUp, ExternalLink } from 'lucide-react';
 
-export default function PortfolioView() {
+/**
+ * Projects are loaded from the InsForge `portfolio_projects` table by the page
+ * (a Server Component) and passed in here, so adding work to the portfolio is a
+ * database change rather than a code deploy.
+ */
+export default function PortfolioView({ projects }: { projects: PortfolioItem[] }) {
   const router = useRouter();
   const onNavigate = (view: string, context?: any) => {
     router.push(view === 'home' ? '/' : `/${view}`);
@@ -18,7 +22,7 @@ export default function PortfolioView() {
     'All', 'SaaS', 'E-Commerce', 'Corporate', 'Landing Page'
   ];
 
-  const filteredItems = PORTFOLIO_ITEMS.filter(item => {
+  const filteredItems = projects.filter(item => {
     if (selectedFilter === 'All') return true;
     return item.category === selectedFilter;
   });

@@ -1,35 +1,34 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
-import { createClient } from '../../../../src/utils/supabase/client';
 import { Mail, Lock, ArrowRight, AlertCircle } from 'lucide-react';
+import { signIn } from '../actions';
 
 export default function AdminLogin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
+  const [isPending, startTransition] = useTransition();
   const router = useRouter();
-  const supabase = createClient();
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
     setError(null);
 
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
+    startTransition(async () => {
+      // Sign-in runs as a Server Action so the refresh token is written as an
+      // httpOnly cookie the browser cannot read.
+      const result = await signIn(email, password);
 
-    if (error) {
-      setError(error.message);
-      setLoading(false);
-    } else {
+      if (!result.ok) {
+        setError(result.error);
+        return;
+      }
+
       router.push('/blog/admin');
       router.refresh();
-    }
+    });
   };
 
   return (
@@ -41,7 +40,7 @@ export default function AdminLogin() {
         </div>
 
         {error && (
-          <div className="mb-6 p-4 bg-red-50 text-red-600 rounded-xl flex items-start space-x-3 text-sm">
+          <div role="alert" className="mb-6 p-4 bg-red-50 text-red-600 rounded-xl flex items-start space-x-3 text-sm">
             <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
             <span>{error}</span>
           </div>
@@ -49,7 +48,7 @@ export default function AdminLogin() {
 
         <form onSubmit={handleLogin} className="space-y-5">
           <div className="space-y-1.5">
-            <label className="text-xs font-bold text-slate-700 uppercase tracking-wide">
+            <label htmlFor="admin-email" className="text-xs font-bold text-slate-700 uppercase tracking-wide">
               Email Address
             </label>
             <div className="relative">
@@ -57,7 +56,9 @@ export default function AdminLogin() {
                 <Mail className="w-4 h-4 text-slate-400" />
               </div>
               <input
+                id="admin-email"
                 type="email"
+                autoComplete="email"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -68,7 +69,7 @@ export default function AdminLogin() {
           </div>
 
           <div className="space-y-1.5">
-            <label className="text-xs font-bold text-slate-700 uppercase tracking-wide">
+            <label htmlFor="admin-password" className="text-xs font-bold text-slate-700 uppercase tracking-wide">
               Password
             </label>
             <div className="relative">
@@ -76,7 +77,9 @@ export default function AdminLogin() {
                 <Lock className="w-4 h-4 text-slate-400" />
               </div>
               <input
+                id="admin-password"
                 type="password"
+                autoComplete="current-password"
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -88,11 +91,11 @@ export default function AdminLogin() {
 
           <button
             type="submit"
-            disabled={loading}
+            disabled={isPending}
             className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-3.5 rounded-xl text-sm tracking-wide shadow-sm hover:shadow-md transition-all flex items-center justify-center space-x-2 disabled:opacity-50"
           >
-            {loading ? (
-              <span className="animate-spin border-2 border-white border-t-transparent w-4 h-4 rounded-full mr-2" />
+            {isPending ? (
+              <span className="animate-spin border-2 border-white border-t-transparent w-4 h-4 rounded-full" />
             ) : (
               <>
                 <span>Secure Login</span>

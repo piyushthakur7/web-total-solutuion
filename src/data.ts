@@ -1,12 +1,16 @@
 import { PortfolioItem } from './types';
 
-export const CLIENT_LOGOS = [
-  { name: 'ACME Corp', icon: 'corporate_fare' },
-  { name: 'Nexa', icon: 'hexagon' },
-  { name: 'Quantum Solutions', icon: 'insights' },
-  { name: 'Vertex', icon: 'circle' },
-];
-
+/**
+ * ⚠️ SEED DATA ONLY — NOT RENDERED BY THE SITE.
+ *
+ * The live portfolio is served from the InsForge `portfolio_projects` table via
+ * `src/utils/insforge/portfolio.ts`. This array is the original content that was
+ * migrated into that table and is kept solely as the input for
+ * `npm run seed:portfolio` (see scripts/seed-portfolio.ts).
+ *
+ * To add, edit or remove portfolio work, change the database — editing this
+ * array has no effect on what visitors see.
+ */
 export const PORTFOLIO_ITEMS: PortfolioItem[] = [
   {
     id: 'arommaalfresco',

@@ -2,7 +2,7 @@ import Link from 'next/link';
 import React from 'react';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
-import { PORTFOLIO_ITEMS } from '../data';
+import { getPortfolioProjects } from '../utils/insforge/portfolio';
 import { HERO_TRUST_BADGES, WHATSAPP_URL } from '../siteContent';
 import TrustBar from './TrustBar';
 import WhatsAppIcon from './WhatsAppIcon';
@@ -59,7 +59,11 @@ const QUICK_SERVICES = [
   },
 ];
 
-export default function HomeView() {
+export default async function HomeView() {
+  // Client names in the trust marquee come from the portfolio table, so the
+  // homepage stays in sync whenever work is added or removed in the backend.
+  const projects = await getPortfolioProjects();
+
   return (
     <div className="pb-20 overflow-x-hidden">
       {/* 1. Hero */}
@@ -230,23 +234,25 @@ export default function HomeView() {
       </section>
 
       {/* 4. Client marquee */}
-      <section className="bg-white py-10 border-y border-slate-100 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-6">
-          <p className="text-xs font-bold uppercase tracking-widest text-slate-400">
-            Trusted by growing businesses across India and overseas
-          </p>
-        </div>
-        <div className="relative flex overflow-hidden w-full group">
-          <div className="flex whitespace-nowrap animate-marquee group-hover:[animation-play-state:paused]">
-            {[...PORTFOLIO_ITEMS, ...PORTFOLIO_ITEMS].map((item, idx) => (
-              <div key={idx} className="flex items-center space-x-2 text-slate-600 hover:text-slate-900 transition-colors mx-8 md:mx-12 opacity-70 hover:opacity-100 shrink-0">
-                <div className="w-5 h-5 rounded bg-brand-blue/10 flex items-center justify-center text-brand-blue font-bold shrink-0" aria-hidden="true">★</div>
-                <span className="text-sm font-semibold tracking-wider font-mono">{item.title}</span>
-              </div>
-            ))}
+      {projects.length > 0 && (
+        <section className="bg-white py-10 border-y border-slate-100 overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-6">
+            <p className="text-xs font-bold uppercase tracking-widest text-slate-400">
+              Trusted by growing businesses across India and overseas
+            </p>
           </div>
-        </div>
-      </section>
+          <div className="relative flex overflow-hidden w-full group">
+            <div className="flex whitespace-nowrap animate-marquee group-hover:[animation-play-state:paused]">
+              {[...projects, ...projects].map((item, idx) => (
+                <div key={idx} className="flex items-center space-x-2 text-slate-600 hover:text-slate-900 transition-colors mx-8 md:mx-12 opacity-70 hover:opacity-100 shrink-0">
+                  <div className="w-5 h-5 rounded bg-brand-blue/10 flex items-center justify-center text-brand-blue font-bold shrink-0" aria-hidden="true">★</div>
+                  <span className="text-sm font-semibold tracking-wider font-mono">{item.title}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* 5. Why a website matters */}
       <WhyNeedWebsite />

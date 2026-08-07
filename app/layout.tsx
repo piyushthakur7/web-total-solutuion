@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Hanken_Grotesk, Inter, JetBrains_Mono } from 'next/font/google';
+import { Hanken_Grotesk, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import Header from '../src/components/Header';
 import Footer from '../src/components/Footer';
@@ -11,12 +11,6 @@ const hanken = Hanken_Grotesk({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-hanken',
-});
-
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-inter',
 });
 
 const jetbrains = JetBrains_Mono({
@@ -106,10 +100,9 @@ export default function RootLayout({
   return (
     <html lang="en-IN">
       <head>
-        {/* Warm up the connections used for above-the-fold and portfolio imagery */}
+        {/* Warm up the connections used for above-the-fold imagery */}
         <link rel="preconnect" href="https://images.pexels.com" />
         <link rel="preconnect" href="https://images.unsplash.com" />
-        <link rel="dns-prefetch" href="https://api.microlink.io" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -205,7 +198,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${hanken.variable} ${inter.variable} ${jetbrains.variable} min-h-screen flex flex-col bg-white`}>
+      <body className={`${hanken.variable} ${jetbrains.variable} min-h-screen flex flex-col bg-white`}>
         <LenisProvider>
           <Preloader />
           <Header />

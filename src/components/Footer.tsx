@@ -23,12 +23,14 @@ export default function Footer() {
               A premium web development agency in Kolkata building fast, SEO-optimised business
               websites that help companies attract customers, build trust and grow online.
             </p>
-            <div className="flex items-center space-x-4 pt-2">
+            {/* gap-1 plus a 44px hit area keeps each icon above the 24px
+                minimum touch target with enough space between neighbours. */}
+            <div className="flex items-center gap-1 pt-2 -ml-2.5">
               <a 
                 href="https://www.instagram.com/webtotalsolution/?hl=en" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="p-2 -m-2 text-slate-400 hover:text-brand-blue transition-colors cursor-pointer"
+                className="w-11 h-11 flex items-center justify-center rounded-lg text-slate-400 hover:text-brand-blue hover:bg-slate-800 transition-colors cursor-pointer"
                 aria-label="Instagram"
               >
                 <Instagram className="w-5 h-5" />
@@ -37,7 +39,7 @@ export default function Footer() {
                 href="https://www.linkedin.com/company/web-total-solutions/" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="p-2 -m-2 text-slate-400 hover:text-brand-blue transition-colors cursor-pointer"
+                className="w-11 h-11 flex items-center justify-center rounded-lg text-slate-400 hover:text-brand-blue hover:bg-slate-800 transition-colors cursor-pointer"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="w-5 h-5" />
@@ -46,7 +48,7 @@ export default function Footer() {
                 href="https://www.youtube.com/channel/UCNlUYW1RyevmpKY1xUQKatA" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="p-2 -m-2 text-slate-400 hover:text-brand-blue transition-colors cursor-pointer"
+                className="w-11 h-11 flex items-center justify-center rounded-lg text-slate-400 hover:text-brand-blue hover:bg-slate-800 transition-colors cursor-pointer"
                 aria-label="YouTube"
               >
                 <Youtube className="w-5 h-5" />
@@ -55,7 +57,7 @@ export default function Footer() {
                 href="https://x.com/webtotalindia" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="p-2 -m-2 text-slate-400 hover:text-brand-blue transition-colors cursor-pointer"
+                className="w-11 h-11 flex items-center justify-center rounded-lg text-slate-400 hover:text-brand-blue hover:bg-slate-800 transition-colors cursor-pointer"
                 aria-label="X (Twitter)"
               >
                 <Twitter className="w-5 h-5" />

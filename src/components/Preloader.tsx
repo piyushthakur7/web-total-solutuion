@@ -5,32 +5,39 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 
 /**
- * Paid-traffic landing pages skip the intro entirely. A full-screen overlay on
- * an ad destination delays the hero, becomes the LCP element, and costs
- * conversions — none of which is worth the brand moment there.
+ * The intro runs on the homepage only.
+ *
+ * It is a full-screen overlay, which means that on any page it plays it becomes
+ * the Largest Contentful Paint element and its WebGL loop competes for the main
+ * thread. Every audit and every ad click arrives with a cold session, so "once
+ * per session" alone did not stop it from dominating those loads. Restricting
+ * it to the front door keeps the brand moment where it has value and off the
+ * pages that have to convert or rank.
  */
-const SKIP_ON_PATHS = [
-  '/business-website-development',
-  '/website-redesign',
-  '/ecommerce-development',
-  '/contact',
-];
+const RUN_ON_PATHS = ['/'];
 
 const SESSION_KEY = 'wts-intro-shown';
 
 export default function Preloader() {
   const pathname = usePathname();
+  // `usePathname` resolves during server rendering too, so this keeps the
+  // overlay out of the HTML entirely on other routes. Gating it in an effect
+  // was not enough — the markup still shipped and painted before hydration,
+  // which left it as the Largest Contentful Paint element everywhere.
+  const allowedPath = RUN_ON_PATHS.includes(pathname ?? '');
+
   const [progress, setProgress] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    const skipPath = SKIP_ON_PATHS.some((path) => pathname?.startsWith(path));
+    if (!allowedPath) return;
+
     const alreadyShown = sessionStorage.getItem(SESSION_KEY) === '1';
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // Show the intro once per session, and never where it would cost a lead.
-    if (skipPath || alreadyShown || reducedMotion) {
+    // Once per session, and never for reduced-motion users.
+    if (alreadyShown || reducedMotion) {
       setProgress(100);
       setIsLoaded(true);
       return;
@@ -51,11 +58,11 @@ export default function Preloader() {
     }, 30);
 
     return () => clearInterval(interval);
-  }, [pathname]);
+  }, [allowedPath]);
 
   useEffect(() => {
     // WebGL Shader Background Logic
-    if (isLoaded) return;
+    if (!allowedPath || isLoaded) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -161,7 +168,7 @@ export default function Preloader() {
     }
   }, [isLoaded]);
 
-  if (hidden) return null;
+  if (!allowedPath || hidden) return null;
 
   return (
       <div

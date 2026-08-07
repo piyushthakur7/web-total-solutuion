@@ -222,8 +222,9 @@ export default async function LandingPageView({ config }: { config: LandingPageC
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
                       width={600}
                       height={400}
+                      quality={70}
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 420px"
                       loading="lazy"
-                      referrerPolicy="no-referrer"
                     />
                     <span className="absolute top-3 left-3 bg-slate-900/90 backdrop-blur-sm text-white text-[10px] uppercase tracking-widest font-extrabold px-2.5 py-1 rounded-md">
                       {project.category}

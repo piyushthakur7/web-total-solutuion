@@ -29,10 +29,15 @@ export default function Logo({
       >
         <Image
           src="/bhaskar_logo_1.png"
-          alt="Web Total Solution Logo"
-          width={240}
-          height={80}
-          // scale-[2] makes it 2x larger visually without taking up more physical space!
+          alt="Web Total Solution"
+          // The source asset is square; declaring 240x80 gave next/image a false
+          // aspect ratio and made it request a far larger variant than needed.
+          width={320}
+          height={320}
+          sizes="160px"
+          quality={75}
+          priority
+          // scale-[2.2] makes it larger visually without taking more layout space.
           className={`${heightMap[size]} w-auto object-contain drop-shadow-sm scale-[2.2] origin-left`}
         />
       </div>

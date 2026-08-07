@@ -21,11 +21,13 @@ export default function MobileCTABar() {
           <Phone className="w-5 h-5" />
           <span className="text-[10px] font-bold uppercase tracking-wide mt-1">Call</span>
         </a>
+        {/* White on WhatsApp green is only 1.98:1. Dark text on the same green
+            is 10.5:1, so the brand colour stays and the label stays readable. */}
         <a
           href={WHATSAPP_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex flex-col items-center justify-center py-2 rounded-xl bg-[#25D366] text-white active:scale-95 transition-transform"
+          className="flex flex-col items-center justify-center py-2 rounded-xl bg-[#25D366] text-[#04301a] active:scale-95 transition-transform"
           aria-label="Chat with us on WhatsApp"
         >
           <WhatsAppIcon className="w-5 h-5" />

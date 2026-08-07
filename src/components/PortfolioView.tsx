@@ -53,8 +53,9 @@ export default function PortfolioView({ projects }: { projects: PortfolioItem[] 
       {/* Filter Menu */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-wrap items-center justify-center gap-2 border-b border-slate-100 pb-6">
-          <span className="text-xs font-bold text-slate-400 uppercase tracking-widest mr-2 flex items-center space-x-1.5">
-            <Filter className="w-3.5 h-3.5 text-slate-400" />
+          {/* slate-400 on white is only 2.63:1 — below the 4.5:1 WCAG minimum. */}
+          <span className="text-xs font-bold text-slate-600 uppercase tracking-widest mr-2 flex items-center space-x-1.5">
+            <Filter className="w-3.5 h-3.5 text-slate-600" />
             <span>Filter Work:</span>
           </span>
           {categories.map((cat) => (
@@ -75,13 +76,15 @@ export default function PortfolioView({ projects }: { projects: PortfolioItem[] 
 
       {/* Showcase Grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Card titles are h3; without this the document jumps h1 → h3. */}
+        <h2 className="sr-only">Client projects</h2>
         {filteredItems.length === 0 ? (
           <div className="text-center py-20 bg-slate-50 border border-dashed border-slate-200 rounded-3xl">
             <p className="text-slate-500 text-sm">No projects matching this filter yet.</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {filteredItems.map((item) => (
+            {filteredItems.map((item, index) => (
               <div 
                 key={item.id} 
                 className="bg-white border border-slate-100 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col justify-between"
@@ -97,11 +100,14 @@ export default function PortfolioView({ projects }: { projects: PortfolioItem[] 
                     >
                       <ImageWithPreloader
                         src={item.imageUrl}
-                        alt={item.title}
+                        alt={`${item.title} website designed by Web Total Solution`}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
                         width={600}
                         height={400}
-                        referrerPolicy="no-referrer"
+                        quality={70}
+                        sizes="(max-width: 768px) 100vw, 640px"
+                        // The first row is above the fold; the rest stay lazy.
+                        priority={index < 2}
                       />
                       {/* Hover Overlay with text */}
                       <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
@@ -114,11 +120,13 @@ export default function PortfolioView({ projects }: { projects: PortfolioItem[] 
                   ) : (
                     <ImageWithPreloader
                       src={item.imageUrl}
-                      alt={item.title}
+                      alt={`${item.title} project by Web Total Solution`}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                       width={600}
                       height={400}
-                      referrerPolicy="no-referrer"
+                      quality={70}
+                      sizes="(max-width: 768px) 100vw, 640px"
+                      priority={index < 2}
                     />
                   )}
                   {/* Category overlay */}

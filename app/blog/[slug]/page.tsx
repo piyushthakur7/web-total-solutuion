@@ -5,12 +5,13 @@ import { notFound } from 'next/navigation';
 import { Calendar, User, ArrowLeft } from 'lucide-react';
 import { getBlogBySlug } from '../../../src/utils/insforge/blogs';
 import JsonLd, { breadcrumbSchema } from '../../../src/components/JsonLd';
+import { htmlToPlainText, toArticleHtml } from '../../../src/utils/richText';
 
 export const revalidate = 60;
 
 function plainExcerpt(blog: { excerpt: string | null; content: string }) {
   if (blog.excerpt) return blog.excerpt.slice(0, 160);
-  return blog.content.replace(/<[^>]+>/g, '').slice(0, 160);
+  return htmlToPlainText(blog.content).slice(0, 160);
 }
 
 export async function generateMetadata({
@@ -132,9 +133,20 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         </div>
       )}
 
-      <article className="prose prose-slate prose-lg max-w-none hover:prose-a:text-brand-blue">
-        <div dangerouslySetInnerHTML={{ __html: blog.content }} />
-      </article>
+      <article
+        className="prose prose-slate prose-lg max-w-none
+          prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-slate-900
+          prose-h2:text-3xl prose-h2:mt-14 prose-h2:mb-5
+          prose-h3:text-2xl prose-h3:mt-10 prose-h3:mb-3
+          prose-p:text-slate-600 prose-p:leading-relaxed
+          prose-strong:text-slate-900 prose-strong:font-bold
+          prose-a:text-brand-blue prose-a:font-medium prose-a:underline prose-a:underline-offset-2
+          hover:prose-a:text-brand-navy
+          prose-li:text-slate-600 prose-li:marker:text-brand-blue
+          prose-blockquote:border-l-brand-blue prose-blockquote:text-slate-700 prose-blockquote:not-italic
+          prose-img:rounded-2xl prose-img:shadow-sm"
+        dangerouslySetInnerHTML={{ __html: toArticleHtml(blog.content) }}
+      />
 
       <div className="mt-16 pt-8 border-t border-slate-200 text-center space-y-4">
         <h2 className="text-2xl font-bold text-slate-900">Need a website that brings in customers?</h2>

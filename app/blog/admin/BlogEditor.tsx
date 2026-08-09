@@ -5,6 +5,9 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { ArrowLeft, Loader2, Save } from 'lucide-react';
 import { saveBlog, type BlogInput } from './actions';
+import RichTextEditor from './RichTextEditor';
+import { cleanHtml } from './htmlClean';
+import { htmlToPlainText, toArticleHtml } from '../../../src/utils/richText';
 
 export interface BlogEditorInitial {
   id?: string;
@@ -69,11 +72,21 @@ export default function BlogEditor({
     e.preventDefault();
     setError(null);
 
+    // The editable surface is not a form control, so it cannot carry `required`.
+    // Normalising first also means a body pasted as plain text is stored as
+    // markup rather than as a wall of text.
+    const content = cleanHtml(toArticleHtml(form.content));
+
+    if (!htmlToPlainText(content)) {
+      setError('The post needs some content before it can be saved.');
+      return;
+    }
+
     const payload: BlogInput = {
       id: form.id,
       title: form.title,
       slug: form.slug,
-      content: form.content,
+      content,
       excerpt: form.excerpt,
       author: form.author,
       imageUrl: form.imageUrl,
@@ -192,15 +205,13 @@ export default function BlogEditor({
           </div>
 
           <div className="space-y-1.5">
-            <label htmlFor="blog-content" className={labelClass}>Content (HTML) *</label>
-            <textarea
-              id="blog-content"
-              required
-              rows={15}
+            <span className={labelClass}>Content *</span>
+            <p className="text-[11px] text-slate-400 pb-1">
+              Paste straight from Word or Google Docs — bold, headings, lists and links are kept.
+            </p>
+            <RichTextEditor
               value={form.content}
-              onChange={(e) => update('content', e.target.value)}
-              className={`${fieldClass} font-mono`}
-              placeholder="<p>Start writing your post here...</p>"
+              onChange={(html) => update('content', html)}
             />
           </div>
 

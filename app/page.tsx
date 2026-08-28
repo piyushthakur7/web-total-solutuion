@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     description,
     images: [
       {
-        url: '/logo_new.png',
+        url: '/og-image.png',
         width: 1200,
         height: 630,
         alt: 'Web Total Solution — professional business website development',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title,
     description,
-    images: ['/logo_new.png'],
+    images: ['/og-image.png'],
   },
 };
 

@@ -7,6 +7,10 @@ export const WHATSAPP_URL = 'https://wa.me/916291519364';
 export const PHONE_DISPLAY = '+91 6291 519 364';
 export const EMAIL = 'info@webtotalsolution.com';
 
+/** Public Google Business listing — the source of the rating shown on the site. */
+export const GOOGLE_REVIEWS_URL = 'https://share.google/na7XhIzRCjwcQnh9J';
+export const GOOGLE_RATING = 4.6;
+
 /** Short reassurance chips shown directly under the primary CTA. */
 export const HERO_TRUST_BADGES = [
   'Fast Delivery',
@@ -122,51 +126,19 @@ export const PROCESS_STEPS = [
 ];
 
 /**
- * ⚠️ PLACEHOLDER TESTIMONIALS — REPLACE BEFORE GOING LIVE.
+ * Commitments made in writing on every project, shown in the trust section.
  *
- * These are structural placeholders so the section renders correctly. Publishing
- * invented reviews is a real risk (ASCI / CCPA guidelines on misleading
- * endorsements, and Google Ads misrepresentation policy). Swap each entry for a
- * genuine client quote — ideally pulled from your Google Reviews — and add a
- * real photo at `public/testimonials/<file>.jpg`, or leave `photo` undefined to
- * fall back to the initials avatar.
+ * Keep every line here to something the business actually does and would honour
+ * if a client held us to it — this section exists precisely because invented
+ * testimonials do not survive scrutiny.
  */
-export const TESTIMONIALS: {
-  quote: string;
-  name: string;
-  role: string;
-  company: string;
-  rating: number;
-  result: string;
-  photo?: string;
-}[] = [
-  {
-    quote:
-      'Add the client’s own words here — what problem they had before the website, and what changed after launch.',
-    name: 'Client Name',
-    role: 'Founder',
-    company: 'Manufacturing Business, Kolkata',
-    rating: 5,
-    result: 'Result achieved — e.g. “3x more enquiries in 60 days”',
-  },
-  {
-    quote:
-      'Add the client’s own words here — mention responsiveness, design quality or delivery speed if they raised it.',
-    name: 'Client Name',
-    role: 'Director',
-    company: 'Professional Services Firm',
-    rating: 5,
-    result: 'Result achieved — e.g. “Ranking on page 1 for 5 local keywords”',
-  },
-  {
-    quote:
-      'Add the client’s own words here — a short, specific quote converts far better than a generic compliment.',
-    name: 'Client Name',
-    role: 'Owner',
-    company: 'Retail & E-Commerce Brand',
-    rating: 5,
-    result: 'Result achieved — e.g. “Online orders up 40% after redesign”',
-  },
+export const CLIENT_COMMITMENTS = [
+  'A fixed written quote before any work begins — never an open-ended estimate',
+  'An agreed delivery date, confirmed in writing at the start',
+  'Design approval before a single line of development',
+  '30 days of post-launch support included',
+  'Full ownership of your domain, hosting, content and source code',
+  'A reply within 24 hours, from a team rather than one person',
 ];
 
 /** Homepage FAQ set — also emitted as FAQPage schema. */

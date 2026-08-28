@@ -21,13 +21,13 @@ export const metadata: Metadata = {
     siteName: 'Web Total Solution',
     title: config.meta.title,
     description: config.meta.description,
-    images: [{ url: '/logo_new.png', width: 1200, height: 630, alt: config.h1 }],
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: config.h1 }],
   },
   twitter: {
     card: 'summary_large_image',
     title: config.meta.title,
     description: config.meta.description,
-    images: ['/logo_new.png'],
+    images: ['/og-image.png'],
   },
 };
 

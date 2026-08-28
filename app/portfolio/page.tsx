@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     siteName: 'Web Total Solution',
     title: 'Our Portfolio & Client Websites | Web Total Solution',
     description: 'Live client websites built by Web Total Solution. See the quality for yourself.',
-    images: [{ url: '/logo_new.png', width: 1200, height: 630, alt: 'Web Total Solution portfolio' }],
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Web Total Solution portfolio' }],
   },
 };
 

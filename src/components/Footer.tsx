@@ -158,7 +158,6 @@ export default function Footer() {
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 mt-4 sm:mt-0">
             <Link href="/privacy" className="hover:text-slate-300 transition-colors cursor-pointer py-2">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-slate-300 transition-colors cursor-pointer py-2">Terms of Service</Link>
-            <span className="hover:text-slate-300 transition-colors cursor-pointer py-2">Security Standards</span>
           </div>
         </div>
       </div>

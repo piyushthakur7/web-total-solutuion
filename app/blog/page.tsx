@@ -38,8 +38,49 @@ export default async function BlogPage() {
       </div>
 
       {blogs.length === 0 ? (
-        <div className="text-center py-16 bg-slate-50 border border-dashed border-slate-200 rounded-3xl">
-          <p className="text-slate-500 text-sm">No posts published yet. Check back soon.</p>
+        /* Nothing published yet. Rather than show a bare "no posts" line, point
+           the visitor at the pages that can actually answer their question. */
+        <div className="max-w-3xl mx-auto bg-slate-50 border border-slate-100 rounded-3xl p-8 sm:p-12 text-center space-y-6">
+          <h2 className="text-2xl font-bold text-slate-900 tracking-tight">
+            Our first articles are being written
+          </h2>
+          <p className="text-slate-600 text-sm leading-relaxed max-w-xl mx-auto">
+            We are putting together practical guides on what a business website should cost, how to
+            rank locally in search, and what to fix first on an existing site. In the meantime, the
+            answers most business owners are looking for are already on the site.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2 text-left">
+            {[
+              {
+                href: '/pricing',
+                title: 'What it costs',
+                copy: 'Package ranges and a scope estimator you can use right now.',
+              },
+              {
+                href: '/portfolio',
+                title: 'Work we have delivered',
+                copy: 'Live client websites you can open and judge for yourself.',
+              },
+              {
+                href: '/contact',
+                title: 'Ask us directly',
+                copy: 'A free consultation and a written quote within 24 hours.',
+              },
+            ].map((card) => (
+              <Link
+                key={card.href}
+                href={card.href}
+                className="bg-white border border-slate-100 rounded-2xl p-5 hover:shadow-md hover:-translate-y-0.5 transition-all group"
+              >
+                <span className="block text-sm font-bold text-slate-900 mb-1.5">{card.title}</span>
+                <span className="block text-xs text-slate-600 leading-relaxed mb-3">{card.copy}</span>
+                <span className="inline-flex items-center text-xs font-bold text-brand-blue">
+                  Open
+                  <ArrowRight className="w-3.5 h-3.5 ml-1 group-hover:translate-x-0.5 transition-transform" />
+                </span>
+              </Link>
+            ))}
+          </div>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -56,8 +97,12 @@ export default async function BlogPage() {
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center text-slate-300 text-sm">
-                      No image
+                    /* No cover image on the post — show a branded panel rather
+                       than an empty grey box with "No image" written in it. */
+                    <div className="w-full h-full bg-gradient-to-br from-slate-900 to-brand-blue flex items-center justify-center px-6">
+                      <span className="text-white/90 text-xs font-extrabold uppercase tracking-[0.2em] text-center">
+                        Web Total Solution
+                      </span>
                     </div>
                   )}
                 </div>

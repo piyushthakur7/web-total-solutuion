@@ -3,7 +3,7 @@ import React from 'react';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import { getPortfolioProjects } from '../utils/insforge/portfolio';
-import { HERO_TRUST_BADGES, WHATSAPP_URL } from '../siteContent';
+import { GOOGLE_RATING, GOOGLE_REVIEWS_URL, HERO_TRUST_BADGES, WHATSAPP_URL } from '../siteContent';
 import TrustBar from './TrustBar';
 import WhatsAppIcon from './WhatsAppIcon';
 import {
@@ -136,7 +136,7 @@ export default async function HomeView() {
             {/* Right: visual + Google rating proof */}
             <div className="lg:col-span-6 relative mt-4 lg:mt-0">
               <a
-                href="https://share.google/na7XhIzRCjwcQnh9J"
+                href={GOOGLE_REVIEWS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="View our Google Reviews"
@@ -152,7 +152,7 @@ export default async function HomeView() {
                 </div>
                 <div className="flex flex-col">
                   <div className="flex items-center space-x-1.5">
-                    <span className="text-lg font-extrabold text-slate-900 leading-none">4.6</span>
+                    <span className="text-lg font-extrabold text-slate-900 leading-none">{GOOGLE_RATING}</span>
                     <div className="flex text-yellow-400 text-[14px]" aria-hidden="true">
                       ★★★★<span className="text-yellow-400/50">★</span>
                     </div>

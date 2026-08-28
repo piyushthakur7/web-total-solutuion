@@ -1,15 +1,22 @@
 import { PortfolioItem } from './types';
 
 /**
- * ⚠️ SEED DATA ONLY — NOT RENDERED BY THE SITE.
+ * The portfolio, as bundled with the site.
  *
- * The live portfolio is served from the InsForge `portfolio_projects` table via
- * `src/utils/insforge/portfolio.ts`. This array is the original content that was
- * migrated into that table and is kept solely as the input for
- * `npm run seed:portfolio` (see scripts/seed-portfolio.ts).
+ * Normally the live portfolio is served from the InsForge `portfolio_projects`
+ * table via `src/utils/insforge/portfolio.ts`, and this array is the seed input
+ * for `npm run seed:portfolio` (see scripts/seed-portfolio.ts).
  *
- * To add, edit or remove portfolio work, change the database — editing this
- * array has no effect on what visitors see.
+ * It is ALSO the offline fallback: if the backend is unreachable or returns no
+ * published rows, the site renders this list instead of an empty page. Every
+ * screenshot is committed to `public/portfolio/`, so the portfolio keeps
+ * working with no backend at all.
+ *
+ * Every entry below is a real, live client site. Do not add speculative or
+ * example work here — it is customer-facing.
+ *
+ * When you add work in the admin, add it here too (or re-export) so the
+ * fallback stays in step.
  */
 export const PORTFOLIO_ITEMS: PortfolioItem[] = [
   {
@@ -18,7 +25,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     category: 'Corporate',
     description: 'An elegant digital presence for premium event management and catering services, highlighting immersive outdoor experiences and beautiful venue spaces.',
     highlight: 'Elegant Experience',
-    imageUrl: 'https://api.microlink.io/?url=https%3A%2F%2Fwww.arommaalfresco.com&screenshot=true&embed=screenshot.url',
+    imageUrl: '/portfolio/arommaalfresco.webp',
     techStack: ['React', 'Tailwind CSS', 'Framer Motion'],
     websiteUrl: 'https://www.arommaalfresco.com/',
   },
@@ -28,7 +35,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     category: 'Corporate',
     description: 'High-performance engineering portal specializing in immersive 3D simulations, structural analysis, and bespoke mechanical solutions.',
     highlight: 'Immersive 3D Experience',
-    imageUrl: 'https://api.microlink.io/?url=https%3A%2F%2Fwww.mechverses.in&screenshot=true&embed=screenshot.url',
+    imageUrl: '/portfolio/mechverses.webp',
     techStack: ['React', 'Three.js', 'Tailwind CSS', 'Framer Motion'],
     websiteUrl: 'https://www.mechverses.in',
   },
@@ -38,7 +45,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     category: 'Corporate',
     description: 'A dignified community portal and secure donation management framework supporting historic temple preservation and local charitable initiatives.',
     highlight: 'Meaningful Connection',
-    imageUrl: 'https://api.microlink.io/?url=https%3A%2F%2Fwww.srimahlingeshwaraalayamutrust.com&screenshot=true&embed=screenshot.url',
+    imageUrl: '/portfolio/srimahalingeshwaraalayamutrust.webp',
     techStack: ['Vite', 'React', 'Tailwind CSS', 'Secure Payments'],
     websiteUrl: 'https://www.srimahlingeshwaraalayamutrust.com',
   },
@@ -48,7 +55,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     category: 'Landing Page',
     description: 'A pristine, minimalist design showcase and digital creative portfolio featuring fluid layout mechanics and beautiful premium typography.',
     highlight: 'Pristine Aesthetics',
-    imageUrl: 'https://api.microlink.io/?url=https%3A%2F%2Fwww.jhorley.com%2F&screenshot=true&embed=screenshot.url',
+    imageUrl: '/portfolio/jhorley.webp',
     techStack: ['React', 'Vite', 'Motion', 'Tailwind CSS'],
     websiteUrl: 'https://www.jhorley.com/',
   },
@@ -58,7 +65,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     category: 'Corporate',
     description: 'An approachable, streamlined legal consultation portal designed to simplify corporate structuring, client onboarding, and digital appointment booking.',
     highlight: 'Trust & Clarity',
-    imageUrl: 'https://api.microlink.io/?url=https%3A%2F%2Fwww.sproutslegal.com%2F&screenshot=true&embed=screenshot.url',
+    imageUrl: '/portfolio/sproutslegal.webp',
     techStack: ['Vite', 'React', 'Tailwind CSS', 'SEO Optimization'],
     websiteUrl: 'https://www.sproutslegal.com/',
   },
@@ -68,7 +75,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     category: 'E-Commerce',
     description: 'Automotive commerce solutions, spare parts cataloguing, and premium dealership services portal optimized for the Middle Eastern marketplace.',
     highlight: 'Smooth Navigation',
-    imageUrl: 'https://api.microlink.io/?url=https%3A%2F%2Fwww.fawdubai.com%2F&screenshot=true&embed=screenshot.url',
+    imageUrl: '/portfolio/fawdubai.webp',
     techStack: ['React', 'Vite', 'Tailwind CSS', 'Responsive Grid'],
     websiteUrl: 'https://www.fawdubai.com/',
   },
@@ -79,7 +86,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     category: 'Corporate',
     description: 'An industrial cleaning machinery and heavy-duty automatic floor scrubber equipment B2B showcase built for high-performance product sourcing.',
     highlight: 'Corporate Authority',
-    imageUrl: 'https://api.microlink.io/?url=https%3A%2F%2Fwww.bmscrubber.com%2F&screenshot=true&embed=screenshot.url',
+    imageUrl: '/portfolio/bmscrubber.webp',
     techStack: ['React', 'Tailwind CSS', 'Product Catalog'],
     websiteUrl: 'https://www.bmscrubber.com/',
   },
@@ -89,7 +96,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     category: 'Corporate',
     description: 'Modern bio-tech and clinical diagnostics research portal enabling secure medical reports access and clear, structured patient resources.',
     highlight: 'Reliable Infrastructure',
-    imageUrl: 'https://api.microlink.io/?url=https%3A%2F%2Fwww.medaralabs.com%2F&screenshot=true&embed=screenshot.url',
+    imageUrl: '/portfolio/medaralabs.webp',
     techStack: ['Vite', 'React', 'Tailwind CSS', 'API Integration'],
     websiteUrl: 'https://www.medaralabs.com/',
   },
@@ -99,7 +106,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     category: 'Landing Page',
     description: 'A visual-first, high-performance portfolio engineered for a premium wedding and commercial photography studio, featuring responsive galleries.',
     highlight: 'Visual Brilliance',
-    imageUrl: 'https://api.microlink.io/?url=https%3A%2F%2Fwww.fairmountphotographys.com%2F&screenshot=true&embed=screenshot.url',
+    imageUrl: '/portfolio/fairmountphotography.webp',
     techStack: ['React', 'Vite', 'Tailwind CSS', 'Image Optimization'],
     websiteUrl: 'https://www.fairmountphotographys.com/',
   },
@@ -110,7 +117,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     category: 'E-Commerce',
     description: 'A sensory-rich e-commerce experience for luxury velvet fabrics and curated designer apparel collections, featuring rich product layouts.',
     highlight: 'Sensory Design',
-    imageUrl: 'https://api.microlink.io/?url=https%3A%2F%2Fwww.bonnyvelvet.com%2F&screenshot=true&embed=screenshot.url',
+    imageUrl: '/portfolio/bonnyvelvet.webp',
     techStack: ['Vite', 'React', 'Tailwind CSS', 'Secure Checkout'],
     websiteUrl: 'https://www.bonnyvelvet.com/',
   },
@@ -120,7 +127,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     category: 'Corporate',
     description: 'A state-of-the-art print and publishing portal designed for high-volume commercial printing orders, quote calculation, and file submission.',
     highlight: 'Streamlined Ordering',
-    imageUrl: 'https://api.microlink.io/?url=https%3A%2F%2Fwww.modernoffset.com%2F&screenshot=true&embed=screenshot.url',
+    imageUrl: '/portfolio/modernoffset.webp',
     techStack: ['React', 'Vite', 'Tailwind CSS', 'Order Management'],
     websiteUrl: 'https://www.modernoffset.com/',
   },
@@ -130,7 +137,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     category: 'Corporate',
     description: 'International textile exporting distribution network portal facilitating bulk supply chain communication and global custom fabrics sourcing.',
     highlight: 'Global Reach',
-    imageUrl: 'https://api.microlink.io/?url=https%3A%2F%2Fwww.skyfaboverseasworldwide.com%2F&screenshot=true&embed=screenshot.url',
+    imageUrl: '/portfolio/skyfaboverseas.webp',
     techStack: ['Vite', 'React', 'Tailwind CSS', 'Global SEO'],
     websiteUrl: 'https://www.skyfaboverseasworldwide.com/',
   },
@@ -140,7 +147,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     category: 'Corporate',
     description: 'B2B commercial catalog and specification tracker for premium industrial flow valves and mechanical piping systems distribution.',
     highlight: 'Technical Precision',
-    imageUrl: 'https://api.microlink.io/?url=https%3A%2F%2Fwww.hindustanflowcontrol.com%2F&screenshot=true&embed=screenshot.url',
+    imageUrl: '/portfolio/hindustanflowcontrol.webp',
     techStack: ['React', 'Vite', 'Tailwind CSS', 'Spec Catalog'],
     websiteUrl: 'https://www.hindustanflowcontrol.com/',
   },
@@ -150,45 +157,9 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     category: 'SaaS',
     description: 'A state-of-the-art learning management hub and vocational training academy curriculum portal for elite hotel and hospitality studies.',
     highlight: 'Intuitive Flow',
-    imageUrl: 'https://api.microlink.io/?url=https%3A%2F%2Fwww.fihmonline.com%2F&screenshot=true&embed=screenshot.url',
+    imageUrl: '/portfolio/fihmonline.webp',
     techStack: ['React', 'Tailwind CSS', 'LMS Navigation', 'Vite'],
     websiteUrl: 'https://www.fihmonline.com/',
-  },
-  {
-    id: 'nexa-crm',
-    title: 'Nexa Enterprise SaaS',
-    category: 'SaaS',
-    description: 'A robust multi-tenant customer relationship platform built on React, Node.js, and PostgreSQL. Tailored for enterprise teams with complex reporting tools.',
-    highlight: 'Dynamic Energy',
-    imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBjKTXS0cB8XWOSdJ6YxiP-hlMr6NnJo-wQGJ9EpAMrrUo1oy95yW1ZPvQZhb_nvapfej8S9s1WAmK8XMUPAXuisiiW-fxNGPtBKPpgQrNvpajih93sS1EbE5SOG5hyomJIZj-lRXFpSEqQg-0vrbtMqovxLVCCFqnt2VGQre2lIXstt3Lt9_1OGeBKhp_CI8ooh2r_qFXJkeXenWsf6CmaEDfw-0D0njMab6yP3J920Bd5cvs6284rRqElezwKeBT_31HDop2QD68',
-    techStack: ['React', 'Express', 'Tailwind', 'PostgreSQL'],
-  },
-  {
-    id: 'quantum-ecommerce',
-    title: 'Quantum Headless Checkout',
-    category: 'E-Commerce',
-    description: 'A lightning-fast, high-converting checkout experience integrated with Stripe. Handles dynamic tax calculation and instant mobile pay.',
-    highlight: 'Seamless Shopping',
-    imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA6q9xi8S_kkVSHtPGphrN_161Y-Sz6drSn5H76-zkg8YsTcjfMTKgKaDz9H1elj7OFTmuQixqrMcn5FjcImjfXErCgRneDxXsR6Cy9XY1VusSPszHdNO2XXE-MlIt2B6ZYT6KFikBOOKaBFq4fs_pb_DXo6My-yLjcylYDGFsz8Fd0t0o84KqNJ0Vme9fMY_JZThlEo6lGC_XHkRGzAQW5ciDy5flJst0nVGJIg4HJRWENCp3apYkCOieXlk7Z8nG2QtKdDkdBz4g',
-    techStack: ['Vite', 'Stripe API', 'GraphQL', 'Tailwind CSS'],
-  },
-  {
-    id: 'acme-corp-site',
-    title: 'ACME Corporate Platform',
-    category: 'Corporate',
-    description: 'A bespoke marketing platform featuring advanced content management integration, optimal search engine structure, and internationalization support.',
-    highlight: 'Performance First',
-    imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuD81TKGkMosvx34Z-jZE3PqQCWQteA-8q5DTnF-AJsoiNJphdOllXFQFgwR2jdDRe_gn7c3Y9OzbO1b7gjwRwnqiMnkVzv9r0B0fXtrCh7S7UU9A42lyXphKTf9CH4I5X7312Z7oFEkG5JLnrGU8cUgA9idKllyXG3NolRUj6JKXbqsxOomy7yp6p_Q6xKcrUPxlvH5NN611w09KywC9KB3CWpI2u3Lc3-zqr491yuGwYlkeEHpcJ54p36At1W0uGIZYVZIgUM8znM',
-    techStack: ['React', 'Headless CMS', 'Vite', 'Tailwind'],
-  },
-  {
-    id: 'vertex-lander',
-    title: 'Vertex Analytics Dashboard',
-    category: 'Landing Page',
-    description: 'A custom, interactive landing page engineered strictly for performance, using visual charts and clean telemetry data to drive software subscriptions.',
-    highlight: 'Clean Telemetry',
-    imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC2qJ_r16K7-NLk-Z1-MimQ5n_YZLq9We_retGapH3bx4dfHkNgzMVFFoJ-9LZ4nSABl2HP0Cot2BWudtgrYfEDuZ2UOIprLiRK3tZVdFY_urOCak2F6sm5ROjfmspQCk0ZdMIpU4ZwvTQ1aigl_cMSRgHLviVGbiLC-Xx2ey9H12UfM85X1O_v1joUdbWz8aEbXdSVlZZVqIXYtOWBtYr-R2ejAd0j_UH4Xfd40IqZREiqei5ScMl5DKwO2jfK5Zn4O2iwGuyStHA',
-    techStack: ['Vite', 'D3.js', 'Motion', 'Tailwind CSS'],
   },
 ];
 

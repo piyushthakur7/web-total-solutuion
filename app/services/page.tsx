@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     title: 'Web Development Services | Web Total Solution',
     description:
       'Business websites, redesigns, e-commerce stores and digital marketing built around business results.',
-    images: [{ url: '/logo_new.png', width: 1200, height: 630, alt: 'Web Total Solution services' }],
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Web Total Solution services' }],
   },
 };
 

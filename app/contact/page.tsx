@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     title: 'Free Website Consultation | Web Total Solution',
     description:
       'Get honest advice and a fixed written quote within 24 hours. No obligation to proceed.',
-    images: [{ url: '/logo_new.png', width: 1200, height: 630, alt: 'Contact Web Total Solution' }],
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Contact Web Total Solution' }],
   },
 };
 

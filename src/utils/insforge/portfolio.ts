@@ -1,3 +1,4 @@
+import { PORTFOLIO_ITEMS } from '../../data';
 import { PortfolioItem } from '../../types';
 import { createInsForgePublicClient, isInsForgeConfigured } from './server';
 
@@ -39,14 +40,16 @@ function toPortfolioItem(row: PortfolioProjectRow): PortfolioItem {
 /**
  * Loads published portfolio projects from InsForge.
  *
- * Returns an empty array on failure rather than falling back to bundled data —
- * the database is the source of truth, and a silent fallback would hide an
- * outage while serving stale content.
+ * The database is the source of truth, but it is not allowed to take the
+ * portfolio page down with it: if the backend is unconfigured, erroring or
+ * simply has no published rows, we serve the bundled `PORTFOLIO_ITEMS` instead.
+ * That list ships with local screenshots, so a visitor never lands on an empty
+ * "no projects" page during an outage. The reason is always logged.
  */
 export async function getPortfolioProjects(): Promise<PortfolioItem[]> {
   if (!isInsForgeConfigured) {
-    console.warn('[portfolio] InsForge is not configured; skipping fetch.');
-    return [];
+    console.warn('[portfolio] InsForge is not configured; serving bundled projects.');
+    return PORTFOLIO_ITEMS;
   }
 
   const insforge = createInsForgePublicClient();
@@ -61,10 +64,17 @@ export async function getPortfolioProjects(): Promise<PortfolioItem[]> {
 
   if (error) {
     console.error('[portfolio] Failed to load projects from InsForge:', error);
-    return [];
+    return PORTFOLIO_ITEMS;
   }
 
-  return ((data ?? []) as PortfolioProjectRow[]).map(toPortfolioItem);
+  const projects = ((data ?? []) as PortfolioProjectRow[]).map(toPortfolioItem);
+
+  if (projects.length === 0) {
+    console.warn('[portfolio] Backend returned no published projects; serving bundled list.');
+    return PORTFOLIO_ITEMS;
+  }
+
+  return projects;
 }
 
 /** Loads published projects limited to the given categories. */

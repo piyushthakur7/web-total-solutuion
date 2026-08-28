@@ -16,10 +16,14 @@ export default function PortfolioView({ projects }: { projects: PortfolioItem[] 
   const onNavigate = (view: string, context?: any) => {
     router.push(view === 'home' ? '/' : `/${view}`);
   };
-  const [selectedFilter, setSelectedFilter] = useState<'All' | 'SaaS' | 'E-Commerce' | 'Corporate' | 'Landing Page'>('All');
+  const [selectedFilter, setSelectedFilter] = useState<string>('All');
 
-  const categories: ('All' | 'SaaS' | 'E-Commerce' | 'Corporate' | 'Landing Page')[] = [
-    'All', 'SaaS', 'E-Commerce', 'Corporate', 'Landing Page'
+  // Built from the projects we actually have, in a fixed display order, so a
+  // filter can never be offered that would land the visitor on an empty grid.
+  const CATEGORY_ORDER = ['SaaS', 'E-Commerce', 'Corporate', 'Landing Page'];
+  const categories = [
+    'All',
+    ...CATEGORY_ORDER.filter((cat) => projects.some((item) => item.category === cat)),
   ];
 
   const filteredItems = projects.filter(item => {

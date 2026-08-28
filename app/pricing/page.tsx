@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     title: 'Website Development Pricing | Web Total Solution',
     description:
       'Project-based pricing scoped to your business, with the full cost confirmed in writing before work begins.',
-    images: [{ url: '/logo_new.png', width: 1200, height: 630, alt: 'Web Total Solution pricing' }],
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Web Total Solution pricing' }],
   },
 };
 

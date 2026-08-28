@@ -34,13 +34,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       siteName: 'Web Total Solution',
       locale: 'en_IN',
       type: 'website',
-      images: [{ url: '/logo_new.png', width: 1200, height: 630, alt: service.title }],
+      images: [{ url: '/og-image.png', width: 1200, height: 630, alt: service.title }],
     },
     twitter: {
       card: 'summary_large_image',
       title: `${service.title} | Web Total Solution`,
       description,
-      images: ['/logo_new.png'],
+      images: ['/og-image.png'],
     },
   };
 }

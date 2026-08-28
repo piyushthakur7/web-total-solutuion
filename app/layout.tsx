@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION,
     images: [
       {
-        url: '/logo_new.png',
+        url: '/og-image.png',
         width: 1200,
         height: 630,
         alt: 'Web Total Solution — professional business website development',
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
-    images: ['/logo_new.png'],
+    images: ['/og-image.png'],
   },
   robots: {
     index: true,
@@ -110,7 +110,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": ["Organization", "ProfessionalService", "LocalBusiness"],
               "name": "Web Total Solution",
-              "image": "https://www.webtotalsolution.com/_next/image?url=%2Flogo_new.png&w=384&q=75",
+              "image": "https://www.webtotalsolution.com/og-image.png",
               "@id": "https://www.webtotalsolution.com/",
               "url": "https://www.webtotalsolution.com/",
               "telephone": "+91 6291 519 364",

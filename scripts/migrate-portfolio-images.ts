@@ -47,6 +47,14 @@ async function main() {
       continue;
     }
 
+    // Rows seeded from src/data.ts point at /portfolio/<slug>.webp, which is a
+    // file committed to public/ — there is nothing to fetch or migrate.
+    if (row.image_url.startsWith('/')) {
+      skipped += 1;
+      console.log(`  skip     ${row.slug} (bundled in public/)`);
+      continue;
+    }
+
     try {
       const response = await fetch(row.image_url, {
         headers: { 'User-Agent': 'Mozilla/5.0 (compatible; WebTotalSolution/1.0)' },

@@ -83,8 +83,18 @@ export default function PortfolioView({ projects }: { projects: PortfolioItem[] 
         {/* Card titles are h3; without this the document jumps h1 → h3. */}
         <h2 className="sr-only">Client projects</h2>
         {filteredItems.length === 0 ? (
-          <div className="text-center py-20 bg-slate-50 border border-dashed border-slate-200 rounded-3xl">
-            <p className="text-slate-500 text-sm">No projects matching this filter yet.</p>
+          /* Unreachable in normal use — the filters above are built from the
+             projects we actually have. Kept as a safe last resort. */
+          <div className="text-center py-20 bg-slate-50 border border-slate-100 rounded-3xl space-y-4">
+            <p className="text-slate-700 text-sm font-semibold">
+              We build in this category too — the case study is not published yet.
+            </p>
+            <button
+              onClick={() => onNavigate('contact')}
+              className="bg-brand-blue hover:bg-brand-blue/95 text-white font-bold tracking-wide px-6 py-3 rounded-xl text-sm transition-all cursor-pointer"
+            >
+              Ask us about similar work
+            </button>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

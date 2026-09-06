@@ -7,6 +7,15 @@ export const WHATSAPP_URL = 'https://wa.me/916291519364';
 export const PHONE_DISPLAY = '+91 6291 519 364';
 export const EMAIL = 'info@webtotalsolution.com';
 
+/**
+ * InsForge "capture-lead" function used by LeadForm to store enquiries in the
+ * backend. The key is a public, function-scoped identifier (not an admin/API
+ * secret) — it's meant to ship to the browser, the same way the InsForge
+ * anon key is.
+ */
+export const LEAD_CAPTURE_URL = 'https://6rggp898.ap-southeast.insforge.app/functions/capture-lead';
+export const LEAD_CAPTURE_KEY = '7d1968548bef4caeaa40f5158ecdf54d9ef6f9b93a394b5e9b1d6e57a21b312f';
+
 /** Public Google Business listing — the source of the rating shown on the site. */
 export const GOOGLE_REVIEWS_URL = 'https://share.google/na7XhIzRCjwcQnh9J';
 export const GOOGLE_RATING = 4.6;

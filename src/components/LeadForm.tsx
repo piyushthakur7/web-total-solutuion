@@ -2,9 +2,8 @@
 
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { CheckCircle, Clock, Mail, Shield } from 'lucide-react';
-import WhatsAppIcon from './WhatsAppIcon';
-import { EMAIL, WHATSAPP_URL } from '../siteContent';
+import { CheckCircle, Clock, Send, Shield } from 'lucide-react';
+import { LEAD_CAPTURE_KEY, LEAD_CAPTURE_URL } from '../siteContent';
 
 export const PROJECT_TYPES = [
   'Business Website',
@@ -62,6 +61,8 @@ export default function LeadForm({
   const [projectType, setProjectType] = useState(defaultProjectType);
   const [budget, setBudget] = useState(BUDGET_RANGES[0]);
   const [details, setDetails] = useState(defaultDetails);
+  // Honeypot — real visitors never see or fill this field.
+  const [companyWebsite, setCompanyWebsite] = useState('');
 
   const [error, setError] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -93,29 +94,50 @@ export default function LeadForm({
       .filter(Boolean)
       .join('\n');
 
-  const handleSubmit = (method: 'email' | 'whatsapp') => {
+  const handleSubmit = async () => {
     if (!name.trim() || !phone.trim()) {
       setError('Please add your name and phone number so we can reach you.');
       return;
     }
+
+    // Bots fill every field, including this hidden one — accept silently
+    // without ever hitting the backend.
+    if (companyWebsite) {
+      setInquiryCode(`WTS-${Math.floor(100000 + Math.random() * 900000)}`);
+      setSubmitted(true);
+      return;
+    }
+
     setError('');
     setIsSubmitting(true);
 
-    const message = buildMessage();
+    try {
+      const res = await fetch(LEAD_CAPTURE_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name,
+          phone,
+          email,
+          message: buildMessage(),
+          key: LEAD_CAPTURE_KEY,
+          source: source || 'Website form',
+          page_url: window.location.href,
+        }),
+      });
+      const result = await res.json();
 
-    if (method === 'email') {
-      window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(
-        `Website Consultation Request — ${name}`
-      )}&body=${encodeURIComponent(message)}`;
-    } else {
-      window.open(`${WHATSAPP_URL}?text=${encodeURIComponent(message)}`, '_blank');
-    }
-
-    setTimeout(() => {
-      setInquiryCode(`WTS-${Math.floor(100000 + Math.random() * 900000)}`);
+      if (result.ok) {
+        setInquiryCode(`WTS-${Math.floor(100000 + Math.random() * 900000)}`);
+        setSubmitted(true);
+      } else {
+        setError(result.error || 'Something went wrong. Please try again.');
+      }
+    } catch {
+      setError('Something went wrong. Please try again.');
+    } finally {
       setIsSubmitting(false);
-      setSubmitted(true);
-    }, 900);
+    }
   };
 
   const handleReset = () => {
@@ -255,6 +277,18 @@ export default function LeadForm({
               />
             </div>
 
+            {/* Honeypot: real visitors never see this field. Leave it in the form. */}
+            <input
+              name="company_website"
+              type="text"
+              value={companyWebsite}
+              onChange={(e) => setCompanyWebsite(e.target.value)}
+              style={{ position: 'absolute', left: '-9999px' }}
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+            />
+
             {error && (
               <p role="alert" className="text-xs font-semibold text-red-600 bg-red-50 border border-red-100 rounded-xl px-4 py-3">
                 {error}
@@ -272,21 +306,12 @@ export default function LeadForm({
             <div className="flex flex-col sm:flex-row gap-3.5">
               <button
                 type="button"
-                onClick={() => handleSubmit('whatsapp')}
+                onClick={handleSubmit}
                 disabled={isSubmitting}
                 className="w-full bg-brand-blue hover:bg-brand-blue/90 text-white font-bold py-4 rounded-xl text-sm tracking-wide shadow-md hover:shadow-lg transition-all flex items-center justify-center space-x-2 disabled:opacity-50 cursor-pointer"
               >
-                <WhatsAppIcon className="w-4 h-4" />
+                <Send className="w-4 h-4" />
                 <span>{isSubmitting ? 'Sending…' : submitLabel}</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => handleSubmit('email')}
-                disabled={isSubmitting}
-                className="w-full sm:w-auto sm:px-8 bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 font-bold py-4 rounded-xl text-sm tracking-wide transition-all flex items-center justify-center space-x-2 disabled:opacity-50 cursor-pointer"
-              >
-                <Mail className="w-4 h-4" />
-                <span>Email Instead</span>
               </button>
             </div>
 

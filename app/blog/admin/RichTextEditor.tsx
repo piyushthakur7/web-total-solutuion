@@ -15,9 +15,12 @@ import {
   Pilcrow,
   Eraser,
   Code2,
+  ImagePlus,
+  Loader2,
 } from 'lucide-react';
 import { cleanHtml, clipboardToHtml } from './htmlClean';
 import { toArticleHtml } from '../../../src/utils/richText';
+import { uploadBlogImage, validateImage } from './uploadImage';
 
 /**
  * A small WYSIWYG body editor.
@@ -41,13 +44,20 @@ interface ToolbarAction {
 export default function RichTextEditor({
   value,
   onChange,
+  slug,
 }: {
   value: string;
   onChange: (html: string) => void;
+  /** Groups this post's uploads under one folder in the storage bucket. */
+  slug?: string;
 }) {
   const editorRef = useRef<HTMLDivElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const mounted = useRef(false);
   const [showSource, setShowSource] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState<string | null>(null);
+  const [dragging, setDragging] = useState(false);
 
   // Older posts are stored as plain text; promote them so opening one shows real
   // formatting and saving it writes markup back.
@@ -88,6 +98,17 @@ export default function RichTextEditor({
   };
 
   const handlePaste = (event: React.ClipboardEvent<HTMLDivElement>) => {
+    // A screenshot on the clipboard arrives as a file, not as markup. Upload it
+    // rather than letting the browser inline a huge base64 data URI.
+    const pastedImage = Array.from(event.clipboardData.files).find((file) =>
+      file.type.startsWith('image/')
+    );
+    if (pastedImage) {
+      event.preventDefault();
+      void insertImage(pastedImage);
+      return;
+    }
+
     const html = clipboardToHtml(event.clipboardData);
     if (!html) return;
 
@@ -120,6 +141,55 @@ export default function RichTextEditor({
     syncFromEditor();
   };
 
+  /**
+   * Uploads a picture and drops an <img> at the caret. The sanitiser already
+   * allows IMG with src and alt, so the markup survives the save unchanged.
+   *
+   * The alt text is prompted for rather than left blank: an image with no alt
+   * is invisible to screen readers and worth nothing in image search.
+   */
+  const insertImage = useCallback(
+    async (file: File) => {
+      const invalid = validateImage(file);
+      if (invalid) {
+        setUploadError(invalid);
+        return;
+      }
+
+      setUploadError(null);
+      setUploading(true);
+      try {
+        const { url } = await uploadBlogImage(file, slug);
+        const alt = (window.prompt('Describe this image (for accessibility and image search)', '') ?? '').trim();
+
+        const image = document.createElement('img');
+        image.setAttribute('src', url);
+        image.setAttribute('alt', alt);
+
+        editorRef.current?.focus();
+        // Restores the caret when focus was lost to the file dialog, so the
+        // picture lands at the end rather than nowhere.
+        const selection = window.getSelection();
+        if (!selection || selection.rangeCount === 0 || !editorRef.current?.contains(selection.anchorNode)) {
+          const range = document.createRange();
+          range.selectNodeContents(editorRef.current as Node);
+          range.collapse(false);
+          selection?.removeAllRanges();
+          selection?.addRange(range);
+        }
+
+        document.execCommand('insertHTML', false, image.outerHTML + '<p><br></p>');
+        syncFromEditor();
+      } catch (cause) {
+        setUploadError((cause as Error).message);
+      } finally {
+        setUploading(false);
+        if (fileInputRef.current) fileInputRef.current.value = '';
+      }
+    },
+    [slug, syncFromEditor]
+  );
+
   const groups: ToolbarAction[][] = [
     [
       { icon: Bold, label: 'Bold (Ctrl+B)', run: () => exec('bold') },
@@ -137,6 +207,11 @@ export default function RichTextEditor({
       { icon: Quote, label: 'Quote', run: () => exec('formatBlock', 'blockquote') },
     ],
     [
+      {
+        icon: uploading ? Loader2 : ImagePlus,
+        label: uploading ? 'Uploading image…' : 'Insert image',
+        run: () => fileInputRef.current?.click(),
+      },
       { icon: Link2, label: 'Add link', run: applyLink },
       { icon: Link2Off, label: 'Remove link', run: () => exec('unlink') },
       { icon: Eraser, label: 'Clear formatting', run: () => exec('removeFormat') },
@@ -145,6 +220,17 @@ export default function RichTextEditor({
 
   return (
     <div className="rounded-xl border border-slate-200 overflow-hidden">
+      <input
+        ref={fileInputRef}
+        type="file"
+        accept="image/jpeg,image/png,image/webp,image/avif,image/gif"
+        className="sr-only"
+        onChange={(event) => {
+          const file = event.target.files?.[0];
+          if (file) void insertImage(file);
+        }}
+      />
+
       <div className="flex flex-wrap items-center gap-1 border-b border-slate-200 bg-slate-50 px-2 py-1.5">
         {groups.map((group, groupIndex) => (
           <React.Fragment key={group[0].label}>
@@ -164,7 +250,7 @@ export default function RichTextEditor({
                 }}
                 className="p-2 rounded-lg text-slate-600 hover:bg-white hover:text-brand-blue hover:shadow-sm transition-all disabled:opacity-30 disabled:hover:bg-transparent"
               >
-                <Icon className="w-4 h-4" />
+                <Icon className={`w-4 h-4 ${uploading && Icon === Loader2 ? 'animate-spin' : ''}`} />
               </button>
             ))}
           </React.Fragment>
@@ -210,9 +296,39 @@ export default function RichTextEditor({
           onInput={syncFromEditor}
           onBlur={syncFromEditor}
           onPaste={handlePaste}
+          onDragOver={(event) => {
+            if (!Array.from(event.dataTransfer.types).includes('Files')) return;
+            event.preventDefault();
+            setDragging(true);
+          }}
+          onDragLeave={() => setDragging(false)}
+          onDrop={(event) => {
+            const file = Array.from(event.dataTransfer.files).find((candidate) =>
+              candidate.type.startsWith('image/')
+            );
+            if (!file) return;
+            event.preventDefault();
+            setDragging(false);
+            void insertImage(file);
+          }}
           data-placeholder="Write your post here, or paste it straight from Word."
-          className="prose prose-slate max-w-none min-h-[26rem] px-5 py-4 focus:outline-none empty:before:content-[attr(data-placeholder)] empty:before:text-slate-400 empty:before:not-italic"
+          className={`prose prose-slate max-w-none min-h-[26rem] px-5 py-4 focus:outline-none empty:before:content-[attr(data-placeholder)] empty:before:text-slate-400 empty:before:not-italic prose-img:rounded-xl ${
+            dragging ? 'bg-brand-blue/5 ring-2 ring-inset ring-brand-blue/40' : ''
+          }`}
         />
+      )}
+
+      {(uploading || uploadError) && (
+        <div
+          role={uploadError ? 'alert' : undefined}
+          className={`px-5 py-2.5 text-xs font-semibold border-t ${
+            uploadError
+              ? 'bg-red-50 border-red-100 text-red-700'
+              : 'bg-slate-50 border-slate-100 text-slate-600'
+          }`}
+        >
+          {uploadError ?? 'Uploading image…'}
+        </div>
       )}
     </div>
   );

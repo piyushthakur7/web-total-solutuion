@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { ArrowLeft, Loader2, Save } from 'lucide-react';
 import { saveBlog, type BlogInput } from './actions';
 import RichTextEditor from './RichTextEditor';
+import CoverImageField from './CoverImageField';
 import { cleanHtml } from './htmlClean';
 import { htmlToPlainText, toArticleHtml } from '../../../src/utils/richText';
 
@@ -186,32 +187,24 @@ export default function BlogEditor({
             <p className="text-[11px] text-slate-400">{form.excerpt.length}/200 characters</p>
           </div>
 
-          <div className="space-y-1.5">
-            <label htmlFor="blog-image" className={labelClass}>Cover Image URL</label>
-            <input
-              id="blog-image"
-              type="url"
-              value={form.imageUrl}
-              onChange={(e) => update('imageUrl', e.target.value)}
-              className={fieldClass}
-              placeholder="https://images.pexels.com/..."
-            />
-            {form.imageUrl && (
-              <div className="mt-4 rounded-xl overflow-hidden border border-slate-200 aspect-[21/9]">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={form.imageUrl} alt="Cover preview" className="w-full h-full object-cover" />
-              </div>
-            )}
-          </div>
+          <CoverImageField
+            value={form.imageUrl}
+            onChange={(url) => update('imageUrl', url)}
+            slug={form.slug}
+            labelClass={labelClass}
+            fieldClass={fieldClass}
+          />
 
           <div className="space-y-1.5">
             <span className={labelClass}>Content *</span>
             <p className="text-[11px] text-slate-400 pb-1">
               Paste straight from Word or Google Docs — bold, headings, lists and links are kept.
+              Add pictures with the image button, or drag them straight into the text.
             </p>
             <RichTextEditor
               value={form.content}
               onChange={(html) => update('content', html)}
+              slug={form.slug}
             />
           </div>
 

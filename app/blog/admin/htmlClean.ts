@@ -41,7 +41,7 @@ const BLOCK_WRAPPERS = new Set(['DIV', 'SECTION', 'ARTICLE', 'TD', 'TH', 'TR', '
 
 const ALLOWED_ATTRIBUTES: Record<string, string[]> = {
   A: ['href'],
-  IMG: ['src', 'alt'],
+  IMG: ['src', 'alt', 'loading', 'decoding'],
 };
 
 const UNSAFE_URL = /^\s*(?:javascript|vbscript|data):/i;
@@ -120,6 +120,17 @@ function cleanNode(node: Node, doc: Document): Node[] {
   for (const name of ALLOWED_ATTRIBUTES[tag] ?? []) {
     const value = element.getAttribute(name);
     if (value && !UNSAFE_URL.test(value)) clean.setAttribute(name, value);
+  }
+
+  if (tag === 'IMG') {
+    // An image with no src is nothing to render.
+    if (!clean.getAttribute('src')) return [];
+    // Explicit alt="" marks the image as decorative; no alt attribute at all
+    // just leaves screen readers to announce the file name.
+    if (!clean.hasAttribute('alt')) clean.setAttribute('alt', '');
+    // Below-the-fold article images should never block the first paint.
+    clean.setAttribute('loading', 'lazy');
+    clean.setAttribute('decoding', 'async');
   }
 
   if (tag === 'A') {

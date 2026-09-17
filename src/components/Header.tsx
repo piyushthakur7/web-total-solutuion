@@ -21,6 +21,7 @@ const navItems = [
   { label: 'Home', path: '/' },
   { label: 'Services', path: '/services' },
   { label: 'Portfolio', path: '/portfolio' },
+  { label: 'Products', path: '/projects' },
   { label: 'Pricing', path: '/pricing' },
   { label: 'Blog', path: '/blog' },
   { label: 'Contact', path: '/contact' },
@@ -57,7 +58,8 @@ export default function Header() {
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center space-x-8">
+          {/* Tighter gaps at md keep seven items on one row; full spacing from lg. */}
+          <nav className="hidden md:flex items-center space-x-5 lg:space-x-8">
             {navItems.map((item) => {
               const isActive = pathname === item.path;
               if (item.label === 'Services') {

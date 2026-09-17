@@ -19,6 +19,13 @@ export const metadata: Metadata = {
       'Business websites, redesigns, e-commerce stores and digital marketing built around business results.',
     images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Web Total Solution services' }],
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Website Design & Development Services | Web Total Solution',
+    description:
+      'Website design, development, redesign, e-commerce, content and SEO — delivered as one project with a fixed written quote.',
+    images: ['/og-image.png'],
+  },
 };
 
 export default function Services() {

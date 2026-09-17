@@ -19,6 +19,13 @@ export const metadata: Metadata = {
       'Project-based pricing scoped to your business, with the full cost confirmed in writing before work begins.',
     images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Web Total Solution pricing' }],
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Website Development Pricing | Web Total Solution',
+    description:
+      'Project-based pricing scoped to your business, with the full cost confirmed in writing before work begins.',
+    images: ['/og-image.png'],
+  },
 };
 
 export default function Pricing() {

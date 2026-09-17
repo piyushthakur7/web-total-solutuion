@@ -1,5 +1,6 @@
 "use client";
 
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import ImageWithPreloader from './ImageWithPreloader';
@@ -226,13 +227,20 @@ export default function PortfolioView({ projects }: { projects: PortfolioItem[] 
         <p className="text-slate-600 text-sm max-w-lg mx-auto">
           We construct complex REST/GraphQL APIs, customized checkout mechanisms, enterprise database structures, and high-frequency systems.
         </p>
-        <div className="pt-2">
+        <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
           <button
             onClick={() => onNavigate('contact')}
             className="bg-brand-blue hover:bg-brand-blue/95 text-white font-bold tracking-wide px-6 py-3.5 rounded-xl shadow-sm hover:shadow transition-all inline-flex items-center space-x-2 cursor-pointer"
           >
             <span>Request Tech Consultation</span>
           </button>
+          {/* Client work sits next to our own product line. */}
+          <Link
+            href="/projects"
+            className="bg-white border border-slate-200 text-slate-800 hover:text-brand-blue font-bold tracking-wide px-6 py-3.5 rounded-xl transition-all inline-flex items-center space-x-2 cursor-pointer"
+          >
+            <span>See our own product, WTS CRM</span>
+          </Link>
         </div>
       </section>
     </div>

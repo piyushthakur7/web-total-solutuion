@@ -1,9 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
+import { Metadata } from 'next';
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Privacy Policy',
   description: 'Privacy Policy and data handling practices for Web Total Solution.',
+  alternates: {
+    canonical: 'https://www.webtotalsolution.com/privacy',
+  },
 };
 
 export default function PrivacyPolicy() {

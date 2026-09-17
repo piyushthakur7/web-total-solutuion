@@ -1,9 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
+import { Metadata } from 'next';
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Terms of Service',
   description: 'Terms of Service and usage conditions for Web Total Solution.',
+  alternates: {
+    canonical: 'https://www.webtotalsolution.com/terms',
+  },
 };
 
 export default function TermsOfService() {

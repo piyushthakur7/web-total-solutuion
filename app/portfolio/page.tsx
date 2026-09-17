@@ -22,6 +22,13 @@ export const metadata: Metadata = {
     description: 'Live client websites built by Web Total Solution. See the quality for yourself.',
     images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Web Total Solution portfolio' }],
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Our Portfolio & Client Websites | Web Total Solution',
+    description:
+      'Live client websites built by Web Total Solution. See the quality for yourself.',
+    images: ['/og-image.png'],
+  },
 };
 
 export default async function Portfolio() {

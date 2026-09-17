@@ -342,6 +342,45 @@ export default async function HomeView() {
         </div>
       </section>
 
+      {/* 8b. Our own product — internal link into /projects with descriptive
+           anchor text, so the new page is reachable from the strongest page on
+           the site rather than only from the nav. */}
+      <section className="bg-slate-50 py-16 border-t border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white border border-slate-100 rounded-3xl p-8 sm:p-10 shadow-sm flex flex-col lg:flex-row lg:items-center gap-8">
+            <div className="space-y-4 flex-1">
+              <span className="text-xs uppercase tracking-widest font-extrabold text-brand-blue">
+                We Build Our Own Software Too
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+                WTS CRM — a simple CRM and invoicing workspace for Indian freelancers
+              </h2>
+              <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-2xl">
+                Leads, follow-up reminders, client projects, invoices and payment tracking in one
+                private workspace — built for solo operators who lose enquiries in WhatsApp and
+                spreadsheets. Live now at{' '}
+                <a
+                  href="https://wtscrm.com"
+                  target="_blank"
+                  rel="noopener"
+                  className="font-bold text-brand-blue hover:underline"
+                >
+                  wtscrm.com
+                </a>
+                .
+              </p>
+            </div>
+            <Link
+              href="/projects"
+              className="bg-brand-blue hover:bg-brand-blue/90 text-white font-bold tracking-wide px-6 py-3.5 rounded-xl shadow-sm hover:shadow transition-all inline-flex items-center justify-center space-x-2 cursor-pointer shrink-0"
+            >
+              <span>See WTS CRM</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* 9. Process */}
       <ProcessSection />
 

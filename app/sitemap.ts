@@ -25,6 +25,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: route === '' ? 1 : 0.8,
   }));
 
+  // Our own product line. Priority matches the landing pages: /projects is a
+  // launch target in its own right, not a secondary static page.
+  const productRoutes = [
+    {
+      url: `${baseUrl}/projects`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    },
+  ];
+
   // Conversion landing pages — high priority, they are the paid-traffic targets.
   const landingRoutes = LANDING_PAGE_SLUGS.map((slug) => ({
     url: `${baseUrl}/${slug}`,
@@ -49,5 +60,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }));
 
-  return [...staticRoutes, ...landingRoutes, ...serviceRoutes, ...blogRoutes];
+  return [...staticRoutes, ...productRoutes, ...landingRoutes, ...serviceRoutes, ...blogRoutes];
 }

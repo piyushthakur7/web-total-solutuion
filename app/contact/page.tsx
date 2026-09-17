@@ -19,6 +19,13 @@ export const metadata: Metadata = {
       'Get honest advice and a fixed written quote within 24 hours. No obligation to proceed.',
     images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Contact Web Total Solution' }],
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Free Website Consultation | Web Total Solution',
+    description:
+      'Get honest advice and a fixed written quote within 24 hours. No obligation to proceed.',
+    images: ['/og-image.png'],
+  },
 };
 
 export default function Contact() {

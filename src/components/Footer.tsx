@@ -109,6 +109,23 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/projects" className="hover:text-white transition-colors cursor-pointer block">
+                  Our Products (WTS CRM)
+                </Link>
+              </li>
+              <li>
+                {/* Site-wide followed link to our product's own domain. */}
+                <a
+                  href="https://wtscrm.com"
+                  target="_blank"
+                  rel="noopener"
+                  className="hover:text-white transition-colors cursor-pointer flex items-center group"
+                >
+                  <span>WTS CRM for Freelancers</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all ml-1 shrink-0" />
+                </a>
+              </li>
+              <li>
                 <Link href="/pricing" className="hover:text-white transition-colors cursor-pointer block">
                   Service Packages
                 </Link>

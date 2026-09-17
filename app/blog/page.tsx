@@ -11,6 +11,23 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.webtotalsolution.com/blog',
   },
+  openGraph: {
+    type: 'website',
+    locale: 'en_IN',
+    url: 'https://www.webtotalsolution.com/blog',
+    siteName: 'Web Total Solution',
+    title: 'Blog & Insights | Web Total Solution',
+    description:
+      'Practical insights on business websites, SEO, e-commerce and digital marketing from the Web Total Solution team.',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Web Total Solution blog' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Blog & Insights | Web Total Solution',
+    description:
+      'Practical insights on business websites, SEO, e-commerce and digital marketing from the Web Total Solution team.',
+    images: ['/og-image.png'],
+  },
 };
 
 export const revalidate = 60;

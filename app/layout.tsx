@@ -171,6 +171,7 @@ export default function RootLayout({
                 ]
               },
               "sameAs": [
+                "https://wtscrm.com/",
                 "https://www.facebook.com/webtotalsolution",
                 "https://www.linkedin.com/company/web-total-solutions/",
                 "https://www.instagram.com/webtotalsolution/",

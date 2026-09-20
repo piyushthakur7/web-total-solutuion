@@ -15,6 +15,7 @@ import {
   Rocket,
   Users,
   Wallet,
+  Check,
 } from 'lucide-react';
 import { PROJECTS, ProjectData, ProjectIcon } from '../projects';
 
@@ -192,7 +193,7 @@ function ProductSection({ project }: { project: ProjectData }) {
           <h3 className="text-2xl font-bold text-slate-950 tracking-tight">{project.pricingHeading}</h3>
           <p className="text-slate-600 text-sm leading-relaxed">{project.pricingNote}</p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {project.plans.map((plan) => (
             <div
               key={plan.name}
@@ -200,15 +201,25 @@ function ProductSection({ project }: { project: ProjectData }) {
             >
               <div className="flex items-baseline justify-between">
                 <h4 className="text-lg font-extrabold text-slate-950">{plan.name}</h4>
-                <span className="text-[10px] font-extrabold uppercase tracking-widest text-emerald-700 bg-emerald-50 border border-emerald-100 px-2.5 py-1 rounded-full">
-                  Flat price
-                </span>
+                {plan.badge && (
+                  <span className="text-[10px] font-extrabold uppercase tracking-widest text-brand-blue bg-brand-blue/10 border border-brand-blue/20 px-2.5 py-1 rounded-full">
+                    {plan.badge}
+                  </span>
+                )}
               </div>
               <p className="flex items-baseline space-x-2">
                 <span className="text-4xl font-extrabold text-slate-950 tracking-tight">{plan.price}</span>
                 <span className="text-sm font-semibold text-slate-600">{plan.cadence}</span>
               </p>
               <p className="text-sm text-slate-600 leading-relaxed">{plan.bestFor}</p>
+              <ul className="space-y-2 border-t border-slate-100 pt-4">
+                {plan.features.map((feature) => (
+                  <li key={feature} className="flex items-start gap-2 text-sm text-slate-700">
+                    <Check className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" aria-hidden="true" />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
               <p className="text-xs font-semibold text-slate-500 pt-2 border-t border-slate-100">
                 {plan.note}
               </p>

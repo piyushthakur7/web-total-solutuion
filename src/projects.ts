@@ -36,6 +36,8 @@ export interface ProjectPlan {
   cadence: string;
   note: string;
   bestFor: string;
+  features: string[];
+  badge?: string;
 }
 
 export interface ProjectData {
@@ -98,11 +100,11 @@ export const WTS_CRM: ProjectData = {
   slug: 'wts-crm',
   name: 'WTS CRM',
   kicker: 'CRM & invoicing workspace',
-  headline: 'A simple CRM and invoicing app for Indian freelancers and solo agency owners',
+  headline: 'A simple CRM and invoicing app for Indian freelancers and agency teams',
   status: 'Live — free 3-day trial',
   tagline: 'Never miss a follow-up or retype an invoice.',
   positioning:
-    'A simple Indian CRM for solo operators who want to convert more leads and get paid without spreadsheet chaos.',
+    'A simple Indian CRM for freelancers and agency teams who want to convert more leads and get paid without spreadsheet chaos.',
   supportingCopy:
     'Capture every enquiry, know exactly who to contact today, create professional invoices, and keep client work organised — without a complicated team CRM.',
   audienceHeading: 'Built for people who run the business themselves',
@@ -110,6 +112,7 @@ export const WTS_CRM: ProjectData = {
     'Freelance designers, developers and marketers',
     'Consultants, photographers and coaches',
     'Solo agency owners with 10–100 active leads',
+    'Agency teams that need shared CRM operations',
     'Anyone tracking leads in WhatsApp, notes or Excel',
     'Anyone sending invoices manually',
   ],
@@ -177,24 +180,34 @@ export const WTS_CRM: ProjectData = {
   pricingNote: 'Both plans are a flat final amount. No hidden charges, and no separate tax is collected.',
   plans: [
     {
-      name: 'Pro',
-      price: '₹399',
-      cadence: 'per month',
-      note: 'Flat price. No hidden charges.',
-      bestFor: 'Freelancers running their own pipeline',
+      name: 'Trial',
+      price: 'Free',
+      cadence: '',
+      note: 'No card required.',
+      bestFor: '3 days to explore the complete workspace',
+      features: ['Everything unlocked', 'Up to 100 clients', 'No card required'],
     },
     {
-      name: 'Business',
+      name: 'Solo',
       price: '₹999',
       cadence: 'per month',
-      note: 'Flat price. No hidden charges.',
-      bestFor: 'Solo agency owners with a heavier client load',
+      note: 'One owner workspace.',
+      bestFor: 'The complete CRM for one owner',
+      features: ['Every CRM feature', 'Unlimited clients and leads', 'One owner workspace'],
+    },
+    {
+      name: 'Team',
+      price: '₹2,499',
+      cadence: 'per month',
+      note: 'Extra seats ₹399/month each.',
+      bestFor: 'Shared CRM operations for an agency team',
+      features: ['5 seats included', 'Roles and record assignment', 'Extra seats ₹399/month each'],
+      badge: 'Best for agencies',
     },
   ],
   notForHeading: 'What it is not, today',
   notFor: [
     'Not an enterprise sales CRM with pipelines-of-pipelines',
-    'Not built for multi-user teams, shared inboxes or role permissions yet',
     'Not a replacement for your accountant',
   ],
   siteUrl: 'https://wtscrm.com',
@@ -202,7 +215,7 @@ export const WTS_CRM: ProjectData = {
   trialUrl: 'https://wtscrm.com',
   primaryCta: 'Start your free 3-day trial',
   secondaryCta: 'See how it works',
-  reassurance: 'No card. No charge. Your workspace locks after 3 days; nothing is deleted.',
+  reassurance: 'No card required for the free 3-day trial. Paid access is billed through Razorpay.',
   trialNote:
     'Every plan starts with a free 3-day trial. No card, and no charge. If you stop there, the workspace locks and nothing is deleted.',
   preLaunchCta: 'Ask for an early-access invite',
@@ -217,7 +230,7 @@ export const WTS_CRM: ProjectData = {
     {
       question: 'How much does WTS CRM cost?',
       answer:
-        'Pro is ₹399 per month and Business is ₹999 per month. Both are flat final amounts with no hidden charges, and no separate tax is collected on top.',
+        'Solo is ₹999 per month. Team is ₹2,499 per month with five seats included, and extra seats are ₹399 per month each. There are no hidden charges, and paid access is billed through Razorpay.',
     },
     {
       question: 'Is there a free trial, and do I need a card?',
@@ -237,7 +250,7 @@ export const WTS_CRM: ProjectData = {
     {
       question: 'Does WTS CRM work for teams?',
       answer:
-        'Not yet. WTS CRM is solo-first today: one private workspace, for one person running their own business. Multi-user invites, shared clients, assignments and roles are not part of the product at this stage.',
+        'Yes. The Team plan supports shared CRM operations for agency teams, includes five seats, and provides roles and record assignment. Additional seats are ₹399 per month each.',
     },
     {
       question: 'What makes it different from a large sales CRM?',

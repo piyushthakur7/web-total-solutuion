@@ -9,7 +9,7 @@ const url = 'https://www.webtotalsolution.com/projects';
 // past the truncation point by the site-wide title template.
 const TITLE = 'WTS CRM — Simple CRM & Invoicing for Indian Freelancers';
 const DESCRIPTION =
-  'WTS CRM keeps leads, follow-ups, invoices and payments in one simple workspace for Indian freelancers and solo agency owners. Flat ₹399/month. Free 3-day trial.';
+  'WTS CRM keeps leads, follow-ups, invoices and payments in one workspace for Indian freelancers and agency teams. Solo ₹999/month. Free 3-day trial.';
 
 export const metadata: Metadata = {
   title: { absolute: TITLE },

@@ -85,9 +85,6 @@ export const metadata: Metadata = {
     shortcut: '/images/image.png',
     apple: '/images/image.png',
   },
-  alternates: {
-    canonical: 'https://www.webtotalsolution.com',
-  },
 };
 
 export default function RootLayout({

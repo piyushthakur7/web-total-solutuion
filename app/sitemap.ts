@@ -20,7 +20,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/blog',
   ].map((route) => ({
     url: `${baseUrl}${route}`,
-    lastModified: new Date(),
     changeFrequency: 'weekly' as const,
     priority: route === '' ? 1 : 0.8,
   }));
@@ -30,7 +29,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const productRoutes = [
     {
       url: `${baseUrl}/projects`,
-      lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 0.9,
     },
@@ -39,14 +37,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Conversion landing pages — high priority, they are the paid-traffic targets.
   const landingRoutes = LANDING_PAGE_SLUGS.map((slug) => ({
     url: `${baseUrl}/${slug}`,
-    lastModified: new Date(),
     changeFrequency: 'weekly' as const,
     priority: 0.9,
   }));
 
   const serviceRoutes = Object.keys(SERVICES_DATA).map((slug) => ({
     url: `${baseUrl}/services/${slug}`,
-    lastModified: new Date(),
     changeFrequency: 'monthly' as const,
     priority: 0.7,
   }));

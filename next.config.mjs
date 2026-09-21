@@ -1,5 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Keep one canonical URL shape. Next redirects trailing-slash variants to
+  // the clean, slashless URL before a page is rendered.
+  trailingSlash: false,
+  poweredByHeader: false,
+  compress: true,
   images: {
     // Modern formats first — cuts image weight significantly on mobile.
     formats: ['image/avif', 'image/webp'],

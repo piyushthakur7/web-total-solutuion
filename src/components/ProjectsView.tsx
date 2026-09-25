@@ -193,13 +193,15 @@ function ProductSection({ project }: { project: ProjectData }) {
           <h3 className="text-2xl font-bold text-slate-950 tracking-tight">{project.pricingHeading}</h3>
           <p className="text-slate-600 text-sm leading-relaxed">{project.pricingNote}</p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
           {project.plans.map((plan) => (
             <div
               key={plan.name}
-              className="bg-white border border-slate-100 rounded-3xl p-8 shadow-sm space-y-4"
+              className={`bg-white border rounded-3xl p-7 shadow-sm flex flex-col gap-4 ${
+                plan.badge ? 'border-brand-blue/40 ring-1 ring-brand-blue/20' : 'border-slate-100'
+              }`}
             >
-              <div className="flex items-baseline justify-between">
+              <div className="flex flex-wrap items-center justify-between gap-2">
                 <h4 className="text-lg font-extrabold text-slate-950">{plan.name}</h4>
                 {plan.badge && (
                   <span className="text-[10px] font-extrabold uppercase tracking-widest text-brand-blue bg-brand-blue/10 border border-brand-blue/20 px-2.5 py-1 rounded-full">
@@ -212,7 +214,7 @@ function ProductSection({ project }: { project: ProjectData }) {
                 <span className="text-sm font-semibold text-slate-600">{plan.cadence}</span>
               </p>
               <p className="text-sm text-slate-600 leading-relaxed">{plan.bestFor}</p>
-              <ul className="space-y-2 border-t border-slate-100 pt-4">
+              <ul className="space-y-2 border-t border-slate-100 pt-4 flex-1">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-2 text-sm text-slate-700">
                     <Check className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" aria-hidden="true" />
@@ -220,9 +222,34 @@ function ProductSection({ project }: { project: ProjectData }) {
                   </li>
                 ))}
               </ul>
-              <p className="text-xs font-semibold text-slate-500 pt-2 border-t border-slate-100">
-                {plan.note}
-              </p>
+              {plan.note && (
+                <p className="text-xs font-semibold text-slate-500 pt-2 border-t border-slate-100">
+                  {plan.note}
+                </p>
+              )}
+              {project.trialUrl ? (
+                <a
+                  href={project.trialUrl}
+                  target="_blank"
+                  rel="noopener"
+                  className={`font-bold tracking-wide px-5 py-3 rounded-xl transition-all inline-flex items-center justify-center space-x-2 cursor-pointer ${
+                    plan.badge
+                      ? 'bg-brand-blue hover:bg-brand-blue/90 text-white shadow-sm hover:shadow'
+                      : 'bg-slate-50 hover:bg-slate-100 text-slate-950 border border-slate-200'
+                  }`}
+                >
+                  <span>Choose {plan.name}</span>
+                  <ArrowRight className="w-4 h-4" />
+                </a>
+              ) : (
+                <Link
+                  href="/contact"
+                  className="bg-slate-50 hover:bg-slate-100 text-slate-950 border border-slate-200 font-bold tracking-wide px-5 py-3 rounded-xl transition-all inline-flex items-center justify-center space-x-2 cursor-pointer"
+                >
+                  <span>Choose {plan.name}</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              )}
             </div>
           ))}
         </div>

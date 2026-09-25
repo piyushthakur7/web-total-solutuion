@@ -34,7 +34,8 @@ export interface ProjectPlan {
   name: string;
   price: string;
   cadence: string;
-  note: string;
+  /** Optional small print under the feature list. */
+  note?: string;
   bestFor: string;
   features: string[];
   badge?: string;
@@ -177,32 +178,47 @@ export const WTS_CRM: ProjectData = {
     },
   ],
   pricingHeading: 'Simple, flat pricing',
-  pricingNote: 'Both plans are a flat final amount. No hidden charges, and no separate tax is collected.',
+  pricingNote: 'Every plan is a flat final amount. No hidden charges, and no separate tax is collected.',
   plans: [
     {
-      name: 'Trial',
-      price: 'Free',
-      cadence: '',
-      note: 'No card required.',
-      bestFor: '3 days to explore the complete workspace',
-      features: ['Everything unlocked', 'Up to 100 clients', 'No card required'],
+      name: 'Starter',
+      price: '₹499',
+      cadence: '/ month',
+      bestFor: 'The essentials for an independent professional on a budget.',
+      features: [
+        'One user',
+        'Up to 100 clients',
+        'Lead tracking and follow-up reminders',
+        'Notes and basic dashboard',
+      ],
     },
     {
       name: 'Solo',
       price: '₹999',
-      cadence: 'per month',
-      note: 'One owner workspace.',
-      bestFor: 'The complete CRM for one owner',
+      cadence: '/ month',
+      bestFor: 'The complete CRM for one owner.',
       features: ['Every CRM feature', 'Unlimited clients and leads', 'One owner workspace'],
     },
     {
       name: 'Team',
       price: '₹2,499',
-      cadence: 'per month',
-      note: 'Extra seats ₹399/month each.',
-      bestFor: 'Shared CRM operations for an agency team',
+      cadence: '/ month',
+      bestFor: 'Shared CRM operations for an agency team.',
       features: ['5 seats included', 'Roles and record assignment', 'Extra seats ₹399/month each'],
-      badge: 'Best for agencies',
+      badge: 'Best for small teams',
+    },
+    {
+      name: 'Agency',
+      price: '₹4,999',
+      cadence: '/ month',
+      bestFor: 'More capacity and support for a growing agency.',
+      features: [
+        'Everything in Team',
+        '15 seats included',
+        'Advanced reporting',
+        'Priority support',
+        'Extra seats ₹299/month each',
+      ],
     },
   ],
   notForHeading: 'What it is not, today',
@@ -230,7 +246,7 @@ export const WTS_CRM: ProjectData = {
     {
       question: 'How much does WTS CRM cost?',
       answer:
-        'Solo is ₹999 per month. Team is ₹2,499 per month with five seats included, and extra seats are ₹399 per month each. There are no hidden charges, and paid access is billed through Razorpay.',
+        'Starter is ₹499 per month for one user and up to 100 clients. Solo is ₹999 per month with every CRM feature and unlimited clients. Team is ₹2,499 per month with five seats included, and extra seats are ₹399 per month each. Agency is ₹4,999 per month with fifteen seats, advanced reporting and priority support, and extra seats are ₹299 per month each. There are no hidden charges, and paid access is billed through Razorpay.',
     },
     {
       question: 'Is there a free trial, and do I need a card?',
@@ -250,7 +266,7 @@ export const WTS_CRM: ProjectData = {
     {
       question: 'Does WTS CRM work for teams?',
       answer:
-        'Yes. The Team plan supports shared CRM operations for agency teams, includes five seats, and provides roles and record assignment. Additional seats are ₹399 per month each.',
+        'Yes. The Team plan supports shared CRM operations for agency teams, includes five seats, and provides roles and record assignment, with additional seats at ₹399 per month each. Growing agencies can move to the Agency plan for fifteen seats, advanced reporting and priority support, with additional seats at ₹299 per month each.',
     },
     {
       question: 'What makes it different from a large sales CRM?',

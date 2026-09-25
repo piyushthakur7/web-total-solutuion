@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
-import ImageWithPreloader from './ImageWithPreloader';
 import { PortfolioItem } from '../types';
 import { Sparkles, ArrowUpRight, Filter, MessageSquare, TrendingUp, ExternalLink } from 'lucide-react';
 
@@ -99,78 +98,57 @@ export default function PortfolioView({ projects }: { projects: PortfolioItem[] 
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {filteredItems.map((item, index) => (
-              <div 
-                key={item.id} 
+            {filteredItems.map((item) => (
+              <div
+                key={item.id}
                 className="bg-white border border-slate-100 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col justify-between"
               >
-                {/* Visual Area */}
-                <div className="relative group overflow-hidden bg-slate-100 border-b border-slate-100 aspect-video">
-                  {item.websiteUrl ? (
-                    <a
-                      href={item.websiteUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block w-full h-full relative"
-                    >
-                      <ImageWithPreloader
-                        src={item.imageUrl}
-                        alt={`${item.title} website designed by Web Total Solution`}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
-                        width={600}
-                        height={400}
-                        quality={70}
-                        sizes="(max-width: 768px) 100vw, 640px"
-                        // The first row is above the fold; the rest stay lazy.
-                        priority={index < 2}
-                      />
-                      {/* Hover Overlay with text */}
-                      <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <span className="bg-white/95 text-slate-900 px-4 py-2 rounded-xl text-xs font-bold shadow-md flex items-center space-x-1.5 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
-                          <ExternalLink className="w-3.5 h-3.5" />
-                          <span>Visit Live Website</span>
-                        </span>
-                      </div>
-                    </a>
-                  ) : (
-                    <ImageWithPreloader
-                      src={item.imageUrl}
-                      alt={`${item.title} project by Web Total Solution`}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-                      width={600}
-                      height={400}
-                      quality={70}
-                      sizes="(max-width: 768px) 100vw, 640px"
-                      priority={index < 2}
-                    />
-                  )}
-                  {/* Category overlay */}
-                  <span className="absolute top-4 left-4 bg-slate-900/90 backdrop-blur-sm text-white text-[11px] uppercase tracking-widest font-extrabold px-3 py-1.5 rounded-lg shadow">
-                    {item.category === 'Landing Page' ? 'Landing Page' : item.category}
-                  </span>
-
-                  {/* Highlight Badge overlay */}
-                  <div className="absolute bottom-4 right-4 bg-emerald-500/95 backdrop-blur-sm text-white px-4 py-2 rounded-xl shadow-lg flex items-center space-x-1.5">
-                    <Sparkles className="w-4 h-4" />
-                    <div>
-                      <span className="block text-[11px] font-bold text-white/70 uppercase tracking-widest leading-none">HIGHLIGHT</span>
-                      <span className="text-sm font-extrabold leading-none">{item.highlight}</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Content Area */}
+                {/* Text-only card: screenshots were the bulk of this page's weight. */}
                 <div className="p-8 space-y-6 flex-1 flex flex-col justify-between">
                   <div className="space-y-3">
-                    <div className="flex items-center justify-between">
-                      <h3 className="text-xl font-bold text-slate-950 tracking-tight">{item.title}</h3>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="bg-slate-900 text-white text-[11px] uppercase tracking-widest font-extrabold px-3 py-1.5 rounded-lg">
+                        {item.category}
+                      </span>
+                      {item.highlight && (
+                        <span className="bg-emerald-50 text-emerald-700 text-[11px] font-bold px-3 py-1.5 rounded-lg flex items-center space-x-1">
+                          <Sparkles className="w-3.5 h-3.5" />
+                          <span>{item.highlight}</span>
+                        </span>
+                      )}
+                    </div>
+                    <div className="flex items-center justify-between gap-3">
+                      <h3 className="text-xl font-bold text-slate-950 tracking-tight">
+                        {item.websiteUrl ? (
+                          <a
+                            href={item.websiteUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:text-brand-blue transition-colors"
+                          >
+                            {item.title}
+                          </a>
+                        ) : (
+                          item.title
+                        )}
+                      </h3>
                       {item.websiteUrl && (
-                        <span className="text-[11px] font-bold bg-brand-blue/10 text-brand-blue px-2.5 py-1 rounded-full flex items-center space-x-1">
+                        <span className="shrink-0 text-[11px] font-bold bg-brand-blue/10 text-brand-blue px-2.5 py-1 rounded-full flex items-center space-x-1">
                           <span className="w-1.5 h-1.5 bg-brand-blue rounded-full animate-ping" />
                           <span>Live Client Site</span>
                         </span>
                       )}
                     </div>
+                    {item.websiteUrl && (
+                      <a
+                        href={item.websiteUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs font-mono text-brand-blue hover:underline break-all"
+                      >
+                        {item.websiteUrl.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '')}
+                      </a>
+                    )}
                     <p className="text-slate-600 text-sm leading-relaxed">{item.description}</p>
                   </div>
 

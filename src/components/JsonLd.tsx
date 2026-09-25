@@ -62,9 +62,11 @@ export function serviceSchema({
     url,
     provider: {
       '@type': 'ProfessionalService',
+      // Same @id as the root layout's Organization block, so both describe one entity.
+      '@id': 'https://www.webtotalsolution.com/#organization',
       name: 'Web Total Solution',
       url: 'https://www.webtotalsolution.com/',
-      telephone: '+91 6291 519 364',
+      telephone: '+91-6291519364',
       address: {
         '@type': 'PostalAddress',
         streetAddress: 'Pachpota, Garia',

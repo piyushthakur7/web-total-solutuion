@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Hanken_Grotesk, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import Header from '../src/components/Header';
@@ -17,12 +17,15 @@ const jetbrains = JetBrains_Mono({
   variable: '--font-jetbrains',
 });
 
+const SITE_URL = 'https://www.webtotalsolution.com';
+const ORG_ID = `${SITE_URL}/#organization`;
 const SITE_TITLE = 'Professional Business Website Development | Web Total Solution';
 const SITE_DESCRIPTION =
   'We build fast, modern, SEO-optimised business websites that help companies attract customers, build trust and generate more leads. Get a free consultation.';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.webtotalsolution.com'),
+  metadataBase: new URL(SITE_URL),
+  applicationName: 'Web Total Solution',
   title: {
     default: SITE_TITLE,
     template: '%s | Web Total Solution',
@@ -47,10 +50,11 @@ export const metadata: Metadata = {
     email: true,
     address: true,
   },
+  // No og:url here: pages that don't set their own openGraph would otherwise
+  // all advertise the homepage URL when shared.
   openGraph: {
     type: 'website',
     locale: 'en_IN',
-    url: 'https://www.webtotalsolution.com',
     siteName: 'Web Total Solution',
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
@@ -65,6 +69,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
+    site: '@webtotalindia',
+    creator: '@webtotalindia',
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
     images: ['/og-image.png'],
@@ -87,6 +93,10 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  themeColor: '#0E70A6',
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -95,20 +105,24 @@ export default function RootLayout({
   return (
     <html lang="en-IN">
       <head>
-        {/* Warm up the connections used for above-the-fold imagery */}
-        <link rel="preconnect" href="https://images.pexels.com" />
-        <link rel="preconnect" href="https://images.unsplash.com" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": ["Organization", "ProfessionalService", "LocalBusiness"],
+              "@id": ORG_ID,
               "name": "Web Total Solution",
-              "image": "https://www.webtotalsolution.com/og-image.png",
-              "@id": "https://www.webtotalsolution.com/",
-              "url": "https://www.webtotalsolution.com/",
-              "telephone": "+91 6291 519 364",
+              "url": `${SITE_URL}/`,
+              "logo": {
+                "@type": "ImageObject",
+                "url": `${SITE_URL}/bhaskar_logo_1.png`,
+                "width": 320,
+                "height": 320
+              },
+              "image": `${SITE_URL}/og-image.png`,
+              "telephone": "+91-6291519364",
+              "email": "info@webtotalsolution.com",
               "priceRange": "₹₹",
               "address": {
                 "@type": "PostalAddress",
@@ -182,14 +196,11 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
+              "@id": `${SITE_URL}/#website`,
               "name": "Web Total Solution",
-              "url": "https://www.webtotalsolution.com/",
+              "url": `${SITE_URL}/`,
               "inLanguage": "en-IN",
-              "publisher": {
-                "@type": "Organization",
-                "name": "Web Total Solution",
-                "url": "https://www.webtotalsolution.com/"
-              }
+              "publisher": { "@id": ORG_ID }
             })
           }}
         />

@@ -20,12 +20,50 @@ export interface LandingBenefit {
 export interface LandingSeoSections {
   /** Keyword-bearing introduction placed directly after the trust bar. */
   intro?: { heading: string; paragraphs: string[] };
-  /** Service hub linking out to the dedicated service pages. */
+  /** Case for the technology itself, for pages targeting a framework or platform. */
+  highlights?: {
+    heading: string;
+    intro: string;
+    items: { title: string; description: string }[];
+  };
+  /**
+   * Service hub. Items with an `href` link out to their dedicated page; items
+   * without one render as plain cards.
+   */
   services?: {
     heading: string;
     intro: string;
-    items: { title: string; description: string; href: string }[];
+    items: { title: string; description: string; href?: string }[];
   };
+  /**
+   * Performance practices plus links that let the visitor test live builds
+   * themselves. Deliberately holds no scores: numbers go stale, a live test
+   * does not.
+   */
+  performance?: {
+    heading: string;
+    intro: string;
+    points: { title: string; description: string }[];
+    tests: { label: string; url: string }[];
+  };
+  /**
+   * Named, verifiable builds. Every entry must be live and actually built by
+   * us on the stack the page is about.
+   */
+  caseStudies?: {
+    heading: string;
+    intro: string;
+    items: {
+      name: string;
+      kind: string;
+      description: string;
+      points: string[];
+      stack: string[];
+      links: { label: string; href: string }[];
+    }[];
+  };
+  /** Grouped technology list. */
+  techStack?: { heading: string; intro: string; groups: { title: string; items: string[] }[] };
   /** Price snapshot built from PRICING_PACKAGES, targeting "cost" queries. */
   pricing?: { heading: string; intro: string; note: string };
   /** Industries and areas served, for local relevance. */
@@ -52,6 +90,7 @@ export interface LandingPageConfig {
   /** Portfolio categories to feature on this page. */
   portfolioCategories: PortfolioItem['category'][];
   portfolioHeading: string;
+  portfolioIntro?: string;
   faqHeading?: string;
   faqIntro?: string;
   faqs: { question: string; answer: string }[];
@@ -278,6 +317,332 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
           'Dum Dum',
           'Howrah',
         ],
+      },
+    },
+  },
+
+  /**
+   * National technology page. Owns the "Next.js development company in India"
+   * cluster (Next.js development services / agency, hire Next.js developers,
+   * Next.js website development).
+   *
+   * Proof rule: only webtotalsolution.com and wtscrm.com are confirmed Next.js
+   * builds. The client portfolio is React (Vite), so it is presented as React
+   * work — never relabel it as Next.js.
+   */
+  'nextjs-development-company-india': {
+    slug: 'nextjs-development-company-india',
+    serviceName: 'Next.js Development',
+    projectType: 'SaaS / Web Application',
+    eyebrow: 'Next.js · React · TypeScript',
+    h1: 'Next.js Development Company in India',
+    subheadline:
+      'We build fast, SEO-friendly websites, SaaS platforms and web applications on Next.js and React — with a fixed written quote, an agreed delivery date and full ownership of the code.',
+    primaryCta: 'Discuss Your Next.js Project',
+    heroImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop',
+    heroImageAlt: 'Next.js web application dashboard built by Web Total Solution',
+    trustBadges: ['Next.js App Router', 'Fixed Written Quote', 'You Own the Code', 'SEO Built In'],
+    benefitsEyebrow: 'Why Web Total Solution',
+    benefitsHeading: 'Why Hire Web Total Solution for Next.js Development',
+    benefitsIntro:
+      'Plenty of agencies list Next.js on their website. Here is what you can check about us before you sign anything.',
+    benefits: [
+      {
+        icon: 'trending',
+        title: 'We Run Next.js in Production Ourselves',
+        description:
+          'Our own website and our SaaS product, WTS CRM, are both built on Next.js and live today. We solve the same deployment, caching and SEO problems for ourselves that we solve for clients.',
+      },
+      {
+        icon: 'shield',
+        title: 'Fixed Quote, Agreed Deadline',
+        description:
+          'After scoping you get a written quote and a delivery date before development starts. No open-ended hourly billing and no surprise invoices at handover.',
+      },
+      {
+        icon: 'refresh',
+        title: 'Your Code, Your Accounts',
+        description:
+          'The repository, hosting, domain and database are set up in your name. Any competent React developer can pick the project up later — you are never locked in to us.',
+      },
+      {
+        icon: 'headset',
+        title: 'Direct Access to the Developers',
+        description:
+          'You talk to the people writing the code, on Indian working hours, with a reply within 24 hours — not to an account manager relaying messages.',
+      },
+      {
+        icon: 'search',
+        title: 'SEO Is Part of the Build',
+        description:
+          'Metadata, canonical URLs, schema markup, sitemaps and server-rendered content are set up during development, not bolted on after launch.',
+      },
+      {
+        icon: 'target',
+        title: 'Built Around a Business Goal',
+        description:
+          'Whether the goal is enquiries, sign-ups or fewer manual processes, we plan pages and features around it — so you pay for what moves the number, not for features nobody uses.',
+      },
+    ],
+    portfolioCategories: ['SaaS', 'Corporate', 'E-Commerce'],
+    portfolioHeading: 'React Websites We Have Delivered for Clients',
+    portfolioIntro:
+      'Next.js is built on React, and these are React sites we designed and built for clients. Every one is live — open them and judge the quality for yourself.',
+    faqHeading: 'Next.js Development: FAQs',
+    faqIntro:
+      'Straight answers to what founders and business owners ask before hiring a Next.js development company.',
+    faqs: [
+      {
+        question: 'How much does Next.js development cost in India?',
+        answer:
+          'A Next.js business website with up to 5 pages starts at ₹15,000, and a website with up to 10 pages, a CMS and a blog starts at ₹35,000. SaaS platforms, web applications and e-commerce builds depend heavily on features, integrations and user roles, so they are scoped and quoted individually. After a free consultation you receive a fixed written quote before any work begins.',
+      },
+      {
+        question: 'How long does a Next.js project take?',
+        answer:
+          'A Next.js business website typically takes 2–4 weeks once content and approvals are ready. A first version of a SaaS product or web application usually takes 6–12 weeks depending on scope. We confirm the timeline in writing during planning and show you working progress along the way.',
+      },
+      {
+        question: 'Is Next.js the right choice for my project?',
+        answer:
+          'Next.js is a strong fit when speed, search visibility and room to grow matter — marketing websites that need to rank, SaaS products, dashboards, customer portals and headless e-commerce. If you only need a very simple site that you want to edit yourself with no developer involvement, a website builder or WordPress may suit you better, and we will tell you so during the consultation.',
+      },
+      {
+        question: 'Is Next.js good for SEO?',
+        answer:
+          'Yes. Next.js renders pages on the server or at build time, so search engines receive complete HTML instead of a blank page waiting for JavaScript. It also has built-in support for metadata, sitemaps, image optimisation and fast loading — the technical factors Google measures. Rankings still depend on your content and competition, so no honest company can guarantee a position, but Next.js gives you a very strong foundation.',
+      },
+      {
+        question: 'Can you migrate my React or WordPress website to Next.js?',
+        answer:
+          'Yes. We move existing React single-page apps and WordPress sites to Next.js, map every existing URL to its new location with proper redirects, and carry across your metadata and content, so the rankings you already have are preserved while speed and SEO improve.',
+      },
+      {
+        question: 'Do you build SaaS products with Next.js and Supabase?',
+        answer:
+          'Yes. Next.js with a Postgres backend such as Supabase is a stack we use for SaaS products and internal tools: it gives you authentication, a real relational database, row-level security and file storage without building every piece from scratch. We plan the data model and access rules first, because they are the hardest things to change later.',
+      },
+      {
+        question: 'Will I be able to edit content without a developer?',
+        answer:
+          'Yes. We connect a headless CMS such as Sanity, or build a simple admin panel, so your team can update pages, blog posts, products and images themselves. The website pulls the new content automatically, without a redeploy.',
+      },
+      {
+        question: 'Where will my Next.js website be hosted, and who owns it?',
+        answer:
+          'Usually on Vercel, which is built by the team behind Next.js, or on AWS or your own server if you prefer. Either way, the hosting account, domain, database and code repository are created in your name, and you own all of it.',
+      },
+      {
+        question: 'Do you work with clients outside Kolkata?',
+        answer:
+          'Yes. Our team is based in Kolkata and we work with businesses across India and internationally. Consultation, design reviews, demos and handover all run over video call, email and WhatsApp.',
+      },
+    ],
+    ctaHeadline: 'Planning a Next.js Website or Web App?',
+    ctaText:
+      'Tell us what you want to build. You will get honest advice on whether Next.js is the right fit, a recommended approach and a fixed written quote — usually within 24 hours.',
+    meta: {
+      title: 'Next.js Development Company in India | Web Total Solution',
+      description:
+        'Looking for a Next.js development company in India? Web Total Solution builds fast, SEO-friendly websites, SaaS platforms and web applications using Next.js, React and modern technologies.',
+      keywords: [
+        'next.js development company india',
+        'nextjs development company india',
+        'next.js development services india',
+        'nextjs development agency india',
+        'hire next.js developers india',
+        'next.js web development company',
+        'next.js website development',
+        'react and next.js development company',
+      ],
+    },
+    seo: {
+      intro: {
+        heading: 'Next.js Development Services in India, From a Team That Ships on It',
+        paragraphs: [
+          'Web Total Solution is a web development company based in Kolkata that builds websites and web applications for businesses across India and abroad. Next.js is the framework we choose when a project needs to be fast, rank well on Google and keep growing — and it is the framework our own website and our SaaS product run on.',
+          'Our Next.js development services cover business websites, SaaS platforms, dashboards, customer portals and headless e-commerce, along with the backend, CMS and third-party integrations each one needs. You get one team handling planning, UI design, development, deployment and support.',
+          'Every project starts with the business goal rather than the technology. If Next.js is not the right fit for what you need, we will tell you before you spend anything.',
+        ],
+      },
+      highlights: {
+        heading: 'Why Businesses Choose Next.js',
+        intro:
+          'Next.js is the React framework behind websites for companies such as Nike and Netflix. For a growing business, these are the reasons it matters.',
+        items: [
+          {
+            title: 'Fast by Default',
+            description:
+              'Pages are rendered on the server or at build time, so visitors get content immediately instead of waiting for JavaScript to load.',
+          },
+          {
+            title: 'Search Engines See Everything',
+            description:
+              'Google receives complete HTML for every page, unlike client-rendered React apps where content can be missed or indexed late.',
+          },
+          {
+            title: 'One Codebase, Website to App',
+            description:
+              'Marketing pages, logged-in dashboards and API endpoints can live in one project, so your website and product grow together.',
+          },
+          {
+            title: 'Scales With You',
+            description:
+              'The same framework serves a 5-page company site and a SaaS product with thousands of users, so growth does not force a rebuild.',
+          },
+          {
+            title: 'Largest Talent Pool',
+            description:
+              'Next.js is built on React, the most widely used front-end library, so developers are easy to find if you ever bring work in-house.',
+          },
+          {
+            title: 'Host It Anywhere',
+            description:
+              'Deploy to Vercel, AWS or your own server. You are not tied to a proprietary website builder you can never leave.',
+          },
+        ],
+      },
+      services: {
+        heading: 'Our Next.js Development Services',
+        intro:
+          'From a fast company website to a full SaaS product, we handle the front end, back end, content management and integrations as one project.',
+        items: [
+          {
+            title: 'Next.js Business Websites',
+            description:
+              'Fast, SEO-ready company websites with conversion-focused pages, enquiry forms, WhatsApp integration and analytics set up from day one.',
+            href: '/business-website-development',
+          },
+          {
+            title: 'SaaS & Web Application Development',
+            description:
+              'Subscription products, dashboards, customer portals and internal tools with user accounts, roles, billing and reporting.',
+            href: '/services/saas-development',
+          },
+          {
+            title: 'E-Commerce & Headless Commerce',
+            description:
+              'Fast storefronts with Razorpay, Stripe or UPI checkout, or a Next.js front end on top of Shopify for more design and speed control.',
+            href: '/ecommerce-development',
+          },
+          {
+            title: 'Next.js + Supabase Development',
+            description:
+              'Authentication, a Postgres database, row-level security, file storage and realtime features for SaaS products and internal tools.',
+          },
+          {
+            title: 'Next.js + Sanity CMS Development',
+            description:
+              'Headless CMS setups your marketing team can edit on their own, with live previews and content that updates without a redeploy.',
+          },
+          {
+            title: 'API & Third-Party Integrations',
+            description:
+              'Payment gateways, CRMs, email and WhatsApp providers, analytics, AI models and your existing systems, connected securely through server-side APIs.',
+          },
+        ],
+      },
+      performance: {
+        heading: 'Performance and Core Web Vitals, Built In',
+        intro:
+          'Speed affects both Google rankings and how many visitors turn into customers. These are the practices we build into every Next.js project.',
+        points: [
+          {
+            title: 'Server Rendering & Static Generation',
+            description:
+              'Each page is rendered in the way that suits it — static where content rarely changes, refreshed in the background where it does.',
+          },
+          {
+            title: 'Less JavaScript in the Browser',
+            description:
+              'React Server Components keep data fetching and heavy logic on the server, so phones download and run far less code.',
+          },
+          {
+            title: 'Optimised Images',
+            description:
+              'Images are resized per device, served as AVIF or WebP and lazy-loaded below the fold, the biggest single win for mobile load time.',
+          },
+          {
+            title: 'No Layout Shift',
+            description:
+              'Fonts are self-hosted and images have reserved dimensions, so the page does not jump around while it loads.',
+          },
+          {
+            title: 'Code Split by Section',
+            description:
+              'Sections further down the page load only when needed, keeping the first screen quick even on long pages.',
+          },
+          {
+            title: 'Technical SEO in the Framework',
+            description:
+              'Metadata, canonical URLs, sitemaps and structured data are generated by the application itself, so they never fall out of date.',
+          },
+        ],
+        tests: [
+          {
+            label: 'Test this page',
+            url: 'https://pagespeed.web.dev/report?url=https%3A%2F%2Fwww.webtotalsolution.com%2Fnextjs-development-company-india',
+          },
+          {
+            label: 'Test wtscrm.com',
+            url: 'https://pagespeed.web.dev/report?url=https%3A%2F%2Fwtscrm.com%2F',
+          },
+        ],
+      },
+      caseStudies: {
+        heading: 'Next.js Projects You Can Open Right Now',
+        intro:
+          'Two production Next.js builds we designed, developed and still run ourselves. Visit them, click around and test their speed.',
+        items: [
+          {
+            name: 'WTS CRM',
+            kind: 'SaaS product',
+            description:
+              'A CRM and invoicing app for Indian freelancers and agency teams — our own subscription product, live with tiered plans and a free trial.',
+            points: [
+              'Lead capture, follow-up reminders and a daily action view',
+              'Tasks, projects and professional invoices with payment tracking',
+              'Private workspaces with user accounts and tiered subscription plans',
+            ],
+            stack: ['Next.js', 'React', 'CSS Modules'],
+            links: [
+              { label: 'Visit wtscrm.com', href: 'https://wtscrm.com' },
+              { label: 'Product overview', href: '/projects' },
+            ],
+          },
+          {
+            name: 'webtotalsolution.com',
+            kind: 'Marketing website',
+            description:
+              'The site you are reading: a content-driven company website with a portfolio, blog and lead capture, all managed from a database rather than hard-coded.',
+            points: [
+              'App Router with React Server Components and background revalidation',
+              'Portfolio and blog served from a Postgres backend, with enquiries captured by a serverless function',
+              'Generated sitemap, canonical URLs and JSON-LD structured data on every page',
+            ],
+            stack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'PostgreSQL', 'Vercel'],
+            links: [{ label: 'See our portfolio', href: '/portfolio' }],
+          },
+        ],
+      },
+      techStack: {
+        heading: 'Our Next.js Technology Stack',
+        intro:
+          'Proven, well-supported tools chosen for speed, security and long-term maintainability — nothing obscure that only we can work on.',
+        groups: [
+          { title: 'Framework', items: ['Next.js (App Router)', 'React', 'TypeScript'] },
+          { title: 'UI & Styling', items: ['Tailwind CSS', 'Motion', 'Responsive design'] },
+          { title: 'Backend & Data', items: ['Node.js', 'PostgreSQL', 'Supabase', 'REST APIs'] },
+          { title: 'Content Management', items: ['Sanity', 'Headless CMS', 'Custom admin panels'] },
+          { title: 'Payments & Integrations', items: ['Razorpay', 'Stripe', 'Shopify', 'Google Analytics'] },
+          { title: 'Hosting & Deployment', items: ['Vercel', 'AWS', 'GitHub'] },
+        ],
+      },
+      pricing: {
+        heading: 'Next.js Development Cost in India',
+        intro:
+          'Starting prices for Next.js websites, so you can plan before we speak. SaaS products and web applications are quoted individually after scoping.',
+        note: 'All prices in INR. Every website includes mobile-responsive design, on-page SEO setup and post-launch support.',
       },
     },
   },

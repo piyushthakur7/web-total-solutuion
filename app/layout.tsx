@@ -165,6 +165,14 @@ export default function RootLayout({
                     "@type": "Offer",
                     "itemOffered": {
                       "@type": "Service",
+                      "name": "Next.js Development",
+                      "url": "https://www.webtotalsolution.com/nextjs-development-company-india"
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
                       "name": "Business Website Development",
                       "url": "https://www.webtotalsolution.com/business-website-development"
                     }

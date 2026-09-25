@@ -166,6 +166,37 @@ export default async function LandingPageView({ config }: { config: LandingPageC
         </section>
       )}
 
+      {/* Technology case — why the framework the page is about is worth choosing */}
+      {seo?.highlights && (
+        <section className="bg-slate-900 py-24">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-2xl mx-auto mb-14 space-y-4">
+              <span className="text-xs uppercase tracking-widest font-extrabold text-brand-blue">
+                The Technology
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+                {seo.highlights.heading}
+              </h2>
+              <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
+                {seo.highlights.intro}
+              </p>
+            </div>
+
+            <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {seo.highlights.items.map((item, index) => (
+                <li key={item.title} className="bg-white/5 border border-white/10 rounded-2xl p-7">
+                  <span className="text-sm font-extrabold text-brand-blue tabular-nums">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <h3 className="mt-3 font-bold text-white text-lg leading-tight">{item.title}</h3>
+                  <p className="mt-2.5 text-sm text-slate-400 leading-relaxed">{item.description}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+      )}
+
       {/* Service hub — descriptive internal links into each service page */}
       {seo?.services && (
         <section className="bg-white py-24">
@@ -183,23 +214,174 @@ export default async function LandingPageView({ config }: { config: LandingPageC
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {seo.services.items.map((service) => (
-                <Link
-                  key={service.href}
-                  href={service.href}
-                  className="group bg-white rounded-2xl p-7 border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-brand-blue/20 transition-all duration-300 flex flex-col"
-                >
-                  <h3 className="font-bold text-slate-900 text-lg leading-tight group-hover:text-brand-blue transition-colors">
-                    {service.title}
-                  </h3>
-                  <p className="mt-2.5 text-sm text-slate-600 leading-relaxed flex-grow">
-                    {service.description}
+              {seo.services.items.map((service) =>
+                service.href ? (
+                  <Link
+                    key={service.title}
+                    href={service.href}
+                    className="group bg-white rounded-2xl p-7 border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-brand-blue/20 transition-all duration-300 flex flex-col"
+                  >
+                    <h3 className="font-bold text-slate-900 text-lg leading-tight group-hover:text-brand-blue transition-colors">
+                      {service.title}
+                    </h3>
+                    <p className="mt-2.5 text-sm text-slate-600 leading-relaxed flex-grow">
+                      {service.description}
+                    </p>
+                    <span className="mt-5 inline-flex items-center space-x-1.5 text-xs font-bold text-brand-blue">
+                      <span>Learn more</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                    </span>
+                  </Link>
+                ) : (
+                  <div
+                    key={service.title}
+                    className="bg-white rounded-2xl p-7 border border-slate-100 shadow-sm flex flex-col"
+                  >
+                    <h3 className="font-bold text-slate-900 text-lg leading-tight">{service.title}</h3>
+                    <p className="mt-2.5 text-sm text-slate-600 leading-relaxed">{service.description}</p>
+                  </div>
+                )
+              )}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Performance — practices, plus live tests instead of claimed scores */}
+      {seo?.performance && (
+        <section className="bg-slate-50 py-24">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
+              <div className="lg:col-span-4 space-y-5">
+                <span className="text-xs uppercase tracking-widest font-extrabold text-brand-blue">
+                  Performance
+                </span>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                  {seo.performance.heading}
+                </h2>
+                <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                  {seo.performance.intro}
+                </p>
+
+                <div className="bg-white border border-slate-100 rounded-2xl p-6 shadow-sm">
+                  <p className="flex items-center space-x-2 text-sm font-bold text-slate-900">
+                    <Gauge className="w-4 h-4 text-brand-blue shrink-0" />
+                    <span>Don&apos;t take our word for it</span>
                   </p>
-                  <span className="mt-5 inline-flex items-center space-x-1.5 text-xs font-bold text-brand-blue">
-                    <span>Learn more</span>
-                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                  <p className="mt-2 text-xs text-slate-600 leading-relaxed">
+                    Run Google PageSpeed Insights on our live Next.js builds and see the real
+                    numbers for yourself.
+                  </p>
+                  <ul className="mt-4 space-y-2.5">
+                    {seo.performance.tests.map((test) => (
+                      <li key={test.url}>
+                        <a
+                          href={test.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center space-x-1.5 text-sm font-bold text-brand-blue hover:underline"
+                        >
+                          <span>{test.label}</span>
+                          <ExternalLink className="w-3.5 h-3.5" />
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-5">
+                {seo.performance.points.map((point) => (
+                  <div key={point.title} className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm">
+                    <h3 className="flex items-start space-x-2.5 font-bold text-slate-900 leading-tight">
+                      <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0" />
+                      <span>{point.title}</span>
+                    </h3>
+                    <p className="mt-2.5 text-sm text-slate-600 leading-relaxed">{point.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Case studies — named builds a visitor can open and verify */}
+      {seo?.caseStudies && (
+        <section className="bg-white py-24">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-2xl mx-auto mb-14 space-y-4">
+              <span className="text-xs uppercase tracking-widest font-extrabold text-brand-blue">
+                Proof
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                {seo.caseStudies.heading}
+              </h2>
+              <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                {seo.caseStudies.intro}
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-7">
+              {seo.caseStudies.items.map((study) => (
+                <article
+                  key={study.name}
+                  className="bg-white border border-slate-100 rounded-3xl p-7 sm:p-9 shadow-sm flex flex-col"
+                >
+                  <span className="self-start text-[10px] uppercase tracking-widest font-extrabold text-brand-blue bg-brand-blue/10 rounded-md px-2.5 py-1">
+                    {study.kind}
                   </span>
-                </Link>
+                  <h3 className="mt-4 text-2xl font-extrabold text-slate-900 tracking-tight">
+                    {study.name}
+                  </h3>
+                  <p className="mt-3 text-sm text-slate-600 leading-relaxed">{study.description}</p>
+
+                  <ul className="mt-6 space-y-3 text-sm text-slate-700 flex-grow">
+                    {study.points.map((point) => (
+                      <li key={point} className="flex items-start space-x-2.5">
+                        <Check className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <ul className="mt-6 flex flex-wrap gap-2" aria-label="Technology used">
+                    {study.stack.map((tech) => (
+                      <li
+                        key={tech}
+                        className="text-xs font-semibold text-slate-700 bg-slate-50 border border-slate-200 rounded-full px-3 py-1"
+                      >
+                        {tech}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="mt-7 pt-6 border-t border-slate-100 flex flex-wrap gap-x-6 gap-y-3">
+                    {study.links.map((link) =>
+                      link.href.startsWith('/') ? (
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                          className="inline-flex items-center space-x-1.5 text-sm font-bold text-brand-blue hover:underline"
+                        >
+                          <span>{link.label}</span>
+                          <ArrowRight className="w-4 h-4" />
+                        </Link>
+                      ) : (
+                        <a
+                          key={link.href}
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center space-x-1.5 text-sm font-bold text-brand-blue hover:underline"
+                        >
+                          <span>{link.label}</span>
+                          <ExternalLink className="w-3.5 h-3.5" />
+                        </a>
+                      )
+                    )}
+                  </div>
+                </article>
               ))}
             </div>
           </div>
@@ -207,7 +389,7 @@ export default async function LandingPageView({ config }: { config: LandingPageC
       )}
 
       {/* Benefits — the shorter top padding only applies directly under the trust bar */}
-      <section className={`bg-slate-50 pb-24 ${seo?.intro || seo?.services ? 'pt-24' : 'pt-20'}`}>
+      <section className={`bg-slate-50 pb-24 ${seo?.intro || seo?.services || seo?.caseStudies ? 'pt-24' : 'pt-20'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-14 space-y-4">
             <span className="text-xs uppercase tracking-widest font-extrabold text-brand-blue">
@@ -265,8 +447,8 @@ export default async function LandingPageView({ config }: { config: LandingPageC
                 {config.portfolioHeading}
               </h2>
               <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                Real client websites, live right now. Open any of them and judge the quality for
-                yourself.
+                {config.portfolioIntro ??
+                  'Real client websites, live right now. Open any of them and judge the quality for yourself.'}
               </p>
             </div>
 
@@ -316,6 +498,43 @@ export default async function LandingPageView({ config }: { config: LandingPageC
                 <span>See our full portfolio</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Technology stack */}
+      {seo?.techStack && (
+        <section className="bg-slate-900 py-24">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-2xl mx-auto mb-14 space-y-4">
+              <span className="text-xs uppercase tracking-widest font-extrabold text-brand-blue">
+                Technology
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+                {seo.techStack.heading}
+              </h2>
+              <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
+                {seo.techStack.intro}
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {seo.techStack.groups.map((group) => (
+                <div key={group.title} className="bg-white/5 border border-white/10 rounded-2xl p-6">
+                  <h3 className="text-sm font-bold uppercase tracking-wider text-white">{group.title}</h3>
+                  <ul className="mt-4 flex flex-wrap gap-2">
+                    {group.items.map((item) => (
+                      <li
+                        key={item}
+                        className="text-xs sm:text-sm font-semibold text-slate-200 bg-white/5 border border-white/10 rounded-full px-3 py-1"
+                      >
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -529,6 +748,7 @@ export default async function LandingPageView({ config }: { config: LandingPageC
           <nav className="flex flex-wrap gap-x-6 gap-y-3 text-sm">
             {[
               { href: '/website-development-company-kolkata', label: 'Website Development in Kolkata' },
+              { href: '/nextjs-development-company-india', label: 'Next.js Development Company' },
               { href: '/business-website-development', label: 'Business Website Development' },
               { href: '/website-redesign', label: 'Website Redesign' },
               { href: '/ecommerce-development', label: 'E-Commerce Development' },

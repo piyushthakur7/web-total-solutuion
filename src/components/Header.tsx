@@ -74,7 +74,7 @@ export default function Header() {
                       }`}
                     >
                       <span>{item.label}</span>
-                      <ChevronDown className="w-3.5 h-3.5 opacity-70 group-hover:rotate-180 transition-transform duration-200" />
+                      <ChevronDown className="w-3.5 h-3.5 opacity-70 group-hover:rotate-180 group-focus-within:rotate-180 transition-transform duration-200" />
                       {isActive && (
                         <div 
                           className="absolute -bottom-2 left-0 right-0 h-0.5 bg-brand-blue rounded-full"
@@ -83,7 +83,7 @@ export default function Header() {
                     </Link>
 
                     {/* Desktop Dropdown */}
-                    <div className="absolute top-full -left-4 w-72 bg-white/90 backdrop-blur-xl rounded-2xl shadow-xl border border-white/60 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50 pt-2">
+                    <div className="absolute top-full -left-4 w-72 bg-white/90 backdrop-blur-xl rounded-2xl shadow-xl border border-white/60 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 group-focus-within:translate-y-0 z-50 pt-2">
                       <div className="py-2 bg-white/80 backdrop-blur-xl rounded-2xl overflow-hidden">
                         {servicesDropdown.map((service, idx) => (
                           <Link 
@@ -92,7 +92,7 @@ export default function Header() {
                             className="block px-5 py-3 hover:bg-slate-50/80 transition-colors group/item"
                           >
                             <span className="block text-sm font-bold text-slate-800 group-hover/item:text-brand-blue transition-colors">{service.label}</span>
-                            <span className="block text-[11px] font-semibold text-slate-500 uppercase tracking-wide mt-0.5">{service.subtext}</span>
+                            <span className="block text-xs font-medium text-slate-500 mt-0.5">{service.subtext}</span>
                           </Link>
                         ))}
                       </div>
@@ -156,7 +156,9 @@ export default function Header() {
             </a>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-3 rounded-xl text-slate-700 hover:text-brand-blue bg-white/60 backdrop-blur-md border border-white/80 shadow-sm focus:outline-none transition-all active:scale-95"
+              aria-expanded={isOpen}
+              aria-controls="mobile-nav"
+              className="p-3 rounded-xl text-slate-700 hover:text-brand-blue bg-white/60 backdrop-blur-md border border-white/80 shadow-sm transition-all active:scale-95"
               aria-label="Toggle menu"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -167,6 +169,8 @@ export default function Header() {
 
       {/* Mobile Drawer (Glassmorphism design) */}
       <div
+        id="mobile-nav"
+        inert={!isOpen}
         className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
           isOpen ? 'max-h-[800px] opacity-100 py-2' : 'max-h-0 opacity-0 py-0'
         }`}
@@ -179,7 +183,9 @@ export default function Header() {
               if (item.label === 'Services') {
                 return (
                   <div key={item.path} className="space-y-1.5">
-                    <div
+                    <button
+                      type="button"
+                      aria-expanded={mobileServicesOpen}
                       className={`w-full text-left px-4 py-3 rounded-xl text-base font-semibold tracking-wide transition-all flex items-center justify-between cursor-pointer ${
                         isActive || mobileServicesOpen
                           ? 'glass-nav-item-active text-brand-blue font-bold'
@@ -187,15 +193,13 @@ export default function Header() {
                       }`}
                       onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
                     >
-                      <div className="flex items-center space-x-2">
-                        <span>{item.label}</span>
-                      </div>
+                      <span>{item.label}</span>
                       <ChevronDown
                         className={`w-4 h-4 transition-transform duration-200 ${
                           mobileServicesOpen ? 'rotate-180 text-brand-blue' : 'text-slate-400'
                         }`}
                       />
-                    </div>
+                    </button>
 
                     {/* Sub-menu accordion */}
                     {mobileServicesOpen && (
@@ -208,7 +212,7 @@ export default function Header() {
                             className="block px-3.5 py-2.5 rounded-lg hover:bg-white/70 transition-colors"
                           >
                             <span className="block text-sm font-bold text-slate-800">{service.label}</span>
-                            <span className="block text-[10px] font-semibold text-brand-blue/80 uppercase tracking-wider">{service.subtext}</span>
+                            <span className="block text-xs font-medium text-brand-blue/80 mt-0.5">{service.subtext}</span>
                           </Link>
                         ))}
                       </div>

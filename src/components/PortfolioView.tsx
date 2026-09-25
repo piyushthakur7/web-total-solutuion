@@ -145,7 +145,7 @@ export default function PortfolioView({ projects }: { projects: PortfolioItem[] 
                     />
                   )}
                   {/* Category overlay */}
-                  <span className="absolute top-4 left-4 bg-slate-900/90 backdrop-blur-sm text-white text-[10px] uppercase tracking-widest font-extrabold px-3 py-1.5 rounded-lg shadow">
+                  <span className="absolute top-4 left-4 bg-slate-900/90 backdrop-blur-sm text-white text-[11px] uppercase tracking-widest font-extrabold px-3 py-1.5 rounded-lg shadow">
                     {item.category === 'Landing Page' ? 'Landing Page' : item.category}
                   </span>
 
@@ -153,7 +153,7 @@ export default function PortfolioView({ projects }: { projects: PortfolioItem[] 
                   <div className="absolute bottom-4 right-4 bg-emerald-500/95 backdrop-blur-sm text-white px-4 py-2 rounded-xl shadow-lg flex items-center space-x-1.5">
                     <Sparkles className="w-4 h-4" />
                     <div>
-                      <span className="block text-[8px] font-bold text-white/70 uppercase tracking-widest leading-none">HIGHLIGHT</span>
+                      <span className="block text-[11px] font-bold text-white/70 uppercase tracking-widest leading-none">HIGHLIGHT</span>
                       <span className="text-sm font-extrabold leading-none">{item.highlight}</span>
                     </div>
                   </div>
@@ -165,7 +165,7 @@ export default function PortfolioView({ projects }: { projects: PortfolioItem[] 
                     <div className="flex items-center justify-between">
                       <h3 className="text-xl font-bold text-slate-950 tracking-tight">{item.title}</h3>
                       {item.websiteUrl && (
-                        <span className="text-[10px] font-bold bg-brand-blue/10 text-brand-blue px-2.5 py-1 rounded-full flex items-center space-x-1">
+                        <span className="text-[11px] font-bold bg-brand-blue/10 text-brand-blue px-2.5 py-1 rounded-full flex items-center space-x-1">
                           <span className="w-1.5 h-1.5 bg-brand-blue rounded-full animate-ping" />
                           <span>Live Client Site</span>
                         </span>
@@ -178,7 +178,7 @@ export default function PortfolioView({ projects }: { projects: PortfolioItem[] 
                     {/* Tech tag loops */}
                     <div className="flex flex-wrap gap-2 pt-2">
                       {item.techStack.map((tech) => (
-                        <span key={tech} className="text-[10px] font-mono text-slate-500 bg-slate-50 border border-slate-100 px-2 py-1 rounded">
+                        <span key={tech} className="text-[11px] font-mono text-slate-500 bg-slate-50 border border-slate-100 px-2 py-1 rounded">
                           {tech}
                         </span>
                       ))}

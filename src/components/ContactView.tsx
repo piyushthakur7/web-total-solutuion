@@ -91,7 +91,7 @@ export default function ContactView() {
                 <Mail className="w-5 h-5" />
               </span>
               <span>
-                <span className="block text-[10px] text-slate-400 uppercase tracking-widest font-bold">
+                <span className="block text-[11px] text-slate-400 uppercase tracking-widest font-bold">
                   Email
                 </span>
                 <a
@@ -108,7 +108,7 @@ export default function ContactView() {
                 <MapPin className="w-5 h-5" />
               </span>
               <span>
-                <span className="block text-[10px] text-slate-400 uppercase tracking-widest font-bold">
+                <span className="block text-[11px] text-slate-400 uppercase tracking-widest font-bold">
                   Office
                 </span>
                 <span className="text-sm font-semibold text-slate-800">
@@ -120,7 +120,7 @@ export default function ContactView() {
             </div>
 
             <div className="pt-2 border-t border-slate-200">
-              <span className="block text-[10px] text-slate-400 uppercase tracking-widest font-bold mb-3">
+              <span className="block text-[11px] text-slate-400 uppercase tracking-widest font-bold mb-3">
                 Follow Us
               </span>
               <div className="flex flex-wrap gap-x-5 gap-y-2">
@@ -156,7 +156,7 @@ export default function ContactView() {
             <div className="absolute top-[48%] left-[51%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
               <span className="w-3.5 h-3.5 bg-brand-blue border-2 border-white rounded-full inline-block animate-ping absolute" />
               <span className="w-3.5 h-3.5 bg-brand-blue border-2 border-white rounded-full inline-block relative z-10" />
-              <span className="bg-slate-900 text-white text-[9px] font-bold px-2 py-0.5 rounded shadow-md mt-1 font-mono uppercase tracking-wide">
+              <span className="bg-slate-900 text-white text-[11px] font-bold px-2 py-0.5 rounded shadow-md mt-1 font-mono uppercase tracking-wide">
                 WTS Kolkata
               </span>
             </div>

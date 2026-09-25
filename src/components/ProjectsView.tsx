@@ -170,7 +170,7 @@ function ProductSection({ project }: { project: ProjectData }) {
               key={step.label}
               className="relative bg-white border border-slate-100 rounded-2xl p-6 space-y-3 shadow-sm"
             >
-              <span className="text-[10px] font-extrabold text-slate-500 uppercase tracking-widest">
+              <span className="text-[11px] font-extrabold text-slate-500 uppercase tracking-widest">
                 Step {index + 1}
               </span>
               <p className="text-lg font-extrabold text-slate-950">{step.label}</p>
@@ -204,7 +204,7 @@ function ProductSection({ project }: { project: ProjectData }) {
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <h4 className="text-lg font-extrabold text-slate-950">{plan.name}</h4>
                 {plan.badge && (
-                  <span className="text-[10px] font-extrabold uppercase tracking-widest text-brand-blue bg-brand-blue/10 border border-brand-blue/20 px-2.5 py-1 rounded-full">
+                  <span className="text-[11px] font-extrabold uppercase tracking-widest text-brand-blue bg-brand-blue/10 border border-brand-blue/20 px-2.5 py-1 rounded-full">
                     {plan.badge}
                   </span>
                 )}

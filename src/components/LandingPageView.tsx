@@ -328,7 +328,7 @@ export default async function LandingPageView({ config }: { config: LandingPageC
                   key={study.name}
                   className="bg-white border border-slate-100 rounded-3xl p-7 sm:p-9 shadow-sm flex flex-col"
                 >
-                  <span className="self-start text-[10px] uppercase tracking-widest font-extrabold text-brand-blue bg-brand-blue/10 rounded-md px-2.5 py-1">
+                  <span className="self-start text-[11px] uppercase tracking-widest font-extrabold text-brand-blue bg-brand-blue/10 rounded-md px-2.5 py-1">
                     {study.kind}
                   </span>
                   <h3 className="mt-4 text-2xl font-extrabold text-slate-900 tracking-tight">
@@ -472,7 +472,7 @@ export default async function LandingPageView({ config }: { config: LandingPageC
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 420px"
                       loading="lazy"
                     />
-                    <span className="absolute top-3 left-3 bg-slate-900/90 backdrop-blur-sm text-white text-[10px] uppercase tracking-widest font-extrabold px-2.5 py-1 rounded-md">
+                    <span className="absolute top-3 left-3 bg-slate-900/90 backdrop-blur-sm text-white text-[11px] uppercase tracking-widest font-extrabold px-2.5 py-1 rounded-md">
                       {project.category}
                     </span>
                   </div>

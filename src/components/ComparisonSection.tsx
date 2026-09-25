@@ -55,10 +55,10 @@ export default function ComparisonSection() {
             <span className="text-[11px] sm:text-xs font-bold uppercase tracking-widest text-slate-500">
               What You Get
             </span>
-            <span className="text-[10px] sm:text-xs font-extrabold uppercase tracking-wider text-brand-blue text-center px-2">
+            <span className="text-[11px] sm:text-xs font-extrabold uppercase tracking-wider text-brand-blue text-center px-2">
               Web Total<span className="hidden sm:inline"> Solution</span>
             </span>
-            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-slate-500 text-center px-2">
+            <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-slate-500 text-center px-2">
               Typical<span className="hidden sm:inline"> Freelancer</span>
             </span>
           </div>

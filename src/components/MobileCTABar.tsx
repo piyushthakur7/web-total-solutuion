@@ -19,7 +19,7 @@ export default function MobileCTABar() {
           aria-label="Call Web Total Solution"
         >
           <Phone className="w-5 h-5" />
-          <span className="text-[10px] font-bold uppercase tracking-wide mt-1">Call</span>
+          <span className="text-[11px] font-bold uppercase tracking-wide mt-1">Call</span>
         </a>
         {/* White on WhatsApp green is only 1.98:1. Dark text on the same green
             is 10.5:1, so the brand colour stays and the label stays readable. */}
@@ -31,14 +31,14 @@ export default function MobileCTABar() {
           aria-label="Chat with us on WhatsApp"
         >
           <WhatsAppIcon className="w-5 h-5" />
-          <span className="text-[10px] font-bold uppercase tracking-wide mt-1">WhatsApp</span>
+          <span className="text-[11px] font-bold uppercase tracking-wide mt-1">WhatsApp</span>
         </a>
         <Link
           href="/contact"
           className="flex flex-col items-center justify-center py-2 rounded-xl bg-brand-blue text-white active:scale-95 transition-transform"
         >
           <span className="text-sm font-extrabold leading-none">Free</span>
-          <span className="text-[10px] font-bold uppercase tracking-wide mt-1">Consultation</span>
+          <span className="text-[11px] font-bold uppercase tracking-wide mt-1">Consultation</span>
         </Link>
       </div>
     </div>

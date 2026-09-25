@@ -272,7 +272,7 @@ export default function ServicesView() {
             {/* Text left */}
             <div className="space-y-6 flex-1 flex flex-col justify-between">
               <div className="space-y-4">
-                <div className="inline-flex items-center space-x-1 bg-brand-blue/20 px-3 py-1 rounded-full text-brand-blue text-[10px] uppercase tracking-widest font-extrabold">
+                <div className="inline-flex items-center space-x-1 bg-brand-blue/20 px-3 py-1 rounded-full text-brand-blue text-[11px] uppercase tracking-widest font-extrabold">
                   Conversion Engine
                 </div>
                 <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight">High-Converting Landing Pages</h3>
@@ -284,11 +284,11 @@ export default function ServicesView() {
               <div className="grid grid-cols-2 gap-4 max-w-sm pt-4 border-t border-white/5">
                 <div>
                   <span className="block text-xl font-bold font-mono text-emerald-400">99+</span>
-                  <span className="text-[10px] text-slate-500 uppercase tracking-widest">Mobile Audits</span>
+                  <span className="text-[11px] text-slate-500 uppercase tracking-widest">Mobile Audits</span>
                 </div>
                 <div>
                   <span className="block text-xl font-bold font-mono text-brand-blue">34.8%</span>
-                  <span className="text-[10px] text-slate-500 uppercase tracking-widest">Avg Conversion Boost</span>
+                  <span className="text-[11px] text-slate-500 uppercase tracking-widest">Avg Conversion Boost</span>
                 </div>
               </div>
             </div>

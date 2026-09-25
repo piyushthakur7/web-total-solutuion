@@ -95,7 +95,7 @@ export default function PricingView() {
               }`}
             >
               {pkg.highlight && (
-                <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-brand-blue text-white text-[10px] uppercase tracking-widest font-extrabold px-3.5 py-1 rounded-full shadow-sm flex items-center space-x-1.5 whitespace-nowrap">
+                <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-brand-blue text-white text-[11px] uppercase tracking-widest font-extrabold px-3.5 py-1 rounded-full shadow-sm flex items-center space-x-1.5 whitespace-nowrap">
                   <Star className="w-3 h-3 fill-white text-white" />
                   <span>Most Chosen</span>
                 </span>
@@ -174,7 +174,7 @@ export default function PricingView() {
       <section className="max-w-4xl mx-auto px-4">
         <div className="bg-white border border-slate-100 rounded-3xl p-6 sm:p-8 shadow-sm space-y-8">
           <div className="text-center space-y-2">
-            <span className="text-[10px] font-mono text-brand-blue uppercase tracking-widest font-extrabold">
+            <span className="text-[11px] font-mono text-brand-blue uppercase tracking-widest font-extrabold">
               Scope Estimator
             </span>
             <h2 className="text-2xl font-bold text-slate-900">Build an Indicative Scope</h2>
@@ -191,7 +191,7 @@ export default function PricingView() {
                   <div key={addon.id} className="flex items-center justify-between gap-3 p-4 bg-slate-50 rounded-2xl">
                     <div className="min-w-0">
                       <span className="text-xs font-bold text-slate-800 block">{addon.label}</span>
-                      <span className="text-[10px] text-slate-400">
+                      <span className="text-[11px] text-slate-400">
                         {addon.note} · ₹{addon.price.toLocaleString('en-IN')}
                       </span>
                     </div>
@@ -225,7 +225,7 @@ export default function PricingView() {
                   >
                     <span className="min-w-0">
                       <span className="text-xs font-bold text-slate-800 block">{addon.label}</span>
-                      <span className="text-[10px] text-slate-400">
+                      <span className="text-[11px] text-slate-400">
                         {addon.note} · ₹{addon.price.toLocaleString('en-IN')}
                       </span>
                     </span>
@@ -242,7 +242,7 @@ export default function PricingView() {
 
             <div className="bg-slate-900 text-white rounded-2xl p-6 flex flex-col justify-between">
               <div className="space-y-4">
-                <span className="text-[9px] font-mono text-brand-blue uppercase tracking-widest font-extrabold">
+                <span className="text-[11px] font-mono text-brand-blue uppercase tracking-widest font-extrabold">
                   Indicative Scope
                 </span>
 
@@ -271,7 +271,7 @@ export default function PricingView() {
                     <span className="text-3xl font-extrabold text-white font-mono">
                       ₹{estimate.toLocaleString('en-IN')}
                     </span>
-                    <span className="text-slate-500 block text-[9px] mt-0.5">
+                    <span className="text-slate-500 block text-[11px] mt-0.5">
                       one-time project investment
                     </span>
                   </div>

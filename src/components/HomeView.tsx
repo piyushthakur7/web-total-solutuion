@@ -8,7 +8,8 @@ import TrustBar from './TrustBar';
 import WhatsAppIcon from './WhatsAppIcon';
 import {
   Shield, PieChart, ArrowRight, CheckCircle2,
-  Sparkles, ChevronRight, Monitor, TrendingUp, PenTool, Layout
+  Sparkles, ChevronRight, Monitor, TrendingUp, PenTool, Layout,
+  Building2, RefreshCw, ShoppingCart
 } from 'lucide-react';
 
 const FAQSection = dynamic(() => import('./FAQSection'));
@@ -157,7 +158,7 @@ export default async function HomeView() {
                       ★★★★<span className="text-yellow-400/50">★</span>
                     </div>
                   </div>
-                  <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-1 group-hover:text-blue-600 transition-colors">
+                  <span className="text-[11px] font-bold text-slate-500 uppercase tracking-widest mt-1 group-hover:text-blue-600 transition-colors">
                     Google Reviews
                   </span>
                 </div>
@@ -299,21 +300,21 @@ export default async function HomeView() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                emoji: '🏢',
+                Icon: Building2,
                 title: 'Business Websites',
                 href: '/business-website-development',
                 copy: 'We create high-performance websites that increase customer trust, improve online visibility, and generate more business inquiries — so the people searching for what you do choose you instead of a competitor.',
                 points: ['Custom design built around your brand', 'Structured to convert visitors into enquiries'],
               },
               {
-                emoji: '🔄',
+                Icon: RefreshCw,
                 title: 'Website Redesign',
                 href: '/website-redesign',
                 copy: 'If your current website is slow, dated or invisible on Google, we rebuild it into a fast, modern platform that reflects the quality of your business — without losing the rankings you already have.',
                 points: ['Speed and mobile experience rebuilt', 'Existing search rankings preserved'],
               },
               {
-                emoji: '🛒',
+                Icon: ShoppingCart,
                 title: 'E-Commerce Stores',
                 href: '/ecommerce-development',
                 copy: 'We build online stores that make buying effortless — secure payments, a checkout that does not lose customers, and product pages that show up in search when people are ready to purchase.',
@@ -325,7 +326,9 @@ export default async function HomeView() {
                 className="bg-white border border-slate-100 rounded-3xl p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
               >
                 <div className="space-y-5">
-                  <span className="text-3xl" aria-hidden="true">{service.emoji}</span>
+                  <span className="w-12 h-12 rounded-2xl bg-brand-blue/10 text-brand-blue flex items-center justify-center" aria-hidden="true">
+                    <service.Icon className="w-6 h-6" />
+                  </span>
                   <h3 className="text-xl font-bold text-slate-950">{service.title}</h3>
                   <p className="text-slate-600 text-sm leading-relaxed">{service.copy}</p>
                   <ul className="space-y-2.5 text-xs text-slate-600 pt-3 border-t border-slate-100">

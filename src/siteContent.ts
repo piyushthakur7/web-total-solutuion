@@ -188,3 +188,60 @@ export const HOME_FAQS = [
       'Yes. We are based in Kolkata and work with businesses across India and internationally. The entire process — consultation, design reviews, approvals and handover — runs smoothly over call, email and WhatsApp.',
   },
 ];
+
+/**
+ * Starting-price packages. Shown in full on /pricing and summarised on the
+ * local SEO landing pages, so the two can never quote different figures.
+ */
+export const PRICING_PACKAGES: {
+  name: string;
+  audience: string;
+  /** Starting price in INR; null means quoted individually. */
+  from: number | null;
+  highlight: boolean;
+  features: string[];
+}[] = [
+  {
+    name: 'Business Essential',
+    audience: 'For established businesses that need a credible, lead-generating presence online.',
+    from: 15000,
+    highlight: false,
+    features: [
+      'Up to 5 custom-designed pages',
+      'Mobile-first responsive build',
+      'On-page SEO & schema setup',
+      'Enquiry form + WhatsApp integration',
+      'Google Analytics & Search Console',
+      '30 days post-launch support',
+    ],
+  },
+  {
+    name: 'Business Growth',
+    audience: 'For businesses actively competing for search traffic and paid-ad conversions.',
+    from: 35000,
+    highlight: true,
+    features: [
+      'Up to 10 custom-designed pages',
+      'Conversion-focused page structure',
+      'Advanced SEO & content optimisation',
+      'Content management system (CMS)',
+      'Blog setup & landing page templates',
+      'Speed & Core Web Vitals tuning',
+      '90 days post-launch support',
+    ],
+  },
+  {
+    name: 'Premium & Custom',
+    audience: 'For e-commerce, multi-location brands and custom platform requirements.',
+    from: null,
+    highlight: false,
+    features: [
+      'Unlimited pages & custom modules',
+      'E-commerce or booking functionality',
+      'Payment gateway integration',
+      'Custom database & user accounts',
+      'Third-party & CRM integrations',
+      'Priority support & maintenance plan',
+    ],
+  },
+];

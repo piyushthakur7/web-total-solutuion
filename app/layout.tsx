@@ -157,6 +157,14 @@ export default function RootLayout({
                     "@type": "Offer",
                     "itemOffered": {
                       "@type": "Service",
+                      "name": "Website Development in Kolkata",
+                      "url": "https://www.webtotalsolution.com/website-development-company-kolkata"
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
                       "name": "Business Website Development",
                       "url": "https://www.webtotalsolution.com/business-website-development"
                     }

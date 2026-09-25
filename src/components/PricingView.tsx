@@ -3,58 +3,13 @@
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { Check, Plus, Minus, ArrowRight, Star, Sparkles, ShieldCheck } from 'lucide-react';
+import { PRICING_PACKAGES } from '../siteContent';
 
 /**
  * Investment page. Deliberately presents ranges and a custom-quote path rather
  * than a low headline price — the objective is qualified enquiries, not the
  * cheapest possible sale.
  */
-
-const PACKAGES = [
-  {
-    name: 'Business Essential',
-    audience: 'For established businesses that need a credible, lead-generating presence online.',
-    from: 15000,
-    highlight: false,
-    features: [
-      'Up to 5 custom-designed pages',
-      'Mobile-first responsive build',
-      'On-page SEO & schema setup',
-      'Enquiry form + WhatsApp integration',
-      'Google Analytics & Search Console',
-      '30 days post-launch support',
-    ],
-  },
-  {
-    name: 'Business Growth',
-    audience: 'For businesses actively competing for search traffic and paid-ad conversions.',
-    from: 35000,
-    highlight: true,
-    features: [
-      'Up to 10 custom-designed pages',
-      'Conversion-focused page structure',
-      'Advanced SEO & content optimisation',
-      'Content management system (CMS)',
-      'Blog setup & landing page templates',
-      'Speed & Core Web Vitals tuning',
-      '90 days post-launch support',
-    ],
-  },
-  {
-    name: 'Premium & Custom',
-    audience: 'For e-commerce, multi-location brands and custom platform requirements.',
-    from: null,
-    highlight: false,
-    features: [
-      'Unlimited pages & custom modules',
-      'E-commerce or booking functionality',
-      'Payment gateway integration',
-      'Custom database & user accounts',
-      'Third-party & CRM integrations',
-      'Priority support & maintenance plan',
-    ],
-  },
-];
 
 const ADD_ONS = [
   { id: 'pages', label: 'Additional Custom Pages', note: 'Per extra page', price: 3500 },
@@ -130,7 +85,7 @@ export default function PricingView() {
       {/* Packages */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
-          {PACKAGES.map((pkg) => (
+          {PRICING_PACKAGES.map((pkg) => (
             <div
               key={pkg.name}
               className={`rounded-3xl p-8 flex flex-col justify-between transition-all ${

@@ -276,7 +276,15 @@ export default async function HomeView() {
               </h2>
               <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
                 From your first professional website to a full online store, we handle design,
-                development, content and search visibility as one project.
+                development, content and search visibility as one project. Based in Kolkata?
+                See our{' '}
+                <Link
+                  href="/website-development-company-kolkata"
+                  className="font-semibold text-brand-blue hover:underline"
+                >
+                  website development services in Kolkata
+                </Link>
+                .
               </p>
             </div>
             <Link

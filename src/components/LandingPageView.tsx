@@ -2,12 +2,12 @@ import React from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import {
-  ArrowRight, CheckCircle2, ExternalLink, Gauge, Headset, RefreshCw, Search,
-  ShieldCheck, ShoppingCart, Smartphone, Sparkles, Target, TrendingUp
+  ArrowRight, Briefcase, Check, CheckCircle2, ExternalLink, Gauge, Headset, MapPin, RefreshCw,
+  Search, ShieldCheck, ShoppingCart, Smartphone, Sparkles, Target, TrendingUp
 } from 'lucide-react';
 import { LandingPageConfig, LandingBenefit } from '../landingPages';
 import { getPortfolioProjectsByCategory } from '../utils/insforge/portfolio';
-import { PHONE_DISPLAY, WHATSAPP_URL } from '../siteContent';
+import { PHONE_DISPLAY, PRICING_PACKAGES, WHATSAPP_URL } from '../siteContent';
 import ImageWithPreloader from './ImageWithPreloader';
 import LeadForm from './LeadForm';
 import WhatsAppIcon from './WhatsAppIcon';
@@ -41,6 +41,7 @@ export default async function LandingPageView({ config }: { config: LandingPageC
   const projects = (await getPortfolioProjectsByCategory(config.portfolioCategories))
     .filter((item) => item.websiteUrl)
     .slice(0, 6);
+  const seo = config.seo;
 
   return (
     <div className="pb-20 overflow-x-hidden">
@@ -142,12 +143,75 @@ export default async function LandingPageView({ config }: { config: LandingPageC
       {/* Social proof */}
       <TrustBar className="-mt-28 sm:-mt-24" />
 
-      {/* Benefits */}
-      <section className="bg-slate-50 pt-20 pb-24">
+      {/* SEO intro — the keyword-bearing copy Google reads first */}
+      {seo?.intro && (
+        <section className="bg-slate-50 pt-20 pb-24">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14">
+              <div className="lg:col-span-5 space-y-4">
+                <span className="text-xs uppercase tracking-widest font-extrabold text-brand-blue">
+                  About Us
+                </span>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                  {seo.intro.heading}
+                </h2>
+              </div>
+              <div className="lg:col-span-7 space-y-5 text-slate-600 text-sm sm:text-base leading-relaxed">
+                {seo.intro.paragraphs.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Service hub — descriptive internal links into each service page */}
+      {seo?.services && (
+        <section className="bg-white py-24">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-2xl mx-auto mb-14 space-y-4">
+              <span className="text-xs uppercase tracking-widest font-extrabold text-brand-blue">
+                Our Services
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                {seo.services.heading}
+              </h2>
+              <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                {seo.services.intro}
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {seo.services.items.map((service) => (
+                <Link
+                  key={service.href}
+                  href={service.href}
+                  className="group bg-white rounded-2xl p-7 border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-brand-blue/20 transition-all duration-300 flex flex-col"
+                >
+                  <h3 className="font-bold text-slate-900 text-lg leading-tight group-hover:text-brand-blue transition-colors">
+                    {service.title}
+                  </h3>
+                  <p className="mt-2.5 text-sm text-slate-600 leading-relaxed flex-grow">
+                    {service.description}
+                  </p>
+                  <span className="mt-5 inline-flex items-center space-x-1.5 text-xs font-bold text-brand-blue">
+                    <span>Learn more</span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Benefits — the shorter top padding only applies directly under the trust bar */}
+      <section className={`bg-slate-50 pb-24 ${seo?.intro || seo?.services ? 'pt-24' : 'pt-20'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-14 space-y-4">
             <span className="text-xs uppercase tracking-widest font-extrabold text-brand-blue">
-              The Benefits
+              {config.benefitsEyebrow ?? 'The Benefits'}
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
               {config.benefitsHeading}
@@ -257,8 +321,132 @@ export default async function LandingPageView({ config }: { config: LandingPageC
         </section>
       )}
 
+      {/* Price snapshot — answers "how much" queries on the page itself */}
+      {seo?.pricing && (
+        <section className="bg-slate-50 py-24">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-2xl mx-auto mb-14 space-y-4">
+              <span className="text-xs uppercase tracking-widest font-extrabold text-brand-blue">
+                Pricing
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                {seo.pricing.heading}
+              </h2>
+              <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                {seo.pricing.intro}
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              {PRICING_PACKAGES.map((pkg) => (
+                <div
+                  key={pkg.name}
+                  className={`rounded-3xl p-8 border flex flex-col ${
+                    pkg.highlight
+                      ? 'bg-slate-900 border-slate-900 text-white shadow-xl'
+                      : 'bg-white border-slate-100 shadow-sm'
+                  }`}
+                >
+                  <h3 className={`text-xl font-extrabold ${pkg.highlight ? 'text-white' : 'text-slate-900'}`}>
+                    {pkg.name}
+                  </h3>
+                  <p className={`mt-1.5 text-xs leading-relaxed ${pkg.highlight ? 'text-slate-400' : 'text-slate-500'}`}>
+                    {pkg.audience}
+                  </p>
+                  <p className="mt-6 flex items-baseline gap-2">
+                    {pkg.from === null ? (
+                      <span className={`text-3xl font-extrabold ${pkg.highlight ? 'text-white' : 'text-slate-950'}`}>
+                        Custom Quote
+                      </span>
+                    ) : (
+                      <>
+                        <span className={`text-xs font-bold uppercase tracking-widest ${pkg.highlight ? 'text-slate-500' : 'text-slate-400'}`}>
+                          From
+                        </span>
+                        <span className={`text-3xl font-extrabold ${pkg.highlight ? 'text-white' : 'text-slate-950'}`}>
+                          ₹{pkg.from.toLocaleString('en-IN')}
+                        </span>
+                      </>
+                    )}
+                  </p>
+                  <ul className={`mt-6 pt-6 border-t space-y-3 text-xs flex-grow ${pkg.highlight ? 'border-white/10 text-slate-300' : 'border-slate-100 text-slate-600'}`}>
+                    {pkg.features.slice(0, 4).map((feature) => (
+                      <li key={feature} className="flex items-start space-x-2.5">
+                        <Check className={`w-4 h-4 shrink-0 ${pkg.highlight ? 'text-brand-blue' : 'text-emerald-500'}`} />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a
+                href="#consultation"
+                className="inline-flex items-center justify-center space-x-2 bg-brand-blue hover:bg-brand-blue/90 text-white px-7 py-4 rounded-xl font-bold tracking-wide shadow-lg shadow-brand-blue/20 transition-all cursor-pointer"
+              >
+                <span>Get My Fixed Quote</span>
+                <ArrowRight className="w-4 h-4" />
+              </a>
+              <Link
+                href="/pricing"
+                className="inline-flex items-center space-x-1.5 text-sm font-bold text-brand-blue hover:underline"
+              >
+                <span>See full website pricing</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+            <p className="mt-6 text-center text-xs text-slate-500">{seo.pricing.note}</p>
+          </div>
+        </section>
+      )}
+
       {/* Process */}
       <ProcessSection />
+
+      {/* Industries and areas served — local relevance signals */}
+      {seo?.coverage && (
+        <section className="bg-slate-900 py-24">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-2xl mx-auto mb-14 space-y-4">
+              <span className="text-xs uppercase tracking-widest font-extrabold text-brand-blue">
+                Who We Work With
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+                {seo.coverage.heading}
+              </h2>
+              <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
+                {seo.coverage.intro}
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              {[
+                { title: 'Industries', icon: Briefcase, items: seo.coverage.industries },
+                { title: 'Areas We Serve', icon: MapPin, items: seo.coverage.areas },
+              ].map((group) => (
+                <div key={group.title} className="bg-white/5 border border-white/10 rounded-3xl p-7 sm:p-8">
+                  <h3 className="flex items-center space-x-2.5 text-lg font-bold text-white">
+                    <group.icon className="w-5 h-5 text-brand-blue shrink-0" />
+                    <span>{group.title}</span>
+                  </h3>
+                  <ul className="mt-5 flex flex-wrap gap-2.5">
+                    {group.items.map((item) => (
+                      <li
+                        key={item}
+                        className="text-xs sm:text-sm font-semibold text-slate-200 bg-white/5 border border-white/10 rounded-full px-3.5 py-1.5"
+                      >
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Testimonials */}
       <Testimonials />
@@ -266,8 +454,8 @@ export default async function LandingPageView({ config }: { config: LandingPageC
       {/* FAQ */}
       <FAQSection
         faqs={config.faqs}
-        heading="Questions, Answered"
-        intro="The things business owners ask us most before starting a project."
+        heading={config.faqHeading ?? 'Questions, Answered'}
+        intro={config.faqIntro ?? 'The things business owners ask us most before starting a project.'}
       />
 
       {/* Contact form */}
@@ -340,6 +528,7 @@ export default async function LandingPageView({ config }: { config: LandingPageC
           </h2>
           <nav className="flex flex-wrap gap-x-6 gap-y-3 text-sm">
             {[
+              { href: '/website-development-company-kolkata', label: 'Website Development in Kolkata' },
               { href: '/business-website-development', label: 'Business Website Development' },
               { href: '/website-redesign', label: 'Website Redesign' },
               { href: '/ecommerce-development', label: 'E-Commerce Development' },

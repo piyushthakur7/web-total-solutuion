@@ -48,10 +48,16 @@ export function serviceSchema({
   name,
   description,
   url,
+  areaServed = [
+    { '@type': 'Country', name: 'India' },
+    { '@type': 'City', name: 'Kolkata' },
+  ],
 }: {
   name: string;
   description: string;
   url: string;
+  /** Override for location pages that should declare a narrower service area. */
+  areaServed?: Record<string, unknown>[];
 }) {
   return {
     '@context': 'https://schema.org',
@@ -75,9 +81,6 @@ export function serviceSchema({
         addressCountry: 'IN',
       },
     },
-    areaServed: [
-      { '@type': 'Country', name: 'India' },
-      { '@type': 'City', name: 'Kolkata' },
-    ],
+    areaServed,
   };
 }

@@ -7,7 +7,7 @@ import { GOOGLE_RATING, GOOGLE_REVIEWS_URL, HERO_TRUST_BADGES, WHATSAPP_URL } fr
 import TrustBar from './TrustBar';
 import WhatsAppIcon from './WhatsAppIcon';
 import {
-  Shield, PieChart, ArrowRight, CheckCircle2,
+  ArrowRight, CheckCircle2, MousePointerClick,
   Sparkles, ChevronRight, Monitor, TrendingUp, PenTool, Layout,
   Building2, RefreshCw, ShoppingCart
 } from 'lucide-react';
@@ -36,7 +36,7 @@ const QUICK_SERVICES = [
   },
   {
     title: 'Online Stores',
-    icon: <PieChart className="w-6 h-6 text-white" />,
+    icon: <ShoppingCart className="w-6 h-6 text-white" />,
     link: '/ecommerce-development',
     desc: 'Sell online with secure payments and a checkout built to complete.',
   },
@@ -47,10 +47,10 @@ const QUICK_SERVICES = [
     desc: 'Words that rank on Google and persuade the customer to act.',
   },
   {
-    title: 'Care & Support',
-    icon: <Shield className="w-6 h-6 text-white" />,
+    title: 'Landing Pages',
+    icon: <MousePointerClick className="w-6 h-6 text-white" />,
     link: '/services/landing-pages',
-    desc: 'Keep your website fast, secure and current without lifting a finger.',
+    desc: 'Focused single pages that turn ad clicks into calls and enquiries.',
   },
   {
     title: 'Growth Marketing',
@@ -140,7 +140,7 @@ export default async function HomeView() {
                 href={GOOGLE_REVIEWS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="View our Google Reviews"
+                aria-label={`Rated ${GOOGLE_RATING} out of 5 on Google — view our reviews`}
                 className="absolute -top-7 -right-2 sm:-top-8 sm:-right-6 md:-right-8 bg-white p-3.5 sm:p-4 rounded-2xl shadow-2xl flex items-center space-x-3 hover:-translate-y-2 transition-all duration-300 z-20 border border-slate-100 group"
               >
                 <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center shrink-0 border border-slate-100">
@@ -242,9 +242,14 @@ export default async function HomeView() {
             </p>
           </div>
           <div className="relative flex overflow-hidden w-full group">
-            <div className="flex whitespace-nowrap animate-marquee group-hover:[animation-play-state:paused]">
+            <div className="flex whitespace-nowrap animate-marquee motion-reduce:animate-none group-hover:[animation-play-state:paused]">
+              {/* The list is doubled for a seamless loop; hide the copy from screen readers. */}
               {[...projects, ...projects].map((item, idx) => (
-                <div key={idx} className="flex items-center space-x-2 text-slate-600 hover:text-slate-900 transition-colors mx-8 md:mx-12 opacity-70 hover:opacity-100 shrink-0">
+                <div
+                  key={idx}
+                  aria-hidden={idx >= projects.length || undefined}
+                  className="flex items-center space-x-2 text-slate-600 hover:text-slate-900 transition-colors mx-8 md:mx-12 opacity-70 hover:opacity-100 shrink-0"
+                >
                   <div className="w-5 h-5 rounded bg-brand-blue/10 flex items-center justify-center text-brand-blue font-bold shrink-0" aria-hidden="true">★</div>
                   <span className="text-sm font-semibold tracking-wider font-mono">{item.title}</span>
                 </div>

@@ -136,10 +136,38 @@ export default function RootLayout({
                 "latitude": 22.4571905,
                 "longitude": 88.4215653
               },
+              // Every office we operate from; `address` above stays the primary one.
+              "location": [
+                {
+                  "@type": "Place",
+                  "name": "Web Total Solution — Kolkata",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Pachpota, Garia",
+                    "addressLocality": "Kolkata",
+                    "addressRegion": "West Bengal",
+                    "postalCode": "700152",
+                    "addressCountry": "IN"
+                  }
+                },
+                {
+                  "@type": "Place",
+                  "name": "Web Total Solution — Delhi",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Dhani Ram Colony, Shiv Chowk, Rohini Sector 19",
+                    "addressLocality": "New Delhi",
+                    "addressRegion": "Delhi",
+                    "postalCode": "110042",
+                    "addressCountry": "IN"
+                  }
+                }
+              ],
               "description": SITE_DESCRIPTION,
               "areaServed": [
                 { "@type": "Country", "name": "India" },
-                { "@type": "City", "name": "Kolkata" }
+                { "@type": "City", "name": "Kolkata" },
+                { "@type": "City", "name": "Delhi" }
               ],
               "openingHoursSpecification": [
                 {

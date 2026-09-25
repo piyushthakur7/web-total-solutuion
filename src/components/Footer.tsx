@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Mail, Phone, MapPin, ArrowUpRight, Instagram, Linkedin, Youtube, Twitter } from 'lucide-react';
 import Logo from './Logo';
+import { OFFICES } from '../siteContent';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -163,10 +164,12 @@ export default function Footer() {
                   +91 6291 519 364
                 </a>
               </li>
-              <li className="flex items-start space-x-3">
-                <MapPin className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />
-                <span>Pachpota, Garia,<br />Kolkata, West Bengal 700152</span>
-              </li>
+              {OFFICES.map((office) => (
+                <li key={office.city} className="flex items-start space-x-3">
+                  <MapPin className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />
+                  <span>{office.lines[0]},<br />{office.lines[1]}</span>
+                </li>
+              ))}
             </ul>
           </div>
         </div>

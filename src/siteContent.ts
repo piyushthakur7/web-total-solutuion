@@ -7,6 +7,20 @@ export const WHATSAPP_URL = 'https://wa.me/916291519364';
 export const PHONE_DISPLAY = '+91 6291 519 364';
 export const EMAIL = 'info@webtotalsolution.com';
 
+/** Offices we operate from. Kolkata is the primary (registered) address. */
+export const OFFICES = [
+  {
+    city: 'Kolkata',
+    lines: ['Pachpota, Garia', 'Kolkata, West Bengal 700152'],
+    mapQuery: '22.4571905,88.4215653',
+  },
+  {
+    city: 'Delhi',
+    lines: ['Dhani Ram Colony, Shiv Chowk, Rohini Sector 19', 'North West Delhi, Delhi 110042'],
+    mapQuery: 'Dhani Ram Colony, Shiv Chowk, Rohini Sector 19, Delhi 110042',
+  },
+];
+
 /**
  * InsForge "capture-lead" function used by LeadForm to store enquiries in the
  * backend. The key is a public, function-scoped identifier (not an admin/API

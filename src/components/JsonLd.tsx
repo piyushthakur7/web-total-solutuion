@@ -51,6 +51,7 @@ export function serviceSchema({
   areaServed = [
     { '@type': 'Country', name: 'India' },
     { '@type': 'City', name: 'Kolkata' },
+    { '@type': 'City', name: 'Delhi' },
   ],
 }: {
   name: string;

@@ -1,10 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { Mail, MapPin, Clock, Instagram, Linkedin, Youtube, Twitter, CheckCircle2 } from 'lucide-react';
 import LeadForm from './LeadForm';
 import WhatsAppIcon from './WhatsAppIcon';
-import { EMAIL, PHONE_DISPLAY, WHATSAPP_URL } from '../siteContent';
+import { EMAIL, OFFICES, PHONE_DISPLAY, WHATSAPP_URL } from '../siteContent';
 
 const SOCIALS = [
   { href: 'https://www.instagram.com/webtotalsolution/?hl=en', label: 'Instagram', Icon: Instagram },
@@ -107,15 +106,19 @@ export default function ContactView() {
               <span className="w-10 h-10 bg-white border border-slate-100 rounded-xl flex items-center justify-center text-brand-blue shrink-0">
                 <MapPin className="w-5 h-5" />
               </span>
-              <span>
-                <span className="block text-[11px] text-slate-400 uppercase tracking-widest font-bold">
-                  Office
-                </span>
-                <span className="text-sm font-semibold text-slate-800">
-                  Pachpota, Garia,
-                  <br />
-                  Kolkata, West Bengal 700152
-                </span>
+              <span className="space-y-3">
+                {OFFICES.map((office) => (
+                  <span key={office.city} className="block">
+                    <span className="block text-[11px] text-slate-400 uppercase tracking-widest font-bold">
+                      {office.city} Office
+                    </span>
+                    <span className="text-sm font-semibold text-slate-800">
+                      {office.lines[0]},
+                      <br />
+                      {office.lines[1]}
+                    </span>
+                  </span>
+                ))}
               </span>
             </div>
 
@@ -140,27 +143,26 @@ export default function ContactView() {
             </div>
           </div>
 
-          {/* Location visual */}
-          <div className="border border-slate-200 rounded-3xl overflow-hidden bg-white shadow-sm relative group aspect-video">
-            <Image
-              src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=800"
-              alt="Web Total Solution office location in Kolkata"
-              className="w-full h-full object-cover grayscale transition-all duration-300 group-hover:grayscale-0"
-              width={800}
-              height={450}
-              loading="lazy"
-              quality={60}
-              sizes="(max-width: 1024px) 100vw, 400px"
-              referrerPolicy="no-referrer"
-            />
-            <div className="absolute top-[48%] left-[51%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
-              <span className="w-3.5 h-3.5 bg-brand-blue border-2 border-white rounded-full inline-block animate-ping absolute" />
-              <span className="w-3.5 h-3.5 bg-brand-blue border-2 border-white rounded-full inline-block relative z-10" />
-              <span className="bg-slate-900 text-white text-[11px] font-bold px-2 py-0.5 rounded shadow-md mt-1 font-mono uppercase tracking-wide">
-                WTS Kolkata
-              </span>
+          {/* Real maps for each office; lazy so they cost nothing until scrolled to. */}
+          {OFFICES.map((office) => (
+            <div
+              key={office.city}
+              className="border border-slate-200 rounded-3xl overflow-hidden bg-slate-100 shadow-sm"
+            >
+              <div className="px-4 py-2.5 bg-white border-b border-slate-200 text-xs font-bold text-slate-700 flex items-center space-x-1.5">
+                <MapPin className="w-3.5 h-3.5 text-brand-blue" />
+                <span>{office.city} Office</span>
+              </div>
+              <iframe
+                src={`https://maps.google.com/maps?q=${encodeURIComponent(office.mapQuery)}&z=15&output=embed`}
+                title={`Web Total Solution ${office.city} office — ${office.lines.join(', ')}`}
+                className="w-full aspect-video border-0 block"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
             </div>
-          </div>
+          ))}
         </div>
       </div>
 

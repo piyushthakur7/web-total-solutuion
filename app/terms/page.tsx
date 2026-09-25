@@ -86,6 +86,8 @@ export default function TermsOfService() {
               <p><strong>Web Total Solution</strong></p>
               <p>Pachpota, Garia</p>
               <p>Kolkata, West Bengal 700152</p>
+              <p className="pt-2">Dhani Ram Colony, Shiv Chowk, Rohini Sector 19</p>
+              <p className="pb-2">North West Delhi, Delhi 110042</p>
               <p>Email: <a href="mailto:info@webtotalsolution.com" className="font-medium hover:underline">info@webtotalsolution.com</a></p>
               <p>Phone: +91 6291 519 364</p>
             </div>

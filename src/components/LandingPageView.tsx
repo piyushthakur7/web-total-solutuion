@@ -748,6 +748,7 @@ export default async function LandingPageView({ config }: { config: LandingPageC
           <nav className="flex flex-wrap gap-x-6 gap-y-3 text-sm">
             {[
               { href: '/website-development-company-kolkata', label: 'Website Development in Kolkata' },
+              { href: '/website-development-company-delhi', label: 'Website Development in Delhi' },
               { href: '/nextjs-development-company-india', label: 'Next.js Development Company' },
               { href: '/business-website-development', label: 'Business Website Development' },
               { href: '/website-redesign', label: 'Website Redesign' },

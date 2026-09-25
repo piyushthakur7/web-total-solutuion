@@ -322,6 +322,232 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
   },
 
   /**
+   * Delhi local SEO page, backed by the real office in Rohini Sector 19. Owns
+   * the "website development company in Delhi" cluster (web design / website
+   * developer in Delhi, Rohini and Delhi NCR). Copy is written for Delhi, not
+   * a find-and-replace of the Kolkata page — duplicate city pages read as
+   * doorway pages to Google.
+   */
+  'website-development-company-delhi': {
+    slug: 'website-development-company-delhi',
+    serviceName: 'Website Development in Delhi',
+    projectType: 'Business Website',
+    eyebrow: 'Web Design & Development · Rohini, Delhi',
+    h1: 'Website Development Company in Delhi for Businesses That Want Enquiries',
+    subheadline:
+      'From our office in Rohini, we design and build fast, SEO-ready websites and online stores for Delhi NCR businesses — with a fixed written quote, a delivery date agreed up front and a team that replies within 24 hours.',
+    primaryCta: 'Get Free Website Consultation',
+    heroImage: 'https://images.pexels.com/photos/6476257/pexels-photo-6476257.jpeg',
+    heroImageAlt: 'Web Total Solution team planning a website for a Delhi business',
+    trustBadges: ['Office in Rohini, Delhi', 'Fixed Written Quote', 'SEO Ready', '30 Days Support'],
+    benefitsEyebrow: 'Why Web Total Solution',
+    benefitsHeading: 'Why Delhi Businesses Work With Web Total Solution',
+    benefitsIntro:
+      'Delhi has thousands of web designers, and quotes range from a few thousand rupees to several lakhs for what looks like the same website. This is what you get from us, in writing, before you pay anything.',
+    benefits: [
+      {
+        icon: 'headset',
+        title: 'A Delhi Office You Can Reach',
+        description:
+          'We operate from Rohini Sector 19 in North West Delhi. You deal directly with the people designing and building your site — no call-centre sales team, no work passed silently to a subcontractor.',
+      },
+      {
+        icon: 'shield',
+        title: 'Quotes You Can Compare',
+        description:
+          'Every quote lists the pages, features, timeline and what happens after launch, line by line. You can hold it against any other Delhi agency and see exactly what you are paying for.',
+      },
+      {
+        icon: 'search',
+        title: 'Built for a Crowded Local Market',
+        description:
+          'In Delhi you are competing with hundreds of businesses for the same searches. Fast load times, schema markup, clean structure and location pages give your site the technical footing to compete.',
+      },
+      {
+        icon: 'target',
+        title: 'Enquiries on WhatsApp and Call',
+        description:
+          'Delhi customers want to talk before they buy. Every page puts a call, WhatsApp or enquiry button within reach, so interest turns into a conversation while it is still warm.',
+      },
+      {
+        icon: 'cart',
+        title: 'Catalogues for Traders and Manufacturers',
+        description:
+          'Wholesalers, distributors and manufacturers get product catalogues built for enquiries rather than a cart — searchable ranges, spec sheets and a quote request on every product.',
+      },
+      {
+        icon: 'refresh',
+        title: 'You Own Everything',
+        description:
+          'The domain, hosting, content and source code are registered to you. If you ever move on, you take the whole website with you.',
+      },
+    ],
+    portfolioCategories: ['Corporate', 'E-Commerce', 'Landing Page'],
+    portfolioHeading: 'Websites We Have Built and Launched',
+    portfolioIntro:
+      'Live client websites from our team — open them on your phone and judge the speed and design for yourself.',
+    faqHeading: 'Website Development in Delhi: FAQs',
+    faqIntro:
+      'What Delhi business owners usually ask us before choosing a website development company.',
+    faqs: [
+      {
+        question: 'How much does website development cost in Delhi?',
+        answer:
+          'Our Business Essential websites (up to 5 pages) start at ₹15,000, Business Growth websites (up to 10 pages with a CMS and blog) start at ₹35,000, and e-commerce stores or custom platforms are quoted individually. Prices are the same for Delhi clients as for everyone else. After a free consultation you get a fixed written quote, so the figure does not change once work starts.',
+      },
+      {
+        question: 'Why do website quotes in Delhi vary so much?',
+        answer:
+          'Low quotes usually mean a pre-made template, shared hosting in the agency’s name, no SEO setup and no support after launch. Very high quotes often carry agency overheads you never see. Compare quotes on the same points: number of pages, custom design or template, who owns the domain and code, what SEO is included, and how long support lasts. We put all of these in writing.',
+      },
+      {
+        question: 'Where is your Delhi office?',
+        answer:
+          'Our Delhi office is at Dhani Ram Colony, Shiv Chowk, Rohini Sector 19, North West Delhi 110042. Most of the process — consultation, design reviews and approvals — runs over call, WhatsApp and email, so you do not need to travel. If you would prefer to meet in person, message us to arrange a time.',
+      },
+      {
+        question: 'Do you work with businesses in Gurugram, Noida, Ghaziabad and Faridabad?',
+        answer:
+          'Yes. We work with businesses across Delhi NCR and the rest of India. Location does not change the process, pricing or timeline.',
+      },
+      {
+        question: 'How long does it take to build a website?',
+        answer:
+          'A landing page usually goes live in 1–2 weeks, a 5–10 page business website in 2–4 weeks, and an online store in 3–6 weeks depending on the size of the catalogue and the integrations. The timeline is confirmed in writing before development begins.',
+      },
+      {
+        question: 'Will my website rank on Google in Delhi?',
+        answer:
+          'Every site ships with technical SEO in place: fast load times, mobile-first layouts, schema markup, metadata and a sitemap submitted to Google Search Console. In a market as competitive as Delhi, rankings also depend on your content, reviews and Google Business Profile, so no honest company will guarantee a position. We build the foundation, and our SEO content and digital marketing services can take it further.',
+      },
+      {
+        question: 'I run a wholesale or manufacturing business. Do I need an online store?',
+        answer:
+          'Usually not. Most B2B buyers want to check your range and ask for a price, not pay by card. We build product catalogues with categories, specifications and a quote-request or WhatsApp button on each product, which suits trading and manufacturing businesses far better than a retail checkout.',
+      },
+      {
+        question: 'Can you redesign my existing website?',
+        answer:
+          'Yes. We audit the current site for speed, mobile experience, SEO and conversion gaps, then rebuild it on a modern foundation with every existing URL redirected, so the rankings you already have carry across.',
+      },
+      {
+        question: 'Do you handle domain, hosting and maintenance?',
+        answer:
+          'Yes. We set up the domain, hosting and SSL certificate in your name and manage the go-live. Every project includes 30 days of post-launch support, and ongoing maintenance plans are available if you want us to keep the site updated.',
+      },
+    ],
+    ctaHeadline: 'Looking for a Website Developer in Delhi?',
+    ctaText:
+      'Book a free consultation and get honest advice, a recommended approach and a fixed written quote for your website — usually within 24 hours.',
+    meta: {
+      title: 'Website Development Company in Delhi | Web Total Solution',
+      description:
+        'Website development company in Rohini, Delhi building fast, SEO-ready business websites and online stores. Fixed quotes from ₹15,000. Free consultation.',
+      keywords: [
+        'website development company in Delhi',
+        'web development company in Delhi',
+        'website design company in Delhi',
+        'website developer in Delhi',
+        'website designer in Rohini',
+        'web design company Delhi NCR',
+        'website development cost in Delhi',
+      ],
+    },
+    seo: {
+      intro: {
+        heading: 'Web Design and Development in Delhi, From Rohini',
+        paragraphs: [
+          'Web Total Solution is a website development and design company with an office in Rohini Sector 19, North West Delhi. We build websites for Delhi businesses that need them to earn their keep: bring in enquiries, answer the questions customers ask before they call, and look credible next to competitors a few streets away.',
+          'Our team has delivered 35+ websites for 12+ industries — company websites for service firms, catalogues for manufacturers, online stores and custom web applications. Each one is designed around the customers it has to win, never a recycled template, and built with the speed and technical SEO Google expects.',
+          'Whether you need a first website, a redesign of one that has stopped bringing in work, or an online store, one team handles design, development, content and launch, with the price and delivery date agreed in writing before we start.',
+        ],
+      },
+      services: {
+        heading: 'Website Development Services in Delhi',
+        intro:
+          'Everything your business needs online, handled by one team. Pick the service that fits, or tell us the goal and we will recommend the approach.',
+        items: [
+          {
+            title: 'Business Website Development',
+            description:
+              'Lead-generating websites for CA firms, lawyers, clinics, consultants, coaching institutes and service businesses.',
+            href: '/business-website-development',
+          },
+          {
+            title: 'E-Commerce Website Development',
+            description:
+              'Online stores with Razorpay or UPI payments, fast product pages and a checkout designed to reduce abandoned carts.',
+            href: '/ecommerce-development',
+          },
+          {
+            title: 'Website Redesign',
+            description:
+              'Rebuild a slow or dated website on a modern, mobile-first foundation without losing the rankings you already have.',
+            href: '/website-redesign',
+          },
+          {
+            title: 'Landing Page Design',
+            description:
+              'Focused pages for Google Ads and Meta campaigns — essential when Delhi ad clicks are this expensive.',
+            href: '/services/landing-pages',
+          },
+          {
+            title: 'Custom Web Applications',
+            description:
+              'Portals, dashboards and internal tools that replace spreadsheets, registers and manual follow-ups.',
+            href: '/services/saas-development',
+          },
+          {
+            title: 'SEO & Digital Marketing',
+            description:
+              'Search-focused content and campaigns that bring customers from across Delhi NCR to your new website.',
+            href: '/services/digital-marketing',
+          },
+        ],
+      },
+      pricing: {
+        heading: 'Website Development Cost in Delhi',
+        intro:
+          'Starting prices up front, so you can plan before we speak. Your exact figure comes as a fixed written quote after a free consultation.',
+        note: 'All prices in INR. Every website includes mobile-responsive design, on-page SEO setup and post-launch support.',
+      },
+      coverage: {
+        heading: 'Industries and Areas We Serve Across Delhi NCR',
+        intro:
+          'Our Rohini office works with businesses throughout Delhi and the NCR, and with clients anywhere in India who prefer to work remotely.',
+        industries: [
+          'Wholesale & Trading',
+          'Manufacturing & Industrial',
+          'Coaching & Education',
+          'Healthcare & Clinics',
+          'CA & Legal Firms',
+          'Real Estate',
+          'Fashion & Retail',
+          'Export Houses',
+          'Food & Restaurants',
+          'Interior Design',
+          'Logistics & Transport',
+          'Events & Hospitality',
+        ],
+        areas: [
+          'Rohini',
+          'Pitampura',
+          'Shalimar Bagh',
+          'Prashant Vihar',
+          'Model Town',
+          'Netaji Subhash Place',
+          'Paschim Vihar',
+          'Janakpuri',
+          'Karol Bagh',
+          'Connaught Place',
+          'Gurugram',
+          'Noida',
+        ],
+      },
+    },
+  },
+
+  /**
    * National technology page. Owns the "Next.js development company in India"
    * cluster (Next.js development services / agency, hire Next.js developers,
    * Next.js website development).

@@ -39,6 +39,7 @@ export const metadata: Metadata = {
     'ecommerce website development',
     'lead generation website',
     'web development agency Kolkata',
+    'web development agency Delhi',
     'Web Total Solution',
   ],
   authors: [{ name: 'Web Total Solution' }],
@@ -187,6 +188,14 @@ export default function RootLayout({
                       "@type": "Service",
                       "name": "Website Development in Kolkata",
                       "url": "https://www.webtotalsolution.com/website-development-company-kolkata"
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Website Development in Delhi",
+                      "url": "https://www.webtotalsolution.com/website-development-company-delhi"
                     }
                   },
                   {

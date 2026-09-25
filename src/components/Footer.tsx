@@ -74,6 +74,7 @@ export default function Footer() {
             <ul className="space-y-3 text-sm">
               {[
                 { href: '/website-development-company-kolkata', label: 'Website Development Kolkata' },
+                { href: '/website-development-company-delhi', label: 'Website Development Delhi' },
                 { href: '/nextjs-development-company-india', label: 'Next.js Development' },
                 { href: '/business-website-development', label: 'Business Website Development' },
                 { href: '/website-redesign', label: 'Website Redesign' },

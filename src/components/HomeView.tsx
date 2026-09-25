@@ -192,8 +192,32 @@ export default async function HomeView() {
       <TrustBar className="-mt-28 sm:-mt-24" />
 
       {/* 3. What we do (outcome-framed) */}
-      <section className="bg-slate-50 pt-20 pb-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative bg-slate-50 pt-20 pb-24 overflow-hidden">
+        {/* Flowing blue contour lines and soft glows behind the service cards */}
+        <div aria-hidden="true" className="absolute inset-0 pointer-events-none text-brand-blue">
+          <div className="absolute -top-24 -left-32 size-112 rounded-full bg-brand-blue/10 blur-3xl" />
+          <div className="absolute -bottom-32 -right-24 size-128 rounded-full bg-sky-400/10 blur-3xl" />
+          <svg
+            viewBox="0 0 1440 800"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="none"
+            className="absolute inset-0 w-full h-full"
+            fill="none"
+            stroke="currentColor"
+          >
+            {Array.from({ length: 9 }, (_, i) => (
+              <path
+                key={i}
+                d={`M-40,${560 + i * 26}C260,${420 + i * 22},520,${700 + i * 14},820,${540 + i * 20}S1240,${300 + i * 30},1480,${380 + i * 24}`}
+                strokeWidth="1.25"
+                strokeOpacity={0.22 - i * 0.018}
+                vectorEffect="non-scaling-stroke"
+              />
+            ))}
+          </svg>
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12 space-y-4">
             <span className="text-xs uppercase tracking-widest font-extrabold text-brand-blue">
               What We Do

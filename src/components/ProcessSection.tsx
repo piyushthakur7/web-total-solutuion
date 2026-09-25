@@ -9,8 +9,37 @@ import { PROCESS_STEPS } from '../siteContent';
  */
 export default function ProcessSection() {
   return (
-    <section className="bg-white py-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative bg-white py-24 overflow-hidden">
+      {/* Layered blue waves behind the step cards */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 bottom-0 h-[65%] pointer-events-none text-brand-blue"
+      >
+        <svg
+          viewBox="0 0 1440 320"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+          className="w-full h-full"
+        >
+          <path
+            d="M0,96L60,112C120,128,240,160,360,154.7C480,149,600,107,720,96C840,85,960,107,1080,128C1200,149,1320,171,1380,181.3L1440,192L1440,320L0,320Z"
+            fill="currentColor"
+            fillOpacity="0.06"
+          />
+          <path
+            d="M0,160L80,149.3C160,139,320,117,480,128C640,139,800,181,960,186.7C1120,192,1280,160,1360,144L1440,128L1440,320L0,320Z"
+            fill="currentColor"
+            fillOpacity="0.1"
+          />
+          <path
+            d="M0,224L90,218.7C180,213,360,203,540,208C720,213,900,235,1080,234.7C1260,235,1350,213,1395,202.7L1440,192L1440,320L0,320Z"
+            fill="currentColor"
+            fillOpacity="0.16"
+          />
+        </svg>
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
           <span className="text-xs uppercase tracking-widest font-extrabold text-brand-blue">
             How We Work

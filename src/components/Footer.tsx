@@ -73,6 +73,7 @@ export default function Footer() {
             </h3>
             <ul className="space-y-3 text-sm">
               {[
+                { href: '/website-development-company-india', label: 'Website Development India' },
                 { href: '/website-development-company-kolkata', label: 'Website Development Kolkata' },
                 { href: '/website-development-company-delhi', label: 'Website Development Delhi' },
                 { href: '/nextjs-development-company-india', label: 'Next.js Development' },

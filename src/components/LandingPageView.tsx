@@ -623,16 +623,16 @@ export default async function LandingPageView({ config }: { config: LandingPageC
 
       {/* Delivery timelines — answers "how long" queries on the page itself */}
       {seo?.timelines && (
-        <section className="bg-white py-24">
+        <section className="bg-slate-900 py-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-2xl mx-auto mb-14 space-y-4">
               <span className="text-xs uppercase tracking-widest font-extrabold text-brand-blue">
                 Timelines
               </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
                 {seo.timelines.heading}
               </h2>
-              <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+              <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
                 {seo.timelines.intro}
               </p>
             </div>
@@ -641,18 +641,18 @@ export default async function LandingPageView({ config }: { config: LandingPageC
               {seo.timelines.items.map((item) => (
                 <li
                   key={item.project}
-                  className="bg-slate-50 border border-slate-100 rounded-2xl p-7 flex flex-col"
+                  className="bg-white/5 border border-white/10 rounded-2xl p-7 flex flex-col"
                 >
                   <span className="inline-flex items-center space-x-1.5 text-xs font-bold text-brand-blue">
                     <Clock className="w-3.5 h-3.5" />
                     <span>{item.duration}</span>
                   </span>
-                  <h3 className="mt-3 font-bold text-slate-900 text-lg leading-tight">{item.project}</h3>
-                  <p className="mt-2.5 text-sm text-slate-600 leading-relaxed">{item.description}</p>
+                  <h3 className="mt-3 font-bold text-white text-lg leading-tight">{item.project}</h3>
+                  <p className="mt-2.5 text-sm text-slate-400 leading-relaxed">{item.description}</p>
                 </li>
               ))}
             </ul>
-            <p className="mt-8 text-center text-xs text-slate-500">{seo.timelines.note}</p>
+            <p className="mt-8 text-center text-xs text-slate-400">{seo.timelines.note}</p>
           </div>
         </section>
       )}
@@ -817,6 +817,7 @@ export default async function LandingPageView({ config }: { config: LandingPageC
           </h2>
           <nav className="flex flex-wrap gap-x-6 gap-y-3 text-sm">
             {[
+              { href: '/website-development-company-india', label: 'Website Development Company in India' },
               { href: '/website-development-company-kolkata', label: 'Website Development in Kolkata' },
               { href: '/website-development-company-delhi', label: 'Website Development in Delhi' },
               { href: '/nextjs-development-company-india', label: 'Next.js Development Company' },

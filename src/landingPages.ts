@@ -557,6 +557,300 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
   },
 
   /**
+   * National commercial page. Owns the "website development company in India"
+   * cluster (web development company / agency / services in India, custom and
+   * professional website development company). Business-led — the stack is
+   * the Next.js page's job, and each service links out to its own page.
+   */
+  'website-development-company-india': {
+    slug: 'website-development-company-india',
+    serviceName: 'Website Development in India',
+    projectType: 'Business Website',
+    eyebrow: 'Web Design & Development · Across India',
+    h1: 'Website Development Company in India',
+    subheadline:
+      'We design and build custom business websites, online stores and web applications for companies across India — with a fixed written quote, an agreed delivery date and a team you deal with directly from our Kolkata and Delhi offices.',
+    primaryCta: 'Get Free Website Consultation',
+    heroImage: 'https://images.pexels.com/photos/6476257/pexels-photo-6476257.jpeg',
+    heroImageAlt: 'Web Total Solution team planning a custom business website',
+    trustBadges: ['Offices in Kolkata & Delhi', 'Fixed Written Quote', 'You Own the Code', '30 Days Support'],
+    benefitsEyebrow: 'Why Web Total Solution',
+    benefitsHeading: 'Why Businesses Across India Choose Us',
+    benefitsIntro:
+      'Hiring a web development company is a trust decision: you are handing over your brand, your customers’ first impression and a real budget. These are the commitments we put in writing before you pay anything.',
+    benefits: [
+      {
+        icon: 'target',
+        title: 'Built to Bring in Business',
+        description:
+          'We plan every website around what it has to achieve — calls, enquiries, orders or sign-ups — and design each page to move visitors toward that action.',
+      },
+      {
+        icon: 'shield',
+        title: 'A Fixed Price, Agreed Up Front',
+        description:
+          'You get a written quote listing pages, features, timeline and support before work starts. The price does not grow halfway through the project.',
+      },
+      {
+        icon: 'trending',
+        title: 'Custom Design, Never a Template',
+        description:
+          'Your website is designed around your customers and your brand, so it does not look like a hundred other businesses using the same theme.',
+      },
+      {
+        icon: 'search',
+        title: 'SEO and Speed From Day One',
+        description:
+          'Mobile-first layouts, fast load times, schema markup, metadata and a sitemap are part of the build, not an add-on sold after launch.',
+      },
+      {
+        icon: 'headset',
+        title: 'One Team, Start to Finish',
+        description:
+          'The same people plan, design, build and support your website. You deal with them directly, on Indian working hours, with a reply within 24 hours.',
+      },
+      {
+        icon: 'refresh',
+        title: 'Everything Is Yours',
+        description:
+          'The domain, hosting, content and source code are registered to your business. No lock-in, and no proprietary builder you can never leave.',
+      },
+    ],
+    portfolioCategories: ['Corporate', 'E-Commerce', 'SaaS', 'Landing Page'],
+    portfolioHeading: 'Websites We Have Designed and Developed',
+    portfolioIntro:
+      'Live client websites across industries. Open them on your phone and judge the speed, design and structure for yourself.',
+    faqHeading: 'Website Development Company in India: FAQs',
+    faqIntro:
+      'Straight answers to what business owners ask before hiring a web development company.',
+    faqs: [
+      {
+        question: 'How much does website development cost in India?',
+        answer:
+          'It depends on the number of pages, how much custom design is involved and the features you need. Our Business Essential websites (up to 5 pages) start at ₹15,000, Business Growth websites (up to 10 pages with a CMS and blog) start at ₹35,000, and e-commerce stores, web applications and custom platforms are quoted individually. After a free consultation you receive a fixed written quote, so you know the full cost before work begins.',
+      },
+      {
+        question: 'How long does it take to develop a website?',
+        answer:
+          'A landing page usually takes 1–2 weeks, a 5–10 page business website 2–4 weeks, an online store 3–6 weeks, and the first version of a web application 6–12 weeks. Timelines run from the point content and approvals are ready, and we confirm yours in writing before development starts.',
+      },
+      {
+        question: 'How do I choose the right website development company in India?',
+        answer:
+          'Ask to see live websites they have built, not screenshots, and open them on your phone to judge the speed. Insist on a fixed written quote and an agreed delivery date. Confirm in writing that the domain, hosting and source code will be registered to you. Check what support is included after launch and read their public reviews. A good company will be comfortable with every one of these questions.',
+      },
+      {
+        question: 'Do you build custom websites or use templates?',
+        answer:
+          'Custom. Every website is designed from scratch around your business, your customers and what the site needs to achieve. You review and approve the design before development begins, so what gets built is what you signed off.',
+      },
+      {
+        question: 'What is included in your website development services?',
+        answer:
+          'A typical project covers planning, custom design, development, mobile-responsive layouts, enquiry forms and WhatsApp integration, on-page SEO and schema setup, Google Analytics and Search Console, domain, hosting and SSL setup in your name, and post-launch support. Copywriting, e-commerce, CMS and third-party integrations are added based on what you need.',
+      },
+      {
+        question: 'Can you work with my business if I am not in Kolkata or Delhi?',
+        answer:
+          'Yes. We have offices in Kolkata and Delhi and work with businesses across India. Consultation, design reviews, approvals and handover all run over video call, WhatsApp and email, and the process, pricing and timeline are the same wherever you are.',
+      },
+      {
+        question: 'Which technologies do you use?',
+        answer:
+          'We build most websites and web applications with Next.js and React, which are fast, search-friendly and widely supported, so any competent developer can work on your site later. Content can be managed through a headless CMS or a custom admin panel, and we integrate payment gateways such as Razorpay and Stripe, CRMs, analytics and WhatsApp.',
+      },
+      {
+        question: 'What support do I get after the website goes live?',
+        answer:
+          'Every project includes 30 days of post-launch support covering fixes, small content changes and technical help; the Business Growth package includes 90 days. After that, ongoing maintenance plans are available if you want us to keep your website updated, secure and performing.',
+      },
+      {
+        question: 'Will my website rank on Google?',
+        answer:
+          'Every website ships with technical SEO in place: fast load times, mobile-first layouts, clean heading structure, schema markup, metadata and a sitemap submitted to Google Search Console. Rankings also depend on your content, competition and reviews, so no honest company can guarantee a position — but you get the foundation, and our SEO content and digital marketing services can take it further.',
+      },
+      {
+        question: 'Do you also build online stores and web applications?',
+        answer:
+          'Yes. We build e-commerce stores with Razorpay, Stripe or UPI checkout, and custom web applications such as customer portals, dashboards and SaaS products. These are scoped and quoted individually because the features vary so much from one business to the next.',
+      },
+    ],
+    ctaHeadline: 'Looking for a Website Development Company You Can Trust?',
+    ctaText:
+      'Tell us about your business and what the website needs to do. You will get honest advice, a recommended approach and a fixed written quote — usually within 24 hours.',
+    meta: {
+      title: 'Website Development Company in India | Web Total Solution',
+      description:
+        'Website development company in India building custom, SEO-ready business websites, online stores and web apps. Fixed quotes from ₹15,000. Free consultation.',
+      keywords: [
+        'website development company in india',
+        'web development company india',
+        'website development agency india',
+        'web development services india',
+        'professional website development company',
+        'custom website development company india',
+        'business website development company india',
+      ],
+    },
+    seo: {
+      intro: {
+        heading: 'A Web Development Company Focused on Business Results',
+        paragraphs: [
+          'Web Total Solution is a website development company in India with offices in Kolkata and Delhi. We design and build custom websites for businesses that need them to do real work — bring in enquiries, sell products, answer customer questions and look credible next to bigger competitors.',
+          'Our team has delivered 35+ websites for 12+ industries, from 5-page company websites for service businesses to online stores, product catalogues and custom web applications. Every project is designed from scratch around the customers it has to win, and built with the speed, mobile experience and technical SEO Google expects.',
+          'You get one team for planning, design, development, content and launch, with the price, scope and delivery date agreed in writing before any work begins — and support that continues after the website goes live.',
+        ],
+      },
+      services: {
+        heading: 'Web Development Services for Indian Businesses',
+        intro:
+          'Everything your business needs online, handled by one team. Choose the service that fits, or tell us the goal and we will recommend the right approach.',
+        items: [
+          {
+            title: 'Business Website Development',
+            description:
+              'Professional, lead-generating websites for service businesses, manufacturers, clinics, consultants and professional firms.',
+            href: '/business-website-development',
+          },
+          {
+            title: 'E-Commerce Website Development',
+            description:
+              'Online stores with Razorpay, Stripe or UPI checkout, fast product pages and inventory and order management built in.',
+            href: '/ecommerce-development',
+          },
+          {
+            title: 'Website Redesign',
+            description:
+              'Rebuild a slow or outdated website on a modern, mobile-first foundation without losing the rankings you already have.',
+            href: '/website-redesign',
+          },
+          {
+            title: 'Landing Page Design',
+            description:
+              'Focused, high-converting pages for Google Ads and Meta campaigns, built to turn paid clicks into enquiries.',
+            href: '/services/landing-pages',
+          },
+          {
+            title: 'Custom Web Applications & SaaS',
+            description:
+              'Customer portals, dashboards, booking systems and SaaS products that replace spreadsheets and manual work.',
+            href: '/services/saas-development',
+          },
+          {
+            title: 'Next.js Development',
+            description:
+              'Fast, search-friendly websites and applications on the React framework our own site and product run on.',
+            href: '/nextjs-development-company-india',
+          },
+        ],
+      },
+      pricing: {
+        heading: 'Website Development Cost in India',
+        intro:
+          'Starting prices up front, so you can plan before we speak. Your exact figure comes as a fixed written quote after a free consultation.',
+        note: 'All prices in INR. Every website includes mobile-responsive design, on-page SEO setup and post-launch support.',
+      },
+      timelines: {
+        heading: 'How Long Website Development Takes',
+        intro:
+          'Typical delivery times by project type. Your exact timeline is agreed in writing during planning, before any development begins.',
+        items: [
+          {
+            project: 'Landing Page',
+            duration: '1–2 weeks',
+            description: 'A single, focused page for an ad campaign, product launch or lead-generation offer.',
+          },
+          {
+            project: 'Business Website',
+            duration: '2–4 weeks',
+            description: 'A 5–10 page company website with service pages, enquiry forms and SEO setup.',
+          },
+          {
+            project: 'E-Commerce Store',
+            duration: '3–6 weeks',
+            description: 'An online store with payments and shipping; timing depends on catalogue size and integrations.',
+          },
+          {
+            project: 'Web Application',
+            duration: '6–12 weeks',
+            description: 'The first version of a portal, dashboard or SaaS product, depending on scope.',
+          },
+        ],
+        note: 'Timelines run from the point content and approvals are ready.',
+      },
+      support: {
+        heading: 'Support That Continues After Launch',
+        intro:
+          'Going live is not the end of the project. This is what you get once your website is up and running.',
+        items: [
+          {
+            title: '30 Days of Support Included',
+            description:
+              'Every project includes 30 days of post-launch support, and the Business Growth package includes 90 days.',
+          },
+          {
+            title: 'Fixes and Small Changes',
+            description:
+              'Bug fixes, small content updates and technical help during the support period, at no extra cost.',
+          },
+          {
+            title: 'Analytics From Day One',
+            description:
+              'Google Analytics and Search Console are set up before launch, so you can see who visits and how they find you.',
+          },
+          {
+            title: 'Accounts in Your Name',
+            description:
+              'Domain, hosting and SSL certificate are registered to your business, and the source code is handed over to you.',
+          },
+          {
+            title: 'Ongoing Maintenance Plans',
+            description:
+              'If you want us to keep the site updated, secure and performing after the support period, maintenance plans are available.',
+          },
+          {
+            title: 'Replies Within 24 Hours',
+            description:
+              'Questions and change requests go straight to the team that built your website, with a reply within 24 hours.',
+          },
+        ],
+      },
+      coverage: {
+        heading: 'Industries and Cities We Work With',
+        intro:
+          'We work with businesses of every size, from our offices in Kolkata and Delhi and remotely with clients anywhere in India.',
+        industries: [
+          'Healthcare & Clinics',
+          'Education & Coaching',
+          'Real Estate',
+          'Legal & Professional Services',
+          'Manufacturing & Industrial',
+          'Wholesale & Trading',
+          'Retail & E-Commerce',
+          'Food & Restaurants',
+          'Events & Hospitality',
+          'Logistics & Transport',
+          'Interior Design',
+          'Finance',
+        ],
+        areas: [
+          'Kolkata',
+          'Delhi NCR',
+          'Mumbai',
+          'Bengaluru',
+          'Pune',
+          'Hyderabad',
+          'Chennai',
+          'Ahmedabad',
+          'Jaipur',
+          'Lucknow',
+          'Across India (remote)',
+        ],
+      },
+    },
+  },
+
+  /**
    * National technology page. Owns the "Next.js development company in India"
    * cluster (Next.js development services / agency, hire Next.js developers,
    * Next.js website development).

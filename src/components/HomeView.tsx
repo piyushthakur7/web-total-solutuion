@@ -164,16 +164,15 @@ export default async function HomeView() {
                 </div>
               </a>
 
-              <div className="border-8 border-white bg-white rounded-3xl overflow-hidden shadow-2xl">
+              <div className="rounded-3xl overflow-hidden shadow-2xl shadow-brand-blue/20 ring-1 ring-white/10">
                 <Image
-                  src="https://images.pexels.com/photos/6476257/pexels-photo-6476257.jpeg"
-                  alt="Web Total Solution team planning a professional business website"
-                  className="w-full h-auto object-cover max-h-[460px]"
-                  width={800}
-                  height={500}
-                  referrerPolicy="no-referrer"
+                  src="/new_hero.png"
+                  alt="Responsive business website shown on desktop, laptop and mobile"
+                  className="w-full h-auto"
+                  width={1536}
+                  height={1024}
                   priority
-                  quality={65}
+                  quality={75}
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
               </div>

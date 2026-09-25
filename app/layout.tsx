@@ -35,6 +35,7 @@ export const metadata: Metadata = {
     'business website development',
     'professional website design',
     'website development company',
+    'website development company in India',
     'website redesign services',
     'ecommerce website development',
     'lead generation website',
@@ -182,6 +183,14 @@ export default function RootLayout({
                 "@type": "OfferCatalog",
                 "name": "Web Development Services",
                 "itemListElement": [
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Website Development in India",
+                      "url": "https://www.webtotalsolution.com/website-development-company-india"
+                    }
+                  },
                   {
                     "@type": "Offer",
                     "itemOffered": {

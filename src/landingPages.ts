@@ -66,6 +66,15 @@ export interface LandingSeoSections {
   techStack?: { heading: string; intro: string; groups: { title: string; items: string[] }[] };
   /** Price snapshot built from PRICING_PACKAGES, targeting "cost" queries. */
   pricing?: { heading: string; intro: string; note: string };
+  /** Typical delivery time per project type, targeting "how long" queries. */
+  timelines?: {
+    heading: string;
+    intro: string;
+    items: { project: string; duration: string; description: string }[];
+    note: string;
+  };
+  /** What happens after launch — support, maintenance and handover. */
+  support?: { heading: string; intro: string; items: { title: string; description: string }[] };
   /** Industries and areas served, for local relevance. */
   coverage?: { heading: string; intro: string; industries: string[]; areas: string[] };
 }

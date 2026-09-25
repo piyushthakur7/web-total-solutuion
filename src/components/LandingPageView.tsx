@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import {
-  ArrowRight, Briefcase, Check, CheckCircle2, ExternalLink, Gauge, Headset, MapPin, RefreshCw,
+  ArrowRight, Briefcase, Check, CheckCircle2, Clock, ExternalLink, Gauge, Headset, MapPin, RefreshCw,
   Search, ShieldCheck, ShoppingCart, Smartphone, Sparkles, Target, TrendingUp
 } from 'lucide-react';
 import { LandingPageConfig, LandingBenefit } from '../landingPages';
@@ -621,8 +621,78 @@ export default async function LandingPageView({ config }: { config: LandingPageC
         </section>
       )}
 
+      {/* Delivery timelines — answers "how long" queries on the page itself */}
+      {seo?.timelines && (
+        <section className="bg-white py-24">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-2xl mx-auto mb-14 space-y-4">
+              <span className="text-xs uppercase tracking-widest font-extrabold text-brand-blue">
+                Timelines
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                {seo.timelines.heading}
+              </h2>
+              <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                {seo.timelines.intro}
+              </p>
+            </div>
+
+            <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {seo.timelines.items.map((item) => (
+                <li
+                  key={item.project}
+                  className="bg-slate-50 border border-slate-100 rounded-2xl p-7 flex flex-col"
+                >
+                  <span className="inline-flex items-center space-x-1.5 text-xs font-bold text-brand-blue">
+                    <Clock className="w-3.5 h-3.5" />
+                    <span>{item.duration}</span>
+                  </span>
+                  <h3 className="mt-3 font-bold text-slate-900 text-lg leading-tight">{item.project}</h3>
+                  <p className="mt-2.5 text-sm text-slate-600 leading-relaxed">{item.description}</p>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-8 text-center text-xs text-slate-500">{seo.timelines.note}</p>
+          </div>
+        </section>
+      )}
+
       {/* Process */}
       <ProcessSection />
+
+      {/* After-launch support — what the client gets once the site is live */}
+      {seo?.support && (
+        <section className="bg-slate-50 py-24">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-2xl mx-auto mb-14 space-y-4">
+              <span className="text-xs uppercase tracking-widest font-extrabold text-brand-blue">
+                After Launch
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                {seo.support.heading}
+              </h2>
+              <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                {seo.support.intro}
+              </p>
+            </div>
+
+            <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {seo.support.items.map((item) => (
+                <li
+                  key={item.title}
+                  className="bg-white border border-slate-100 rounded-2xl p-7 shadow-sm flex items-start space-x-4"
+                >
+                  <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
+                  <div>
+                    <h3 className="font-bold text-slate-900 leading-tight">{item.title}</h3>
+                    <p className="mt-2 text-sm text-slate-600 leading-relaxed">{item.description}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
 
       {/* Industries and areas served — local relevance signals */}
       {seo?.coverage && (

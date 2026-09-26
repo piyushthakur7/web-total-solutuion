@@ -243,7 +243,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
         heading: 'Web Design and Development in Kolkata, Done Properly',
         paragraphs: [
           'Web Total Solution is a website development and website design company in Kolkata, based in Garia, that builds websites for businesses that need them to do real work: bring in enquiries, answer customer questions and make a strong first impression before anyone picks up the phone.',
-          'We have delivered 35+ websites across 12+ industries, from 5-page company websites for local service businesses to e-commerce stores and custom web applications. Every project is designed from scratch around your customers — never a recycled template — and built with the speed, mobile experience and technical SEO that Google expects.',
+          'We have delivered 100+ websites across 30+ industries, from 5-page company websites for local service businesses to e-commerce stores and custom web applications. Every project is designed from scratch around your customers — never a recycled template — and built with the speed, mobile experience and technical SEO that Google expects.',
           'Whether you need your first website, a redesign of one that has stopped working for you, or an online store, you get one local team handling design, development, content and launch, with a fixed quote and a delivery date agreed in writing.',
         ],
       },
@@ -467,7 +467,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
         heading: 'Web Design and Development in Delhi, From Rohini',
         paragraphs: [
           'Web Total Solution is a website development and design company with an office in Rohini Sector 19, North West Delhi. We build websites for Delhi businesses that need them to earn their keep: bring in enquiries, answer the questions customers ask before they call, and look credible next to competitors a few streets away.',
-          'Our team has delivered 35+ websites for 12+ industries — company websites for service firms, catalogues for manufacturers, online stores and custom web applications. Each one is designed around the customers it has to win, never a recycled template, and built with the speed and technical SEO Google expects.',
+          'Our team has delivered 100+ websites across 30+ industries — company websites for service firms, catalogues for manufacturers, online stores and custom web applications. Each one is designed around the customers it has to win, never a recycled template, and built with the speed and technical SEO Google expects.',
           'Whether you need a first website, a redesign of one that has stopped bringing in work, or an online store, one team handles design, development, content and launch, with the price and delivery date agreed in writing before we start.',
         ],
       },
@@ -697,7 +697,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
         heading: 'A Web Development Company Focused on Business Results',
         paragraphs: [
           'Web Total Solution is a website development company in India with offices in Kolkata and Delhi. We design and build custom websites for businesses that need them to do real work — bring in enquiries, sell products, answer customer questions and look credible next to bigger competitors.',
-          'Our team has delivered 35+ websites for 12+ industries, from 5-page company websites for service businesses to online stores, product catalogues and custom web applications. Every project is designed from scratch around the customers it has to win, and built with the speed, mobile experience and technical SEO Google expects.',
+          'Our team has delivered 100+ websites across 30+ industries, from 5-page company websites for service businesses to online stores, product catalogues and custom web applications. Every project is designed from scratch around the customers it has to win, and built with the speed, mobile experience and technical SEO Google expects.',
           'You get one team for planning, design, development, content and launch, with the price, scope and delivery date agreed in writing before any work begins — and support that continues after the website goes live.',
         ],
       },

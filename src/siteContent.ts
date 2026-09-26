@@ -44,11 +44,11 @@ export const HERO_TRUST_BADGES = [
 
 /**
  * Headline social proof.
- * NOTE: `35+` is the figure supplied by the business. Update these numbers as
+ * NOTE: `100+` is the figure supplied by the business. Update these numbers as
  * the portfolio grows — every claim here should stay verifiable.
  */
 export const TRUST_STATS = [
-  { value: '35+', label: 'Websites Delivered', sub: 'Across 12+ industries' },
+  { value: '100+', label: 'Websites Delivered', sub: 'Across 30+ industries' },
   { value: '4.6★', label: 'Google Rating', sub: 'Verified client reviews' },
   { value: '100%', label: 'Mobile Responsive', sub: 'Every build, every device' },
   { value: '24 hrs', label: 'Response Time', sub: 'On every new inquiry' },

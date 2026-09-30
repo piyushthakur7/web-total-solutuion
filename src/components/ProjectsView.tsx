@@ -158,13 +158,13 @@ function ProductSection({ project }: { project: ProjectData }) {
         </div>
       </section>
 
-      {/* Workflow: Lead to follow-up to invoice to payment */}
+      {/* The six stages in the customer journey. */}
       <section id={howItWorksId} className="scroll-mt-24 space-y-8">
         <div className="space-y-3 max-w-2xl">
           <h3 className="text-2xl font-bold text-slate-950 tracking-tight">{project.workflowHeading}</h3>
           <p className="text-slate-600 text-sm leading-relaxed">{project.workflowIntro}</p>
         </div>
-        <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {project.workflow.map((step, index) => (
             <li
               key={step.label}
@@ -176,7 +176,7 @@ function ProductSection({ project }: { project: ProjectData }) {
               <p className="text-lg font-extrabold text-slate-950">{step.label}</p>
               <p className="text-sm text-slate-600 leading-relaxed">{step.description}</p>
               {/* Connector between steps on wide screens only. */}
-              {index < project.workflow.length - 1 && (
+              {index < project.workflow.length - 1 && index % 3 !== 2 && (
                 <ArrowRight
                   className="hidden lg:block absolute top-1/2 -right-3 w-5 h-5 text-slate-300 -translate-y-1/2"
                   aria-hidden="true"
@@ -193,7 +193,7 @@ function ProductSection({ project }: { project: ProjectData }) {
           <h3 className="text-2xl font-bold text-slate-950 tracking-tight">{project.pricingHeading}</h3>
           <p className="text-slate-600 text-sm leading-relaxed">{project.pricingNote}</p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-5 gap-6 2xl:w-[calc(100vw-4rem)] 2xl:max-w-[1720px] 2xl:relative 2xl:left-1/2 2xl:-translate-x-1/2">
           {project.plans.map((plan) => (
             <div
               key={plan.name}
@@ -209,9 +209,9 @@ function ProductSection({ project }: { project: ProjectData }) {
                   </span>
                 )}
               </div>
-              <p className="flex items-baseline space-x-2">
+              <p className="flex flex-wrap items-baseline gap-x-2">
                 <span className="text-4xl font-extrabold text-slate-950 tracking-tight">{plan.price}</span>
-                <span className="text-sm font-semibold text-slate-600">{plan.cadence}</span>
+                {plan.cadence && <span className="text-sm font-semibold text-slate-600">{plan.cadence}</span>}
               </p>
               <p className="text-sm text-slate-600 leading-relaxed">{plan.bestFor}</p>
               <ul className="space-y-2 border-t border-slate-100 pt-4 flex-1">
@@ -238,7 +238,7 @@ function ProductSection({ project }: { project: ProjectData }) {
                       : 'bg-slate-50 hover:bg-slate-100 text-slate-950 border border-slate-200'
                   }`}
                 >
-                  <span>Choose {plan.name}</span>
+                  <span>{plan.ctaLabel ?? `Choose ${plan.name}`}</span>
                   <ArrowRight className="w-4 h-4" />
                 </a>
               ) : (
@@ -246,7 +246,7 @@ function ProductSection({ project }: { project: ProjectData }) {
                   href="/contact"
                   className="bg-slate-50 hover:bg-slate-100 text-slate-950 border border-slate-200 font-bold tracking-wide px-5 py-3 rounded-xl transition-all inline-flex items-center justify-center space-x-2 cursor-pointer"
                 >
-                  <span>Choose {plan.name}</span>
+                  <span>{plan.ctaLabel ?? `Choose ${plan.name}`}</span>
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               )}
@@ -318,12 +318,11 @@ export default function ProjectsView() {
           <span>Our Products</span>
         </div>
         <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
-          Software We Build for Indian Solo Businesses
+          Software We Build for Indian Service Businesses
         </h1>
         <p className="text-slate-600 text-base max-w-xl mx-auto">
-          Alongside client projects, we build and run our own products — starting with a CRM and
-          invoicing workspace for freelancers and solo agency owners who do the selling and the
-          delivery themselves.
+          Alongside client projects, we build and run WTS CRM — a workspace for service businesses
+          to manage leads, follow-ups, quotations, client projects, invoices and payments.
         </p>
       </section>
 

@@ -126,7 +126,7 @@ export default function Footer() {
                   rel="noopener"
                   className="hover:text-white transition-colors cursor-pointer flex items-center group"
                 >
-                  <span>WTS CRM for Freelancers</span>
+                  <span>WTS CRM for Service Businesses</span>
                   <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all ml-1 shrink-0" />
                 </a>
               </li>

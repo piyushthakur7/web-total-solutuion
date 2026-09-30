@@ -3,8 +3,7 @@ import { WTS_CRM } from '../../src/projects';
 
 /**
  * Product-specific social card. The shared /og-image.png is agency branding,
- * which tells nobody what WTS CRM is when the page is shared in the freelancer
- * communities the launch plan targets.
+ * which tells nobody what WTS CRM is when the page is shared.
  */
 export const alt = `${WTS_CRM.name} — ${WTS_CRM.headline}`;
 export const size = { width: 1200, height: 630 };
@@ -26,7 +25,7 @@ export default function Image() {
           fontFamily: 'sans-serif',
         }}
       >
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
           <div
             style={{
               display: 'flex',
@@ -43,13 +42,13 @@ export default function Image() {
           >
             {WTS_CRM.name}
           </div>
-          <div style={{ display: 'flex', fontSize: '68px', fontWeight: 800, lineHeight: 1.1 }}>
+          <div style={{ display: 'flex', fontSize: '54px', fontWeight: 800, lineHeight: 1.1 }}>
             {WTS_CRM.tagline}
           </div>
           <div
             style={{
               display: 'flex',
-              fontSize: '30px',
+              fontSize: '26px',
               lineHeight: 1.4,
               color: 'rgba(248,250,252,0.82)',
               maxWidth: '900px',
@@ -59,30 +58,14 @@ export default function Image() {
           </div>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '20px', fontSize: '24px' }}>
-          {WTS_CRM.workflow.map((step, index) => (
-            <div key={step.label} style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-              <div
-                style={{
-                  display: 'flex',
-                  padding: '10px 20px',
-                  borderRadius: '14px',
-                  background: 'rgba(248,250,252,0.12)',
-                  border: '1px solid rgba(248,250,252,0.20)',
-                  fontWeight: 700,
-                }}
-              >
-                {step.label}
-              </div>
-              {index < WTS_CRM.workflow.length - 1 && (
-                <div style={{ display: 'flex', color: 'rgba(248,250,252,0.55)' }}>→</div>
-              )}
-            </div>
-          ))}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <div style={{ display: 'flex', fontSize: '22px', fontWeight: 700, color: 'rgba(248,250,252,0.86)' }}>
+            {WTS_CRM.workflow.map((step) => step.label).join('  →  ')}
+          </div>
           <div
             style={{
               display: 'flex',
-              marginLeft: 'auto',
+              alignSelf: 'flex-end',
               fontSize: '22px',
               color: 'rgba(248,250,252,0.7)',
             }}

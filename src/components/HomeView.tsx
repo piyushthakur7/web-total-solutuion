@@ -275,6 +275,15 @@ export default async function HomeView() {
                   className="flex items-center space-x-2 text-slate-600 hover:text-slate-900 transition-colors mx-8 md:mx-12 opacity-70 hover:opacity-100 shrink-0"
                 >
                   <div className="w-5 h-5 rounded bg-brand-blue/10 flex items-center justify-center text-brand-blue font-bold shrink-0" aria-hidden="true">★</div>
+                  <div className="relative w-9 h-9 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm shrink-0">
+                    <Image
+                      src={item.imageUrl}
+                      alt={`${item.title} logo`}
+                      fill
+                      sizes="36px"
+                      className="object-cover object-top"
+                    />
+                  </div>
                   <span className="text-sm font-semibold tracking-wider font-mono">{item.title}</span>
                 </div>
               ))}
@@ -405,12 +414,12 @@ export default async function HomeView() {
                 We Build Our Own Software Too
               </span>
               <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-                WTS CRM — a simple CRM and invoicing workspace for Indian freelancers
+                WTS CRM — from new enquiry to paid invoice
               </h2>
               <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-2xl">
-                Leads, follow-up reminders, client projects, invoices and payment tracking in one
-                private workspace — built for solo operators who lose enquiries in WhatsApp and
-                spreadsheets. Live now at{' '}
+                Capture leads, plan follow-ups, send quotations, manage client projects and track
+                GST invoices and payments in one workspace for Indian service businesses. Features
+                vary by plan. Live now at{' '}
                 <a
                   href="https://wtscrm.com"
                   target="_blank"

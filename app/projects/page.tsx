@@ -7,9 +7,9 @@ const url = 'https://www.webtotalsolution.com/projects';
 
 // Absolute so the product name leads the SERP snippet instead of being pushed
 // past the truncation point by the site-wide title template.
-const TITLE = 'WTS CRM — Simple CRM & Invoicing for Indian Freelancers';
+const TITLE = 'WTS CRM — Leads, Quotations & Invoicing for Indian Service Businesses';
 const DESCRIPTION =
-  'WTS CRM keeps leads, follow-ups, invoices and payments in one workspace for Indian freelancers and agency teams. Plans from ₹499/month. Free 3-day trial.';
+  'WTS CRM connects leads, follow-ups, quotations, projects, GST invoices and payments for Indian service businesses. Plans from ₹499/month. Free 3-day trial.';
 
 export const metadata: Metadata = {
   title: { absolute: TITLE },
@@ -71,7 +71,7 @@ export default function Projects() {
             featureList: project.features.map((feature) => feature.title),
             audience: {
               '@type': 'BusinessAudience',
-              name: 'Freelancers and solo agency owners in India',
+              name: 'Indian service businesses and agency teams',
             },
             areaServed: { '@type': 'Country', name: 'India' },
             publisher: {
@@ -79,11 +79,9 @@ export default function Projects() {
               name: 'Web Total Solution',
               url: 'https://www.webtotalsolution.com/',
             },
-            // Prices are the flat final amounts we advertise — no tax component
-            // is collected or implied here. No aggregateRating is emitted: we
-            // have no real reviews yet, and inventing them is both a policy
-            // breach and a manual-action risk.
-            offers: project.plans.map((plan) => ({
+            // The free trial is displayed on the page but is not a paid
+            // subscription offer. No aggregateRating is emitted without reviews.
+            offers: project.plans.filter((plan) => !plan.isTrial).map((plan) => ({
               '@type': 'Offer',
               name: plan.name,
               price: plan.price.replace(/[^0-9.]/g, ''),

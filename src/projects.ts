@@ -4,9 +4,8 @@
  * `portfolio_projects` in InsForge: the portfolio is client work, this is our
  * own product line.
  *
- * Copy here follows the WTS CRM launch brief and its claim guardrails — flat
- * final prices with no tax split, no GST-invoice promise, no payment-gateway
- * promise, no testimonials, ratings or customer counts until they are real.
+ * Copy follows the current WTS CRM feature brief. Keep plan-dependent features
+ * and integrations that need separate setup clearly qualified.
  */
 
 export type ProjectIcon =
@@ -34,6 +33,9 @@ export interface ProjectPlan {
   name: string;
   price: string;
   cadence: string;
+  /** Trial is shown in pricing but excluded from paid subscription offers. */
+  isTrial?: boolean;
+  ctaLabel?: string;
   /** Optional small print under the feature list. */
   note?: string;
   bestFor: string;
@@ -67,7 +69,7 @@ export interface ProjectData {
   pricingHeading: string;
   pricingNote: string;
   plans: ProjectPlan[];
-  /** Stated plainly so nobody arrives expecting a team CRM. */
+  /** Scope and integration guidance shown below the FAQs. */
   notForHeading: string;
   notFor: string[];
   primaryCta: string;
@@ -100,86 +102,127 @@ export interface ProjectData {
 export const WTS_CRM: ProjectData = {
   slug: 'wts-crm',
   name: 'WTS CRM',
-  kicker: 'CRM & invoicing workspace',
-  headline: 'A simple CRM and invoicing app for Indian freelancers and agency teams',
+  kicker: 'CRM for Indian service businesses',
+  headline: 'Manage leads, follow-ups, quotations, projects and payments in one workspace',
   status: 'Live — free 3-day trial',
-  tagline: 'Never miss a follow-up or retype an invoice.',
+  tagline: 'From new enquiry to paid invoice, keep the work moving.',
   positioning:
-    'A simple Indian CRM for freelancers and agency teams who want to convert more leads and get paid without spreadsheet chaos.',
+    'WTS CRM helps Indian service businesses capture enquiries, stay on top of follow-ups, send quotations, manage client projects and track invoices and payments.',
   supportingCopy:
-    'Capture every enquiry, know exactly who to contact today, create professional invoices, and keep client work organised — without a complicated team CRM.',
-  audienceHeading: 'Built for people who run the business themselves',
+    'Start as a solo operator or bring your team into a shared workspace. Features depend on your plan, and some integrations need separate setup.',
+  audienceHeading: 'Built for service businesses and the teams behind them',
   audience: [
-    'Freelance designers, developers and marketers',
-    'Consultants, photographers and coaches',
-    'Solo agency owners with 10–100 active leads',
-    'Agency teams that need shared CRM operations',
-    'Anyone tracking leads in WhatsApp, notes or Excel',
-    'Anyone sending invoices manually',
+    'Freelancers and consultants',
+    'Agencies and service teams',
+    'Businesses handling enquiries from several sources',
+    'Teams managing quotations and client projects',
+    'Owners tracking invoices and outstanding payments',
   ],
-  featuresHeading: 'What is inside',
+  featuresHeading: 'What you can do with WTS CRM',
   features: [
     {
       icon: 'users',
-      title: 'Lead capture and tracking',
+      title: 'Keep every lead in context',
       description:
-        'Every enquiry lands in one list with its source, stage and history, instead of scattered across WhatsApp threads and notebooks.',
+        'Store contact details, source, value, notes and activity together. Move leads through stages, mark them hot, warm or cold, and use filters and saved views to focus your day.',
+    },
+    {
+      icon: 'users',
+      title: 'Capture and import enquiries',
+      description:
+        'Add leads manually, import Excel or CSV files with a preview and duplicate checks, or capture enquiries from your website. Meta Lead Ads requires setup.',
     },
     {
       icon: 'bell',
-      title: 'Follow-up reminders',
+      title: 'Plan follow-ups and calls',
       description:
-        'Set the next follow-up when you log the lead, and open a daily view that tells you exactly who to contact today.',
+        'Schedule calls, messages, emails or meetings, record outcomes and book the next action. See due and overdue work on the dashboard and calendar.',
     },
     {
-      icon: 'listChecks',
-      title: 'Tasks and projects',
+      icon: 'messageSquare',
+      title: 'Work with WhatsApp',
       description:
-        'Turn a won lead into a client project with tasks against it, so delivery work stays attached to the client it belongs to.',
+        'Open a lead chat, use message templates, share a quotation or prepare an invoice reminder. You review and send each message in WhatsApp.',
     },
     {
       icon: 'fileText',
-      title: 'Professional invoices',
+      title: 'Send quotations',
       description:
-        'Create a clean invoice from the client record instead of retyping the same details into a document every month.',
+        'Build itemised, branded quotations with discounts, charges and applicable GST. Share a customer link, track views and decisions, then convert an accepted quote to an invoice.',
+    },
+    {
+      icon: 'listChecks',
+      title: 'Manage client projects',
+      description:
+        'Track each project’s owner, service, status, budget and dates. Keep related tasks, notes, invoices and client context connected.',
     },
     {
       icon: 'wallet',
-      title: 'Payment tracking',
+      title: 'Invoice and track payments',
       description:
-        'Mark what has been paid and what is still outstanding, so you know who to chase before the month closes.',
+        'Create branded GST invoices, record full or partial payments, and see the remaining balance. Prepare overdue reminders for WhatsApp.',
+    },
+    {
+      icon: 'clock',
+      title: 'Automate routine work',
+      description:
+        'Use follow-up workflows and rules for assignments, tasks, tags, notes and notifications. Scheduled automation and email delivery require backend setup.',
     },
     {
       icon: 'lock',
-      title: 'A private workspace',
+      title: 'Work as a team',
       description:
-        'Your leads, clients and invoices sit in your own workspace. Solo-first by design — nothing is shared with anyone else.',
+        'Invite teammates, assign records and manage work with owner, admin and member roles. Workspace data is separated at the database level.',
+    },
+    {
+      icon: 'fileText',
+      title: 'See reports and export data',
+      description:
+        'Review pipeline, conversions, sources and team activity. Billing plans also show revenue and receivables; export lists to CSV or account data to CSV or JSON.',
     },
   ],
   workflowHeading: 'How it works',
   workflowIntro:
-    'One straight line from the first enquiry to the money in your account. No configuration project, no sales-ops consultant.',
+    'Keep the whole customer journey connected in one place.',
   workflow: [
     {
       label: 'Lead',
-      description: 'An enquiry arrives from WhatsApp, a call or your website. Log it once, with context.',
+      description: 'Capture an enquiry or import existing leads, then qualify and assign it.',
     },
     {
       label: 'Follow-up',
-      description: 'Set the next touchpoint. The daily view surfaces who is due, so nobody goes cold.',
+      description: 'Schedule the next call or message and see what is due today.',
+    },
+    {
+      label: 'Quotation',
+      description: 'Send an itemised quote and track when the customer views or accepts it.',
+    },
+    {
+      label: 'Project',
+      description: 'Keep delivery tasks, notes and client context together after the deal is won.',
     },
     {
       label: 'Invoice',
-      description: 'The lead converts. Raise the invoice from the client record you already have.',
+      description: 'Create a GST invoice with the right items, branding and tax details.',
     },
     {
       label: 'Payment',
-      description: 'Track what is paid and what is pending, and follow up on the rest with the same system.',
+      description: 'Record full or partial payments and follow up on the balance.',
     },
   ],
-  pricingHeading: 'Simple, flat pricing',
-  pricingNote: 'Every plan is a flat final amount. No hidden charges, and no separate tax is collected.',
+  pricingHeading: 'Choose the workspace that fits your work',
+  pricingNote:
+    'Explore the complete workspace free for 3 days. Paid plans start at ₹499 per month.',
   plans: [
+    {
+      name: 'Trial',
+      price: 'Free',
+      cadence: '',
+      isTrial: true,
+      ctaLabel: 'Start free trial',
+      bestFor: '3 days to explore the complete workspace.',
+      features: ['Everything unlocked', 'Up to 100 clients', 'No card required'],
+    },
     {
       name: 'Starter',
       price: '₹499',
@@ -205,7 +248,7 @@ export const WTS_CRM: ProjectData = {
       cadence: '/ month',
       bestFor: 'Shared CRM operations for an agency team.',
       features: ['5 seats included', 'Roles and record assignment', 'Extra seats ₹399/month each'],
-      badge: 'Best for small teams',
+      badge: 'Best for agencies',
     },
     {
       name: 'Agency',
@@ -221,19 +264,20 @@ export const WTS_CRM: ProjectData = {
       ],
     },
   ],
-  notForHeading: 'What it is not, today',
+  notForHeading: 'Plan and integration details',
   notFor: [
-    'Not an enterprise sales CRM with pipelines-of-pipelines',
-    'Not a replacement for your accountant',
+    'Quotations, projects, GST invoicing and payments depend on the selected plan.',
+    'WhatsApp actions open a click-to-chat flow for the user to review and send; WTS CRM is not a shared inbox or automatic WhatsApp sender.',
+    'Meta Lead Ads, Exotel calling, Google Calendar, local business lead search and some scheduled emails require separate setup or launch settings.',
   ],
   siteUrl: 'https://wtscrm.com',
   siteLabel: 'wtscrm.com',
   trialUrl: 'https://wtscrm.com',
-  primaryCta: 'Start your free 3-day trial',
+  primaryCta: 'Start free trial',
   secondaryCta: 'See how it works',
-  reassurance: 'No card required for the free 3-day trial. Paid access is billed through Razorpay.',
+  reassurance: '3 days free to explore the complete workspace. No card required.',
   trialNote:
-    'Every plan starts with a free 3-day trial. No card, and no charge. If you stop there, the workspace locks and nothing is deleted.',
+    'The free trial unlocks the complete workspace for 3 days, with up to 100 clients and no card required.',
   preLaunchCta: 'Ask for an early-access invite',
   preLaunchNote: 'Trial signup is not open yet. Until then we are inviting early users personally.',
   faqHeading: 'Questions people ask before they start',
@@ -241,27 +285,37 @@ export const WTS_CRM: ProjectData = {
     {
       question: 'Who is WTS CRM for?',
       answer:
-        'Indian freelancers and solo agency owners who handle their own sales and delivery — designers, developers, marketers, consultants, photographers and coaches with roughly 10 to 100 active leads or clients. If you currently track enquiries in WhatsApp, notes or Excel, it is built for you.',
+        'Indian service businesses, from independent professionals to agency teams, that need to manage enquiries, follow-ups, quotations, client work and payments in one place.',
     },
     {
       question: 'How much does WTS CRM cost?',
       answer:
-        'Starter is ₹499 per month for one user and up to 100 clients. Solo is ₹999 per month with every CRM feature and unlimited clients. Team is ₹2,499 per month with five seats included, and extra seats are ₹399 per month each. Agency is ₹4,999 per month with fifteen seats, advanced reporting and priority support, and extra seats are ₹299 per month each. There are no hidden charges, and paid access is billed through Razorpay.',
+        'The 3-day trial is free, unlocks the complete workspace, allows up to 100 clients and needs no card. Starter is ₹499 per month for one user and up to 100 clients. Solo is ₹999 per month with every CRM feature and unlimited clients and leads. Team is ₹2,499 per month with five seats included; extra seats cost ₹399 per month each. Agency is ₹4,999 per month with fifteen seats, advanced reporting and priority support; extra seats cost ₹299 per month each.',
     },
     {
       question: 'Is there a free trial, and do I need a card?',
       answer:
-        'Yes. Every plan starts with a free 3-day trial and no card is required, so nothing is charged. If you stop at the end of the trial your workspace locks, and nothing is deleted.',
+        'Yes. The Trial plan gives you 3 days to explore the complete workspace, with up to 100 clients. No card is required.',
     },
     {
       question: 'Can WTS CRM replace tracking leads in WhatsApp and Excel?',
       answer:
-        'That is exactly what it is for. Log an enquiry once with its source and context, set the next follow-up against it, and open a daily view that tells you who to contact today. When the lead converts, the same record becomes the client you invoice.',
+        'Yes. Log or import leads, keep their notes and history together, and schedule the next action. WhatsApp messages open in WhatsApp for you to review and send.',
     },
     {
       question: 'Can I create invoices and track payments?',
       answer:
-        'Yes. You can raise a professional invoice from a client record instead of retyping the same details each month, and mark what has been paid and what is still outstanding so you know who to follow up with.',
+        'Yes, on plans that include billing. Create branded GST invoices with itemised charges, then record full or partial payments and track the outstanding balance.',
+    },
+    {
+      question: 'Does WTS CRM send WhatsApp messages automatically?',
+      answer:
+        'No. WhatsApp actions use click-to-chat: WTS CRM prepares the message, and you review and send it in WhatsApp. It is not a shared WhatsApp inbox or an automatic sender.',
+    },
+    {
+      question: 'Which integrations need separate setup?',
+      answer:
+        'Meta Lead Ads, Exotel calling and Google Calendar require their own connection and setup. Local business lead search also needs its search integration and launch setting enabled; some scheduled emails depend on backend configuration.',
     },
     {
       question: 'Does WTS CRM work for teams?',
@@ -271,17 +325,18 @@ export const WTS_CRM: ProjectData = {
     {
       question: 'What makes it different from a large sales CRM?',
       answer:
-        'Scope. There is no setup project, no pipeline configuration and no unused enterprise features to work around. It covers one straight line — lead, follow-up, invoice, payment — for a person who does the selling and the delivery themselves.',
+        'It connects the practical work of a service business: lead capture, follow-ups, quotations, projects, invoicing and payments. Solo and team plans let the workspace grow with the business.',
     },
   ],
   keywords: [
-    'CRM for freelancers India',
+    'CRM for Indian service businesses',
     'simple CRM for solo agency owners',
     'invoicing software for freelancers India',
     'lead management software for small business India',
     'follow up reminder CRM',
     'client and invoice management for freelancers',
     'CRM and invoicing app India',
+    'quotation and project management CRM',
     'WTS CRM',
   ],
 };

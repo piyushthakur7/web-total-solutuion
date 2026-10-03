@@ -1,189 +1,173 @@
 import React from 'react';
 import Link from 'next/link';
-import { Mail, MapPin, Clock, Instagram, Linkedin, Youtube, Twitter, CheckCircle2 } from 'lucide-react';
 import LeadForm from './LeadForm';
 import WhatsAppIcon from './WhatsAppIcon';
 import { EMAIL, OFFICES, PHONE_DISPLAY, WHATSAPP_URL } from '../siteContent';
 
 const SOCIALS = [
-  { href: 'https://www.instagram.com/webtotalsolution/?hl=en', label: 'Instagram', Icon: Instagram },
-  { href: 'https://www.linkedin.com/company/web-total-solutions/', label: 'LinkedIn', Icon: Linkedin },
-  { href: 'https://www.youtube.com/channel/UCNlUYW1RyevmpKY1xUQKatA', label: 'YouTube', Icon: Youtube },
-  { href: 'https://x.com/webtotalindia', label: 'X (Twitter)', Icon: Twitter },
+  { href: 'https://www.instagram.com/webtotalsolution/?hl=en', label: 'Instagram' },
+  { href: 'https://www.linkedin.com/company/web-total-solutions/', label: 'LinkedIn' },
+  { href: 'https://www.youtube.com/channel/UCNlUYW1RyevmpKY1xUQKatA', label: 'YouTube' },
+  { href: 'https://x.com/webtotalindia', label: 'X (Twitter)' },
 ];
 
-const REASSURANCE = [
-  'A free consultation with no obligation to proceed',
-  'A fixed written quote — never an open-ended estimate',
-  'Honest advice, even if that means you do not need us',
-  'You own the domain, hosting, content and source code',
+/** What happens after the form is sent, in order. */
+const NEXT_STEPS = [
+  {
+    title: 'We reply within 24 hours',
+    description: 'A person from the team reads your request and replies on working days.',
+  },
+  {
+    title: 'A free discovery call',
+    description:
+      'We ask about the business and what the website has to achieve. You get honest advice, even if that means you do not need us.',
+  },
+  {
+    title: 'A fixed written quote',
+    description:
+      'Scope, timeline and price in writing before any work begins. No obligation to go ahead.',
+  },
 ];
+
+const textLink =
+  'font-semibold text-ink underline decoration-ink/30 underline-offset-4 transition-colors hover:decoration-ink';
 
 export default function ContactView() {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-14">
-      {/* Title */}
-      <div className="text-center space-y-4 max-w-2xl mx-auto">
-        <span className="text-xs uppercase tracking-widest font-extrabold text-brand-blue">
-          Free Consultation
-        </span>
-        <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-[1.1]">
-          Let&apos;s Build Something That Grows Your Business
-        </h1>
-        <p className="text-slate-600 text-base leading-relaxed">
-          Tell us about your business and what you want the website to achieve. We will come back
-          within 24 hours with a recommended approach and a clear, fixed quote.
+    <div className="bg-paper text-ink">
+      <div className="mx-auto max-w-7xl px-5 pb-16 pt-12 sm:px-6 sm:pb-24 sm:pt-16 lg:px-8 lg:pt-20">
+        <h1 className="max-w-5xl font-display text-hero">Tell us what you are building.</h1>
+        <p className="mt-6 max-w-xl text-lg leading-relaxed text-graphite sm:text-xl">
+          Send a few details and we will come back within 24 hours with a recommended approach
+          and a fixed written quote.
         </p>
-      </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-        {/* Form */}
-        <div className="lg:col-span-7">
-          <LeadForm source="Contact page" submitLabel="Get My Free Consultation" />
-        </div>
-
-        {/* Direct channels & reassurance */}
-        <div className="lg:col-span-5 space-y-6">
-          <div className="bg-slate-900 text-white rounded-3xl p-6 md:p-8 space-y-5 relative overflow-hidden">
-            <div className="absolute right-0 top-0 w-64 h-64 bg-brand-blue/15 rounded-full filter blur-3xl pointer-events-none" />
-            <div className="relative z-10 space-y-5">
-              <h2 className="text-lg font-bold tracking-tight">Prefer to Talk Right Now?</h2>
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full bg-[#25D366] hover:bg-[#1ebd5a] text-white font-bold py-3.5 rounded-xl text-sm transition-all flex items-center justify-center space-x-2.5"
-              >
-                <WhatsAppIcon className="w-4 h-4" />
-                <span>Chat on WhatsApp</span>
-              </a>
-              <a
-                href="tel:+916291519364"
-                className="w-full bg-white/10 hover:bg-white/15 border border-white/20 text-white font-bold py-3.5 rounded-xl text-sm transition-all flex items-center justify-center"
-              >
-                Call {PHONE_DISPLAY}
-              </a>
-              <p className="flex items-center justify-center space-x-1.5 text-xs text-slate-400">
-                <Clock className="w-3.5 h-3.5" />
-                <span>Mon–Sat, 10:00 AM – 7:00 PM IST</span>
-              </p>
-            </div>
+        <div className="mt-12 grid grid-cols-1 items-start gap-12 lg:mt-16 lg:grid-cols-12 lg:gap-10">
+          {/* Form — first on mobile, right on desktop */}
+          <div className="lg:sticky lg:top-28 lg:order-2 lg:col-span-7">
+            <LeadForm source="Contact page" submitLabel="Send request" currency="USD" />
           </div>
 
-          <div className="bg-slate-50 border border-slate-100 rounded-3xl p-6 md:p-8 space-y-5">
-            <h2 className="text-lg font-bold text-slate-950 tracking-tight">What You Can Expect</h2>
-            <ul className="space-y-3">
-              {REASSURANCE.map((item) => (
-                <li key={item} className="flex items-start space-x-3 text-sm text-slate-700">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0 mt-px" />
-                  <span className="leading-relaxed">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="bg-slate-50 border border-slate-100 rounded-3xl p-6 md:p-8 space-y-5">
-            <h2 className="text-lg font-bold text-slate-950 tracking-tight">Direct Channels</h2>
-
-            <div className="flex items-start space-x-4">
-              <span className="w-10 h-10 bg-white border border-slate-100 rounded-xl flex items-center justify-center text-brand-blue shrink-0">
-                <Mail className="w-5 h-5" />
-              </span>
-              <span>
-                <span className="block text-[11px] text-slate-400 uppercase tracking-widest font-bold">
-                  Email
-                </span>
-                <a
-                  href={`mailto:${EMAIL}`}
-                  className="text-sm font-semibold text-slate-800 hover:text-brand-blue hover:underline break-all"
-                >
-                  {EMAIL}
-                </a>
-              </span>
-            </div>
-
-            <div className="flex items-start space-x-4">
-              <span className="w-10 h-10 bg-white border border-slate-100 rounded-xl flex items-center justify-center text-brand-blue shrink-0">
-                <MapPin className="w-5 h-5" />
-              </span>
-              <span className="space-y-3">
-                {OFFICES.map((office) => (
-                  <span key={office.city} className="block">
-                    <span className="block text-[11px] text-slate-400 uppercase tracking-widest font-bold">
-                      {office.city} Office
+          <div className="space-y-12 lg:order-1 lg:col-span-5 lg:pr-6">
+            {/* Numbered because these happen in this order. */}
+            <section aria-labelledby="next-steps">
+              <h2 id="next-steps" className="font-display text-3xl">
+                What happens next
+              </h2>
+              <ol className="mt-6 border-t border-ink/15">
+                {NEXT_STEPS.map((step, index) => (
+                  <li key={step.title} className="flex gap-5 border-b border-ink/15 py-5">
+                    <span className="w-7 shrink-0 font-display text-4xl leading-none text-brand-blue">
+                      {index + 1}
                     </span>
-                    <span className="text-sm font-semibold text-slate-800">
+                    <div>
+                      <h3 className="text-base font-semibold">{step.title}</h3>
+                      <p className="mt-1.5 text-[15px] leading-relaxed text-graphite">
+                        {step.description}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </section>
+
+            <section aria-labelledby="talk-now" className="rounded-lg bg-deep p-7 text-white sm:p-8">
+              <h2 id="talk-now" className="font-display text-3xl">
+                Prefer to talk now?
+              </h2>
+              <div className="mt-6 flex flex-col gap-3">
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-paper"
+                >
+                  <WhatsAppIcon className="size-4" />
+                  <span>Message us on WhatsApp</span>
+                </a>
+                <a href="tel:+916291519364" className="btn btn-line-dark">
+                  Call {PHONE_DISPLAY}
+                </a>
+              </div>
+              <p className="mt-5 text-[15px] text-white/75">
+                Monday to Saturday, 10:00 AM to 7:00 PM IST
+              </p>
+            </section>
+
+            <section aria-labelledby="direct">
+              <h2 id="direct" className="font-display text-3xl">
+                Email and offices
+              </h2>
+              <dl className="mt-6 space-y-5 border-t border-ink/15 pt-6 text-base">
+                <div>
+                  <dt className="text-[15px] text-graphite">Email</dt>
+                  <dd className="mt-1">
+                    <a href={`mailto:${EMAIL}`} className={`${textLink} break-all`}>
+                      {EMAIL}
+                    </a>
+                  </dd>
+                </div>
+                {OFFICES.map((office) => (
+                  <div key={office.city}>
+                    <dt className="text-[15px] text-graphite">{office.city} office</dt>
+                    <dd className="mt-1 leading-relaxed">
                       {office.lines[0]},
                       <br />
                       {office.lines[1]}
-                    </span>
-                  </span>
+                    </dd>
+                  </div>
                 ))}
-              </span>
-            </div>
-
-            <div className="pt-2 border-t border-slate-200">
-              <span className="block text-[11px] text-slate-400 uppercase tracking-widest font-bold mb-3">
-                Follow Us
-              </span>
-              <div className="flex flex-wrap gap-x-5 gap-y-2">
-                {SOCIALS.map(({ href, label, Icon }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm font-semibold text-slate-700 hover:text-brand-blue transition-colors flex items-center space-x-1.5"
-                  >
-                    <Icon className="w-4 h-4 text-slate-400" />
-                    <span>{label}</span>
-                  </a>
+              </dl>
+              <ul className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-[15px]">
+                {SOCIALS.map(({ href, label }) => (
+                  <li key={label}>
+                    <a href={href} target="_blank" rel="noopener noreferrer" className={textLink}>
+                      {label}
+                    </a>
+                  </li>
                 ))}
-              </div>
-            </div>
+              </ul>
+            </section>
           </div>
+        </div>
 
-          {/* Real maps for each office; lazy so they cost nothing until scrolled to. */}
+        {/* Real maps for each office; lazy so they cost nothing until scrolled to. */}
+        <div className="mt-16 grid gap-6 border-t border-ink/15 pt-10 md:grid-cols-2 lg:mt-24">
           {OFFICES.map((office) => (
-            <div
-              key={office.city}
-              className="border border-slate-200 rounded-3xl overflow-hidden bg-slate-100 shadow-sm"
-            >
-              <div className="px-4 py-2.5 bg-white border-b border-slate-200 text-xs font-bold text-slate-700 flex items-center space-x-1.5">
-                <MapPin className="w-3.5 h-3.5 text-brand-blue" />
-                <span>{office.city} Office</span>
+            <figure key={office.city}>
+              <div className="overflow-hidden rounded-lg border border-ink/15 bg-white">
+                <iframe
+                  src={`https://maps.google.com/maps?q=${encodeURIComponent(office.mapQuery)}&z=15&output=embed`}
+                  title={`Web Total Solution ${office.city} office — ${office.lines.join(', ')}`}
+                  className="block aspect-video w-full border-0"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
               </div>
-              <iframe
-                src={`https://maps.google.com/maps?q=${encodeURIComponent(office.mapQuery)}&z=15&output=embed`}
-                title={`Web Total Solution ${office.city} office — ${office.lines.join(', ')}`}
-                className="w-full aspect-video border-0 block"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                allowFullScreen
-              />
-            </div>
+              <figcaption className="mt-3 text-[15px] text-graphite">{office.city} office</figcaption>
+            </figure>
           ))}
         </div>
-      </div>
 
-      {/* Internal links for crawl depth */}
-      <nav className="border-t border-slate-200 pt-8 flex flex-wrap gap-x-6 gap-y-3 text-sm justify-center">
-        {[
-          { href: '/business-website-development', label: 'Business Website Development' },
-          { href: '/website-redesign', label: 'Website Redesign' },
-          { href: '/ecommerce-development', label: 'E-Commerce Development' },
-          { href: '/work', label: 'Our Work' },
-          { href: '/pricing', label: 'Pricing' },
-        ].map((link) => (
-          <Link
-            key={link.href}
-            href={link.href}
-            className="font-semibold text-slate-600 hover:text-brand-blue transition-colors"
-          >
-            {link.label}
-          </Link>
-        ))}
-      </nav>
+        {/* Internal links for crawl depth */}
+        <nav
+          aria-label="Related pages"
+          className="mt-12 flex flex-wrap gap-x-6 gap-y-3 border-t border-ink/15 pt-8 text-[15px]"
+        >
+          {[
+            { href: '/business-website-development', label: 'Business Website Development' },
+            { href: '/website-redesign', label: 'Website Redesign' },
+            { href: '/ecommerce-development', label: 'E-Commerce Development' },
+            { href: '/work', label: 'Our Work' },
+            { href: '/pricing', label: 'Pricing' },
+          ].map((link) => (
+            <Link key={link.href} href={link.href} className={textLink}>
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+      </div>
     </div>
   );
 }

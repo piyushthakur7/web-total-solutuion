@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight, ShieldCheck, Star } from 'lucide-react';
+import { ShieldCheck, Star } from 'lucide-react';
 import { GOOGLE_REVIEWS_URL, CLIENT_COMMITMENTS, GOOGLE_RATING } from '../siteContent';
 
 /**
@@ -18,7 +18,6 @@ import { GOOGLE_REVIEWS_URL, CLIENT_COMMITMENTS, GOOGLE_RATING } from '../siteCo
  */
 export default function Testimonials({
   heading = 'Proof You Can Check Yourself',
-  eyebrow = 'Client Trust',
   intro = 'We would rather point you at live client websites and public reviews than at quotes you have no way to verify.',
 }: {
   heading?: string;
@@ -26,18 +25,15 @@ export default function Testimonials({
   intro?: string;
 }) {
   return (
-    <section className="bg-slate-50 py-24 relative overflow-hidden">
-      <div className="absolute top-10 right-0 w-96 h-96 bg-brand-blue/5 rounded-full filter blur-3xl pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center max-w-2xl mx-auto mb-14 space-y-4">
-          <span className="text-xs uppercase tracking-widest font-extrabold text-brand-blue">
-            {eyebrow}
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-            {heading}
-          </h2>
-          <p className="text-slate-600 text-sm sm:text-base leading-relaxed">{intro}</p>
+    <section className="bg-paper py-16 text-ink sm:py-24">
+      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+        <div className="mb-12 grid gap-6 lg:mb-16 lg:grid-cols-12 lg:items-end lg:gap-8">
+          <div className="lg:col-span-7">
+            <h2 className="font-display text-display">{heading}</h2>
+          </div>
+          <p className="max-w-md text-base leading-relaxed text-graphite lg:col-span-5 lg:justify-self-end">
+            {intro}
+          </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
@@ -46,7 +42,7 @@ export default function Testimonials({
             href={GOOGLE_REVIEWS_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="lg:col-span-5 bg-white border border-slate-100 rounded-3xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group"
+            className="group flex flex-col justify-between rounded-lg border border-ink/15 bg-white p-8 sm:p-10 lg:col-span-5"
           >
             <div className="space-y-5">
               <span className="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center">
@@ -59,11 +55,11 @@ export default function Testimonials({
               </span>
 
               <div className="flex items-end space-x-3">
-                <span className="text-5xl font-extrabold text-slate-900 tracking-tight leading-none">
+                <span className="font-display text-8xl leading-none text-ink">
                   {GOOGLE_RATING}
                 </span>
                 <span
-                  className="flex items-center space-x-0.5 pb-1.5"
+                  className="flex items-center space-x-0.5 pb-3"
                   aria-label={`${GOOGLE_RATING} out of 5 stars on Google`}
                 >
                   {Array.from({ length: 5 }).map((_, index) => (
@@ -79,30 +75,28 @@ export default function Testimonials({
                 </span>
               </div>
 
-              <p className="text-sm text-slate-600 leading-relaxed">
+              <p className="text-base leading-relaxed text-graphite">
                 Our rating on Google, from clients who have worked with us. It is a public listing —
                 open it and read the reviews for yourself before you decide anything.
               </p>
             </div>
 
-            <span className="mt-8 inline-flex items-center space-x-2 text-sm font-bold text-brand-blue group-hover:underline">
-              <span>Read our Google Reviews</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+            <span className="mt-8 text-[15px] font-semibold text-ink underline decoration-ink/30 underline-offset-4 group-hover:decoration-ink">
+              Read our Google reviews
             </span>
           </a>
 
           {/* What we put in writing on every project. */}
-          <div className="lg:col-span-7 bg-slate-900 text-white rounded-3xl p-8 sm:p-10 shadow-sm flex flex-col justify-between relative overflow-hidden">
-            <div className="absolute right-0 top-0 w-72 h-72 bg-brand-blue/15 rounded-full filter blur-3xl pointer-events-none" />
+          <div className="flex flex-col justify-between rounded-lg bg-deep p-8 text-white sm:p-10 lg:col-span-7">
 
             <div className="relative z-10 space-y-6">
-              <h3 className="text-xl font-bold tracking-tight">What every client gets in writing</h3>
+              <h3 className="font-display text-3xl sm:text-4xl">What every client gets in writing</h3>
 
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
                 {CLIENT_COMMITMENTS.map((commitment) => (
                   <li key={commitment} className="flex items-start space-x-3">
-                    <ShieldCheck className="w-5 h-5 text-emerald-400 shrink-0 mt-px" />
-                    <span className="text-sm text-slate-300 leading-relaxed">{commitment}</span>
+                    <ShieldCheck className="w-5 h-5 text-brand-sky shrink-0 mt-px" />
+                    <span className="text-[15px] text-white/80 leading-relaxed">{commitment}</span>
                   </li>
                 ))}
               </ul>
@@ -111,10 +105,9 @@ export default function Testimonials({
             <div className="relative z-10 mt-10 pt-6 border-t border-white/10">
               <Link
                 href="/work"
-                className="inline-flex items-center space-x-2 text-sm font-bold text-white hover:text-brand-blue transition-colors"
+                className="text-[15px] font-semibold text-white underline decoration-white/40 underline-offset-4 hover:decoration-white"
               >
-                <span>See the live client websites we have built</span>
-                <ArrowRight className="w-4 h-4" />
+                See the live client websites we have built
               </Link>
             </div>
           </div>

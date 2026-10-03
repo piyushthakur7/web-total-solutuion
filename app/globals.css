@@ -10,6 +10,28 @@
   --color-brand-ice: #F8FAFC;
   --color-brand-slate: #64748B;
   --color-brand-dark: #0F172A;
+  /* Lighter tint of the brand blue, for text and accents on dark surfaces. */
+  --color-brand-sky: #8FD0F2;
+
+  /*
+   * Drafting palette: cool white paper, true black text, the brand blue for
+   * wireframe lines and links, a deep blue for dark sections, and a marker
+   * yellow reserved for the hero reveal handle.
+   */
+  --color-paper: #F2F5F7;
+  --color-ink: #000000;
+  --color-graphite: #4B5661;
+  --color-deep: #0A3550;
+  --color-marker: #FFD84A;
+
+  --font-display: var(--font-bricolage), var(--font-hanken), ui-sans-serif, system-ui, sans-serif;
+
+  --text-hero: clamp(2.9rem, 8.4vw, 7.25rem);
+  --text-hero--line-height: 0.92;
+  --text-hero--letter-spacing: -0.035em;
+  --text-display: clamp(2.2rem, 4.8vw, 4rem);
+  --text-display--line-height: 1;
+  --text-display--letter-spacing: -0.03em;
 
   --animate-marquee: marquee 40s linear infinite;
 
@@ -29,6 +51,39 @@
     outline: 2px solid var(--color-brand-blue);
     outline-offset: 3px;
     border-radius: 0.5rem;
+  }
+}
+
+@layer components {
+  /* Headlines: Bricolage Grotesque, condensed and heavy. */
+  .font-display {
+    font-weight: 600;
+    font-stretch: 82%;
+    letter-spacing: -0.02em;
+  }
+
+  .btn {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-md px-6 py-3 text-[15px] font-semibold transition-colors duration-200 cursor-pointer;
+  }
+  .btn-ink {
+    @apply bg-ink text-white hover:bg-brand-blue;
+  }
+  .btn-paper {
+    @apply bg-white text-ink hover:bg-brand-sky;
+  }
+  .btn-line {
+    @apply border border-ink/25 text-ink hover:border-ink;
+  }
+  .btn-line-dark {
+    @apply border border-white/35 text-white hover:border-white;
+  }
+
+  /* Drafting-paper grid, used only inside the hero wireframe. */
+  .blueprint-grid {
+    background-image:
+      linear-gradient(to right, rgb(14 112 166 / 0.14) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(14 112 166 / 0.14) 1px, transparent 1px);
+    background-size: 4% 6.4%;
   }
 }
 

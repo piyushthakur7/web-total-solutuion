@@ -299,7 +299,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
 export const SERVICES_DATA: Record<string, import('./types').ServiceData> = {
   'landing-pages': {
     slug: 'landing-pages',
-    title: 'Landing & Informative Pages',
+    title: 'Landing Page Design & Development',
     subtitle: 'Single Pages Built to Turn Clicks Into Enquiries',
     heroImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop',
     content: {
@@ -339,7 +339,7 @@ export const SERVICES_DATA: Record<string, import('./types').ServiceData> = {
     slug: 'content-writing',
     title: 'Content Writing & SEO Copy',
     subtitle: 'Words That Rank on Google and Persuade Customers',
-    heroImage: 'https://images.unsplash.com/photo-1455390582262-044cdead27d8?q=80&w=2346&auto=format&fit=crop',
+    heroImage: '/images/stock/wireframe-sketch.jpg',
     content: {
       overview: 'A beautiful website with weak copy still loses the sale. We write content that does two jobs at once: it helps search engines understand what your business offers, and it convinces the person reading it that you are the right choice. Clear, credible, specific — written for the customer you actually want, not for a word count.',
       whyChooseUs: 'We research your industry and your competitors before writing a line, so the content speaks the language your customers use when they search. Everything is structured for readability, optimised around real search intent, and edited to reflect the way your business wants to be seen. You review and approve before anything goes live.',

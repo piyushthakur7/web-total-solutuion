@@ -16,7 +16,6 @@ interface FAQSectionProps {
 
 export default function FAQSection({
   faqs = HOME_FAQS,
-  eyebrow = 'Common Questions',
   heading = 'Frequently Asked Questions',
   intro = 'Straight answers on cost, timelines, SEO and support — so you can decide with full information.',
   background = 'white',
@@ -24,31 +23,32 @@ export default function FAQSection({
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className={`py-24 ${background === 'slate' ? 'bg-slate-50' : 'bg-white'}`}>
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center space-y-4 mb-14">
-          <span className="text-xs uppercase tracking-widest font-extrabold text-brand-blue">
-            {eyebrow}
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-            {heading}
-          </h2>
-          <p className="text-slate-600 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-            {intro}
-          </p>
+    <section className={`py-16 text-ink sm:py-24 ${background === 'slate' ? 'bg-paper' : 'bg-white'}`}>
+      <div className="mx-auto grid max-w-7xl gap-10 px-5 sm:px-6 lg:grid-cols-12 lg:gap-8 lg:px-8">
+        <div className="lg:col-span-4">
+          <div className="lg:sticky lg:top-32">
+            <h2 className="font-display text-display">{heading}</h2>
+            <p className="mt-5 max-w-sm text-base leading-relaxed text-graphite">{intro}</p>
+            <p className="mt-8 text-sm text-graphite">
+              Still have a question?{' '}
+              <Link
+                href="/contact"
+                className="font-semibold text-ink underline decoration-ink/25 underline-offset-4 hover:decoration-ink"
+              >
+                Ask us directly
+              </Link>
+              .
+            </p>
+          </div>
         </div>
 
-        <div className="space-y-3.5">
+        <div className="border-t border-ink/15 lg:col-span-8">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
               <div
                 key={faq.question}
-                className={`border rounded-2xl overflow-hidden transition-all duration-300 bg-white ${
-                  isOpen
-                    ? 'shadow-md border-brand-blue/30 ring-1 ring-brand-blue/10'
-                    : 'border-slate-200 hover:border-slate-300'
-                }`}
+                className="border-b border-ink/15"
               >
                 <h3>
                   <button
@@ -56,19 +56,17 @@ export default function FAQSection({
                     aria-expanded={isOpen}
                     aria-controls={`faq-panel-${index}`}
                     id={`faq-trigger-${index}`}
-                    className="w-full px-5 sm:px-6 py-5 text-left flex justify-between items-center gap-4 cursor-pointer"
+                    className="group flex w-full cursor-pointer items-center justify-between gap-6 py-6 text-left"
                     onClick={() => setOpenIndex(isOpen ? null : index)}
                   >
                     <span
-                      className={`font-bold text-base sm:text-lg leading-snug ${
-                        isOpen ? 'text-brand-blue' : 'text-slate-900'
-                      }`}
+                      className="font-display text-2xl leading-snug decoration-2 underline-offset-4 group-hover:underline sm:text-[1.7rem]"
                     >
                       {faq.question}
                     </span>
                     <ChevronDown
-                      className={`w-5 h-5 text-slate-400 transition-transform duration-300 shrink-0 ${
-                        isOpen ? 'rotate-180 text-brand-blue' : ''
+                      className={`size-5 shrink-0 transition-transform duration-300 ${
+                        isOpen ? 'rotate-180 text-brand-blue' : 'text-ink/40'
                       }`}
                     />
                   </button>
@@ -81,7 +79,7 @@ export default function FAQSection({
                     isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
                   }`}
                 >
-                  <p className="px-5 sm:px-6 pb-5 text-slate-600 text-sm leading-relaxed">
+                  <p className="max-w-2xl pb-7 text-base leading-relaxed text-graphite">
                     {faq.answer}
                     {faq.link && (
                       <>
@@ -97,14 +95,6 @@ export default function FAQSection({
             );
           })}
         </div>
-
-        <p className="mt-10 text-center text-sm text-slate-600">
-          Still have a question?{' '}
-          <Link href="/contact" className="font-bold text-brand-blue hover:underline">
-            Ask us directly in a free consultation
-          </Link>
-          .
-        </p>
       </div>
     </section>
   );

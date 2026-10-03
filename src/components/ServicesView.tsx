@@ -296,9 +296,9 @@ export default function ServicesView() {
             {/* Asset right */}
             <div className="flex-1 rounded-2xl overflow-hidden border border-white/5 bg-slate-800/50 p-2 shadow-2xl relative self-center lg:self-auto max-w-xl lg:max-w-none w-full">
               <Image
-                src="https://images.unsplash.com/photo-1432888117426-1d6e1c668045?auto=format&fit=crop&q=80&w=800"
-                alt="High Converting Promo Dashboard Mockup"
-                className="w-full h-full object-cover rounded-xl max-h-[250px] lg:max-h-none"
+                src="/work/wts-crm/dashboard.webp"
+                alt="WTS CRM dashboard with open leads, follow-ups due, tasks and pipeline value"
+                className="w-full h-full object-cover object-top rounded-xl max-h-[250px] lg:max-h-none"
                 width={800}
                 height={250}
                 referrerPolicy="no-referrer"

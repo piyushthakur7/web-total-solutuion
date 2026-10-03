@@ -2,257 +2,216 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
-import { Menu, X, MessageSquare, ArrowRight, ChevronDown } from 'lucide-react';
+import { usePathname } from 'next/navigation';
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import Logo from './Logo';
+import WhatsAppIcon from './WhatsAppIcon';
+import { WHATSAPP_URL } from '../siteContent';
 
-const WhatsAppIcon = ({ className }: { className?: string }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    className={className}
-    fill="currentColor"
-  >
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.885-9.885 9.885m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
-  </svg>
-);
-
+/** Contact is the header button, so it is not repeated as a nav link. */
 const navItems = [
-  { label: 'Home', path: '/' },
-  { label: 'Services', path: '/services' },
   { label: 'Work', path: '/work' },
-  { label: 'Products', path: '/projects' },
+  { label: 'Services', path: '/services' },
   { label: 'Pricing', path: '/pricing' },
+  { label: 'Products', path: '/projects' },
   { label: 'Blog', path: '/blog' },
-  { label: 'Contact', path: '/contact' },
 ];
 
-/** Subtext describes the business outcome — never a price. */
+/**
+ * Four core offers for a startup audience. The other service pages stay
+ * reachable from /services and the footer.
+ */
 const servicesDropdown = [
-  { label: 'Business Website Development', subtext: 'Win trust & generate leads', path: '/business-website-development' },
-  { label: 'Website Redesign', subtext: 'Modernise an existing site', path: '/website-redesign' },
-  { label: 'E-Commerce Development', subtext: 'Sell online with confidence', path: '/ecommerce-development' },
-  { label: 'Landing & Informative Pages', subtext: 'Built for ad campaigns', path: '/services/landing-pages' },
-  { label: 'Content Writing & SEO Copy', subtext: 'Rank higher, convert better', path: '/services/content-writing' },
-  { label: 'Digital Marketing', subtext: 'Bring qualified traffic', path: '/services/digital-marketing' },
+  { label: 'Startup Websites', subtext: 'From seed-stage launch to growth-stage presence', path: '/pricing' },
+  { label: 'Landing Pages', subtext: 'High-converting pages for products and campaigns', path: '/services/landing-pages' },
+  { label: 'Website Redesign', subtext: 'Upgrade positioning, UX and conversion', path: '/website-redesign' },
+  { label: 'Product UI/UX', subtext: 'Interfaces for SaaS and digital products', path: '/services/saas-development' },
 ];
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const pathname = usePathname();
-  const router = useRouter();
+  const reduceMotion = useReducedMotion();
+
+  const isActive = (path: string) => pathname === path || pathname.startsWith(`${path}/`);
 
   return (
-    <header className={`sticky top-0 z-50 transition-all duration-300 ${isOpen ? 'bg-white/70 backdrop-blur-xl border-b border-white/40 shadow-sm' : 'bg-white/80 backdrop-blur-md border-b border-slate-100'}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          {/* Logo */}
-          <Link 
+    <header className="sticky top-0 z-50 border-b border-ink/10 bg-paper/85 backdrop-blur-md">
+      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+        <div className="flex h-18 items-center justify-between">
+          <Link
             href="/"
-            className="flex items-center cursor-pointer group"
+            className="flex items-center"
             onClick={() => setIsOpen(false)}
-            aria-label="Home"
+            aria-label="Web Total Solution — home"
           >
             <Logo size="md" theme="light" />
           </Link>
 
-          {/* Desktop Nav */}
-          {/* Tighter gaps at md keep seven items on one row; full spacing from lg. */}
-          <nav className="hidden md:flex items-center space-x-5 lg:space-x-8">
+          {/* Desktop nav */}
+          <nav className="hidden items-center gap-7 md:flex lg:gap-9" aria-label="Main">
             {navItems.map((item) => {
-              const isActive = pathname === item.path;
-              if (item.label === 'Services') {
-                return (
-                  <div key={item.path} className="relative group py-2">
-                    <Link
-                      href={item.path}
-                      className={`relative text-sm font-medium tracking-wide transition-colors duration-200 cursor-pointer flex items-center space-x-1 ${
-                        isActive 
-                          ? 'text-brand-blue font-semibold' 
-                          : 'text-slate-600 hover:text-slate-900'
-                      }`}
-                    >
-                      <span>{item.label}</span>
-                      <ChevronDown className="w-3.5 h-3.5 opacity-70 group-hover:rotate-180 group-focus-within:rotate-180 transition-transform duration-200" />
-                      {isActive && (
-                        <div 
-                          className="absolute -bottom-2 left-0 right-0 h-0.5 bg-brand-blue rounded-full"
-                        />
-                      )}
-                    </Link>
+              const active = isActive(item.path);
+              const linkClass = `text-sm tracking-tight transition-colors duration-200 ${
+                active ? 'text-ink' : 'text-graphite hover:text-ink'
+              }`;
 
-                    {/* Desktop Dropdown */}
-                    <div className="absolute top-full -left-4 w-72 bg-white/90 backdrop-blur-xl rounded-2xl shadow-xl border border-white/60 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 group-focus-within:translate-y-0 z-50 pt-2">
-                      <div className="py-2 bg-white/80 backdrop-blur-xl rounded-2xl overflow-hidden">
-                        {servicesDropdown.map((service, idx) => (
-                          <Link 
-                            key={idx} 
-                            href={service.path}
-                            className="block px-5 py-3 hover:bg-slate-50/80 transition-colors group/item"
-                          >
-                            <span className="block text-sm font-bold text-slate-800 group-hover/item:text-brand-blue transition-colors">{service.label}</span>
-                            <span className="block text-xs font-medium text-slate-500 mt-0.5">{service.subtext}</span>
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
+              if (item.label !== 'Services') {
+                return (
+                  <Link key={item.path} href={item.path} className={`relative py-2 ${linkClass}`}>
+                    {item.label}
+                    {active && <span className="absolute inset-x-0 -bottom-0.5 h-px bg-ink" />}
+                  </Link>
                 );
               }
 
               return (
-                <Link
-                  key={item.path}
-                  href={item.path}
-                  className={`relative py-2 text-sm font-medium tracking-wide transition-colors duration-200 cursor-pointer ${
-                    isActive 
-                      ? 'text-brand-blue font-semibold' 
-                      : 'text-slate-600 hover:text-slate-900'
-                  }`}
-                >
-                  {item.label}
-                  {isActive && (
-                    <div 
-                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-brand-blue rounded-full"
-                    />
-                  )}
-                </Link>
+                <div key={item.path} className="group relative py-2">
+                  <Link href={item.path} className={`flex items-center gap-1 ${linkClass}`}>
+                    <span>{item.label}</span>
+                    <ChevronDown className="size-3.5 opacity-60 transition-transform duration-200 group-focus-within:rotate-180 group-hover:rotate-180" />
+                  </Link>
+
+                  <div className="invisible absolute -left-5 top-full z-50 w-80 translate-y-2 pt-3 opacity-0 transition-all duration-200 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+                    <div className="overflow-hidden rounded-lg border border-ink/20 bg-white p-2">
+                      {servicesDropdown.map((service) => (
+                        <Link
+                          key={service.path}
+                          href={service.path}
+                          className="block rounded-md px-4 py-3 transition-colors hover:bg-paper"
+                        >
+                          <span className="block text-sm font-semibold text-ink">{service.label}</span>
+                          <span className="mt-0.5 block text-xs text-graphite">{service.subtext}</span>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               );
             })}
           </nav>
 
-          {/* Desktop Right CTA */}
-          <div className="hidden md:flex items-center space-x-4">
+          {/* Desktop actions */}
+          <div className="hidden items-center gap-2 md:flex">
             <a
-              href="https://wa.me/916291519364"
+              href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center space-x-1 p-3 rounded-xl bg-slate-50 text-emerald-600 hover:text-white hover:bg-emerald-500 transition-all cursor-pointer"
-              title="WhatsApp Consultation"
+              className="flex size-11 items-center justify-center rounded-md border border-ink/25 text-ink transition-colors hover:border-ink"
+              title="WhatsApp"
               aria-label="Contact via WhatsApp"
             >
-              <WhatsAppIcon className="w-6 h-6" />
+              <WhatsAppIcon className="size-4.5" />
             </a>
-            <Link
-              href="/contact"
-              className="bg-brand-blue hover:bg-brand-blue/90 text-white px-5 py-2.5 rounded-xl text-sm font-semibold tracking-wide shadow-sm hover:shadow-md transition-all flex items-center space-x-2 cursor-pointer"
-            >
-              <span>Free Consultation</span>
-              <ArrowRight className="w-4 h-4" />
+            <Link href="/contact" className="btn btn-ink min-h-11 px-5 py-2.5">
+              Book a call
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="flex md:hidden items-center space-x-3">
+          {/* Mobile actions */}
+          <div className="flex items-center gap-2 md:hidden">
             <a
-              href="https://wa.me/916291519364"
+              href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-xl bg-slate-50/80 backdrop-blur-md border border-white/60 text-emerald-600 hover:text-white hover:bg-emerald-500 transition-all cursor-pointer shadow-sm"
+              className="flex size-11 items-center justify-center rounded-md border border-ink/25 text-ink"
               aria-label="Contact via WhatsApp"
             >
-              <WhatsAppIcon className="w-6 h-6" />
+              <WhatsAppIcon className="size-5" />
             </a>
             <button
+              type="button"
               onClick={() => setIsOpen(!isOpen)}
               aria-expanded={isOpen}
               aria-controls="mobile-nav"
-              className="p-3 rounded-xl text-slate-700 hover:text-brand-blue bg-white/60 backdrop-blur-md border border-white/80 shadow-sm transition-all active:scale-95"
               aria-label="Toggle menu"
+              className="flex size-11 items-center justify-center rounded-md bg-ink text-white"
             >
-              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isOpen ? <X className="size-5" /> : <Menu className="size-5" />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Drawer (Glassmorphism design) */}
-      <div
-        id="mobile-nav"
-        inert={!isOpen}
-        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          isOpen ? 'max-h-[800px] opacity-100 py-2' : 'max-h-0 opacity-0 py-0'
-        }`}
-      >
-        <div className="px-4 pb-4">
-          <div className="glass-nav-container p-3.5 rounded-2xl space-y-2">
-            {navItems.map((item) => {
-              const isActive = pathname === item.path;
-
-              if (item.label === 'Services') {
-                return (
-                  <div key={item.path} className="space-y-1.5">
-                    <button
-                      type="button"
-                      aria-expanded={mobileServicesOpen}
-                      className={`w-full text-left px-4 py-3 rounded-xl text-base font-semibold tracking-wide transition-all flex items-center justify-between cursor-pointer ${
-                        isActive || mobileServicesOpen
-                          ? 'glass-nav-item-active text-brand-blue font-bold'
-                          : 'glass-nav-item text-slate-700 hover:text-brand-blue'
-                      }`}
-                      onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                    >
-                      <span>{item.label}</span>
-                      <ChevronDown
-                        className={`w-4 h-4 transition-transform duration-200 ${
-                          mobileServicesOpen ? 'rotate-180 text-brand-blue' : 'text-slate-400'
+      {/* Mobile menu */}
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            id="mobile-nav"
+            className="overflow-hidden border-t border-ink/10 md:hidden"
+            initial={reduceMotion ? false : { height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={reduceMotion ? undefined : { height: 0, opacity: 0 }}
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <nav className="max-h-[calc(100dvh-4.5rem)] overflow-y-auto px-5 pb-8 pt-2" aria-label="Mobile">
+              <ul>
+                {navItems.map((item) => (
+                  <li key={item.path} className="border-b border-ink/10">
+                    {item.label === 'Services' ? (
+                      <>
+                        <button
+                          type="button"
+                          aria-expanded={mobileServicesOpen}
+                          onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                          className="flex w-full items-center justify-between py-4 text-left font-display text-3xl text-ink"
+                        >
+                          <span>{item.label}</span>
+                          <ChevronDown
+                            className={`size-5 text-ink/40 transition-transform duration-200 ${
+                              mobileServicesOpen ? 'rotate-180' : ''
+                            }`}
+                          />
+                        </button>
+                        {mobileServicesOpen && (
+                          <ul className="pb-4">
+                            <li>
+                              <Link
+                                href={item.path}
+                                onClick={() => setIsOpen(false)}
+                                className="block py-2.5 text-base font-semibold text-ink"
+                              >
+                                All services
+                              </Link>
+                            </li>
+                            {servicesDropdown.map((service) => (
+                              <li key={service.path}>
+                                <Link
+                                  href={service.path}
+                                  onClick={() => setIsOpen(false)}
+                                  className="block py-2.5 text-base text-graphite"
+                                >
+                                  {service.label}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </>
+                    ) : (
+                      <Link
+                        href={item.path}
+                        onClick={() => setIsOpen(false)}
+                        className={`block py-4 font-display text-3xl ${
+                          isActive(item.path) ? 'text-brand-blue' : 'text-ink'
                         }`}
-                      />
-                    </button>
-
-                    {/* Sub-menu accordion */}
-                    {mobileServicesOpen && (
-                      <div className="pl-2 pr-1 py-2 space-y-1.5 rounded-xl bg-white/40 border border-white/60 backdrop-blur-md">
-                        {servicesDropdown.map((service, idx) => (
-                          <Link
-                            key={idx}
-                            href={service.path}
-                            onClick={() => setIsOpen(false)}
-                            className="block px-3.5 py-2.5 rounded-lg hover:bg-white/70 transition-colors"
-                          >
-                            <span className="block text-sm font-bold text-slate-800">{service.label}</span>
-                            <span className="block text-xs font-medium text-brand-blue/80 mt-0.5">{service.subtext}</span>
-                          </Link>
-                        ))}
-                      </div>
+                      >
+                        {item.label}
+                      </Link>
                     )}
-                  </div>
-                );
-              }
+                  </li>
+                ))}
+              </ul>
 
-              return (
-                <Link
-                  key={item.path}
-                  href={item.path}
-                  onClick={() => setIsOpen(false)}
-                  className={`w-full text-left px-4 py-3 rounded-xl text-base font-semibold tracking-wide transition-all flex items-center justify-between ${
-                    isActive
-                      ? 'glass-nav-item-active text-brand-blue font-bold'
-                      : 'glass-nav-item text-slate-700 hover:text-brand-blue'
-                  }`}
-                >
-                  <span>{item.label}</span>
-                  {isActive && (
-                    <span className="w-2 h-2 rounded-full bg-brand-blue shadow-[0_0_8px_#0E70A6]" />
-                  )}
-                </Link>
-              );
-            })}
-
-            <div className="pt-3 border-t border-white/60 px-1 mt-2">
-              <Link
-                href="/contact"
-                onClick={() => setIsOpen(false)}
-                className="w-full bg-gradient-to-r from-brand-blue to-sky-600 hover:from-brand-blue/90 hover:to-sky-600/90 text-white py-3 px-4 rounded-xl text-center font-bold tracking-wide shadow-lg shadow-brand-blue/20 transition-all flex items-center justify-center space-x-2 cursor-pointer"
-              >
-                <span>Get Free Consultation</span>
-                <ArrowRight className="w-4 h-4" />
+              <Link href="/contact" onClick={() => setIsOpen(false)} className="btn btn-ink mt-6 w-full">
+                Book a call
               </Link>
-            </div>
-          </div>
-        </div>
-      </div>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

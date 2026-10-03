@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Hanken_Grotesk, JetBrains_Mono } from 'next/font/google';
+import { Bricolage_Grotesque, Hanken_Grotesk, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import Header from '../src/components/Header';
 import Footer from '../src/components/Footer';
@@ -9,6 +9,14 @@ const hanken = Hanken_Grotesk({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-hanken',
+});
+
+// Display face for headlines; body stays on Hanken Grotesk.
+const bricolage = Bricolage_Grotesque({
+  subsets: ['latin'],
+  axes: ['wdth'],
+  display: 'swap',
+  variable: '--font-bricolage',
 });
 
 const jetbrains = JetBrains_Mono({
@@ -105,7 +113,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-IN">
+    <html lang="en-IN" className={`${hanken.variable} ${bricolage.variable} ${jetbrains.variable}`}>
       <head>
         <script
           type="application/ld+json"
@@ -267,7 +275,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${hanken.variable} ${jetbrains.variable} min-h-screen flex flex-col bg-white`}>
+      <body className="min-h-screen flex flex-col bg-white">
           <Header />
           <main className="flex-grow">
             {children}

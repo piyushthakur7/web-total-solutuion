@@ -233,8 +233,84 @@ export const HOME_FAQS: { question: string; answer: string; link?: { label: stri
 ];
 
 /**
- * Starting-price packages. Shown in full on /pricing and summarised on the
- * local SEO landing pages, so the two can never quote different figures.
+ * Startup-facing packages shown on /pricing. Priced in USD and sold on
+ * strategy, design and engineering rather than page count.
+ */
+export const STARTUP_PACKAGES: {
+  name: string;
+  audience: string;
+  /** Starting price in USD. */
+  from: number;
+  /** Short qualifier shown beside the price. */
+  priceNote: string;
+  highlight: boolean;
+  features: string[];
+  cta: string;
+  /** LeadForm project type pre-selected on /contact. */
+  projectType: string;
+}[] = [
+  {
+    name: 'Landing Page Sprint',
+    audience: 'For early-stage startups launching or validating an offer.',
+    from: 1200,
+    priceNote: 'one-time project',
+    highlight: false,
+    features: [
+      'Conversion strategy & research',
+      'UX wireframing',
+      'Custom UI design',
+      'Next.js development',
+      'Mobile responsive',
+      'Basic SEO',
+      'Analytics setup',
+      '2 revision rounds',
+    ],
+    cta: 'Book a Discovery Call',
+    projectType: 'Landing Page',
+  },
+  {
+    name: 'Startup Growth Site',
+    audience: 'For seed and funded startups that need a serious marketing site.',
+    from: 2500,
+    priceNote: 'one-time project',
+    highlight: true,
+    features: [
+      'Everything in Landing Page Sprint',
+      'Multi-page marketing website',
+      'Advanced UI/UX design',
+      'Product & feature pages',
+      'CMS / blog integration',
+      'Advanced SEO foundation',
+      'Analytics + conversion tracking',
+      '3 revision rounds',
+    ],
+    cta: 'Book a Strategy Call',
+    projectType: 'Business Website',
+  },
+  {
+    name: 'Custom Product Website',
+    audience: 'For funded startups with complex product requirements.',
+    from: 5000,
+    priceNote: 'or custom quote',
+    highlight: false,
+    features: [
+      'Full UX strategy',
+      'Custom information architecture',
+      'Advanced animations & interactions',
+      'CMS & dynamic content',
+      'API & third-party integrations',
+      'Custom dashboards & modules',
+      'Performance engineering',
+      'Dedicated post-launch support',
+    ],
+    cta: 'Discuss Your Project',
+    projectType: 'SaaS / Web Application',
+  },
+];
+
+/**
+ * INR starting-price packages for domestic projects, summarised on the local
+ * SEO landing pages. /pricing uses STARTUP_PACKAGES instead.
  */
 export const PRICING_PACKAGES: {
   name: string;

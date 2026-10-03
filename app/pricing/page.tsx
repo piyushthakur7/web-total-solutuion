@@ -3,9 +3,9 @@ import PricingView from '../../src/components/PricingView';
 import JsonLd, { breadcrumbSchema } from '../../src/components/JsonLd';
 
 export const metadata: Metadata = {
-  title: 'Website Development Pricing & Custom Quotes',
+  title: 'Startup Website Pricing | Landing Pages & Marketing Sites',
   description:
-    'Transparent, project-based pricing for professional business websites, redesigns and online stores. Every quote is fixed in writing after a free consultation.',
+    'Strategy, UI/UX and Next.js development for startups. Landing page sprints from $1,200, startup marketing sites from $2,500, custom product websites from $5,000.',
   alternates: {
     canonical: 'https://www.webtotalsolution.com/pricing',
   },
@@ -14,16 +14,16 @@ export const metadata: Metadata = {
     locale: 'en_IN',
     url: 'https://www.webtotalsolution.com/pricing',
     siteName: 'Web Total Solution',
-    title: 'Website Development Pricing | Web Total Solution',
+    title: 'Startup Website Pricing | Web Total Solution',
     description:
-      'Project-based pricing scoped to your business, with the full cost confirmed in writing before work begins.',
+      'Strategy, UI/UX and high-performance Next.js development for startups — from first wireframe to production launch.',
     images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Web Total Solution pricing' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Website Development Pricing | Web Total Solution',
+    title: 'Startup Website Pricing | Web Total Solution',
     description:
-      'Project-based pricing scoped to your business, with the full cost confirmed in writing before work begins.',
+      'Strategy, UI/UX and high-performance Next.js development for startups — from first wireframe to production launch.',
     images: ['/og-image.png'],
   },
 };

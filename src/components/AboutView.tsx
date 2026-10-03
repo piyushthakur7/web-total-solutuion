@@ -1,7 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, MapPin, ShieldCheck, Sparkles } from 'lucide-react';
 import { CLIENT_COMMITMENTS, OFFICES } from '../siteContent';
+import { STOCK_IMAGES } from '../stockImages';
 import FounderSection from './FounderSection';
 import ProcessSection from './ProcessSection';
 import FinalCTA from './FinalCTA';
@@ -27,6 +29,40 @@ export default function AboutView() {
           SEO-optimised business websites that help companies attract customers, build trust and
           grow online.
         </p>
+      </section>
+
+      {/* Design, planning and engineering — illustrative photography */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-4">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          <div className="relative col-span-2 aspect-[16/10] rounded-3xl overflow-hidden bg-slate-100">
+            <Image
+              src={STOCK_IMAGES.designDesk.src}
+              alt={STOCK_IMAGES.designDesk.alt}
+              fill
+              priority
+              sizes="(min-width: 1024px) 608px, 100vw"
+              className="object-cover"
+            />
+          </div>
+          <div className="relative aspect-[4/5] lg:aspect-auto rounded-3xl overflow-hidden bg-slate-100">
+            <Image
+              src={STOCK_IMAGES.wireframeSketch.src}
+              alt={STOCK_IMAGES.wireframeSketch.alt}
+              fill
+              sizes="(min-width: 1024px) 292px, 50vw"
+              className="object-cover"
+            />
+          </div>
+          <div className="relative aspect-[4/5] lg:aspect-auto rounded-3xl overflow-hidden bg-slate-100">
+            <Image
+              src={STOCK_IMAGES.codeLaptop.src}
+              alt={STOCK_IMAGES.codeLaptop.alt}
+              fill
+              sizes="(min-width: 1024px) 292px, 50vw"
+              className="object-cover"
+            />
+          </div>
+        </div>
       </section>
 
       {/* Founder */}

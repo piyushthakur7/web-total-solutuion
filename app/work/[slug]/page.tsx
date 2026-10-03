@@ -27,7 +27,7 @@ export async function generateMetadata({
   // Use the project screenshot where one exists; otherwise the site default.
   const image =
     study.visual.type === 'screenshot'
-      ? { url: study.visual.src, width: 1280, height: 800, alt: study.visual.alt }
+      ? { url: study.visual.src, width: 2880, height: 1800, alt: study.visual.alt }
       : { url: '/og-image.png', width: 1200, height: 630, alt: `${study.name} case study` };
 
   return {

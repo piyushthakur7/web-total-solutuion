@@ -4,8 +4,9 @@ import { WorkGalleryImage } from '../../work';
 
 /**
  * Key screens. `full` images span the page, `half` and `mobile` images sit in
- * a two- or three-up grid on desktop, and everything stacks on mobile. Rendered
- * only when a case study has real screenshots in `gallery`.
+ * a two-up grid on desktop; on mobile, wide images stack and phone screens stay
+ * side by side. Rendered only when a case study has real screenshots in
+ * `gallery`.
  */
 export default function CaseStudyGallery({ images }: { images: WorkGalleryImage[] }) {
   return (
@@ -19,21 +20,23 @@ export default function CaseStudyGallery({ images }: { images: WorkGalleryImage[
         </h2>
       </div>
 
-      <div className="mt-12 sm:mt-16 grid grid-cols-1 md:grid-cols-6 gap-6 sm:gap-8">
+      <div className="mt-12 sm:mt-16 grid grid-cols-2 md:grid-cols-6 gap-x-4 gap-y-8 sm:gap-8">
         {images.map((image) => (
           <figure
             key={image.src}
             className={`reveal ${
               image.layout === 'full'
-                ? 'md:col-span-6'
+                ? 'col-span-2 md:col-span-6'
                 : image.layout === 'half'
-                  ? 'md:col-span-3'
-                  : 'md:col-span-2'
+                  ? 'col-span-2 md:col-span-3'
+                  : 'col-span-1 md:col-span-3'
             }`}
           >
             <div
-              className={`relative overflow-hidden rounded-2xl sm:rounded-3xl border border-slate-200 bg-slate-100 ${
-                image.layout === 'mobile' ? 'aspect-[9/19] max-w-xs mx-auto' : 'aspect-[16/10]'
+              className={`relative overflow-hidden bg-slate-100 ${
+                image.layout === 'mobile'
+                  ? 'aspect-[390/844] max-w-[300px] mx-auto rounded-[1.75rem] sm:rounded-[2.5rem] border-4 sm:border-8 border-slate-900 shadow-[0_30px_80px_-40px_rgba(15,23,42,0.5)]'
+                  : 'aspect-[16/10] rounded-2xl sm:rounded-3xl border border-slate-200 shadow-[0_30px_80px_-40px_rgba(15,23,42,0.35)]'
               }`}
             >
               <Image
@@ -45,13 +48,13 @@ export default function CaseStudyGallery({ images }: { images: WorkGalleryImage[
                     ? '(min-width: 1280px) 1216px, 100vw'
                     : image.layout === 'half'
                       ? '(min-width: 768px) 50vw, 100vw'
-                      : '(min-width: 768px) 33vw, 320px'
+                      : '(min-width: 640px) 300px, 45vw'
                 }
                 className="object-cover object-top"
               />
             </div>
             {image.caption && (
-              <figcaption className="mt-3 text-sm text-slate-500">{image.caption}</figcaption>
+              <figcaption className={`mt-4 text-sm text-slate-500 ${image.layout === 'mobile' ? 'text-center' : ''}`}>{image.caption}</figcaption>
             )}
           </figure>
         ))}

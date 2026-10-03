@@ -1,10 +1,12 @@
 import React from 'react';
+import Image from 'next/image';
 import {
   CheckCircle2, Clock, DollarSign, FileText, KeyRound, MessageSquare, Sparkles,
 } from 'lucide-react';
 import { BOOKING_URL, EMAIL } from '../siteContent';
 import { CASE_STUDIES } from '../caseStudies';
 import { LAW_FIRM_PAGE } from '../lawFirmPage';
+import { STOCK_IMAGES } from '../stockImages';
 import CaseStudy from './CaseStudy';
 import FounderSection from './FounderSection';
 import ProcessSection from './ProcessSection';
@@ -128,6 +130,24 @@ export default function InternationalView() {
             <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
               {page.problems.intro}
             </p>
+          </div>
+
+          {/* Illustrative photography */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-7 mb-7">
+            {[STOCK_IMAGES.lawBooks, STOCK_IMAGES.meetingRoom].map((image) => (
+              <div
+                key={image.src}
+                className="relative aspect-[16/9] rounded-3xl overflow-hidden bg-slate-200"
+              >
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                  className="object-cover"
+                />
+              </div>
+            ))}
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-7">

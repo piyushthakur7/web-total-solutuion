@@ -13,7 +13,7 @@ import { WTS_CRM } from './projects';
 
 export type WorkVisual =
   | { type: 'screenshot'; src: string; alt: string }
-  /** Rendered from WTS_CRM.workflow — used until real product screenshots exist. */
+  /** Rendered from WTS_CRM.workflow — fallback for a study with no screenshots. */
   | { type: 'workflow' };
 
 export interface WorkGalleryImage {
@@ -77,8 +77,8 @@ export const WORK_CASE_STUDIES: WorkCaseStudy[] = [
       'A marketplace website for the ceramic industry, built around search: buyers look for polishing lines, kilns and presses in an inventory of verified second-hand machinery.',
     visual: {
       type: 'screenshot',
-      src: '/portfolio/mechverses.webp',
-      alt: 'Mechverses website home page',
+      src: '/work/mechverses/home.webp',
+      alt: 'Mechverses home page with machinery search',
     },
     websiteUrl: 'https://www.mechverses.in',
     websiteLabel: 'mechverses.in',
@@ -89,6 +89,38 @@ export const WORK_CASE_STUDIES: WorkCaseStudy[] = [
     overview: [
       'Mechverses is a marketplace for the ceramic industry, listing verified second-hand machinery that is tested, certified and delivered.',
       'We designed and built its website. The home page leads with a single search field for equipment such as polishing lines, kilns and presses, with the company, its expertise and its products one step away in the navigation.',
+    ],
+    gallery: [
+      {
+        src: '/work/mechverses/inventory.webp',
+        alt: 'Mechverses inventory page listing ceramic machinery',
+        caption: 'Inventory — the machinery listing',
+        layout: 'full',
+      },
+      {
+        src: '/work/mechverses/expertise.webp',
+        alt: 'Mechverses expertise page',
+        caption: 'Expertise',
+        layout: 'half',
+      },
+      {
+        src: '/work/mechverses/about.webp',
+        alt: 'Mechverses about page',
+        caption: 'About',
+        layout: 'half',
+      },
+      {
+        src: '/work/mechverses/mobile-home.webp',
+        alt: 'Mechverses home page on mobile',
+        caption: 'Home on mobile',
+        layout: 'mobile',
+      },
+      {
+        src: '/work/mechverses/mobile-inventory.webp',
+        alt: 'Mechverses inventory page on mobile',
+        caption: 'Inventory on mobile',
+        layout: 'mobile',
+      },
     ],
     engineering: [
       'The same team that designed the interface wrote the production code, so the design that was approved is the design that shipped.',
@@ -105,8 +137,6 @@ export const WORK_CASE_STUDIES: WorkCaseStudy[] = [
       '[ADD OUR APPROACH — discovery, content hierarchy, visual direction]',
       '[ADD UX / INFORMATION ARCHITECTURE DECISIONS]',
       '[CONFIRM TECHNOLOGY — list is taken from the old portfolio record, whose description did not match the live site]',
-      '[REPLACE HERO SCREENSHOT — the current capture has a YouTube bot-check overlay on the left]',
-      '[ADD KEY SCREENS — desktop pages, mobile screens, UI details; only the home page screenshot exists]',
       '[ADD MEASURABLE RESULT]',
       '[ADD CLIENT TESTIMONIAL]',
     ],
@@ -126,8 +156,8 @@ export const WORK_CASE_STUDIES: WorkCaseStudy[] = [
       'A website for a pharmaceutical company, structured around its products, its quality assurance and a direct route to enquiry.',
     visual: {
       type: 'screenshot',
-      src: '/portfolio/medaralabs.webp',
-      alt: 'Medara Labs website home page',
+      src: '/work/medara-labs/home.webp',
+      alt: 'Medara Labs home page',
     },
     websiteUrl: 'https://www.medaralabs.com/',
     websiteLabel: 'medaralabs.com',
@@ -138,6 +168,38 @@ export const WORK_CASE_STUDIES: WorkCaseStudy[] = [
     overview: [
       'Medara Labs is a pharmaceutical company focused on quality manufacturing, ethical promotion and affordable healthcare.',
       'We designed and built its website. The structure is deliberately short — company, products, quality and contact — with an enquiry button held in the header and the product portfolio and quality assurance offered as the two first actions.',
+    ],
+    gallery: [
+      {
+        src: '/work/medara-labs/products.webp',
+        alt: 'Medara Labs product portfolio page with category filters',
+        caption: 'Product portfolio with category filters',
+        layout: 'full',
+      },
+      {
+        src: '/work/medara-labs/quality.webp',
+        alt: 'Medara Labs quality and compliance page',
+        caption: 'Quality & compliance',
+        layout: 'half',
+      },
+      {
+        src: '/work/medara-labs/home-intro.webp',
+        alt: 'Medara Labs home page company introduction section',
+        caption: 'Company introduction on the home page',
+        layout: 'half',
+      },
+      {
+        src: '/work/medara-labs/mobile-home.webp',
+        alt: 'Medara Labs home page on mobile',
+        caption: 'Home on mobile',
+        layout: 'mobile',
+      },
+      {
+        src: '/work/medara-labs/mobile-products.webp',
+        alt: 'Medara Labs product portfolio on mobile',
+        caption: 'Product portfolio on mobile',
+        layout: 'mobile',
+      },
     ],
     engineering: [
       'The same team that designed the interface wrote the production code, so the design that was approved is the design that shipped.',
@@ -154,7 +216,6 @@ export const WORK_CASE_STUDIES: WorkCaseStudy[] = [
       '[ADD OUR APPROACH — discovery, content hierarchy, visual direction]',
       '[ADD UX / INFORMATION ARCHITECTURE DECISIONS]',
       '[CONFIRM TECHNOLOGY — list is taken from the old portfolio record, whose description did not match the live site]',
-      '[ADD KEY SCREENS — desktop pages, mobile screens, UI details; only the home page screenshot exists]',
       '[ADD MEASURABLE RESULT]',
       '[ADD CLIENT TESTIMONIAL]',
     ],
@@ -174,8 +235,8 @@ export const WORK_CASE_STUDIES: WorkCaseStudy[] = [
       'A website for Frozen Apple, a luxury wedding design company, led by full-screen photography and film with a direct route to booking a consultation.',
     visual: {
       type: 'screenshot',
-      src: '/portfolio/fawdubai.webp',
-      alt: 'FAW Dubai (Frozen Apple) website home page',
+      src: '/work/faw-dubai/home.webp',
+      alt: 'Frozen Apple Weddings home page',
     },
     websiteUrl: 'https://www.fawdubai.com/',
     websiteLabel: 'fawdubai.com',
@@ -186,6 +247,38 @@ export const WORK_CASE_STUDIES: WorkCaseStudy[] = [
     overview: [
       'FAW Dubai is the website of Frozen Apple, a wedding design company presenting its work to a luxury audience in Dubai.',
       'We designed and built the site. Photography and film carry the home page, with services, case studies and a dedicated Dubai section in the navigation, and consultation booking available from both the header and the opening screen.',
+    ],
+    gallery: [
+      {
+        src: '/work/faw-dubai/case-study.webp',
+        alt: 'Frozen Apple Weddings featured case study page',
+        caption: 'Featured wedding case study',
+        layout: 'full',
+      },
+      {
+        src: '/work/faw-dubai/services.webp',
+        alt: 'Frozen Apple Weddings services page',
+        caption: 'Services',
+        layout: 'half',
+      },
+      {
+        src: '/work/faw-dubai/dubai.webp',
+        alt: 'Frozen Apple Weddings Dubai page',
+        caption: 'Dubai',
+        layout: 'half',
+      },
+      {
+        src: '/work/faw-dubai/mobile-home.webp',
+        alt: 'Frozen Apple Weddings home page on mobile',
+        caption: 'Home on mobile',
+        layout: 'mobile',
+      },
+      {
+        src: '/work/faw-dubai/mobile-services.webp',
+        alt: 'Frozen Apple Weddings services page on mobile',
+        caption: 'Services on mobile',
+        layout: 'mobile',
+      },
     ],
     engineering: [
       'The same team that designed the interface wrote the production code, so the design that was approved is the design that shipped.',
@@ -202,8 +295,6 @@ export const WORK_CASE_STUDIES: WorkCaseStudy[] = [
       '[ADD OUR APPROACH — discovery, content hierarchy, visual direction]',
       '[ADD UX / INFORMATION ARCHITECTURE DECISIONS]',
       '[CONFIRM TECHNOLOGY — list is taken from the old portfolio record, whose description did not match the live site]',
-      '[REPLACE HERO SCREENSHOT — the current capture was taken mid-animation, so the headline is faded]',
-      '[ADD KEY SCREENS — desktop pages, mobile screens, UI details; only the home page screenshot exists]',
       '[ADD MEASURABLE RESULT]',
       '[ADD CLIENT TESTIMONIAL]',
     ],
@@ -221,7 +312,11 @@ export const WORK_CASE_STUDIES: WorkCaseStudy[] = [
     positioning: 'From product idea to production SaaS.',
     summary:
       'Product strategy, UX architecture, interface design and engineering for a modern CRM platform.',
-    visual: { type: 'workflow' },
+    visual: {
+      type: 'screenshot',
+      src: '/work/wts-crm/home.webp',
+      alt: 'WTS CRM website home page showing the dashboard',
+    },
     websiteUrl: 'https://wtscrm.com',
     websiteLabel: 'wtscrm.com',
     industry: 'SaaS / CRM',
@@ -302,6 +397,38 @@ export const WORK_CASE_STUDIES: WorkCaseStudy[] = [
         })),
       },
     ],
+    gallery: [
+      {
+        src: '/work/wts-crm/dashboard.webp',
+        alt: 'WTS CRM dashboard with open leads, follow-ups due, tasks and pipeline value',
+        caption: 'Dashboard — open leads, follow-ups due, tasks and pipeline',
+        layout: 'full',
+      },
+      {
+        src: '/work/wts-crm/follow-ups.webp',
+        alt: 'WTS CRM follow-ups view',
+        caption: 'Follow-ups due and overdue',
+        layout: 'half',
+      },
+      {
+        src: '/work/wts-crm/pricing.webp',
+        alt: 'WTS CRM pricing page',
+        caption: 'Plans and pricing',
+        layout: 'half',
+      },
+      {
+        src: '/work/wts-crm/mobile-home.webp',
+        alt: 'WTS CRM website on mobile',
+        caption: 'wtscrm.com on mobile',
+        layout: 'mobile',
+      },
+      {
+        src: '/work/wts-crm/mobile-features.webp',
+        alt: 'WTS CRM features page on mobile',
+        caption: 'Features on mobile',
+        layout: 'mobile',
+      },
+    ],
     engineering: [
       'WTS CRM is designed, built and run by the same team. The application is built with Next.js and React, styled with CSS Modules.',
       'Workspaces are private, with user accounts, roles and data separated at the database level. Subscriptions run on tiered plans with a free trial.',
@@ -313,7 +440,7 @@ export const WORK_CASE_STUDIES: WorkCaseStudy[] = [
       'Tiered subscription plans with a free 3-day trial',
     ],
     contentNeeded: [
-      '[ADD PRODUCT SCREENSHOTS — dashboard, lead record, pipeline, quotation, invoice, mobile; none exist in the repo]',
+      '[ADD IN-APP SCREENSHOTS — lead record, pipeline, quotation, invoice; current images are from the public wtscrm.com site]',
       '[ADD PROJECT TIMELINE]',
       '[ADD MEASURABLE RESULT — only if real adoption or usage figures can be shared]',
     ],

@@ -41,8 +41,6 @@
     "**/*.tsx"
   ],
   "exclude": [
-    "node_modules",
-    "src/App.tsx",
-    "src/main.tsx"
+    "node_modules"
   ]
 }

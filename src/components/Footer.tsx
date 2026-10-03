@@ -104,7 +104,7 @@ export default function Footer() {
             </h3>
             <ul className="space-y-3 text-sm">
               <li>
-                <Link href="/" className="hover:text-white transition-colors cursor-pointer block">
+                <Link href="/about" className="hover:text-white transition-colors cursor-pointer block">
                   About Our Agency
                 </Link>
               </li>

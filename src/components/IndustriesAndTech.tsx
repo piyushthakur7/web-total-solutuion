@@ -7,6 +7,8 @@ import {
   Building2, Plane, Utensils, Wallet, Users, Car
 } from 'lucide-react';
 
+// TODO(international): once the target niche is confirmed, move it to the front
+// of this list and give it the highlighted treatment.
 const industries = [
   { name: 'Education', icon: GraduationCap },
   { name: 'Healthcare', icon: HeartPulse },
@@ -22,19 +24,24 @@ const industries = [
   { name: 'Transport & Cab', icon: Car },
 ];
 
+/** The stack we lead with. Everything else lives in the smaller row below. */
 const technologies = [
-  { name: 'WordPress', shadowColor: 'group-hover:shadow-[0_0_15px_rgba(59,130,246,0.4)]', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/wordpress/wordpress-plain.svg' },
-  { name: 'Shopify', shadowColor: 'group-hover:shadow-[0_0_15px_rgba(34,197,94,0.4)]', logo: 'https://www.vectorlogo.zone/logos/shopify/shopify-icon.svg' },
-  { name: 'JavaScript', shadowColor: 'group-hover:shadow-[0_0_15px_rgba(250,204,21,0.4)]', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg' },
-  { name: 'CSS3', shadowColor: 'group-hover:shadow-[0_0_15px_rgba(59,130,246,0.4)]', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg' },
-  { name: 'HTML5', shadowColor: 'group-hover:shadow-[0_0_15px_rgba(249,115,22,0.4)]', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg' },
-  { name: 'PHP', shadowColor: 'group-hover:shadow-[0_0_15px_rgba(129,140,248,0.4)]', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg' },
-  { name: 'CodeIgniter', shadowColor: 'group-hover:shadow-[0_0_15px_rgba(239,68,68,0.4)]', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/codeigniter/codeigniter-plain.svg' },
-  { name: 'Laravel', shadowColor: 'group-hover:shadow-[0_0_15px_rgba(220,38,38,0.4)]', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg' },
   { name: 'Next.js', shadowColor: 'group-hover:shadow-[0_0_15px_rgba(255,255,255,0.4)]', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg', invert: true },
-  { name: 'Vue.js', shadowColor: 'group-hover:shadow-[0_0_15px_rgba(16,185,129,0.4)]', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg' },
   { name: 'React', shadowColor: 'group-hover:shadow-[0_0_15px_rgba(34,211,238,0.4)]', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg' },
   { name: 'Node.js', shadowColor: 'group-hover:shadow-[0_0_15px_rgba(34,197,94,0.4)]', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg' },
+  { name: 'TypeScript', shadowColor: 'group-hover:shadow-[0_0_15px_rgba(59,130,246,0.4)]', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg' },
+];
+
+const alsoWorkWith = [
+  { name: 'JavaScript', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg' },
+  { name: 'HTML5', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg' },
+  { name: 'CSS3', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg' },
+  { name: 'Vue.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg' },
+  { name: 'WordPress', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/wordpress/wordpress-plain.svg' },
+  { name: 'Shopify', logo: 'https://www.vectorlogo.zone/logos/shopify/shopify-icon.svg' },
+  { name: 'PHP', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg' },
+  { name: 'CodeIgniter', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/codeigniter/codeigniter-plain.svg' },
+  { name: 'Laravel', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg' },
 ];
 
 export default function IndustriesAndTech() {
@@ -73,7 +80,7 @@ export default function IndustriesAndTech() {
               <h2 className="text-3xl font-extrabold tracking-tight">Tools & Technologies</h2>
             </div>
             
-            <div className="grid grid-cols-3 sm:grid-cols-4 gap-4 sm:gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
               {technologies.map((tech, idx) => (
                 <div key={idx} className="flex flex-col items-center justify-center p-4 sm:p-6 rounded-2xl bg-slate-800/40 border border-slate-700/50 hover:bg-slate-800 hover:border-slate-500 transition-all duration-300 group cursor-pointer backdrop-blur-sm">
                   <div className={`w-12 h-12 rounded-xl bg-slate-900/80 border border-slate-700/50 flex items-center justify-center group-hover:scale-110 transition-all duration-300 mb-4 shadow-inner ${tech.shadowColor}`}>
@@ -82,6 +89,18 @@ export default function IndustriesAndTech() {
                   <span className="text-[11px] sm:text-xs font-semibold text-slate-300 text-center leading-tight group-hover:text-white transition-colors">{tech.name}</span>
                 </div>
               ))}
+            </div>
+
+            <div className="space-y-4">
+              <h3 className="text-xs uppercase tracking-widest font-bold text-slate-400 text-center xl:text-left">Also work with</h3>
+              <ul className="flex flex-wrap justify-center xl:justify-start gap-2.5">
+                {alsoWorkWith.map((tech) => (
+                  <li key={tech.name} className="flex items-center space-x-2 px-3 py-1.5 rounded-full bg-slate-800/40 border border-slate-700/50 text-[11px] sm:text-xs font-semibold text-slate-400">
+                    <Image src={tech.logo} alt="" width={14} height={14} className="w-3.5 h-3.5 object-contain" />
+                    <span>{tech.name}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
 

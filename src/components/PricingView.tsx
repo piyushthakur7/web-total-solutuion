@@ -2,8 +2,8 @@
 
 import Link from 'next/link';
 import React, { useState } from 'react';
-import { Check, Plus, Minus, ArrowRight, Star, Sparkles, ShieldCheck } from 'lucide-react';
-import { PRICING_PACKAGES } from '../siteContent';
+import { Check, Plus, Minus, ArrowRight, Star, Sparkles, ShieldCheck, Globe } from 'lucide-react';
+import { INTERNATIONAL_PAGE_PATH, PRICING_PACKAGES } from '../siteContent';
 
 /**
  * Investment page. Deliberately presents ranges and a custom-quote path rather
@@ -79,6 +79,23 @@ export default function PricingView() {
           >
             See Our Work
           </Link>
+        </div>
+
+        {/* International visitors: the INR tiers below are for projects in India. */}
+        <div className="pt-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-x-3 gap-y-2 bg-slate-900 text-white rounded-2xl px-5 py-4 text-sm">
+            <Globe className="w-5 h-5 text-brand-blue shrink-0" />
+            <span className="text-slate-200">
+              Based outside India? The prices below are in INR for domestic projects.
+              International projects are quoted in USD.
+            </span>
+            <Link
+              href={INTERNATIONAL_PAGE_PATH}
+              className="font-bold text-white hover:text-brand-blue transition-colors whitespace-nowrap"
+            >
+              International clients →
+            </Link>
+          </div>
         </div>
       </section>
 

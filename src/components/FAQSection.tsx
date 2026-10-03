@@ -6,7 +6,7 @@ import { ChevronDown } from 'lucide-react';
 import { HOME_FAQS } from '../siteContent';
 
 interface FAQSectionProps {
-  faqs?: { question: string; answer: string }[];
+  faqs?: { question: string; answer: string; link?: { label: string; href: string } }[];
   eyebrow?: string;
   heading?: string;
   intro?: string;
@@ -83,6 +83,14 @@ export default function FAQSection({
                 >
                   <p className="px-5 sm:px-6 pb-5 text-slate-600 text-sm leading-relaxed">
                     {faq.answer}
+                    {faq.link && (
+                      <>
+                        {' '}
+                        <Link href={faq.link.href} className="font-bold text-brand-blue hover:underline">
+                          {faq.link.label} →
+                        </Link>
+                      </>
+                    )}
                   </p>
                 </div>
               </div>

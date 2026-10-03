@@ -7,6 +7,26 @@ export const WHATSAPP_URL = 'https://wa.me/916291519364';
 export const PHONE_DISPLAY = '+91 6291 519 364';
 export const EMAIL = 'info@webtotalsolution.com';
 
+/**
+ * Where "international clients" links point.
+ * TODO(international): the dedicated international landing page does not exist
+ * yet (waiting on niche, offer, USD price and booking link). Swap this for its
+ * route once it is built; until then it falls back to /contact so nothing 404s.
+ */
+export const INTERNATIONAL_PAGE_PATH = '/contact';
+
+/**
+ * Founder details shown on /about (and later the international page).
+ * TODO(founder): title, bio (2–3 lines) and photo path still to be supplied.
+ * Empty fields are simply not rendered — never fill them with invented copy.
+ */
+export const FOUNDER: { name: string; title: string; bio: string[]; photo: string | null } = {
+  name: 'Piyush Thakur',
+  title: '',
+  bio: [],
+  photo: null,
+};
+
 /** Offices we operate from. Kolkata is the primary (registered) address. */
 export const OFFICES = [
   {
@@ -164,12 +184,16 @@ export const CLIENT_COMMITMENTS = [
   'A reply within 24 hours, from a team rather than one person',
 ];
 
-/** Homepage FAQ set — also emitted as FAQPage schema. */
-export const HOME_FAQS = [
+/**
+ * Homepage FAQ set — also emitted as FAQPage schema. An optional `link` renders
+ * after the answer in <FAQSection />.
+ */
+export const HOME_FAQS: { question: string; answer: string; link?: { label: string; href: string } }[] = [
   {
     question: 'How much does a professional business website cost?',
     answer:
-      'Every project is quoted on scope rather than a fixed package, because a 5-page service website and a 40-product store are very different builds. Most business websites we deliver fall in the ₹15,000 to ₹50,000 range, and larger platforms are quoted individually. Book a free consultation and you will get a written quote with the exact scope, timeline and deliverables — no hidden fees.',
+      'Every project is quoted on scope rather than a fixed package, because a 5-page service website and a 40-product store are very different builds. The cost depends on the number of pages, how much custom design is involved and the features you need. Book a free consultation and you will get a written quote with the exact scope, timeline and deliverables — no hidden fees. International projects are quoted in USD.',
+    link: { label: 'See how we work with international clients', href: INTERNATIONAL_PAGE_PATH },
   },
   {
     question: 'How long does it take to build a business website?',
@@ -179,7 +203,7 @@ export const HOME_FAQS = [
   {
     question: 'Will my website be mobile-friendly and SEO optimised?',
     answer:
-      'Yes — every website we build is mobile-first and ships with technical SEO in place: clean heading structure, fast load times, schema markup, optimised images, sitemap and metadata. Over 70% of Indian business traffic is mobile, so we design for the phone first and scale up.',
+      'Yes — every website we build is mobile-first and ships with technical SEO in place: clean heading structure, fast load times, schema markup, optimised images, sitemap and metadata. We design for the phone first and scale up.',
   },
   {
     question: 'Do you provide support after the website goes live?',

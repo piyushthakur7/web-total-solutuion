@@ -10,30 +10,22 @@ export default function WhyNeedWebsite() {
     {
       icon: <Globe className="w-8 h-8" />,
       title: "24/7 Global Storefront",
-      description: "Your website never sleeps. It acts as an always-on sales representative, allowing customers to discover your business, explore products, and make inquiries anytime, from anywhere in the world.",
-      stat: "81%",
-      statText: "of shoppers research online before buying."
+      description: "Your website never sleeps. It acts as an always-on sales representative, allowing customers to discover your business, explore products, and make inquiries anytime, from anywhere in the world."
     },
     {
       icon: <ShieldCheck className="w-8 h-8" />,
       title: "Instant Credibility & Trust",
-      description: "A professional, fast-loading website instantly signals legitimacy. Businesses without a digital presence are often perceived as outdated or less trustworthy by modern consumers.",
-      stat: "75%",
-      statText: "judge credibility based on website design."
+      description: "A professional, fast-loading website instantly signals legitimacy. Businesses without a digital presence are often perceived as outdated or less trustworthy by modern consumers."
     },
     {
       icon: <TrendingUp className="w-8 h-8" />,
       title: "Scalable Lead Generation",
-      description: "Through SEO and targeted digital marketing, a well-engineered website captures high-intent traffic, converting casual visitors into qualified leads and paying customers.",
-      stat: "3x",
-      statText: "more leads generated compared to outbound."
+      description: "Through SEO and targeted digital marketing, a well-engineered website captures high-intent traffic, converting casual visitors into qualified leads and paying customers."
     },
     {
       icon: <Zap className="w-8 h-8" />,
       title: "Competitive Edge",
-      description: "A dynamic website levels the playing field. With superior UI/UX and lightning-fast performance, you can outshine established competitors and capture market share.",
-      stat: "2.5x",
-      statText: "revenue growth for digital-first businesses."
+      description: "A dynamic website levels the playing field. With superior UI/UX and lightning-fast performance, you can outshine established competitors and capture market share."
     }
   ];
 
@@ -92,28 +84,11 @@ export default function WhyNeedWebsite() {
                   {benefit.title}
                 </h3>
                 
-                <p className={`text-sm sm:text-base leading-relaxed mb-8 flex-grow transition-colors duration-300 ${
+                <p className={`text-sm sm:text-base leading-relaxed flex-grow transition-colors duration-300 ${
                   activeCard === index ? 'text-slate-300' : 'text-slate-600'
                 }`}>
                   {benefit.description}
                 </p>
-
-                <div className={`pt-6 border-t transition-colors duration-300 ${
-                  activeCard === index ? 'border-slate-800' : 'border-slate-200'
-                }`}>
-                  <div className="flex items-center space-x-4">
-                    <span className={`text-3xl font-extrabold transition-colors duration-300 ${
-                      activeCard === index ? 'text-brand-blue' : 'text-slate-900'
-                    }`}>
-                      {benefit.stat}
-                    </span>
-                    <span className={`text-xs sm:text-sm font-medium uppercase tracking-wide leading-tight transition-colors duration-300 ${
-                      activeCard === index ? 'text-slate-300' : 'text-slate-600'
-                    }`}>
-                      {benefit.statText}
-                    </span>
-                  </div>
-                </div>
               </div>
             </div>
           ))}

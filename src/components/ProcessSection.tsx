@@ -13,12 +13,15 @@ export default function ProcessSection({
   intro = 'You always know what is happening, what is next, and what it costs. No surprises between the first call and go-live.',
   ctaHref = '/contact',
   ctaLabel = 'Start With a Free Discovery Call',
+  ctaNote,
 }: {
   steps?: { step: string; title: string; description: string }[];
   heading?: string;
   intro?: string;
   ctaHref?: string;
   ctaLabel?: string;
+  /** Optional secondary line rendered under the CTA button. */
+  ctaNote?: React.ReactNode;
 }) {
   return (
     <section className="relative bg-white py-24 overflow-hidden">
@@ -93,11 +96,13 @@ export default function ProcessSection({
         <div className="mt-14 text-center">
           <Link
             href={ctaHref}
+            {...(ctaHref.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
             className="inline-flex items-center justify-center space-x-2 bg-slate-900 hover:bg-slate-800 text-white px-8 py-4 rounded-xl font-bold tracking-wide shadow-md hover:shadow-lg transition-all cursor-pointer"
           >
             <span>{ctaLabel}</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
+          {ctaNote && <div className="mt-4">{ctaNote}</div>}
         </div>
       </div>
     </section>

@@ -62,7 +62,7 @@ export const LAW_FIRM_PAGE = {
     items: [
       {
         icon: 'clock' as const,
-        title: 'Calls in your working day',
+        title: 'Available in your working day',
         description:
           'Calls available 9am–5pm UK time, throughout the UAE workday, and 9am–12:30pm US Eastern.',
       },
@@ -73,9 +73,9 @@ export const LAW_FIRM_PAGE = {
       },
       {
         icon: 'message' as const,
-        title: 'Email, Slack and calls',
+        title: 'WhatsApp, email and Slack',
         description:
-          'Day-to-day communication runs over email or Slack, with calls in the hours above when a conversation is quicker.',
+          'The first conversation happens over WhatsApp or email. Day-to-day project communication runs over email or Slack, with a call whenever you prefer one.',
       },
       {
         icon: 'file' as const,
@@ -94,9 +94,9 @@ export const LAW_FIRM_PAGE = {
   processSteps: [
     {
       step: '01',
-      title: 'Intro Call',
+      title: 'First Conversation',
       description:
-        'We learn about your firm, your practice areas and what your current website is not doing for you.',
+        'Over WhatsApp or email — or a call if you prefer — we learn about your firm, your practice areas and what your current website is not doing for you.',
     },
     {
       step: '02',
@@ -137,7 +137,7 @@ export const LAW_FIRM_PAGE = {
     {
       question: 'How will we communicate across time zones?',
       answer:
-        'Calls are available 9am–5pm UK time, throughout the UAE workday, and 9am–12:30pm US Eastern. Between calls, communication runs over email or Slack.',
+        'The first conversation happens over WhatsApp or email, with a call if you prefer one. Calls are available 9am–5pm UK time, throughout the UAE workday, and 9am–12:30pm US Eastern. During the project, communication runs over email or Slack.',
     },
     {
       question: 'Who owns the website and the code?',

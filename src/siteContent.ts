@@ -11,11 +11,12 @@ export const EMAIL = 'info@webtotalsolution.com';
 export const INTERNATIONAL_PAGE_PATH = '/law-firm-websites';
 
 /**
- * Call-booking link used by the international page CTAs.
- * TODO(booking): replace with the Cal.com URL once supplied. Until then the
- * CTAs fall back to the contact form so nothing is broken.
+ * Primary CTA target on the international page: a pre-filled WhatsApp message.
+ * There is no call booking — the first conversation happens over WhatsApp or
+ * email.
  */
-export const BOOKING_URL = '/contact';
+export const BOOKING_URL =
+  'https://wa.me/916291519364?text=Hi%2C%20I%27m%20interested%20in%20a%20website%20for%20my%20law%20firm.';
 
 /**
  * Founder details shown on /about and the international page.

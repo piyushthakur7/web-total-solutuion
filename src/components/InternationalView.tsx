@@ -1,16 +1,15 @@
 import React from 'react';
-import Link from 'next/link';
 import {
-  ArrowRight, CheckCircle2, Clock, DollarSign, FileText, KeyRound, MessageSquare, Sparkles,
+  CheckCircle2, Clock, DollarSign, FileText, KeyRound, MessageSquare, Sparkles,
 } from 'lucide-react';
-import { BOOKING_URL } from '../siteContent';
+import { BOOKING_URL, EMAIL } from '../siteContent';
 import { CASE_STUDIES } from '../caseStudies';
 import { LAW_FIRM_PAGE } from '../lawFirmPage';
 import CaseStudy from './CaseStudy';
 import FounderSection from './FounderSection';
 import ProcessSection from './ProcessSection';
 import FAQSection from './FAQSection';
-import FinalCTA from './FinalCTA';
+import WhatsAppIcon from './WhatsAppIcon';
 
 const ABROAD_ICONS = {
   clock: Clock,
@@ -53,18 +52,29 @@ export default function InternationalView() {
               </p>
 
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3.5">
-                <Link
+                <a
                   href={BOOKING_URL}
-                  className="bg-brand-blue hover:bg-brand-blue/90 text-white px-7 py-4 rounded-xl font-bold tracking-wide shadow-lg shadow-brand-blue/25 hover:shadow-xl transition-all flex items-center justify-center space-x-2 cursor-pointer"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-brand-blue hover:bg-brand-blue/90 text-white px-7 py-4 rounded-xl font-bold tracking-wide shadow-lg shadow-brand-blue/25 hover:shadow-xl transition-all flex items-center justify-center space-x-2.5 cursor-pointer"
                 >
-                  <span>Book a Call</span>
-                  <ArrowRight className="w-5 h-5 shrink-0" />
-                </Link>
+                  <WhatsAppIcon className="w-5 h-5 shrink-0" />
+                  <span>Message us on WhatsApp</span>
+                </a>
                 <a
                   href="#case-studies"
                   className="bg-white/5 hover:bg-white/10 text-white border border-white/20 hover:border-white/40 px-7 py-4 rounded-xl font-bold tracking-wide backdrop-blur-sm transition-all flex items-center justify-center cursor-pointer"
                 >
                   See Our Work
+                </a>
+              </div>
+
+              <div className="flex items-center justify-center lg:justify-start">
+                <a
+                  href={`mailto:${EMAIL}`}
+                  className="text-sm font-semibold text-slate-400 hover:text-white transition-colors"
+                >
+                  Prefer email? {EMAIL}
                 </a>
               </div>
             </div>
@@ -163,10 +173,18 @@ export default function InternationalView() {
       {/* Process */}
       <ProcessSection
         steps={page.processSteps}
-        heading="From First Call to Launch in 5 Steps"
+        heading="From First Message to Launch in 5 Steps"
         intro="You always know what is happening, what is next, and what it costs."
         ctaHref={BOOKING_URL}
-        ctaLabel="Book an Intro Call"
+        ctaLabel="Message us on WhatsApp"
+        ctaNote={
+          <a
+            href={`mailto:${EMAIL}`}
+            className="text-sm font-semibold text-slate-600 hover:text-brand-blue transition-colors"
+          >
+            Prefer email? {EMAIL}
+          </a>
+        }
       />
 
       {/* Founder */}
@@ -213,11 +231,40 @@ export default function InternationalView() {
         intro="Straight answers on pricing, timelines, communication, ownership and support."
       />
 
-      <FinalCTA
-        headline="Ready for a Website That Matches Your Firm?"
-        text="Book a call and get a fixed written quote in USD for your firm's new website."
-        contactHref={BOOKING_URL}
-      />
+      {/* Final CTA — WhatsApp first, email as the alternative */}
+      <section className="px-4 sm:px-6 lg:px-8">
+        <div className="bg-slate-900 text-white rounded-3xl max-w-7xl mx-auto px-6 sm:px-10 py-14 md:py-20 text-center relative overflow-hidden">
+          <div className="absolute right-0 top-0 w-96 h-96 bg-brand-blue/15 rounded-full filter blur-3xl pointer-events-none" />
+          <div className="absolute -left-20 bottom-0 w-80 h-80 bg-indigo-500/10 rounded-full filter blur-3xl pointer-events-none" />
+
+          <div className="max-w-2xl mx-auto space-y-6 relative z-10">
+            <h2 className="text-3xl md:text-4xl lg:text-[2.75rem] font-extrabold tracking-tight leading-[1.15]">
+              Ready for a Website That Matches Your Firm?
+            </h2>
+            <p className="text-slate-300 text-base leading-relaxed max-w-xl mx-auto">
+              Tell us about your firm and get a fixed written quote in USD for your new website.
+            </p>
+
+            <div className="flex flex-col items-center gap-4 pt-2">
+              <a
+                href={BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-brand-blue hover:bg-brand-blue/90 text-white font-bold tracking-wide px-8 py-4 rounded-xl shadow-lg shadow-brand-blue/25 hover:shadow-xl transition-all inline-flex items-center justify-center space-x-2.5 cursor-pointer"
+              >
+                <WhatsAppIcon className="w-5 h-5" />
+                <span>Message us on WhatsApp</span>
+              </a>
+              <a
+                href={`mailto:${EMAIL}`}
+                className="text-sm font-semibold text-slate-400 hover:text-white transition-colors"
+              >
+                Prefer email? {EMAIL}
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

@@ -6,6 +6,7 @@ import { getPortfolioProjects } from '../utils/insforge/portfolio';
 import { GOOGLE_RATING, GOOGLE_REVIEWS_URL, HERO_TRUST_BADGES, INTERNATIONAL_PAGE_PATH, WHATSAPP_URL } from '../siteContent';
 import { FEATURED_CASE_STUDIES } from '../caseStudies';
 import CaseStudy from './CaseStudy';
+import { STOCK_IMAGES } from '../stockImages';
 import TrustBar from './TrustBar';
 import WhatsAppIcon from './WhatsAppIcon';
 import {
@@ -383,6 +384,7 @@ export default async function HomeView() {
             {[
               {
                 Icon: Building2,
+                image: STOCK_IMAGES.websiteDesk,
                 title: 'Business Websites',
                 href: '/business-website-development',
                 copy: 'We create high-performance websites that increase customer trust, improve online visibility, and generate more business inquiries — so the people searching for what you do choose you instead of a competitor.',
@@ -390,6 +392,7 @@ export default async function HomeView() {
               },
               {
                 Icon: RefreshCw,
+                image: STOCK_IMAGES.wireframeLayouts,
                 title: 'Website Redesign',
                 href: '/website-redesign',
                 copy: 'If your current website is slow, dated or invisible on Google, we rebuild it into a fast, modern platform that reflects the quality of your business — without losing the rankings you already have.',
@@ -397,6 +400,7 @@ export default async function HomeView() {
               },
               {
                 Icon: ShoppingCart,
+                image: STOCK_IMAGES.onlinePayment,
                 title: 'E-Commerce Stores',
                 href: '/ecommerce-development',
                 copy: 'We build online stores that make buying effortless — secure payments, a checkout that does not lose customers, and product pages that show up in search when people are ready to purchase.',
@@ -405,9 +409,18 @@ export default async function HomeView() {
             ].map((service) => (
               <div
                 key={service.title}
-                className="bg-white border border-slate-100 rounded-3xl p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+                className="bg-white border border-slate-100 rounded-3xl p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden"
               >
                 <div className="space-y-5">
+                  <div className="relative aspect-[16/10] -mx-8 -mt-8 mb-7 bg-slate-100">
+                    <Image
+                      src={service.image.src}
+                      alt={service.image.alt}
+                      fill
+                      sizes="(min-width: 768px) 400px, 100vw"
+                      className="object-cover"
+                    />
+                  </div>
                   <span className="w-12 h-12 rounded-2xl bg-brand-blue/10 text-brand-blue flex items-center justify-center" aria-hidden="true">
                     <service.Icon className="w-6 h-6" />
                   </span>

@@ -23,6 +23,21 @@ export const STOCK_IMAGES = {
     alt: 'Source code open in an editor on a laptop',
     source: 'https://unsplash.com/photos/f77Bh3inUpE',
   },
+  websiteDesk: {
+    src: '/images/stock/website-desk.jpg',
+    alt: 'Websites open on a laptop and monitor at a desk',
+    source: 'https://unsplash.com/photos/hGV2TfOh0ns',
+  },
+  wireframeLayouts: {
+    src: '/images/stock/wireframe-layouts.jpg',
+    alt: 'Hand-painted wireframe sketches of website layouts',
+    source: 'https://unsplash.com/photos/tZc3vjPCk-Q',
+  },
+  onlinePayment: {
+    src: '/images/stock/online-payment.jpg',
+    alt: 'Paying online by card on a laptop',
+    source: 'https://unsplash.com/photos/Q59HmzK38eQ',
+  },
   lawBooks: {
     src: '/images/stock/law-books.jpg',
     alt: 'Leather-bound books on a library shelf',

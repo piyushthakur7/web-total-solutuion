@@ -1150,7 +1150,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
               'Generated sitemap, canonical URLs and JSON-LD structured data on every page',
             ],
             stack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'PostgreSQL', 'Vercel'],
-            links: [{ label: 'See our portfolio', href: '/portfolio' }],
+            links: [{ label: 'See our work', href: '/work' }],
           },
         ],
       },

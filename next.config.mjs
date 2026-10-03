@@ -24,6 +24,12 @@ const nextConfig = {
       { protocol: 'https', hostname: 'www.vectorlogo.zone' },
     ],
   },
+  async redirects() {
+    return [
+      // The portfolio grid was replaced by the curated case studies on /work.
+      { source: '/portfolio', destination: '/work', permanent: true },
+    ];
+  },
   experimental: {
     // Keeps lucide-react and motion from pulling their full barrel into each page.
     optimizePackageImports: ['lucide-react', 'motion'],

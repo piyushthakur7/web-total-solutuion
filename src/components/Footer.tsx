@@ -109,8 +109,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/portfolio" className="hover:text-white transition-colors cursor-pointer block">
-                  Our Work (Portfolio)
+                <Link href="/work" className="hover:text-white transition-colors cursor-pointer block">
+                  Selected Work
                 </Link>
               </li>
               <li>

@@ -20,7 +20,7 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 const navItems = [
   { label: 'Home', path: '/' },
   { label: 'Services', path: '/services' },
-  { label: 'Portfolio', path: '/portfolio' },
+  { label: 'Work', path: '/work' },
   { label: 'Products', path: '/projects' },
   { label: 'Pricing', path: '/pricing' },
   { label: 'Blog', path: '/blog' },

@@ -110,7 +110,7 @@ export default function Testimonials({
 
             <div className="relative z-10 mt-10 pt-6 border-t border-white/10">
               <Link
-                href="/portfolio"
+                href="/work"
                 className="inline-flex items-center space-x-2 text-sm font-bold text-white hover:text-brand-blue transition-colors"
               >
                 <span>See the live client websites we have built</span>

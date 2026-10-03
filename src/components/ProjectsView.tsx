@@ -306,7 +306,7 @@ function ProductSection({ project }: { project: ProjectData }) {
 
 /**
  * /projects — the products Web Total Solution builds and runs itself, as
- * opposed to /portfolio, which is client work.
+ * opposed to /work, which is the curated case studies.
  */
 export default function ProjectsView() {
   return (

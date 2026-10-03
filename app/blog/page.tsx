@@ -74,7 +74,7 @@ export default async function BlogPage() {
                 copy: 'Package ranges and a scope estimator you can use right now.',
               },
               {
-                href: '/portfolio',
+                href: '/work',
                 title: 'Work we have delivered',
                 copy: 'Live client websites you can open and judge for yourself.',
               },

@@ -76,10 +76,10 @@ export default async function LandingPageView({ config }: { config: LandingPageC
                   <ArrowRight className="w-5 h-5 shrink-0" />
                 </a>
                 <Link
-                  href="/portfolio"
+                  href="/work"
                   className="bg-white/5 hover:bg-white/10 text-white border border-white/20 hover:border-white/40 px-7 py-4 rounded-xl font-bold tracking-wide backdrop-blur-sm transition-all flex items-center justify-center cursor-pointer"
                 >
-                  View Portfolio
+                  View Our Work
                 </Link>
               </div>
 
@@ -492,10 +492,10 @@ export default async function LandingPageView({ config }: { config: LandingPageC
 
             <div className="mt-12 text-center">
               <Link
-                href="/portfolio"
+                href="/work"
                 className="inline-flex items-center space-x-1.5 text-sm font-bold text-brand-blue hover:underline"
               >
-                <span>See our full portfolio</span>
+                <span>See our selected work</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -825,7 +825,7 @@ export default async function LandingPageView({ config }: { config: LandingPageC
               { href: '/website-redesign', label: 'Website Redesign' },
               { href: '/ecommerce-development', label: 'E-Commerce Development' },
               { href: '/services', label: 'All Services' },
-              { href: '/portfolio', label: 'Portfolio' },
+              { href: '/work', label: 'Our Work' },
               { href: '/pricing', label: 'Pricing' },
               { href: '/blog', label: 'Blog' },
               { href: '/contact', label: 'Contact' },

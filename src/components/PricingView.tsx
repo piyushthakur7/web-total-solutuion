@@ -74,7 +74,7 @@ export default function PricingView() {
             <ArrowRight className="w-4 h-4" />
           </Link>
           <Link
-            href="/portfolio"
+            href="/work"
             className="w-full sm:w-auto bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 px-7 py-4 rounded-xl font-bold tracking-wide transition-all inline-flex items-center justify-center cursor-pointer"
           >
             See Our Work

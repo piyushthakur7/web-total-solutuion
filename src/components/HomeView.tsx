@@ -103,10 +103,10 @@ export default async function HomeView() {
                   <ArrowRight className="w-5 h-5 shrink-0" />
                 </Link>
                 <Link
-                  href="/portfolio"
+                  href="/work"
                   className="bg-white/5 hover:bg-white/10 text-white border border-white/20 hover:border-white/40 px-7 py-4 rounded-xl font-bold tracking-wide backdrop-blur-sm transition-all flex items-center justify-center cursor-pointer"
                 >
-                  View Portfolio
+                  View Our Work
                 </Link>
               </div>
 

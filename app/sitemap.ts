@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import { SERVICES_DATA } from '../src/data';
 import { LANDING_PAGE_SLUGS } from '../src/landingPages';
+import { WORK_SLUGS } from '../src/work';
 import { getBlogSitemapEntries } from '../src/utils/insforge/blogs';
 
 // Blog entries come from InsForge; refresh the sitemap hourly.
@@ -13,7 +14,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '',
     '/about',
     '/services',
-    '/portfolio',
+    '/work',
     '/pricing',
     '/contact',
     '/terms',
@@ -47,6 +48,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.9,
   }));
 
+  const workRoutes = WORK_SLUGS.map((slug) => ({
+    url: `${baseUrl}/work/${slug}`,
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }));
+
   const serviceRoutes = Object.keys(SERVICES_DATA).map((slug) => ({
     url: `${baseUrl}/services/${slug}`,
     changeFrequency: 'monthly' as const,
@@ -62,5 +69,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }));
 
-  return [...staticRoutes, ...productRoutes, ...landingRoutes, ...serviceRoutes, ...blogRoutes];
+  return [...staticRoutes, ...productRoutes, ...landingRoutes, ...workRoutes, ...serviceRoutes, ...blogRoutes];
 }

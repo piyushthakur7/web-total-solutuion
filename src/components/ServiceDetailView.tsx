@@ -113,7 +113,7 @@ export default function ServiceDetailView({ service }: { service: ServiceData })
                     { href: '/business-website-development', label: 'Business Website Development' },
                     { href: '/website-redesign', label: 'Website Redesign' },
                     { href: '/ecommerce-development', label: 'E-Commerce Development' },
-                    { href: '/portfolio', label: 'Our Portfolio' },
+                    { href: '/work', label: 'Our Work' },
                     { href: '/pricing', label: 'Pricing' },
                   ].map((link) => (
                     <Link

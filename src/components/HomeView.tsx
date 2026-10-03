@@ -3,7 +3,9 @@ import React from 'react';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import { getPortfolioProjects } from '../utils/insforge/portfolio';
-import { GOOGLE_RATING, GOOGLE_REVIEWS_URL, HERO_TRUST_BADGES, WHATSAPP_URL } from '../siteContent';
+import { GOOGLE_RATING, GOOGLE_REVIEWS_URL, HERO_TRUST_BADGES, INTERNATIONAL_PAGE_PATH, WHATSAPP_URL } from '../siteContent';
+import { FEATURED_CASE_STUDIES } from '../caseStudies';
+import CaseStudy from './CaseStudy';
 import TrustBar from './TrustBar';
 import WhatsAppIcon from './WhatsAppIcon';
 import {
@@ -105,6 +107,16 @@ export default async function HomeView() {
                   className="bg-white/5 hover:bg-white/10 text-white border border-white/20 hover:border-white/40 px-7 py-4 rounded-xl font-bold tracking-wide backdrop-blur-sm transition-all flex items-center justify-center cursor-pointer"
                 >
                   View Portfolio
+                </Link>
+              </div>
+
+              {/* Route for international visitors */}
+              <div className="flex items-center justify-center lg:justify-start">
+                <Link
+                  href={INTERNATIONAL_PAGE_PATH}
+                  className="text-sm font-semibold text-slate-300 hover:text-white underline underline-offset-4 decoration-white/30 hover:decoration-white transition-colors"
+                >
+                  Working with law firms in the US, UK &amp; UAE →
                 </Link>
               </div>
 
@@ -252,6 +264,26 @@ export default async function HomeView() {
                   <ChevronRight className="w-3.5 h-3.5 ml-1 group-hover:translate-x-1 transition-transform" />
                 </span>
               </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 3b. Case studies */}
+      <section className="bg-white py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-14 space-y-4">
+            <span className="text-xs uppercase tracking-widest font-extrabold text-brand-blue">
+              Case Studies
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+              Recent Client Work
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-7">
+            {FEATURED_CASE_STUDIES.map((study) => (
+              <CaseStudy key={study.id} study={study} />
             ))}
           </div>
         </div>

@@ -7,7 +7,19 @@ import { PROCESS_STEPS } from '../siteContent';
  * Five-step delivery process. Reduces perceived risk before the final CTA,
  * which is where most high-ticket enquiries are won or lost.
  */
-export default function ProcessSection() {
+export default function ProcessSection({
+  steps = PROCESS_STEPS,
+  heading = 'A Simple, Transparent 5-Step Process',
+  intro = 'You always know what is happening, what is next, and what it costs. No surprises between the first call and go-live.',
+  ctaHref = '/contact',
+  ctaLabel = 'Start With a Free Discovery Call',
+}: {
+  steps?: { step: string; title: string; description: string }[];
+  heading?: string;
+  intro?: string;
+  ctaHref?: string;
+  ctaLabel?: string;
+}) {
   return (
     <section className="relative bg-white py-24 overflow-hidden">
       {/* Layered blue waves behind the step cards */}
@@ -45,19 +57,18 @@ export default function ProcessSection() {
             How We Work
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-            A Simple, Transparent 5-Step Process
+            {heading}
           </h2>
           <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-            You always know what is happening, what is next, and what it costs. No surprises between
-            the first call and go-live.
+            {intro}
           </p>
         </div>
 
         <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-4">
-          {PROCESS_STEPS.map((item, index) => (
+          {steps.map((item, index) => (
             <li key={item.step} className="relative group">
               {/* Connector line between steps on desktop */}
-              {index < PROCESS_STEPS.length - 1 && (
+              {index < steps.length - 1 && (
                 <span
                   aria-hidden="true"
                   className="hidden lg:block absolute top-7 left-[calc(50%+2rem)] right-[-1rem] h-[2px] bg-gradient-to-r from-slate-200 to-slate-100"
@@ -81,10 +92,10 @@ export default function ProcessSection() {
 
         <div className="mt-14 text-center">
           <Link
-            href="/contact"
+            href={ctaHref}
             className="inline-flex items-center justify-center space-x-2 bg-slate-900 hover:bg-slate-800 text-white px-8 py-4 rounded-xl font-bold tracking-wide shadow-md hover:shadow-lg transition-all cursor-pointer"
           >
-            <span>Start With a Free Discovery Call</span>
+            <span>{ctaLabel}</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>

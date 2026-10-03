@@ -7,23 +7,27 @@ export const WHATSAPP_URL = 'https://wa.me/916291519364';
 export const PHONE_DISPLAY = '+91 6291 519 364';
 export const EMAIL = 'info@webtotalsolution.com';
 
-/**
- * Where "international clients" links point.
- * TODO(international): the dedicated international landing page does not exist
- * yet (waiting on niche, offer, USD price and booking link). Swap this for its
- * route once it is built; until then it falls back to /contact so nothing 404s.
- */
-export const INTERNATIONAL_PAGE_PATH = '/contact';
+/** Where "international clients" links point. */
+export const INTERNATIONAL_PAGE_PATH = '/law-firm-websites';
 
 /**
- * Founder details shown on /about (and later the international page).
- * TODO(founder): title, bio (2–3 lines) and photo path still to be supplied.
- * Empty fields are simply not rendered — never fill them with invented copy.
+ * Call-booking link used by the international page CTAs.
+ * TODO(booking): replace with the Cal.com URL once supplied. Until then the
+ * CTAs fall back to the contact form so nothing is broken.
+ */
+export const BOOKING_URL = '/contact';
+
+/**
+ * Founder details shown on /about and the international page.
+ * TODO(founder): photo path still to be supplied — an initials tile is shown
+ * until `photo` is set. Never fill empty fields with invented copy.
  */
 export const FOUNDER: { name: string; title: string; bio: string[]; photo: string | null } = {
   name: 'Piyush Thakur',
-  title: '',
-  bio: [],
+  title: 'Founder & Lead Developer',
+  bio: [
+    'I founded Web Total Solution to build websites that do one job well: turn visitors into enquiries. Our team has delivered 100+ websites across India and overseas, and we specialise in fast, search-ready Next.js sites. Alongside client work, we build our own software — WTS CRM, a lead and invoicing platform for service businesses.',
+  ],
   photo: null,
 };
 

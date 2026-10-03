@@ -7,14 +7,13 @@ import {
   Building2, Plane, Utensils, Wallet, Users, Car
 } from 'lucide-react';
 
-// TODO(international): once the target niche is confirmed, move it to the front
-// of this list and give it the highlighted treatment.
-const industries = [
+/** `featured` marks the niche we lead with; it sits first and is highlighted. */
+const industries: { name: string; icon: typeof Scale; featured?: boolean }[] = [
+  { name: 'Legal', icon: Scale, featured: true },
   { name: 'Education', icon: GraduationCap },
   { name: 'Healthcare', icon: HeartPulse },
   { name: 'Logistics', icon: Truck },
   { name: 'Retail & E-commerce', icon: ShoppingCart },
-  { name: 'Legal', icon: Scale },
   { name: 'Interior', icon: Home },
   { name: 'Real Estate', icon: Building2 },
   { name: 'Travel', icon: Plane },
@@ -63,11 +62,11 @@ export default function IndustriesAndTech() {
             
             <div className="grid grid-cols-3 sm:grid-cols-4 gap-4 sm:gap-6">
               {industries.map((item, idx) => (
-                <div key={idx} className="flex flex-col items-center justify-center p-4 sm:p-6 rounded-2xl bg-slate-800/40 border border-slate-700/50 hover:bg-slate-800 hover:border-brand-blue/50 transition-all duration-300 group cursor-pointer backdrop-blur-sm">
-                  <div className="w-12 h-12 rounded-xl bg-slate-900/80 border border-slate-700/50 flex items-center justify-center text-slate-400 group-hover:text-brand-blue group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(59,130,246,0.3)] transition-all duration-300 mb-4 shadow-inner">
+                <div key={idx} className={`flex flex-col items-center justify-center p-4 sm:p-6 rounded-2xl border hover:bg-slate-800 hover:border-brand-blue/50 transition-all duration-300 group cursor-pointer backdrop-blur-sm ${item.featured ? 'bg-brand-blue/10 border-brand-blue/60' : 'bg-slate-800/40 border-slate-700/50'}`}>
+                  <div className={`w-12 h-12 rounded-xl bg-slate-900/80 border border-slate-700/50 flex items-center justify-center ${item.featured ? 'text-brand-blue' : 'text-slate-400'} group-hover:text-brand-blue group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(59,130,246,0.3)] transition-all duration-300 mb-4 shadow-inner`}>
                     <item.icon className="w-6 h-6" strokeWidth={1.5} />
                   </div>
-                  <span className="text-[11px] sm:text-xs font-semibold text-slate-300 text-center leading-tight group-hover:text-white transition-colors">{item.name}</span>
+                  <span className={`text-[11px] sm:text-xs font-semibold text-center leading-tight group-hover:text-white transition-colors ${item.featured ? 'text-white' : 'text-slate-300'}`}>{item.name}</span>
                 </div>
               ))}
             </div>

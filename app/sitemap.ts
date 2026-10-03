@@ -25,9 +25,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: route === '' ? 1 : 0.8,
   }));
 
-  // Our own product line. Priority matches the landing pages: /projects is a
-  // launch target in its own right, not a secondary static page.
+  // The international landing page and our own product line. Priority matches
+  // the landing pages: both are launch targets, not secondary static pages.
   const productRoutes = [
+    {
+      url: `${baseUrl}/law-firm-websites`,
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    },
     {
       url: `${baseUrl}/projects`,
       changeFrequency: 'weekly' as const,

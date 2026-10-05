@@ -15,6 +15,7 @@ import { PageIntro, SectionHeading } from "./StudioPrimitives";
 import FAQSection from "./FAQSection";
 import FinalCTA from "./FinalCTA";
 import PackageCards from "./PackageCards";
+import CarePlans from "./CarePlans";
 
 const [sprint, growth, custom] = WEBSITE_PACKAGES;
 
@@ -69,7 +70,7 @@ const separateCosts = [
   "Domain registration and hosting, billed by the provider to your account",
   "Paid plugins, fonts, stock media and third-party subscriptions",
   "Copywriting, where it is not in the agreed scope",
-  "Ongoing maintenance after the included support period",
+  "Ongoing maintenance after the included support period, on a Website Care Plan",
   "Web applications, dashboards and mobile apps",
 ];
 
@@ -111,6 +112,8 @@ export default function PricingView() {
           </dl>
         </div>
       </section>
+
+      <CarePlans />
 
       <section className="bg-white py-14 sm:py-20">
         <div className="studio-container grid gap-10 lg:grid-cols-2 lg:gap-16">

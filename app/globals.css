@@ -204,9 +204,22 @@
 }
 /* Once the page is scrolled, or the menu is open, the header needs a surface. */
 .site-header-solid {
-  background: #05407af2;
-  backdrop-filter: blur(14px);
-  box-shadow: 0 1px 0 #ffffff1f;
+  background: #f5f8fbf2;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 1px 0 #1823341a;
+}
+.site-header-solid a:focus-visible,
+.site-header-solid button:focus-visible {
+  outline-color: var(--color-brand-blue);
+}
+.site-header-solid .impact-nav-cta {
+  background: var(--color-ink);
+}
+.site-header-solid .impact-nav-cta:hover {
+  background: var(--color-brand-blue);
+}
+.site-header-solid .impact-nav-cta > span {
+  color: var(--color-ink);
 }
 .impact-hero {
   position: relative;

@@ -17,8 +17,8 @@ const links = [
 
 /**
  * One header for every page. It sits over the blue hero each page opens with,
- * and takes a solid blue background once the page is scrolled so it stays
- * readable over the content below.
+ * and becomes the light bar with dark text once the page is scrolled so it
+ * stays readable over the content below.
  */
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -58,7 +58,7 @@ export default function Header() {
   return (
     <>
       <header
-        className={`site-header fixed inset-x-0 top-0 z-50 text-white ${solid ? "site-header-solid" : ""}`}
+        className={`site-header fixed inset-x-0 top-0 z-50 ${solid ? "site-header-solid text-ink" : "text-white"}`}
       >
         <div className="studio-container site-header-row flex items-center justify-between gap-6">
           <Link
@@ -66,7 +66,7 @@ export default function Header() {
             aria-label="Web Total Solution home"
             onClick={() => setOpen(false)}
           >
-            <Logo size="sm" theme="dark" />
+            <Logo size="sm" theme={solid ? "light" : "dark"} />
           </Link>
           <nav
             className="hidden items-center gap-7 lg:flex"
@@ -77,12 +77,12 @@ export default function Header() {
                 key={link.path}
                 href={link.path}
                 aria-current={active(link.path) ? "page" : undefined}
-                className={`relative py-3 text-[13px] font-medium transition-colors hover:text-white ${active(link.path) ? "text-white" : "text-white/85"}`}
+                className={`relative py-3 text-[13px] font-medium transition-colors ${solid ? (active(link.path) ? "text-ink" : "text-graphite hover:text-ink") : active(link.path) ? "text-white" : "text-white/85 hover:text-white"}`}
               >
                 {link.label}
                 {active(link.path) && (
                   <span
-                    className="absolute inset-x-0 bottom-1.5 h-0.5 rounded-full bg-white"
+                    className={`absolute inset-x-0 bottom-1.5 h-0.5 rounded-full ${solid ? "bg-brand-blue" : "bg-white"}`}
                     aria-hidden="true"
                   />
                 )}
@@ -106,7 +106,7 @@ export default function Header() {
               aria-controls="mobile-navigation"
               aria-label={open ? "Close navigation" : "Open navigation"}
               onClick={() => setOpen(!open)}
-              className="flex size-11 items-center justify-center rounded-full border border-white/35 text-white lg:hidden"
+              className={`flex size-11 items-center justify-center rounded-full border lg:hidden ${solid ? "border-ink/20 text-ink" : "border-white/35 text-white"}`}
             >
               {open ? <X className="size-5" /> : <Menu className="size-5" />}
             </button>
@@ -121,7 +121,7 @@ export default function Header() {
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: reducedMotion ? 0 : 0.2 }}
-              className="overflow-hidden border-t border-white/15 lg:hidden"
+              className="overflow-hidden border-t border-ink/10 lg:hidden"
             >
               <div className="studio-container max-h-[calc(100dvh-11rem)] overflow-y-auto pb-7 pt-2">
                 {links.map((link) => (
@@ -130,11 +130,11 @@ export default function Header() {
                     href={link.path}
                     onClick={() => setOpen(false)}
                     aria-current={active(link.path) ? "page" : undefined}
-                    className="flex items-center justify-between border-b border-white/15 py-4 font-display text-3xl"
+                    className="flex items-center justify-between border-b border-ink/10 py-4 font-display text-3xl"
                   >
                     <span>{link.label}</span>
                     <ArrowUpRight
-                      className="size-5 text-white/60"
+                      className="size-5 text-graphite"
                       aria-hidden="true"
                     />
                   </Link>
@@ -142,7 +142,7 @@ export default function Header() {
                 <Link
                   href="/contact"
                   onClick={() => setOpen(false)}
-                  className="btn btn-paper mt-6 w-full"
+                  className="btn btn-ink mt-6 w-full"
                 >
                   Request a discovery call
                   <ArrowUpRight className="size-4" />

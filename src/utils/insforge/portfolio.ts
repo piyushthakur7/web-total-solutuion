@@ -63,7 +63,12 @@ export async function getPortfolioProjects(): Promise<PortfolioItem[]> {
     .order('sort_order', { ascending: true });
 
   if (error) {
-    console.error('[portfolio] Failed to load projects from InsForge:', error);
+    // The SDK's error fields are not enumerable, so logging the object alone prints {}.
+    console.error(
+      '[portfolio] Failed to load projects from InsForge:',
+      error.message,
+      (error as { cause?: unknown }).cause ?? ''
+    );
     return PORTFOLIO_ITEMS;
   }
 

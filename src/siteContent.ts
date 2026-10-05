@@ -119,25 +119,7 @@ export const NEXT_STEPS = [
 /** The support period included with every website package. */
 export const SUPPORT_DAYS = 30;
 export const SUPPORT_TERM = `${SUPPORT_DAYS} days of post-launch support`;
-export const SUPPORT_DETAIL = `Every website package includes ${SUPPORT_TERM} for fixes, small content changes and technical help. Ongoing maintenance is quoted separately.`;
-
-/**
- * The optional plan that takes over when the included support period ends.
- * Price and inclusions are supplied by the business; do not change them or add
- * tiers without confirmation.
- */
-export const CARE_PLAN = {
-  name: 'Website Care Plan',
-  monthly: 250,
-  includes: [
-    'Hosting',
-    'Software and security updates',
-    'Small content edits',
-    'Monthly speed and uptime checks',
-  ],
-  /** One-sentence form, used where the plan is mentioned in running copy. */
-  summary: 'Hosting, updates, small edits, and monthly speed and uptime checks.',
-};
+export const SUPPORT_DETAIL = `Every website package includes ${SUPPORT_TERM} for fixes, small content changes and technical help. After that, an optional Website Care Plan covers ongoing maintenance from $49/month.`;
 
 export const OWNERSHIP_TERM =
   'You own the domain, hosting account, content and source code of the delivered website.';
@@ -247,6 +229,98 @@ export const PACKAGE_TERMS = [
   'Payment milestones are set out in the written quote.',
   'Web applications, dashboards and mobile apps are not part of these packages and are scoped separately.',
 ];
+
+/* -------------------------------------------------------------------------- */
+/* Website Care Plans                                                         */
+/* -------------------------------------------------------------------------- */
+
+export interface CarePlan {
+  slug: string;
+  name: string;
+  /** Monthly price in USD. */
+  monthly: number;
+  audience: string;
+  /** Hands-on update time included each month, shown under the price. */
+  updateTime: string;
+  /** Name of the plan this one builds on, or null for the first plan. */
+  buildsOn: string | null;
+  includes: string[];
+  highlight: boolean;
+}
+
+export const CARE_PLANS: CarePlan[] = [
+  {
+    slug: 'essential-care',
+    name: 'Essential Care',
+    monthly: 49,
+    audience: 'Best for small business and marketing websites.',
+    updateTime: 'Minor bug fixes',
+    buildsOn: null,
+    includes: [
+      '24/7 uptime monitoring',
+      'Website health monitoring',
+      'Security checks',
+      'Backup monitoring',
+      'SSL monitoring',
+      'Dependency and framework updates',
+      'Minor bug fixes',
+      'Broken link checks',
+      'Form functionality checks',
+      'Monthly website health check',
+    ],
+    highlight: false,
+  },
+  {
+    slug: 'business-care',
+    name: 'Business Care',
+    monthly: 99,
+    audience: 'Best for businesses that actively depend on their website for leads and customers.',
+    updateTime: 'Up to 60 minutes of updates',
+    buildsOn: 'Essential',
+    includes: [
+      'Up to 60 minutes of small website updates per month',
+      'Content and image updates',
+      'Performance monitoring',
+      'Contact form and integration checks',
+      'Analytics monitoring',
+      'Basic technical SEO checks',
+      'Priority support',
+      'Monthly performance report',
+    ],
+    highlight: true,
+  },
+  {
+    slug: 'growth-care',
+    name: 'Growth Care',
+    monthly: 199,
+    audience: 'Best for growing companies that want continuous website optimization.',
+    updateTime: 'Up to 3 hours of updates',
+    buildsOn: 'Business',
+    includes: [
+      'Up to 3 hours of website updates per month',
+      'Landing page improvements',
+      'Conversion-focused website recommendations',
+      'Speed optimization',
+      'Analytics review',
+      'Technical SEO monitoring',
+      'Integration troubleshooting',
+      'Priority issue resolution',
+      'Monthly strategy recommendations',
+    ],
+    highlight: false,
+  },
+];
+
+/** Ongoing development beyond the three care plans. */
+export const CUSTOM_MANAGEMENT = {
+  name: 'Custom Website Management',
+  from: 399,
+  audience:
+    'For SaaS platforms, ecommerce websites, custom applications, high-traffic websites and businesses that need continuous development.',
+};
+
+export const CARE_PLAN_SCOPE_NOTE =
+  'Website Care Plans cover maintenance, monitoring, support, and minor improvements to your existing website. New pages, major redesigns, custom features, application development, advanced integrations, and large-scale changes are quoted separately.';
 
 /* -------------------------------------------------------------------------- */
 /* Process, commitments, FAQs                                                 */

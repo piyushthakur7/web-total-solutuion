@@ -8,8 +8,6 @@
  * does not replace them.
  */
 
-import { CARE_PLAN } from './siteContent';
-
 export const LAW_FIRM_PAGE = {
   slug: 'law-firm-websites',
   serviceName: 'Law Firm Website Development',
@@ -33,8 +31,8 @@ export const LAW_FIRM_PAGE = {
     timelineCondition:
       'The three weeks run from the point the scope is approved and your content is ready, and assume design feedback within the agreed review days. The delivery date is confirmed in writing at the start.',
     carePlan: {
-      price: `$${CARE_PLAN.monthly}/month`,
-      includes: CARE_PLAN.summary,
+      price: '$250/month',
+      includes: 'Hosting, updates, small edits, and monthly speed and uptime checks.',
     },
   },
   problems: {

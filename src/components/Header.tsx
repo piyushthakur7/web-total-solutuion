@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
@@ -24,8 +24,12 @@ export default function Header() {
   const active = (path: string) =>
     pathname === path || pathname.startsWith(`${path}/`);
 
+  // Opening the menu moves focus into it; Escape returns focus to the toggle.
   useEffect(() => {
     if (!open) return;
+    document
+      .querySelector<HTMLAnchorElement>("#mobile-navigation a")
+      ?.focus();
     const close = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setOpen(false);
@@ -67,7 +71,10 @@ export default function Header() {
             >
               {link.label}
               {active(link.path) && (
-                <span className="absolute bottom-1 left-1/2 size-1 -translate-x-1/2 rounded-full bg-brand-blue" />
+                <span
+                  className={`absolute inset-x-0 bottom-1.5 h-0.5 rounded-full ${home ? "bg-white" : "bg-brand-blue"}`}
+                  aria-hidden="true"
+                />
               )}
             </Link>
           ))}
@@ -88,7 +95,7 @@ export default function Header() {
               href="/contact"
               className="btn btn-ink hidden min-h-11 px-5 sm:inline-flex"
             >
-              Let&apos;s talk
+              Start a project
               <ArrowUpRight className="size-4" />
             </Link>
           )}
@@ -117,7 +124,7 @@ export default function Header() {
             className={`overflow-hidden border-t lg:hidden ${home ? "border-white/15 bg-[#05356e] text-white" : "border-ink/10 bg-paper"}`}
           >
             <div className="studio-container max-h-[calc(100dvh-11rem)] overflow-y-auto pb-7 pt-2">
-              {links.map((link, index) => (
+              {links.map((link) => (
                 <Link
                   key={link.path}
                   href={link.path}
@@ -125,16 +132,10 @@ export default function Header() {
                   aria-current={active(link.path) ? "page" : undefined}
                   className={`flex items-center justify-between border-b py-4 font-display text-3xl ${home ? "border-white/15" : "border-ink/10"}`}
                 >
-                  <span>
-                    <span
-                      className={`mr-4 align-middle font-mono text-[10px] ${home ? "text-white/60" : "text-graphite"}`}
-                    >
-                      0{index + 1}
-                    </span>
-                    {link.label}
-                  </span>
+                  <span>{link.label}</span>
                   <ArrowUpRight
                     className={`size-5 ${home ? "text-white/60" : "text-graphite"}`}
+                    aria-hidden="true"
                   />
                 </Link>
               ))}
@@ -143,7 +144,7 @@ export default function Header() {
                 onClick={() => setOpen(false)}
                 className={`btn mt-6 w-full ${home ? "btn-paper" : "btn-ink"}`}
               >
-                Start a conversation
+                Request a discovery call
                 <ArrowUpRight className="size-4" />
               </Link>
             </div>

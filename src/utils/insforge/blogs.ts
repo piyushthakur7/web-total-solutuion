@@ -16,11 +16,11 @@ export interface BlogRow {
 
 /** Columns safe and cheap to fetch for list views — omits the full `content` body. */
 const LIST_COLUMNS =
-  'id, title, slug, excerpt, author, image_url, published, publish_date, created_at';
+  'id, title, slug, excerpt, author, image_url, published, publish_date, created_at, updated_at';
 
 export type BlogListItem = Pick<
   BlogRow,
-  'id' | 'title' | 'slug' | 'excerpt' | 'author' | 'image_url' | 'published' | 'publish_date' | 'created_at'
+  'id' | 'title' | 'slug' | 'excerpt' | 'author' | 'image_url' | 'published' | 'publish_date' | 'created_at' | 'updated_at'
 >;
 
 /**
@@ -84,4 +84,34 @@ export async function getBlogSitemapEntries(): Promise<{ slug: string; updated_a
   }
 
   return (data ?? []) as { slug: string; updated_at: string }[];
+}
+
+const STUDIO_BYLINE = 'Web Total Solution';
+
+/**
+ * The byline to show for a post. A named author is used as entered; an empty
+ * field or a CMS role label such as "Admin" is not a person, so those posts
+ * are credited to the studio.
+ */
+export function blogByline(author: string | null): { name: string; isPerson: boolean } {
+  const name = author?.trim() ?? '';
+  if (!name || /^(admin|administrator|editor)$/i.test(name) || name === STUDIO_BYLINE) {
+    return { name: STUDIO_BYLINE, isPerson: false };
+  }
+  return { name, isPerson: true };
+}
+
+/** True when a post was revised at least a day after it was published. */
+export function wasRevised(blog: { publish_date: string; updated_at?: string }) {
+  if (!blog.updated_at) return false;
+  return new Date(blog.updated_at).getTime() - new Date(blog.publish_date).getTime() > 24 * 60 * 60 * 1000;
+}
+
+export function formatBlogDate(value: string) {
+  return new Date(value).toLocaleDateString('en-IN', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    timeZone: 'Asia/Kolkata',
+  });
 }

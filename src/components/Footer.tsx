@@ -1,4 +1,4 @@
-﻿import React from "react";
+import React from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import Logo from "./Logo";
@@ -7,8 +7,8 @@ import { EMAIL, OFFICES, PHONE_DISPLAY, WHATSAPP_URL } from "../siteContent";
 const studioLinks = [
   { href: "/work", label: "Selected work" },
   { href: "/about", label: "The studio" },
-  { href: "/pricing", label: "Investment" },
-  { href: "/projects", label: "Our products" },
+  { href: "/pricing", label: "Pricing" },
+  { href: "/projects", label: "Our product: WTS CRM" },
   { href: "/blog", label: "Insights" },
 ];
 const serviceLinks = [
@@ -16,7 +16,8 @@ const serviceLinks = [
   { href: "/services/landing-pages", label: "Landing pages" },
   { href: "/website-redesign", label: "Website redesign" },
   { href: "/services/saas-development", label: "Product UI & web apps" },
-  { href: "/ecommerce-development", label: "E-commerce" },
+  { href: "/services/ecommerce-development", label: "E-commerce" },
+  { href: "/services", label: "All services" },
 ];
 
 export default function Footer() {
@@ -29,10 +30,10 @@ export default function Footer() {
               <Logo theme="dark" />
             </Link>
             <p className="mt-6 max-w-xs text-sm leading-relaxed text-white/60">
-              Strategy, design and development for ambitious businesses. Based
-              in India. Building for what comes next.
+              A founder-led studio for startup websites, landing pages and
+              product interfaces. Based in Kolkata and Delhi.
             </p>
-            <div className="mt-5 flex gap-5 text-xs">
+            <div className="mt-5 flex gap-5 text-sm">
               {[
                 {
                   label: "Instagram",
@@ -57,15 +58,15 @@ export default function Footer() {
             </div>
           </div>
           <div className="lg:col-span-2">
-            <h2 className="font-mono text-[10px] uppercase tracking-[.15em] text-white/45">
-              Explore
+            <h2 className="text-sm font-semibold text-white">
+              Studio
             </h2>
             <ul className="mt-5 space-y-1">
               {studioLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="inline-block py-2 text-[13px] text-white/75 transition-colors hover:text-marker"
+                    className="inline-block py-2 text-sm text-white/75 transition-colors hover:text-marker hover:underline"
                   >
                     {link.label}
                   </Link>
@@ -74,15 +75,15 @@ export default function Footer() {
             </ul>
           </div>
           <div className="lg:col-span-3">
-            <h2 className="font-mono text-[10px] uppercase tracking-[.15em] text-white/45">
-              Expertise
+            <h2 className="text-sm font-semibold text-white">
+              Services
             </h2>
             <ul className="mt-5 space-y-1">
               {serviceLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="inline-block py-2 text-[13px] text-white/75 transition-colors hover:text-marker"
+                    className="inline-block py-2 text-sm text-white/75 transition-colors hover:text-marker hover:underline"
                   >
                     {link.label}
                   </Link>
@@ -91,18 +92,18 @@ export default function Footer() {
             </ul>
           </div>
           <div className="lg:col-span-3">
-            <h2 className="font-mono text-[10px] uppercase tracking-[.15em] text-white/45">
-              Say hello
+            <h2 className="text-sm font-semibold text-white">
+              Contact
             </h2>
             <a
               href={`mailto:${EMAIL}`}
-              className="mt-6 block break-words text-[13px] text-white/85 hover:text-marker"
+              className="mt-6 block break-words text-sm text-white/85 hover:text-marker"
             >
               {EMAIL}
             </a>
             <a
               href="tel:+916291519364"
-              className="mt-4 inline-block text-[13px] text-white/70 hover:text-marker"
+              className="mt-4 inline-block text-sm text-white/70 hover:text-marker"
             >
               {PHONE_DISPLAY}
             </a>
@@ -110,12 +111,12 @@ export default function Footer() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 flex min-h-11 items-center gap-2 text-xs text-marker"
+              className="mt-4 flex min-h-11 items-center gap-2 text-sm text-marker"
             >
               Talk on WhatsApp
               <ArrowUpRight className="size-3.5" />
             </a>
-            <details className="mt-3 text-xs text-white/60">
+            <details className="mt-3 text-sm text-white/70">
               <summary className="cursor-pointer py-2">
                 Kolkata & Delhi offices
               </summary>
@@ -131,7 +132,7 @@ export default function Footer() {
             </details>
           </div>
         </div>
-        <div className="flex flex-wrap gap-x-5 gap-y-1 border-t border-white/15 py-5 text-[10px] text-white/50">
+        <div className="flex flex-wrap gap-x-5 gap-y-1 border-t border-white/15 py-5 text-[13px] text-white/60">
           {[
             {
               href: "/website-development-company-india",
@@ -144,21 +145,22 @@ export default function Footer() {
               label: "Next.js development",
             },
             { href: "/law-firm-websites", label: "Law firm websites" },
-            { href: "/services/content-writing", label: "Content & SEO" },
+            { href: "/ecommerce-development", label: "Online store development" },
+            { href: "/services/app-development", label: "App development" },
+            { href: "/services/content-writing", label: "Content writing" },
             { href: "/services/digital-marketing", label: "Digital marketing" },
           ].map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="py-2 hover:text-white"
+              className="py-2 hover:text-white hover:underline"
             >
               {link.label}
             </Link>
           ))}
         </div>
-        <div className="flex flex-col justify-between gap-4 border-t border-white/15 pt-6 text-[10px] text-white/50 sm:flex-row">
+        <div className="flex flex-col justify-between gap-4 border-t border-white/15 pt-6 text-[13px] text-white/60 sm:flex-row">
           <p>© {new Date().getFullYear()} Web Total Solution</p>
-          <p>Designed with purpose. Developed with care.</p>
           <div className="flex gap-5">
             <Link href="/privacy" className="hover:text-white">
               Privacy

@@ -17,16 +17,3 @@ export interface PortfolioItem {
   techStack: string[];
   websiteUrl?: string;
 }
-
-export interface ServiceData {
-  slug: string;
-  title: string;
-  subtitle: string;
-  heroImage: string;
-  content: {
-    overview: string;
-    whyChooseUs: string;
-    features: string[];
-    techStack: string[];
-  };
-}

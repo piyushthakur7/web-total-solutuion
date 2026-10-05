@@ -1,6 +1,6 @@
-import { SERVICES_DATA } from '../../../src/data';
+import { SERVICES_DATA } from '../../../src/services';
 import ServiceDetailView from '../../../src/components/ServiceDetailView';
-import JsonLd, { breadcrumbSchema, serviceSchema } from '../../../src/components/JsonLd';
+import JsonLd, { breadcrumbSchema, faqSchema, serviceSchema } from '../../../src/components/JsonLd';
 import { notFound } from 'next/navigation';
 
 export function generateStaticParams() {
@@ -20,8 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 
   const url = `https://www.webtotalsolution.com/services/${resolvedParams.slug}`;
-  // Meta descriptions read better as a real sentence than a tagline.
-  const description = `${service.subtitle}. ${service.content.overview}`.slice(0, 158);
+  const description = service.metaDescription;
 
   return {
     title: service.title,
@@ -61,13 +60,15 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         data={[
           serviceSchema({
             name: service.title,
-            description: service.content.overview,
+            description: service.lead,
             url,
           }),
+          // The same questions are rendered visibly on the page.
+          faqSchema(service.faqs),
           breadcrumbSchema([
             { name: 'Home', url: 'https://www.webtotalsolution.com/' },
             { name: 'Services', url: 'https://www.webtotalsolution.com/services' },
-            { name: service.title, url },
+            { name: service.shortName, url },
           ]),
         ]}
       />

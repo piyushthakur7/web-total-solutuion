@@ -3,9 +3,9 @@ import ContactView from '../../src/components/ContactView';
 import JsonLd, { breadcrumbSchema } from '../../src/components/JsonLd';
 
 export const metadata: Metadata = {
-  title: 'Free Website Consultation',
+  title: 'Contact: Request a Discovery Call',
   description:
-    'Book a free, no-obligation website consultation with Web Total Solution. Tell us about your business and get honest advice plus a fixed written quote within 24 hours.',
+    'Tell Web Total Solution about your website or product project. We reply within one working day, agree the scope with you and send a written quote.',
   alternates: {
     canonical: 'https://www.webtotalsolution.com/contact',
   },
@@ -14,16 +14,16 @@ export const metadata: Metadata = {
     locale: 'en_IN',
     url: 'https://www.webtotalsolution.com/contact',
     siteName: 'Web Total Solution',
-    title: 'Free Website Consultation | Web Total Solution',
+    title: 'Contact | Web Total Solution',
     description:
-      'Get honest advice and a fixed written quote within 24 hours. No obligation to proceed.',
+      'Tell us about the project. We reply within one working day and send a written quote after a scope review.',
     images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Contact Web Total Solution' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Free Website Consultation | Web Total Solution',
+    title: 'Contact | Web Total Solution',
     description:
-      'Get honest advice and a fixed written quote within 24 hours. No obligation to proceed.',
+      'Tell us about the project. We reply within one working day and send a written quote after a scope review.',
     images: ['/og-image.png'],
   },
 };
@@ -36,7 +36,7 @@ export default function Contact() {
           {
             '@context': 'https://schema.org',
             '@type': 'ContactPage',
-            name: 'Free Website Consultation',
+            name: 'Contact Web Total Solution',
             url: 'https://www.webtotalsolution.com/contact',
             mainEntity: {
               '@type': 'ProfessionalService',

@@ -25,6 +25,8 @@ export default function MobileCTABar() {
     return () => observer.disconnect();
   }, [pathname]);
 
+  // The contact page is the destination, so the bar would link to itself.
+  if (pathname === "/contact") return null;
   if (pathname === "/" && !heroPassed) return null;
   return (
     <div className="fixed inset-x-0 bottom-0 z-40 border-t border-ink/10 bg-paper/95 pb-[env(safe-area-inset-bottom)] backdrop-blur-xl lg:hidden">
@@ -39,7 +41,7 @@ export default function MobileCTABar() {
           <WhatsAppIcon className="size-5" />
         </a>
         <Link href="/contact" className="btn btn-ink min-h-11 flex-1">
-          Let&apos;s talk about your project
+          Request a discovery call
           <ArrowUpRight className="size-4" />
         </Link>
       </div>

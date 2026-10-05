@@ -24,11 +24,7 @@ export async function generateMetadata({
 
   const url = `${BASE_URL}/work/${study.slug}`;
   const ogTitle = `${study.meta.title} | Web Total Solution`;
-  // Use the project screenshot where one exists; otherwise the site default.
-  const image =
-    study.visual.type === 'screenshot'
-      ? { url: study.visual.src, width: 2880, height: 1800, alt: study.visual.alt }
-      : { url: '/og-image.png', width: 1200, height: 630, alt: `${study.name} case study` };
+  const image = { url: study.cover.src, width: 2880, height: 1800, alt: study.cover.alt };
 
   return {
     title: study.meta.title,
@@ -76,7 +72,7 @@ export default async function WorkCaseStudyPage({
             '@context': 'https://schema.org',
             '@type': 'CreativeWork',
             name: `${study.name} case study`,
-            headline: study.positioning,
+            headline: study.statement,
             description: study.meta.description,
             url,
             about: study.websiteUrl,

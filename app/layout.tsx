@@ -1,4 +1,4 @@
-﻿import type { Metadata, Viewport } from "next";
+import type { Metadata, Viewport } from "next";
 import {
   Bricolage_Grotesque,
   Hanken_Grotesk,
@@ -34,7 +34,7 @@ const ORG_ID = `${SITE_URL}/#organization`;
 const SITE_TITLE =
   "Professional Business Website Development | Web Total Solution";
 const SITE_DESCRIPTION =
-  "We build fast, modern, SEO-optimised business websites that help companies attract customers, build trust and generate more leads. Get a free consultation.";
+  "Strategy, design and development for startup websites, landing pages and product interfaces. A founder-led studio in India working with clients worldwide.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -78,7 +78,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Web Total Solution â€” professional business website development",
+        alt: "Web Total Solution — professional business website development",
       },
     ],
   },
@@ -141,7 +141,7 @@ export default function RootLayout({
               image: `${SITE_URL}/og-image.png`,
               telephone: "+91-6291519364",
               email: "info@webtotalsolution.com",
-              priceRange: "â‚¹â‚¹",
+              priceRange: "$$",
               address: {
                 "@type": "PostalAddress",
                 streetAddress: "Pachpota, Garia",
@@ -158,7 +158,7 @@ export default function RootLayout({
               location: [
                 {
                   "@type": "Place",
-                  name: "Web Total Solution â€” Kolkata",
+                  name: "Web Total Solution — Kolkata",
                   address: {
                     "@type": "PostalAddress",
                     streetAddress: "Pachpota, Garia",
@@ -170,7 +170,7 @@ export default function RootLayout({
                 },
                 {
                   "@type": "Place",
-                  name: "Web Total Solution â€” Delhi",
+                  name: "Web Total Solution — Delhi",
                   address: {
                     "@type": "PostalAddress",
                     streetAddress:
@@ -317,7 +317,7 @@ export default function RootLayout({
         {/* Persistent mobile action bar (phone-only) */}
         <MobileCTABar />
 
-        {/* Floating WhatsApp Button â€” desktop only; mobile uses the action bar */}
+        {/* Floating WhatsApp Button — desktop only; mobile uses the action bar */}
         <a
           href="https://wa.me/916291519364"
           target="_blank"

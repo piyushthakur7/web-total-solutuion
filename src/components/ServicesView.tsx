@@ -1,74 +1,79 @@
-﻿import React from "react";
+import React from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { PageIntro, SectionLabel, TextLink } from "./StudioPrimitives";
+import { CTA } from "../siteContent";
+import { SERVICES_DATA } from "../services";
+import { contactHref } from "../lead";
+import { PageIntro, SectionHeading, TextLink } from "./StudioPrimitives";
 import ProcessSection from "./ProcessSection";
 import FinalCTA from "./FinalCTA";
 
 const services = [
   {
-    name: "Startup & marketing websites",
-    description:
-      "A digital presence that explains your product clearly, builds confidence and gives visitors a reason to take the next step.",
-    details: [
-      "Positioning & page strategy",
-      "Custom responsive UI",
-      "CMS & blog integration",
-      "SEO & conversion tracking",
+    name: "Startup and marketing websites",
+    audience: "For a startup or growing company whose website has to explain a product and bring in enquiries.",
+    problem: "The current site says too much, or too little, and visitors leave without understanding the offer.",
+    deliverables: [
+      "Messaging and page-by-page structure",
+      "Wireframes, then custom UI",
+      "Responsive build with CMS where scoped",
+      "SEO foundation, analytics, QA and handover",
     ],
     href: "/business-website-development",
-    label: "Establish your presence",
-    number: "01",
+    linkLabel: "Marketing website service",
+    study: { href: "/work/medara-labs", label: "Medara Labs case study" },
   },
   {
     name: "Landing pages",
-    description:
-      "One offer. One clear story. A focused page designed around the audience, the campaign and the action you want them to take.",
-    details: [
-      "Conversion research",
-      "UX wireframes",
-      "Campaign-focused design",
-      "Analytics setup",
+    audience: "For a team launching a product, feature or campaign that needs one focused page.",
+    problem: "Traffic arrives at a general page that does not match what the visitor was promised.",
+    deliverables: [
+      "Audience, offer and message hierarchy",
+      "Wireframe",
+      "Designed and built page",
+      "Form, on-page SEO and analytics",
     ],
     href: "/services/landing-pages",
-    label: "Launch your next offer",
-    number: "02",
+    linkLabel: "Landing page service",
+    study: { href: "/work/wts-crm", label: "wtscrm.com, in the WTS CRM case study" },
   },
   {
     name: "Website redesign",
-    description:
-      "Bring your website up to the standard of your business, with clearer messaging, better journeys and a distinctive new visual direction.",
-    details: [
-      "Website & UX audit",
-      "Information architecture",
-      "Visual design refresh",
-      "Performance & SEO foundations",
+    audience: "For a business whose website no longer matches what it sells or how it wants to be seen.",
+    problem: "The site is slow, hard to update or built for an earlier version of the business.",
+    deliverables: [
+      "Review of the existing site and its URLs",
+      "New structure and design",
+      "Rebuild with content and redirects carried across",
+      "Launch checks",
     ],
     href: "/website-redesign",
-    label: "Move your website forward",
-    number: "03",
+    linkLabel: "Redesign service",
+    study: { href: "/work", label: "Selected work (new builds, not redesigns)" },
   },
   {
-    name: "Product interfaces & web apps",
-    description:
-      "Thoughtful interfaces for complex workflows. We connect product strategy, interaction design and development in one team.",
-    details: [
-      "Product strategy & UX",
-      "Dashboards & modules",
-      "API integrations",
-      "Custom development",
+    name: "Product interfaces and web applications",
+    audience: "For a founder or team building a SaaS product, dashboard or portal.",
+    problem: "The workflow is clear in someone’s head but not yet in an interface people can use.",
+    deliverables: [
+      "Discovery and written scope",
+      "UX flows and data model",
+      "Interface design",
+      "Engineering, testing and handover",
     ],
     href: "/services/saas-development",
-    label: "Build your product experience",
-    number: "04",
+    linkLabel: "Product interface service",
+    study: { href: "/work/wts-crm", label: "WTS CRM case study" },
   },
 ];
+
+const additional = ["ecommerce-development", "content-writing", "digital-marketing", "app-development"];
 
 export default function ServicesView() {
   return (
     <div className="bg-paper pb-16 text-ink sm:pb-24">
       <PageIntro
-        label="Our expertise / From first idea to launch"
+        label="Services"
         title={
           <>
             One studio.
@@ -76,76 +81,95 @@ export default function ServicesView() {
             The whole journey.
           </>
         }
-        description="We bring strategy, design and development together to create websites with a clear purpose and a distinctive point of view."
+        description="Strategy, design and development for startup websites, landing pages and product interfaces. Each service below says who it is for and what you receive."
       >
-        <TextLink href="/contact">Tell us what you have in mind</TextLink>
+        <TextLink href="/contact">{CTA.primary}</TextLink>
       </PageIntro>
+
       <section className="studio-container">
         {services.map((service) => (
           <article
-            key={service.number}
-            className="grid gap-6 border-t border-ink/15 py-10 sm:py-14 lg:grid-cols-12 lg:gap-10"
+            key={service.name}
+            className="grid gap-x-12 gap-y-6 border-t border-ink/15 py-10 first:border-t-0 first:pt-0 sm:py-14 lg:grid-cols-12"
           >
-            <div className="lg:col-span-1">
-              <span className="font-mono text-xs text-brand-blue">
-                /{service.number}
-              </span>
-            </div>
-            <div className="lg:col-span-5">
+            <div className="lg:col-span-6">
               <h2 className="max-w-md font-display text-3xl leading-tight sm:text-4xl">
                 {service.name}
               </h2>
-              <p className="mt-4 max-w-md text-[15px] leading-relaxed text-graphite">
-                {service.description}
+              <p className="mt-4 max-w-md text-[16px] leading-relaxed text-ink">
+                {service.audience}
               </p>
-              <div className="mt-5">
-                <TextLink href={service.href}>{service.label}</TextLink>
+              <p className="mt-3 max-w-md text-[15px] leading-relaxed text-graphite">
+                <span className="font-semibold text-ink">
+                  The problem it addresses:{" "}
+                </span>
+                {service.problem}
+              </p>
+              <div className="mt-5 flex flex-col items-start gap-1">
+                <TextLink href={service.href}>{service.linkLabel}</TextLink>
+                <TextLink href={service.study.href}>
+                  {service.study.label}
+                </TextLink>
               </div>
             </div>
-            <ul className="self-center lg:col-span-6 lg:pl-12">
-              {service.details.map((detail, i) => (
-                <li
-                  key={detail}
-                  className="flex items-center gap-5 border-b border-ink/10 py-4 text-sm"
-                >
-                  <span className="font-mono text-[9px] text-graphite">
-                    0{i + 1}
-                  </span>
-                  {detail}
-                </li>
-              ))}
-            </ul>
+            <div className="lg:col-span-6">
+              <p className="text-sm font-semibold">What you receive</p>
+              <ul className="mt-3">
+                {service.deliverables.map((detail) => (
+                  <li
+                    key={detail}
+                    className="border-t border-ink/15 py-3.5 text-[15px] last:border-b"
+                  >
+                    {detail}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </article>
         ))}
-        <div className="mb-16 grid gap-7 rounded-[24px] bg-marker px-7 py-10 sm:mb-24 sm:p-10 lg:grid-cols-2">
-          <div>
-            <SectionLabel>More ways we can help</SectionLabel>
-            <h2 className="mt-5 font-display text-3xl">
-              The details around the website matter, too.
-            </h2>
-          </div>
-          <div className="flex flex-wrap content-center gap-3">
-            {[
-              { name: "E-commerce", href: "/ecommerce-development" },
-              { name: "Content & SEO", href: "/services/content-writing" },
-              {
-                name: "Digital marketing",
-                href: "/services/digital-marketing",
-              },
-            ].map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="btn btn-line border-ink/30 bg-white/20"
-              >
-                {item.name}
-                <ArrowUpRight className="size-4" />
-              </Link>
-            ))}
-          </div>
+      </section>
+
+      <section className="studio-container pb-16 sm:pb-24">
+        <div className="rounded-[24px] bg-white p-6 sm:p-10">
+          <SectionHeading
+            heading="Additional services"
+            intro="Offered alongside a website or product project. Each is scoped and quoted on its own, and none is automatically included in a website package."
+          />
+          <ul className="mt-8 grid gap-x-10 sm:grid-cols-2">
+            {additional.map((slug) => {
+              const service = SERVICES_DATA[slug];
+              return (
+                <li key={slug} className="border-t border-ink/15">
+                  <Link
+                    href={`/services/${slug}`}
+                    className="group flex min-h-16 items-center justify-between gap-4 py-4"
+                  >
+                    <span>
+                      <span className="block font-display text-xl group-hover:underline">
+                        {service.shortName}
+                      </span>
+                      <span className="mt-1 block text-sm leading-relaxed text-graphite">
+                        {service.fit.items[0]}
+                      </span>
+                    </span>
+                    <ArrowUpRight
+                      className="size-5 shrink-0 text-graphite"
+                      aria-hidden="true"
+                    />
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
         </div>
       </section>
-      <ProcessSection heading="A clear path from idea to live." />
+
+      <ProcessSection>
+        <Link href={contactHref()} className="btn btn-line">
+          {CTA.primary}
+          <ArrowUpRight className="size-4" aria-hidden="true" />
+        </Link>
+      </ProcessSection>
       <div className="mt-16 sm:mt-24">
         <FinalCTA />
       </div>

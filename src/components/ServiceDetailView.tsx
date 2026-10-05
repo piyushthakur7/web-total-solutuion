@@ -1,126 +1,168 @@
-﻿import React from "react";
+import React from "react";
 import Link from "next/link";
-import { ServiceData } from "../types";
 import { ArrowUpRight, Check } from "lucide-react";
-import { WHATSAPP_URL } from "../siteContent";
-import { PageIntro, SectionLabel } from "./StudioPrimitives";
-import FinalCTA from "./FinalCTA";
+import { ServiceData } from "../services";
+import { CTA, getPackage, formatUsd } from "../siteContent";
+import { contactHref } from "../lead";
+import { PageIntro, SectionHeading, TextLink } from "./StudioPrimitives";
+import EvidenceBlock from "./EvidenceBlock";
+import FAQSection from "./FAQSection";
+import LeadForm from "./LeadForm";
 
 export default function ServiceDetailView({
   service,
 }: {
   service: ServiceData;
 }) {
+  const pkg = getPackage(service.package);
+  const enquiry = contactHref({
+    package: service.package,
+    type: service.projectType,
+  });
+
   return (
     <div className="bg-paper pb-16 text-ink sm:pb-24">
       <PageIntro
-        label="Services / Our expertise"
+        compact
+        label={service.secondary ? "Additional service" : "Service"}
         title={service.title}
-        description={service.subtitle}
+        description={service.lead}
       >
+        <Link href="#enquiry" className="btn btn-paper">
+          {CTA.discuss}
+          <ArrowUpRight className="size-4" aria-hidden="true" />
+        </Link>
         <Link
           href="/services"
-          className="inline-flex min-h-11 items-center gap-2 text-xs font-semibold underline decoration-ink/25 underline-offset-4"
+          className="inline-flex min-h-11 items-center text-sm font-semibold underline underline-offset-4"
         >
           Explore all services
-          <ArrowUpRight className="size-3.5" />
         </Link>
       </PageIntro>
-      <section className="studio-container pb-16 sm:pb-24">
-        <div className="grid items-start gap-10 border-t border-ink/15 pt-10 sm:pt-14 lg:grid-cols-12 lg:gap-16">
-          <div className="space-y-12 lg:col-span-8">
-            <div>
-              <SectionLabel>The approach</SectionLabel>
-              <h2 className="mt-5 font-display text-3xl sm:text-4xl">
-                Built around your business.
-              </h2>
-              <p className="mt-5 max-w-2xl text-lg leading-relaxed text-graphite">
-                {service.content.overview}
-              </p>
-            </div>
-            <div>
-              <h2 className="font-display text-3xl">
-                A considered way to build.
-              </h2>
-              <p className="mt-5 max-w-2xl text-base leading-relaxed text-graphite">
-                {service.content.whyChooseUs}
-              </p>
-            </div>
-            <div className="rounded-[24px] bg-white p-7 sm:p-9">
-              <SectionLabel>What we can help with</SectionLabel>
-              <ul className="mt-7 grid gap-x-7 gap-y-5 sm:grid-cols-2">
-                {service.content.features.map((feature) => (
-                  <li
-                    key={feature}
-                    className="flex items-start gap-3 text-sm leading-relaxed"
-                  >
-                    <Check className="mt-0.5 size-4 shrink-0 text-brand-blue" />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <SectionLabel>The foundation</SectionLabel>
-              <h2 className="mt-5 font-display text-3xl">
-                Made to perform. Ready to grow.
-              </h2>
-              <p className="mt-4 max-w-xl text-sm leading-relaxed text-graphite">
-                The technology behind a fast, secure website that you can extend
-                as your business grows.
-              </p>
-              <ul className="mt-6 flex flex-wrap gap-2">
-                {service.content.techStack.map((tech) => (
-                  <li
-                    key={tech}
-                    className="rounded-full border border-ink/20 px-4 py-2 font-mono text-[10px]"
-                  >
-                    {tech}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-          <aside className="rounded-[24px] bg-deep p-7 text-paper sm:p-8 lg:sticky lg:top-32 lg:col-span-4">
-            <SectionLabel light>Your next step</SectionLabel>
-            <h2 className="mt-5 font-display text-3xl">
-              Let&apos;s talk about your project.
-            </h2>
-            <p className="mt-4 text-sm leading-relaxed text-white/65">
-              Tell us what you need. We will discuss the right approach and
-              confirm the scope, timeline and investment in writing.
-            </p>
-            <ul className="mt-6 space-y-3 text-xs text-white/75">
-              {[
-                "Free discovery call",
-                "Fixed written quote",
-                "Full code ownership",
-              ].map((item) => (
-                <li key={item} className="flex items-center gap-2">
-                  <Check className="size-3 text-marker" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <Link
-              href={`/contact?details=${encodeURIComponent(`I would like a quote for: ${service.title}.`)}`}
-              className="btn btn-accent mt-8 w-full"
-            >
-              Discuss your project
-              <ArrowUpRight className="size-4" />
-            </Link>
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 flex min-h-11 items-center justify-center text-xs text-white/75 underline underline-offset-4"
-            >
-              Or message on WhatsApp
-            </a>
-          </aside>
+
+      <EvidenceBlock evidence={service.evidence} />
+
+      <section className="studio-container grid gap-10 py-14 sm:py-20 lg:grid-cols-12 lg:gap-16">
+        <div className="lg:col-span-5">
+          <SectionHeading heading={service.fit.heading} />
+          <ul className="mt-6">
+            {service.fit.items.map((item) => (
+              <li
+                key={item}
+                className="flex items-start gap-3 border-t border-ink/15 py-3.5 text-[15px] leading-relaxed last:border-b"
+              >
+                <Check
+                  className="mt-1 size-4 shrink-0 text-brand-blue"
+                  aria-hidden="true"
+                />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="lg:col-span-7">
+          <SectionHeading heading={service.deliverables.heading} />
+          <ol className="mt-6">
+            {service.deliverables.items.map((item, index) => (
+              <li
+                key={item.title}
+                className="flex gap-4 border-t border-ink/15 py-4 last:border-b"
+              >
+                <span className="w-4 shrink-0 text-sm font-semibold text-brand-blue">
+                  {index + 1}
+                </span>
+                <div>
+                  <h3 className="text-[16px] font-semibold">{item.title}</h3>
+                  <p className="mt-1 text-[15px] leading-relaxed text-graphite">
+                    {item.description}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
-      <FinalCTA />
+
+      <section className="bg-deep py-14 text-paper sm:py-20">
+        <div className="studio-container grid gap-10 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-7">
+            <SectionHeading heading={service.scope.heading} light />
+            <div className="mt-5 space-y-4">
+              {service.scope.paragraphs.map((paragraph) => (
+                <p
+                  key={paragraph}
+                  className="max-w-[60ch] text-[16px] leading-relaxed text-white/75"
+                >
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+            <div className="mt-5">
+              <TextLink href="/pricing" light>
+                Website packages and terms
+              </TextLink>
+            </div>
+          </div>
+          <div className="lg:col-span-5">
+            <div className="rounded-[20px] border border-white/20 p-6 sm:p-7">
+              {pkg ? (
+                <>
+                  <p className="text-sm text-white/70">Related package</p>
+                  <p className="mt-1 font-display text-2xl">{pkg.name}</p>
+                  <p className="mt-3 text-[15px] text-white/75">
+                    From{" "}
+                    <span className="font-display text-3xl text-white">
+                      {formatUsd(pkg.from)}
+                    </span>{" "}
+                    USD
+                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-white/70">
+                    {pkg.scope}
+                  </p>
+                </>
+              ) : (
+                <>
+                  <p className="font-display text-2xl">Quoted per project</p>
+                  <p className="mt-3 text-sm leading-relaxed text-white/70">
+                    There is no package price for this service. You receive a
+                    written quote after a scope review, with the timeline
+                    agreed at the same time.
+                  </p>
+                </>
+              )}
+              <Link href={enquiry} className="btn btn-accent mt-6 w-full">
+                {CTA.discuss}
+                <ArrowUpRight className="size-4" aria-hidden="true" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <FAQSection
+        faqs={service.faqs}
+        heading={`${service.shortName}: common questions`}
+        intro="Scope, ownership and what we will not promise."
+      />
+
+      <section
+        id="enquiry"
+        className="studio-container grid scroll-mt-28 items-start gap-10 py-14 sm:py-20 lg:grid-cols-12 lg:gap-16"
+      >
+        <div className="lg:col-span-5">
+          <SectionHeading
+            heading={CTA.discuss}
+            intro="Tell us what you are planning. We reply within one working day, agree the scope with you and send a written quote."
+          />
+        </div>
+        <div className="lg:col-span-7">
+          <LeadForm
+            defaultProjectType={service.projectType}
+            defaultPackage={service.package}
+            source={`Service page: /services/${service.slug}`}
+          />
+        </div>
+      </section>
     </div>
   );
 }

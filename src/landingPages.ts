@@ -1,233 +1,186 @@
 /**
- * Config-driven landing pages rendered by <LandingPageView />.
- * Each entry is a full Google Ads destination: hero → benefits → portfolio →
- * testimonials → FAQ → CTA → contact form.
+ * Service, location and technology pages rendered by <LandingPageView />.
+ *
+ * Every page uses the same order — hero, evidence, intro, sections, quote
+ * guidance, FAQ, enquiry form — but the content is written per page. City
+ * pages are not find-and-replace copies of each other: duplicate city pages
+ * read as doorway pages to a search engine and to a visitor.
+ *
+ * Pricing rule: these pages do not publish INR price cards. The current
+ * published prices are the USD starting prices in WEBSITE_PACKAGES; a domestic
+ * project is quoted in writing after a scope review. Do not add a rupee figure
+ * here unless the business supplies a current, separately scoped offer.
  */
 
-import { PortfolioItem } from './types';
+import { Faq, SUPPORT_DETAIL } from './siteContent';
+import { ProjectType } from './lead';
+import { Evidence } from './components/EvidenceBlock';
 
-export interface LandingBenefit {
-  title: string;
-  description: string;
-  icon: 'target' | 'gauge' | 'search' | 'shield' | 'smartphone' | 'trending' | 'cart' | 'refresh' | 'headset';
-}
-
-/**
- * Optional long-form sections for pages that must rank organically, not just
- * convert ad clicks. Each renders only when present, so the ads-only pages
- * above stay lean.
- */
-export interface LandingSeoSections {
-  /** Keyword-bearing introduction placed directly after the trust bar. */
-  intro?: { heading: string; paragraphs: string[] };
-  /** Case for the technology itself, for pages targeting a framework or platform. */
-  highlights?: {
-    heading: string;
-    intro: string;
-    items: { title: string; description: string }[];
-  };
-  /**
-   * Service hub. Items with an `href` link out to their dedicated page; items
-   * without one render as plain cards.
-   */
-  services?: {
-    heading: string;
-    intro: string;
-    items: { title: string; description: string; href?: string }[];
-  };
-  /**
-   * Performance practices plus links that let the visitor test live builds
-   * themselves. Deliberately holds no scores: numbers go stale, a live test
-   * does not.
-   */
-  performance?: {
-    heading: string;
-    intro: string;
-    points: { title: string; description: string }[];
-    tests: { label: string; url: string }[];
-  };
-  /**
-   * Named, verifiable builds. Every entry must be live and actually built by
-   * us on the stack the page is about.
-   */
-  caseStudies?: {
-    heading: string;
-    intro: string;
-    items: {
-      name: string;
-      kind: string;
-      description: string;
-      points: string[];
-      stack: string[];
-      links: { label: string; href: string }[];
-    }[];
-  };
-  /** Grouped technology list. */
-  techStack?: { heading: string; intro: string; groups: { title: string; items: string[] }[] };
-  /** Price snapshot built from PRICING_PACKAGES, targeting "cost" queries. */
-  pricing?: { heading: string; intro: string; note: string };
-  /** Typical delivery time per project type, targeting "how long" queries. */
-  timelines?: {
-    heading: string;
-    intro: string;
-    items: { project: string; duration: string; description: string }[];
-    note: string;
-  };
-  /** What happens after launch — support, maintenance and handover. */
-  support?: { heading: string; intro: string; items: { title: string; description: string }[] };
-  /** Industries and areas served, for local relevance. */
-  coverage?: { heading: string; intro: string; industries: string[]; areas: string[] };
+export interface LandingSection {
+  heading: string;
+  intro?: string;
+  /** `list` is a two-column list of titled points; `links` are internal links. */
+  items: { title: string; description: string; href?: string }[];
+  /** Small-print under the section. */
+  note?: string;
 }
 
 export interface LandingPageConfig {
   slug: string;
   /** Short name used for the breadcrumb and Service schema. */
   serviceName: string;
-  /** Contact form pre-selection so the enquiry arrives tagged with intent. */
-  projectType: string;
-  eyebrow: string;
+  /** Enquiry form pre-selection so the enquiry arrives tagged with intent. */
+  projectType: ProjectType;
+  /** Package slug, when the page maps to one. */
+  package?: string;
+  label: string;
   h1: string;
-  subheadline: string;
-  primaryCta: string;
-  heroImage: string;
-  heroImageAlt: string;
-  trustBadges: string[];
-  benefitsEyebrow?: string;
-  benefitsHeading: string;
-  benefitsIntro: string;
-  benefits: LandingBenefit[];
-  /** Portfolio categories to feature on this page. */
-  portfolioCategories: PortfolioItem['category'][];
-  portfolioHeading: string;
-  portfolioIntro?: string;
-  faqHeading?: string;
-  faqIntro?: string;
-  faqs: { question: string; answer: string }[];
-  seo?: LandingSeoSections;
-  ctaHeadline: string;
-  ctaText: string;
-  meta: {
-    title: string;
-    description: string;
-    keywords: string[];
-  };
+  lead: string;
+  /** Key facts under the hero copy. */
+  facts: { label: string; value: string }[];
+  evidence: Evidence;
+  intro: { heading: string; paragraphs: string[] };
+  sections: LandingSection[];
+  /** Grouped short terms, e.g. technologies or areas served. */
+  groups?: { heading: string; intro?: string; items: { title: string; values: string[] }[] };
+  quote: { heading: string; paragraphs: string[] };
+  faqHeading: string;
+  faqs: Faq[];
+  meta: { title: string; description: string; keywords: string[] };
 }
+
+const DOMESTIC_QUOTE = [
+  'We do not publish a fixed rupee price list, because a five-page company site and a product catalogue are different amounts of work. You receive a written quote in INR after a scope review, with the pages, features, timeline and payment milestones listed.',
+  'The deliverables decide the price, not where you are based. Our published starting prices for startup website packages are in USD and are on the pricing page.',
+];
+
+const RANKING_FAQ: Faq = {
+  question: 'Will my website rank on Google?',
+  answer:
+    'Every site we build has the technical foundation in place: fast pages, mobile-first layouts, clean heading structure, metadata, structured data and a sitemap submitted to Search Console. Rankings also depend on your content, competition and reviews, so we do not guarantee a position.',
+};
+
+const SUPPORT_FAQ: Faq = { question: 'What support is included after launch?', answer: SUPPORT_DETAIL };
 
 export const LANDING_PAGES: Record<string, LandingPageConfig> = {
   /**
    * Primary local SEO page. Owns the "website development company in Kolkata"
-   * cluster (web development / website design company, website developer and
-   * designer in Kolkata, website cost in Kolkata). Other pages should link here
-   * with that anchor text rather than target those phrases themselves.
+   * cluster. Other pages should link here with that anchor text rather than
+   * target those phrases themselves.
    */
   'website-development-company-kolkata': {
     slug: 'website-development-company-kolkata',
     serviceName: 'Website Development in Kolkata',
     projectType: 'Business Website',
-    eyebrow: 'Web Design & Development · Kolkata',
-    h1: 'Website Development Company in Kolkata That Grows Your Business',
-    subheadline:
-      'We design and build fast, SEO-ready websites for Kolkata businesses — from 5-page company sites to full online stores — with a fixed written quote, an agreed delivery date and a local team you can actually reach.',
-    primaryCta: 'Get Free Website Consultation',
-    heroImage: 'https://images.pexels.com/photos/6476257/pexels-photo-6476257.jpeg',
-    heroImageAlt: 'Web Total Solution team planning a website for a Kolkata business',
-    trustBadges: ['Based in Kolkata', 'Fixed Written Quote', 'SEO Ready', '30 Days Support'],
-    benefitsEyebrow: 'Why Web Total Solution',
-    benefitsHeading: 'Why Kolkata Businesses Choose Web Total Solution',
-    benefitsIntro:
-      'There is no shortage of website developers and web development companies in Kolkata. These are the things our clients tell us made the difference when they compared quotes.',
-    benefits: [
+    label: 'Kolkata',
+    h1: 'Website development company in Kolkata',
+    lead: 'A founder-led web studio based in Garia. We design and build websites for Kolkata businesses, with the scope and price agreed in writing before work starts.',
+    facts: [
+      { label: 'Office', value: 'Pachpota, Garia, Kolkata 700152' },
+      { label: 'Pricing', value: 'Written quote in INR after scope review' },
+      { label: 'Design', value: 'Approved before development' },
+      { label: 'Support', value: '30 days after launch' },
+    ],
+    evidence: {
+      heading: 'A Kolkata business we built for',
+      body: 'JFM Group is a Kolkata security and facility management company. Its website presents the group’s services across West Bengal and takes quote requests. AtoZ Facility Management is a similar services site, built for a staffing firm in Punjab.',
+      portfolioIds: ['jfmgroup', 'atozfacility'],
+    },
+    intro: {
+      heading: 'Web design and development, from Garia',
+      paragraphs: [
+        'Web Total Solution is a website development and design studio in Kolkata. We build websites that have a job to do: explain what a business offers, answer the questions customers ask first and make it easy to get in touch.',
+        'You deal with the person leading the work. The studio is run by its founder, Piyush Thakur, who handles discovery, design decisions and development.',
+      ],
+    },
+    sections: [
       {
-        icon: 'headset',
-        title: 'A Local Team, Not a Middleman',
-        description:
-          'You speak directly to the people designing and building your website, in your working hours, with a reply within 24 hours — not to a salesperson relaying messages to an outsourced developer.',
+        heading: 'What we build for Kolkata businesses',
+        items: [
+          {
+            title: 'Business websites',
+            description: 'Company and service websites with clear pages for what you offer and a direct enquiry route.',
+            href: '/business-website-development',
+          },
+          {
+            title: 'Online stores and catalogues',
+            description: 'Stores with online payment, or product catalogues where buyers enquire.',
+            href: '/ecommerce-development',
+          },
+          {
+            title: 'Website redesign',
+            description: 'A new structure and design for a site that no longer fits the business, with existing URLs carried across.',
+            href: '/website-redesign',
+          },
+          {
+            title: 'Landing pages',
+            description: 'One focused page for a campaign or a single offer.',
+            href: '/services/landing-pages',
+          },
+        ],
       },
       {
-        icon: 'shield',
-        title: 'Fixed Quote, Agreed Deadline',
-        description:
-          'You get a written quote and a delivery date before any work begins. No open-ended estimates, no surprise invoices at handover.',
-      },
-      {
-        icon: 'search',
-        title: 'Built to Be Found on Google',
-        description:
-          'Clean heading structure, schema markup, metadata, sitemaps and fast load times are part of every build — the technical foundation local rankings depend on.',
-      },
-      {
-        icon: 'smartphone',
-        title: 'Designed for Mobile First',
-        description:
-          'Most of your customers will find you on a phone. Every layout is designed for small screens first, then scaled up to tablet and desktop.',
-      },
-      {
-        icon: 'target',
-        title: 'Structured to Win Enquiries',
-        description:
-          'Every page leads to a clear next step — call, WhatsApp or enquiry form — so visitors become conversations instead of bounces.',
-      },
-      {
-        icon: 'refresh',
-        title: 'You Own Everything',
-        description:
-          'Your domain, hosting, content and source code belong to you. No lock-in, no proprietary builder you cannot leave.',
+        heading: 'How a local project runs',
+        items: [
+          {
+            title: 'A first conversation',
+            description: 'The first conversation is a call or a WhatsApp chat, in your working hours.',
+          },
+          {
+            title: 'Scope and quote in writing',
+            description: 'Pages, features, content responsibilities, timeline and price are listed before any work begins.',
+          },
+          {
+            title: 'Review on your own phone',
+            description: 'Design and build are shared as preview links, so you check them on the devices your customers use.',
+          },
+          {
+            title: 'Accounts in your name',
+            description: 'Domain, hosting and source code belong to you and are handed over at launch.',
+          },
+        ],
       },
     ],
-    portfolioCategories: ['Corporate', 'E-Commerce', 'Landing Page'],
-    portfolioHeading: 'Recent Websites From Our Kolkata Studio',
-    faqHeading: 'Website Development in Kolkata: FAQs',
-    faqIntro:
-      'Straight answers to what Kolkata business owners ask us before hiring a website development company.',
+    groups: {
+      heading: 'Areas we work with',
+      intro: 'Based in Garia, working with businesses across the city and remotely elsewhere in India.',
+      items: [
+        {
+          title: 'Kolkata',
+          values: ['Garia', 'Jadavpur', 'Tollygunge', 'Behala', 'Ballygunge', 'Park Street', 'Salt Lake and Sector V', 'New Town and Rajarhat', 'Dum Dum', 'Howrah'],
+        },
+      ],
+    },
+    quote: { heading: 'Website development cost in Kolkata', paragraphs: DOMESTIC_QUOTE },
+    faqHeading: 'Website development in Kolkata: questions',
     faqs: [
       {
         question: 'How much does website development cost in Kolkata?',
         answer:
-          'It depends on the number of pages, the level of custom design and the features you need. Our Business Essential websites (up to 5 pages) start at ₹15,000, Business Growth websites (up to 10 pages with a CMS and blog) start at ₹35,000, and e-commerce or custom platforms are quoted individually. After a free consultation you receive a fixed written quote, so you know the exact investment before work begins.',
+          'It depends on the number of pages, how much custom design is involved and the features you need. We do not publish a fixed rupee price list. After a scope review you receive a written quote in INR, so you know the full cost before work begins.',
       },
       {
         question: 'How long does it take to build a website?',
         answer:
-          'A landing page typically goes live in 1–2 weeks, a complete business website with 5–10 pages in 2–4 weeks, and an online store in 3–6 weeks depending on catalogue size and integrations. We confirm your timeline in writing before development starts.',
+          'The timeline is agreed after the scope review and written into the quote. It depends on the number of pages and on how quickly content and approvals come back.',
       },
       {
-        question: 'How do I choose the right website development company in Kolkata?',
+        question: 'How do I choose a website development company in Kolkata?',
         answer:
-          'Ask to see live websites they have built, not just screenshots. Insist on a fixed written quote and an agreed delivery date. Confirm in writing that you will own the domain, hosting and source code. Check what support is included after launch, open their past work on your phone to judge speed, and read their public Google reviews. A good company will be comfortable with every one of these questions.',
-      },
-      {
-        question: 'Why hire a Kolkata company instead of a freelancer or an out-of-state agency?',
-        answer:
-          'A local company works your hours, understands the Kolkata market your customers are in, and is accountable as a team rather than depending on one person staying available. You still get agency-level process — written scope, design approval, testing and post-launch support — without the communication gaps of a remote vendor you have never spoken to.',
-      },
-      {
-        question: 'Will my website rank on Google in Kolkata?',
-        answer:
-          'Every website we build ships with technical SEO in place: fast load times, mobile-first layouts, clean heading structure, schema markup, metadata and a sitemap submitted to Google Search Console. Rankings also depend on your content, competition and Google Business Profile, so no honest company can guarantee a position — but we give you the foundation, and our SEO content and digital marketing services can take it further.',
+          'Ask to see live websites, not screenshots, and open them on your phone. Ask for the scope and price in writing. Confirm that the domain, hosting and source code will be in your name, and check what support is included after launch.',
       },
       {
         question: 'Do you only work with businesses in Kolkata?',
         answer:
-          'No. We are based in Garia, Kolkata, and work with businesses across West Bengal, the rest of India and internationally. The whole process — consultation, design reviews, approvals and handover — runs smoothly over call, email and WhatsApp.',
+          'No. We are based in Garia and also have an office in Delhi. We work with businesses across India and with clients abroad, with reviews and approvals handled on shared preview links.',
       },
-      {
-        question: 'Can you redesign my existing website instead of building a new one?',
-        answer:
-          'Yes. We audit your current site for speed, mobile experience, SEO and conversion gaps, then rebuild it on a modern foundation with every existing URL redirected correctly, so the rankings you already have carry across.',
-      },
-      {
-        question: 'Do you handle domain, hosting and maintenance?',
-        answer:
-          'Yes. We set up the domain, hosting and SSL certificate in your name and manage the go-live. Every project includes 30 days of post-launch support, and ongoing maintenance plans are available if you want us to keep your website updated.',
-      },
+      RANKING_FAQ,
+      SUPPORT_FAQ,
     ],
-    ctaHeadline: 'Looking for a Website Developer in Kolkata?',
-    ctaText:
-      'Book a free consultation and get honest advice, a recommended approach and a fixed written quote for your website — usually within 24 hours.',
     meta: {
       title: 'Website Development Company in Kolkata | Web Total Solution',
       description:
-        'Website development company in Kolkata building fast, SEO-ready business websites and online stores. Fixed quotes from ₹15,000. Book a free consultation.',
+        'Website development company in Garia, Kolkata. Business websites, online stores and redesigns, with scope and price agreed in writing. Request a project quote.',
       keywords: [
         'website development company in Kolkata',
         'web development company in Kolkata',
@@ -238,220 +191,115 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
         'website development cost in Kolkata',
       ],
     },
-    seo: {
-      intro: {
-        heading: 'Web Design and Development in Kolkata, Done Properly',
-        paragraphs: [
-          'Web Total Solution is a website development and website design company in Kolkata, based in Garia, that builds websites for businesses that need them to do real work: bring in enquiries, answer customer questions and make a strong first impression before anyone picks up the phone.',
-          'We have delivered 100+ websites across 30+ industries, from 5-page company websites for local service businesses to e-commerce stores and custom web applications. Every project is designed from scratch around your customers — never a recycled template — and built with the speed, mobile experience and technical SEO that Google expects.',
-          'Whether you need your first website, a redesign of one that has stopped working for you, or an online store, you get one local team handling design, development, content and launch, with a fixed quote and a delivery date agreed in writing.',
-        ],
-      },
-      services: {
-        heading: 'Website Development Services in Kolkata',
-        intro:
-          'Everything your business needs to succeed online, handled by one team. Choose the service that fits, or tell us the goal and we will recommend the right approach.',
-        items: [
-          {
-            title: 'Business Website Development',
-            description:
-              'Professional, lead-generating websites for service businesses, manufacturers, clinics, consultants and professional firms.',
-            href: '/business-website-development',
-          },
-          {
-            title: 'E-Commerce Website Development',
-            description:
-              'Online stores with secure Razorpay or UPI payments, fast product pages and a checkout built to reduce abandoned carts.',
-            href: '/ecommerce-development',
-          },
-          {
-            title: 'Website Redesign',
-            description:
-              'Rebuild a slow or outdated website on a modern, mobile-first foundation without losing the rankings you already have.',
-            href: '/website-redesign',
-          },
-          {
-            title: 'Landing Page Design',
-            description:
-              'Focused, high-converting pages for Google Ads and Meta campaigns, built to turn paid clicks into enquiries.',
-            href: '/services/landing-pages',
-          },
-          {
-            title: 'Custom Web Applications',
-            description:
-              'Portals, dashboards and SaaS products that replace spreadsheets and manual processes in your business.',
-            href: '/services/saas-development',
-          },
-          {
-            title: 'SEO & Digital Marketing',
-            description:
-              'Search-optimised content and campaigns that bring the right Kolkata customers to your new website.',
-            href: '/services/digital-marketing',
-          },
-        ],
-      },
-      pricing: {
-        heading: 'Website Development Cost in Kolkata',
-        intro:
-          'Transparent starting prices, so you can plan before we speak. Your exact figure comes as a fixed written quote after a free consultation.',
-        note: 'All prices in INR. Every website includes mobile-responsive design, on-page SEO setup and post-launch support.',
-      },
-      coverage: {
-        heading: 'Industries and Areas We Serve Across Kolkata',
-        intro:
-          'We work with businesses of every size across Kolkata and the wider region, and with clients anywhere in India who prefer to work remotely.',
-        industries: [
-          'Healthcare & Clinics',
-          'Education & Coaching',
-          'Real Estate',
-          'Legal & Professional Services',
-          'Manufacturing & Industrial',
-          'Textiles & Export',
-          'Retail & E-Commerce',
-          'Food & Restaurants',
-          'Events & Hospitality',
-          'Logistics & Transport',
-          'Interior Design',
-          'Finance',
-        ],
-        areas: [
-          'Garia',
-          'Jadavpur',
-          'Tollygunge',
-          'Behala',
-          'Ballygunge',
-          'Park Street',
-          'Salt Lake & Sector V',
-          'New Town & Rajarhat',
-          'Dum Dum',
-          'Howrah',
-        ],
-      },
-    },
   },
 
   /**
-   * Delhi local SEO page, backed by the real office in Rohini Sector 19. Owns
-   * the "website development company in Delhi" cluster (web design / website
-   * developer in Delhi, Rohini and Delhi NCR). Copy is written for Delhi, not
-   * a find-and-replace of the Kolkata page — duplicate city pages read as
-   * doorway pages to Google.
+   * Delhi local SEO page, backed by the real office in Rohini Sector 19.
+   * Written for Delhi, not adapted from the Kolkata page.
    */
   'website-development-company-delhi': {
     slug: 'website-development-company-delhi',
     serviceName: 'Website Development in Delhi',
     projectType: 'Business Website',
-    eyebrow: 'Web Design & Development · Rohini, Delhi',
-    h1: 'Website Development Company in Delhi for Businesses That Want Enquiries',
-    subheadline:
-      'From our office in Rohini, we design and build fast, SEO-ready websites and online stores for Delhi NCR businesses — with a fixed written quote, a delivery date agreed up front and a team that replies within 24 hours.',
-    primaryCta: 'Get Free Website Consultation',
-    heroImage: 'https://images.pexels.com/photos/6476257/pexels-photo-6476257.jpeg',
-    heroImageAlt: 'Web Total Solution team planning a website for a Delhi business',
-    trustBadges: ['Office in Rohini, Delhi', 'Fixed Written Quote', 'SEO Ready', '30 Days Support'],
-    benefitsEyebrow: 'Why Web Total Solution',
-    benefitsHeading: 'Why Delhi Businesses Work With Web Total Solution',
-    benefitsIntro:
-      'Delhi has thousands of web designers, and quotes range from a few thousand rupees to several lakhs for what looks like the same website. This is what you get from us, in writing, before you pay anything.',
-    benefits: [
+    label: 'Delhi NCR',
+    h1: 'Website development company in Delhi',
+    lead: 'From our office in Rohini, we design and build websites, catalogues and online stores for Delhi NCR businesses, with a written quote you can compare line by line.',
+    facts: [
+      { label: 'Office', value: 'Rohini Sector 19, Delhi 110042' },
+      { label: 'Pricing', value: 'Written quote in INR after scope review' },
+      { label: 'Design', value: 'Approved before development' },
+      { label: 'Support', value: '30 days after launch' },
+    ],
+    evidence: {
+      heading: 'Delhi NCR businesses we built for',
+      body: 'South Delhi Flats & Floors is a property site for builder floors and apartments in South Delhi neighbourhoods. Omoora Art & Design Studio is a Gurugram art academy whose site covers its classes and takes demo bookings.',
+      portfolioIds: ['southdelhiflats', 'omoora'],
+    },
+    intro: {
+      heading: 'Web design and development in Delhi, from Rohini',
+      paragraphs: [
+        'Web Total Solution has an office in Rohini Sector 19, North West Delhi. We build websites for Delhi businesses that need them to earn their keep: answer what customers ask before they call, and look credible next to a competitor a few streets away.',
+        'Quotes for a website in Delhi vary enormously for what looks like the same thing. Ours lists the pages, features, timeline and support, so you can hold it against any other quote and see what you are paying for.',
+      ],
+    },
+    sections: [
       {
-        icon: 'headset',
-        title: 'A Delhi Office You Can Reach',
-        description:
-          'We operate from Rohini Sector 19 in North West Delhi. You deal directly with the people designing and building your site — no call-centre sales team, no work passed silently to a subcontractor.',
+        heading: 'What Delhi businesses ask us for',
+        items: [
+          {
+            title: 'Websites for service firms',
+            description: 'For consultants, clinics, coaching institutes and professional firms that win work through enquiries.',
+            href: '/business-website-development',
+          },
+          {
+            title: 'Catalogues for traders and manufacturers',
+            description: 'Most trade buyers want to check a range and ask for a price, not pay by card. We build searchable catalogues with an enquiry on each product.',
+            href: '/work/mechverses',
+          },
+          {
+            title: 'Online stores',
+            description: 'Stores with online payment for brands selling direct.',
+            href: '/ecommerce-development',
+          },
+          {
+            title: 'Website redesign',
+            description: 'A new structure and design for a dated site, with existing URLs carried across.',
+            href: '/website-redesign',
+          },
+        ],
       },
       {
-        icon: 'shield',
-        title: 'Quotes You Can Compare',
-        description:
-          'Every quote lists the pages, features, timeline and what happens after launch, line by line. You can hold it against any other Delhi agency and see exactly what you are paying for.',
-      },
-      {
-        icon: 'search',
-        title: 'Built for a Crowded Local Market',
-        description:
-          'In Delhi you are competing with hundreds of businesses for the same searches. Fast load times, schema markup, clean structure and location pages give your site the technical footing to compete.',
-      },
-      {
-        icon: 'target',
-        title: 'Enquiries on WhatsApp and Call',
-        description:
-          'Delhi customers want to talk before they buy. Every page puts a call, WhatsApp or enquiry button within reach, so interest turns into a conversation while it is still warm.',
-      },
-      {
-        icon: 'cart',
-        title: 'Catalogues for Traders and Manufacturers',
-        description:
-          'Wholesalers, distributors and manufacturers get product catalogues built for enquiries rather than a cart — searchable ranges, spec sheets and a quote request on every product.',
-      },
-      {
-        icon: 'refresh',
-        title: 'You Own Everything',
-        description:
-          'The domain, hosting, content and source code are registered to you. If you ever move on, you take the whole website with you.',
+        heading: 'Comparing website quotes in Delhi',
+        intro: 'Ask every company the same five questions, including us.',
+        items: [
+          { title: 'Is the design custom or a template?', description: 'Both are legitimate, but they are not the same amount of work or the same price.' },
+          { title: 'Who owns the domain and code?', description: 'They should be registered to your business, not held in the agency’s account.' },
+          { title: 'What exactly is included?', description: 'A page count, a feature list and who supplies the content.' },
+          { title: 'What search setup is done?', description: 'Metadata, sitemap and Search Console at minimum.' },
+          { title: 'How long does support last?', description: 'And what it covers. Ours is 30 days of fixes, small content changes and technical help.' },
+        ],
       },
     ],
-    portfolioCategories: ['Corporate', 'E-Commerce', 'Landing Page'],
-    portfolioHeading: 'Websites We Have Built and Launched',
-    portfolioIntro:
-      'Live client websites from our team — open them on your phone and judge the speed and design for yourself.',
-    faqHeading: 'Website Development in Delhi: FAQs',
-    faqIntro:
-      'What Delhi business owners usually ask us before choosing a website development company.',
+    groups: {
+      heading: 'Areas we work with',
+      intro: 'From the Rohini office, across Delhi and the NCR.',
+      items: [
+        {
+          title: 'Delhi NCR',
+          values: ['Rohini', 'Pitampura', 'Shalimar Bagh', 'Model Town', 'Netaji Subhash Place', 'Paschim Vihar', 'Janakpuri', 'Karol Bagh', 'Connaught Place', 'Gurugram', 'Noida'],
+        },
+      ],
+    },
+    quote: { heading: 'Website development cost in Delhi', paragraphs: DOMESTIC_QUOTE },
+    faqHeading: 'Website development in Delhi: questions',
     faqs: [
       {
         question: 'How much does website development cost in Delhi?',
         answer:
-          'Our Business Essential websites (up to 5 pages) start at ₹15,000, Business Growth websites (up to 10 pages with a CMS and blog) start at ₹35,000, and e-commerce stores or custom platforms are quoted individually. Prices are the same for Delhi clients as for everyone else. After a free consultation you get a fixed written quote, so the figure does not change once work starts.',
+          'It depends on the pages, the level of custom design and the features. We do not publish a fixed rupee price list. After a scope review you receive a written quote in INR listing everything included, and the figure does not change unless the scope does.',
       },
       {
         question: 'Why do website quotes in Delhi vary so much?',
         answer:
-          'Low quotes usually mean a pre-made template, shared hosting in the agency’s name, no SEO setup and no support after launch. Very high quotes often carry agency overheads you never see. Compare quotes on the same points: number of pages, custom design or template, who owns the domain and code, what SEO is included, and how long support lasts. We put all of these in writing.',
+          'Low quotes often mean a pre-made template, hosting in the agency’s name and no support after launch. High quotes can carry overheads you never see. Compare on the same points: pages, custom design or template, who owns the domain and code, what search setup is included and how long support lasts.',
       },
       {
         question: 'Where is your Delhi office?',
         answer:
-          'Our Delhi office is at Dhani Ram Colony, Shiv Chowk, Rohini Sector 19, North West Delhi 110042. Most of the process — consultation, design reviews and approvals — runs over call, WhatsApp and email, so you do not need to travel. If you would prefer to meet in person, message us to arrange a time.',
-      },
-      {
-        question: 'Do you work with businesses in Gurugram, Noida, Ghaziabad and Faridabad?',
-        answer:
-          'Yes. We work with businesses across Delhi NCR and the rest of India. Location does not change the process, pricing or timeline.',
-      },
-      {
-        question: 'How long does it take to build a website?',
-        answer:
-          'A landing page usually goes live in 1–2 weeks, a 5–10 page business website in 2–4 weeks, and an online store in 3–6 weeks depending on the size of the catalogue and the integrations. The timeline is confirmed in writing before development begins.',
-      },
-      {
-        question: 'Will my website rank on Google in Delhi?',
-        answer:
-          'Every site ships with technical SEO in place: fast load times, mobile-first layouts, schema markup, metadata and a sitemap submitted to Google Search Console. In a market as competitive as Delhi, rankings also depend on your content, reviews and Google Business Profile, so no honest company will guarantee a position. We build the foundation, and our SEO content and digital marketing services can take it further.',
+          'Dhani Ram Colony, Shiv Chowk, Rohini Sector 19, North West Delhi 110042. Most of the process runs over call, WhatsApp and email, so you do not need to travel. If you would prefer to meet, message us to arrange a time.',
       },
       {
         question: 'I run a wholesale or manufacturing business. Do I need an online store?',
         answer:
-          'Usually not. Most B2B buyers want to check your range and ask for a price, not pay by card. We build product catalogues with categories, specifications and a quote-request or WhatsApp button on each product, which suits trading and manufacturing businesses far better than a retail checkout.',
+          'Usually not. A product catalogue with categories, specifications and an enquiry or WhatsApp button on each product suits trading and manufacturing businesses better than a retail checkout.',
       },
-      {
-        question: 'Can you redesign my existing website?',
-        answer:
-          'Yes. We audit the current site for speed, mobile experience, SEO and conversion gaps, then rebuild it on a modern foundation with every existing URL redirected, so the rankings you already have carry across.',
-      },
-      {
-        question: 'Do you handle domain, hosting and maintenance?',
-        answer:
-          'Yes. We set up the domain, hosting and SSL certificate in your name and manage the go-live. Every project includes 30 days of post-launch support, and ongoing maintenance plans are available if you want us to keep the site updated.',
-      },
+      RANKING_FAQ,
+      SUPPORT_FAQ,
     ],
-    ctaHeadline: 'Looking for a Website Developer in Delhi?',
-    ctaText:
-      'Book a free consultation and get honest advice, a recommended approach and a fixed written quote for your website — usually within 24 hours.',
     meta: {
       title: 'Website Development Company in Delhi | Web Total Solution',
       description:
-        'Website development company in Rohini, Delhi building fast, SEO-ready business websites and online stores. Fixed quotes from ₹15,000. Free consultation.',
+        'Website development company in Rohini, Delhi. Business websites, product catalogues and online stores, with a written quote you can compare. Request a project quote.',
       keywords: [
         'website development company in Delhi',
         'web development company in Delhi',
@@ -462,226 +310,102 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
         'website development cost in Delhi',
       ],
     },
-    seo: {
-      intro: {
-        heading: 'Web Design and Development in Delhi, From Rohini',
-        paragraphs: [
-          'Web Total Solution is a website development and design company with an office in Rohini Sector 19, North West Delhi. We build websites for Delhi businesses that need them to earn their keep: bring in enquiries, answer the questions customers ask before they call, and look credible next to competitors a few streets away.',
-          'Our team has delivered 100+ websites across 30+ industries — company websites for service firms, catalogues for manufacturers, online stores and custom web applications. Each one is designed around the customers it has to win, never a recycled template, and built with the speed and technical SEO Google expects.',
-          'Whether you need a first website, a redesign of one that has stopped bringing in work, or an online store, one team handles design, development, content and launch, with the price and delivery date agreed in writing before we start.',
-        ],
-      },
-      services: {
-        heading: 'Website Development Services in Delhi',
-        intro:
-          'Everything your business needs online, handled by one team. Pick the service that fits, or tell us the goal and we will recommend the approach.',
-        items: [
-          {
-            title: 'Business Website Development',
-            description:
-              'Lead-generating websites for CA firms, lawyers, clinics, consultants, coaching institutes and service businesses.',
-            href: '/business-website-development',
-          },
-          {
-            title: 'E-Commerce Website Development',
-            description:
-              'Online stores with Razorpay or UPI payments, fast product pages and a checkout designed to reduce abandoned carts.',
-            href: '/ecommerce-development',
-          },
-          {
-            title: 'Website Redesign',
-            description:
-              'Rebuild a slow or dated website on a modern, mobile-first foundation without losing the rankings you already have.',
-            href: '/website-redesign',
-          },
-          {
-            title: 'Landing Page Design',
-            description:
-              'Focused pages for Google Ads and Meta campaigns — essential when Delhi ad clicks are this expensive.',
-            href: '/services/landing-pages',
-          },
-          {
-            title: 'Custom Web Applications',
-            description:
-              'Portals, dashboards and internal tools that replace spreadsheets, registers and manual follow-ups.',
-            href: '/services/saas-development',
-          },
-          {
-            title: 'SEO & Digital Marketing',
-            description:
-              'Search-focused content and campaigns that bring customers from across Delhi NCR to your new website.',
-            href: '/services/digital-marketing',
-          },
-        ],
-      },
-      pricing: {
-        heading: 'Website Development Cost in Delhi',
-        intro:
-          'Starting prices up front, so you can plan before we speak. Your exact figure comes as a fixed written quote after a free consultation.',
-        note: 'All prices in INR. Every website includes mobile-responsive design, on-page SEO setup and post-launch support.',
-      },
-      coverage: {
-        heading: 'Industries and Areas We Serve Across Delhi NCR',
-        intro:
-          'Our Rohini office works with businesses throughout Delhi and the NCR, and with clients anywhere in India who prefer to work remotely.',
-        industries: [
-          'Wholesale & Trading',
-          'Manufacturing & Industrial',
-          'Coaching & Education',
-          'Healthcare & Clinics',
-          'CA & Legal Firms',
-          'Real Estate',
-          'Fashion & Retail',
-          'Export Houses',
-          'Food & Restaurants',
-          'Interior Design',
-          'Logistics & Transport',
-          'Events & Hospitality',
-        ],
-        areas: [
-          'Rohini',
-          'Pitampura',
-          'Shalimar Bagh',
-          'Prashant Vihar',
-          'Model Town',
-          'Netaji Subhash Place',
-          'Paschim Vihar',
-          'Janakpuri',
-          'Karol Bagh',
-          'Connaught Place',
-          'Gurugram',
-          'Noida',
-        ],
-      },
-    },
   },
 
-  /**
-   * National commercial page. Owns the "website development company in India"
-   * cluster (web development company / agency / services in India, custom and
-   * professional website development company). Business-led — the stack is
-   * the Next.js page's job, and each service links out to its own page.
-   */
+  /** National commercial page. Business-led; the stack is the Next.js page's job. */
   'website-development-company-india': {
     slug: 'website-development-company-india',
     serviceName: 'Website Development in India',
     projectType: 'Business Website',
-    eyebrow: 'Web Design & Development · Across India',
-    h1: 'Website Development Company in India',
-    subheadline:
-      'We design and build custom business websites, online stores and web applications for companies across India — with a fixed written quote, an agreed delivery date and a team you deal with directly from our Kolkata and Delhi offices.',
-    primaryCta: 'Get Free Website Consultation',
-    heroImage: 'https://images.pexels.com/photos/6476257/pexels-photo-6476257.jpeg',
-    heroImageAlt: 'Web Total Solution team planning a custom business website',
-    trustBadges: ['Offices in Kolkata & Delhi', 'Fixed Written Quote', 'You Own the Code', '30 Days Support'],
-    benefitsEyebrow: 'Why Web Total Solution',
-    benefitsHeading: 'Why Businesses Across India Choose Us',
-    benefitsIntro:
-      'Hiring a web development company is a trust decision: you are handing over your brand, your customers’ first impression and a real budget. These are the commitments we put in writing before you pay anything.',
-    benefits: [
+    label: 'India',
+    h1: 'Website development company in India',
+    lead: 'A founder-led studio with offices in Kolkata and Delhi. We design and build websites, online stores and web applications for companies across India and for clients abroad.',
+    facts: [
+      { label: 'Offices', value: 'Kolkata and Delhi' },
+      { label: 'Pricing', value: 'Written quote after scope review' },
+      { label: 'Ownership', value: 'Domain, hosting and code in your name' },
+      { label: 'Support', value: '30 days after launch' },
+    ],
+    evidence: {
+      heading: 'Work you can open and check',
+      body: 'Medara Labs is a business website for a pharmaceutical marketing and distribution company, organised around its product range and quality standards. The case study explains the decisions behind it, and the work page lists every live client site with a link.',
+      study: 'medara-labs',
+    },
+    intro: {
+      heading: 'What working with us looks like',
+      paragraphs: [
+        'Hiring a web development company is a trust decision. You are handing over the first impression of your business and a real budget. So the terms are written down before you pay anything: scope, price, timeline, ownership and support.',
+        'The studio is small by design. Its founder leads discovery, design and development, which means the person you brief is the person doing the work.',
+      ],
+    },
+    sections: [
       {
-        icon: 'target',
-        title: 'Built to Bring in Business',
-        description:
-          'We plan every website around what it has to achieve — calls, enquiries, orders or sign-ups — and design each page to move visitors toward that action.',
+        heading: 'Web development services',
+        items: [
+          { title: 'Business and startup websites', description: 'Marketing websites that explain an offer and lead to an enquiry.', href: '/business-website-development' },
+          { title: 'Online stores', description: 'Category, product, cart and checkout flows with payment integration.', href: '/ecommerce-development' },
+          { title: 'Website redesign', description: 'A new structure and design, with content and URLs carried across.', href: '/website-redesign' },
+          { title: 'Landing pages', description: 'One page for one audience, offer and action.', href: '/services/landing-pages' },
+          { title: 'Product interfaces and web applications', description: 'SaaS products, dashboards and portals, scoped separately from websites.', href: '/services/saas-development' },
+          { title: 'Next.js development', description: 'The framework this site and our own product run on.', href: '/nextjs-development-company-india' },
+        ],
       },
       {
-        icon: 'shield',
-        title: 'A Fixed Price, Agreed Up Front',
-        description:
-          'You get a written quote listing pages, features, timeline and support before work starts. The price does not grow halfway through the project.',
-      },
-      {
-        icon: 'trending',
-        title: 'Custom Design, Never a Template',
-        description:
-          'Your website is designed around your customers and your brand, so it does not look like a hundred other businesses using the same theme.',
-      },
-      {
-        icon: 'search',
-        title: 'SEO and Speed From Day One',
-        description:
-          'Mobile-first layouts, fast load times, schema markup, metadata and a sitemap are part of the build, not an add-on sold after launch.',
-      },
-      {
-        icon: 'headset',
-        title: 'One Team, Start to Finish',
-        description:
-          'The same people plan, design, build and support your website. You deal with them directly, on Indian working hours, with a reply within 24 hours.',
-      },
-      {
-        icon: 'refresh',
-        title: 'Everything Is Yours',
-        description:
-          'The domain, hosting, content and source code are registered to your business. No lock-in, and no proprietary builder you can never leave.',
+        heading: 'What a typical website project includes',
+        items: [
+          { title: 'Planning', description: 'Page structure and messaging, agreed before design.' },
+          { title: 'Custom design', description: 'Designed for your business and approved by you before development.' },
+          { title: 'Responsive build', description: 'Mobile-first pages with forms and the integrations in the scope.' },
+          { title: 'Search setup', description: 'Metadata, structured data, sitemap, analytics and Search Console.' },
+          { title: 'Launch in your accounts', description: 'Domain, hosting and SSL set up in your name, with the code handed over.' },
+          { title: 'Support', description: '30 days of fixes, small content changes and technical help.' },
+        ],
+        note: 'Copywriting, e-commerce, a CMS and third-party integrations are added where the scope calls for them.',
       },
     ],
-    portfolioCategories: ['Corporate', 'E-Commerce', 'SaaS', 'Landing Page'],
-    portfolioHeading: 'Websites We Have Designed and Developed',
-    portfolioIntro:
-      'Live client websites across industries. Open them on your phone and judge the speed, design and structure for yourself.',
-    faqHeading: 'Website Development Company in India: FAQs',
-    faqIntro:
-      'Straight answers to what business owners ask before hiring a web development company.',
+    groups: {
+      heading: 'Where our clients are',
+      items: [
+        { title: 'Offices', values: ['Kolkata', 'Delhi'] },
+        { title: 'Remote', values: ['Across India', 'International clients, quoted in USD'] },
+      ],
+    },
+    quote: { heading: 'Website development cost in India', paragraphs: DOMESTIC_QUOTE },
+    faqHeading: 'Website development in India: questions',
     faqs: [
       {
         question: 'How much does website development cost in India?',
         answer:
-          'It depends on the number of pages, how much custom design is involved and the features you need. Our Business Essential websites (up to 5 pages) start at ₹15,000, Business Growth websites (up to 10 pages with a CMS and blog) start at ₹35,000, and e-commerce stores, web applications and custom platforms are quoted individually. After a free consultation you receive a fixed written quote, so you know the full cost before work begins.',
+          'It depends on the number of pages, the custom design involved and the features. Domestic projects are quoted in INR in writing after a scope review. Our published starting prices for startup website packages are in USD, from $1,200.',
+        link: { label: 'See the packages', href: '/pricing' },
       },
       {
         question: 'How long does it take to develop a website?',
         answer:
-          'A landing page usually takes 1–2 weeks, a 5–10 page business website 2–4 weeks, an online store 3–6 weeks, and the first version of a web application 6–12 weeks. Timelines run from the point content and approvals are ready, and we confirm yours in writing before development starts.',
-      },
-      {
-        question: 'How do I choose the right website development company in India?',
-        answer:
-          'Ask to see live websites they have built, not screenshots, and open them on your phone to judge the speed. Insist on a fixed written quote and an agreed delivery date. Confirm in writing that the domain, hosting and source code will be registered to you. Check what support is included after launch and read their public reviews. A good company will be comfortable with every one of these questions.',
+          'The timeline is agreed after the scope review and written into the quote. It runs from the point content and approvals are ready.',
       },
       {
         question: 'Do you build custom websites or use templates?',
         answer:
-          'Custom. Every website is designed from scratch around your business, your customers and what the site needs to achieve. You review and approve the design before development begins, so what gets built is what you signed off.',
-      },
-      {
-        question: 'What is included in your website development services?',
-        answer:
-          'A typical project covers planning, custom design, development, mobile-responsive layouts, enquiry forms and WhatsApp integration, on-page SEO and schema setup, Google Analytics and Search Console, domain, hosting and SSL setup in your name, and post-launch support. Copywriting, e-commerce, CMS and third-party integrations are added based on what you need.',
+          'Custom. Each website is designed around the business and what the site needs to achieve. You approve the design before development begins.',
       },
       {
         question: 'Can you work with my business if I am not in Kolkata or Delhi?',
         answer:
-          'Yes. We have offices in Kolkata and Delhi and work with businesses across India. Consultation, design reviews, approvals and handover all run over video call, WhatsApp and email, and the process, pricing and timeline are the same wherever you are.',
+          'Yes. Consultation, design reviews, approvals and handover all run over call, WhatsApp, email and shared preview links.',
       },
       {
         question: 'Which technologies do you use?',
         answer:
-          'We build most websites and web applications with Next.js and React, which are fast, search-friendly and widely supported, so any competent developer can work on your site later. Content can be managed through a headless CMS or a custom admin panel, and we integrate payment gateways such as Razorpay and Stripe, CRMs, analytics and WhatsApp.',
+          'Most websites and applications are built with Next.js and React, which are widely supported, so another developer can work on your site later. Content management and integrations are chosen per project and listed in the quote.',
       },
-      {
-        question: 'What support do I get after the website goes live?',
-        answer:
-          'Every project includes 30 days of post-launch support covering fixes, small content changes and technical help; the Business Growth package includes 90 days. After that, ongoing maintenance plans are available if you want us to keep your website updated, secure and performing.',
-      },
-      {
-        question: 'Will my website rank on Google?',
-        answer:
-          'Every website ships with technical SEO in place: fast load times, mobile-first layouts, clean heading structure, schema markup, metadata and a sitemap submitted to Google Search Console. Rankings also depend on your content, competition and reviews, so no honest company can guarantee a position — but you get the foundation, and our SEO content and digital marketing services can take it further.',
-      },
-      {
-        question: 'Do you also build online stores and web applications?',
-        answer:
-          'Yes. We build e-commerce stores with Razorpay, Stripe or UPI checkout, and custom web applications such as customer portals, dashboards and SaaS products. These are scoped and quoted individually because the features vary so much from one business to the next.',
-      },
+      RANKING_FAQ,
+      SUPPORT_FAQ,
     ],
-    ctaHeadline: 'Looking for a Website Development Company You Can Trust?',
-    ctaText:
-      'Tell us about your business and what the website needs to do. You will get honest advice, a recommended approach and a fixed written quote — usually within 24 hours.',
     meta: {
       title: 'Website Development Company in India | Web Total Solution',
       description:
-        'Website development company in India building custom, SEO-ready business websites, online stores and web apps. Fixed quotes from ₹15,000. Free consultation.',
+        'Website development company in India with offices in Kolkata and Delhi. Custom business websites, online stores and web apps, with scope and price in writing.',
       keywords: [
         'website development company in india',
         'web development company india',
@@ -692,288 +416,117 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
         'business website development company india',
       ],
     },
-    seo: {
-      intro: {
-        heading: 'A Web Development Company Focused on Business Results',
-        paragraphs: [
-          'Web Total Solution is a website development company in India with offices in Kolkata and Delhi. We design and build custom websites for businesses that need them to do real work — bring in enquiries, sell products, answer customer questions and look credible next to bigger competitors.',
-          'Our team has delivered 100+ websites across 30+ industries, from 5-page company websites for service businesses to online stores, product catalogues and custom web applications. Every project is designed from scratch around the customers it has to win, and built with the speed, mobile experience and technical SEO Google expects.',
-          'You get one team for planning, design, development, content and launch, with the price, scope and delivery date agreed in writing before any work begins — and support that continues after the website goes live.',
-        ],
-      },
-      services: {
-        heading: 'Web Development Services for Indian Businesses',
-        intro:
-          'Everything your business needs online, handled by one team. Choose the service that fits, or tell us the goal and we will recommend the right approach.',
-        items: [
-          {
-            title: 'Business Website Development',
-            description:
-              'Professional, lead-generating websites for service businesses, manufacturers, clinics, consultants and professional firms.',
-            href: '/business-website-development',
-          },
-          {
-            title: 'E-Commerce Website Development',
-            description:
-              'Online stores with Razorpay, Stripe or UPI checkout, fast product pages and inventory and order management built in.',
-            href: '/ecommerce-development',
-          },
-          {
-            title: 'Website Redesign',
-            description:
-              'Rebuild a slow or outdated website on a modern, mobile-first foundation without losing the rankings you already have.',
-            href: '/website-redesign',
-          },
-          {
-            title: 'Landing Page Design',
-            description:
-              'Focused, high-converting pages for Google Ads and Meta campaigns, built to turn paid clicks into enquiries.',
-            href: '/services/landing-pages',
-          },
-          {
-            title: 'Custom Web Applications & SaaS',
-            description:
-              'Customer portals, dashboards, booking systems and SaaS products that replace spreadsheets and manual work.',
-            href: '/services/saas-development',
-          },
-          {
-            title: 'Next.js Development',
-            description:
-              'Fast, search-friendly websites and applications on the React framework our own site and product run on.',
-            href: '/nextjs-development-company-india',
-          },
-        ],
-      },
-      pricing: {
-        heading: 'Website Development Cost in India',
-        intro:
-          'Starting prices up front, so you can plan before we speak. Your exact figure comes as a fixed written quote after a free consultation.',
-        note: 'All prices in INR. Every website includes mobile-responsive design, on-page SEO setup and post-launch support.',
-      },
-      timelines: {
-        heading: 'How Long Website Development Takes',
-        intro:
-          'Typical delivery times by project type. Your exact timeline is agreed in writing during planning, before any development begins.',
-        items: [
-          {
-            project: 'Landing Page',
-            duration: '1–2 weeks',
-            description: 'A single, focused page for an ad campaign, product launch or lead-generation offer.',
-          },
-          {
-            project: 'Business Website',
-            duration: '2–4 weeks',
-            description: 'A 5–10 page company website with service pages, enquiry forms and SEO setup.',
-          },
-          {
-            project: 'E-Commerce Store',
-            duration: '3–6 weeks',
-            description: 'An online store with payments and shipping; timing depends on catalogue size and integrations.',
-          },
-          {
-            project: 'Web Application',
-            duration: '6–12 weeks',
-            description: 'The first version of a portal, dashboard or SaaS product, depending on scope.',
-          },
-        ],
-        note: 'Timelines run from the point content and approvals are ready.',
-      },
-      support: {
-        heading: 'Support That Continues After Launch',
-        intro:
-          'Going live is not the end of the project. This is what you get once your website is up and running.',
-        items: [
-          {
-            title: '30 Days of Support Included',
-            description:
-              'Every project includes 30 days of post-launch support, and the Business Growth package includes 90 days.',
-          },
-          {
-            title: 'Fixes and Small Changes',
-            description:
-              'Bug fixes, small content updates and technical help during the support period, at no extra cost.',
-          },
-          {
-            title: 'Analytics From Day One',
-            description:
-              'Google Analytics and Search Console are set up before launch, so you can see who visits and how they find you.',
-          },
-          {
-            title: 'Accounts in Your Name',
-            description:
-              'Domain, hosting and SSL certificate are registered to your business, and the source code is handed over to you.',
-          },
-          {
-            title: 'Ongoing Maintenance Plans',
-            description:
-              'If you want us to keep the site updated, secure and performing after the support period, maintenance plans are available.',
-          },
-          {
-            title: 'Replies Within 24 Hours',
-            description:
-              'Questions and change requests go straight to the team that built your website, with a reply within 24 hours.',
-          },
-        ],
-      },
-      coverage: {
-        heading: 'Industries and Cities We Work With',
-        intro:
-          'We work with businesses of every size, from our offices in Kolkata and Delhi and remotely with clients anywhere in India.',
-        industries: [
-          'Healthcare & Clinics',
-          'Education & Coaching',
-          'Real Estate',
-          'Legal & Professional Services',
-          'Manufacturing & Industrial',
-          'Wholesale & Trading',
-          'Retail & E-Commerce',
-          'Food & Restaurants',
-          'Events & Hospitality',
-          'Logistics & Transport',
-          'Interior Design',
-          'Finance',
-        ],
-        areas: [
-          'Kolkata',
-          'Delhi NCR',
-          'Mumbai',
-          'Bengaluru',
-          'Pune',
-          'Hyderabad',
-          'Chennai',
-          'Ahmedabad',
-          'Jaipur',
-          'Lucknow',
-          'Across India (remote)',
-        ],
-      },
-    },
   },
 
   /**
-   * National technology page. Owns the "Next.js development company in India"
-   * cluster (Next.js development services / agency, hire Next.js developers,
-   * Next.js website development).
+   * National technology page.
    *
    * Proof rule: only webtotalsolution.com and wtscrm.com are confirmed Next.js
-   * builds. The client portfolio is React (Vite), so it is presented as React
-   * work — never relabel it as Next.js.
+   * builds. The client portfolio is React, so it is presented as React work —
+   * never relabel it as Next.js.
    */
   'nextjs-development-company-india': {
     slug: 'nextjs-development-company-india',
     serviceName: 'Next.js Development',
     projectType: 'SaaS / Web Application',
-    eyebrow: 'Next.js · React · TypeScript',
-    h1: 'Next.js Development Company in India',
-    subheadline:
-      'We build fast, SEO-friendly websites, SaaS platforms and web applications on Next.js and React — with a fixed written quote, an agreed delivery date and full ownership of the code.',
-    primaryCta: 'Discuss Your Next.js Project',
-    heroImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop',
-    heroImageAlt: 'Next.js web application dashboard built by Web Total Solution',
-    trustBadges: ['Next.js App Router', 'Fixed Written Quote', 'You Own the Code', 'SEO Built In'],
-    benefitsEyebrow: 'Why Web Total Solution',
-    benefitsHeading: 'Why Hire Web Total Solution for Next.js Development',
-    benefitsIntro:
-      'Plenty of agencies list Next.js on their website. Here is what you can check about us before you sign anything.',
-    benefits: [
+    label: 'Next.js, React, TypeScript',
+    h1: 'Next.js development company in India',
+    lead: 'We build marketing websites and web applications on Next.js and React, and we run two Next.js projects of our own in production.',
+    facts: [
+      { label: 'In production', value: 'wtscrm.com and this website' },
+      { label: 'Stack', value: 'Next.js App Router, React, TypeScript' },
+      { label: 'Ownership', value: 'Repository and hosting in your accounts' },
+      { label: 'Pricing', value: 'Written quote after scope review' },
+    ],
+    evidence: {
+      heading: 'Two Next.js builds you can open now',
+      body: 'WTS CRM is our own subscription product, built with Next.js and React. The site you are reading is the second: a Next.js App Router site with its portfolio and blog served from a Postgres backend. Both are designed, built and run by us.',
+      study: 'wts-crm',
+      points: [
+        { title: 'App Router and Server Components', text: 'This site renders on the server and revalidates content in the background.' },
+        { title: 'Content from a database', text: 'Portfolio and blog entries are stored in Postgres, not hard-coded, and enquiries go to a serverless function.' },
+        { title: 'Generated SEO files', text: 'Sitemap, canonical URLs and JSON-LD structured data are produced by the application.' },
+        { title: 'Client work is React', text: 'Our client websites are React builds. We say so instead of relabelling them as Next.js.' },
+      ],
+    },
+    intro: {
+      heading: 'Why we use Next.js, and when we would not',
+      paragraphs: [
+        'Next.js renders pages on the server or at build time, so visitors and search engines receive complete HTML. Marketing pages, logged-in screens and API routes can live in one project, which suits a product whose website and application should feel like one thing.',
+        'A framework does not guarantee rankings or conversions. Those depend on content, competition and the offer. And if you need a very simple site that you will edit yourself with no developer, a website builder may serve you better. We will say so during the scope review.',
+      ],
+    },
+    sections: [
       {
-        icon: 'trending',
-        title: 'We Run Next.js in Production Ourselves',
-        description:
-          'Our own website and our SaaS product, WTS CRM, are both built on Next.js and live today. We solve the same deployment, caching and SEO problems for ourselves that we solve for clients.',
+        heading: 'What we build with it',
+        items: [
+          { title: 'Marketing websites', description: 'Fast, content-driven sites with a CMS where scoped.', href: '/business-website-development' },
+          { title: 'SaaS products and web applications', description: 'Accounts, roles, dashboards and billing flows.', href: '/services/saas-development' },
+          { title: 'Landing pages', description: 'Focused pages with forms and analytics.', href: '/services/landing-pages' },
+          { title: 'Migrations', description: 'Moving a React single-page app or an older site to Next.js, with existing URLs mapped and redirected.' },
+        ],
       },
       {
-        icon: 'shield',
-        title: 'Fixed Quote, Agreed Deadline',
-        description:
-          'After scoping you get a written quote and a delivery date before development starts. No open-ended hourly billing and no surprise invoices at handover.',
-      },
-      {
-        icon: 'refresh',
-        title: 'Your Code, Your Accounts',
-        description:
-          'The repository, hosting, domain and database are set up in your name. Any competent React developer can pick the project up later — you are never locked in to us.',
-      },
-      {
-        icon: 'headset',
-        title: 'Direct Access to the Developers',
-        description:
-          'You talk to the people writing the code, on Indian working hours, with a reply within 24 hours — not to an account manager relaying messages.',
-      },
-      {
-        icon: 'search',
-        title: 'SEO Is Part of the Build',
-        description:
-          'Metadata, canonical URLs, schema markup, sitemaps and server-rendered content are set up during development, not bolted on after launch.',
-      },
-      {
-        icon: 'target',
-        title: 'Built Around a Business Goal',
-        description:
-          'Whether the goal is enquiries, sign-ups or fewer manual processes, we plan pages and features around it — so you pay for what moves the number, not for features nobody uses.',
+        heading: 'Maintainability and handover',
+        intro: 'A project is only finished when someone else could take it over.',
+        items: [
+          { title: 'Standard tools', description: 'React and TypeScript are widely used, so another developer can pick the project up.' },
+          { title: 'Your accounts', description: 'The repository, hosting and database are created in your name.' },
+          { title: 'Typed code', description: 'TypeScript catches a class of mistakes before they reach production.' },
+          { title: 'Handover notes', description: 'How to run, deploy and update the project, written down at handover.' },
+          { title: 'Performance practices', description: 'Sized images, reserved dimensions to avoid layout shift, and code loaded only where it is needed.' },
+          { title: 'Measured, not promised', description: 'Test this page or wtscrm.com in PageSpeed Insights and see current numbers for yourself.' },
+        ],
       },
     ],
-    portfolioCategories: ['SaaS', 'Corporate', 'E-Commerce'],
-    portfolioHeading: 'React Websites We Have Delivered for Clients',
-    portfolioIntro:
-      'Next.js is built on React, and these are React sites we designed and built for clients. Every one is live — open them and judge the quality for yourself.',
-    faqHeading: 'Next.js Development: FAQs',
-    faqIntro:
-      'Straight answers to what founders and business owners ask before hiring a Next.js development company.',
+    groups: {
+      heading: 'The stack on our own projects',
+      items: [
+        { title: 'Framework', values: ['Next.js (App Router)', 'React', 'TypeScript'] },
+        { title: 'Styling', values: ['Tailwind CSS', 'CSS Modules', 'Motion'] },
+        { title: 'Data', values: ['PostgreSQL', 'Serverless functions'] },
+      ],
+    },
+    quote: {
+      heading: 'Next.js project cost',
+      paragraphs: [
+        'A marketing website on Next.js is covered by our website packages, with starting prices in USD on the pricing page. Domestic projects are quoted in INR after a scope review.',
+        'Applications and SaaS products are quoted after discovery, from the list of flows, roles and integrations. Hosting is billed by the provider to your own account.',
+      ],
+    },
+    faqHeading: 'Next.js development: questions',
     faqs: [
-      {
-        question: 'How much does Next.js development cost in India?',
-        answer:
-          'A Next.js business website with up to 5 pages starts at ₹15,000, and a website with up to 10 pages, a CMS and a blog starts at ₹35,000. SaaS platforms, web applications and e-commerce builds depend heavily on features, integrations and user roles, so they are scoped and quoted individually. After a free consultation you receive a fixed written quote before any work begins.',
-      },
-      {
-        question: 'How long does a Next.js project take?',
-        answer:
-          'A Next.js business website typically takes 2–4 weeks once content and approvals are ready. A first version of a SaaS product or web application usually takes 6–12 weeks depending on scope. We confirm the timeline in writing during planning and show you working progress along the way.',
-      },
       {
         question: 'Is Next.js the right choice for my project?',
         answer:
-          'Next.js is a strong fit when speed, search visibility and room to grow matter — marketing websites that need to rank, SaaS products, dashboards, customer portals and headless e-commerce. If you only need a very simple site that you want to edit yourself with no developer involvement, a website builder or WordPress may suit you better, and we will tell you so during the consultation.',
+          'It is a strong fit when speed, search visibility and room to grow matter: marketing websites, SaaS products, dashboards and portals. For a very simple site you want to edit with no developer involved, a website builder may suit you better.',
       },
       {
         question: 'Is Next.js good for SEO?',
         answer:
-          'Yes. Next.js renders pages on the server or at build time, so search engines receive complete HTML instead of a blank page waiting for JavaScript. It also has built-in support for metadata, sitemaps, image optimisation and fast loading — the technical factors Google measures. Rankings still depend on your content and competition, so no honest company can guarantee a position, but Next.js gives you a very strong foundation.',
+          'It gives a sound technical base, because pages arrive as complete HTML with metadata and sitemaps generated by the application. It does not guarantee rankings, which depend on your content and competition.',
       },
       {
         question: 'Can you migrate my React or WordPress website to Next.js?',
         answer:
-          'Yes. We move existing React single-page apps and WordPress sites to Next.js, map every existing URL to its new location with proper redirects, and carry across your metadata and content, so the rankings you already have are preserved while speed and SEO improve.',
-      },
-      {
-        question: 'Do you build SaaS products with Next.js and Supabase?',
-        answer:
-          'Yes. Next.js with a Postgres backend such as Supabase is a stack we use for SaaS products and internal tools: it gives you authentication, a real relational database, row-level security and file storage without building every piece from scratch. We plan the data model and access rules first, because they are the hardest things to change later.',
+          'Yes, where the scope includes it. Existing URLs are mapped to their new locations with redirects, and metadata and content are carried across.',
       },
       {
         question: 'Will I be able to edit content without a developer?',
         answer:
-          'Yes. We connect a headless CMS such as Sanity, or build a simple admin panel, so your team can update pages, blog posts, products and images themselves. The website pulls the new content automatically, without a redeploy.',
+          'If a CMS is in the scope, yes. The quote names the content types your team will be able to edit.',
       },
       {
-        question: 'Where will my Next.js website be hosted, and who owns it?',
+        question: 'Where will it be hosted, and who owns it?',
         answer:
-          'Usually on Vercel, which is built by the team behind Next.js, or on AWS or your own server if you prefer. Either way, the hosting account, domain, database and code repository are created in your name, and you own all of it.',
+          'On the hosting platform agreed in the scope. The hosting account, domain, database and code repository are created in your name.',
       },
-      {
-        question: 'Do you work with clients outside Kolkata?',
-        answer:
-          'Yes. Our team is based in Kolkata and we work with businesses across India and internationally. Consultation, design reviews, demos and handover all run over video call, email and WhatsApp.',
-      },
+      SUPPORT_FAQ,
     ],
-    ctaHeadline: 'Planning a Next.js Website or Web App?',
-    ctaText:
-      'Tell us what you want to build. You will get honest advice on whether Next.js is the right fit, a recommended approach and a fixed written quote — usually within 24 hours.',
     meta: {
       title: 'Next.js Development Company in India | Web Total Solution',
       description:
-        'Looking for a Next.js development company in India? Web Total Solution builds fast, SEO-friendly websites, SaaS platforms and web applications using Next.js, React and modern technologies.',
+        'Next.js development company in India. Marketing websites, SaaS products and web applications on Next.js and React, from the studio that builds and runs WTS CRM.',
       keywords: [
         'next.js development company india',
         'nextjs development company india',
@@ -985,289 +538,102 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
         'react and next.js development company',
       ],
     },
-    seo: {
-      intro: {
-        heading: 'Next.js Development Services in India, From a Team That Ships on It',
-        paragraphs: [
-          'Web Total Solution is a web development company based in Kolkata that builds websites and web applications for businesses across India and abroad. Next.js is the framework we choose when a project needs to be fast, rank well on Google and keep growing — and it is the framework our own website and our SaaS product run on.',
-          'Our Next.js development services cover business websites, SaaS platforms, dashboards, customer portals and headless e-commerce, along with the backend, CMS and third-party integrations each one needs. You get one team handling planning, UI design, development, deployment and support.',
-          'Every project starts with the business goal rather than the technology. If Next.js is not the right fit for what you need, we will tell you before you spend anything.',
-        ],
-      },
-      highlights: {
-        heading: 'Why Businesses Choose Next.js',
-        intro:
-          'Next.js is the React framework behind websites for companies such as Nike and Netflix. For a growing business, these are the reasons it matters.',
-        items: [
-          {
-            title: 'Fast by Default',
-            description:
-              'Pages are rendered on the server or at build time, so visitors get content immediately instead of waiting for JavaScript to load.',
-          },
-          {
-            title: 'Search Engines See Everything',
-            description:
-              'Google receives complete HTML for every page, unlike client-rendered React apps where content can be missed or indexed late.',
-          },
-          {
-            title: 'One Codebase, Website to App',
-            description:
-              'Marketing pages, logged-in dashboards and API endpoints can live in one project, so your website and product grow together.',
-          },
-          {
-            title: 'Scales With You',
-            description:
-              'The same framework serves a 5-page company site and a SaaS product with thousands of users, so growth does not force a rebuild.',
-          },
-          {
-            title: 'Largest Talent Pool',
-            description:
-              'Next.js is built on React, the most widely used front-end library, so developers are easy to find if you ever bring work in-house.',
-          },
-          {
-            title: 'Host It Anywhere',
-            description:
-              'Deploy to Vercel, AWS or your own server. You are not tied to a proprietary website builder you can never leave.',
-          },
-        ],
-      },
-      services: {
-        heading: 'Our Next.js Development Services',
-        intro:
-          'From a fast company website to a full SaaS product, we handle the front end, back end, content management and integrations as one project.',
-        items: [
-          {
-            title: 'Next.js Business Websites',
-            description:
-              'Fast, SEO-ready company websites with conversion-focused pages, enquiry forms, WhatsApp integration and analytics set up from day one.',
-            href: '/business-website-development',
-          },
-          {
-            title: 'SaaS & Web Application Development',
-            description:
-              'Subscription products, dashboards, customer portals and internal tools with user accounts, roles, billing and reporting.',
-            href: '/services/saas-development',
-          },
-          {
-            title: 'E-Commerce & Headless Commerce',
-            description:
-              'Fast storefronts with Razorpay, Stripe or UPI checkout, or a Next.js front end on top of Shopify for more design and speed control.',
-            href: '/ecommerce-development',
-          },
-          {
-            title: 'Next.js + Supabase Development',
-            description:
-              'Authentication, a Postgres database, row-level security, file storage and realtime features for SaaS products and internal tools.',
-          },
-          {
-            title: 'Next.js + Sanity CMS Development',
-            description:
-              'Headless CMS setups your marketing team can edit on their own, with live previews and content that updates without a redeploy.',
-          },
-          {
-            title: 'API & Third-Party Integrations',
-            description:
-              'Payment gateways, CRMs, email and WhatsApp providers, analytics, AI models and your existing systems, connected securely through server-side APIs.',
-          },
-        ],
-      },
-      performance: {
-        heading: 'Performance and Core Web Vitals, Built In',
-        intro:
-          'Speed affects both Google rankings and how many visitors turn into customers. These are the practices we build into every Next.js project.',
-        points: [
-          {
-            title: 'Server Rendering & Static Generation',
-            description:
-              'Each page is rendered in the way that suits it — static where content rarely changes, refreshed in the background where it does.',
-          },
-          {
-            title: 'Less JavaScript in the Browser',
-            description:
-              'React Server Components keep data fetching and heavy logic on the server, so phones download and run far less code.',
-          },
-          {
-            title: 'Optimised Images',
-            description:
-              'Images are resized per device, served as AVIF or WebP and lazy-loaded below the fold, the biggest single win for mobile load time.',
-          },
-          {
-            title: 'No Layout Shift',
-            description:
-              'Fonts are self-hosted and images have reserved dimensions, so the page does not jump around while it loads.',
-          },
-          {
-            title: 'Code Split by Section',
-            description:
-              'Sections further down the page load only when needed, keeping the first screen quick even on long pages.',
-          },
-          {
-            title: 'Technical SEO in the Framework',
-            description:
-              'Metadata, canonical URLs, sitemaps and structured data are generated by the application itself, so they never fall out of date.',
-          },
-        ],
-        tests: [
-          {
-            label: 'Test this page',
-            url: 'https://pagespeed.web.dev/report?url=https%3A%2F%2Fwww.webtotalsolution.com%2Fnextjs-development-company-india',
-          },
-          {
-            label: 'Test wtscrm.com',
-            url: 'https://pagespeed.web.dev/report?url=https%3A%2F%2Fwtscrm.com%2F',
-          },
-        ],
-      },
-      caseStudies: {
-        heading: 'Next.js Projects You Can Open Right Now',
-        intro:
-          'Two production Next.js builds we designed, developed and still run ourselves. Visit them, click around and test their speed.',
-        items: [
-          {
-            name: 'WTS CRM',
-            kind: 'SaaS product',
-            description:
-              'A CRM and invoicing app for Indian freelancers and agency teams — our own subscription product, live with tiered plans and a free trial.',
-            points: [
-              'Lead capture, follow-up reminders and a daily action view',
-              'Tasks, projects and professional invoices with payment tracking',
-              'Private workspaces with user accounts and tiered subscription plans',
-            ],
-            stack: ['Next.js', 'React', 'CSS Modules'],
-            links: [
-              { label: 'Visit wtscrm.com', href: 'https://wtscrm.com' },
-              { label: 'Product overview', href: '/projects' },
-            ],
-          },
-          {
-            name: 'webtotalsolution.com',
-            kind: 'Marketing website',
-            description:
-              'The site you are reading: a content-driven company website with a portfolio, blog and lead capture, all managed from a database rather than hard-coded.',
-            points: [
-              'App Router with React Server Components and background revalidation',
-              'Portfolio and blog served from a Postgres backend, with enquiries captured by a serverless function',
-              'Generated sitemap, canonical URLs and JSON-LD structured data on every page',
-            ],
-            stack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'PostgreSQL', 'Vercel'],
-            links: [{ label: 'See our work', href: '/work' }],
-          },
-        ],
-      },
-      techStack: {
-        heading: 'Our Next.js Technology Stack',
-        intro:
-          'Proven, well-supported tools chosen for speed, security and long-term maintainability — nothing obscure that only we can work on.',
-        groups: [
-          { title: 'Framework', items: ['Next.js (App Router)', 'React', 'TypeScript'] },
-          { title: 'UI & Styling', items: ['Tailwind CSS', 'Motion', 'Responsive design'] },
-          { title: 'Backend & Data', items: ['Node.js', 'PostgreSQL', 'Supabase', 'REST APIs'] },
-          { title: 'Content Management', items: ['Sanity', 'Headless CMS', 'Custom admin panels'] },
-          { title: 'Payments & Integrations', items: ['Razorpay', 'Stripe', 'Shopify', 'Google Analytics'] },
-          { title: 'Hosting & Deployment', items: ['Vercel', 'AWS', 'GitHub'] },
-        ],
-      },
-      pricing: {
-        heading: 'Next.js Development Cost in India',
-        intro:
-          'Starting prices for Next.js websites, so you can plan before we speak. SaaS products and web applications are quoted individually after scoping.',
-        note: 'All prices in INR. Every website includes mobile-responsive design, on-page SEO setup and post-launch support.',
-      },
-    },
   },
 
   'business-website-development': {
     slug: 'business-website-development',
     serviceName: 'Business Website Development',
-    projectType: 'Business Website',
-    eyebrow: 'Business Website Development',
-    h1: 'Professional Business Websites That Generate More Leads',
-    subheadline:
-      'We build fast, modern, SEO-optimised websites that help businesses attract customers, build trust, and grow online — designed around your customers, not a template.',
-    primaryCta: 'Get Free Website Consultation',
-    heroImage: 'https://images.pexels.com/photos/6476257/pexels-photo-6476257.jpeg',
-    heroImageAlt: 'Team planning a professional business website design',
-    trustBadges: ['Fast Delivery', 'SEO Ready', 'Mobile Responsive', '30 Days Support'],
-    benefitsHeading: 'What a Professional Website Does for Your Business',
-    benefitsIntro:
-      'A business website is not a brochure. Built correctly, it is the hardest-working salesperson on your team — visible every hour, in every city you serve.',
-    benefits: [
+    projectType: 'Startup Marketing Website',
+    package: 'startup-growth-site',
+    label: 'Marketing websites',
+    h1: 'Business and startup website development',
+    lead: 'A multi-page marketing website that explains what you offer, shows why you are credible and leads visitors to one next step.',
+    facts: [
+      { label: 'Package', value: 'Startup Growth Site, from $2,500 USD' },
+      { label: 'Revisions', value: '3 rounds' },
+      { label: 'Timeline', value: 'Agreed after scope review' },
+      { label: 'Support', value: '30 days after launch' },
+    ],
+    evidence: {
+      heading: 'A business website, explained',
+      body: 'Medara Labs markets and distributes medicines. Its website had two questions to answer, what the company supplies and whether it can be trusted on quality, so both sit one click from the home page.',
+      study: 'medara-labs',
+      points: [
+        { title: 'Two first actions', text: 'The opening screen offers the product portfolio and quality assurance, before the company story.' },
+        { title: 'Products by category', text: 'The range is filtered by what each product treats, which is how the trade discusses it.' },
+        { title: 'Quality as its own page', text: 'Compliance is a navigation item with a checklist, not a slogan on the About page.' },
+        { title: 'Enquiry in the header', text: 'The enquiry button stays in the navigation on every page.' },
+      ],
+    },
+    intro: {
+      heading: 'What a marketing website has to do',
+      paragraphs: [
+        'A visitor decides quickly whether a site is for them. The first screen has to say who you serve and what you offer, and every page after it should answer the next question and offer a way to act.',
+        'That is a structure problem before it is a design problem, which is why the page list and messaging are agreed before anything is styled.',
+      ],
+    },
+    sections: [
       {
-        icon: 'target',
-        title: 'Turns Visitors Into Enquiries',
-        description:
-          'Every page is structured around a clear next step, so the people who find you actually contact you instead of leaving.',
+        heading: 'What you receive',
+        items: [
+          { title: 'Site structure and messaging', description: 'A page list and what each page must say, agreed first.' },
+          { title: 'Wireframes', description: 'The layout of each page template before visual design.' },
+          { title: 'Approved UI', description: 'A custom interface on desktop and mobile, signed off before development.' },
+          { title: 'Responsive build', description: 'Next.js pages with forms and the integrations in the scope.' },
+          { title: 'CMS, where scoped', description: 'A blog or editable pages, with each content type named in the quote.' },
+          { title: 'QA, launch and handover', description: 'Testing, go-live in your accounts, analytics and a handover.' },
+        ],
       },
       {
-        icon: 'search',
-        title: 'Gets Found on Google',
-        description:
-          'Clean semantic structure, schema markup and fast load times give your business the technical foundation search rankings depend on.',
-      },
-      {
-        icon: 'shield',
-        title: 'Builds Instant Credibility',
-        description:
-          'Most buyers judge a business within seconds of landing on its website. A premium, professional design makes that first judgement work in your favour.',
-      },
-      {
-        icon: 'gauge',
-        title: 'Loads Fast Everywhere',
-        description:
-          'Optimised images, lazy loading and modern architecture keep your site quick even on average mobile data — where most of your customers are.',
-      },
-      {
-        icon: 'smartphone',
-        title: 'Works on Every Device',
-        description:
-          'Designed mobile-first, then scaled to tablet and desktop, so your business looks equally sharp on a phone in a showroom or a laptop in an office.',
-      },
-      {
-        icon: 'headset',
-        title: 'Supported After Launch',
-        description:
-          'Thirty days of complimentary support after go-live, with maintenance plans available if you want us to keep managing it.',
+        heading: 'More business websites we have built',
+        intro: 'Live client sites on their own domains.',
+        items: [
+          { title: 'Laiken Engineering Company', description: 'Industrial component supplier, built around sending a specification and getting a quote.', href: 'https://laikenengineering.com/' },
+          { title: 'Gromore Investment', description: 'Investment planning for families, organised by goal.', href: 'https://www.groomore.in/' },
+          { title: 'The Selvedge', description: 'B2B denim manufacturing for private-label brands.', href: 'https://www.theselvedge.co.in/' },
+          { title: 'Kavita Kabira Wellness Clinic', description: 'A psychologist’s practice with appointment booking.', href: 'https://www.kavitakabira.com/' },
+        ],
       },
     ],
-    portfolioCategories: ['Corporate', 'Landing Page'],
-    portfolioHeading: 'Business Websites We Have Delivered',
+    quote: {
+      heading: 'Scope and quote',
+      paragraphs: [
+        'The Startup Growth Site starts at $2,500 USD. The quote depends on the number of page templates, CMS content types, copywriting, migration from an existing site and integrations.',
+        'Indian businesses are quoted in INR after a scope review. The timeline is agreed at the same time and written into the quote.',
+      ],
+    },
+    faqHeading: 'Business websites: questions',
     faqs: [
       {
-        question: 'What does a professional business website include?',
+        question: 'What does a business website include?',
         answer:
-          'A typical business website includes a conversion-focused home page, service or product pages, an about page, a contact page with an enquiry form, WhatsApp integration, mobile-responsive design, technical SEO setup, Google Analytics, an SSL certificate and 30 days of post-launch support. Anything specific to your business is scoped during the consultation.',
+          'Typically a home page, service or product pages, an about page and a contact page with an enquiry form, built responsively with search setup and analytics. The exact page list is agreed in the written scope.',
       },
       {
-        question: 'How much does business website development cost in India?',
+        question: 'Do you write the content, or do I provide it?',
         answer:
-          'Cost depends on the number of pages, the level of custom design and the features you need. Most professional business websites we deliver fall in the ₹15,000 to ₹50,000 range. We provide a fixed written quote after the free consultation, so you know the exact investment before anything begins.',
-      },
-      {
-        question: 'How long will my business website take?',
-        answer:
-          'Most business websites go live in 2–4 weeks from the time content and approvals are ready. A single-page site can be delivered in 1–2 weeks. We confirm your timeline in writing during the planning stage.',
-      },
-      {
-        question: 'Do you write the content, or do I need to provide it?',
-        answer:
-          'Either works. We offer professional SEO copywriting as part of the project, or we can structure and polish content you already have. Most clients prefer we write it, because copy written for search and conversion performs very differently from copy written internally.',
+          'Either. We can structure and edit content you supply, or copywriting can be added to the scope as its own line.',
       },
       {
         question: 'Will I be able to update the website myself?',
         answer:
-          'Yes, if you want to. We can integrate a content management system so your team can edit text, images and blog posts without touching code. If you would rather not manage it, our maintenance plans cover updates for you.',
+          'If a CMS is in the scope, yes. The quote names what your team will be able to edit without a developer.',
       },
+      {
+        question: 'How long will it take?',
+        answer:
+          'The timeline is agreed after the scope review. It depends on the number of pages and on when content and approvals are ready.',
+      },
+      SUPPORT_FAQ,
     ],
-    ctaHeadline: 'Ready to Grow Your Business Online?',
-    ctaText:
-      'Book a free consultation today and discover how a professional website can help you generate more customers.',
     meta: {
       title: 'Business Website Development Company | Web Total Solution',
       description:
-        'Professional business website development that generates leads. Fast, SEO-optimised, mobile-responsive websites built for Indian businesses. Get a free consultation.',
+        'Business and startup website development: messaging, design and a responsive build with CMS where scoped. Startup Growth Site from $2,500 USD.',
       keywords: [
         'business website development',
         'professional website design company',
+        'startup website development',
         'lead generation website',
         'small business website India',
       ],
@@ -1278,91 +644,85 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
     slug: 'website-redesign',
     serviceName: 'Website Redesign',
     projectType: 'Website Redesign',
-    eyebrow: 'Website Redesign Services',
-    h1: 'Website Redesign That Turns Traffic Into Customers',
-    subheadline:
-      'If your website looks dated, loads slowly or brings in visitors but no enquiries, a redesign fixes the cause. We rebuild on a modern, fast, SEO-optimised foundation — without losing the rankings you already have.',
-    primaryCta: 'Get Free Website Audit',
-    heroImage: 'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=800',
-    heroImageAlt: 'Designer reviewing a website redesign layout on screen',
-    trustBadges: ['Rankings Preserved', 'Speed Optimised', 'Mobile Responsive', '30 Days Support'],
-    benefitsHeading: 'Signs Your Website Needs a Redesign',
-    benefitsIntro:
-      'A redesign is worth the investment when the current site is actively costing you business. These are the patterns we see most often.',
-    benefits: [
+    label: 'Website redesign',
+    h1: 'Website redesign services',
+    lead: 'A new structure, design and build for a website that no longer fits the business, with your content and URLs carried across carefully.',
+    facts: [
+      { label: 'Starts with', value: 'A review of the current site' },
+      { label: 'Pricing', value: 'Written quote after scope review' },
+      { label: 'Launch', value: 'Built on a preview, switched after approval' },
+      { label: 'Support', value: '30 days after launch' },
+    ],
+    evidence: {
+      heading: 'About the examples on this page',
+      body: 'We do not have before-and-after captures that a client has approved for publication, so we are not presenting any project here as a redesign. The case studies show the standard of design and build a redesign would reach. Mechverses is one of them.',
+      study: 'mechverses',
+    },
+    intro: {
+      heading: 'When a redesign is worth doing',
+      paragraphs: [
+        'A redesign earns its cost when the current site is working against you: it is slow on a phone, hard to update, or built for a version of the business that no longer exists.',
+        'It is not always the answer. Sometimes the structure is sound and the copy is the problem. The review at the start is there to tell the difference before you spend on a rebuild.',
+      ],
+    },
+    sections: [
       {
-        icon: 'gauge',
-        title: 'It Loads Too Slowly',
-        description:
-          'Visitors leave sites that take more than a few seconds on mobile. We rebuild with optimised assets and modern architecture so speed stops losing you customers.',
+        heading: 'Signs the current site is the problem',
+        items: [
+          { title: 'It is slow on mobile', description: 'Heavy images and old code make pages load slowly on a phone connection.' },
+          { title: 'The layout breaks on small screens', description: 'Text overlaps, buttons are hard to tap or the contact route disappears.' },
+          { title: 'Visitors come but do not enquire', description: 'The pages do not lead anywhere, or lead to too many places.' },
+          { title: 'Updating it needs a developer', description: 'Adding a page or changing a price means another quote.' },
+        ],
       },
       {
-        icon: 'smartphone',
-        title: 'It Breaks on Mobile',
-        description:
-          'Most of your traffic is on a phone. If the layout pinches, overlaps or hides your contact button, that traffic is wasted.',
-      },
-      {
-        icon: 'search',
-        title: 'It Does Not Rank',
-        description:
-          'We audit structure, metadata, schema and content, then rebuild the technical SEO foundation — carefully, so existing rankings carry across.',
-      },
-      {
-        icon: 'target',
-        title: 'It Gets Visits, Not Enquiries',
-        description:
-          'Traffic without conversion is a structure problem. We rebuild the page flow around clear, prominent calls to action.',
-      },
-      {
-        icon: 'shield',
-        title: 'It Looks Outdated',
-        description:
-          'Design age reads as business age. A modern, premium interface repositions you against competitors before a word is read.',
-      },
-      {
-        icon: 'refresh',
-        title: 'It Is Hard to Update',
-        description:
-          'We rebuild on a maintainable stack so adding a page, service or product later takes minutes instead of another developer quote.',
+        heading: 'How a redesign runs',
+        items: [
+          { title: 'Review', description: 'Pages, URLs, content and what currently brings in traffic or enquiries.' },
+          { title: 'New structure', description: 'What stays, what merges and what is rewritten, agreed before design.' },
+          { title: 'Design', description: 'A new interface, approved before development.' },
+          { title: 'Rebuild on a preview', description: 'The new site is built separately while the current one stays live.' },
+          { title: 'Content and URL preservation', description: 'Existing content is migrated and every old URL is mapped to its new location with a redirect.' },
+          { title: 'Launch checks', description: 'Redirects, forms, metadata, analytics and mobile layouts are tested before and after the switch.' },
+        ],
+        note: 'Redirects protect existing links and search visibility as far as a rebuild can. A redesign does not guarantee higher rankings.',
       },
     ],
-    portfolioCategories: ['Corporate', 'SaaS'],
-    portfolioHeading: 'Websites We Have Rebuilt and Modernised',
+    quote: {
+      heading: 'Scope and quote',
+      paragraphs: [
+        'A redesign is quoted after the review, because the cost depends on the number of pages, how much content is rewritten and what is being migrated.',
+        'For a startup marketing site, the Startup Growth Site package from $2,500 USD is the usual reference point. Indian businesses are quoted in INR.',
+      ],
+    },
+    faqHeading: 'Website redesign: questions',
     faqs: [
       {
         question: 'Will a redesign hurt my existing Google rankings?',
         answer:
-          'Not when it is handled properly. We map every existing URL, set up correct redirects, preserve your content structure and keep metadata intact. Because a redesign also improves speed, mobile experience and technical SEO, rankings typically improve rather than drop.',
-      },
-      {
-        question: 'How much does a website redesign cost?',
-        answer:
-          'Redesign cost depends on the number of pages, whether content is being rewritten and what new functionality you need. Most redesign projects fall in the ₹15,000 to ₹50,000 range. We start with a free audit of your current site and quote against exactly what needs fixing.',
+          'Handled carefully, it should not. We map every existing URL, set up redirects and carry across content and metadata. Any rebuild carries some risk, and we do not guarantee that rankings rise.',
       },
       {
         question: 'Can you keep my existing content and images?',
         answer:
-          'Yes. We can migrate your existing content as-is, restructure it for better readability and search performance, or rewrite it entirely — whichever suits your goals and budget. Images are re-optimised for speed regardless.',
+          'Yes. Content can be migrated as it is, restructured or rewritten, whichever the scope says. Images are resized for speed either way.',
       },
       {
         question: 'Will my website be down during the redesign?',
         answer:
-          'No. We build the new site on a separate staging environment and only switch over once you have reviewed and approved it. The changeover itself takes minutes.',
+          'No. The new site is built on a separate preview and the switch happens only after you approve it.',
       },
       {
-        question: 'How long does a website redesign take?',
+        question: 'How much does a website redesign cost?',
         answer:
-          'Most redesigns are completed in 2–4 weeks depending on page count and how much content needs rewriting. You will have a confirmed timeline before development starts.',
+          'It is quoted in writing after a review of the current site, based on the page count, content work and migration involved.',
       },
+      SUPPORT_FAQ,
     ],
-    ctaHeadline: 'Ready to Grow Your Business Online?',
-    ctaText:
-      'Book a free consultation today and discover how a professional website can help you generate more customers.',
     meta: {
       title: 'Website Redesign Services | Web Total Solution',
       description:
-        'Professional website redesign services. We rebuild slow, outdated websites into fast, mobile-responsive, SEO-optimised platforms that generate enquiries. Free audit.',
+        'Website redesign services: a review of your current site, new structure and design, and a rebuild with content and URLs preserved. Request a project quote.',
       keywords: [
         'website redesign services',
         'website revamp company',
@@ -1373,95 +733,90 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
     },
   },
 
+  /**
+   * Long-standing e-commerce page. Shares its facts with the newer
+   * /services/ecommerce-development page but answers different questions:
+   * this one is about choosing and running a store, that one about the build.
+   */
   'ecommerce-development': {
     slug: 'ecommerce-development',
     serviceName: 'E-Commerce Development',
     projectType: 'E-Commerce Platform',
-    eyebrow: 'E-Commerce Development',
-    h1: 'E-Commerce Websites Built to Sell, Not Just Display',
-    subheadline:
-      'We build fast, secure online stores with frictionless checkout, integrated payments and product pages engineered to convert browsers into paying customers.',
-    primaryCta: 'Get Free Store Consultation',
-    heroImage: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=800&auto=format&fit=crop',
-    heroImageAlt: 'Online store product page and checkout interface',
-    trustBadges: ['Secure Payments', 'SEO Ready', 'Mobile Responsive', '30 Days Support'],
-    benefitsHeading: 'What Makes an Online Store Actually Sell',
-    benefitsIntro:
-      'Most stores lose customers between the product page and the payment screen. We build for the whole journey, not just the catalogue.',
-    benefits: [
+    label: 'Online stores',
+    h1: 'E-commerce website development',
+    lead: 'Online stores and product catalogues for businesses selling in India, with payments, shipping and catalogue management scoped before the build starts.',
+    facts: [
+      { label: 'Examples', value: 'Saanshika Ethnics, Rentzora' },
+      { label: 'Pricing', value: 'Written quote after scope review' },
+      { label: 'Accounts', value: 'Gateway and store in your name' },
+      { label: 'Support', value: '30 days after launch' },
+    ],
+    evidence: {
+      heading: 'Two stores that are live today',
+      body: 'Saanshika Ethnics sells kurtis, suits and sarees online from Amritsar. Rentzora is a rental marketplace for bridal and fine jewellery listed by individual owners. They are different models, and each needed its own product and checkout logic.',
+      portfolioIds: ['saanshikaethnics', 'rentzora'],
+      note: 'We do not publish sales or conversion figures for client stores.',
+    },
+    intro: {
+      heading: 'Store, catalogue or marketplace?',
+      paragraphs: [
+        'The first decision is the model, and it changes everything after it. A store takes payment online. A catalogue shows the range and takes enquiries, which suits trade and high-value products. A marketplace lists products from several sellers and needs rules for onboarding and payouts.',
+        'We ask which one fits how you actually sell before recommending anything, because a checkout nobody uses is wasted budget.',
+      ],
+    },
+    sections: [
       {
-        icon: 'cart',
-        title: 'Frictionless Checkout',
-        description:
-          'Every extra step costs orders. We build short, clear checkout flows with guest checkout and saved-detail support to reduce cart abandonment.',
+        heading: 'What has to be decided before the build',
+        items: [
+          { title: 'Catalogue', description: 'How many products, how they vary and who keeps them up to date.' },
+          { title: 'Payments', description: 'Which gateway, which methods and whether cash on delivery is offered.' },
+          { title: 'Shipping and returns', description: 'How rates are calculated and what the customer is told before paying.' },
+          { title: 'Orders', description: 'Who sees a new order, how it is fulfilled and how stock is updated.' },
+        ],
       },
       {
-        icon: 'shield',
-        title: 'Secure Payment Integration',
-        description:
-          'Razorpay, Stripe, UPI, cards and wallets integrated with SSL and secure handling, so customers trust you enough to complete the purchase.',
-      },
-      {
-        icon: 'smartphone',
-        title: 'Mobile-First Shopping',
-        description:
-          'The majority of Indian online orders happen on a phone. Product browsing, filtering and payment are designed for thumbs first.',
-      },
-      {
-        icon: 'search',
-        title: 'Product Pages That Rank',
-        description:
-          'Structured product schema, optimised titles and fast-loading images help your catalogue show up in Google Shopping and organic search.',
-      },
-      {
-        icon: 'gauge',
-        title: 'Speed at Scale',
-        description:
-          'Whether you list ten products or ten thousand, the store stays fast — because slow catalogue pages quietly kill conversion rates.',
-      },
-      {
-        icon: 'trending',
-        title: 'Built to Grow',
-        description:
-          'Inventory, order management and analytics are set up from day one, so scaling the business does not mean rebuilding the store.',
+        heading: 'Related pages',
+        items: [
+          { title: 'How we build a store', description: 'Category, product, cart and checkout flows, in detail.', href: '/services/ecommerce-development' },
+          { title: 'A catalogue with enquiries', description: 'The Mechverses case study: machinery listings with search and condition labels.', href: '/work/mechverses' },
+        ],
       },
     ],
-    portfolioCategories: ['E-Commerce'],
-    portfolioHeading: 'E-Commerce Platforms We Have Built',
+    quote: {
+      heading: 'Scope and quote',
+      paragraphs: [
+        'Stores are quoted individually, after a scope review. The price depends on catalogue size, product types, payment and shipping integrations, and any migration from an existing store.',
+        'Gateway fees, shipping accounts and platform subscriptions are paid to those providers and listed in the quote.',
+      ],
+    },
+    faqHeading: 'E-commerce development: questions',
     faqs: [
       {
         question: 'How much does e-commerce website development cost?',
         answer:
-          'E-commerce projects are quoted on catalogue size, payment and shipping integrations, and how much custom design is involved. Online stores generally start higher than standard business websites because of the additional functionality. We provide a fixed written quote after a free consultation covering your product range and requirements.',
+          'It is quoted in writing after a scope review, based on the catalogue, integrations and design work involved. Stores cost more than a standard business website because there is more to build and test.',
       },
       {
         question: 'Which payment gateways can you integrate?',
         answer:
-          'We integrate Razorpay, Stripe, PayU, Cashfree and UPI, along with card, netbanking and wallet options. For international selling we can configure multi-currency checkout. Cash on delivery workflows are also supported.',
+          'The gateway is chosen during the scope review, based on where you sell and the methods your customers use, and it is set up in your own account.',
       },
       {
         question: 'Can I manage products and orders myself?',
         answer:
-          'Yes. Every store ships with an admin dashboard where you can add products, update pricing and stock, manage orders and view sales. We include a handover walkthrough so your team is comfortable running it.',
+          'Yes. Catalogue and order management is part of the scope, with a handover walkthrough so your team can run it.',
       },
       {
         question: 'Can you migrate my existing online store?',
         answer:
-          'Yes. We migrate products, customer data, order history and URLs from platforms like WooCommerce, Shopify and custom builds, with redirects in place so search rankings and existing links keep working.',
+          'Where the scope includes it. Products, images and URLs are mapped across, with redirects so existing links keep working.',
       },
-      {
-        question: 'How long does an e-commerce build take?',
-        answer:
-          'A focused store with a moderate catalogue typically takes 3–6 weeks including payment integration and testing. Larger catalogues or custom features extend the timeline, which we confirm before development starts.',
-      },
+      SUPPORT_FAQ,
     ],
-    ctaHeadline: 'Ready to Start Selling Online?',
-    ctaText:
-      'Book a free consultation today and discover how a professional online store can help you reach more customers and grow revenue.',
     meta: {
       title: 'E-Commerce Website Development | Web Total Solution',
       description:
-        'Custom e-commerce website development with secure payment integration, fast product pages and mobile-first checkout. Built to convert. Free consultation.',
+        'E-commerce website development for stores, catalogues and marketplaces, with payments, shipping and catalogue management scoped before the build.',
       keywords: [
         'ecommerce website development',
         'online store development company',

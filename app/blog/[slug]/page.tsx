@@ -1,10 +1,16 @@
-﻿import React from "react";
+import React from "react";
 import Link from "next/link";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Calendar, User, ArrowLeft } from "lucide-react";
-import { getBlogBySlug } from "../../../src/utils/insforge/blogs";
+import {
+  blogByline,
+  formatBlogDate,
+  getBlogBySlug,
+  wasRevised,
+} from "../../../src/utils/insforge/blogs";
 import JsonLd, { breadcrumbSchema } from "../../../src/components/JsonLd";
+import FinalCTA from "../../../src/components/FinalCTA";
+import { TextLink } from "../../../src/components/StudioPrimitives";
 import { htmlToPlainText, toArticleHtml } from "../../../src/utils/richText";
 
 export const revalidate = 60;
@@ -28,6 +34,7 @@ export async function generateMetadata({
 
   const description = plainExcerpt(blog);
   const url = `https://www.webtotalsolution.com/blog/${slug}`;
+  const byline = blogByline(blog.author);
 
   return {
     title: blog.title,
@@ -42,7 +49,7 @@ export async function generateMetadata({
       type: "article",
       publishedTime: blog.publish_date,
       modifiedTime: blog.updated_at,
-      authors: blog.author ? [blog.author] : undefined,
+      authors: [byline.name],
       images: blog.image_url
         ? [{ url: blog.image_url, alt: blog.title }]
         : undefined,
@@ -69,9 +76,10 @@ export default async function BlogPostPage({
   }
 
   const url = `https://www.webtotalsolution.com/blog/${slug}`;
+  const byline = blogByline(blog.author);
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div className="bg-paper pb-16 text-ink sm:pb-24">
       <JsonLd
         data={[
           {
@@ -84,8 +92,8 @@ export default async function BlogPostPage({
             mainEntityOfPage: url,
             image: blog.image_url ?? undefined,
             author: {
-              "@type": blog.author ? "Person" : "Organization",
-              name: blog.author || "Web Total Solution",
+              "@type": byline.isPerson ? "Person" : "Organization",
+              name: byline.name,
             },
             publisher: {
               "@type": "Organization",
@@ -101,76 +109,68 @@ export default async function BlogPostPage({
         ]}
       />
 
-      <Link
-        href="/blog"
-        className="inline-flex items-center text-sm font-semibold text-brand-blue hover:underline mb-8"
-      >
-        <ArrowLeft className="w-4 h-4 mr-2" /> Back to all posts
-      </Link>
+      <article className="studio-container pt-10 sm:pt-14">
+        <header className="max-w-[820px]">
+          <Link
+            href="/blog"
+            className="text-link inline-flex min-h-11 items-center text-sm"
+          >
+            All insights
+          </Link>
+          <h1 className="mt-4 font-display text-[clamp(2rem,4.4vw,3.25rem)] leading-[1.06]">
+            {blog.title}
+          </h1>
+          <p className="mt-5 text-[15px] text-graphite">
+            <time dateTime={blog.publish_date}>
+              Published {formatBlogDate(blog.publish_date || blog.created_at)}
+            </time>
+            {wasRevised(blog) && (
+              <>
+                <span aria-hidden="true">. </span>
+                <time dateTime={blog.updated_at}>
+                  Updated {formatBlogDate(blog.updated_at)}
+                </time>
+              </>
+            )}
+            <span aria-hidden="true">. </span>
+            By {byline.name}
+          </p>
+        </header>
 
-      <div className="mb-10 space-y-6">
-        <h1 className="font-display text-4xl sm:text-5xl text-ink leading-tight">
-          {blog.title}
-        </h1>
-        <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-slate-500 border-b border-slate-100 pb-6">
-          <span className="flex items-center space-x-2">
-            <Calendar className="w-4 h-4 text-brand-blue" />
-            <span>
-              {new Date(
-                blog.publish_date || blog.created_at,
-              ).toLocaleDateString("en-IN", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
-            </span>
-          </span>
-          {blog.author && (
-            <span className="flex items-center space-x-2">
-              <User className="w-4 h-4 text-brand-blue" />
-              <span className="font-medium text-slate-700">{blog.author}</span>
-            </span>
-          )}
-        </div>
-      </div>
+        {blog.image_url && (
+          <div className="mt-8 aspect-video max-w-[980px] overflow-hidden rounded-[20px] border border-ink/10 bg-deep">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={blog.image_url}
+              alt=""
+              width={1280}
+              height={720}
+              className="size-full object-cover"
+            />
+          </div>
+        )}
 
-      {blog.image_url && (
-        <div className="mb-12 rounded-3xl overflow-hidden bg-slate-100 aspect-video shadow-sm">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={blog.image_url}
-            alt={blog.title}
-            className="w-full h-full object-cover"
-          />
-        </div>
-      )}
+        <div
+          className="long-form mt-10"
+          dangerouslySetInnerHTML={{ __html: toArticleHtml(blog.content) }}
+        />
 
-      <article
-        className="prose prose-slate prose-lg max-w-none
-          prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-slate-900
-          prose-h2:text-3xl prose-h2:mt-14 prose-h2:mb-5
-          prose-h3:text-2xl prose-h3:mt-10 prose-h3:mb-3
-          prose-p:text-slate-600 prose-p:leading-relaxed
-          prose-strong:text-slate-900 prose-strong:font-bold
-          prose-a:text-brand-blue prose-a:font-medium prose-a:underline prose-a:underline-offset-2
-          hover:prose-a:text-brand-navy
-          prose-li:text-slate-600 prose-li:marker:text-brand-blue
-          prose-blockquote:border-l-brand-blue prose-blockquote:text-slate-700 prose-blockquote:not-italic
-          prose-img:rounded-2xl prose-img:shadow-sm"
-        dangerouslySetInnerHTML={{ __html: toArticleHtml(blog.content) }}
-      />
+        <aside className="mt-12 max-w-[68ch] border-t border-ink/15 pt-6">
+          <p className="text-sm font-semibold">Related</p>
+          <div className="mt-1 flex flex-wrap gap-x-7 gap-y-1">
+            <TextLink href="/business-website-development">
+              Marketing website service
+            </TextLink>
+            <TextLink href="/work">Case studies</TextLink>
+          </div>
+        </aside>
+      </article>
 
-      <div className="mt-16 pt-8 border-t border-slate-200 text-center space-y-4">
-        <h2 className="text-2xl font-bold text-slate-900">
-          Need a website that brings in customers?
-        </h2>
-        <p className="text-slate-600 text-sm max-w-lg mx-auto">
-          Book a free consultation and we will tell you exactly what your
-          business needs online.
-        </p>
-        <Link href="/contact" className="btn btn-ink">
-          Get Free Consultation
-        </Link>
+      <div className="mt-14 sm:mt-20">
+        <FinalCTA
+          headline="Working on a website like this?"
+          text="Tell us what the site needs to explain and who it is for. You will get the scope, price and timeline in writing."
+        />
       </div>
     </div>
   );

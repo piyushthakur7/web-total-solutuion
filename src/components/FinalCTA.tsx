@@ -1,58 +1,65 @@
-﻿import React from "react";
+import React from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { WHATSAPP_URL } from "../siteContent";
-import { SectionLabel } from "./StudioPrimitives";
+import { CTA, NEXT_STEPS, WHATSAPP_URL } from "../siteContent";
 
+/** Closing enquiry block: one action, and what happens after it. */
 export default function FinalCTA({
-  headline = "Your next chapter starts here.",
-  text = "Tell us where your business is headed. We will help you work out what your website needs to do next.",
+  headline = "Tell us about the project.",
+  text = "A few lines are enough to start. You will know the scope, price and timeline in writing before you commit to anything.",
   contactHref = "/contact",
+  ctaLabel = CTA.primary,
 }: {
   headline?: string;
   text?: string;
   contactHref?: string;
+  ctaLabel?: string;
 }) {
   return (
     <section className="studio-container">
-      <div className="relative overflow-hidden rounded-[24px] bg-marker p-8 sm:p-12 lg:p-16">
-        <div className="relative z-10 grid items-end gap-9 lg:grid-cols-12">
-          <div className="lg:col-span-8">
-            <SectionLabel>Have something in mind?</SectionLabel>
-            <h2 className="mt-6 max-w-3xl font-display text-display">
+      <div className="rounded-[24px] bg-marker p-7 sm:p-12 lg:p-14">
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
+          <div className="lg:col-span-6">
+            <h2 className="max-w-xl font-display text-[clamp(1.9rem,3.6vw,3rem)] leading-[1.06]">
               {headline}
             </h2>
-            <p className="mt-5 max-w-lg text-[15px] leading-relaxed text-ink/75">
+            <p className="mt-5 max-w-md text-base leading-relaxed text-ink/80">
               {text}
             </p>
-            <p className="mt-7 font-mono text-[9px] uppercase tracking-[.12em] text-ink/70">
-              A conversation first. A clear proposal next.
-            </p>
+            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+              <Link href={contactHref} className="btn btn-ink">
+                {ctaLabel}
+                <ArrowUpRight className="size-4" aria-hidden="true" />
+              </Link>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-link inline-flex min-h-11 items-center text-sm"
+              >
+                Or message on WhatsApp
+              </a>
+            </div>
           </div>
-          <div className="flex flex-col items-start gap-4 lg:col-span-4 lg:items-end">
-            <Link href={contactHref} className="btn btn-ink">
-              Let&apos;s talk about it
-              <ArrowUpRight className="size-4" />
-            </Link>
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex min-h-11 items-center gap-2 text-xs font-semibold underline decoration-ink/30 underline-offset-4 hover:decoration-ink"
-            >
-              Or say hello on WhatsApp
-              <ArrowUpRight className="size-3.5" />
-            </a>
-          </div>
+          <ol className="lg:col-span-6">
+            {NEXT_STEPS.map((step, index) => (
+              <li
+                key={step.title}
+                className="flex gap-4 border-t border-ink/20 py-4 first:border-t-0 first:pt-0 lg:first:border-t lg:first:pt-4"
+              >
+                <span className="w-5 shrink-0 text-sm font-semibold text-ink/60">
+                  {index + 1}
+                </span>
+                <div>
+                  <p className="text-[15px] font-semibold">{step.title}</p>
+                  <p className="mt-1 text-sm leading-relaxed text-ink/75">
+                    {step.text}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ol>
         </div>
-        <span
-          className="pointer-events-none absolute -right-24 -top-36 size-[420px] rounded-full border border-ink/10"
-          aria-hidden="true"
-        />
-        <span
-          className="pointer-events-none absolute -bottom-52 -right-44 size-[540px] rounded-full border border-ink/10"
-          aria-hidden="true"
-        />
       </div>
     </section>
   );

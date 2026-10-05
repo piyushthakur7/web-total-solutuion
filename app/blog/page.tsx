@@ -1,14 +1,23 @@
 import React from "react";
 import Link from "next/link";
 import { Metadata } from "next";
-import { Calendar, User, ArrowRight } from "lucide-react";
-import { getPublishedBlogs } from "../../src/utils/insforge/blogs";
-import { PageIntro } from "../../src/components/StudioPrimitives";
+import { ArrowUpRight } from "lucide-react";
+import {
+  BlogListItem,
+  blogByline,
+  formatBlogDate,
+  getPublishedBlogs,
+} from "../../src/utils/insforge/blogs";
+import {
+  PageIntro,
+  SectionHeading,
+  TextLink,
+} from "../../src/components/StudioPrimitives";
 
 export const metadata: Metadata = {
   title: "Blog & Insights",
   description:
-    "Practical insights on business websites, SEO, e-commerce and digital marketing from the Web Total Solution team.",
+    "Practical notes on websites, messaging, performance and conversion paths from Web Total Solution.",
   alternates: {
     canonical: "https://www.webtotalsolution.com/blog",
   },
@@ -19,7 +28,7 @@ export const metadata: Metadata = {
     siteName: "Web Total Solution",
     title: "Blog & Insights | Web Total Solution",
     description:
-      "Practical insights on business websites, SEO, e-commerce and digital marketing from the Web Total Solution team.",
+      "Practical notes on websites, messaging, performance and conversion paths from Web Total Solution.",
     images: [
       {
         url: "/og-image.png",
@@ -33,7 +42,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Blog & Insights | Web Total Solution",
     description:
-      "Practical insights on business websites, SEO, e-commerce and digital marketing from the Web Total Solution team.",
+      "Practical notes on websites, messaging, performance and conversion paths from Web Total Solution.",
     images: ["/og-image.png"],
   },
 };
@@ -45,137 +54,150 @@ function excerptFor(blog: { excerpt: string | null; title: string }) {
   return `Read “${blog.title}” on the Web Total Solution blog.`;
 }
 
+function Meta({ blog }: { blog: BlogListItem }) {
+  return (
+    <p className="text-sm text-graphite">
+      <time dateTime={blog.publish_date || blog.created_at}>
+        {formatBlogDate(blog.publish_date || blog.created_at)}
+      </time>
+      <span aria-hidden="true">, </span>
+      <span>by {blogByline(blog.author).name}</span>
+    </p>
+  );
+}
+
+function Cover({ blog, priority }: { blog: BlogListItem; priority?: boolean }) {
+  return (
+    <div className="relative aspect-[16/10] overflow-hidden rounded-[20px] border border-ink/10 bg-deep">
+      {blog.image_url && (
+        /* eslint-disable-next-line @next/next/no-img-element */
+        <img
+          src={blog.image_url}
+          alt=""
+          width={1200}
+          height={750}
+          loading={priority ? "eager" : "lazy"}
+          className="size-full object-cover"
+        />
+      )}
+    </div>
+  );
+}
+
+const elsewhere = [
+  {
+    href: "/work",
+    title: "Case studies",
+    copy: "Four projects with the design decisions explained.",
+  },
+  {
+    href: "/pricing",
+    title: "Pricing",
+    copy: "Starting prices and what changes a quote.",
+  },
+  {
+    href: "/services",
+    title: "Services",
+    copy: "Who each service is for and what you receive.",
+  },
+];
+
 export default async function BlogPage() {
   const blogs = await getPublishedBlogs();
+  const [lead, ...rest] = blogs;
 
   return (
     <div className="bg-paper pb-16 text-ink sm:pb-24">
       <PageIntro
-        label="Studio notes / Insights & ideas"
-        title={
-          <>
-            A little perspective.
-            <br />A better next step.
-          </>
-        }
-        description="Practical thoughts on websites, design, SEO and building a stronger digital presence, from the team behind the work."
+        compact
+        label="Insights"
+        title="Notes on building websites that explain things clearly"
+        description="We publish when we have something useful to say, so this is a short list."
       />
-      <div className="studio-container">
-        {blogs.length === 0 ? (
-          /* Nothing published yet. Rather than show a bare "no posts" line, point
-           the visitor at the pages that can actually answer their question. */
-          <div className="max-w-3xl mx-auto bg-slate-50 border border-slate-100 rounded-3xl p-8 sm:p-12 text-center space-y-6">
-            <h2 className="text-2xl font-bold text-slate-900 tracking-tight">
-              Our first articles are being written
-            </h2>
-            <p className="text-slate-600 text-sm leading-relaxed max-w-xl mx-auto">
-              We are putting together practical guides on what a business
-              website should cost, how to rank locally in search, and what to
-              fix first on an existing site. In the meantime, the answers most
-              business owners are looking for are already on the site.
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2 text-left">
-              {[
-                {
-                  href: "/pricing",
-                  title: "What it costs",
-                  copy: "Starting prices and a clear explanation of what each engagement includes.",
-                },
-                {
-                  href: "/work",
-                  title: "Work we have delivered",
-                  copy: "Live client websites you can open and judge for yourself.",
-                },
-                {
-                  href: "/contact",
-                  title: "Ask us directly",
-                  copy: "A free consultation and a written quote within 24 hours.",
-                },
-              ].map((card) => (
-                <Link
-                  key={card.href}
-                  href={card.href}
-                  className="bg-white border border-slate-100 rounded-2xl p-5 hover:shadow-md hover:-translate-y-0.5 transition-all group"
-                >
-                  <span className="block text-sm font-bold text-slate-900 mb-1.5">
-                    {card.title}
-                  </span>
-                  <span className="block text-xs text-slate-600 leading-relaxed mb-3">
-                    {card.copy}
-                  </span>
-                  <span className="inline-flex items-center text-xs font-bold text-brand-blue">
-                    Open
-                    <ArrowRight className="w-3.5 h-3.5 ml-1 group-hover:translate-x-0.5 transition-transform" />
-                  </span>
-                </Link>
-              ))}
-            </div>
-          </div>
+      <div className="studio-container pt-10 sm:pt-14">
+        {!lead ? (
+          <SectionHeading
+            heading="Nothing published yet"
+            intro="The first article is being written. In the meantime, the pages below answer the questions we are asked most."
+          />
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogs.map((blog) => (
+          <article className="grid items-center gap-8 lg:grid-cols-12 lg:gap-14">
+            <Link
+              href={`/blog/${lead.slug}`}
+              className="block lg:col-span-7"
+              tabIndex={-1}
+              aria-hidden="true"
+            >
+              <Cover blog={lead} priority />
+            </Link>
+            <div className="lg:col-span-5">
+              <Meta blog={lead} />
+              <h2 className="mt-3 font-display text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.1]">
+                <Link
+                  href={`/blog/${lead.slug}`}
+                  className="underline-offset-4 hover:underline"
+                >
+                  {lead.title}
+                </Link>
+              </h2>
+              <p className="mt-4 max-w-[54ch] text-[16px] leading-relaxed text-graphite">
+                {excerptFor(lead)}
+              </p>
               <Link
-                key={blog.id}
-                href={`/blog/${blog.slug}`}
-                className="group cursor-pointer"
+                href={`/blog/${lead.slug}`}
+                className="text-link mt-5 inline-flex min-h-11 items-center gap-2 text-sm"
               >
-                <article className="bg-white border border-ink/15 rounded-[24px] overflow-hidden transition-all duration-300 hover:shadow-lg h-full flex flex-col">
-                  <div className="aspect-[16/10] overflow-hidden bg-slate-100 relative">
-                    {blog.image_url ? (
-                      /* eslint-disable-next-line @next/next/no-img-element */
-                      <img
-                        src={blog.image_url}
-                        alt={blog.title}
-                        loading="lazy"
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                    ) : (
-                      /* No cover image on the post — show a branded panel rather
-                       than an empty grey box with "No image" written in it. */
-                      <div className="w-full h-full bg-gradient-to-br from-slate-900 to-brand-blue flex items-center justify-center px-6">
-                        <span className="text-white/90 text-xs font-extrabold uppercase tracking-[0.2em] text-center">
-                          Web Total Solution
-                        </span>
-                      </div>
-                    )}
-                  </div>
-                  <div className="p-6 flex flex-col flex-grow">
-                    <div className="flex items-center space-x-4 text-xs text-slate-500 mb-3">
-                      <span className="flex items-center space-x-1">
-                        <Calendar className="w-3.5 h-3.5" />
-                        <span>
-                          {new Date(
-                            blog.publish_date || blog.created_at,
-                          ).toLocaleDateString("en-IN", {
-                            year: "numeric",
-                            month: "short",
-                            day: "numeric",
-                          })}
-                        </span>
-                      </span>
-                      {blog.author && (
-                        <span className="flex items-center space-x-1">
-                          <User className="w-3.5 h-3.5" />
-                          <span>{blog.author}</span>
-                        </span>
-                      )}
-                    </div>
-                    <h2 className="text-2xl font-display text-ink mb-3 group-hover:text-brand-blue transition-colors line-clamp-2">
-                      {blog.title}
-                    </h2>
-                    <p className="text-slate-600 text-sm line-clamp-3 mb-6 flex-grow">
-                      {excerptFor(blog)}
-                    </p>
-                    <span className="flex items-center text-brand-blue font-semibold text-sm">
-                      Read Article
-                      <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                    </span>
-                  </div>
-                </article>
+                Read the article
+                <ArrowUpRight className="size-4" aria-hidden="true" />
               </Link>
-            ))}
-          </div>
+            </div>
+          </article>
         )}
+
+        {rest.length > 0 && (
+          <ul className="mt-14 grid gap-x-8 gap-y-12 border-t border-ink/15 pt-12 md:grid-cols-2 lg:grid-cols-3">
+            {rest.map((blog) => (
+              <li key={blog.id}>
+                <Link
+                  href={`/blog/${blog.slug}`}
+                  className="block"
+                  tabIndex={-1}
+                  aria-hidden="true"
+                >
+                  <Cover blog={blog} />
+                </Link>
+                <div className="mt-4">
+                  <Meta blog={blog} />
+                </div>
+                <h2 className="mt-2 font-display text-2xl leading-tight">
+                  <Link
+                    href={`/blog/${blog.slug}`}
+                    className="underline-offset-4 hover:underline"
+                  >
+                    {blog.title}
+                  </Link>
+                </h2>
+                <p className="mt-2 line-clamp-3 text-[15px] leading-relaxed text-graphite">
+                  {excerptFor(blog)}
+                </p>
+              </li>
+            ))}
+          </ul>
+        )}
+
+        <section className="mt-16 border-t border-ink/15 pt-10 sm:mt-20">
+          <SectionHeading heading="Elsewhere on the site" />
+          <ul className="mt-6 grid gap-x-10 md:grid-cols-3">
+            {elsewhere.map((item) => (
+              <li key={item.href} className="border-t border-ink/15 py-4">
+                <TextLink href={item.href}>{item.title}</TextLink>
+                <p className="mt-1 text-[15px] leading-relaxed text-graphite">
+                  {item.copy}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </section>
       </div>
     </div>
   );

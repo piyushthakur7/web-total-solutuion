@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next';
-import { SERVICES_DATA } from '../src/data';
+import { SERVICES_DATA } from '../src/services';
 import { LANDING_PAGE_SLUGS } from '../src/landingPages';
 import { WORK_SLUGS } from '../src/work';
 import { getBlogSitemapEntries } from '../src/utils/insforge/blogs';

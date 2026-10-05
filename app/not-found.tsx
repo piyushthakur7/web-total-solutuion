@@ -9,25 +9,22 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <section className="mx-auto flex min-h-[65vh] max-w-3xl flex-col items-center justify-center px-4 py-20 text-center">
-      <p className="text-sm font-extrabold uppercase tracking-widest text-brand-blue">404 error</p>
-      <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-slate-950 sm:text-5xl">
+    <section className="studio-container flex min-h-[60vh] flex-col justify-center py-20">
+      <p className="text-sm font-semibold text-brand-blue">Error 404</p>
+      <h1 className="mt-3 max-w-xl font-display text-[clamp(2rem,4.4vw,3.25rem)] leading-[1.06] text-ink">
         This page does not exist
       </h1>
-      <p className="mt-5 max-w-xl text-slate-600">
-        The address may be outdated or mistyped. Use the links below to return to a working page.
+      <p className="mt-4 max-w-md text-base leading-relaxed text-graphite">
+        The address may be outdated or mistyped. These pages are a good place to pick up again.
       </p>
-      <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-        <Link
-          href="/"
-          className="rounded-xl bg-brand-blue px-6 py-3 font-bold text-white transition-colors hover:bg-brand-blue/90"
-        >
-          Go to homepage
+      <div className="mt-8 flex flex-wrap gap-3">
+        <Link href="/" className="btn btn-ink">
+          Go to the homepage
         </Link>
-        <Link
-          href="/services"
-          className="rounded-xl border border-slate-200 px-6 py-3 font-bold text-slate-800 transition-colors hover:bg-slate-50"
-        >
+        <Link href="/work" className="btn btn-line">
+          View selected work
+        </Link>
+        <Link href="/services" className="btn btn-line">
           Browse services
         </Link>
       </div>

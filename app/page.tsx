@@ -5,7 +5,7 @@ import { HOME_FAQS } from '../src/siteContent';
 
 const title = 'Professional Business Website Development | Web Total Solution';
 const description =
-  'We build fast, modern, SEO-optimised business websites that help businesses attract customers, build trust and generate more leads. Book a free consultation.';
+  'Strategy, design and development for startup websites, landing pages and product interfaces. A founder-led studio in India working with clients worldwide.';
 
 // Portfolio content is served from InsForge; re-check every 5 minutes.
 export const revalidate = 300;

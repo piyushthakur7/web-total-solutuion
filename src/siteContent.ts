@@ -34,6 +34,17 @@ export const FOUNDER: { name: string; title: string; photo: string | null } = {
   photo: null,
 };
 
+/**
+ * Headline figures, supplied by the business (confirmed by the founder,
+ * October 2026). Update them here as they change; pages render from this list
+ * and should not restate the numbers.
+ */
+export const STUDIO_STATS = [
+  { value: '100+', label: 'Websites delivered' },
+  { value: '30+', label: 'Industries served' },
+  { value: '5 years', label: 'Experience in web development' },
+];
+
 /** Offices we operate from. Kolkata is the primary (registered) address. */
 export const OFFICES = [
   {

@@ -5,6 +5,7 @@ import {
   CLIENT_COMMITMENTS,
   FOUNDER,
   OFFICES,
+  STUDIO_STATS,
   WORKING_HOURS,
 } from "../siteContent";
 import { PageIntro, SectionHeading, TextLink } from "./StudioPrimitives";
@@ -66,10 +67,23 @@ export default function AboutView() {
             take the next step.
           </p>
           <p>
-            The studio has built websites for service firms, manufacturers,
-            clinics, schools and online stores. The live ones are listed, with
-            links, on the work page.
+            In five years of web development the studio has delivered more
+            than 100 websites across more than 30 industries, for service
+            firms, manufacturers, clinics, schools and online stores. Live
+            examples are listed, with links, on the work page.
           </p>
+          <dl className="grid grid-cols-3 gap-5 border-y border-ink/15 py-5">
+            {STUDIO_STATS.map((stat) => (
+              <div key={stat.label} className="flex flex-col-reverse">
+                <dt className="mt-1 text-sm leading-snug text-graphite">
+                  {stat.label}
+                </dt>
+                <dd className="font-display text-2xl text-ink sm:text-3xl">
+                  {stat.value}
+                </dd>
+              </div>
+            ))}
+          </dl>
           <p>
             Alongside client work, the studio builds and runs its own software
             product. WTS CRM is a subscription CRM for Indian service

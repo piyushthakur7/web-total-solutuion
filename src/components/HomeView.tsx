@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { CTA, PACKAGE_TERMS } from "../siteContent";
+import { CTA, PACKAGE_TERMS, STUDIO_STATS } from "../siteContent";
 import { PORTFOLIO_ITEMS } from "../data";
 import { WORK_CASE_STUDIES } from "../work";
 import { SectionHeading, SectionLabel, TextLink } from "./StudioPrimitives";
@@ -13,23 +13,18 @@ import ImpactHero from "./ImpactHero";
 import PackageCards from "./PackageCards";
 import WorkVisual from "./work/WorkVisual";
 
-/** Capability statements. Only the portfolio count is a number, and it is counted. */
+/** The studio's headline figures, plus its own product. */
 const glance = [
-  {
-    value: "Strategy, design and build",
-    label: "Done together, in one studio",
-  },
+  ...STUDIO_STATS.map((stat, index) => ({
+    value: stat.value,
+    label:
+      index === 0
+        ? `${stat.label}, ${PORTFOLIO_ITEMS.length} live ones linked on the work page`
+        : stat.label,
+  })),
   {
     value: "WTS CRM",
     label: "Our own SaaS product, live and maintained",
-  },
-  {
-    value: `${PORTFOLIO_ITEMS.length} live client websites`,
-    label: "Listed with links on the work page",
-  },
-  {
-    value: "Kolkata and Delhi",
-    label: "Working with clients in India and abroad",
   },
 ];
 

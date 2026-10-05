@@ -335,7 +335,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
       heading: 'What working with us looks like',
       paragraphs: [
         'Hiring a web development company is a trust decision. You are handing over the first impression of your business and a real budget. So the terms are written down before you pay anything: scope, price, timeline, ownership and support.',
-        'The studio is small by design. Its founder leads discovery, design and development, which means the person you brief is the person doing the work.',
+        'The studio is founder-led. In five years of web development it has delivered more than 100 websites across more than 30 industries, and the person you brief is the person leading the work.',
       ],
     },
     sections: [

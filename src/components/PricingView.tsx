@@ -1,12 +1,13 @@
 import { HERO_IMAGES } from "../stockImages";
 import React from "react";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Check } from "lucide-react";
 import {
+  CARE_PLAN,
   CTA,
   Faq,
   OWNERSHIP_TERM,
-  SUPPORT_DETAIL,
+  SUPPORT_TERM,
   WEBSITE_PACKAGES,
   formatUsd,
 } from "../siteContent";
@@ -42,7 +43,7 @@ export const PRICING_FAQS: Faq[] = [
   },
   {
     question: "What happens after launch?",
-    answer: `${SUPPORT_DETAIL} ${OWNERSHIP_TERM}`,
+    answer: `Every website package includes ${SUPPORT_TERM} for fixes, small content changes and technical help. After that, the optional ${CARE_PLAN.name} is ${formatUsd(CARE_PLAN.monthly)} a month and covers ${CARE_PLAN.summary.charAt(0).toLowerCase()}${CARE_PLAN.summary.slice(1)} ${OWNERSHIP_TERM}`,
   },
 ];
 
@@ -69,7 +70,7 @@ const separateCosts = [
   "Domain registration and hosting, billed by the provider to your account",
   "Paid plugins, fonts, stock media and third-party subscriptions",
   "Copywriting, where it is not in the agreed scope",
-  "Ongoing maintenance after the included support period",
+  "Maintenance beyond the care plan, such as new pages or features",
   "Web applications, dashboards and mobile apps",
 ];
 
@@ -89,6 +90,53 @@ export default function PricingView() {
           Starting prices in USD. Timeline agreed after scope review. Design is
           approved before development begins.
         </p>
+      </section>
+
+      <section id="care-plan" className="studio-container pt-12 sm:pt-16">
+        <div className="grid gap-8 rounded-[20px] border border-ink/15 bg-white p-6 sm:p-9 lg:grid-cols-12 lg:gap-12">
+          <div className="lg:col-span-5">
+            <p className="text-sm text-graphite">Optional, after launch</p>
+            <h2 className="mt-2 font-display text-[28px] leading-tight">
+              {CARE_PLAN.name}
+            </h2>
+            <p className="mt-5">
+              <span className="font-display text-[2.6rem] leading-none tracking-[-0.04em]">
+                {formatUsd(CARE_PLAN.monthly)}
+              </span>
+              <span className="text-sm text-graphite"> USD / month</span>
+            </p>
+            <Link
+              href={contactHref({
+                details: `I'm interested in the ${CARE_PLAN.name}.`,
+              })}
+              className="btn btn-ink mt-7"
+            >
+              {CTA.primary}
+              <ArrowUpRight className="size-4" aria-hidden="true" />
+            </Link>
+          </div>
+          <div className="lg:col-span-7">
+            <p className="text-[15px] leading-relaxed text-graphite">
+              Every package includes {SUPPORT_TERM}. The care plan covers the
+              site after that. It is separate from the project price and starts
+              only if you choose it.
+            </p>
+            <ul className="mt-5 grid gap-x-10 sm:grid-cols-2">
+              {CARE_PLAN.includes.map((item) => (
+                <li
+                  key={item}
+                  className="flex items-start gap-3 border-t border-ink/15 py-3.5 text-[15px] leading-relaxed"
+                >
+                  <Check
+                    className="mt-1 size-4 shrink-0 text-brand-blue"
+                    aria-hidden="true"
+                  />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </section>
 
       <section className="studio-section">

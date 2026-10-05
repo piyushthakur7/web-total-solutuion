@@ -121,6 +121,24 @@ export const SUPPORT_DAYS = 30;
 export const SUPPORT_TERM = `${SUPPORT_DAYS} days of post-launch support`;
 export const SUPPORT_DETAIL = `Every website package includes ${SUPPORT_TERM} for fixes, small content changes and technical help. Ongoing maintenance is quoted separately.`;
 
+/**
+ * The optional plan that takes over when the included support period ends.
+ * Price and inclusions are supplied by the business; do not change them or add
+ * tiers without confirmation.
+ */
+export const CARE_PLAN = {
+  name: 'Website Care Plan',
+  monthly: 250,
+  includes: [
+    'Hosting',
+    'Software and security updates',
+    'Small content edits',
+    'Monthly speed and uptime checks',
+  ],
+  /** One-sentence form, used where the plan is mentioned in running copy. */
+  summary: 'Hosting, updates, small edits, and monthly speed and uptime checks.',
+};
+
 export const OWNERSHIP_TERM =
   'You own the domain, hosting account, content and source code of the delivered website.';
 

@@ -231,6 +231,103 @@ export const PACKAGE_TERMS = [
 ];
 
 /* -------------------------------------------------------------------------- */
+/* Website Care Plans                                                         */
+/* -------------------------------------------------------------------------- */
+
+export interface CarePlan {
+  slug: string;
+  name: string;
+  /** Monthly price in USD. */
+  monthly: number;
+  audience: string;
+  /** Hands-on update time included each month, shown under the price. */
+  updateTime: string;
+  /** Name of the plan this one builds on, or null for the first plan. */
+  buildsOn: string | null;
+  includes: string[];
+  cta: string;
+  highlight: boolean;
+}
+
+export const CARE_PLANS: CarePlan[] = [
+  {
+    slug: 'essential-care',
+    name: 'Essential Care',
+    monthly: 49,
+    audience: 'Best for small business and marketing websites.',
+    updateTime: 'Minor bug fixes',
+    buildsOn: null,
+    includes: [
+      '24/7 uptime monitoring',
+      'Website health monitoring',
+      'Security checks',
+      'Backup monitoring',
+      'SSL monitoring',
+      'Dependency and framework updates',
+      'Minor bug fixes',
+      'Broken link checks',
+      'Form functionality checks',
+      'Monthly website health check',
+    ],
+    cta: 'Protect my website',
+    highlight: false,
+  },
+  {
+    slug: 'business-care',
+    name: 'Business Care',
+    monthly: 99,
+    audience: 'Best for businesses that actively depend on their website for leads and customers.',
+    updateTime: 'Up to 60 minutes of updates',
+    buildsOn: 'Essential',
+    includes: [
+      'Up to 60 minutes of small website updates per month',
+      'Content and image updates',
+      'Performance monitoring',
+      'Contact form and integration checks',
+      'Analytics monitoring',
+      'Basic technical SEO checks',
+      'Priority support',
+      'Monthly performance report',
+    ],
+    cta: 'Choose Business Care',
+    highlight: true,
+  },
+  {
+    slug: 'growth-care',
+    name: 'Growth Care',
+    monthly: 199,
+    audience: 'Best for growing companies that want continuous website optimization.',
+    updateTime: 'Up to 3 hours of updates',
+    buildsOn: 'Business',
+    includes: [
+      'Up to 3 hours of website updates per month',
+      'Landing page improvements',
+      'Conversion-focused website recommendations',
+      'Speed optimization',
+      'Analytics review',
+      'Technical SEO monitoring',
+      'Integration troubleshooting',
+      'Priority issue resolution',
+      'Monthly strategy recommendations',
+    ],
+    cta: 'Choose Growth Care',
+    highlight: false,
+  },
+];
+
+/** Ongoing development beyond the three care plans. */
+export const CUSTOM_MANAGEMENT = {
+  name: 'Custom Website Management',
+  from: 399,
+  audience:
+    'For SaaS platforms, ecommerce websites, custom applications, high-traffic websites and businesses that need continuous development.',
+  cta: 'Talk to our team',
+};
+
+export const CARE_PLAN_SCOPE_NOTE =
+  'Website Care Plans cover maintenance, monitoring, support, and minor improvements to your existing website. New pages, major redesigns, custom features, application development, advanced integrations, and large-scale changes are quoted separately.';
+
+/* -------------------------------------------------------------------------- */
 /* Process, commitments, FAQs                                                 */
 /* -------------------------------------------------------------------------- */
 

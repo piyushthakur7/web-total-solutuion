@@ -1,150 +1,123 @@
-import React from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { ArrowRight, MapPin, ShieldCheck, Sparkles } from 'lucide-react';
-import { CLIENT_COMMITMENTS, OFFICES } from '../siteContent';
-import { STOCK_IMAGES } from '../stockImages';
-import FounderSection from './FounderSection';
-import ProcessSection from './ProcessSection';
-import FinalCTA from './FinalCTA';
+﻿import React from "react";
+import Link from "next/link";
+import { ArrowUpRight, Check } from "lucide-react";
+import { CLIENT_COMMITMENTS, OFFICES } from "../siteContent";
+import { PageIntro, SectionLabel, TextLink } from "./StudioPrimitives";
+import FounderSection from "./FounderSection";
+import ProcessSection from "./ProcessSection";
+import FinalCTA from "./FinalCTA";
 
-/**
- * About page: who runs the agency, how a project runs, where we are and what
- * is put in writing. Every claim here is drawn from siteContent.
- */
 export default function AboutView() {
   return (
-    <div className="pb-20 overflow-x-hidden">
-      {/* Header */}
-      <section className="text-center pt-16 pb-8 space-y-5 max-w-3xl mx-auto px-4">
-        <div className="inline-flex items-center space-x-2 bg-brand-blue/10 border border-brand-blue/20 px-3.5 py-1.5 rounded-full text-brand-blue text-xs font-bold uppercase tracking-wider">
-          <Sparkles className="w-3.5 h-3.5" />
-          <span>About Us</span>
-        </div>
-        <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-[1.1]">
-          About Web Total Solution
-        </h1>
-        <p className="text-slate-600 text-base max-w-xl mx-auto leading-relaxed">
-          We are a web development agency with offices in Kolkata and Delhi, building fast,
-          SEO-optimised business websites that help companies attract customers, build trust and
-          grow online.
-        </p>
-      </section>
-
-      {/* Design, planning and engineering — illustrative photography */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-4">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-          <div className="relative col-span-2 aspect-[16/10] rounded-3xl overflow-hidden bg-slate-100">
-            <Image
-              src={STOCK_IMAGES.designDesk.src}
-              alt={STOCK_IMAGES.designDesk.alt}
-              fill
-              priority
-              sizes="(min-width: 1024px) 608px, 100vw"
-              className="object-cover"
-            />
-          </div>
-          <div className="relative aspect-[4/5] lg:aspect-auto rounded-3xl overflow-hidden bg-slate-100">
-            <Image
-              src={STOCK_IMAGES.wireframeSketch.src}
-              alt={STOCK_IMAGES.wireframeSketch.alt}
-              fill
-              sizes="(min-width: 1024px) 292px, 50vw"
-              className="object-cover"
-            />
-          </div>
-          <div className="relative aspect-[4/5] lg:aspect-auto rounded-3xl overflow-hidden bg-slate-100">
-            <Image
-              src={STOCK_IMAGES.codeLaptop.src}
-              alt={STOCK_IMAGES.codeLaptop.alt}
-              fill
-              sizes="(min-width: 1024px) 292px, 50vw"
-              className="object-cover"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Founder */}
-      <FounderSection />
-
-      {/* How we work */}
-      <ProcessSection />
-
-      {/* Offices */}
-      <section className="bg-slate-50 py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-14 space-y-4">
-            <span className="text-xs uppercase tracking-widest font-extrabold text-brand-blue">
-              Where We Are
+    <div className="bg-paper pb-16 text-ink sm:pb-24">
+      <PageIntro
+        label="The studio / Web Total Solution"
+        title={
+          <>
+            Small enough to care.
+            <br />
+            Built to deliver.
+          </>
+        }
+        description="An independent design and development studio in Kolkata and Delhi. We work with ambitious businesses in India and beyond to build a stronger presence online."
+      >
+        <TextLink href="/work">Get to know our work</TextLink>
+      </PageIntro>
+      <section className="studio-container">
+        <div className="grid overflow-hidden rounded-[24px] bg-deep text-paper lg:grid-cols-12">
+          <div className="relative flex min-h-80 flex-col justify-between border-b border-white/15 p-8 sm:p-12 lg:col-span-7 lg:border-b-0 lg:border-r">
+            <SectionLabel light>Our way of working</SectionLabel>
+            <p className="my-10 font-display text-[clamp(3.5rem,7vw,6rem)] leading-[1]">
+              Think clearly.
+              <br />
+              Design carefully.
+              <br />
+              <span className="text-marker">Build properly.</span>
+            </p>
+            <span className="font-mono text-[10px] uppercase tracking-[.15em] text-white/50">
+              Strategy / Design / Development
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-              Our Offices
-            </h2>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-7 max-w-4xl mx-auto">
-            {OFFICES.map((office) => (
-              <div
-                key={office.city}
-                className="bg-white border border-slate-100 rounded-3xl p-7 sm:p-9 shadow-sm"
+          <div className="flex flex-col justify-center p-8 sm:p-12 lg:col-span-5">
+            <p className="font-display text-3xl leading-tight">
+              A website is a business decision.
+            </p>
+            <p className="mt-5 text-[15px] leading-relaxed text-white/65">
+              It shapes the first impression, answers the important questions
+              and helps someone decide whether to trust you. We give those
+              details the attention they deserve.
+            </p>
+            <p className="mt-5 text-[15px] leading-relaxed text-white/65">
+              The same team takes your project from planning and design through
+              development and launch. Clear communication, considered decisions,
+              and work we can stand behind.
+            </p>
+          </div>
+        </div>
+        <div className="grid grid-cols-2 gap-7 py-12 sm:py-16 md:grid-cols-4">
+          {[
+            ["100+", "Websites delivered"],
+            ["30+", "Industries served"],
+            ["Kolkata + Delhi", "Our home base"],
+            ["Design to launch", "One connected team"],
+          ].map(([value, label]) => (
+            <div key={label}>
+              <p className="font-display text-2xl sm:text-3xl">{value}</p>
+              <p className="mt-2 text-xs text-graphite">{label}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+      <FounderSection />
+      <section className="studio-section">
+        <div className="studio-container grid gap-10 lg:grid-cols-12">
+          <div className="lg:col-span-5">
+            <SectionLabel>Trust, put in writing</SectionLabel>
+            <h2 className="mt-5 font-display text-display">
+              Clear expectations.
+              <br />
+              From day one.
+            </h2>
+            <p className="mt-5 max-w-sm text-base leading-relaxed text-graphite">
+              The practical commitments behind a good working relationship.
+            </p>
+          </div>
+          <ul className="lg:col-span-7">
+            {CLIENT_COMMITMENTS.map((item) => (
+              <li
+                key={item}
+                className="flex items-start gap-4 border-t border-ink/15 py-5 text-[15px] leading-relaxed"
               >
-                <div className="w-12 h-12 rounded-2xl bg-brand-blue/10 text-brand-blue flex items-center justify-center">
-                  <MapPin className="w-6 h-6" />
-                </div>
-                <h3 className="mt-5 text-xl font-bold text-slate-900">{office.city} Office</h3>
-                <p className="mt-2.5 text-sm text-slate-600 leading-relaxed">
-                  {office.lines[0]},<br />
-                  {office.lines[1]}
+                <Check className="mt-1 size-4 shrink-0 text-brand-blue" />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+      <ProcessSection heading="Good work starts with a clear process." />
+      <section className="studio-section">
+        <div className="studio-container">
+          <SectionLabel>Based in India / Working across borders</SectionLabel>
+          <div className="mt-7 grid gap-8 md:grid-cols-2">
+            {OFFICES.map((office) => (
+              <div key={office.city} className="border-t border-ink/15 pt-7">
+                <h2 className="font-display text-3xl">{office.city}</h2>
+                <p className="mt-4 max-w-sm text-sm leading-relaxed text-graphite">
+                  {office.lines.join(", ")}
                 </p>
+                <Link
+                  href="/contact"
+                  className="mt-5 inline-flex min-h-11 items-center gap-2 text-sm font-semibold"
+                >
+                  Get in touch
+                  <ArrowUpRight className="size-4" />
+                </Link>
               </div>
             ))}
           </div>
-
-          <div className="mt-10 text-center">
-            <Link
-              href="/contact"
-              className="inline-flex items-center space-x-2 text-sm font-bold text-brand-blue hover:underline"
-            >
-              <span>Maps, phone and email on the contact page</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
         </div>
       </section>
-
-      {/* What we put in writing on every project. */}
-      <section className="bg-white py-24">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-slate-900 text-white rounded-3xl p-8 sm:p-10 shadow-sm relative overflow-hidden">
-            <div className="absolute right-0 top-0 w-72 h-72 bg-brand-blue/15 rounded-full filter blur-3xl pointer-events-none" />
-
-            <div className="relative z-10 space-y-6">
-              <h2 className="text-2xl font-bold tracking-tight">What every client gets in writing</h2>
-
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
-                {CLIENT_COMMITMENTS.map((commitment) => (
-                  <li key={commitment} className="flex items-start space-x-3">
-                    <ShieldCheck className="w-5 h-5 text-emerald-400 shrink-0 mt-px" />
-                    <span className="text-sm text-slate-300 leading-relaxed">{commitment}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="relative z-10 mt-10 pt-6 border-t border-white/10">
-              <Link
-                href="/work"
-                className="inline-flex items-center space-x-2 text-sm font-bold text-white hover:text-brand-blue transition-colors"
-              >
-                <span>See the live client websites we have built</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <FinalCTA />
     </div>
   );

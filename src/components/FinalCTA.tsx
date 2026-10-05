@@ -1,51 +1,58 @@
-import React from 'react';
-import Link from 'next/link';
-import WhatsAppIcon from './WhatsAppIcon';
-import { HERO_TRUST_BADGES, WHATSAPP_URL } from '../siteContent';
+﻿import React from "react";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import { WHATSAPP_URL } from "../siteContent";
+import { SectionLabel } from "./StudioPrimitives";
 
-/**
- * Closing conversion block. Reused verbatim across the homepage and every
- * landing page so the final ask is consistent.
- */
 export default function FinalCTA({
-  headline = 'Ready to Grow Your Business Online?',
-  text = 'Book a free consultation today and discover how a professional website can help you generate more customers.',
-  contactHref = '/contact',
+  headline = "Your next chapter starts here.",
+  text = "Tell us where your business is headed. We will help you work out what your website needs to do next.",
+  contactHref = "/contact",
 }: {
   headline?: string;
   text?: string;
   contactHref?: string;
 }) {
   return (
-    <section className="px-4 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-7xl rounded-lg bg-deep px-6 py-12 text-white sm:px-12 md:py-16 lg:px-16">
-        <div className="grid gap-10 lg:grid-cols-12 lg:items-end lg:gap-8">
+    <section className="studio-container">
+      <div className="relative overflow-hidden rounded-[24px] bg-marker p-8 sm:p-12 lg:p-16">
+        <div className="relative z-10 grid items-end gap-9 lg:grid-cols-12">
           <div className="lg:col-span-8">
-            <h2 className="font-display text-display">{headline}</h2>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/75">{text}</p>
+            <SectionLabel>Have something in mind?</SectionLabel>
+            <h2 className="mt-6 max-w-3xl font-display text-display">
+              {headline}
+            </h2>
+            <p className="mt-5 max-w-lg text-[15px] leading-relaxed text-ink/75">
+              {text}
+            </p>
+            <p className="mt-7 font-mono text-[9px] uppercase tracking-[.12em] text-ink/70">
+              A conversation first. A clear proposal next.
+            </p>
           </div>
-
-          <div className="flex flex-col gap-3 sm:flex-row lg:col-span-4 lg:flex-col lg:items-stretch">
-            <Link href={contactHref} className="btn btn-paper">
-              Book a free consultation
+          <div className="flex flex-col items-start gap-4 lg:col-span-4 lg:items-end">
+            <Link href={contactHref} className="btn btn-ink">
+              Let&apos;s talk about it
+              <ArrowUpRight className="size-4" />
             </Link>
             <a
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-line-dark"
+              className="inline-flex min-h-11 items-center gap-2 text-xs font-semibold underline decoration-ink/30 underline-offset-4 hover:decoration-ink"
             >
-              <WhatsAppIcon className="size-4" />
-              <span>Message us on WhatsApp</span>
+              Or say hello on WhatsApp
+              <ArrowUpRight className="size-3.5" />
             </a>
           </div>
         </div>
-
-        <ul className="mt-10 flex flex-wrap gap-x-8 gap-y-2 border-t border-white/25 pt-6 text-sm text-white/75">
-          {HERO_TRUST_BADGES.map((badge) => (
-            <li key={badge}>{badge}</li>
-          ))}
-        </ul>
+        <span
+          className="pointer-events-none absolute -right-24 -top-36 size-[420px] rounded-full border border-ink/10"
+          aria-hidden="true"
+        />
+        <span
+          className="pointer-events-none absolute -bottom-52 -right-44 size-[540px] rounded-full border border-ink/10"
+          aria-hidden="true"
+        />
       </div>
     </section>
   );

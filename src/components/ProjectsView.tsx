@@ -1,5 +1,5 @@
-import React from 'react';
-import Link from 'next/link';
+﻿import React from "react";
+import Link from "next/link";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -16,8 +16,10 @@ import {
   Users,
   Wallet,
   Check,
-} from 'lucide-react';
-import { PROJECTS, ProjectData, ProjectIcon } from '../projects';
+} from "lucide-react";
+import { PROJECTS, ProjectData, ProjectIcon } from "../projects";
+import { PageIntro } from "./StudioPrimitives";
+import FinalCTA from "./FinalCTA";
 
 /** Data files stay serialisable, so icons are referenced by name. */
 const ICONS: Record<ProjectIcon, React.ElementType> = {
@@ -35,7 +37,7 @@ function ProductSection({ project }: { project: ProjectData }) {
   const howItWorksId = `${project.slug}-how-it-works`;
 
   return (
-    <article className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+    <article className="studio-container space-y-12">
       {/* Product header */}
       <header className="bg-white border border-slate-100 rounded-3xl shadow-sm overflow-hidden">
         <div className="p-8 sm:p-12 space-y-8">
@@ -49,7 +51,7 @@ function ProductSection({ project }: { project: ProjectData }) {
               <span>{project.status}</span>
             </span>
             {project.siteUrl && (
-              /* Followed link — no nofollow — so crawlers reach wtscrm.com from
+              /* Followed link â€” no nofollow â€” so crawlers reach wtscrm.com from
                  here. `noreferrer` is deliberately omitted: it would strip the
                  Referer header and hide this traffic from wtscrm.com analytics. */
               <a
@@ -69,7 +71,7 @@ function ProductSection({ project }: { project: ProjectData }) {
             {/* The descriptive half of the heading says what the product is in
                 the words people actually search for. */}
             <h2 className="space-y-2">
-              <span className="block text-3xl sm:text-4xl font-extrabold text-slate-950 tracking-tight leading-tight">
+              <span className="block font-display text-3xl sm:text-4xl text-ink leading-tight">
                 {project.name}
               </span>
               <span className="block text-lg sm:text-xl font-bold text-slate-700 leading-snug">
@@ -79,11 +81,15 @@ function ProductSection({ project }: { project: ProjectData }) {
             <p className="text-xl sm:text-2xl font-bold text-brand-blue leading-snug">
               {project.tagline}
             </p>
-            <p className="text-slate-700 text-base leading-relaxed">{project.positioning}</p>
-            <p className="text-slate-600 text-sm leading-relaxed">{project.supportingCopy}</p>
+            <p className="text-slate-700 text-base leading-relaxed">
+              {project.positioning}
+            </p>
+            <p className="text-slate-600 text-sm leading-relaxed">
+              {project.supportingCopy}
+            </p>
           </div>
 
-          {/* CTAs — the trial link only appears once the signup flow is live. */}
+          {/* CTAs â€” the trial link only appears once the signup flow is live. */}
           <div className="space-y-3">
             <div className="flex flex-col sm:flex-row sm:items-center gap-3">
               {project.trialUrl ? (
@@ -113,8 +119,12 @@ function ProductSection({ project }: { project: ProjectData }) {
                 <ArrowUpRight className="w-4 h-4" />
               </a>
             </div>
-            <p className="text-xs font-semibold text-slate-600">{project.reassurance}</p>
-            {!project.trialUrl && <p className="text-xs text-slate-500">{project.preLaunchNote}</p>}
+            <p className="text-xs font-semibold text-slate-600">
+              {project.reassurance}
+            </p>
+            {!project.trialUrl && (
+              <p className="text-xs text-slate-500">{project.preLaunchNote}</p>
+            )}
           </div>
         </div>
 
@@ -138,7 +148,9 @@ function ProductSection({ project }: { project: ProjectData }) {
 
       {/* Feature grid */}
       <section className="space-y-8">
-        <h3 className="text-2xl font-bold text-slate-950 tracking-tight">{project.featuresHeading}</h3>
+        <h3 className="font-display text-2xl text-ink">
+          {project.featuresHeading}
+        </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {project.features.map((feature) => {
             const Icon = ICONS[feature.icon];
@@ -150,8 +162,12 @@ function ProductSection({ project }: { project: ProjectData }) {
                 <span className="w-10 h-10 rounded-xl bg-brand-blue/10 text-brand-blue flex items-center justify-center">
                   <Icon className="w-5 h-5" />
                 </span>
-                <h4 className="text-base font-bold text-slate-900">{feature.title}</h4>
-                <p className="text-sm text-slate-600 leading-relaxed">{feature.description}</p>
+                <h4 className="text-base font-bold text-slate-900">
+                  {feature.title}
+                </h4>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  {feature.description}
+                </p>
               </div>
             );
           })}
@@ -161,8 +177,12 @@ function ProductSection({ project }: { project: ProjectData }) {
       {/* The six stages in the customer journey. */}
       <section id={howItWorksId} className="scroll-mt-24 space-y-8">
         <div className="space-y-3 max-w-2xl">
-          <h3 className="text-2xl font-bold text-slate-950 tracking-tight">{project.workflowHeading}</h3>
-          <p className="text-slate-600 text-sm leading-relaxed">{project.workflowIntro}</p>
+          <h3 className="font-display text-2xl text-ink">
+            {project.workflowHeading}
+          </h3>
+          <p className="text-slate-600 text-sm leading-relaxed">
+            {project.workflowIntro}
+          </p>
         </div>
         <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {project.workflow.map((step, index) => (
@@ -173,8 +193,12 @@ function ProductSection({ project }: { project: ProjectData }) {
               <span className="text-[11px] font-extrabold text-slate-500 uppercase tracking-widest">
                 Step {index + 1}
               </span>
-              <p className="text-lg font-extrabold text-slate-950">{step.label}</p>
-              <p className="text-sm text-slate-600 leading-relaxed">{step.description}</p>
+              <p className="text-lg font-extrabold text-slate-950">
+                {step.label}
+              </p>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                {step.description}
+              </p>
               {/* Connector between steps on wide screens only. */}
               {index < project.workflow.length - 1 && index % 3 !== 2 && (
                 <ArrowRight
@@ -190,19 +214,27 @@ function ProductSection({ project }: { project: ProjectData }) {
       {/* Pricing */}
       <section className="space-y-8">
         <div className="space-y-3 max-w-2xl">
-          <h3 className="text-2xl font-bold text-slate-950 tracking-tight">{project.pricingHeading}</h3>
-          <p className="text-slate-600 text-sm leading-relaxed">{project.pricingNote}</p>
+          <h3 className="font-display text-2xl text-ink">
+            {project.pricingHeading}
+          </h3>
+          <p className="text-slate-600 text-sm leading-relaxed">
+            {project.pricingNote}
+          </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-5 gap-6 2xl:w-[calc(100vw-4rem)] 2xl:max-w-[1720px] 2xl:relative 2xl:left-1/2 2xl:-translate-x-1/2">
           {project.plans.map((plan) => (
             <div
               key={plan.name}
               className={`bg-white border rounded-3xl p-7 shadow-sm flex flex-col gap-4 ${
-                plan.badge ? 'border-brand-blue/40 ring-1 ring-brand-blue/20' : 'border-slate-100'
+                plan.badge
+                  ? "border-brand-blue/40 ring-1 ring-brand-blue/20"
+                  : "border-slate-100"
               }`}
             >
               <div className="flex flex-wrap items-center justify-between gap-2">
-                <h4 className="text-lg font-extrabold text-slate-950">{plan.name}</h4>
+                <h4 className="text-lg font-extrabold text-slate-950">
+                  {plan.name}
+                </h4>
                 {plan.badge && (
                   <span className="text-[11px] font-extrabold uppercase tracking-widest text-brand-blue bg-brand-blue/10 border border-brand-blue/20 px-2.5 py-1 rounded-full">
                     {plan.badge}
@@ -210,14 +242,28 @@ function ProductSection({ project }: { project: ProjectData }) {
                 )}
               </div>
               <p className="flex flex-wrap items-baseline gap-x-2">
-                <span className="text-4xl font-extrabold text-slate-950 tracking-tight">{plan.price}</span>
-                {plan.cadence && <span className="text-sm font-semibold text-slate-600">{plan.cadence}</span>}
+                <span className="font-display text-4xl text-ink">
+                  {plan.price}
+                </span>
+                {plan.cadence && (
+                  <span className="text-sm font-semibold text-slate-600">
+                    {plan.cadence}
+                  </span>
+                )}
               </p>
-              <p className="text-sm text-slate-600 leading-relaxed">{plan.bestFor}</p>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                {plan.bestFor}
+              </p>
               <ul className="space-y-2 border-t border-slate-100 pt-4 flex-1">
                 {plan.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-2 text-sm text-slate-700">
-                    <Check className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" aria-hidden="true" />
+                  <li
+                    key={feature}
+                    className="flex items-start gap-2 text-sm text-slate-700"
+                  >
+                    <Check
+                      className="w-4 h-4 text-brand-blue shrink-0 mt-0.5"
+                      aria-hidden="true"
+                    />
                     <span>{feature}</span>
                   </li>
                 ))}
@@ -234,8 +280,8 @@ function ProductSection({ project }: { project: ProjectData }) {
                   rel="noopener"
                   className={`font-bold tracking-wide px-5 py-3 rounded-xl transition-all inline-flex items-center justify-center space-x-2 cursor-pointer ${
                     plan.badge
-                      ? 'bg-brand-blue hover:bg-brand-blue/90 text-white shadow-sm hover:shadow'
-                      : 'bg-slate-50 hover:bg-slate-100 text-slate-950 border border-slate-200'
+                      ? "bg-brand-blue hover:bg-brand-blue/90 text-white shadow-sm hover:shadow"
+                      : "bg-slate-50 hover:bg-slate-100 text-slate-950 border border-slate-200"
                   }`}
                 >
                   <span>{plan.ctaLabel ?? `Choose ${plan.name}`}</span>
@@ -255,7 +301,10 @@ function ProductSection({ project }: { project: ProjectData }) {
         </div>
         <div className="flex flex-col sm:flex-row sm:items-center gap-4">
           <p className="text-xs text-slate-600 flex items-start space-x-2 bg-slate-50 border border-slate-100 rounded-2xl p-4 flex-1">
-            <Info className="w-4 h-4 text-slate-500 shrink-0 mt-0.5" aria-hidden="true" />
+            <Info
+              className="w-4 h-4 text-slate-500 shrink-0 mt-0.5"
+              aria-hidden="true"
+            />
             <span>{project.trialNote}</span>
           </p>
           {project.siteUrl && (
@@ -272,17 +321,21 @@ function ProductSection({ project }: { project: ProjectData }) {
         </div>
       </section>
 
-      {/* FAQ — visible answers, also emitted as FAQPage structured data. */}
+      {/* FAQ â€” visible answers, also emitted as FAQPage structured data. */}
       <section className="space-y-8">
-        <h3 className="text-2xl font-bold text-slate-950 tracking-tight">{project.faqHeading}</h3>
+        <h3 className="font-display text-2xl text-ink">{project.faqHeading}</h3>
         <dl className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {project.faqs.map((faq) => (
             <div
               key={faq.question}
               className="bg-white border border-slate-100 rounded-2xl p-6 space-y-2 shadow-sm"
             >
-              <dt className="text-base font-bold text-slate-900">{faq.question}</dt>
-              <dd className="text-sm text-slate-600 leading-relaxed">{faq.answer}</dd>
+              <dt className="text-base font-bold text-slate-900">
+                {faq.question}
+              </dt>
+              <dd className="text-sm text-slate-600 leading-relaxed">
+                {faq.answer}
+              </dd>
             </div>
           ))}
         </dl>
@@ -290,11 +343,19 @@ function ProductSection({ project }: { project: ProjectData }) {
 
       {/* Honest scope limits */}
       <section className="bg-slate-50/70 border border-slate-100 rounded-3xl p-8 space-y-4">
-        <h3 className="text-lg font-bold text-slate-950">{project.notForHeading}</h3>
+        <h3 className="text-lg font-bold text-slate-950">
+          {project.notForHeading}
+        </h3>
         <ul className="space-y-2">
           {project.notFor.map((item) => (
-            <li key={item} className="text-sm text-slate-600 flex items-start space-x-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-slate-400 shrink-0 mt-2" aria-hidden="true" />
+            <li
+              key={item}
+              className="text-sm text-slate-600 flex items-start space-x-2"
+            >
+              <span
+                className="w-1.5 h-1.5 rounded-full bg-slate-400 shrink-0 mt-2"
+                aria-hidden="true"
+              />
               <span>{item}</span>
             </li>
           ))}
@@ -305,52 +366,34 @@ function ProductSection({ project }: { project: ProjectData }) {
 }
 
 /**
- * /projects — the products Web Total Solution builds and runs itself, as
+ * /projects â€” the products Web Total Solution builds and runs itself, as
  * opposed to /work, which is the curated case studies.
  */
 export default function ProjectsView() {
   return (
-    <div className="space-y-16 pb-20 overflow-x-hidden">
+    <div className="space-y-12 bg-paper pb-16 text-ink sm:pb-24">
       {/* Hero */}
-      <section className="text-center pt-16 space-y-4 max-w-3xl mx-auto px-4">
-        <div className="inline-flex items-center space-x-2 bg-brand-blue/10 border border-brand-blue/20 px-3 py-1 rounded-full text-brand-blue text-xs font-semibold uppercase tracking-wider">
-          <Rocket className="w-3.5 h-3.5" />
-          <span>Our Products</span>
-        </div>
-        <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
-          Software We Build for Indian Service Businesses
-        </h1>
-        <p className="text-slate-600 text-base max-w-xl mx-auto">
-          Alongside client projects, we build and run WTS CRM — a workspace for service businesses
-          to manage leads, follow-ups, quotations, client projects, invoices and payments.
-        </p>
-      </section>
+      <PageIntro
+        label="Our products / Built and run by us"
+        title={
+          <>
+            We build for clients.
+            <br />
+            And for ourselves.
+          </>
+        }
+        description="Alongside our client work, we build and run WTS CRM: a workspace for Indian service businesses to connect leads, follow-ups, projects and payments."
+      />
 
       {PROJECTS.map((project) => (
         <ProductSection key={project.slug} project={project} />
       ))}
 
       {/* Closing CTA */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-slate-50/60 border border-slate-100 rounded-3xl p-8 text-center space-y-4">
-          <h2 className="text-2xl font-bold text-slate-950">
-            Want a product like this for your business?
-          </h2>
-          <p className="text-slate-600 text-sm max-w-lg mx-auto">
-            We design and build custom platforms — dashboards, internal tools, customer portals and
-            billing workflows — on the same stack we use for our own products.
-          </p>
-          <div className="pt-2">
-            <Link
-              href="/contact"
-              className="bg-brand-blue hover:bg-brand-blue/95 text-white font-bold tracking-wide px-6 py-3.5 rounded-xl shadow-sm hover:shadow transition-all inline-flex items-center space-x-2 cursor-pointer"
-            >
-              <span>Talk to us about your build</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-        </div>
-      </section>
+      <FinalCTA
+        headline="An idea for a product of your own?"
+        text="We design and build dashboards, internal tools, customer portals and billing workflows. Tell us what you want to make possible."
+      />
     </div>
   );
 }

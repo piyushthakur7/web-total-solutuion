@@ -1,7 +1,7 @@
-import React from 'react';
-import { ArrowUpRight } from 'lucide-react';
-import { WorkCaseStudy } from '../../work';
-import CaseStudySection from './CaseStudySection';
+﻿import React from "react";
+import { ArrowUpRight } from "lucide-react";
+import { WorkCaseStudy } from "../../work";
+import CaseStudySection from "./CaseStudySection";
 
 /** Project overview: who it is for, what was built, and the live link. */
 export default function CaseStudyIntro({ study }: { study: WorkCaseStudy }) {
@@ -13,8 +13,8 @@ export default function CaseStudyIntro({ study }: { study: WorkCaseStudy }) {
             key={paragraph}
             className={
               index === 0
-                ? 'text-xl sm:text-2xl font-semibold text-slate-900 leading-snug tracking-tight'
-                : 'text-base sm:text-lg text-slate-600 leading-relaxed'
+                ? "text-xl sm:text-2xl font-semibold text-ink leading-snug tracking-tight"
+                : "text-base sm:text-lg text-graphite leading-relaxed"
             }
           >
             {paragraph}
@@ -25,7 +25,7 @@ export default function CaseStudyIntro({ study }: { study: WorkCaseStudy }) {
           href={study.websiteUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 text-sm font-bold text-slate-900 border-b border-slate-300 hover:border-slate-900 pb-1 transition-colors"
+          className="inline-flex items-center gap-1.5 text-sm font-bold text-ink border-b border-slate-300 hover:border-slate-900 pb-1 transition-colors"
         >
           <span>Visit {study.websiteLabel}</span>
           <ArrowUpRight className="w-4 h-4" />

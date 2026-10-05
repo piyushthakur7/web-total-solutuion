@@ -1,46 +1,39 @@
-"use client";
-
-import React from 'react';
-import Image from 'next/image';
-
-interface LogoProps {
-  className?: string;
-  size?: 'sm' | 'md' | 'lg';
-  theme?: 'light' | 'dark'; // kept for compatibility if passed by parent
-}
+﻿import React from "react";
+import Image from "next/image";
 
 export default function Logo({
-  className = '',
-  size = 'md',
-  theme = 'light',
-}: LogoProps) {
-  // Sizing map defining strict heights to ensure navbar breadth isn't increased
-  // We increased the base height slightly, but will rely on CSS scale to make it pop.
-  const heightMap = {
-    sm: 'h-10',
-    md: 'h-16', // 64px
-    lg: 'h-20',
+  className = "",
+  size = "md",
+  theme = "light",
+}: {
+  className?: string;
+  size?: "sm" | "md" | "lg";
+  theme?: "light" | "dark";
+}) {
+  const frames = {
+    sm: "h-13 w-40",
+    md: "h-15 w-48",
+    lg: "h-18 w-56",
   };
+  const imageWidths = { sm: 196, md: 224, lg: 272 };
 
   return (
-    <div className={`flex items-center ${className}`}>
-      <div
-        className="shrink-0 flex items-center justify-center relative hover:scale-[1.05] transition-transform duration-300 ease-out"
-      >
-        <Image
-          src="/bhaskar_logo_1.png"
-          alt="Web Total Solution"
-          // The source asset is square; declaring 240x80 gave next/image a false
-          // aspect ratio and made it request a far larger variant than needed.
-          width={320}
-          height={320}
-          sizes="160px"
-          quality={75}
-          priority
-          // scale-[2.2] makes it larger visually without taking more layout space.
-          className={`${heightMap[size]} w-auto object-contain drop-shadow-sm scale-[2.2] origin-left`}
-        />
-      </div>
-    </div>
+    <span
+      className={`relative block shrink-0 overflow-hidden ${frames[size]} ${className}`}
+    >
+      <Image
+        src="/bhaskar_logo_1.png"
+        alt="Web Total Solution"
+        width={320}
+        height={320}
+        sizes={`${imageWidths[size]}px`}
+        priority={theme === "light"}
+        className="absolute left-1/2 top-1/2 h-auto max-w-none -translate-x-1/2 -translate-y-1/2"
+        style={{
+          width: imageWidths[size],
+          filter: theme === "dark" ? "brightness(0) invert(1)" : undefined,
+        }}
+      />
+    </span>
   );
 }

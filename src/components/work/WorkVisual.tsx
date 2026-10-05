@@ -1,7 +1,7 @@
-import React from 'react';
-import Image from 'next/image';
-import { WTS_CRM } from '../../projects';
-import { WorkCaseStudy } from '../../work';
+import React from "react";
+import Image from "next/image";
+import { WTS_CRM } from "../../projects";
+import { WorkCaseStudy } from "../../work";
 
 /**
  * The lead visual for a case study: a framed screenshot, or — for WTS CRM,
@@ -20,14 +20,14 @@ export default function WorkVisual({
   /** Workflow visual only: also show each step's description. */
   detailed?: boolean;
 }) {
-  if (study.visual.type === 'screenshot') {
+  if (study.visual.type === "screenshot") {
     return (
-      <div className="rounded-2xl sm:rounded-3xl border border-slate-200 bg-white overflow-hidden shadow-[0_30px_80px_-40px_rgba(15,23,42,0.35)]">
-        <div className="flex items-center gap-1.5 px-4 h-9 border-b border-slate-200 bg-slate-50">
-          <span className="w-2.5 h-2.5 rounded-full bg-slate-300" aria-hidden="true" />
-          <span className="w-2.5 h-2.5 rounded-full bg-slate-300" aria-hidden="true" />
-          <span className="w-2.5 h-2.5 rounded-full bg-slate-300" aria-hidden="true" />
-          <span className="ml-3 text-[11px] font-mono text-slate-500 truncate">
+      <div className="project-frame">
+        <div className="browser-bar">
+          <span className="browser-dot" aria-hidden="true" />
+          <span className="browser-dot" aria-hidden="true" />
+          <span className="browser-dot" aria-hidden="true" />
+          <span className="ml-3 text-[9px] font-mono text-graphite truncate">
             {study.websiteLabel}
           </span>
         </div>
@@ -50,19 +50,23 @@ export default function WorkVisual({
       <p className="text-[11px] font-mono uppercase tracking-widest text-slate-400">
         Enquiry to payment
       </p>
-      <ol className={`mt-6 grid gap-x-8 ${detailed ? 'sm:grid-cols-2 lg:grid-cols-3 gap-y-8' : 'gap-y-0'}`}>
+      <ol
+        className={`mt-6 grid gap-x-8 ${detailed ? "sm:grid-cols-2 lg:grid-cols-3 gap-y-8" : "gap-y-0"}`}
+      >
         {WTS_CRM.workflow.map((step, index) => (
           <li
             key={step.label}
             className={
               detailed
-                ? 'border-t border-white/10 pt-4'
-                : 'flex items-baseline gap-5 border-t border-white/10 py-3.5'
+                ? "border-t border-white/10 pt-4"
+                : "flex items-baseline gap-5 border-t border-white/10 py-3.5"
             }
           >
-            <span className="font-mono text-xs text-brand-blue">0{index + 1}</span>
+            <span className="font-mono text-xs text-brand-blue">
+              0{index + 1}
+            </span>
             <span
-              className={`font-bold tracking-tight text-white ${detailed ? 'block mt-2 text-xl' : 'text-lg sm:text-xl'}`}
+              className={`font-bold tracking-tight text-white ${detailed ? "block mt-2 text-xl" : "text-lg sm:text-xl"}`}
             >
               {step.label}
             </span>

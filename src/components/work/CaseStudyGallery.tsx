@@ -1,6 +1,6 @@
-import React from 'react';
-import Image from 'next/image';
-import { WorkGalleryImage } from '../../work';
+﻿import React from "react";
+import Image from "next/image";
+import { WorkGalleryImage } from "../../work";
 
 /**
  * Key screens. `full` images span the page, `half` and `mobile` images sit in
@@ -8,14 +8,18 @@ import { WorkGalleryImage } from '../../work';
  * side by side. Rendered only when a case study has real screenshots in
  * `gallery`.
  */
-export default function CaseStudyGallery({ images }: { images: WorkGalleryImage[] }) {
+export default function CaseStudyGallery({
+  images,
+}: {
+  images: WorkGalleryImage[];
+}) {
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+    <section className="studio-container py-16 sm:py-24">
       <div className="reveal max-w-3xl space-y-4">
         <p className="text-[11px] font-mono uppercase tracking-widest text-slate-500">
           Visual design
         </p>
-        <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight leading-[1.1] text-slate-900">
+        <h2 className="text-3xl sm:text-4xl font-display leading-[1.1] text-ink">
           Key screens
         </h2>
       </div>
@@ -25,18 +29,18 @@ export default function CaseStudyGallery({ images }: { images: WorkGalleryImage[
           <figure
             key={image.src}
             className={`reveal ${
-              image.layout === 'full'
-                ? 'col-span-2 md:col-span-6'
-                : image.layout === 'half'
-                  ? 'col-span-2 md:col-span-3'
-                  : 'col-span-1 md:col-span-3'
+              image.layout === "full"
+                ? "col-span-2 md:col-span-6"
+                : image.layout === "half"
+                  ? "col-span-2 md:col-span-3"
+                  : "col-span-1 md:col-span-3"
             }`}
           >
             <div
               className={`relative overflow-hidden bg-slate-100 ${
-                image.layout === 'mobile'
-                  ? 'aspect-[390/844] max-w-[300px] mx-auto rounded-[1.75rem] sm:rounded-[2.5rem] border-4 sm:border-8 border-slate-900 shadow-[0_30px_80px_-40px_rgba(15,23,42,0.5)]'
-                  : 'aspect-[16/10] rounded-2xl sm:rounded-3xl border border-slate-200 shadow-[0_30px_80px_-40px_rgba(15,23,42,0.35)]'
+                image.layout === "mobile"
+                  ? "aspect-[390/844] max-w-[300px] mx-auto rounded-[1.75rem] sm:rounded-[2.5rem] border-4 sm:border-8 border-slate-900 shadow-[0_30px_80px_-40px_rgba(15,23,42,0.5)]"
+                  : "aspect-[16/10] rounded-2xl sm:rounded-3xl border border-ink/15 shadow-[0_30px_80px_-40px_rgba(15,23,42,0.35)]"
               }`}
             >
               <Image
@@ -44,17 +48,21 @@ export default function CaseStudyGallery({ images }: { images: WorkGalleryImage[
                 alt={image.alt}
                 fill
                 sizes={
-                  image.layout === 'full'
-                    ? '(min-width: 1280px) 1216px, 100vw'
-                    : image.layout === 'half'
-                      ? '(min-width: 768px) 50vw, 100vw'
-                      : '(min-width: 640px) 300px, 45vw'
+                  image.layout === "full"
+                    ? "(min-width: 1280px) 1216px, 100vw"
+                    : image.layout === "half"
+                      ? "(min-width: 768px) 50vw, 100vw"
+                      : "(min-width: 640px) 300px, 45vw"
                 }
                 className="object-cover object-top"
               />
             </div>
             {image.caption && (
-              <figcaption className={`mt-4 text-sm text-slate-500 ${image.layout === 'mobile' ? 'text-center' : ''}`}>{image.caption}</figcaption>
+              <figcaption
+                className={`mt-4 text-sm text-slate-500 ${image.layout === "mobile" ? "text-center" : ""}`}
+              >
+                {image.caption}
+              </figcaption>
             )}
           </figure>
         ))}

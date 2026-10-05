@@ -1,14 +1,25 @@
-import React from 'react';
-import { WorkCaseStudy } from '../../work';
-import CaseStudySection from './CaseStudySection';
+import React from "react";
+import { WorkCaseStudy } from "../../work";
+import CaseStudySection from "./CaseStudySection";
 
 /** Engineering. The only place on a case study where technology is listed. */
-export default function CaseStudyTechnology({ study }: { study: WorkCaseStudy }) {
+export default function CaseStudyTechnology({
+  study,
+}: {
+  study: WorkCaseStudy;
+}) {
   return (
-    <CaseStudySection eyebrow="Engineering" heading="From design to production." dark>
+    <CaseStudySection
+      eyebrow="Engineering"
+      heading="From design to production."
+      dark
+    >
       <div className="space-y-6 max-w-3xl">
         {study.engineering.map((paragraph) => (
-          <p key={paragraph} className="text-base sm:text-lg text-slate-300 leading-relaxed">
+          <p
+            key={paragraph}
+            className="text-base sm:text-lg text-slate-300 leading-relaxed"
+          >
             {paragraph}
           </p>
         ))}

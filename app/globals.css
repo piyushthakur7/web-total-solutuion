@@ -4,50 +4,78 @@
 @theme {
   --font-sans: var(--font-hanken), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, monospace;
-  
-  --color-brand-navy: #1E293B;
-  --color-brand-blue: #0E70A6;
-  --color-brand-ice: #F8FAFC;
-  --color-brand-slate: #64748B;
-  --color-brand-dark: #0F172A;
-  /* Lighter tint of the brand blue, for text and accents on dark surfaces. */
-  --color-brand-sky: #8FD0F2;
+
+  --color-brand-navy: #182334;
+  --color-brand-blue: #0e70a6;
+  --color-brand-ice: #f5f8fb;
+  --color-brand-slate: #536175;
+  --color-brand-dark: #122238;
+  /* Light accent for text and details on dark surfaces. */
+  --color-brand-sky: #8fd0f2;
 
   /*
-   * Drafting palette: cool white paper, true black text, the brand blue for
-   * wireframe lines and links, a deep blue for dark sections, and a marker
-   * yellow reserved for the hero reveal handle.
+   * Studio palette: cool white, charcoal navy and blue accents.
+   * Existing brand token names stay compatible with the specialised pages.
    */
-  --color-paper: #F2F5F7;
-  --color-ink: #000000;
-  --color-graphite: #4B5661;
-  --color-deep: #0A3550;
-  --color-marker: #FFD84A;
+  --color-paper: #f5f8fb;
+  --color-ink: #182334;
+  --color-graphite: #536175;
+  --color-deep: #122238;
+  --color-marker: #b9dcf5;
 
-  --font-display: var(--font-bricolage), var(--font-hanken), ui-sans-serif, system-ui, sans-serif;
+  --font-display:
+    var(--font-bricolage), var(--font-hanken), ui-sans-serif, system-ui,
+    sans-serif;
 
-  --text-hero: clamp(2.9rem, 8.4vw, 7.25rem);
-  --text-hero--line-height: 0.92;
-  --text-hero--letter-spacing: -0.035em;
-  --text-display: clamp(2.2rem, 4.8vw, 4rem);
-  --text-display--line-height: 1;
-  --text-display--letter-spacing: -0.03em;
+  --text-hero: clamp(2.7rem, 6.5vw, 5.75rem);
+  --text-hero--line-height: 1.02;
+  --text-hero--letter-spacing: -0.055em;
+  --text-display: clamp(2.1rem, 4vw, 3.75rem);
+  --text-display--line-height: 1.08;
+  --text-display--letter-spacing: -0.045em;
 
   --animate-marquee: marquee 40s linear infinite;
 
   @keyframes marquee {
-    0% { transform: translateX(0%); }
-    100% { transform: translateX(-50%); }
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
   }
 }
 
 @layer base {
   body {
-    @apply font-sans text-brand-navy bg-white antialiased;
+    @apply font-sans text-ink bg-paper antialiased;
+  }
+
+  ::selection {
+    background: #b9dcf5;
+    color: #182334;
+  }
+  html {
+    scroll-padding-top: 7rem;
+  }
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    -webkit-tap-highlight-color: transparent;
   }
 
   /* Visible keyboard focus everywhere; mouse clicks don't trigger it. */
-  :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  :where(
+    a,
+    button,
+    input,
+    select,
+    textarea,
+    summary,
+    [tabindex]
+  ):focus-visible {
     outline: 2px solid var(--color-brand-blue);
     outline-offset: 3px;
     border-radius: 0.5rem;
@@ -55,27 +83,52 @@
 }
 
 @layer components {
-  /* Headlines: Bricolage Grotesque, condensed and heavy. */
+  /* Headlines: Bricolage Grotesque, with a relaxed width and tight spacing. */
   .font-display {
-    font-weight: 600;
-    font-stretch: 82%;
-    letter-spacing: -0.02em;
+    font-weight: 500;
+    font-stretch: 100%;
+    letter-spacing: -0.045em;
   }
 
   .btn {
-    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-md px-6 py-3 text-[15px] font-semibold transition-colors duration-200 cursor-pointer;
+    @apply inline-flex min-h-13 items-center justify-center gap-3 rounded-full px-6 py-3 text-[14px] font-semibold transition-all duration-200 cursor-pointer;
   }
   .btn-ink {
-    @apply bg-ink text-white hover:bg-brand-blue;
+    @apply bg-ink text-white hover:bg-brand-blue hover:shadow-lg;
   }
   .btn-paper {
-    @apply bg-white text-ink hover:bg-brand-sky;
+    @apply bg-paper text-ink hover:bg-marker;
+  }
+  .btn-accent {
+    @apply bg-marker text-ink hover:bg-[#a5d1ef];
   }
   .btn-line {
     @apply border border-ink/25 text-ink hover:border-ink;
   }
   .btn-line-dark {
     @apply border border-white/35 text-white hover:border-white;
+  }
+
+  .studio-container {
+    @apply mx-auto w-full max-w-[1320px] px-5 sm:px-8 lg:px-12;
+  }
+  .section-label {
+    @apply flex items-center gap-2.5 font-mono text-[10px] font-medium uppercase tracking-[0.16em] sm:text-[11px];
+  }
+  .studio-section {
+    @apply py-16 sm:py-24 lg:py-28;
+  }
+  .studio-rule {
+    @apply border-t border-ink/15;
+  }
+  .project-frame {
+    @apply relative overflow-hidden rounded-[14px] border border-ink/10 bg-white shadow-[0_12px_36px_-12px_rgba(24,35,52,0.2)];
+  }
+  .browser-bar {
+    @apply flex h-8 items-center gap-1.5 border-b border-ink/10 bg-white px-3;
+  }
+  .browser-dot {
+    @apply size-1.5 rounded-full bg-ink/20;
   }
 
   /* Drafting-paper grid, used only inside the hero wireframe. */
@@ -87,13 +140,648 @@
   }
 }
 
+.hero-stage {
+  background: #e4edf6;
+  background-image: radial-gradient(#1823341a 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* The header overlays the hero so the entire opening section fits one viewport. */
+.home-header-row {
+  height: 84px;
+}
+.site-header-home a:focus-visible,
+.site-header-home button:focus-visible {
+  outline-color: white;
+}
+.impact-hero {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  height: 100vh;
+  height: 100svh;
+  padding-top: 84px;
+  overflow: hidden;
+  color: white;
+  /* Lit from the monitors outward, falling off towards the corners. */
+  background:
+    radial-gradient(
+      ellipse 62% 58% at 50% 72%,
+      #2ea4ea 0%,
+      #0b83c6 38%,
+      #0568a6 72%,
+      #04518a 100%
+    ),
+    #0579b9;
+}
+.impact-content {
+  position: relative;
+  z-index: 3;
+}
+.impact-copy {
+  padding-top: clamp(6px, 2svh, 22px);
+  text-align: center;
+}
+.impact-title {
+  font-family: var(--font-bricolage), var(--font-hanken), sans-serif;
+  font-weight: 800;
+  font-size: min(10.4vw, 15.5svh, 168px);
+  font-variation-settings: "wdth" 100;
+  line-height: 0.86;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+}
+.impact-period {
+  color: #b9dcf5;
+}
+.impact-description {
+  margin: clamp(12px, 2svh, 20px) auto 0;
+  max-width: 540px;
+  font-size: 16px;
+  line-height: 1.45;
+  color: #e5f3ff;
+}
+.impact-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  margin-top: clamp(14px, 2.5svh, 24px);
+  padding-bottom: 16px;
+}
+.impact-primary {
+  display: inline-flex;
+  min-height: 54px;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  border: 1px solid white;
+  border-radius: 999px;
+  padding: 8px 9px 8px 25px;
+  background: #fff;
+  color: #082b57;
+  font-size: 15px;
+  font-weight: 700;
+  box-shadow: 0 8px 32px #001d5440;
+  transition:
+    background 180ms,
+    transform 180ms;
+}
+.impact-primary > span {
+  display: flex;
+  width: 36px;
+  height: 36px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #0c579e;
+  color: white;
+}
+.impact-primary:hover {
+  background: #d9efff;
+  transform: translateY(-2px);
+}
+.impact-secondary {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 9px;
+  font-size: 13px;
+  color: #e5f3ff;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  text-decoration-color: #ffffff65;
+}
+.impact-secondary:hover {
+  text-decoration-color: white;
+}
+.impact-hero a:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 5px;
+  border-radius: 999px;
+}
+/* Header call to action on the hero: the dark counterpart of the white button. */
+.impact-nav-cta {
+  min-height: 46px;
+  align-items: center;
+  gap: 14px;
+  border-radius: 999px;
+  padding: 6px 7px 6px 20px;
+  background: #06305c;
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  transition: background 180ms;
+}
+.impact-nav-cta > span {
+  display: flex;
+  width: 32px;
+  height: 32px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: white;
+  color: #06305c;
+}
+.impact-nav-cta:hover {
+  background: #041f3d;
+}
+.impact-scene {
+  position: relative;
+  min-height: 0;
+  /* The top of the cutout is empty, so the monitors can rise behind the buttons. */
+  margin-top: clamp(-48px, -4svh, -16px);
+  z-index: 1;
+}
+.impact-photo {
+  position: absolute;
+  inset: 0;
+  margin-inline: auto;
+  width: min(1320px, 100%);
+}
+.impact-scene-image {
+  object-fit: contain;
+  object-position: center bottom;
+}
+/* Light spilling from the screens onto the wall behind them. */
+.impact-glow {
+  position: absolute;
+  z-index: 0;
+  left: 50%;
+  bottom: 18%;
+  width: min(1100px, 92vw);
+  height: 46svh;
+  transform: translateX(-50%);
+  background: radial-gradient(closest-side, #7fd0ff66, transparent);
+  filter: blur(20px);
+  pointer-events: none;
+}
+/* Shadow under the desk so the scene sits on the bottom edge. */
+.impact-floor {
+  position: absolute;
+  z-index: 2;
+  inset: auto 0 0;
+  height: 22svh;
+  background: linear-gradient(to top, #03335f8c, transparent);
+  pointer-events: none;
+}
+.impact-orbit {
+  position: absolute;
+  z-index: 0;
+  left: 50%;
+  border: 1px solid #ffffff2b;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+.impact-orbit-outer {
+  width: min(1500px, 124vw);
+  aspect-ratio: 1;
+  bottom: -72svh;
+}
+.impact-orbit-inner {
+  width: min(1180px, 98vw);
+  aspect-ratio: 1;
+  bottom: -62svh;
+  border-style: dashed;
+  border-color: #ffffff24;
+}
+.impact-grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.07;
+  background-image: radial-gradient(#ffffff75 0.5px, transparent 0.5px);
+  background-size: 4px 4px;
+}
+/* Skeleton lines of code at either edge, fading into the page. */
+.impact-code {
+  position: absolute;
+  z-index: 2;
+  bottom: 7svh;
+  display: grid;
+  gap: 9px;
+  width: min(12vw, 180px);
+  pointer-events: none;
+}
+.impact-code > span {
+  height: 3px;
+  border-radius: 3px;
+  background: #d9efff;
+  opacity: 0.4;
+}
+.impact-code-left {
+  left: 28px;
+  mask-image: linear-gradient(to right, transparent, black 70%);
+}
+.impact-code-right {
+  right: 28px;
+  justify-items: end;
+  mask-image: linear-gradient(to left, transparent, black 70%);
+}
+.impact-services {
+  position: absolute;
+  /* Position against the whole hero, rather than only the image row. */
+  inset: 84px 0 0;
+  z-index: 4;
+  pointer-events: none;
+  /* Half the width of the three monitors, which scale with the hero height. */
+  --scene-half: min(46svh, 530px);
+  --service-edge: calc(50% - var(--scene-half) - 190px);
+}
+.impact-service {
+  position: absolute;
+  z-index: 4;
+  display: flex;
+  width: 174px;
+  min-height: 50px;
+  align-items: center;
+  gap: 11px;
+  border: 1px solid #ffffff26;
+  border-radius: 999px;
+  padding: 8px 15px;
+  color: white;
+  /* Kept quiet so the headline and buttons lead. */
+  background: #06376857;
+  backdrop-filter: blur(10px);
+  pointer-events: auto;
+  transition:
+    background 180ms,
+    border-color 180ms,
+    transform 180ms;
+}
+.impact-service:hover {
+  background: #083f6f;
+  border-color: #ffffffb0;
+  transform: translateY(-3px);
+}
+.impact-service-icon {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+  stroke-width: 1.3;
+  color: #c4e3f8;
+}
+.impact-service-title {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.015em;
+}
+.impact-service-detail {
+  display: block;
+  margin-top: 2px;
+  font-size: 10px;
+  color: #c4e3f8;
+}
+.impact-service-dot {
+  position: absolute;
+  right: -3px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #def2ffb3;
+}
+/* Three either side of the monitors, the middle pair set furthest out. */
+.impact-service-design,
+.impact-service-development,
+.impact-service-seo {
+  left: max(16px, var(--service-edge));
+}
+.impact-service-landing,
+.impact-service-integrations,
+.impact-service-launch {
+  right: max(16px, var(--service-edge));
+}
+.impact-service-landing .impact-service-dot,
+.impact-service-integrations .impact-service-dot,
+.impact-service-launch .impact-service-dot {
+  right: auto;
+  left: -3px;
+}
+.impact-service-design,
+.impact-service-landing {
+  top: 40%;
+}
+.impact-service-development,
+.impact-service-integrations {
+  top: 53.5%;
+}
+.impact-service-development {
+  left: max(16px, calc(var(--service-edge) - 26px));
+}
+.impact-service-integrations {
+  right: max(16px, calc(var(--service-edge) - 26px));
+}
+.impact-service-seo,
+.impact-service-launch {
+  top: 67%;
+}
+@media (max-width: 1279px) {
+  .impact-hero {
+    grid-template-rows: auto auto minmax(0, 1fr);
+  }
+  .impact-scene {
+    grid-row: 3;
+    margin-top: 0;
+  }
+  .impact-photo {
+    width: 100%;
+  }
+  .impact-code {
+    display: none;
+  }
+  .impact-services {
+    position: relative;
+    grid-row: 2;
+    inset: auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    padding-top: 10px;
+  }
+  .impact-service {
+    position: relative;
+    inset: auto;
+    width: auto;
+    min-height: 38px;
+    gap: 8px;
+    padding: 8px 14px;
+  }
+  .impact-service-detail,
+  .impact-service-dot,
+  .impact-service-integrations,
+  .impact-service-launch,
+  .impact-service-seo {
+    display: none;
+  }
+  .impact-service-icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+@media (max-width: 1023px) {
+  .home-header-row {
+    height: 72px;
+  }
+  .impact-hero {
+    padding-top: 72px;
+  }
+  .impact-title {
+    font-size: min(13vw, 13svh, 120px);
+  }
+}
+/* Tall screens: fill the space and crop the outer monitors, keeping the designer large. */
+@media (max-width: 1023px) and (orientation: portrait) {
+  .impact-scene-image {
+    object-fit: cover;
+  }
+}
+@media (max-width: 599px) {
+  .impact-copy {
+    padding-top: clamp(10px, 3svh, 28px);
+  }
+  .impact-title {
+    font-size: min(14.5vw, 11svh, 80px);
+  }
+  .impact-description {
+    max-width: 330px;
+    font-size: 15px;
+  }
+  .impact-description br {
+    display: none;
+  }
+  .impact-actions {
+    flex-direction: column;
+    gap: 5px;
+    padding-bottom: 4px;
+  }
+  .impact-primary {
+    min-width: min(280px, 100%);
+  }
+  .impact-service-landing {
+    display: none;
+  }
+  .impact-service-title {
+    font-size: 10px;
+  }
+  .impact-services {
+    padding-top: 8px;
+  }
+}
+@media (max-height: 650px) {
+  .impact-copy {
+    padding-top: 8px;
+  }
+  .impact-description {
+    margin-top: 10px;
+  }
+  .impact-actions {
+    margin-top: 12px;
+    padding-bottom: 6px;
+  }
+  .impact-services,
+  .impact-code {
+    display: none;
+  }
+}
+/* Short landscape devices need a different composition, rather than a cropped CTA. */
+@media (max-height: 550px) and (min-aspect-ratio: 4/3) {
+  .home-header-row {
+    height: 64px;
+  }
+  .impact-nav-cta {
+    min-height: 44px;
+  }
+  .impact-hero {
+    padding-top: 64px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: minmax(0, 1fr);
+  }
+  .impact-content {
+    align-self: center;
+    padding-inline: 20px 8px;
+  }
+  .impact-copy {
+    padding-top: 0;
+  }
+  .impact-title {
+    font-size: min(7vw, 14svh, 66px);
+  }
+  .impact-description {
+    font-size: 12px;
+    margin-top: 10px;
+  }
+  .impact-description br {
+    display: none;
+  }
+  .impact-actions {
+    flex-direction: column;
+    gap: 0;
+    margin-top: 12px;
+    padding-bottom: 0;
+  }
+  .impact-primary {
+    min-height: 46px;
+    min-width: 0;
+    font-size: 13px;
+    padding: 6px 7px 6px 18px;
+    gap: 12px;
+  }
+  .impact-primary > span {
+    width: 32px;
+    height: 32px;
+  }
+  .impact-secondary {
+    min-height: 38px;
+    font-size: 12px;
+  }
+  .impact-scene {
+    height: 100%;
+    grid-row: 1;
+    grid-column: 2;
+    margin-top: 0;
+  }
+  .impact-services {
+    display: none;
+  }
+}
+/* Inner-page hero: the home hero's light and type, without the scene. */
+.page-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  margin-bottom: clamp(40px, 6vw, 72px);
+  padding-block: clamp(56px, 9vw, 116px) clamp(60px, 9vw, 124px);
+  color: white;
+  text-align: center;
+  background:
+    radial-gradient(
+      ellipse 70% 95% at 50% 100%,
+      #2ea4ea 0%,
+      #0b83c6 38%,
+      #0568a6 72%,
+      #04518a 100%
+    ),
+    #0579b9;
+}
+.page-hero-orbit-outer {
+  top: 14%;
+  width: min(1500px, 124vw);
+  aspect-ratio: 1;
+}
+.page-hero-orbit-inner {
+  top: 44%;
+  width: min(1100px, 92vw);
+  aspect-ratio: 1;
+  border-style: dashed;
+  border-color: #ffffff24;
+}
+.page-hero .impact-code {
+  bottom: 32px;
+}
+.page-hero-copy {
+  position: relative;
+  z-index: 3;
+}
+.page-hero-label {
+  display: inline-flex;
+  border: 1px solid #ffffff33;
+  border-radius: 999px;
+  padding: 7px 15px;
+  background: #06376857;
+  font-size: 12px;
+  font-weight: 600;
+  color: #d9efff;
+}
+.page-hero-title {
+  margin: 22px auto 0;
+  max-width: 1120px;
+  font-family: var(--font-bricolage), var(--font-hanken), sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.4rem, 7.2vw, 6rem);
+  font-variation-settings: "wdth" 100;
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+.page-hero-title-long {
+  max-width: 980px;
+  font-size: clamp(2rem, 4.6vw, 4rem);
+  line-height: 0.96;
+}
+.page-hero-description {
+  margin: 22px auto 0;
+  max-width: 600px;
+  font-size: 17px;
+  line-height: 1.5;
+  color: #e5f3ff;
+  text-wrap: balance;
+}
+.page-hero-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 22px;
+}
+/* Links passed in by pages are written for paper, so recolour them here. */
+.page-hero-actions a {
+  color: white;
+  border-color: #ffffff59;
+  text-decoration-color: #ffffff73;
+}
+.page-hero-actions a:hover {
+  border-color: white;
+  text-decoration-color: white;
+}
+.page-hero a:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 5px;
+}
+@media (max-width: 599px) {
+  .page-hero-description {
+    font-size: 16px;
+  }
+}
+.hero-enter {
+  animation: studio-enter 800ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes studio-enter {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 /*
  * Scroll reveal for the Work pages. CSS-only: browsers without scroll-driven
  * animations, and visitors who prefer reduced motion, simply see the content.
  */
 @keyframes reveal {
-  from { opacity: 0; transform: translateY(28px); }
-  to { opacity: 1; transform: none; }
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -112,7 +800,9 @@
   backdrop-filter: blur(24px) saturate(180%);
   -webkit-backdrop-filter: blur(24px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.8);
-  box-shadow: 0 20px 40px -15px rgba(14, 112, 166, 0.15), 0 1px 0 rgba(255, 255, 255, 0.8) inset;
+  box-shadow:
+    0 20px 40px -15px rgba(14, 112, 166, 0.15),
+    0 1px 0 rgba(255, 255, 255, 0.8) inset;
 }
 
 .glass-nav-item {

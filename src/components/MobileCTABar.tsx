@@ -1,44 +1,46 @@
-import React from 'react';
-import Link from 'next/link';
-import { Phone } from 'lucide-react';
-import WhatsAppIcon from './WhatsAppIcon';
-import { WHATSAPP_URL } from '../siteContent';
+"use client";
 
-/**
- * Sticky bottom action bar on mobile only. Most ad traffic is on a phone, and a
- * persistent call/WhatsApp/quote row removes the need to scroll back to a CTA.
- * Desktop keeps the floating WhatsApp button instead.
- */
+import React, { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import WhatsAppIcon from "./WhatsAppIcon";
+import { WHATSAPP_URL } from "../siteContent";
+
 export default function MobileCTABar() {
+  const pathname = usePathname();
+  const [heroPassed, setHeroPassed] = useState(false);
+
+  useEffect(() => {
+    setHeroPassed(false);
+    if (pathname !== "/") return;
+    const hero = document.getElementById("home-hero");
+    if (!hero) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      setHeroPassed(
+        !entry.isIntersecting && entry.boundingClientRect.bottom <= 0,
+      );
+    });
+    observer.observe(hero);
+    return () => observer.disconnect();
+  }, [pathname]);
+
+  if (pathname === "/" && !heroPassed) return null;
   return (
-    <div className="md:hidden fixed bottom-0 inset-x-0 z-50 bg-white/95 backdrop-blur-xl border-t border-slate-200 shadow-[0_-4px_20px_rgba(15,23,43,0.08)] pb-[env(safe-area-inset-bottom)]">
-      <div className="grid grid-cols-3 gap-2 p-2.5">
-        <a
-          href="tel:+916291519364"
-          className="flex flex-col items-center justify-center py-2 rounded-xl bg-slate-100 text-slate-800 active:scale-95 transition-transform"
-          aria-label="Call Web Total Solution"
-        >
-          <Phone className="w-5 h-5" />
-          <span className="text-[11px] font-bold uppercase tracking-wide mt-1">Call</span>
-        </a>
-        {/* White on WhatsApp green is only 1.98:1. Dark text on the same green
-            is 10.5:1, so the brand colour stays and the label stays readable. */}
+    <div className="fixed inset-x-0 bottom-0 z-40 border-t border-ink/10 bg-paper/95 pb-[env(safe-area-inset-bottom)] backdrop-blur-xl lg:hidden">
+      <div className="flex items-center gap-3 px-5 py-3">
         <a
           href={WHATSAPP_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex flex-col items-center justify-center py-2 rounded-xl bg-[#25D366] text-[#04301a] active:scale-95 transition-transform"
-          aria-label="Chat with us on WhatsApp"
+          aria-label="Talk on WhatsApp"
+          className="flex size-11 shrink-0 items-center justify-center rounded-full border border-ink/20 text-ink"
         >
-          <WhatsAppIcon className="w-5 h-5" />
-          <span className="text-[11px] font-bold uppercase tracking-wide mt-1">WhatsApp</span>
+          <WhatsAppIcon className="size-5" />
         </a>
-        <Link
-          href="/contact"
-          className="flex flex-col items-center justify-center py-2 rounded-xl bg-brand-blue text-white active:scale-95 transition-transform"
-        >
-          <span className="text-sm font-extrabold leading-none">Free</span>
-          <span className="text-[11px] font-bold uppercase tracking-wide mt-1">Consultation</span>
+        <Link href="/contact" className="btn btn-ink min-h-11 flex-1">
+          Let&apos;s talk about your project
+          <ArrowUpRight className="size-4" />
         </Link>
       </div>
     </div>

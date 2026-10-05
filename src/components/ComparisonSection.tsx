@@ -1,17 +1,17 @@
-import React from 'react';
-import Link from 'next/link';
-import { COMPARISON_ROWS } from '../siteContent';
-import { ArrowRight, Check, Minus, X } from 'lucide-react';
+﻿import React from "react";
+import Link from "next/link";
+import { COMPARISON_ROWS } from "../siteContent";
+import { ArrowRight, Check, Minus, X } from "lucide-react";
 
-function Mark({ state }: { state: boolean | 'partial' }) {
+function Mark({ state }: { state: boolean | "partial" }) {
   if (state === true) {
     return (
-      <span className="inline-flex w-8 h-8 rounded-full bg-emerald-500/15 text-emerald-400 items-center justify-center">
+      <span className="inline-flex w-8 h-8 rounded-full bg-brand-blue/15 text-brand-sky items-center justify-center">
         <Check className="w-4 h-4" strokeWidth={3} />
       </span>
     );
   }
-  if (state === 'partial') {
+  if (state === "partial") {
     return (
       <span className="inline-flex w-8 h-8 rounded-full bg-amber-500/15 text-amber-400 items-center justify-center">
         <Minus className="w-4 h-4" strokeWidth={3} />
@@ -27,7 +27,7 @@ function Mark({ state }: { state: boolean | 'partial' }) {
 
 /**
  * Premium positioning section. Frames the buying decision as agency vs.
- * freelancer rather than price vs. price — which is what lifts order value.
+ * freelancer rather than price vs. price â€” which is what lifts order value.
  */
 export default function ComparisonSection() {
   return (
@@ -44,8 +44,8 @@ export default function ComparisonSection() {
             Web Total Solution vs a Typical Freelancer
           </h2>
           <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
-            A website is a business asset, not a one-off deliverable. Here is what changes when it is
-            built by a team that owns the outcome.
+            A website is a business asset, not a one-off deliverable. Here is
+            what changes when it is built by a team that owns the outcome.
           </p>
         </div>
 
@@ -95,7 +95,8 @@ export default function ComparisonSection() {
             <ArrowRight className="w-4 h-4" />
           </Link>
           <p className="mt-4 text-xs text-slate-500">
-            No obligation. We will tell you honestly whether you need a new website or not.
+            No obligation. We will tell you honestly whether you need a new
+            website or not.
           </p>
         </div>
       </div>

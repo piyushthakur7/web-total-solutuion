@@ -1,17 +1,23 @@
-import React from 'react';
-import Image from 'next/image';
+﻿import React from "react";
+import Image from "next/image";
 import {
-  CheckCircle2, Clock, DollarSign, FileText, KeyRound, MessageSquare, Sparkles,
-} from 'lucide-react';
-import { BOOKING_URL, EMAIL } from '../siteContent';
-import { CASE_STUDIES } from '../caseStudies';
-import { LAW_FIRM_PAGE } from '../lawFirmPage';
-import { STOCK_IMAGES } from '../stockImages';
-import CaseStudy from './CaseStudy';
-import FounderSection from './FounderSection';
-import ProcessSection from './ProcessSection';
-import FAQSection from './FAQSection';
-import WhatsAppIcon from './WhatsAppIcon';
+  CheckCircle2,
+  Clock,
+  DollarSign,
+  FileText,
+  KeyRound,
+  MessageSquare,
+  Sparkles,
+} from "lucide-react";
+import { BOOKING_URL, EMAIL } from "../siteContent";
+import { CASE_STUDIES } from "../caseStudies";
+import { LAW_FIRM_PAGE } from "../lawFirmPage";
+import { STOCK_IMAGES } from "../stockImages";
+import CaseStudy from "./CaseStudy";
+import FounderSection from "./FounderSection";
+import ProcessSection from "./ProcessSection";
+import FAQSection from "./FAQSection";
+import WhatsAppIcon from "./WhatsAppIcon";
 
 const ABROAD_ICONS = {
   clock: Clock,
@@ -24,7 +30,7 @@ const ABROAD_ICONS = {
 /**
  * Landing page for international law firms. Deliberately separate from
  * <LandingPageView />: no INR pricing, no city wording and no freelancer
- * comparison — everything here is quoted in USD.
+ * comparison â€” everything here is quoted in USD.
  */
 export default function InternationalView() {
   const page = LAW_FIRM_PAGE;
@@ -88,24 +94,29 @@ export default function InternationalView() {
                   Starting from
                 </span>
                 <p className="mt-2 text-5xl font-extrabold text-slate-900 tracking-tight">
-                  {page.offer.price.replace('From ', '')}
-                  <span className="ml-2 text-base font-bold text-slate-500">USD</span>
+                  {page.offer.price.replace("From ", "")}
+                  <span className="ml-2 text-base font-bold text-slate-500">
+                    USD
+                  </span>
                 </p>
 
                 <ul className="mt-6 space-y-3 text-sm text-slate-700">
-                  {[page.offer.scope, page.offer.timeline, 'Fixed written quote', 'Full code ownership'].map(
-                    (item) => (
-                      <li key={item} className="flex items-start space-x-2.5">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-                        <span>{item}</span>
-                      </li>
-                    )
-                  )}
+                  {[
+                    page.offer.scope,
+                    page.offer.timeline,
+                    "Fixed written quote",
+                    "Full code ownership",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start space-x-2.5">
+                      <CheckCircle2 className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
                 </ul>
 
                 <div className="mt-7 pt-6 border-t border-slate-100">
                   <p className="text-sm font-bold text-slate-900">
-                    Optional care plan — {page.offer.carePlan.price}
+                    Optional care plan â€” {page.offer.carePlan.price}
                   </p>
                   <p className="mt-1.5 text-sm text-slate-600 leading-relaxed">
                     {page.offer.carePlan.includes}
@@ -159,8 +170,12 @@ export default function InternationalView() {
                 <span className="font-mono text-sm font-extrabold text-brand-blue">
                   0{index + 1}
                 </span>
-                <h3 className="mt-3 text-xl font-bold text-slate-900">{item.title}</h3>
-                <p className="mt-2.5 text-sm text-slate-600 leading-relaxed">{item.description}</p>
+                <h3 className="mt-3 text-xl font-bold text-slate-900">
+                  {item.title}
+                </h3>
+                <p className="mt-2.5 text-sm text-slate-600 leading-relaxed">
+                  {item.description}
+                </p>
               </div>
             ))}
           </div>
@@ -178,7 +193,8 @@ export default function InternationalView() {
               Recent Client Work
             </h2>
             <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-              Every site below is live — open it and judge the work for yourself.
+              Every site below is live â€” open it and judge the work for
+              yourself.
             </p>
           </div>
 
@@ -237,7 +253,9 @@ export default function InternationalView() {
                     <Icon className="w-6 h-6" />
                   </div>
                   <h3 className="mt-5 text-lg font-bold">{item.title}</h3>
-                  <p className="mt-2.5 text-sm text-slate-300 leading-relaxed">{item.description}</p>
+                  <p className="mt-2.5 text-sm text-slate-300 leading-relaxed">
+                    {item.description}
+                  </p>
                 </div>
               );
             })}
@@ -251,7 +269,7 @@ export default function InternationalView() {
         intro="Straight answers on pricing, timelines, communication, ownership and support."
       />
 
-      {/* Final CTA — WhatsApp first, email as the alternative */}
+      {/* Final CTA â€” WhatsApp first, email as the alternative */}
       <section className="px-4 sm:px-6 lg:px-8">
         <div className="bg-slate-900 text-white rounded-3xl max-w-7xl mx-auto px-6 sm:px-10 py-14 md:py-20 text-center relative overflow-hidden">
           <div className="absolute right-0 top-0 w-96 h-96 bg-brand-blue/15 rounded-full filter blur-3xl pointer-events-none" />
@@ -262,7 +280,8 @@ export default function InternationalView() {
               Ready for a Website That Matches Your Firm?
             </h2>
             <p className="text-slate-300 text-base leading-relaxed max-w-xl mx-auto">
-              Tell us about your firm and get a fixed written quote in USD for your new website.
+              Tell us about your firm and get a fixed written quote in USD for
+              your new website.
             </p>
 
             <div className="flex flex-col items-center gap-4 pt-2">

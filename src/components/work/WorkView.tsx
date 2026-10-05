@@ -1,162 +1,80 @@
-import React from 'react';
-import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
-import { WORK_CASE_STUDIES, WorkCaseStudy } from '../../work';
-import WorkVisual from './WorkVisual';
+﻿import React from "react";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import { WORK_CASE_STUDIES } from "../../work";
+import { PageIntro, SectionLabel } from "../StudioPrimitives";
+import FinalCTA from "../FinalCTA";
+import WorkVisual from "./WorkVisual";
 
-/** Text block shared by every feature layout on the Work page. */
-function FeatureCopy({
-  study,
-  index,
-  dark = false,
-}: {
-  study: WorkCaseStudy;
-  index: number;
-  dark?: boolean;
-}) {
-  return (
-    <div className="space-y-6">
-      <div className={`flex items-center gap-4 text-[11px] font-mono uppercase tracking-widest ${dark ? 'text-slate-400' : 'text-slate-500'}`}>
-        <span>0{index + 1}</span>
-        <span className={`h-px w-8 ${dark ? 'bg-white/20' : 'bg-slate-300'}`} aria-hidden="true" />
-        <span>{study.category}</span>
-      </div>
+const order = ["faw-dubai", "wts-crm", "mechverses", "medara-labs"];
+const studies = order.flatMap((slug) =>
+  WORK_CASE_STUDIES.filter((study) => study.slug === slug),
+);
+const backgrounds = [
+  "bg-[#ece8e1]",
+  "bg-[#e2eaf1]",
+  "bg-[#e3ecf7]",
+  "bg-[#eee8f0]",
+];
 
-      <div className="space-y-4">
-        <p className={`text-sm font-extrabold uppercase tracking-[0.2em] ${dark ? 'text-brand-blue' : 'text-brand-blue'}`}>
-          {study.name}
-        </p>
-        <h2 className={`text-3xl sm:text-4xl lg:text-[2.75rem] font-extrabold tracking-tight leading-[1.1] ${dark ? 'text-white' : 'text-slate-900'}`}>
-          {study.headline}
-        </h2>
-      </div>
-
-      <p className={`text-base leading-relaxed max-w-xl ${dark ? 'text-slate-300' : 'text-slate-600'}`}>
-        {study.summary}
-      </p>
-
-      <span
-        className={`inline-flex items-center gap-2 text-sm font-bold border-b pb-1 transition-colors ${
-          dark
-            ? 'text-white border-white/30 group-hover:border-white'
-            : 'text-slate-900 border-slate-300 group-hover:border-slate-900'
-        }`}
-      >
-        <span>View Case Study</span>
-        <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 motion-reduce:transition-none" />
-      </span>
-    </div>
-  );
-}
-
-/**
- * /work — four curated case studies in alternating editorial layouts, rather
- * than a grid of every project we have delivered.
- */
 export default function WorkView() {
-  const [first, second, third, fourth] = WORK_CASE_STUDIES;
-
   return (
-    <div className="pb-20 overflow-x-hidden">
-      {/* Header */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-24 pb-16 sm:pb-24">
-        <p className="text-[11px] font-mono uppercase tracking-widest text-slate-500">
-          Selected Work
-        </p>
-        <h1 className="mt-6 text-[2.5rem] leading-[1.05] sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-900 max-w-5xl">
-          Digital experiences built for ambitious companies.
-        </h1>
-        <p className="mt-8 text-lg sm:text-xl text-slate-600 leading-relaxed max-w-2xl">
-          A selection of products and websites where strategy, design and engineering came
-          together to solve meaningful business problems.
-        </p>
-      </section>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* 01 — visual left, copy right */}
-        <article className="reveal border-t border-slate-200 py-16 sm:py-24">
-          <Link
-            href={`/work/${first.slug}`}
-            className="group grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center"
+    <div className="bg-paper pb-16 text-ink sm:pb-24">
+      <PageIntro
+        label="Selected work / Ideas brought to life"
+        title={
+          <>
+            Built with purpose.
+            <br />
+            Made to stand out.
+          </>
+        }
+        description="A closer look at the websites and products we design and build. Different industries, distinct personalities, and the same care in every detail."
+      />
+      <div className="studio-container">
+        {studies.map((study, index) => (
+          <article
+            key={study.slug}
+            className="border-t border-ink/15 py-10 sm:py-16"
           >
-            <div className="lg:col-span-7">
-              <WorkVisual study={first} sizes="(min-width: 1024px) 720px, 100vw" priority />
-            </div>
-            <div className="lg:col-span-5">
-              <FeatureCopy study={first} index={0} />
-            </div>
-          </Link>
-        </article>
-
-        {/* 02 — copy left, visual right */}
-        <article className="reveal border-t border-slate-200 py-16 sm:py-24">
-          <Link
-            href={`/work/${second.slug}`}
-            className="group grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center"
-          >
-            <div className="lg:col-span-7 lg:order-2">
-              <WorkVisual study={second} sizes="(min-width: 1024px) 720px, 100vw" />
-            </div>
-            <div className="lg:col-span-5 lg:order-1">
-              <FeatureCopy study={second} index={1} />
-            </div>
-          </Link>
-        </article>
-
-        {/* 03 — full-width feature */}
-        <article className="reveal border-t border-slate-200 py-16 sm:py-24">
-          <Link href={`/work/${third.slug}`} className="group block space-y-10 sm:space-y-14">
-            <WorkVisual study={third} sizes="(min-width: 1280px) 1216px, 100vw" />
-            <div className="max-w-3xl">
-              <FeatureCopy study={third} index={2} />
-            </div>
-          </Link>
-        </article>
-
-        {/* 04 — product showcase on a dark panel */}
-        <article className="reveal border-t border-slate-200 pt-16 sm:pt-24">
-          <Link
-            href={`/work/${fourth.slug}`}
-            className="group grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center bg-slate-900 rounded-3xl px-6 py-12 sm:p-14 lg:p-20"
-          >
-            <div className="lg:col-span-6">
-              <FeatureCopy study={fourth} index={3} dark />
-            </div>
-            <div className="lg:col-span-6">
-              <WorkVisual study={fourth} sizes="(min-width: 1024px) 560px, 100vw" />
-            </div>
-          </Link>
-        </article>
+            <Link
+              href={`/work/${study.slug}`}
+              className="group grid items-center gap-8 lg:grid-cols-12 lg:gap-12"
+            >
+              <div
+                className={`rounded-[24px] p-5 sm:p-8 lg:col-span-7 ${backgrounds[index]} ${index % 2 ? "lg:order-2" : ""}`}
+              >
+                <WorkVisual
+                  study={study}
+                  sizes="(min-width: 1024px) 640px, 90vw"
+                  priority={index === 0}
+                />
+              </div>
+              <div className={`lg:col-span-5 ${index % 2 ? "lg:order-1" : ""}`}>
+                <SectionLabel>
+                  0{index + 1} / {study.category}
+                </SectionLabel>
+                <h2 className="mt-5 font-display text-4xl sm:text-5xl">
+                  {study.name}
+                </h2>
+                <p className="mt-4 font-display text-2xl leading-tight">
+                  {study.headline}
+                </p>
+                <p className="mt-4 max-w-md text-sm leading-relaxed text-graphite">
+                  {study.summary}
+                </p>
+                <span className="mt-7 inline-flex min-h-11 items-center gap-3 border-b border-ink/30 text-sm font-semibold group-hover:border-ink">
+                  Explore the project
+                  <ArrowUpRight className="size-4" />
+                </span>
+              </div>
+            </Link>
+          </article>
+        ))}
       </div>
-
-      {/* CTA */}
-      <section className="reveal max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-8">
-        <div className="border-t border-slate-200 pt-16 sm:pt-24 grid grid-cols-1 lg:grid-cols-12 gap-10 items-end">
-          <div className="lg:col-span-8 space-y-5">
-            <p className="text-[11px] font-mono uppercase tracking-widest text-slate-500">
-              Have an ambitious product to launch?
-            </p>
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.05] text-slate-900">
-              Let&apos;s build something people remember.
-            </h2>
-          </div>
-          <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col lg:items-end gap-5">
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-brand-blue text-white px-8 py-4 rounded-xl font-bold tracking-wide transition-colors"
-            >
-              <span>Start a Project</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-            <Link
-              href="/services"
-              className="inline-flex items-center justify-center text-sm font-bold text-slate-600 hover:text-slate-900 transition-colors py-2"
-            >
-              See what we do
-            </Link>
-          </div>
-        </div>
-      </section>
+      <div className="mt-8 sm:mt-14">
+        <FinalCTA headline="Your project could be next." />
+      </div>
     </div>
   );
 }

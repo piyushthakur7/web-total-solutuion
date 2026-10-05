@@ -1,187 +1,171 @@
-import React from 'react';
-import Link from 'next/link';
-import { Mail, Phone, MapPin, ArrowUpRight, Instagram, Linkedin, Youtube, Twitter } from 'lucide-react';
-import Logo from './Logo';
-import { OFFICES } from '../siteContent';
+﻿import React from "react";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import Logo from "./Logo";
+import { EMAIL, OFFICES, PHONE_DISPLAY, WHATSAPP_URL } from "../siteContent";
+
+const studioLinks = [
+  { href: "/work", label: "Selected work" },
+  { href: "/about", label: "The studio" },
+  { href: "/pricing", label: "Investment" },
+  { href: "/projects", label: "Our products" },
+  { href: "/blog", label: "Insights" },
+];
+const serviceLinks = [
+  { href: "/business-website-development", label: "Marketing websites" },
+  { href: "/services/landing-pages", label: "Landing pages" },
+  { href: "/website-redesign", label: "Website redesign" },
+  { href: "/services/saas-development", label: "Product UI & web apps" },
+  { href: "/ecommerce-development", label: "E-commerce" },
+];
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
-
   return (
-    <footer className="bg-deep text-slate-300 pt-16 pb-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-          {/* Brand Col */}
-          <div className="space-y-4">
-            <Link 
-              href="/"
-              className="flex items-center cursor-pointer group"
-              aria-label="Home"
-            >
-              <Logo size="md" theme="dark" />
+    <footer className="bg-deep pb-7 pt-14 text-paper sm:pt-20">
+      <div className="studio-container">
+        <div className="grid gap-10 pb-12 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
+          <div className="lg:col-span-4">
+            <Link href="/" aria-label="Web Total Solution home">
+              <Logo theme="dark" />
             </Link>
-            <p className="text-sm text-slate-400 leading-relaxed pt-2">
-              A premium web development agency in Kolkata building fast, SEO-optimised business
-              websites that help companies attract customers, build trust and grow online.
+            <p className="mt-6 max-w-xs text-sm leading-relaxed text-white/60">
+              Strategy, design and development for ambitious businesses. Based
+              in India. Building for what comes next.
             </p>
-            {/* gap-1 plus a 44px hit area keeps each icon above the 24px
-                minimum touch target with enough space between neighbours. */}
-            <div className="flex items-center gap-1 pt-2 -ml-2.5">
-              <a 
-                href="https://www.instagram.com/webtotalsolution/?hl=en" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="w-11 h-11 flex items-center justify-center rounded-lg text-slate-400 hover:text-brand-blue hover:bg-slate-800 transition-colors cursor-pointer"
-                aria-label="Instagram"
-              >
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a 
-                href="https://www.linkedin.com/company/web-total-solutions/" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="w-11 h-11 flex items-center justify-center rounded-lg text-slate-400 hover:text-brand-blue hover:bg-slate-800 transition-colors cursor-pointer"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a 
-                href="https://www.youtube.com/channel/UCNlUYW1RyevmpKY1xUQKatA" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="w-11 h-11 flex items-center justify-center rounded-lg text-slate-400 hover:text-brand-blue hover:bg-slate-800 transition-colors cursor-pointer"
-                aria-label="YouTube"
-              >
-                <Youtube className="w-5 h-5" />
-              </a>
-              <a 
-                href="https://x.com/webtotalindia" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="w-11 h-11 flex items-center justify-center rounded-lg text-slate-400 hover:text-brand-blue hover:bg-slate-800 transition-colors cursor-pointer"
-                aria-label="X (Twitter)"
-              >
-                <Twitter className="w-5 h-5" />
-              </a>
+            <div className="mt-5 flex gap-5 text-xs">
+              {[
+                {
+                  label: "Instagram",
+                  href: "https://www.instagram.com/webtotalsolution/",
+                },
+                {
+                  label: "LinkedIn",
+                  href: "https://www.linkedin.com/company/web-total-solutions/",
+                },
+              ].map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-11 items-center gap-1.5 text-white/70 hover:text-marker"
+                >
+                  {link.label}
+                  <ArrowUpRight className="size-3" />
+                </a>
+              ))}
             </div>
           </div>
-
-          {/* Solutions Column */}
-          <div>
-            <h3 className="text-white text-sm font-semibold uppercase tracking-wider mb-4">
-              Services
-            </h3>
-            <ul className="space-y-3 text-sm">
-              {[
-                { href: '/website-development-company-india', label: 'Website Development India' },
-                { href: '/website-development-company-kolkata', label: 'Website Development Kolkata' },
-                { href: '/website-development-company-delhi', label: 'Website Development Delhi' },
-                { href: '/nextjs-development-company-india', label: 'Next.js Development' },
-                { href: '/business-website-development', label: 'Business Website Development' },
-                { href: '/website-redesign', label: 'Website Redesign' },
-                { href: '/ecommerce-development', label: 'E-Commerce Development' },
-                { href: '/services/landing-pages', label: 'Landing Pages' },
-                { href: '/services/content-writing', label: 'Content Writing & SEO' },
-                { href: '/services/digital-marketing', label: 'Digital Marketing' },
-              ].map((link) => (
+          <div className="lg:col-span-2">
+            <h2 className="font-mono text-[10px] uppercase tracking-[.15em] text-white/45">
+              Explore
+            </h2>
+            <ul className="mt-5 space-y-1">
+              {studioLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="hover:text-white transition-colors flex items-center group cursor-pointer"
+                    className="inline-block py-2 text-[13px] text-white/75 transition-colors hover:text-marker"
                   >
-                    <span>{link.label}</span>
-                    <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all ml-1 shrink-0" />
+                    {link.label}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
-
-          {/* Navigation Column */}
-          <div>
-            <h3 className="text-white text-sm font-semibold uppercase tracking-wider mb-4">
-              Company
-            </h3>
-            <ul className="space-y-3 text-sm">
-              <li>
-                <Link href="/about" className="hover:text-white transition-colors cursor-pointer block">
-                  About Our Agency
-                </Link>
-              </li>
-              <li>
-                <Link href="/work" className="hover:text-white transition-colors cursor-pointer block">
-                  Selected Work
-                </Link>
-              </li>
-              <li>
-                <Link href="/projects" className="hover:text-white transition-colors cursor-pointer block">
-                  Our Products (WTS CRM)
-                </Link>
-              </li>
-              <li>
-                {/* Site-wide followed link to our product's own domain. */}
-                <a
-                  href="https://wtscrm.com"
-                  target="_blank"
-                  rel="noopener"
-                  className="hover:text-white transition-colors cursor-pointer flex items-center group"
-                >
-                  <span>WTS CRM for Service Businesses</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all ml-1 shrink-0" />
-                </a>
-              </li>
-              <li>
-                <Link href="/pricing" className="hover:text-white transition-colors cursor-pointer block">
-                  Service Packages
-                </Link>
-              </li>
-              <li>
-                <Link href="/blog" className="hover:text-white transition-colors cursor-pointer block">
-                  Blog & Insights
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="hover:text-white transition-colors cursor-pointer block">
-                  Inquire & Contact
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact Column */}
-          <div>
-            <h3 className="text-white text-sm font-semibold uppercase tracking-wider mb-4">
-              Connect
-            </h3>
-            <ul className="space-y-3.5 text-sm text-slate-400">
-              <li className="flex items-center space-x-3">
-                <Mail className="w-4 h-4 text-brand-blue shrink-0" />
-                <a href="mailto:info@webtotalsolution.com" className="hover:text-white transition-colors break-all">
-                  info@webtotalsolution.com
-                </a>
-              </li>
-              <li className="flex items-center space-x-3">
-                <Phone className="w-4 h-4 text-brand-blue shrink-0" />
-                <a href="tel:+916291519364" className="hover:text-white transition-colors">
-                  +91 6291 519 364
-                </a>
-              </li>
-              {OFFICES.map((office) => (
-                <li key={office.city} className="flex items-start space-x-3">
-                  <MapPin className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />
-                  <span>{office.lines[0]},<br />{office.lines[1]}</span>
+          <div className="lg:col-span-3">
+            <h2 className="font-mono text-[10px] uppercase tracking-[.15em] text-white/45">
+              Expertise
+            </h2>
+            <ul className="mt-5 space-y-1">
+              {serviceLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="inline-block py-2 text-[13px] text-white/75 transition-colors hover:text-marker"
+                  >
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
+          <div className="lg:col-span-3">
+            <h2 className="font-mono text-[10px] uppercase tracking-[.15em] text-white/45">
+              Say hello
+            </h2>
+            <a
+              href={`mailto:${EMAIL}`}
+              className="mt-6 block break-words text-[13px] text-white/85 hover:text-marker"
+            >
+              {EMAIL}
+            </a>
+            <a
+              href="tel:+916291519364"
+              className="mt-4 inline-block text-[13px] text-white/70 hover:text-marker"
+            >
+              {PHONE_DISPLAY}
+            </a>
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 flex min-h-11 items-center gap-2 text-xs text-marker"
+            >
+              Talk on WhatsApp
+              <ArrowUpRight className="size-3.5" />
+            </a>
+            <details className="mt-3 text-xs text-white/60">
+              <summary className="cursor-pointer py-2">
+                Kolkata & Delhi offices
+              </summary>
+              <div className="mt-3 space-y-4 leading-relaxed">
+                {OFFICES.map((office) => (
+                  <p key={office.city}>
+                    <span className="text-white">{office.city}</span>
+                    <br />
+                    {office.lines.join(", ")}
+                  </p>
+                ))}
+              </div>
+            </details>
+          </div>
         </div>
-
-        {/* Bottom Bar */}
-        <div className="pt-8 mt-12 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-400">
-          <p>© {currentYear} Web Total Solution. All rights reserved.</p>
-          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 mt-4 sm:mt-0">
-            <Link href="/privacy" className="hover:text-slate-300 transition-colors cursor-pointer py-2">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-slate-300 transition-colors cursor-pointer py-2">Terms of Service</Link>
+        <div className="flex flex-wrap gap-x-5 gap-y-1 border-t border-white/15 py-5 text-[10px] text-white/50">
+          {[
+            {
+              href: "/website-development-company-india",
+              label: "Website development India",
+            },
+            { href: "/website-development-company-kolkata", label: "Kolkata" },
+            { href: "/website-development-company-delhi", label: "Delhi" },
+            {
+              href: "/nextjs-development-company-india",
+              label: "Next.js development",
+            },
+            { href: "/law-firm-websites", label: "Law firm websites" },
+            { href: "/services/content-writing", label: "Content & SEO" },
+            { href: "/services/digital-marketing", label: "Digital marketing" },
+          ].map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="py-2 hover:text-white"
+            >
+              {link.label}
+            </Link>
+          ))}
+        </div>
+        <div className="flex flex-col justify-between gap-4 border-t border-white/15 pt-6 text-[10px] text-white/50 sm:flex-row">
+          <p>© {new Date().getFullYear()} Web Total Solution</p>
+          <p>Designed with purpose. Developed with care.</p>
+          <div className="flex gap-5">
+            <Link href="/privacy" className="hover:text-white">
+              Privacy
+            </Link>
+            <Link href="/terms" className="hover:text-white">
+              Terms
+            </Link>
           </div>
         </div>
       </div>

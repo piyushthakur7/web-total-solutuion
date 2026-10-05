@@ -1,186 +1,126 @@
-import React from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { ServiceData } from '../types';
-import { ArrowRight, CheckCircle2, LayoutTemplate } from 'lucide-react';
-import { HERO_TRUST_BADGES, WHATSAPP_URL } from '../siteContent';
-import WhatsAppIcon from './WhatsAppIcon';
-import FinalCTA from './FinalCTA';
+﻿import React from "react";
+import Link from "next/link";
+import { ServiceData } from "../types";
+import { ArrowUpRight, Check } from "lucide-react";
+import { WHATSAPP_URL } from "../siteContent";
+import { PageIntro, SectionLabel } from "./StudioPrimitives";
+import FinalCTA from "./FinalCTA";
 
-export default function ServiceDetailView({ service }: { service: ServiceData }) {
+export default function ServiceDetailView({
+  service,
+}: {
+  service: ServiceData;
+}) {
   return (
-    <div className="bg-white min-h-screen">
-      {/* Hero Section with Wave */}
-      <section className="relative pt-28 pb-40 overflow-hidden bg-slate-900">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src={service.heroImage}
-            alt=""
-            aria-hidden="true"
-            className="w-full h-full object-cover opacity-20"
-            width={1920}
-            height={1080}
-            quality={55}
-            sizes="100vw"
-            priority
-            referrerPolicy="no-referrer"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-900/60 to-slate-900/90" />
-        </div>
-
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight mb-6">
-            {service.title}
-          </h1>
-          <p className="text-xl text-slate-300 font-medium max-w-2xl mx-auto">
-            {service.subtitle}
-          </p>
-
-          <ul className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2.5">
-            {HERO_TRUST_BADGES.map((badge) => (
-              <li key={badge} className="flex items-center space-x-1.5 text-sm font-semibold text-slate-300">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>{badge}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Wave Divider */}
-        <div className="absolute bottom-[-2px] left-0 right-0 z-20">
-          <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto text-white" preserveAspectRatio="none">
-            <path d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z" fill="currentColor"></path>
-          </svg>
-        </div>
-      </section>
-
-      {/* Content Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
-            {/* Main Content */}
-            <div className="lg:col-span-8 space-y-12">
-              <div>
-                <h2 className="text-3xl font-bold text-slate-900 mb-6">Overview</h2>
-                <p className="text-lg text-slate-600 leading-relaxed">
-                  {service.content.overview}
-                </p>
-              </div>
-
-              <div>
-                <h2 className="text-3xl font-bold text-slate-900 mb-6">Why Choose Us?</h2>
-                <p className="text-lg text-slate-600 leading-relaxed mb-8">
-                  {service.content.whyChooseUs}
-                </p>
-                <div className="bg-slate-50 border border-slate-100 rounded-3xl p-8">
-                  <h3 className="text-xl font-bold text-slate-900 mb-6 flex items-center">
-                    <LayoutTemplate className="w-6 h-6 mr-3 text-brand-blue" />
-                    Key Features
-                  </h3>
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {service.content.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start space-x-3">
-                        <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
-                        <span className="text-slate-700 font-medium">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-              <div>
-                <h2 className="text-3xl font-bold text-slate-900 mb-6">How We Build It</h2>
-                <div className="flex flex-wrap gap-3">
-                  {service.content.techStack.map((tech, idx) => (
-                    <span key={idx} className="px-4 py-2 bg-slate-900 text-white rounded-full text-sm font-semibold tracking-wide">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                <p className="mt-5 text-sm text-slate-500 leading-relaxed max-w-xl">
-                  You never have to think about any of this — it is simply the foundation that keeps
-                  your website fast, secure and easy to extend as your business grows.
-                </p>
-              </div>
-
-              {/* Internal links keep visitors moving and help search crawl depth */}
-              <div className="pt-4 border-t border-slate-100">
-                <h2 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4">
-                  Related Services
-                </h2>
-                <nav className="flex flex-wrap gap-x-6 gap-y-3 text-sm">
-                  {[
-                    { href: '/business-website-development', label: 'Business Website Development' },
-                    { href: '/website-redesign', label: 'Website Redesign' },
-                    { href: '/ecommerce-development', label: 'E-Commerce Development' },
-                    { href: '/work', label: 'Our Work' },
-                    { href: '/pricing', label: 'Pricing' },
-                  ].map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      className="font-semibold text-slate-600 hover:text-brand-blue transition-colors"
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
-                </nav>
-              </div>
+    <div className="bg-paper pb-16 text-ink sm:pb-24">
+      <PageIntro
+        label="Services / Our expertise"
+        title={service.title}
+        description={service.subtitle}
+      >
+        <Link
+          href="/services"
+          className="inline-flex min-h-11 items-center gap-2 text-xs font-semibold underline decoration-ink/25 underline-offset-4"
+        >
+          Explore all services
+          <ArrowUpRight className="size-3.5" />
+        </Link>
+      </PageIntro>
+      <section className="studio-container pb-16 sm:pb-24">
+        <div className="grid items-start gap-10 border-t border-ink/15 pt-10 sm:pt-14 lg:grid-cols-12 lg:gap-16">
+          <div className="space-y-12 lg:col-span-8">
+            <div>
+              <SectionLabel>The approach</SectionLabel>
+              <h2 className="mt-5 font-display text-3xl sm:text-4xl">
+                Built around your business.
+              </h2>
+              <p className="mt-5 max-w-2xl text-lg leading-relaxed text-graphite">
+                {service.content.overview}
+              </p>
             </div>
-
-            {/* Sticky Sidebar CTA */}
-            <div className="lg:col-span-4">
-              <div className="sticky top-28 bg-white rounded-3xl p-8 border border-slate-200 shadow-xl shadow-slate-200/50">
-                <div className="space-y-5">
-                  <h2 className="text-2xl font-bold text-slate-900 leading-tight">
-                    Get a Custom Quote
-                  </h2>
-                  <p className="text-sm text-slate-600 leading-relaxed">
-                    Tell us what your business needs and we will come back within 24 hours with a
-                    clear recommendation and a fixed price.
-                  </p>
-
-                  <ul className="space-y-2.5 py-2">
-                    {['Free, no-obligation consultation', 'Fixed written quote', 'Full code ownership'].map(
-                      (point) => (
-                        <li key={point} className="flex items-start space-x-2.5 text-xs text-slate-700">
-                          <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-px" />
-                          <span>{point}</span>
-                        </li>
-                      )
-                    )}
-                  </ul>
-
-                  <div className="space-y-3">
-                    <Link
-                      href={`/contact?details=${encodeURIComponent(
-                        `I would like a quote for: ${service.title}.`
-                      )}`}
-                      className="w-full bg-brand-blue hover:bg-brand-blue/90 text-white py-4 rounded-xl font-bold tracking-wide shadow-md transition-all flex items-center justify-center space-x-2"
-                    >
-                      <span>Request Free Quote</span>
-                      <ArrowRight className="w-5 h-5" />
-                    </Link>
-                    <a
-                      href={WHATSAPP_URL}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full bg-slate-50 hover:bg-slate-100 text-slate-900 border border-slate-200 py-4 rounded-xl font-bold tracking-wide transition-all flex items-center justify-center space-x-2.5"
-                    >
-                      <WhatsAppIcon className="w-4 h-4 text-emerald-600" />
-                      <span>WhatsApp Us</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
+            <div>
+              <h2 className="font-display text-3xl">
+                A considered way to build.
+              </h2>
+              <p className="mt-5 max-w-2xl text-base leading-relaxed text-graphite">
+                {service.content.whyChooseUs}
+              </p>
+            </div>
+            <div className="rounded-[24px] bg-white p-7 sm:p-9">
+              <SectionLabel>What we can help with</SectionLabel>
+              <ul className="mt-7 grid gap-x-7 gap-y-5 sm:grid-cols-2">
+                {service.content.features.map((feature) => (
+                  <li
+                    key={feature}
+                    className="flex items-start gap-3 text-sm leading-relaxed"
+                  >
+                    <Check className="mt-0.5 size-4 shrink-0 text-brand-blue" />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <SectionLabel>The foundation</SectionLabel>
+              <h2 className="mt-5 font-display text-3xl">
+                Made to perform. Ready to grow.
+              </h2>
+              <p className="mt-4 max-w-xl text-sm leading-relaxed text-graphite">
+                The technology behind a fast, secure website that you can extend
+                as your business grows.
+              </p>
+              <ul className="mt-6 flex flex-wrap gap-2">
+                {service.content.techStack.map((tech) => (
+                  <li
+                    key={tech}
+                    className="rounded-full border border-ink/20 px-4 py-2 font-mono text-[10px]"
+                  >
+                    {tech}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
+          <aside className="rounded-[24px] bg-deep p-7 text-paper sm:p-8 lg:sticky lg:top-32 lg:col-span-4">
+            <SectionLabel light>Your next step</SectionLabel>
+            <h2 className="mt-5 font-display text-3xl">
+              Let&apos;s talk about your project.
+            </h2>
+            <p className="mt-4 text-sm leading-relaxed text-white/65">
+              Tell us what you need. We will discuss the right approach and
+              confirm the scope, timeline and investment in writing.
+            </p>
+            <ul className="mt-6 space-y-3 text-xs text-white/75">
+              {[
+                "Free discovery call",
+                "Fixed written quote",
+                "Full code ownership",
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-2">
+                  <Check className="size-3 text-marker" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <Link
+              href={`/contact?details=${encodeURIComponent(`I would like a quote for: ${service.title}.`)}`}
+              className="btn btn-accent mt-8 w-full"
+            >
+              Discuss your project
+              <ArrowUpRight className="size-4" />
+            </Link>
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 flex min-h-11 items-center justify-center text-xs text-white/75 underline underline-offset-4"
+            >
+              Or message on WhatsApp
+            </a>
+          </aside>
         </div>
       </section>
-
-      <div className="pb-20">
-        <FinalCTA />
-      </div>
+      <FinalCTA />
     </div>
   );
 }

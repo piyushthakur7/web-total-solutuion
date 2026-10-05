@@ -1,3 +1,4 @@
+import { HERO_IMAGES } from "../stockImages";
 import React from "react";
 import { ArrowUpRight } from "lucide-react";
 import {
@@ -28,6 +29,7 @@ export default function ProjectsView() {
         compact
         label="Own product, built and run by Web Total Solution"
         title="WTS CRM"
+        image={HERO_IMAGES.code}
         description={product.positioning}
         facts={[
           { label: "What it is", value: "Subscription web application" },

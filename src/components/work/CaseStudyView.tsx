@@ -1,3 +1,4 @@
+import { HERO_IMAGES } from "../../stockImages";
 import React from "react";
 import Link from "next/link";
 import { ArrowUpRight, Check } from "lucide-react";
@@ -52,6 +53,7 @@ export default function CaseStudyView({ study }: { study: WorkCaseStudy }) {
             : `Case study: ${study.name}`
         }
         title={study.statement}
+        image={HERO_IMAGES.work}
         description={study.summary}
         facts={facts}
       >

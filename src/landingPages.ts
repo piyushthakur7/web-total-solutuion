@@ -14,6 +14,7 @@
 
 import { Faq, SUPPORT_DETAIL } from './siteContent';
 import { ProjectType } from './lead';
+import { HERO_IMAGES } from './stockImages';
 import { Evidence } from './components/EvidenceBlock';
 
 export interface LandingSection {
@@ -31,6 +32,8 @@ export interface LandingPageConfig {
   serviceName: string;
   /** Enquiry form pre-selection so the enquiry arrives tagged with intent. */
   projectType: ProjectType;
+  /** Hero backdrop. */
+  heroImage: { src: string; alt: string };
   /** Package slug, when the page maps to one. */
   package?: string;
   label: string;
@@ -70,6 +73,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
    */
   'website-development-company-kolkata': {
     slug: 'website-development-company-kolkata',
+    heroImage: HERO_IMAGES.studio,
     serviceName: 'Website Development in Kolkata',
     projectType: 'Business Website',
     label: 'Kolkata',
@@ -199,6 +203,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
    */
   'website-development-company-delhi': {
     slug: 'website-development-company-delhi',
+    heroImage: HERO_IMAGES.studio,
     serviceName: 'Website Development in Delhi',
     projectType: 'Business Website',
     label: 'Delhi NCR',
@@ -315,6 +320,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
   /** National commercial page. Business-led; the stack is the Next.js page's job. */
   'website-development-company-india': {
     slug: 'website-development-company-india',
+    heroImage: HERO_IMAGES.work,
     serviceName: 'Website Development in India',
     projectType: 'Business Website',
     label: 'India',
@@ -427,6 +433,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
    */
   'nextjs-development-company-india': {
     slug: 'nextjs-development-company-india',
+    heroImage: HERO_IMAGES.code,
     serviceName: 'Next.js Development',
     projectType: 'SaaS / Web Application',
     label: 'Next.js, React, TypeScript',
@@ -542,6 +549,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
 
   'business-website-development': {
     slug: 'business-website-development',
+    heroImage: HERO_IMAGES.services,
     serviceName: 'Business Website Development',
     projectType: 'Startup Marketing Website',
     package: 'startup-growth-site',
@@ -642,6 +650,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
 
   'website-redesign': {
     slug: 'website-redesign',
+    heroImage: HERO_IMAGES.planning,
     serviceName: 'Website Redesign',
     projectType: 'Website Redesign',
     label: 'Website redesign',
@@ -740,6 +749,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
    */
   'ecommerce-development': {
     slug: 'ecommerce-development',
+    heroImage: HERO_IMAGES.commerce,
     serviceName: 'E-Commerce Development',
     projectType: 'E-Commerce Platform',
     label: 'Online stores',

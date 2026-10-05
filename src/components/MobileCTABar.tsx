@@ -12,10 +12,13 @@ export default function MobileCTABar() {
   const [heroPassed, setHeroPassed] = useState(false);
 
   useEffect(() => {
+    // Stay out of the way until the full-screen hero has scrolled past.
     setHeroPassed(false);
-    if (pathname !== "/") return;
-    const hero = document.getElementById("home-hero");
-    if (!hero) return;
+    const hero = document.querySelector("#home-hero, .page-hero");
+    if (!hero) {
+      setHeroPassed(true);
+      return;
+    }
     const observer = new IntersectionObserver(([entry]) => {
       setHeroPassed(
         !entry.isIntersecting && entry.boundingClientRect.bottom <= 0,
@@ -27,7 +30,7 @@ export default function MobileCTABar() {
 
   // The contact page is the destination, so the bar would link to itself.
   if (pathname === "/contact") return null;
-  if (pathname === "/" && !heroPassed) return null;
+  if (!heroPassed) return null;
   return (
     <div className="fixed inset-x-0 bottom-0 z-40 border-t border-ink/10 bg-paper/95 pb-[env(safe-area-inset-bottom)] backdrop-blur-xl lg:hidden">
       <div className="flex items-center gap-3 px-5 py-3">

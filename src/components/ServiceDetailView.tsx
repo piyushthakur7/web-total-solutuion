@@ -26,6 +26,7 @@ export default function ServiceDetailView({
         compact
         label={service.secondary ? "Additional service" : "Service"}
         title={service.title}
+        image={service.heroImage}
         description={service.lead}
       >
         <Link href="#enquiry" className="btn btn-paper">

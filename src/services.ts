@@ -10,6 +10,7 @@
 
 import { Faq, SUPPORT_DETAIL } from './siteContent';
 import { ProjectType } from './lead';
+import { HERO_IMAGES } from './stockImages';
 
 export interface ServiceEvidence {
   heading: string;
@@ -35,6 +36,8 @@ export interface ServiceData {
   lead: string;
   metaDescription: string;
   projectType: ProjectType;
+  /** Hero backdrop. */
+  heroImage: { src: string; alt: string };
   /** Package slug this service maps to, when one applies. */
   package?: string;
   evidence: ServiceEvidence;
@@ -54,6 +57,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
     metaDescription:
       'Landing page strategy, design and Next.js development for startups. One audience, one offer, one action. Landing Page Sprint from $1,200 USD.',
     projectType: 'Landing Page',
+    heroImage: HERO_IMAGES.planning,
     package: 'landing-page-sprint',
     evidence: {
       heading: 'A page we built to do this job',
@@ -144,6 +148,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
     metaDescription:
       'Product UX, interface design and Next.js engineering for SaaS products, dashboards and portals, from the studio that builds and runs WTS CRM.',
     projectType: 'SaaS / Web Application',
+    heroImage: HERO_IMAGES.code,
     evidence: {
       heading: 'We build and run a SaaS product ourselves',
       body: 'WTS CRM is our own subscription product: a CRM for Indian service businesses that follows an enquiry to a paid invoice. We scoped it, designed its interface, engineered it and keep it running. The case study explains the interface decisions.',
@@ -238,6 +243,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
     metaDescription:
       'Website messaging, page copy, editing and search-focused articles, offered alongside website projects by Web Total Solution.',
     projectType: 'Content Writing',
+    heroImage: HERO_IMAGES.planning,
     evidence: {
       heading: 'What our writing looks like',
       body: 'The copy on this website, including the case studies, is written in the studio. The case studies are the clearest sample: each one states what the business does, what was built and why, without unsupported claims.',
@@ -312,6 +318,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
     metaDescription:
       'Online store design and development: category, product, cart and checkout flows, payment integration and catalogue management, scoped and quoted per project.',
     projectType: 'E-Commerce Platform',
+    heroImage: HERO_IMAGES.commerce,
     evidence: {
       heading: 'Stores we have built',
       body: 'Two live examples. Saanshika Ethnics is an online clothing store with category browsing, wishlist and cart. Rentzora is a rental marketplace for jewellery with listings from individual owners. Open either on your phone and go through the browsing flow.',
@@ -389,6 +396,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
     metaDescription:
       'Mobile app discovery, scoping and development from Web Total Solution, including an honest assessment of whether a responsive web app would serve you better.',
     projectType: 'Mobile App',
+    heroImage: HERO_IMAGES.code,
     evidence: {
       heading: 'What we can show',
       body: 'Our published work is web-based: websites and a web application. We do not have a public mobile app case study to show you, and we would rather say so than imply otherwise. The closest evidence of product work is WTS CRM, a web application we designed, built and run.',
@@ -458,6 +466,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
     metaDescription:
       'Technical SEO, local search setup, campaign management and plain monthly reporting from Web Total Solution, offered for websites we build.',
     projectType: 'Digital Marketing & SEO',
+    heroImage: HERO_IMAGES.work,
     evidence: {
       heading: 'What we can show',
       body: 'We do not publish traffic, ranking or revenue figures for client campaigns, so there is no results chart on this page. What you can check is the technical foundation: this website and the sites on our work page are built with the metadata, sitemaps and structured data described below.',

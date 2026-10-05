@@ -190,12 +190,23 @@
 }
 
 /* The header overlays the hero so the entire opening section fits one viewport. */
-.home-header-row {
+.site-header-row {
   height: 84px;
 }
-.site-header-home a:focus-visible,
-.site-header-home button:focus-visible {
+.site-header a:focus-visible,
+.site-header button:focus-visible {
   outline-color: white;
+}
+.site-header {
+  transition:
+    background-color 200ms,
+    box-shadow 200ms;
+}
+/* Once the page is scrolled, or the menu is open, the header needs a surface. */
+.site-header-solid {
+  background: #05407af2;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 1px 0 #ffffff1f;
 }
 .impact-hero {
   position: relative;
@@ -566,8 +577,11 @@
   }
 }
 @media (max-width: 1023px) {
-  .home-header-row {
+  .site-header-row {
     height: 72px;
+  }
+  .page-hero {
+    padding-top: calc(72px + clamp(24px, 4vw, 56px));
   }
   .impact-hero {
     padding-top: 72px;
@@ -632,7 +646,7 @@
 }
 /* Short landscape devices need a different composition, rather than a cropped CTA. */
 @media (max-height: 550px) and (min-aspect-ratio: 4/3) {
-  .home-header-row {
+  .site-header-row {
     height: 64px;
   }
   .impact-nav-cta {
@@ -696,8 +710,13 @@
   position: relative;
   isolation: isolate;
   overflow: hidden;
+  /* Every page opens on one full screen of blue, like the home hero. */
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  min-height: 100svh;
   margin-bottom: clamp(40px, 6vw, 72px);
-  padding-block: clamp(48px, 7vw, 96px) clamp(52px, 7vw, 104px);
+  padding-block: calc(84px + clamp(24px, 4vw, 56px)) clamp(40px, 6vw, 88px);
   color: white;
   text-align: center;
   background:
@@ -728,6 +747,33 @@
 .page-hero-copy {
   position: relative;
   z-index: 3;
+}
+/*
+ * Optional photograph behind the copy. It is tinted into the hero's blue so the
+ * page keeps its identity and the text stays readable.
+ */
+.page-hero-image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  object-fit: cover;
+  opacity: 0.42;
+  mix-blend-mode: luminosity;
+}
+.page-hero-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(ellipse 70% 70% at 50% 50%, #04518ad9, #04518a8c);
+  pointer-events: none;
+}
+.page-hero-compact .page-hero-shade {
+  background: linear-gradient(90deg, #04518af2 0%, #04518ad1 42%, #0568a659 100%);
+}
+@media (max-width: 767px) {
+  .page-hero-compact .page-hero-shade {
+    background: linear-gradient(180deg, #04518ae6 0%, #04518ac7 100%);
+  }
 }
 .page-hero-label {
   display: inline-flex;
@@ -794,7 +840,6 @@
  */
 .page-hero-compact {
   margin-bottom: 0;
-  padding-block: clamp(36px, 5vw, 64px) clamp(40px, 5vw, 68px);
   text-align: left;
   background:
     radial-gradient(

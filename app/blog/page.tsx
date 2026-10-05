@@ -1,3 +1,4 @@
+import { HERO_IMAGES } from "../../src/stockImages";
 import React from "react";
 import Link from "next/link";
 import { Metadata } from "next";
@@ -111,6 +112,7 @@ export default async function BlogPage() {
       <PageIntro
         compact
         label="Insights"
+        image={HERO_IMAGES.studio}
         title="Notes on building websites that explain things clearly"
         description="We publish when we have something useful to say, so this is a short list."
       />

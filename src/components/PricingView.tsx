@@ -1,3 +1,4 @@
+import { HERO_IMAGES } from "../stockImages";
 import React from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
@@ -78,6 +79,7 @@ export default function PricingView() {
       <PageIntro
         compact
         label="Pricing"
+        image={HERO_IMAGES.planning}
         title="Three website packages, with starting prices in USD"
         description="Each package combines strategy, design and development. The price you pay is set in a written quote after we have reviewed the scope together."
       />

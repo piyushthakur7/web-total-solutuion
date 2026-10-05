@@ -1,3 +1,4 @@
+import { HERO_IMAGES } from "../../stockImages";
 import React from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
@@ -23,6 +24,7 @@ export default async function WorkView() {
     <div className="bg-paper pb-16 text-ink sm:pb-24">
       <PageIntro
         label="Selected work"
+        image={HERO_IMAGES.work}
         title={
           <>
             Four projects,

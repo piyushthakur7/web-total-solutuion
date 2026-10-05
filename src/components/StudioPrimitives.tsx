@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
@@ -37,6 +38,7 @@ export function PageIntro({
   children,
   compact = false,
   facts,
+  image,
 }: {
   label?: React.ReactNode;
   title: React.ReactNode;
@@ -44,11 +46,28 @@ export function PageIntro({
   children?: React.ReactNode;
   compact?: boolean;
   facts?: { label: string; value: React.ReactNode }[];
+  /** Illustrative photograph shown behind the copy, tinted blue. */
+  image?: { src: string; alt: string };
 }) {
   // Sentence-length titles on the centred hero are set smaller.
   const long = !compact && typeof title === "string" && title.length > 34;
   return (
     <section className={`page-hero ${compact ? "page-hero-compact" : ""}`}>
+      {image && (
+        <>
+          <Image
+            src={image.src}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            quality={60}
+            className="page-hero-image"
+            aria-hidden="true"
+          />
+          <div className="page-hero-shade" aria-hidden="true" />
+        </>
+      )}
       <div className="impact-grain" aria-hidden="true" />
       {!compact && (
         <>

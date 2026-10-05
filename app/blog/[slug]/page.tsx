@@ -10,7 +10,11 @@ import {
 } from "../../../src/utils/insforge/blogs";
 import JsonLd, { breadcrumbSchema } from "../../../src/components/JsonLd";
 import FinalCTA from "../../../src/components/FinalCTA";
-import { TextLink } from "../../../src/components/StudioPrimitives";
+import {
+  PageIntro,
+  TextLink,
+} from "../../../src/components/StudioPrimitives";
+import { HERO_IMAGES } from "../../../src/stockImages";
 import { htmlToPlainText, toArticleHtml } from "../../../src/utils/richText";
 
 export const revalidate = 60;
@@ -109,18 +113,12 @@ export default async function BlogPostPage({
         ]}
       />
 
-      <article className="studio-container pt-10 sm:pt-14">
-        <header className="max-w-[820px]">
-          <Link
-            href="/blog"
-            className="text-link inline-flex min-h-11 items-center text-sm"
-          >
-            All insights
-          </Link>
-          <h1 className="mt-4 font-display text-[clamp(2rem,4.4vw,3.25rem)] leading-[1.06]">
-            {blog.title}
-          </h1>
-          <p className="mt-5 text-[15px] text-graphite">
+      <PageIntro
+        compact
+        label="Insights"
+        title={blog.title}
+        description={
+          <>
             <time dateTime={blog.publish_date}>
               Published {formatBlogDate(blog.publish_date || blog.created_at)}
             </time>
@@ -134,11 +132,21 @@ export default async function BlogPostPage({
             )}
             <span aria-hidden="true">. </span>
             By {byline.name}
-          </p>
-        </header>
+          </>
+        }
+        image={HERO_IMAGES.studio}
+      >
+        <Link
+          href="/blog"
+          className="inline-flex min-h-11 items-center text-sm font-semibold underline underline-offset-4"
+        >
+          All insights
+        </Link>
+      </PageIntro>
 
+      <article className="studio-container pt-10 sm:pt-14">
         {blog.image_url && (
-          <div className="mt-8 aspect-video max-w-[980px] overflow-hidden rounded-[20px] border border-ink/10 bg-deep">
+          <div className="aspect-video max-w-[980px] overflow-hidden rounded-[20px] border border-ink/10 bg-deep">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={blog.image_url}

@@ -43,6 +43,7 @@ export default function LandingPageView({
         compact
         label={config.label}
         title={config.h1}
+        image={config.heroImage}
         description={config.lead}
         facts={config.facts}
       >

@@ -1,3 +1,4 @@
+import { HERO_IMAGES } from "../stockImages";
 import React from "react";
 import Image from "next/image";
 import { Check } from "lucide-react";
@@ -31,6 +32,7 @@ export default function AboutView() {
     <div className="bg-paper pb-16 text-ink sm:pb-24">
       <PageIntro
         label="The studio"
+        image={HERO_IMAGES.studio}
         title={
           <>
             Small enough to care.

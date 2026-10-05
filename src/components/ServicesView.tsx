@@ -1,3 +1,4 @@
+import { HERO_IMAGES } from "../stockImages";
 import React from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
@@ -74,6 +75,7 @@ export default function ServicesView() {
     <div className="bg-paper pb-16 text-ink sm:pb-24">
       <PageIntro
         label="Services"
+        image={HERO_IMAGES.services}
         title={
           <>
             One studio.

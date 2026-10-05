@@ -1,3 +1,4 @@
+import { HERO_IMAGES } from "../stockImages";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -65,6 +66,7 @@ export default function InternationalView() {
       <PageIntro
         compact
         label={page.eyebrow}
+        image={HERO_IMAGES.law}
         title={page.h1}
         description={page.subheadline}
         facts={[

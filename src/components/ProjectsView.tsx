@@ -1,399 +1,215 @@
-﻿import React from "react";
-import Link from "next/link";
+import { HERO_IMAGES } from "../stockImages";
+import React from "react";
+import { ArrowUpRight } from "lucide-react";
 import {
-  ArrowRight,
-  ArrowUpRight,
-  Bell,
-  Clock,
-  ExternalLink,
-  FileText,
-  Globe,
-  Info,
-  ListChecks,
-  Lock,
-  MessageSquare,
-  Rocket,
-  Users,
-  Wallet,
-  Check,
-} from "lucide-react";
-import { PROJECTS, ProjectData, ProjectIcon } from "../projects";
-import { PageIntro } from "./StudioPrimitives";
+  PROJECT_PAGE_FAQS,
+  PROJECT_PAGE_FEATURES,
+  WTS_CRM,
+} from "../projects";
+import { getWorkCaseStudy } from "../work";
+import { contactHref } from "../lead";
+import { PageIntro, SectionHeading, TextLink } from "./StudioPrimitives";
 import FinalCTA from "./FinalCTA";
+import WorkVisual from "./work/WorkVisual";
 
-/** Data files stay serialisable, so icons are referenced by name. */
-const ICONS: Record<ProjectIcon, React.ElementType> = {
-  users: Users,
-  bell: Bell,
-  listChecks: ListChecks,
-  fileText: FileText,
-  lock: Lock,
-  clock: Clock,
-  messageSquare: MessageSquare,
-  wallet: Wallet,
-};
-
-function ProductSection({ project }: { project: ProjectData }) {
-  const howItWorksId = `${project.slug}-how-it-works`;
+/**
+ * /projects — the product Web Total Solution builds and runs itself. A short
+ * overview: what it is, the one workflow it is built around, what the
+ * interface looks like and what it costs. The detail lives in the case study
+ * and on wtscrm.com.
+ */
+export default function ProjectsView() {
+  const product = WTS_CRM;
+  const study = getWorkCaseStudy("wts-crm");
+  const dashboard = study?.decisions[0].image;
 
   return (
-    <article className="studio-container space-y-12">
-      {/* Product header */}
-      <header className="bg-white border border-slate-100 rounded-3xl shadow-sm overflow-hidden">
-        <div className="p-8 sm:p-12 space-y-8">
-          <div className="flex flex-wrap items-center gap-3">
-            <span className="inline-flex items-center space-x-2 bg-brand-blue/10 border border-brand-blue/20 px-3 py-1.5 rounded-full text-brand-blue text-[11px] font-extrabold uppercase tracking-widest">
-              <Rocket className="w-3.5 h-3.5" />
-              <span>{project.kicker}</span>
-            </span>
-            <span className="inline-flex items-center space-x-2 bg-amber-50 border border-amber-200 px-3 py-1.5 rounded-full text-amber-800 text-[11px] font-bold tracking-wide">
-              <span className="w-1.5 h-1.5 bg-amber-500 rounded-full" />
-              <span>{project.status}</span>
-            </span>
-            {project.siteUrl && (
-              /* Followed link â€” no nofollow â€” so crawlers reach wtscrm.com from
-                 here. `noreferrer` is deliberately omitted: it would strip the
-                 Referer header and hide this traffic from wtscrm.com analytics. */
-              <a
-                href={project.siteUrl}
-                target="_blank"
-                rel="noopener"
-                className="inline-flex items-center space-x-1.5 text-[11px] font-bold text-slate-600 hover:text-brand-blue transition-colors cursor-pointer"
-              >
-                <Globe className="w-3.5 h-3.5" />
-                <span>{project.siteLabel}</span>
-                <ExternalLink className="w-3 h-3" />
-              </a>
-            )}
-          </div>
+    <div className="bg-paper pb-16 text-ink sm:pb-24">
+      <PageIntro
+        compact
+        label="Own product, built and run by Web Total Solution"
+        title="WTS CRM"
+        image={HERO_IMAGES.code}
+        description={product.positioning}
+        facts={[
+          { label: "What it is", value: "Subscription web application" },
+          { label: "Built for", value: "Indian service businesses" },
+          { label: "Status", value: "Live, with a free 3-day trial" },
+          { label: "Our role", value: "Scope, design, engineering, operations" },
+        ]}
+      >
+        {/* Followed link — no nofollow — so crawlers reach wtscrm.com from here.
+            `noreferrer` is deliberately omitted: it would strip the Referer
+            header and hide this traffic from wtscrm.com analytics. */}
+        <a
+          href={product.siteUrl}
+          target="_blank"
+          rel="noopener"
+          className="btn btn-paper"
+        >
+          Visit {product.siteLabel}
+          <ArrowUpRight className="size-4" aria-hidden="true" />
+        </a>
+        <a
+          href="/work/wts-crm"
+          className="inline-flex min-h-11 items-center text-sm font-semibold underline underline-offset-4"
+        >
+          Read the case study
+        </a>
+      </PageIntro>
 
-          <div className="space-y-4 max-w-3xl">
-            {/* The descriptive half of the heading says what the product is in
-                the words people actually search for. */}
-            <h2 className="space-y-2">
-              <span className="block font-display text-3xl sm:text-4xl text-ink leading-tight">
-                {project.name}
-              </span>
-              <span className="block text-lg sm:text-xl font-bold text-slate-700 leading-snug">
-                {project.headline}
-              </span>
-            </h2>
-            <p className="text-xl sm:text-2xl font-bold text-brand-blue leading-snug">
-              {project.tagline}
-            </p>
-            <p className="text-slate-700 text-base leading-relaxed">
-              {project.positioning}
-            </p>
-            <p className="text-slate-600 text-sm leading-relaxed">
-              {project.supportingCopy}
-            </p>
-          </div>
-
-          {/* CTAs â€” the trial link only appears once the signup flow is live. */}
-          <div className="space-y-3">
-            <div className="flex flex-col sm:flex-row sm:items-center gap-3">
-              {project.trialUrl ? (
-                <a
-                  href={project.trialUrl}
-                  target="_blank"
-                  rel="noopener"
-                  className="bg-brand-blue hover:bg-brand-blue/90 text-white font-bold tracking-wide px-6 py-3.5 rounded-xl shadow-sm hover:shadow transition-all inline-flex items-center justify-center space-x-2 cursor-pointer"
-                >
-                  <span>{project.primaryCta}</span>
-                  <ArrowRight className="w-4 h-4" />
-                </a>
-              ) : (
-                <Link
-                  href="/contact"
-                  className="bg-brand-blue hover:bg-brand-blue/90 text-white font-bold tracking-wide px-6 py-3.5 rounded-xl shadow-sm hover:shadow transition-all inline-flex items-center justify-center space-x-2 cursor-pointer"
-                >
-                  <span>{project.preLaunchCta}</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              )}
-              <a
-                href={`#${howItWorksId}`}
-                className="bg-slate-50 hover:bg-slate-100 text-slate-800 font-bold tracking-wide px-6 py-3.5 rounded-xl border border-slate-100 transition-all inline-flex items-center justify-center space-x-2 cursor-pointer"
-              >
-                <span>{project.secondaryCta}</span>
-                <ArrowUpRight className="w-4 h-4" />
-              </a>
-            </div>
-            <p className="text-xs font-semibold text-slate-600">
-              {project.reassurance}
-            </p>
-            {!project.trialUrl && (
-              <p className="text-xs text-slate-500">{project.preLaunchNote}</p>
-            )}
-          </div>
-        </div>
-
-        {/* Who it is for */}
-        <div className="bg-slate-50/70 border-t border-slate-100 px-8 sm:px-12 py-8 space-y-4">
-          <h3 className="text-xs font-extrabold text-slate-600 uppercase tracking-widest">
-            {project.audienceHeading}
-          </h3>
-          <ul className="flex flex-wrap gap-2">
-            {project.audience.map((who) => (
-              <li
-                key={who}
-                className="text-xs font-semibold text-slate-700 bg-white border border-slate-200 px-3 py-1.5 rounded-lg"
-              >
-                {who}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </header>
-
-      {/* Feature grid */}
-      <section className="space-y-8">
-        <h3 className="font-display text-2xl text-ink">
-          {project.featuresHeading}
-        </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {project.features.map((feature) => {
-            const Icon = ICONS[feature.icon];
-            return (
-              <div
-                key={feature.title}
-                className="bg-white border border-slate-100 rounded-2xl p-6 space-y-3 shadow-sm hover:shadow-md transition-shadow"
-              >
-                <span className="w-10 h-10 rounded-xl bg-brand-blue/10 text-brand-blue flex items-center justify-center">
-                  <Icon className="w-5 h-5" />
-                </span>
-                <h4 className="text-base font-bold text-slate-900">
-                  {feature.title}
-                </h4>
-                <p className="text-sm text-slate-600 leading-relaxed">
-                  {feature.description}
-                </p>
-              </div>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* The six stages in the customer journey. */}
-      <section id={howItWorksId} className="scroll-mt-24 space-y-8">
-        <div className="space-y-3 max-w-2xl">
-          <h3 className="font-display text-2xl text-ink">
-            {project.workflowHeading}
-          </h3>
-          <p className="text-slate-600 text-sm leading-relaxed">
-            {project.workflowIntro}
-          </p>
-        </div>
-        <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {project.workflow.map((step, index) => (
-            <li
-              key={step.label}
-              className="relative bg-white border border-slate-100 rounded-2xl p-6 space-y-3 shadow-sm"
-            >
-              <span className="text-[11px] font-extrabold text-slate-500 uppercase tracking-widest">
-                Step {index + 1}
-              </span>
-              <p className="text-lg font-extrabold text-slate-950">
-                {step.label}
+      {dashboard && (
+        <section className="bg-white py-12 sm:py-16">
+          <div className="studio-container grid items-center gap-8 lg:grid-cols-12 lg:gap-14">
+            <figure className="lg:col-span-7">
+              <WorkVisual
+                image={dashboard}
+                label={product.siteLabel}
+                sizes="(min-width: 1024px) 700px, 92vw"
+                priority
+              />
+              <figcaption className="mt-3 text-sm leading-relaxed text-graphite">
+                {dashboard.caption}
+              </figcaption>
+            </figure>
+            <div className="lg:col-span-5">
+              <SectionHeading
+                heading="Why we built it"
+                intro="A small service business tracks enquiries in WhatsApp and a spreadsheet, and the next step depends on someone remembering it. WTS CRM connects the whole path in one workspace, for one person or a team."
+              />
+              <p className="mt-4 text-[15px] leading-relaxed text-graphite">
+                {product.supportingCopy}
               </p>
-              <p className="text-sm text-slate-600 leading-relaxed">
+            </div>
+          </div>
+        </section>
+      )}
+
+      <section className="studio-container py-14 sm:py-20">
+        <SectionHeading
+          heading="One workflow, from enquiry to payment"
+          intro="The product is scoped around these six stages. Each one hands over to the next."
+        />
+        <ol className="mt-9 grid gap-x-10 sm:grid-cols-2 lg:grid-cols-3">
+          {product.workflow.map((step, index) => (
+            <li key={step.label} className="border-t border-ink/15 py-5">
+              <p className="flex items-baseline gap-3">
+                <span className="text-sm font-semibold text-brand-blue">
+                  {index + 1}
+                </span>
+                <span className="font-display text-2xl">{step.label}</span>
+              </p>
+              <p className="mt-2 text-[15px] leading-relaxed text-graphite">
                 {step.description}
               </p>
-              {/* Connector between steps on wide screens only. */}
-              {index < project.workflow.length - 1 && index % 3 !== 2 && (
-                <ArrowRight
-                  className="hidden lg:block absolute top-1/2 -right-3 w-5 h-5 text-slate-300 -translate-y-1/2"
-                  aria-hidden="true"
-                />
-              )}
             </li>
           ))}
         </ol>
       </section>
 
-      {/* Pricing */}
-      <section className="space-y-8">
-        <div className="space-y-3 max-w-2xl">
-          <h3 className="font-display text-2xl text-ink">
-            {project.pricingHeading}
-          </h3>
-          <p className="text-slate-600 text-sm leading-relaxed">
-            {project.pricingNote}
-          </p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-5 gap-6 2xl:w-[calc(100vw-4rem)] 2xl:max-w-[1720px] 2xl:relative 2xl:left-1/2 2xl:-translate-x-1/2">
-          {project.plans.map((plan) => (
-            <div
-              key={plan.name}
-              className={`bg-white border rounded-3xl p-7 shadow-sm flex flex-col gap-4 ${
-                plan.badge
-                  ? "border-brand-blue/40 ring-1 ring-brand-blue/20"
-                  : "border-slate-100"
-              }`}
-            >
-              <div className="flex flex-wrap items-center justify-between gap-2">
-                <h4 className="text-lg font-extrabold text-slate-950">
-                  {plan.name}
-                </h4>
-                {plan.badge && (
-                  <span className="text-[11px] font-extrabold uppercase tracking-widest text-brand-blue bg-brand-blue/10 border border-brand-blue/20 px-2.5 py-1 rounded-full">
-                    {plan.badge}
-                  </span>
-                )}
-              </div>
-              <p className="flex flex-wrap items-baseline gap-x-2">
-                <span className="font-display text-4xl text-ink">
-                  {plan.price}
-                </span>
-                {plan.cadence && (
-                  <span className="text-sm font-semibold text-slate-600">
-                    {plan.cadence}
-                  </span>
-                )}
-              </p>
-              <p className="text-sm text-slate-600 leading-relaxed">
-                {plan.bestFor}
-              </p>
-              <ul className="space-y-2 border-t border-slate-100 pt-4 flex-1">
-                {plan.features.map((feature) => (
-                  <li
-                    key={feature}
-                    className="flex items-start gap-2 text-sm text-slate-700"
-                  >
-                    <Check
-                      className="w-4 h-4 text-brand-blue shrink-0 mt-0.5"
-                      aria-hidden="true"
-                    />
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-              {plan.note && (
-                <p className="text-xs font-semibold text-slate-500 pt-2 border-t border-slate-100">
-                  {plan.note}
+      <section className="bg-white py-14 sm:py-20">
+        <div className="studio-container">
+          <SectionHeading heading="What it does at each stage" />
+          <ul className="mt-8 grid gap-x-12 md:grid-cols-2">
+            {PROJECT_PAGE_FEATURES.map((feature) => (
+              <li key={feature.title} className="border-t border-ink/15 py-5">
+                <h3 className="text-[17px] font-semibold">{feature.title}</h3>
+                <p className="mt-1.5 max-w-[56ch] text-[15px] leading-relaxed text-graphite">
+                  {feature.description}
                 </p>
-              )}
-              {project.trialUrl ? (
-                <a
-                  href={project.trialUrl}
-                  target="_blank"
-                  rel="noopener"
-                  className={`font-bold tracking-wide px-5 py-3 rounded-xl transition-all inline-flex items-center justify-center space-x-2 cursor-pointer ${
-                    plan.badge
-                      ? "bg-brand-blue hover:bg-brand-blue/90 text-white shadow-sm hover:shadow"
-                      : "bg-slate-50 hover:bg-slate-100 text-slate-950 border border-slate-200"
-                  }`}
-                >
-                  <span>{plan.ctaLabel ?? `Choose ${plan.name}`}</span>
-                  <ArrowRight className="w-4 h-4" />
-                </a>
-              ) : (
-                <Link
-                  href="/contact"
-                  className="bg-slate-50 hover:bg-slate-100 text-slate-950 border border-slate-200 font-bold tracking-wide px-5 py-3 rounded-xl transition-all inline-flex items-center justify-center space-x-2 cursor-pointer"
-                >
-                  <span>{plan.ctaLabel ?? `Choose ${plan.name}`}</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              )}
-            </div>
-          ))}
+              </li>
+            ))}
+          </ul>
+          <div className="mt-6">
+            <TextLink href={product.siteUrl ?? "/work/wts-crm"}>
+              Full feature list on {product.siteLabel}
+            </TextLink>
+          </div>
         </div>
-        <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-          <p className="text-xs text-slate-600 flex items-start space-x-2 bg-slate-50 border border-slate-100 rounded-2xl p-4 flex-1">
-            <Info
-              className="w-4 h-4 text-slate-500 shrink-0 mt-0.5"
-              aria-hidden="true"
+      </section>
+
+      <section className="studio-container py-14 sm:py-20">
+        <SectionHeading
+          heading="WTS CRM subscription prices"
+          intro="Monthly prices in Indian rupees for the CRM product. These are separate from our website project pricing, which is quoted in USD."
+        />
+        <div className="mt-8 overflow-x-auto">
+          <table className="w-full min-w-[560px] border-collapse text-left text-[15px]">
+            <caption className="sr-only">
+              WTS CRM subscription plans and monthly prices in INR
+            </caption>
+            <thead>
+              <tr className="border-b border-ink/25 text-sm text-graphite">
+                <th scope="col" className="py-3 pr-4 font-semibold">
+                  Plan
+                </th>
+                <th scope="col" className="py-3 pr-4 font-semibold">
+                  Price (INR)
+                </th>
+                <th scope="col" className="py-3 font-semibold">
+                  Best for
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {product.plans.map((plan) => (
+                <tr key={plan.name} className="border-b border-ink/15">
+                  <th scope="row" className="py-4 pr-4 font-display text-xl">
+                    {plan.name}
+                  </th>
+                  <td className="whitespace-nowrap py-4 pr-4 font-semibold">
+                    {plan.price}
+                    {plan.cadence && (
+                      <span className="font-normal text-graphite">
+                        {" "}
+                        {plan.cadence}
+                      </span>
+                    )}
+                  </td>
+                  <td className="py-4 text-graphite">{plan.bestFor}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 max-w-[70ch] text-sm leading-relaxed text-graphite">
+          {product.trialNote} {product.notFor[0]}
+        </p>
+        <div className="mt-3">
+          <TextLink href={product.siteUrl ?? "/work/wts-crm"}>
+            Plan details and trial on {product.siteLabel}
+          </TextLink>
+        </div>
+      </section>
+
+      <section className="bg-white py-14 sm:py-20">
+        <div className="studio-container grid gap-10 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-4">
+            <SectionHeading
+              heading="Common questions"
+              intro="The product’s own site has the full FAQ."
             />
-            <span>{project.trialNote}</span>
-          </p>
-          {project.siteUrl && (
-            <a
-              href={project.siteUrl}
-              target="_blank"
-              rel="noopener"
-              className="text-sm font-bold text-brand-blue hover:underline inline-flex items-center space-x-1.5 cursor-pointer shrink-0"
-            >
-              <span>See full pricing on {project.siteLabel}</span>
-              <ExternalLink className="w-3.5 h-3.5" />
-            </a>
-          )}
+          </div>
+          <dl className="lg:col-span-8">
+            {PROJECT_PAGE_FAQS.map((faq) => (
+              <div key={faq.question} className="border-t border-ink/15 py-5">
+                <dt className="font-display text-xl">{faq.question}</dt>
+                <dd className="mt-2 max-w-[62ch] text-[15px] leading-relaxed text-graphite">
+                  {faq.answer}
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </section>
 
-      {/* FAQ â€” visible answers, also emitted as FAQPage structured data. */}
-      <section className="space-y-8">
-        <h3 className="font-display text-2xl text-ink">{project.faqHeading}</h3>
-        <dl className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {project.faqs.map((faq) => (
-            <div
-              key={faq.question}
-              className="bg-white border border-slate-100 rounded-2xl p-6 space-y-2 shadow-sm"
-            >
-              <dt className="text-base font-bold text-slate-900">
-                {faq.question}
-              </dt>
-              <dd className="text-sm text-slate-600 leading-relaxed">
-                {faq.answer}
-              </dd>
-            </div>
-          ))}
-        </dl>
-      </section>
-
-      {/* Honest scope limits */}
-      <section className="bg-slate-50/70 border border-slate-100 rounded-3xl p-8 space-y-4">
-        <h3 className="text-lg font-bold text-slate-950">
-          {project.notForHeading}
-        </h3>
-        <ul className="space-y-2">
-          {project.notFor.map((item) => (
-            <li
-              key={item}
-              className="text-sm text-slate-600 flex items-start space-x-2"
-            >
-              <span
-                className="w-1.5 h-1.5 rounded-full bg-slate-400 shrink-0 mt-2"
-                aria-hidden="true"
-              />
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
-      </section>
-    </article>
-  );
-}
-
-/**
- * /projects â€” the products Web Total Solution builds and runs itself, as
- * opposed to /work, which is the curated case studies.
- */
-export default function ProjectsView() {
-  return (
-    <div className="space-y-12 bg-paper pb-16 text-ink sm:pb-24">
-      {/* Hero */}
-      <PageIntro
-        label="Our products / Built and run by us"
-        title={
-          <>
-            We build for clients.
-            <br />
-            And for ourselves.
-          </>
-        }
-        description="Alongside our client work, we build and run WTS CRM: a workspace for Indian service businesses to connect leads, follow-ups, projects and payments."
-      />
-
-      {PROJECTS.map((project) => (
-        <ProductSection key={project.slug} project={project} />
-      ))}
-
-      {/* Closing CTA */}
-      <FinalCTA
-        headline="An idea for a product of your own?"
-        text="We design and build dashboards, internal tools, customer portals and billing workflows. Tell us what you want to make possible."
-      />
+      <div className="pt-14 sm:pt-20">
+        <FinalCTA
+          headline="Planning a product of your own?"
+          text="We design and build product interfaces and web applications as separately scoped projects. Tell us who uses it and what it has to do."
+          contactHref={contactHref({ type: "SaaS / Web Application" })}
+        />
+      </div>
     </div>
   );
 }

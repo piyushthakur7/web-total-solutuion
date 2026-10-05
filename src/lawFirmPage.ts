@@ -1,8 +1,11 @@
 /**
  * Copy for /law-firm-websites — the landing page for law firms in the US, UK
- * and UAE. Prices here are in USD and independent of the INR packages in
- * siteContent. Offer, price, care plan and call hours are supplied by the
+ * and UAE. Offer, price, care plan and call hours are supplied by the
  * business; do not change them or add figures without confirmation.
+ *
+ * This is a niche offer with its own fixed framing ($2,500, 5–8 pages, three
+ * weeks). It sits alongside the general website packages in siteContent and
+ * does not replace them.
  */
 
 export const LAW_FIRM_PAGE = {
@@ -24,6 +27,9 @@ export const LAW_FIRM_PAGE = {
     price: 'From $2,500',
     scope: '5–8 pages',
     timeline: 'Live in 3 weeks',
+    /** What the three-week timeline depends on. */
+    timelineCondition:
+      'The three weeks run from the point the scope is approved and your content is ready, and assume design feedback within the agreed review days. The delivery date is confirmed in writing at the start.',
     carePlan: {
       price: '$250/month',
       includes: 'Hosting, updates, small edits, and monthly speed and uptime checks.',
@@ -47,7 +53,7 @@ export const LAW_FIRM_PAGE = {
       {
         title: 'Speed on a phone',
         description:
-          'Many visitors arrive on mobile. We build mobile-first in Next.js, with optimised images and Core Web Vitals checked before launch.',
+          'Many visitors arrive on mobile. We build mobile-first in Next.js, with images sized for the screen and page speed checked before launch.',
       },
       {
         title: 'An obvious next step',
@@ -58,7 +64,7 @@ export const LAW_FIRM_PAGE = {
   },
   abroad: {
     heading: 'Working with us from abroad',
-    intro: 'We are a remote team to you, so here is exactly how the engagement runs.',
+    intro: 'We work with you remotely, so here is exactly how the engagement runs.',
     items: [
       {
         icon: 'clock' as const,
@@ -91,16 +97,34 @@ export const LAW_FIRM_PAGE = {
       },
     ],
   },
+  /**
+   * Live client sites shown as evidence. Only the first is a law firm; the
+   * page says so, and the others are labelled with their real sector.
+   */
+  examples: [
+    {
+      id: 'sproutslegal',
+      sector: 'Law firm, India',
+      description:
+        'Website for Sprouts Legal. Indian law firm websites customarily open with a Bar Council of India disclaimer, so the preview shows that notice in front of the site.',
+    },
+    {
+      id: 'kavitakabira',
+      sector: 'Not a law firm: psychology practice',
+      description:
+        'Shown as another professional-services site where the first impression has to feel calm and credible.',
+    },
+  ],
   processSteps: [
     {
       step: '01',
-      title: 'First Conversation',
+      title: 'First conversation',
       description:
         'Over WhatsApp or email — or a call if you prefer — we learn about your firm, your practice areas and what your current website is not doing for you.',
     },
     {
       step: '02',
-      title: 'Scope & Quote',
+      title: 'Scope and quote',
       description:
         'You receive a written scope, timeline and fixed quote in USD. Nothing starts until you approve it.',
     },
@@ -118,7 +142,7 @@ export const LAW_FIRM_PAGE = {
     },
     {
       step: '05',
-      title: 'Launch & Support',
+      title: 'Launch and support',
       description:
         'We handle go-live and support you for 30 days. The optional care plan covers the site after that.',
     },
@@ -132,7 +156,7 @@ export const LAW_FIRM_PAGE = {
     {
       question: 'How long does the project take?',
       answer:
-        'Our law firm website offer is built to go live in 3 weeks. The delivery date is agreed in writing at the start, alongside the scope and the quote.',
+        'Our law firm website offer is built to go live in 3 weeks. That runs from the point the scope is approved and your content is ready, and assumes design feedback within the agreed review days. The delivery date is agreed in writing at the start.',
     },
     {
       question: 'How will we communicate across time zones?',

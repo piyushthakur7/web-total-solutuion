@@ -4,9 +4,12 @@ import JsonLd, { breadcrumbSchema } from '../../src/components/JsonLd';
 import { WORK_CASE_STUDIES } from '../../src/work';
 
 const url = 'https://www.webtotalsolution.com/work';
+
+// The list of other live client sites is served from InsForge; re-check every 5 minutes.
+export const revalidate = 300;
 const title = 'Selected Work — Product, UI/UX & Web Case Studies';
 const description =
-  'Selected case studies from Web Total Solution: products and websites where strategy, design and engineering came together to solve meaningful business problems.';
+  'Case studies from Web Total Solution: our own product, WTS CRM, and three client websites, each with the design decisions explained and the delivered scope listed.';
 
 export const metadata: Metadata = {
   title,

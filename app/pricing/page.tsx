@@ -5,7 +5,7 @@ import JsonLd, { breadcrumbSchema } from '../../src/components/JsonLd';
 export const metadata: Metadata = {
   title: 'Startup Website Pricing | Landing Pages & Marketing Sites',
   description:
-    'Strategy, UI/UX and Next.js development for startups. Landing page sprints from $1,200, startup marketing sites from $2,500, custom product websites from $5,000.',
+    'Website packages with starting prices in USD: Landing Page Sprint from $1,200, Startup Growth Site from $2,500, Custom Product Website from $5,000. Written quote after scope review.',
   alternates: {
     canonical: 'https://www.webtotalsolution.com/pricing',
   },
@@ -16,14 +16,14 @@ export const metadata: Metadata = {
     siteName: 'Web Total Solution',
     title: 'Startup Website Pricing | Web Total Solution',
     description:
-      'Strategy, UI/UX and high-performance Next.js development for startups — from first wireframe to production launch.',
+      'Three website packages with starting prices in USD. The written quote follows a scope review.',
     images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Web Total Solution pricing' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Startup Website Pricing | Web Total Solution',
     description:
-      'Strategy, UI/UX and high-performance Next.js development for startups — from first wireframe to production launch.',
+      'Three website packages with starting prices in USD. The written quote follows a scope review.',
     images: ['/og-image.png'],
   },
 };

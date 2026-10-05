@@ -5,7 +5,7 @@ import JsonLd, { breadcrumbSchema } from '../../src/components/JsonLd';
 export const metadata: Metadata = {
   title: 'Web Development Services',
   description:
-    'Business website development, website redesign, e-commerce stores, SEO copywriting and digital marketing — built to help your business generate more leads.',
+    'Startup and marketing websites, landing pages, website redesign and product interfaces, with e-commerce, content and marketing as additional services.',
   alternates: {
     canonical: 'https://www.webtotalsolution.com/services',
   },
@@ -16,14 +16,14 @@ export const metadata: Metadata = {
     siteName: 'Web Total Solution',
     title: 'Web Development Services | Web Total Solution',
     description:
-      'Business websites, redesigns, e-commerce stores and digital marketing built around business results.',
+      'Startup websites, landing pages, redesigns and product interfaces. Who each service is for and what you receive.',
     images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Web Total Solution services' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Website Design & Development Services | Web Total Solution',
     description:
-      'Website design, development, redesign, e-commerce, content and SEO — delivered as one project with a fixed written quote.',
+      'Startup websites, landing pages, redesigns and product interfaces. Who each service is for and what you receive.',
     images: ['/og-image.png'],
   },
 };

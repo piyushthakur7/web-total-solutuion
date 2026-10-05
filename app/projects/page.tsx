@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import ProjectsView from '../../src/components/ProjectsView';
 import JsonLd, { breadcrumbSchema, faqSchema } from '../../src/components/JsonLd';
-import { PROJECTS, WTS_CRM } from '../../src/projects';
+import { PROJECTS, PROJECT_PAGE_FAQS, PROJECT_PAGE_FEATURES, WTS_CRM } from '../../src/projects';
 
 const url = 'https://www.webtotalsolution.com/projects';
 
@@ -68,7 +68,7 @@ export default function Projects() {
             sameAs: project.siteUrl ? [project.siteUrl] : undefined,
             operatingSystem: 'Web',
             inLanguage: 'en-IN',
-            featureList: project.features.map((feature) => feature.title),
+            featureList: PROJECT_PAGE_FEATURES.map((feature) => feature.title),
             audience: {
               '@type': 'BusinessAudience',
               name: 'Indian service businesses and agency teams',
@@ -93,7 +93,7 @@ export default function Projects() {
           })),
           // FAQ answers are rendered visibly on the page, which is what Google
           // requires for FAQ rich results.
-          faqSchema(WTS_CRM.faqs),
+          faqSchema(PROJECT_PAGE_FAQS),
         ]}
       />
       <ProjectsView />

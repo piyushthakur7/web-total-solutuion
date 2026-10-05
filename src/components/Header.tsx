@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
@@ -15,17 +15,36 @@ const links = [
   { label: "Insights", path: "/blog" },
 ];
 
+/**
+ * One header for every page. It sits over the blue hero each page opens with,
+ * and takes a solid blue background once the page is scrolled so it stays
+ * readable over the content below.
+ */
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
-  const home = pathname === "/";
   const reducedMotion = useReducedMotion();
   const toggle = useRef<HTMLButtonElement>(null);
+  // The blog admin has no hero, so the header is solid there and takes up space.
+  const admin = pathname.startsWith("/blog/admin");
+  const solid = scrolled || open || admin;
   const active = (path: string) =>
     pathname === path || pathname.startsWith(`${path}/`);
 
   useEffect(() => {
+    const update = () => setScrolled(window.scrollY > 24);
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    return () => window.removeEventListener("scroll", update);
+  }, []);
+
+  // Opening the menu moves focus into it; Escape returns focus to the toggle.
+  useEffect(() => {
     if (!open) return;
+    document
+      .querySelector<HTMLAnchorElement>("#mobile-navigation a")
+      ?.focus();
     const close = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setOpen(false);
@@ -37,43 +56,40 @@ export default function Header() {
   }, [open]);
 
   return (
-    <header
-      className={
-        home
-          ? "site-header-home absolute inset-x-0 top-0 z-50 text-white"
-          : "sticky top-0 z-50 border-b border-ink/10 bg-paper/95 backdrop-blur-xl"
-      }
-    >
-      <div
-        className={`studio-container flex items-center justify-between gap-6 ${home ? "home-header-row" : "h-20 sm:h-24"}`}
+    <>
+      <header
+        className={`site-header fixed inset-x-0 top-0 z-50 text-white ${solid ? "site-header-solid" : ""}`}
       >
-        <Link
-          href="/"
-          aria-label="Web Total Solution home"
-          onClick={() => setOpen(false)}
-        >
-          <Logo size={home ? "sm" : "md"} theme={home ? "dark" : "light"} />
-        </Link>
-        <nav
-          className="hidden items-center gap-7 lg:flex"
-          aria-label="Main navigation"
-        >
-          {links.map((link) => (
-            <Link
-              key={link.path}
-              href={link.path}
-              aria-current={active(link.path) ? "page" : undefined}
-              className={`relative py-3 text-[13px] font-medium transition-colors ${home ? "text-white/85 hover:text-white" : active(link.path) ? "text-ink" : "text-graphite hover:text-ink"}`}
-            >
-              {link.label}
-              {active(link.path) && (
-                <span className="absolute bottom-1 left-1/2 size-1 -translate-x-1/2 rounded-full bg-brand-blue" />
-              )}
-            </Link>
-          ))}
-        </nav>
-        <div className="flex items-center gap-3">
-          {home ? (
+        <div className="studio-container site-header-row flex items-center justify-between gap-6">
+          <Link
+            href="/"
+            aria-label="Web Total Solution home"
+            onClick={() => setOpen(false)}
+          >
+            <Logo size="sm" theme="dark" />
+          </Link>
+          <nav
+            className="hidden items-center gap-7 lg:flex"
+            aria-label="Main navigation"
+          >
+            {links.map((link) => (
+              <Link
+                key={link.path}
+                href={link.path}
+                aria-current={active(link.path) ? "page" : undefined}
+                className={`relative py-3 text-[13px] font-medium transition-colors hover:text-white ${active(link.path) ? "text-white" : "text-white/85"}`}
+              >
+                {link.label}
+                {active(link.path) && (
+                  <span
+                    className="absolute inset-x-0 bottom-1.5 h-0.5 rounded-full bg-white"
+                    aria-hidden="true"
+                  />
+                )}
+              </Link>
+            ))}
+          </nav>
+          <div className="flex items-center gap-3">
             <Link
               href="/contact"
               className="impact-nav-cta hidden sm:inline-flex"
@@ -83,73 +99,60 @@ export default function Header() {
                 <ArrowUpRight className="size-4" />
               </span>
             </Link>
-          ) : (
-            <Link
-              href="/contact"
-              className="btn btn-ink hidden min-h-11 px-5 sm:inline-flex"
+            <button
+              ref={toggle}
+              type="button"
+              aria-expanded={open}
+              aria-controls="mobile-navigation"
+              aria-label={open ? "Close navigation" : "Open navigation"}
+              onClick={() => setOpen(!open)}
+              className="flex size-11 items-center justify-center rounded-full border border-white/35 text-white lg:hidden"
             >
-              Let&apos;s talk
-              <ArrowUpRight className="size-4" />
-            </Link>
-          )}
-          <button
-            ref={toggle}
-            type="button"
-            aria-expanded={open}
-            aria-controls="mobile-navigation"
-            aria-label={open ? "Close navigation" : "Open navigation"}
-            onClick={() => setOpen(!open)}
-            className={`flex size-11 items-center justify-center rounded-full border lg:hidden ${home ? "border-white/35 text-white" : "border-ink/20"}`}
-          >
-            {open ? <X className="size-5" /> : <Menu className="size-5" />}
-          </button>
+              {open ? <X className="size-5" /> : <Menu className="size-5" />}
+            </button>
+          </div>
         </div>
-      </div>
-      <AnimatePresence initial={false}>
-        {open && (
-          <motion.nav
-            id="mobile-navigation"
-            aria-label="Mobile navigation"
-            initial={reducedMotion ? false : { height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: reducedMotion ? 0 : 0.2 }}
-            className={`overflow-hidden border-t lg:hidden ${home ? "border-white/15 bg-[#05356e] text-white" : "border-ink/10 bg-paper"}`}
-          >
-            <div className="studio-container max-h-[calc(100dvh-11rem)] overflow-y-auto pb-7 pt-2">
-              {links.map((link, index) => (
+        <AnimatePresence initial={false}>
+          {open && (
+            <motion.nav
+              id="mobile-navigation"
+              aria-label="Mobile navigation"
+              initial={reducedMotion ? false : { height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: reducedMotion ? 0 : 0.2 }}
+              className="overflow-hidden border-t border-white/15 lg:hidden"
+            >
+              <div className="studio-container max-h-[calc(100dvh-11rem)] overflow-y-auto pb-7 pt-2">
+                {links.map((link) => (
+                  <Link
+                    key={link.path}
+                    href={link.path}
+                    onClick={() => setOpen(false)}
+                    aria-current={active(link.path) ? "page" : undefined}
+                    className="flex items-center justify-between border-b border-white/15 py-4 font-display text-3xl"
+                  >
+                    <span>{link.label}</span>
+                    <ArrowUpRight
+                      className="size-5 text-white/60"
+                      aria-hidden="true"
+                    />
+                  </Link>
+                ))}
                 <Link
-                  key={link.path}
-                  href={link.path}
+                  href="/contact"
                   onClick={() => setOpen(false)}
-                  aria-current={active(link.path) ? "page" : undefined}
-                  className={`flex items-center justify-between border-b py-4 font-display text-3xl ${home ? "border-white/15" : "border-ink/10"}`}
+                  className="btn btn-paper mt-6 w-full"
                 >
-                  <span>
-                    <span
-                      className={`mr-4 align-middle font-mono text-[10px] ${home ? "text-white/60" : "text-graphite"}`}
-                    >
-                      0{index + 1}
-                    </span>
-                    {link.label}
-                  </span>
-                  <ArrowUpRight
-                    className={`size-5 ${home ? "text-white/60" : "text-graphite"}`}
-                  />
+                  Request a discovery call
+                  <ArrowUpRight className="size-4" />
                 </Link>
-              ))}
-              <Link
-                href="/contact"
-                onClick={() => setOpen(false)}
-                className={`btn mt-6 w-full ${home ? "btn-paper" : "btn-ink"}`}
-              >
-                Start a conversation
-                <ArrowUpRight className="size-4" />
-              </Link>
-            </div>
-          </motion.nav>
-        )}
-      </AnimatePresence>
-    </header>
+              </div>
+            </motion.nav>
+          )}
+        </AnimatePresence>
+      </header>
+      {admin && <div className="site-header-row" aria-hidden="true" />}
+    </>
   );
 }

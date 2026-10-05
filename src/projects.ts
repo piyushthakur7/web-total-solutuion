@@ -343,3 +343,26 @@ export const WTS_CRM: ProjectData = {
 
 /** Ordered as they should appear on /projects. */
 export const PROJECTS: ProjectData[] = [WTS_CRM];
+
+/**
+ * What /projects shows. The page is a short overview that links to the case
+ * study and to wtscrm.com for the full feature list, plan comparison and FAQ,
+ * so only the features and questions that carry the story are picked here.
+ * Structured data on the route is built from these same lists.
+ */
+const pick = <T extends { title?: string; question?: string }>(list: T[], keys: string[]) =>
+  keys.flatMap((key) => list.filter((item) => (item.title ?? item.question) === key));
+
+export const PROJECT_PAGE_FEATURES = pick(WTS_CRM.features, [
+  'Keep every lead in context',
+  'Plan follow-ups and calls',
+  'Send quotations',
+  'Invoice and track payments',
+]);
+
+export const PROJECT_PAGE_FAQS = pick(WTS_CRM.faqs, [
+  'Who is WTS CRM for?',
+  'How much does WTS CRM cost?',
+  'Does WTS CRM send WhatsApp messages automatically?',
+  'Which integrations need separate setup?',
+]);

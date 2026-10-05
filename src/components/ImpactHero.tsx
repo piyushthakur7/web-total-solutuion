@@ -1,4 +1,4 @@
-﻿import React from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -51,7 +51,7 @@ const services = [
   },
   {
     title: "Launch & support",
-    detail: "With you beyond go-live",
+    detail: "30 days included",
     icon: Rocket,
     href: "/contact",
     position: "launch",
@@ -88,8 +88,8 @@ export default function ImpactHero() {
             stand out<span className="impact-period">.</span>
           </h1>
           <p className="impact-description">
-            High-impact websites for ambitious startups and brands.
-            <br /> Strategy, design and development, from first idea to launch.
+            Strategy, design and development for startup websites
+            <br /> that explain your product clearly and make the next step easy.
           </p>
           <div className="impact-actions">
             <Link href="#selected-work" className="impact-primary">
@@ -99,7 +99,7 @@ export default function ImpactHero() {
               </span>
             </Link>
             <Link href="/contact" className="impact-secondary">
-              Book a discovery call
+              Request a discovery call
               <ArrowUpRight className="size-3.5" />
             </Link>
           </div>

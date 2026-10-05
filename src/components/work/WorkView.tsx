@@ -1,79 +1,140 @@
-﻿import React from "react";
+import { HERO_IMAGES } from "../../stockImages";
+import React from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { WORK_CASE_STUDIES } from "../../work";
-import { PageIntro, SectionLabel } from "../StudioPrimitives";
+import { getPortfolioProjects } from "../../utils/insforge/portfolio";
+import { PageIntro, SectionHeading } from "../StudioPrimitives";
 import FinalCTA from "../FinalCTA";
 import WorkVisual from "./WorkVisual";
 
-const order = ["faw-dubai", "wts-crm", "mechverses", "medara-labs"];
-const studies = order.flatMap((slug) =>
-  WORK_CASE_STUDIES.filter((study) => study.slug === slug),
-);
-const backgrounds = [
-  "bg-[#ece8e1]",
-  "bg-[#e2eaf1]",
-  "bg-[#e3ecf7]",
-  "bg-[#eee8f0]",
-];
+/** Portfolio entries that already have a full case study above. */
+const CASE_STUDY_PORTFOLIO_IDS = ["fawdubai", "mechverses", "medaralabs"];
 
-export default function WorkView() {
+function domain(url: string) {
+  return url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
+}
+
+export default async function WorkView() {
+  const otherSites = (await getPortfolioProjects()).filter(
+    (item) => item.websiteUrl && !CASE_STUDY_PORTFOLIO_IDS.includes(item.id),
+  );
+
   return (
     <div className="bg-paper pb-16 text-ink sm:pb-24">
       <PageIntro
-        label="Selected work / Ideas brought to life"
+        label="Selected work"
+        image={HERO_IMAGES.work}
         title={
           <>
-            Built with purpose.
+            Four projects,
             <br />
-            Made to stand out.
+            explained properly.
           </>
         }
-        description="A closer look at the websites and products we design and build. Different industries, distinct personalities, and the same care in every detail."
+        description="One product of our own and three client websites. Each case study says what the business does, what we were asked to build and what was delivered."
       />
       <div className="studio-container">
-        {studies.map((study, index) => (
+        {WORK_CASE_STUDIES.map((study, index) => (
           <article
             key={study.slug}
-            className="border-t border-ink/15 py-10 sm:py-16"
+            className="grid items-center gap-7 border-t border-ink/15 py-10 first:border-t-0 first:pt-0 sm:py-14 lg:grid-cols-12 lg:gap-12"
           >
             <Link
               href={`/work/${study.slug}`}
-              className="group grid items-center gap-8 lg:grid-cols-12 lg:gap-12"
+              className={`block lg:col-span-7 ${index % 2 ? "lg:order-2" : ""}`}
+              tabIndex={-1}
+              aria-hidden="true"
             >
-              <div
-                className={`rounded-[24px] p-5 sm:p-8 lg:col-span-7 ${backgrounds[index]} ${index % 2 ? "lg:order-2" : ""}`}
-              >
-                <WorkVisual
-                  study={study}
-                  sizes="(min-width: 1024px) 640px, 90vw"
-                  priority={index === 0}
-                />
-              </div>
-              <div className={`lg:col-span-5 ${index % 2 ? "lg:order-1" : ""}`}>
-                <SectionLabel>
-                  0{index + 1} / {study.category}
-                </SectionLabel>
-                <h2 className="mt-5 font-display text-4xl sm:text-5xl">
-                  {study.name}
-                </h2>
-                <p className="mt-4 font-display text-2xl leading-tight">
-                  {study.headline}
-                </p>
-                <p className="mt-4 max-w-md text-sm leading-relaxed text-graphite">
-                  {study.summary}
-                </p>
-                <span className="mt-7 inline-flex min-h-11 items-center gap-3 border-b border-ink/30 text-sm font-semibold group-hover:border-ink">
-                  Explore the project
-                  <ArrowUpRight className="size-4" />
-                </span>
-              </div>
+              <WorkVisual
+                image={study.cover}
+                label={study.websiteLabel}
+                sizes="(min-width: 1024px) 700px, 92vw"
+                priority={index === 0}
+              />
             </Link>
+            <div className={`lg:col-span-5 ${index % 2 ? "lg:order-1" : ""}`}>
+              <p className="flex flex-wrap items-center gap-2 text-sm text-graphite">
+                {study.ownProduct && (
+                  <span className="rounded-full bg-marker px-3 py-1 font-semibold text-ink">
+                    Own product
+                  </span>
+                )}
+                <span>
+                  {study.category}, {study.projectType.toLowerCase()}
+                </span>
+              </p>
+              <h2 className="mt-3 font-display text-4xl sm:text-[2.75rem]">
+                <Link
+                  href={`/work/${study.slug}`}
+                  className="underline-offset-4 hover:underline"
+                >
+                  {study.name}
+                </Link>
+              </h2>
+              <p className="mt-4 max-w-md text-[16px] leading-relaxed text-graphite">
+                {study.summary}
+              </p>
+              <dl className="mt-5 max-w-md space-y-2 text-sm">
+                <div className="flex gap-3">
+                  <dt className="w-24 shrink-0 text-graphite">Our role</dt>
+                  <dd>{study.role}</dd>
+                </div>
+                <div className="flex gap-3">
+                  <dt className="w-24 shrink-0 text-graphite">Delivered</dt>
+                  <dd>{study.scope.join(", ")}</dd>
+                </div>
+              </dl>
+              <Link
+                href={`/work/${study.slug}`}
+                className="text-link mt-6 inline-flex min-h-11 items-center gap-2 text-sm"
+              >
+                Read the {study.name} case study
+                <ArrowUpRight className="size-4" aria-hidden="true" />
+              </Link>
+            </div>
           </article>
         ))}
       </div>
-      <div className="mt-8 sm:mt-14">
-        <FinalCTA headline="Your project could be next." />
+
+      {otherSites.length > 0 && (
+        <section className="mt-6 bg-white py-14 sm:py-20">
+          <div className="studio-container">
+            <SectionHeading
+              heading="Other live client websites"
+              intro={`${otherSites.length} more sites we have built, mostly for Indian businesses. They open on the client’s own domain, so you can judge them as they are today.`}
+            />
+            <ul className="mt-9 grid gap-x-10 sm:grid-cols-2 lg:grid-cols-3">
+              {otherSites.map((site) => (
+                <li key={site.id} className="border-t border-ink/15">
+                  <a
+                    href={site.websiteUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex min-h-14 items-center justify-between gap-4 py-3"
+                  >
+                    <span>
+                      <span className="block text-[15px] font-semibold group-hover:underline">
+                        {site.title}
+                      </span>
+                      <span className="block text-sm text-graphite">
+                        {domain(site.websiteUrl ?? "")}
+                      </span>
+                    </span>
+                    <ArrowUpRight
+                      className="size-4 shrink-0 text-graphite"
+                      aria-hidden="true"
+                    />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
+
+      <div className="mt-14 sm:mt-20">
+        <FinalCTA headline="Have a project like one of these?" />
       </div>
     </div>
   );

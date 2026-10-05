@@ -1,36 +1,49 @@
 /**
- * Shared conversion / trust content used across the homepage and landing pages.
- * Keeping it here means copy edits happen in one file instead of across JSX.
+ * Shared facts used across the site: contact details, offices, the founder,
+ * the current website packages and the commitments made on every project.
+ *
+ * This file is the single source for package names, USD starting prices,
+ * inclusions, revision counts, the support term and enquiry labels. Pages
+ * render from it rather than restating a price or a support period, so a
+ * change here changes the whole site.
  */
+
+export const SITE_URL = 'https://www.webtotalsolution.com';
 
 export const WHATSAPP_URL = 'https://wa.me/916291519364';
 export const PHONE_DISPLAY = '+91 6291 519 364';
+export const PHONE_HREF = 'tel:+916291519364';
 export const EMAIL = 'info@webtotalsolution.com';
-
-/** Where "international clients" links point. */
-export const INTERNATIONAL_PAGE_PATH = '/law-firm-websites';
+export const WORKING_HOURS = 'Monday to Saturday, 10:00 AM to 7:00 PM IST';
 
 /**
- * Primary CTA target on the international page: a pre-filled WhatsApp message.
- * There is no call booking — the first conversation happens over WhatsApp or
- * email.
+ * Pre-filled WhatsApp message used only on /law-firm-websites, where the first
+ * conversation happens over WhatsApp or email.
  */
-export const BOOKING_URL =
+export const LAW_FIRM_WHATSAPP_URL =
   'https://wa.me/916291519364?text=Hi%2C%20I%27m%20interested%20in%20a%20website%20for%20my%20law%20firm.';
 
 /**
- * Founder details shown on /about and the international page.
- * TODO(founder): photo path still to be supplied — an initials tile is shown
- * until `photo` is set. Never fill empty fields with invented copy.
+ * Founder details shown on /about and /law-firm-websites.
+ * `photo` stays null until a genuine portrait is supplied; nothing is rendered
+ * in its place. Never fill empty fields with invented copy.
  */
-export const FOUNDER: { name: string; title: string; bio: string[]; photo: string | null } = {
+export const FOUNDER: { name: string; title: string; photo: string | null } = {
   name: 'Piyush Thakur',
-  title: 'Founder & Lead Developer',
-  bio: [
-    'I founded Web Total Solution to build websites that do one job well: turn visitors into enquiries. Our team has delivered 100+ websites across India and overseas, and we specialise in fast, search-ready Next.js sites. Alongside client work, we build our own software — WTS CRM, a lead and invoicing platform for service businesses.',
-  ],
+  title: 'Founder, designer and lead developer',
   photo: null,
 };
+
+/**
+ * Headline figures, supplied by the business (confirmed by the founder,
+ * October 2026). Update them here as they change; pages render from this list
+ * and should not restate the numbers.
+ */
+export const STUDIO_STATS = [
+  { value: '100+', label: 'Websites delivered' },
+  { value: '30+', label: 'Industries served' },
+  { value: '5 years', label: 'Experience in web development' },
+];
 
 /** Offices we operate from. Kolkata is the primary (registered) address. */
 export const OFFICES = [
@@ -55,312 +68,268 @@ export const OFFICES = [
 export const LEAD_CAPTURE_URL = 'https://6rggp898.ap-southeast.insforge.app/functions/capture-lead';
 export const LEAD_CAPTURE_KEY = '7d1968548bef4caeaa40f5158ecdf54d9ef6f9b93a394b5e9b1d6e57a21b312f';
 
-/** Public Google Business listing — the source of the rating shown on the site. */
+/**
+ * Public Google Business listing. The site links to it but does not print a
+ * rating or review count: a number hard-coded here goes stale and cannot be
+ * checked from the page.
+ */
 export const GOOGLE_REVIEWS_URL = 'https://share.google/na7XhIzRCjwcQnh9J';
-export const GOOGLE_RATING = 4.6;
 
-/** Short reassurance chips shown directly under the primary CTA. */
-export const HERO_TRUST_BADGES = [
-  'Fast Delivery',
-  'SEO Ready',
-  'Mobile Responsive',
-  '30 Days Support',
-];
+/* -------------------------------------------------------------------------- */
+/* Enquiry wording                                                            */
+/* -------------------------------------------------------------------------- */
 
 /**
- * Headline social proof.
- * NOTE: `100+` is the figure supplied by the business. Update these numbers as
- * the portfolio grows — every claim here should stay verifiable.
+ * No scheduler is integrated: every "call" action opens the enquiry form, so
+ * the label asks for a call instead of promising a booked time.
  */
-export const TRUST_STATS = [
-  { value: '100+', label: 'Websites Delivered', sub: 'Across 30+ industries' },
-  { value: '4.6★', label: 'Google Rating', sub: 'Verified client reviews' },
-  { value: '100%', label: 'Mobile Responsive', sub: 'Every build, every device' },
-  { value: '24 hrs', label: 'Response Time', sub: 'On every new inquiry' },
-];
+export const CTA = {
+  primary: 'Request a discovery call',
+  quote: 'Request a project quote',
+  discuss: 'Discuss this project',
+  work: 'View selected work',
+};
 
-/** Secondary proof strip — capability signals rather than numbers. */
-export const CAPABILITY_SIGNALS = [
-  'SEO Optimised Structure',
-  'Modern, Premium UI',
-  'Core Web Vitals Tuned',
-  'Secure & SSL Ready',
-  'Full Code Ownership',
-];
+export const RESPONSE_EXPECTATION = 'We reply within one working day.';
 
-/** "Web Total Solution vs Typical Freelancer" comparison rows. */
-export const COMPARISON_ROWS: {
-  feature: string;
-  detail: string;
-  agency: boolean;
-  freelancer: boolean | 'partial';
-}[] = [
+/** What happens after an enquiry, in order. Shown beside every enquiry form. */
+export const NEXT_STEPS = [
   {
-    feature: 'Professional Design',
-    detail: 'Custom UI built around your brand — never a recycled template.',
-    agency: true,
-    freelancer: 'partial',
+    title: 'You describe the project',
+    text: 'A few lines about the business, the audience and what the website or product needs to do.',
   },
   {
-    feature: 'SEO Ready',
-    detail: 'Semantic structure, schema markup and metadata configured at build.',
-    agency: true,
-    freelancer: false,
+    title: 'We reply within one working day',
+    text: 'By email, or WhatsApp if you left a number, with any questions and a suggested time for a discovery call.',
   },
   {
-    feature: 'Fast Loading',
-    detail: 'Image optimisation, lazy loading and Core Web Vitals auditing.',
-    agency: true,
-    freelancer: false,
+    title: 'We agree the scope together',
+    text: 'Pages, content responsibilities, integrations and anything that needs a separate budget.',
   },
   {
-    feature: 'Scalable',
-    detail: 'Add pages, products or a booking system later without a rebuild.',
-    agency: true,
-    freelancer: false,
-  },
-  {
-    feature: 'Ongoing Support',
-    detail: 'A team that answers within 24 hours — not one person going quiet.',
-    agency: true,
-    freelancer: 'partial',
-  },
-  {
-    feature: 'Business Strategy',
-    detail: 'We map your customer journey before we design a single screen.',
-    agency: true,
-    freelancer: false,
-  },
-  {
-    feature: 'Conversion Focus',
-    detail: 'Every page is structured to turn visitors into enquiries.',
-    agency: true,
-    freelancer: false,
+    title: 'You receive a written quote',
+    text: 'Scope, price, payment milestones and timeline in writing. There is no obligation to go ahead.',
   },
 ];
 
-/** 5-step delivery process. */
+/* -------------------------------------------------------------------------- */
+/* Website packages                                                           */
+/* -------------------------------------------------------------------------- */
+
+/** The support period included with every website package. */
+export const SUPPORT_DAYS = 30;
+export const SUPPORT_TERM = `${SUPPORT_DAYS} days of post-launch support`;
+export const SUPPORT_DETAIL = `Every website package includes ${SUPPORT_TERM} for fixes, small content changes and technical help. Ongoing maintenance is quoted separately.`;
+
+export const OWNERSHIP_TERM =
+  'You own the domain, hosting account, content and source code of the delivered website.';
+
+export interface WebsitePackage {
+  /** Stable key used in enquiry links: /contact?package=<slug>. */
+  slug: string;
+  name: string;
+  /** Starting price in USD. A starting price, never a fixed fee for any scope. */
+  from: number;
+  audience: string;
+  /** What the starting price is scoped around. */
+  scope: string;
+  includes: string[];
+  /** Revision rounds included, or null when agreed per project. */
+  revisionRounds: number | null;
+  /** What moves the quote above the starting price. */
+  quoteDrivers: string;
+  highlight: boolean;
+  /** LeadForm project type pre-selected for this package. */
+  projectType: string;
+}
+
+export const WEBSITE_PACKAGES: WebsitePackage[] = [
+  {
+    slug: 'landing-page-sprint',
+    name: 'Landing Page Sprint',
+    from: 1200,
+    audience: 'For an early-stage startup launching or testing one offer.',
+    scope: 'One landing page built around a single audience, offer and action.',
+    includes: [
+      'Message hierarchy and page structure',
+      'Wireframe before visual design',
+      'Custom UI design',
+      'Responsive Next.js build',
+      'Enquiry, demo or waitlist form',
+      'Basic on-page SEO',
+      'Analytics setup',
+    ],
+    revisionRounds: 2,
+    quoteDrivers: 'Copywriting, extra sections or pages, custom illustration and third-party integrations.',
+    highlight: false,
+    projectType: 'Landing Page',
+  },
+  {
+    slug: 'startup-growth-site',
+    name: 'Startup Growth Site',
+    from: 2500,
+    audience: 'For a startup that needs a complete marketing website.',
+    scope: 'A multi-page marketing website. The page list is agreed in the written scope.',
+    includes: [
+      'Everything in the Landing Page Sprint',
+      'Site structure and page-by-page messaging',
+      'Product and feature pages',
+      'CMS or blog, where scoped',
+      'SEO foundation: metadata, sitemap, structured data',
+      'Analytics and enquiry tracking',
+    ],
+    revisionRounds: 3,
+    quoteDrivers: 'Number of page templates, CMS content types, copywriting, migration from an existing site and integrations.',
+    highlight: true,
+    projectType: 'Startup Marketing Website',
+  },
+  {
+    slug: 'custom-product-website',
+    name: 'Custom Product Website',
+    from: 5000,
+    audience: 'For a product company whose website has more to explain or connect.',
+    scope: 'A scoped product or marketing website with custom structure, content types and integrations.',
+    includes: [
+      'UX strategy and information architecture',
+      'Custom page templates and interactions',
+      'CMS with dynamic content',
+      'API and third-party integrations, as scoped',
+      'Interactive product explanations, where scoped',
+      'Performance work on the built pages',
+    ],
+    revisionRounds: null,
+    quoteDrivers: 'Depth of integrations, number of content types, interaction design and any product interface work, which is scoped separately.',
+    highlight: false,
+    projectType: 'Startup Marketing Website',
+  },
+];
+
+export function getPackage(slug: string | null | undefined) {
+  return WEBSITE_PACKAGES.find((pkg) => pkg.slug === slug);
+}
+
+export function formatUsd(amount: number) {
+  return `$${amount.toLocaleString('en-US')}`;
+}
+
+export function revisionLabel(pkg: WebsitePackage) {
+  return pkg.revisionRounds === null
+    ? 'Revision rounds agreed in the written scope'
+    : `${pkg.revisionRounds} revision rounds`;
+}
+
+/** Notes that apply to every package, shown wherever prices are listed. */
+export const PACKAGE_TERMS = [
+  'Starting prices in USD. The written quote follows a scope review and can be higher.',
+  'Timeline agreed after scope review and confirmed in the written quote.',
+  'Design is approved before development begins.',
+  SUPPORT_DETAIL,
+  OWNERSHIP_TERM,
+  'Hosting, domains, paid plugins and third-party services are billed by their providers and listed in the quote.',
+  'Payment milestones are set out in the written quote.',
+  'Web applications, dashboards and mobile apps are not part of these packages and are scoped separately.',
+];
+
+/* -------------------------------------------------------------------------- */
+/* Process, commitments, FAQs                                                 */
+/* -------------------------------------------------------------------------- */
+
+/** The five stages of a project: what you get, and what we need from you. */
 export const PROCESS_STEPS = [
   {
     step: '01',
-    title: 'Discovery Call',
-    description:
-      'We understand your business, your customers and what a successful website actually needs to achieve for you.',
+    title: 'Discovery',
+    description: 'We talk through the business, the audience and what the website has to achieve.',
+    output: 'A written scope and quote.',
+    yourPart: 'One conversation, and any existing brand or content material.',
   },
   {
     step: '02',
-    title: 'Planning',
-    description:
-      'We map the page structure, customer journey and conversion points, then share a clear scope, timeline and fixed quote.',
+    title: 'Structure',
+    description: 'Messaging and page structure are worked out before anything is styled.',
+    output: 'Sitemap and wireframes.',
+    yourPart: 'Review and approve the structure.',
   },
   {
     step: '03',
     title: 'Design',
-    description:
-      'You review a premium, on-brand design before development begins — so there are no surprises at handover.',
+    description: 'The approved structure becomes a designed interface, on desktop and mobile.',
+    output: 'UI design for the agreed pages.',
+    yourPart: 'Feedback within the agreed revision rounds, then sign-off.',
   },
   {
     step: '04',
     title: 'Development',
-    description:
-      'We build a fast, secure, mobile-first website with SEO structure and analytics configured from day one.',
+    description: 'The approved design is built responsively, with the CMS and integrations in the scope.',
+    output: 'A working preview link.',
+    yourPart: 'Final content, and access to the accounts the site connects to.',
   },
   {
     step: '05',
-    title: 'Launch & Support',
-    description:
-      'We handle domain, hosting and go-live, then support you for 30 days so your website keeps performing.',
+    title: 'Launch and support',
+    description: 'Testing, go-live and handover, followed by the included support period.',
+    output: `The live website, handover and ${SUPPORT_TERM}.`,
+    yourPart: 'Launch approval.',
   },
 ];
 
 /**
- * Commitments made in writing on every project, shown in the trust section.
+ * Commitments made in writing on every project.
  *
  * Keep every line here to something the business actually does and would honour
  * if a client held us to it — this section exists precisely because invented
  * testimonials do not survive scrutiny.
  */
 export const CLIENT_COMMITMENTS = [
-  'A fixed written quote before any work begins — never an open-ended estimate',
-  'An agreed delivery date, confirmed in writing at the start',
-  'Design approval before a single line of development',
-  '30 days of post-launch support included',
-  'Full ownership of your domain, hosting, content and source code',
-  'A reply within 24 hours, from a team rather than one person',
+  'A written scope and quote before any work begins',
+  'A timeline agreed after scope review, confirmed in writing',
+  'Design approval before development starts',
+  `${SUPPORT_TERM} included`,
+  'Ownership of your domain, hosting, content and source code',
+  'A reply within one working day',
 ];
 
-/**
- * Homepage FAQ set — also emitted as FAQPage schema. An optional `link` renders
- * after the answer in <FAQSection />.
- */
-export const HOME_FAQS: { question: string; answer: string; link?: { label: string; href: string } }[] = [
-  {
-    question: 'How much does a professional business website cost?',
-    answer:
-      'Every project is quoted on scope rather than a fixed package, because a 5-page service website and a 40-product store are very different builds. The cost depends on the number of pages, how much custom design is involved and the features you need. Book a free consultation and you will get a written quote with the exact scope, timeline and deliverables — no hidden fees. International projects are quoted in USD.',
-    link: { label: 'See how we work with international clients', href: INTERNATIONAL_PAGE_PATH },
-  },
-  {
-    question: 'How long does it take to build a business website?',
-    answer:
-      'A focused landing page typically goes live in 1–2 weeks. A complete business website with 5–10 pages usually takes 2–4 weeks, and e-commerce or custom platforms take longer depending on features. We confirm the exact timeline in writing before development starts.',
-  },
-  {
-    question: 'Will my website be mobile-friendly and SEO optimised?',
-    answer:
-      'Yes — every website we build is mobile-first and ships with technical SEO in place: clean heading structure, fast load times, schema markup, optimised images, sitemap and metadata. We design for the phone first and scale up.',
-  },
-  {
-    question: 'Do you provide support after the website goes live?',
-    answer:
-      'Yes. Every project includes 30 days of complimentary post-launch support covering fixes, small content changes and technical assistance. Ongoing maintenance and content update plans are available if you want us to keep managing the site.',
-  },
-  {
-    question: 'Do I own the website and the code?',
-    answer:
-      'Completely. You own the domain, the hosting account, the content and the source code. We do not lock clients into proprietary systems or hold assets hostage — if you ever move on, everything transfers to you.',
-  },
-  {
-    question: 'Can you redesign my existing website instead of starting over?',
-    answer:
-      'Yes. Redesign is one of our core services. We audit your current site for speed, mobile experience, SEO and conversion gaps, then rebuild it on a modern stack while preserving your existing rankings and content equity.',
-  },
-  {
-    question: 'Do you work with businesses outside Kolkata?',
-    answer:
-      'Yes. We are based in Kolkata and work with businesses across India and internationally. The entire process — consultation, design reviews, approvals and handover — runs smoothly over call, email and WhatsApp.',
-  },
-];
+export interface Faq {
+  question: string;
+  answer: string;
+  link?: { label: string; href: string };
+}
 
-/**
- * Startup-facing packages shown on /pricing. Priced in USD and sold on
- * strategy, design and engineering rather than page count.
- */
-export const STARTUP_PACKAGES: {
-  name: string;
-  audience: string;
-  /** Starting price in USD. */
-  from: number;
-  /** Short qualifier shown beside the price. */
-  priceNote: string;
-  highlight: boolean;
-  features: string[];
-  cta: string;
-  /** LeadForm project type pre-selected on /contact. */
-  projectType: string;
-}[] = [
+/** Homepage FAQ set — also emitted as FAQPage schema. */
+export const HOME_FAQS: Faq[] = [
   {
-    name: 'Landing Page Sprint',
-    audience: 'For early-stage startups launching or validating an offer.',
-    from: 1200,
-    priceNote: 'one-time project',
-    highlight: false,
-    features: [
-      'Conversion strategy & research',
-      'UX wireframing',
-      'Custom UI design',
-      'Next.js development',
-      'Mobile responsive',
-      'Basic SEO',
-      'Analytics setup',
-      '2 revision rounds',
-    ],
-    cta: 'Book a Discovery Call',
-    projectType: 'Landing Page',
+    question: 'What kind of project is a good fit?',
+    answer:
+      'Startup marketing websites, product websites and landing pages, where the job is to explain a product clearly and lead a visitor to one next step. Product interfaces and web applications are taken on as separately scoped projects. If your project is a better fit for a template or a website builder, we will say so.',
   },
   {
-    name: 'Startup Growth Site',
-    audience: 'For seed and funded startups that need a serious marketing site.',
-    from: 2500,
-    priceNote: 'one-time project',
-    highlight: true,
-    features: [
-      'Everything in Landing Page Sprint',
-      'Multi-page marketing website',
-      'Advanced UI/UX design',
-      'Product & feature pages',
-      'CMS / blog integration',
-      'Advanced SEO foundation',
-      'Analytics + conversion tracking',
-      '3 revision rounds',
-    ],
-    cta: 'Book a Strategy Call',
-    projectType: 'Business Website',
+    question: 'How is the price decided?',
+    answer:
+      'The three packages have starting prices in USD: Landing Page Sprint from $1,200, Startup Growth Site from $2,500 and Custom Product Website from $5,000. The written quote follows a scope review and depends on the number of page templates, who writes the content, the CMS and the integrations involved.',
+    link: { label: 'See what each package includes', href: '/pricing' },
   },
   {
-    name: 'Custom Product Website',
-    audience: 'For funded startups with complex product requirements.',
-    from: 5000,
-    priceNote: 'or custom quote',
-    highlight: false,
-    features: [
-      'Full UX strategy',
-      'Custom information architecture',
-      'Advanced animations & interactions',
-      'CMS & dynamic content',
-      'API & third-party integrations',
-      'Custom dashboards & modules',
-      'Performance engineering',
-      'Dedicated post-launch support',
-    ],
-    cta: 'Discuss Your Project',
-    projectType: 'SaaS / Web Application',
-  },
-];
-
-/**
- * INR starting-price packages for domestic projects, summarised on the local
- * SEO landing pages. /pricing uses STARTUP_PACKAGES instead.
- */
-export const PRICING_PACKAGES: {
-  name: string;
-  audience: string;
-  /** Starting price in INR; null means quoted individually. */
-  from: number | null;
-  highlight: boolean;
-  features: string[];
-}[] = [
-  {
-    name: 'Business Essential',
-    audience: 'For established businesses that need a credible, lead-generating presence online.',
-    from: 15000,
-    highlight: false,
-    features: [
-      'Up to 5 custom-designed pages',
-      'Mobile-first responsive build',
-      'On-page SEO & schema setup',
-      'Enquiry form + WhatsApp integration',
-      'Google Analytics & Search Console',
-      '30 days post-launch support',
-    ],
+    question: 'How long does a project take?',
+    answer:
+      'It depends on the scope and on how quickly content and approvals come back, so the timeline is agreed after the scope review and written into the quote. We would rather give you a date we can keep than a headline number.',
   },
   {
-    name: 'Business Growth',
-    audience: 'For businesses actively competing for search traffic and paid-ad conversions.',
-    from: 35000,
-    highlight: true,
-    features: [
-      'Up to 10 custom-designed pages',
-      'Conversion-focused page structure',
-      'Advanced SEO & content optimisation',
-      'Content management system (CMS)',
-      'Blog setup & landing page templates',
-      'Speed & Core Web Vitals tuning',
-      '90 days post-launch support',
-    ],
+    question: 'Who provides the content?',
+    answer:
+      'Either you supply the copy and images, or copywriting is added to the scope. Whichever applies is written into the quote, because late content is the most common reason a website launch moves.',
   },
   {
-    name: 'Premium & Custom',
-    audience: 'For e-commerce, multi-location brands and custom platform requirements.',
-    from: null,
-    highlight: false,
-    features: [
-      'Unlimited pages & custom modules',
-      'E-commerce or booking functionality',
-      'Payment gateway integration',
-      'Custom database & user accounts',
-      'Third-party & CRM integrations',
-      'Priority support & maintenance plan',
-    ],
+    question: 'Who owns the website when it is finished?',
+    answer:
+      'You do. The domain, hosting account, content and source code of the delivered website are yours, and accounts are set up in your name. Nothing is locked to us.',
+  },
+  {
+    question: 'How do you work with clients outside India?',
+    answer:
+      'Quotes and invoices are in USD. Day-to-day communication runs over email, with WhatsApp or Slack if you prefer, and calls are arranged in the overlap between your working day and Indian Standard Time. Design reviews and approvals happen on shared preview links, so nothing depends on being in the same room.',
+  },
+  {
+    question: 'What support is included after launch?',
+    answer: SUPPORT_DETAIL,
   },
 ];

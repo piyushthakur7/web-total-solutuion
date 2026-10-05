@@ -4,6 +4,8 @@
  * Unsplash License (free for commercial use, no attribution required).
  * `source` is kept so each photo can be traced back or replaced.
  *
+ * They are used as tinted backdrops in page heroes (see HERO_IMAGES below).
+ *
  * These are illustrative only — never present a stock photo as our office, our
  * team or a client. Real project imagery lives in /public/work.
  */
@@ -48,4 +50,15 @@ export const STOCK_IMAGES = {
     alt: 'Meeting room with chairs around a table',
     source: 'https://unsplash.com/photos/tjd5CfdDPRA',
   },
+};
+
+/** Which backdrop each kind of page uses in its hero. */
+export const HERO_IMAGES = {
+  work: STOCK_IMAGES.websiteDesk,
+  services: STOCK_IMAGES.wireframeLayouts,
+  studio: STOCK_IMAGES.designDesk,
+  planning: STOCK_IMAGES.wireframeSketch,
+  code: STOCK_IMAGES.codeLaptop,
+  commerce: STOCK_IMAGES.onlinePayment,
+  law: STOCK_IMAGES.lawBooks,
 };

@@ -260,16 +260,6 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     websiteUrl: 'https://www.fihmonline.com/',
   },
   {
-    id: 'spellzee',
-    title: 'Spellzee',
-    category: 'Corporate',
-    description: 'Site for an IITM-incubated phonics and language learning platform running live classes that build reading, writing and speaking skills for children aged 4 to 14.',
-    highlight: 'Playful Learning',
-    imageUrl: '/portfolio/spellzee.webp',
-    techStack: ['WordPress', 'Elementor', 'Demo Booking', 'SEO Optimization'],
-    websiteUrl: 'https://spellzee.in/',
-  },
-  {
     id: 'adarshgyanniketan',
     title: 'Adarsh Gyan Niketan',
     category: 'Corporate',

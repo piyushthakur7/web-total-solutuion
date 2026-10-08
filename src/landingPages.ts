@@ -976,8 +976,8 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
     ],
     evidence: {
       heading: 'Work of the kind Pune companies commission',
-      body: 'Laiken Engineering Company is an industrial supplier site built around sending a specification and getting a written quote. Spellzee is the site for a learning platform running live classes for children. Both are live, and the work page lists every client site with a link.',
-      portfolioIds: ['laikenengineering', 'spellzee'],
+      body: 'Laiken Engineering Company is an industrial supplier site built around sending a specification and getting a written quote. Hindustan Flow Control is a commercial catalogue for industrial flow valves and piping systems. Both are live, and the work page lists every client site with a link.',
+      portfolioIds: ['laikenengineering', 'hindustanflowcontrol'],
     },
     intro: {
       heading: 'For a city of engineers, institutes and exporters',

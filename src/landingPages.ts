@@ -836,6 +836,598 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
       ],
     },
   },
+
+  /**
+   * Remote-served city pages. We have no office in Mumbai, Pune, Hyderabad or
+   * Bengaluru and the copy says so; Noida is served from the Delhi office.
+   * Each page is written around that market's typical sites and only shows
+   * work that genuinely fits it. Do not claim a local address, a named local
+   * client or in-person availability here unless the business supplies one.
+   */
+  'website-development-company-mumbai': {
+    slug: 'website-development-company-mumbai',
+    heroImage: HERO_IMAGES.work,
+    serviceName: 'Website Development in Mumbai',
+    projectType: 'Business Website',
+    label: 'Mumbai',
+    h1: 'Website development company for Mumbai businesses',
+    lead: 'A founder-led studio with offices in Kolkata and Delhi, building websites for Mumbai firms remotely. Design and build are reviewed on shared previews, and the scope and price are written down before work starts.',
+    facts: [
+      { label: 'Studio', value: 'Offices in Kolkata and Delhi' },
+      { label: 'Working with Mumbai', value: 'Remote: calls, WhatsApp and shared previews' },
+      { label: 'Pricing', value: 'Written quote in INR after scope review' },
+      { label: 'Support', value: '30 days after launch' },
+    ],
+    evidence: {
+      heading: 'Work of the kind Mumbai businesses commission',
+      body: 'Gromore Investment is an investment site organised around goals such as retirement and education. The Selvedge is a B2B showcase for a denim manufacturer working with brands on private labels and OEM production. Both are live, and the work page lists every client site with a link.',
+      portfolioIds: ['groomore', 'theselvedge'],
+    },
+    intro: {
+      heading: 'A website that holds up in a crowded market',
+      paragraphs: [
+        'Mumbai buyers compare quickly. Someone who finds a finance, legal, trading or design firm on their phone is judging whether it looks established, so the first screen has to say what you do and for whom, and the next one has to show it is real.',
+        'We are not in Mumbai, and we do not pretend otherwise. Discovery is a call or a WhatsApp chat in your working hours, and every design and build is shared as a preview link you can open on the phone your customers use. Nobody needs to travel.',
+      ],
+    },
+    sections: [
+      {
+        heading: 'What Mumbai businesses commonly ask for',
+        items: [
+          {
+            title: 'Websites for professional and financial firms',
+            description: 'Advisers, consultancies, law and accounting practices, where clear credentials and an obvious enquiry route matter more than effects.',
+            href: '/business-website-development',
+          },
+          {
+            title: 'Catalogues for traders, exporters and manufacturers',
+            description: 'Product ranges with specifications and an enquiry on each item, for buyers who ask for a quote rather than pay by card.',
+            href: '/work/mechverses',
+          },
+          {
+            title: 'Online stores for brands selling direct',
+            description: 'Category, product, cart and checkout with payment integration, for fashion, jewellery and lifestyle brands.',
+            href: '/ecommerce-development',
+          },
+          {
+            title: 'Redesigns of an ageing site',
+            description: 'A new structure and design, with existing URLs mapped so search visibility is not thrown away.',
+            href: '/website-redesign',
+          },
+        ],
+      },
+      {
+        heading: 'Working with a studio in another city',
+        intro: 'Most of a website project never needed a meeting room.',
+        items: [
+          { title: 'Calls in your hours', description: 'We are available Monday to Saturday, 10:00 AM to 7:00 PM IST.' },
+          { title: 'Previews instead of site visits', description: 'You review pages on a live link, on your own devices, and send comments in one place.' },
+          { title: 'Content agreed up front', description: 'The quote says who writes and supplies the copy, photos and logos, which is where most delays begin.' },
+          { title: 'Accounts in your name', description: 'The domain, hosting and source code are registered to your business and handed over at launch.' },
+        ],
+      },
+    ],
+    groups: {
+      heading: 'Parts of Mumbai we work with',
+      intro: 'Remote delivery, so location does not limit who we can work with.',
+      items: [
+        {
+          title: 'Mumbai',
+          values: ['Andheri', 'Bandra', 'Bandra Kurla Complex', 'Lower Parel', 'Powai', 'Fort and Nariman Point', 'Borivali', 'Goregaon', 'Chembur', 'Worli'],
+        },
+        { title: 'Wider region', values: ['Navi Mumbai', 'Thane', 'Vashi'] },
+      ],
+    },
+    quote: { heading: 'Website development cost in Mumbai', paragraphs: DOMESTIC_QUOTE },
+    faqHeading: 'Website development for Mumbai businesses: questions',
+    faqs: [
+      {
+        question: 'Do you have an office in Mumbai?',
+        answer:
+          'No. Our offices are in Garia, Kolkata and Rohini, Delhi. We work with Mumbai businesses remotely, using calls, WhatsApp and shared preview links.',
+      },
+      {
+        question: 'How much does website development cost in Mumbai?',
+        answer:
+          'It depends on the pages, the level of custom design and the features. We do not publish a fixed rupee price list. After a scope review you receive a written quote in INR, so you know the full cost before work begins.',
+      },
+      {
+        question: 'Can a studio outside Mumbai understand my market?',
+        answer:
+          'The brief comes from you, and the discovery call is where we test it: who the customer is, what they ask first and what they compare you with. We look at your competitors’ sites with you before design starts.',
+      },
+      {
+        question: 'Can you redesign my existing website?',
+        answer:
+          'Yes. We keep the pages that earn traffic, map existing URLs to their new locations with redirects, and rebuild structure and design around what the business needs the site to do now.',
+        link: { label: 'About website redesign', href: '/website-redesign' },
+      },
+      RANKING_FAQ,
+      SUPPORT_FAQ,
+    ],
+    meta: {
+      title: 'Website Development Company in Mumbai | Web Total Solution',
+      description:
+        'Website development for Mumbai businesses: business sites, catalogues, online stores and redesigns, built remotely with a written quote in INR. Request a project quote.',
+      keywords: [
+        'website development company in Mumbai',
+        'web development company in Mumbai',
+        'website design company in Mumbai',
+        'website developer in Mumbai',
+        'web design agency Mumbai',
+        'website development cost in Mumbai',
+      ],
+    },
+  },
+
+  'website-development-company-pune': {
+    slug: 'website-development-company-pune',
+    heroImage: HERO_IMAGES.studio,
+    serviceName: 'Website Development in Pune',
+    projectType: 'Business Website',
+    label: 'Pune',
+    h1: 'Website development company for Pune businesses',
+    lead: 'Websites for Pune manufacturers, IT firms, institutes and startups, built remotely by a founder-led studio in Kolkata and Delhi. You get the pages, features and price in writing first.',
+    facts: [
+      { label: 'Studio', value: 'Offices in Kolkata and Delhi' },
+      { label: 'Working with Pune', value: 'Remote: calls, WhatsApp and shared previews' },
+      { label: 'Pricing', value: 'Written quote in INR after scope review' },
+      { label: 'Support', value: '30 days after launch' },
+    ],
+    evidence: {
+      heading: 'Work of the kind Pune companies commission',
+      body: 'Laiken Engineering Company is an industrial supplier site built around sending a specification and getting a written quote. Spellzee is the site for a learning platform running live classes for children. Both are live, and the work page lists every client site with a link.',
+      portfolioIds: ['laikenengineering', 'spellzee'],
+    },
+    intro: {
+      heading: 'For a city of engineers, institutes and exporters',
+      paragraphs: [
+        'Pune’s businesses are often technical and sell to people who check details. A component maker, a software services firm or a coaching institute is judged on how clearly the site explains what it does, with specifications, credentials or syllabus easy to find.',
+        'We build for that reader. We work with Pune businesses from Kolkata and Delhi, over calls and shared previews, and the person who briefs us is the person leading the work.',
+      ],
+    },
+    sections: [
+      {
+        heading: 'What Pune businesses ask us for',
+        items: [
+          {
+            title: 'Specification-led catalogues for manufacturers',
+            description: 'Searchable product ranges with technical details and an enquiry on each item, for buyers who need a datasheet and a quote.',
+            href: '/work/mechverses',
+          },
+          {
+            title: 'Websites for IT and services companies',
+            description: 'Service pages, process and credentials, with a form that sends the enquiry to the right person.',
+            href: '/business-website-development',
+          },
+          {
+            title: 'Sites for institutes and training providers',
+            description: 'Courses, fees, faculty and admissions enquiries, organised so a parent or student finds the answer quickly.',
+            href: '/services/landing-pages',
+          },
+          {
+            title: 'Products and web applications',
+            description: 'Dashboards, portals and SaaS products, scoped separately from marketing websites.',
+            href: '/services/saas-development',
+          },
+        ],
+      },
+      {
+        heading: 'What we need from you to start',
+        intro: 'A short brief is enough; the scope review fills in the rest.',
+        items: [
+          { title: 'Who the buyer is', description: 'An OEM purchaser, a parent, a founder or a procurement team each need a different first screen.' },
+          { title: 'What you want them to do', description: 'Request a quote, book a demo, apply or call. One main action per page.' },
+          { title: 'What you already have', description: 'Catalogues, brochures, photos and an existing site, which we reuse where they are good.' },
+          { title: 'Who approves', description: 'One decision maker on your side keeps the schedule moving.' },
+        ],
+      },
+    ],
+    groups: {
+      heading: 'Parts of Pune we work with',
+      intro: 'Remote delivery, so any address works.',
+      items: [
+        {
+          title: 'Pune',
+          values: ['Kothrud', 'Baner', 'Aundh', 'Hinjewadi', 'Wakad', 'Kharadi', 'Viman Nagar', 'Hadapsar', 'Shivajinagar', 'Pimpri-Chinchwad', 'Chakan'],
+        },
+      ],
+    },
+    quote: { heading: 'Website development cost in Pune', paragraphs: DOMESTIC_QUOTE },
+    faqHeading: 'Website development for Pune businesses: questions',
+    faqs: [
+      {
+        question: 'Do you have an office in Pune?',
+        answer:
+          'No. Our offices are in Garia, Kolkata and Rohini, Delhi. We work with Pune businesses remotely, over calls, WhatsApp and shared preview links.',
+      },
+      {
+        question: 'How much does website development cost in Pune?',
+        answer:
+          'It depends on the pages, the custom design and the features. We do not publish a fixed rupee price list. After a scope review you receive a written quote in INR listing what is included.',
+      },
+      {
+        question: 'I manufacture components. Do I need an online store?',
+        answer:
+          'Usually not. Industrial buyers want to check a specification and request a price, so a catalogue with categories, technical details and an enquiry on each product suits better than a retail checkout.',
+      },
+      {
+        question: 'Can you build a product for my startup, not only a website?',
+        answer:
+          'Yes. Web applications and SaaS products are scoped separately after discovery, from the flows, roles and integrations they need. A marketing site can be built first so the product has somewhere to launch.',
+        link: { label: 'SaaS development', href: '/services/saas-development' },
+      },
+      RANKING_FAQ,
+      SUPPORT_FAQ,
+    ],
+    meta: {
+      title: 'Website Development Company in Pune | Web Total Solution',
+      description:
+        'Website development for Pune manufacturers, IT firms, institutes and startups: business sites, catalogues and web apps with a written quote in INR. Request a quote.',
+      keywords: [
+        'website development company in Pune',
+        'web development company in Pune',
+        'website design company in Pune',
+        'website developer in Pune',
+        'web design agency Pune',
+        'website development cost in Pune',
+      ],
+    },
+  },
+
+  'website-development-company-hyderabad': {
+    slug: 'website-development-company-hyderabad',
+    heroImage: HERO_IMAGES.work,
+    serviceName: 'Website Development in Hyderabad',
+    projectType: 'Business Website',
+    label: 'Hyderabad',
+    h1: 'Website development company for Hyderabad businesses',
+    lead: 'Websites for Hyderabad’s pharma, healthcare, IT and property businesses, built remotely by a founder-led studio in Kolkata and Delhi, with a written scope and quote before work begins.',
+    facts: [
+      { label: 'Studio', value: 'Offices in Kolkata and Delhi' },
+      { label: 'Working with Hyderabad', value: 'Remote: calls, WhatsApp and shared previews' },
+      { label: 'Pricing', value: 'Written quote in INR after scope review' },
+      { label: 'Support', value: '30 days after launch' },
+    ],
+    evidence: {
+      heading: 'A pharma website we built',
+      body: 'Medara Labs is a pharmaceutical marketing and distribution company. Its website is organised around the product range, filtered by what each product treats, with quality standards on a page of their own. It is the closest example to what a Hyderabad life-sciences company would need, and the case study explains the decisions.',
+      study: 'medara-labs',
+    },
+    intro: {
+      heading: 'For pharma, healthcare and technology companies',
+      paragraphs: [
+        'Hyderabad’s businesses range from pharmaceutical manufacturers and distributors to hospitals, software companies and property developers. In several of those, the website is read by someone cautious: a distributor checking credentials, a patient checking a clinic, a buyer checking a builder.',
+        'So the content has to be exact before it is attractive. We plan the pages and the claims with you, write nothing the business cannot stand behind and build for a quick, clear read on a phone. We do this remotely from Kolkata and Delhi.',
+      ],
+    },
+    sections: [
+      {
+        heading: 'What Hyderabad businesses ask us for',
+        items: [
+          {
+            title: 'Pharma and healthcare websites',
+            description: 'Product ranges, quality and certification pages and a clear enquiry route for distributors and partners.',
+            href: '/work/medara-labs',
+          },
+          {
+            title: 'Websites for IT and consulting firms',
+            description: 'Services, delivery approach and credentials written for the buyer’s evaluation, not for show.',
+            href: '/business-website-development',
+          },
+          {
+            title: 'Real estate and property sites',
+            description: 'Listings and project pages with enquiry forms. Our South Delhi Flats & Floors site is an example of the format.',
+            href: '/work',
+          },
+          {
+            title: 'Redesigns',
+            description: 'A new structure and design for a dated site, with existing URLs mapped so search traffic carries across.',
+            href: '/website-redesign',
+          },
+        ],
+      },
+      {
+        heading: 'How we handle regulated or sensitive content',
+        intro: 'Some industries cannot say whatever marketing would like.',
+        items: [
+          { title: 'You supply the claims', description: 'Product, treatment and certification statements come from you. We structure and present them, and do not invent them.' },
+          { title: 'Approval before publishing', description: 'Content is signed off on a preview link before it goes live.' },
+          { title: 'Plain language', description: 'Pages are written so a distributor, patient or buyer finds the answer without decoding jargon.' },
+          { title: 'Enquiries you can act on', description: 'Forms capture what you need to reply, and you choose where they are delivered.' },
+        ],
+      },
+    ],
+    groups: {
+      heading: 'Parts of Hyderabad we work with',
+      intro: 'Remote delivery, so any address works.',
+      items: [
+        {
+          title: 'Hyderabad',
+          values: ['HITEC City', 'Gachibowli', 'Madhapur', 'Kondapur', 'Banjara Hills', 'Jubilee Hills', 'Begumpet', 'Secunderabad', 'Kukatpally', 'Uppal'],
+        },
+      ],
+    },
+    quote: { heading: 'Website development cost in Hyderabad', paragraphs: DOMESTIC_QUOTE },
+    faqHeading: 'Website development for Hyderabad businesses: questions',
+    faqs: [
+      {
+        question: 'Do you have an office in Hyderabad?',
+        answer:
+          'No. Our offices are in Garia, Kolkata and Rohini, Delhi. We work with Hyderabad businesses remotely, over calls, WhatsApp and shared preview links.',
+      },
+      {
+        question: 'How much does website development cost in Hyderabad?',
+        answer:
+          'It depends on the number of pages, the custom design and the features. We do not publish a fixed rupee price list. After a scope review you receive a written quote in INR, so you know the full cost before work begins.',
+      },
+      {
+        question: 'Have you built a website for a pharmaceutical company?',
+        answer:
+          'Yes. Medara Labs, a pharmaceutical marketing and distribution company, is live and has a case study on this site. It is built around the product range and quality standards.',
+        link: { label: 'Read the Medara Labs case study', href: '/work/medara-labs' },
+      },
+      {
+        question: 'Can you build a website for a hospital or clinic?',
+        answer:
+          'Yes. We have built a site for a wellness clinic covering its services and workshops. Medical and treatment claims on a site come from the practice and are approved by you before publishing.',
+        link: { label: 'See our selected work', href: '/work' },
+      },
+      RANKING_FAQ,
+      SUPPORT_FAQ,
+    ],
+    meta: {
+      title: 'Website Development Company in Hyderabad | Web Total Solution',
+      description:
+        'Website development for Hyderabad pharma, healthcare, IT and property businesses, built remotely with a written quote in INR. See our pharma case study and request a quote.',
+      keywords: [
+        'website development company in Hyderabad',
+        'web development company in Hyderabad',
+        'website design company in Hyderabad',
+        'website developer in Hyderabad',
+        'web design agency Hyderabad',
+        'website development cost in Hyderabad',
+      ],
+    },
+  },
+
+  'website-development-company-bengaluru': {
+    slug: 'website-development-company-bengaluru',
+    heroImage: HERO_IMAGES.work,
+    serviceName: 'Website Development in Bengaluru',
+    projectType: 'Startup Marketing Website',
+    label: 'Bengaluru',
+    h1: 'Website development company for Bengaluru startups and businesses',
+    lead: 'Marketing websites, landing pages and product interfaces for Bengaluru (Bangalore) startups and growing companies, designed and built by a founder-led studio working remotely from Kolkata and Delhi.',
+    facts: [
+      { label: 'Studio', value: 'Offices in Kolkata and Delhi' },
+      { label: 'Working with Bengaluru', value: 'Remote: calls, WhatsApp and shared previews' },
+      { label: 'Startup packages', value: 'Published USD starting prices' },
+      { label: 'Support', value: '30 days after launch' },
+    ],
+    evidence: {
+      heading: 'A product we designed and built ourselves',
+      body: 'WTS CRM is our own subscription product, a CRM whose dashboard opens on what is due today rather than on totals. The case study walks through its dashboard, lead and quotation flows, which is the kind of product work founders ask us about.',
+      study: 'wts-crm',
+    },
+    intro: {
+      heading: 'For founders who need to launch and then keep shipping',
+      paragraphs: [
+        'A startup usually needs two things at once: a marketing site that explains the product to a buyer or investor in under a minute, and a product interface that does not look like a different company built it. We design and build both, so the website and the product feel like one thing.',
+        'The studio is founder-led, so the person you brief is the person leading the work. We are in Kolkata and Delhi and work with Bengaluru teams remotely, over calls and shared previews.',
+      ],
+    },
+    sections: [
+      {
+        heading: 'What Bengaluru teams ask us for',
+        items: [
+          {
+            title: 'Startup marketing websites',
+            description: 'A clear story, a pricing or demo route and a fast, mobile-first build, scoped under our published startup packages.',
+            href: '/pricing',
+          },
+          {
+            title: 'Landing pages for a launch or a campaign',
+            description: 'One page for one audience, offer and action, with forms and analytics in place.',
+            href: '/services/landing-pages',
+          },
+          {
+            title: 'SaaS products and dashboards',
+            description: 'Accounts, roles, dashboards and billing flows, quoted after discovery.',
+            href: '/services/saas-development',
+          },
+          {
+            title: 'Next.js builds',
+            description: 'The framework this site and WTS CRM run on, with the repository and hosting created in your accounts.',
+            href: '/nextjs-development-company-india',
+          },
+        ],
+      },
+      {
+        heading: 'How a startup project differs from a local business project',
+        items: [
+          { title: 'Messaging before pixels', description: 'We settle who the site is for and what it must make them do before design starts.' },
+          { title: 'Built to be changed', description: 'Typed code in standard tools and handover notes, so your own engineers can take over later.' },
+          { title: 'Product and site in step', description: 'Shared type and components mean a signed-in screen does not feel foreign to the marketing site.' },
+          { title: 'Your accounts from day one', description: 'The repository, hosting and database are created in your name, not ours.' },
+        ],
+      },
+    ],
+    groups: {
+      heading: 'Parts of Bengaluru we work with',
+      intro: 'Remote delivery, so any address works.',
+      items: [
+        {
+          title: 'Bengaluru',
+          values: ['Koramangala', 'Indiranagar', 'HSR Layout', 'Whitefield', 'Bellandur', 'Marathahalli', 'Electronic City', 'Jayanagar', 'MG Road', 'Hebbal'],
+        },
+      ],
+    },
+    quote: {
+      heading: 'Website development cost in Bengaluru',
+      paragraphs: [
+        'Our published starting prices for startup websites are in USD, on the pricing page, so you can compare packages before talking to anyone. A starting price covers a defined scope; features, integrations and content work above it are quoted in writing.',
+        'If you would rather have an INR quote, say so in the enquiry and we will provide one after a scope review. Product and SaaS builds are scoped after discovery.',
+      ],
+    },
+    faqHeading: 'Website development for Bengaluru startups: questions',
+    faqs: [
+      {
+        question: 'Do you have an office in Bengaluru?',
+        answer:
+          'No. Our offices are in Garia, Kolkata and Rohini, Delhi. We work with Bengaluru teams remotely, over calls, WhatsApp and shared preview links.',
+      },
+      {
+        question: 'How much does a startup website cost?',
+        answer:
+          'Our published starting prices for startup website packages are in USD, from $1,200, with the inclusions listed on the pricing page. What moves a quote above the starting price is stated for each package. You can ask for an INR quote if you prefer.',
+        link: { label: 'See the packages', href: '/pricing' },
+      },
+      {
+        question: 'Can you build the product as well as the marketing site?',
+        answer:
+          'Yes. Web applications and SaaS products are scoped separately after discovery. We run WTS CRM, our own subscription product, so we know what building and operating one involves.',
+        link: { label: 'Read the WTS CRM case study', href: '/work/wts-crm' },
+      },
+      {
+        question: 'Will my engineers be able to take the code over?',
+        answer:
+          'That is the aim. We use React and TypeScript, create the repository and hosting in your accounts and write handover notes on running, deploying and updating the project.',
+      },
+      RANKING_FAQ,
+      SUPPORT_FAQ,
+    ],
+    meta: {
+      title: 'Website Development Company in Bengaluru | Web Total Solution',
+      description:
+        'Website development for Bengaluru (Bangalore) startups and businesses: marketing sites, landing pages and SaaS interfaces, with published startup packages. Request a quote.',
+      keywords: [
+        'website development company in Bengaluru',
+        'website development company in Bangalore',
+        'web development company in Bangalore',
+        'startup website development Bangalore',
+        'website design company in Bangalore',
+        'website developer in Bangalore',
+      ],
+    },
+  },
+
+  'website-development-company-noida': {
+    slug: 'website-development-company-noida',
+    heroImage: HERO_IMAGES.studio,
+    serviceName: 'Website Development in Noida',
+    projectType: 'Business Website',
+    label: 'Noida',
+    h1: 'Website development company for Noida businesses',
+    lead: 'Websites, catalogues and online stores for Noida and Greater Noida businesses, from our Delhi office in Rohini and over shared previews. The pages, features, timeline and price are agreed in writing.',
+    facts: [
+      { label: 'Nearest office', value: 'Rohini Sector 19, Delhi 110042' },
+      { label: 'Working with Noida', value: 'Calls, WhatsApp and shared previews' },
+      { label: 'Pricing', value: 'Written quote in INR after scope review' },
+      { label: 'Support', value: '30 days after launch' },
+    ],
+    evidence: {
+      heading: 'Delhi NCR sites we built',
+      body: 'Omoora Art & Design Studio is a Gurugram art academy whose site covers its classes and takes demo bookings. Kavita Kabira Wellness Clinic is a calm site for a Gurgaon psychologist, in person and online. Both are live, and the work page lists every client site with a link.',
+      portfolioIds: ['omoora', 'kavitakabira'],
+    },
+    intro: {
+      heading: 'Web design and development for Noida and Greater Noida',
+      paragraphs: [
+        'Noida’s businesses are varied: software and BPO firms, electronics and other manufacturers, media houses, coaching institutes and property developers. They share one problem, which is that a competitor is a short drive away and a buyer will compare both websites before calling either.',
+        'Our Delhi office is in Rohini, and we serve the wider NCR from it. Most of a project runs over call, WhatsApp and shared previews; if you would prefer to meet, message us to arrange a time.',
+      ],
+    },
+    sections: [
+      {
+        heading: 'What Noida businesses ask us for',
+        items: [
+          {
+            title: 'Websites for service and IT firms',
+            description: 'Service pages, delivery approach and credentials, with an enquiry route that reaches the right person.',
+            href: '/business-website-development',
+          },
+          {
+            title: 'Catalogues for manufacturers and exporters',
+            description: 'Product ranges with specifications and an enquiry on each, for buyers who request a quote.',
+            href: '/work/mechverses',
+          },
+          {
+            title: 'Online stores',
+            description: 'Stores with online payment for brands selling direct.',
+            href: '/ecommerce-development',
+          },
+          {
+            title: 'Institute and training sites',
+            description: 'Courses, fees, batches and admissions enquiries, organised for a student or parent on a phone.',
+            href: '/services/landing-pages',
+          },
+        ],
+      },
+      {
+        heading: 'Before you sign with any web company in Noida',
+        intro: 'Five questions to put to every quote, including ours.',
+        items: [
+          { title: 'Is the design custom or a template?', description: 'Both are legitimate, but they are different amounts of work and different prices.' },
+          { title: 'Who owns the domain and code?', description: 'They should be registered to your business, not held in the agency’s account.' },
+          { title: 'What is in scope?', description: 'A page count, a feature list and who supplies the content.' },
+          { title: 'What search setup is done?', description: 'Metadata, sitemap and Search Console at minimum.' },
+          { title: 'How long does support last?', description: 'And what it covers. Ours is 30 days of fixes, small content changes and technical help.' },
+        ],
+      },
+    ],
+    groups: {
+      heading: 'Parts of Noida and nearby areas we work with',
+      intro: 'Served from our Delhi office and over shared previews.',
+      items: [
+        {
+          title: 'Noida',
+          values: ['Sector 62', 'Sector 18', 'Sector 63', 'Sector 125', 'Sector 135', 'Sector 16 Film City', 'Noida Expressway', 'Noida Extension'],
+        },
+        { title: 'Nearby', values: ['Greater Noida', 'Ghaziabad', 'Indirapuram'] },
+      ],
+    },
+    quote: { heading: 'Website development cost in Noida', paragraphs: DOMESTIC_QUOTE },
+    faqHeading: 'Website development in Noida: questions',
+    faqs: [
+      {
+        question: 'Do you have an office in Noida?',
+        answer:
+          'No. Our Delhi office is at Dhani Ram Colony, Shiv Chowk, Rohini Sector 19, North West Delhi 110042, and we also have an office in Garia, Kolkata. We work with Noida businesses over call, WhatsApp and shared previews.',
+      },
+      {
+        question: 'How much does website development cost in Noida?',
+        answer:
+          'It depends on the pages, the custom design and the features. We do not publish a fixed rupee price list. After a scope review you receive a written quote in INR listing everything included, and the figure does not change unless the scope does.',
+      },
+      {
+        question: 'I run a manufacturing or export business. Do I need an online store?',
+        answer:
+          'Usually not. A product catalogue with categories, specifications and an enquiry or WhatsApp button on each product suits trading and manufacturing businesses better than a retail checkout.',
+      },
+      {
+        question: 'Can you redesign my existing website?',
+        answer:
+          'Yes. We keep the pages that earn traffic, map the old URLs to the new ones with redirects, and rebuild the structure and design around what the business needs the site to do now.',
+        link: { label: 'About website redesign', href: '/website-redesign' },
+      },
+      RANKING_FAQ,
+      SUPPORT_FAQ,
+    ],
+    meta: {
+      title: 'Website Development Company in Noida | Web Total Solution',
+      description:
+        'Website development for Noida and Greater Noida businesses: business sites, catalogues and online stores with a written quote in INR. Request a project quote.',
+      keywords: [
+        'website development company in Noida',
+        'web development company in Noida',
+        'website design company in Noida',
+        'website developer in Noida',
+        'web design agency Noida',
+        'website development cost in Noida',
+      ],
+    },
+  },
 };
 
 export const LANDING_PAGE_SLUGS = Object.keys(LANDING_PAGES);

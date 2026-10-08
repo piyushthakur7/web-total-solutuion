@@ -235,6 +235,46 @@ export default function RootLayout({
                     "@type": "Offer",
                     itemOffered: {
                       "@type": "Service",
+                      name: "Website Development in Mumbai",
+                      url: "https://www.webtotalsolution.com/website-development-company-mumbai",
+                    },
+                  },
+                  {
+                    "@type": "Offer",
+                    itemOffered: {
+                      "@type": "Service",
+                      name: "Website Development in Pune",
+                      url: "https://www.webtotalsolution.com/website-development-company-pune",
+                    },
+                  },
+                  {
+                    "@type": "Offer",
+                    itemOffered: {
+                      "@type": "Service",
+                      name: "Website Development in Hyderabad",
+                      url: "https://www.webtotalsolution.com/website-development-company-hyderabad",
+                    },
+                  },
+                  {
+                    "@type": "Offer",
+                    itemOffered: {
+                      "@type": "Service",
+                      name: "Website Development in Bengaluru",
+                      url: "https://www.webtotalsolution.com/website-development-company-bengaluru",
+                    },
+                  },
+                  {
+                    "@type": "Offer",
+                    itemOffered: {
+                      "@type": "Service",
+                      name: "Website Development in Noida",
+                      url: "https://www.webtotalsolution.com/website-development-company-noida",
+                    },
+                  },
+                  {
+                    "@type": "Offer",
+                    itemOffered: {
+                      "@type": "Service",
                       name: "Next.js Development",
                       url: "https://www.webtotalsolution.com/nextjs-development-company-india",
                     },

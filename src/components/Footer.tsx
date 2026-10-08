@@ -140,6 +140,11 @@ export default function Footer() {
             },
             { href: "/website-development-company-kolkata", label: "Kolkata" },
             { href: "/website-development-company-delhi", label: "Delhi" },
+            { href: "/website-development-company-mumbai", label: "Mumbai" },
+            { href: "/website-development-company-pune", label: "Pune" },
+            { href: "/website-development-company-hyderabad", label: "Hyderabad" },
+            { href: "/website-development-company-bengaluru", label: "Bengaluru" },
+            { href: "/website-development-company-noida", label: "Noida" },
             {
               href: "/nextjs-development-company-india",
               label: "Next.js development",

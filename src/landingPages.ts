@@ -1428,6 +1428,340 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
       ],
     },
   },
+
+  /**
+   * Startup-facing page for software companies. Kept apart from
+   * business-website-development, which owns the general "startup website"
+   * phrases; this page targets SaaS-specific searches only.
+   */
+  'saas-website-design': {
+    slug: 'saas-website-design',
+    heroImage: HERO_IMAGES.services,
+    serviceName: 'SaaS Website Design and Development',
+    projectType: 'Startup Marketing Website',
+    package: 'startup-growth-site',
+    label: 'SaaS websites',
+    h1: 'SaaS website design and development',
+    lead: 'A marketing website for a software product: what it does, who it is for, what it costs and how to start. Designed and built by a studio that markets a SaaS product of its own.',
+    facts: [
+      { label: 'Package', value: 'Startup Growth Site, from $2,500 USD' },
+      { label: 'Our own product', value: 'WTS CRM, at wtscrm.com' },
+      { label: 'Stack', value: 'Next.js, React, TypeScript' },
+      { label: 'Support', value: '30 days after launch' },
+    ],
+    evidence: {
+      heading: 'We market a SaaS product of our own',
+      body: 'WTS CRM is our subscription product, and wtscrm.com is its marketing site. We wrote the positioning, designed the pages and built both the site and the application, so the problems on this page are ones we have had to solve ourselves.',
+      study: 'wts-crm',
+      points: [
+        { title: 'The product shown, not described', text: 'The home page puts a dashboard preview directly under the headline, using demo data.' },
+        { title: 'Plans stated plainly', text: 'The pricing page lists every plan and says which features depend on the plan.' },
+        { title: 'A trial as the first step', text: 'The main action is a free trial, so a visitor can judge the product instead of the claims.' },
+        { title: 'Site and app as one project', text: 'The marketing site and the application share one design language and link into each other.' },
+      ],
+    },
+    intro: {
+      heading: 'What a SaaS website has to answer',
+      paragraphs: [
+        'Someone evaluating software works through a short list: what it does, whether it fits their team, what it costs, whether their data is safe with it and how to try it. A SaaS website should be organised in that order, with each answer one click from the home page.',
+        'Most of that is decided before design starts. We agree the audience, the positioning sentence, the page list and the one action each page leads to, then design the pages around them.',
+      ],
+    },
+    sections: [
+      {
+        heading: 'Pages a SaaS website usually needs',
+        intro: 'The final page list is agreed in the written scope.',
+        items: [
+          { title: 'Home', description: 'A one-sentence positioning, a real view of the product and the primary action: trial, demo or waitlist.' },
+          { title: 'Product and feature pages', description: 'Each feature explained by the job it does for the user, with a screen to show it.' },
+          { title: 'Pricing', description: 'Plans, limits and what each includes, with the billing questions answered on the same page.' },
+          { title: 'Use case or industry pages', description: 'The same product described for each audience you sell to, where the scope includes them.' },
+          { title: 'Security and trust', description: 'How data is stored and handled, stating only what you can support.' },
+          { title: 'Blog, changelog or docs', description: 'Content your team publishes through a CMS, with each content type named in the quote.' },
+        ],
+      },
+      {
+        heading: 'Where the website meets the product',
+        intro: 'The marketing site and the application are separate projects that should feel like one.',
+        items: [
+          { title: 'Shared design language', description: 'Type, colour and components carry across, so signing up does not feel like arriving somewhere else.' },
+          { title: 'Sign-up and sign-in routes', description: 'Buttons go straight to the right screen in your app, with plan choice carried through where it applies.' },
+          { title: 'Tracking from visit to sign-up', description: 'Analytics events on trial starts and demo requests, so you can see which pages lead to them.' },
+          { title: 'Independent releases', description: 'The site deploys separately from the app, so a copy change never waits on a product release.' },
+        ],
+        note: 'Product interface design and application development are scoped separately from the marketing website.',
+      },
+    ],
+    quote: {
+      heading: 'SaaS website cost',
+      paragraphs: [
+        'A SaaS marketing website is usually the Startup Growth Site, from $2,500 USD. When the site needs interactive product explanations, several content types or integrations, it is the Custom Product Website, from $5,000 USD. The written quote follows a scope review.',
+        'A pre-launch product that needs one page and a waitlist can start with the Landing Page Sprint, from $1,200 USD. Indian companies can ask for a quote in INR.',
+      ],
+    },
+    faqHeading: 'SaaS websites: questions',
+    faqs: [
+      {
+        question: 'Can you design the product interface as well as the website?',
+        answer:
+          'Yes, as a separate scope. Product UI and application development are quoted after discovery, from the flows, roles and integrations involved. Many teams start with the website so the product has somewhere to launch.',
+        link: { label: 'SaaS development', href: '/services/saas-development' },
+      },
+      {
+        question: 'We have not launched yet. What should the website be?',
+        answer:
+          'Usually one page: who the product is for, the problem it solves and a waitlist or demo form. The Landing Page Sprint covers that, and the page can grow into a full site after launch.',
+        link: { label: 'Landing pages', href: '/services/landing-pages' },
+      },
+      {
+        question: 'Should we publish our prices?',
+        answer:
+          'If your plans are fixed, publishing them answers the question most buyers check first. If every deal is priced individually, the page should still explain how pricing works and what it depends on. It is your decision, and we will design either.',
+      },
+      {
+        question: 'Can our team publish blog posts, changelog entries or docs?',
+        answer:
+          'If a CMS is in the scope, yes. The quote names each content type your team will be able to edit without a developer.',
+      },
+      {
+        question: 'Do you write the copy?',
+        answer:
+          'We write the positioning and page-by-page messaging as part of the structure work. Full copywriting can be added to the scope as its own line, or we edit copy your team supplies.',
+      },
+      RANKING_FAQ,
+      SUPPORT_FAQ,
+    ],
+    meta: {
+      title: 'SaaS Website Design & Development Agency | Web Total Solution',
+      description:
+        'SaaS website design and development: positioning, product and pricing pages, and a Next.js build. From the studio that markets its own SaaS product. From $2,500 USD.',
+      keywords: [
+        'saas website design',
+        'saas website design agency',
+        'saas website development',
+        'saas marketing website',
+        'saas landing page design',
+        'b2b saas website design',
+        'software product website design',
+      ],
+    },
+  },
+
+  'react-development-company-india': {
+    slug: 'react-development-company-india',
+    heroImage: HERO_IMAGES.code,
+    serviceName: 'React Development',
+    projectType: 'SaaS / Web Application',
+    label: 'React, TypeScript',
+    h1: 'React development company in India',
+    lead: 'Websites, portals and interfaces built in React: search-led catalogues, ordering flows, payment journeys and product screens. Most of the client sites in our portfolio are React builds, and each one is live.',
+    facts: [
+      { label: 'Stack', value: 'React, TypeScript, Tailwind CSS' },
+      { label: 'Builds', value: 'Next.js or Vite, chosen per project' },
+      { label: 'Ownership', value: 'Repository and hosting in your accounts' },
+      { label: 'Pricing', value: 'Written quote after scope review' },
+    ],
+    evidence: {
+      heading: 'React interfaces that do more than show pages',
+      body: 'Modern Offset Printers is a print portal for commercial orders, with quote calculation and file submission. Sri Mahalingeshwara Alayamu Trust is a temple trust site that takes donations with secure online payments. Both are React builds, and the work page lists every client site with a link.',
+      portfolioIds: ['modernoffset', 'srimahalingeshwaraalayamutrust'],
+    },
+    intro: {
+      heading: 'When React is the right tool',
+      paragraphs: [
+        'React suits pages that respond to the visitor: a search that filters an inventory, a form that calculates a price, a dashboard that updates. It is also one of the most widely used front-end libraries, so the code you receive can be maintained by another developer.',
+        'How it is rendered matters as much as the library. Where search visibility depends on complete HTML, we build on Next.js. Where it does not, such as a portal behind a login, a lighter Vite build is often enough. The choice is made in the scope review and written into the quote.',
+      ],
+    },
+    sections: [
+      {
+        heading: 'What we build in React',
+        items: [
+          { title: 'Search-led catalogues', description: 'Inventories and product ranges with search, filters and an enquiry on each item.', href: '/work/mechverses' },
+          { title: 'Ordering and payment flows', description: 'Quote calculators, file uploads, donations and checkouts connected to a payment gateway.' },
+          { title: 'Portals and dashboards', description: 'Logged-in screens with roles and data, scoped as a web application.', href: '/services/saas-development' },
+          { title: 'Next.js websites', description: 'Server-rendered marketing sites where search visibility matters.', href: '/nextjs-development-company-india' },
+          { title: 'A front end for your API', description: 'A React interface built against a backend your team already runs, to an agreed API contract.' },
+          { title: 'Rebuilds of older front ends', description: 'Moving a jQuery or template site to React, with existing URLs mapped and redirected.', href: '/website-redesign' },
+        ],
+      },
+      {
+        heading: 'What you can expect from the code',
+        intro: 'Written so that someone else could take it over.',
+        items: [
+          { title: 'TypeScript', description: 'Types catch a class of mistakes before they reach production and document how data moves.' },
+          { title: 'Small, named components', description: 'Shared pieces of the interface live in one place, so a change is made once.' },
+          { title: 'Accessible markup', description: 'Semantic HTML, labelled form fields and controls that work from the keyboard.' },
+          { title: 'Performance practices', description: 'Sized images, reserved dimensions to avoid layout shift, and code split by route.' },
+          { title: 'Your repository', description: 'The code, hosting and any database are created in your name from the start.' },
+          { title: 'Handover notes', description: 'How to run, deploy and update the project, written down at handover.' },
+        ],
+      },
+    ],
+    groups: {
+      heading: 'The React stack we work with',
+      items: [
+        { title: 'Core', values: ['React', 'TypeScript'] },
+        { title: 'Builds', values: ['Next.js (App Router)', 'Vite'] },
+        { title: 'Styling', values: ['Tailwind CSS', 'CSS Modules', 'Motion'] },
+        { title: 'Data', values: ['REST APIs', 'PostgreSQL', 'Serverless functions'] },
+      ],
+    },
+    quote: {
+      heading: 'React development cost',
+      paragraphs: [
+        'A React marketing website is covered by our website packages, with starting prices in USD on the pricing page. Indian businesses receive a written quote in INR after a scope review.',
+        'Portals, dashboards and applications are quoted after discovery, from the screens, roles, integrations and data they involve. Hosting is billed by the provider to your own account.',
+      ],
+    },
+    faqHeading: 'React development: questions',
+    faqs: [
+      {
+        question: 'Should my project use React or Next.js?',
+        answer:
+          'Next.js is built on React. If the pages need to be found on Google, such as a marketing site or a catalogue, Next.js gives search engines complete HTML. If the screens sit behind a login, a plain React build is often simpler. We recommend one in the scope review and explain why.',
+        link: { label: 'Next.js development', href: '/nextjs-development-company-india' },
+      },
+      {
+        question: 'Is a React website bad for SEO?',
+        answer:
+          'Not when it is rendered properly. Pages that must rank are server-rendered or pre-rendered with their metadata, sitemap and structured data in place. Rankings still depend on your content and competition, so we do not guarantee a position.',
+      },
+      {
+        question: 'Can you take over an existing React codebase?',
+        answer:
+          'We read the repository first and tell you in writing what we would keep, fix or rebuild. Further work is quoted from that review, not from a guess.',
+      },
+      {
+        question: 'Can you build the front end while our team builds the backend?',
+        answer:
+          'Yes. We agree the API contract with your developers first, build the interface against it and work from shared preview links until both sides are ready.',
+      },
+      {
+        question: 'Who owns the code?',
+        answer: 'You do. The repository, hosting account and any database are created in your name, and the source code is yours on delivery.',
+      },
+      SUPPORT_FAQ,
+    ],
+    meta: {
+      title: 'React Development Company in India | Web Total Solution',
+      description:
+        'React development company in India. Catalogues, ordering and payment flows, portals and Next.js websites in React and TypeScript, with code in your own repository.',
+      keywords: [
+        'react development company india',
+        'reactjs development company india',
+        'react js development services',
+        'react web development company',
+        'hire react developers india',
+        'react front end development',
+        'react website development',
+      ],
+    },
+  },
+
+  'education-website-development': {
+    slug: 'education-website-development',
+    heroImage: HERO_IMAGES.planning,
+    serviceName: 'Education Website Development',
+    projectType: 'Business Website',
+    label: 'Schools, institutes, edtech',
+    h1: 'Website development for schools, institutes and edtech',
+    lead: 'Websites for schools, coaching institutes, training academies and online test platforms, organised around the questions parents and students ask before they enquire or enrol.',
+    facts: [
+      { label: 'For', value: 'Schools, institutes, academies and edtech' },
+      { label: 'Main action', value: 'Admission enquiry, demo class or sign-up' },
+      { label: 'Pricing', value: 'Written quote after scope review' },
+      { label: 'Support', value: '30 days after launch' },
+    ],
+    evidence: {
+      heading: 'A school and a test platform, both live',
+      body: 'Adarsh Gyan Niketan is a primary and middle school in Bhojpur, Bihar, whose site covers academics, admissions, faculty and facilities. Master Mocks is a mock test platform for banking and insurance exams, with full-length mocks, detailed solutions and payments through Razorpay.',
+      portfolioIds: ['adarshgyanniketan', 'mastermocks'],
+    },
+    intro: {
+      heading: 'Two readers, one decision',
+      paragraphs: [
+        'An education website is usually read by two people. A parent looks for admissions, fees, safety and who teaches. A student looks for the course, the schedule and where it leads. Either of them decides quickly whether to get in touch.',
+        'So the site is organised by those questions rather than by the institution’s history, and every page ends at the same action: an admission enquiry, a demo class or a sign-up.',
+      ],
+    },
+    sections: [
+      {
+        heading: 'What we build for education',
+        items: [
+          { title: 'School websites', description: 'Academics, admissions, faculty, facilities, notices and a gallery, with an admission enquiry on every page.' },
+          { title: 'Coaching and training institutes', description: 'Course pages with batches, timings and faculty, and a demo-class booking.' },
+          { title: 'Learning portals', description: 'Course and curriculum navigation for academies teaching online, like FIHM Online for hospitality studies.', href: 'https://www.fihmonline.com/' },
+          { title: 'Online test and course platforms', description: 'Accounts, payments and a test engine, scoped as a web application.', href: '/services/saas-development' },
+          { title: 'Admission campaign pages', description: 'One page for an admission season or a new batch, built for paid or social traffic.', href: '/services/landing-pages' },
+        ],
+      },
+      {
+        heading: 'Pages that answer what families ask',
+        intro: 'The page list is agreed in the written scope; these are the questions it usually has to cover.',
+        items: [
+          { title: 'Admissions', description: 'The process, dates, documents needed and an enquiry form that reaches the office.' },
+          { title: 'Fees', description: 'The fee structure, or a clear note on how fees are shared and when.' },
+          { title: 'Faculty', description: 'Who teaches, with qualifications stated as they are.' },
+          { title: 'Facilities and safety', description: 'Classrooms, labs, transport and the arrangements parents ask about.' },
+          { title: 'Notices and events', description: 'Posted by your staff through a CMS, where it is in the scope, without waiting on a developer.' },
+          { title: 'Contact and location', description: 'Map, office hours, phone and WhatsApp, so a parent can call straight from the page.' },
+        ],
+      },
+    ],
+    quote: {
+      heading: 'Education website cost',
+      paragraphs: [
+        'A school or institute website is quoted after a scope review, in INR for Indian institutions, with the pages, features, timeline and payment milestones listed. The price depends mainly on the number of pages, whether staff need a CMS for notices, and integrations such as fee payments.',
+        'An online test or course platform with accounts and payments is a web application and is scoped separately after discovery. Our published starting prices for website packages are in USD on the pricing page.',
+      ],
+    },
+    faqHeading: 'Education websites: questions',
+    faqs: [
+      {
+        question: 'Can our staff post notices, results and events themselves?',
+        answer:
+          'If a CMS is in the scope, yes. The quote names what your staff will be able to edit, such as notices, events and the gallery, without a developer.',
+      },
+      {
+        question: 'Can parents or students pay fees online?',
+        answer:
+          'Yes, through a payment gateway such as Razorpay when it is in the scope. Gateway charges are billed by the provider to your own account.',
+      },
+      {
+        question: 'Can you build an online test or course platform?',
+        answer:
+          'Yes. It is scoped as a web application after discovery, from the user accounts, test or course structure and payments it needs. Master Mocks is one we have built.',
+        link: { label: 'SaaS development', href: '/services/saas-development' },
+      },
+      {
+        question: 'Can the website be in Hindi or a regional language as well?',
+        answer:
+          'A second language can be added to the scope. Content in that language is supplied or approved by you, so the wording is right for your families.',
+      },
+      {
+        question: 'Do you write the content?',
+        answer:
+          'We structure the pages and edit what you supply. Copywriting can be added to the scope as its own line.',
+      },
+      RANKING_FAQ,
+      SUPPORT_FAQ,
+    ],
+    meta: {
+      title: 'School & Education Website Development | Web Total Solution',
+      description:
+        'Website development for schools, coaching institutes, academies and edtech: admissions, courses, fee payments and online test platforms. Request a written quote.',
+      keywords: [
+        'education website development',
+        'school website development',
+        'school website design company',
+        'coaching institute website development',
+        'edtech website development',
+        'online test platform development',
+        'college website design',
+      ],
+    },
+  },
 };
 
 export const LANDING_PAGE_SLUGS = Object.keys(LANDING_PAGES);

@@ -283,6 +283,30 @@ export default function RootLayout({
                     "@type": "Offer",
                     itemOffered: {
                       "@type": "Service",
+                      name: "React Development",
+                      url: "https://www.webtotalsolution.com/react-development-company-india",
+                    },
+                  },
+                  {
+                    "@type": "Offer",
+                    itemOffered: {
+                      "@type": "Service",
+                      name: "SaaS Website Design and Development",
+                      url: "https://www.webtotalsolution.com/saas-website-design",
+                    },
+                  },
+                  {
+                    "@type": "Offer",
+                    itemOffered: {
+                      "@type": "Service",
+                      name: "Education Website Development",
+                      url: "https://www.webtotalsolution.com/education-website-development",
+                    },
+                  },
+                  {
+                    "@type": "Offer",
+                    itemOffered: {
+                      "@type": "Service",
                       name: "Business Website Development",
                       url: "https://www.webtotalsolution.com/business-website-development",
                     },

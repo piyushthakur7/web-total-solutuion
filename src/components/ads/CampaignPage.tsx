@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { ArrowDown, ArrowUpRight, Check, CheckCheck, Code2, Gauge, Globe2, Layers3, LayoutTemplate, MessageCircle, MonitorSmartphone, MousePointer2, Phone, Search, ShieldCheck } from 'lucide-react';
+import { ArrowDown, ArrowUpRight, Check, CheckCheck, Gauge, Globe2, Layers3, LayoutTemplate, MessageCircle, MonitorSmartphone, MousePointer2, Phone, Search, ShieldCheck } from 'lucide-react';
 import { ADS_CTA, ADS_FAQS, ADS_WHATSAPP, ADS_WEBSITE_TYPES } from '../../adsLanding';
 import { PHONE_DISPLAY, PHONE_HREF, STUDIO_STATS } from '../../siteContent';
 import { WORK_CASE_STUDIES } from '../../work';
@@ -42,12 +42,16 @@ export default function CampaignPage({ preview }: { preview: boolean }) {
         <p className={styles.offerNote}>*Final scope, taxes and third-party costs confirmed in your written quote.</p>
         <div className={styles.heroReassurance}><span><Check size={15} /> Free consultation</span><span><Check size={15} /> Written quote first</span><span><Check size={15} /> You own your website</span></div>
       </div>
-      <div className={styles.heroVisual}>
-        <div className={styles.visualHeading}><span><i /> A REAL PROJECT, BUILT BY OUR STUDIO</span><Code2 size={17} /></div>
-        <div className={styles.desktopMockup}><div className={styles.browserBar}><span><i /><i /><i /></span><span>medaralabs.com</span><ShieldCheck size={12} /></div><Image src="/work/medara-labs/home.webp" alt="Desktop view of the Medara Labs website designed by Web Total Solution" width={1440} height={1000} sizes="(max-width: 760px) 94vw, 48vw" priority className={styles.desktopImage} /></div>
-        <div className={styles.phoneMockup}><span className={styles.phoneSpeaker} /><Image src="/work/medara-labs/mobile-home.webp" alt="The same Medara Labs website adapted for mobile" width={390} height={844} sizes="(max-width: 760px) 120px, 150px" priority className={styles.phoneImage} /></div>
-        <div className={styles.visualLabel}><span><MonitorSmartphone size={21} /></span><div><strong>Looks good. Works everywhere.</strong><p>Desktop, tablet & mobile.</p></div></div>
-        <p className={styles.visualCaption}>Medara Labs · Business website · Shown as a portfolio example; scope varies by project.</p>
+      <div className={styles.heroArtwork}>
+        <Image
+          src="/images/hero/flowpay-landing-page.png"
+          alt="FlowPay payment landing page with orange payment cards and the headline Payments that feel effortless"
+          width={1586}
+          height={992}
+          sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 1100px) 45vw, 560px"
+          priority
+          className={styles.heroArtworkImage}
+        />
       </div>
     </div></section>
 

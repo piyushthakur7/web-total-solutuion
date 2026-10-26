@@ -52,6 +52,11 @@ test('server-controlled preview succeeds without upstream delivery; browser cann
     assert.equal(body.preview, true);
     assert.match(body.receipt, /^[\da-f-]{36}$/);
     assert.equal(delivered, 0);
+    const normalizedRequest = new NextRequest('http://localhost:3000/api/website-enquiry', {
+      method: 'POST', headers: { 'Content-Type': 'application/json', host: '127.0.0.1:3000', origin: 'http://127.0.0.1:3000' },
+      body: JSON.stringify({ ...valid, email: 'normalized@example.com', startedAt: Date.now() - 5000 }),
+    });
+    assert.equal((await POST(normalizedRequest)).status, 200);
   } finally { globalThis.fetch = originalFetch; if (previous === undefined) delete process.env.WEBSITE_ENQUIRY_MODE; else process.env.WEBSITE_ENQUIRY_MODE = previous; }
 });
 

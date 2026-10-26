@@ -9,7 +9,11 @@ const attempts = new Map<string, { count: number; expires: number }>();
 export async function POST(request: NextRequest) {
   const reply = (body: object, status = 200) => NextResponse.json(body, { status, headers: { 'Cache-Control': 'no-store' } });
   const origin = request.headers.get('origin');
-  if (origin && origin !== request.nextUrl.origin) return reply({ error: 'Please submit from this website.' }, 403);
+  // Next may normalize the internal request URL to localhost in development.
+  // The incoming Host retains the actual browser-facing host and port.
+  const expectedOrigin = new URL(request.nextUrl.origin);
+  expectedOrigin.host = request.headers.get('host') || expectedOrigin.host;
+  if (origin && origin !== expectedOrigin.origin) return reply({ error: 'Please submit from this website.' }, 403);
   if (!request.headers.get('content-type')?.includes('application/json')) return reply({ error: 'Invalid request format.' }, 415);
   // Limit the actual stream, including requests without a Content-Length header.
   let body: Record<string, unknown>;

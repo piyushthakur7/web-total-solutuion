@@ -12,6 +12,8 @@
 .headerWhatsapp{border:1px solid #cdded5;border-radius:8px;padding:9px 17px;color:#16653e;background:#f5faf7}
 .hero{position:relative;background:linear-gradient(115deg,#f3f8fc 0%,#eef5fa 48%,#e3eff7 100%);border-bottom:1px solid var(--line)}
 .heroGrid{display:grid;grid-template-columns:1.06fr 1fr;align-items:center;gap:58px;padding-block:52px 46px}
+.heroArtwork{min-width:0;width:100%;max-width:620px;margin-inline:auto;overflow:hidden;border:1px solid #d2dee7;border-radius:16px;background:#f3f3f3;box-shadow:0 22px 48px -18px #12223835}
+.heroArtworkImage{display:block;width:100%;height:auto;object-fit:contain}
 .eyebrow,.kicker{font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--blue);line-height:1.5;margin-bottom:18px}
 .eyebrow{display:flex;align-items:center;gap:8px;font-size:10px;letter-spacing:.11em}
 .eyebrow>span{width:7px;height:7px;border-radius:50%;background:var(--blue)}

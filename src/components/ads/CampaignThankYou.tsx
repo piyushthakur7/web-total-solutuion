@@ -6,7 +6,7 @@ import { ArrowUpRight, Check, MessageCircle, Phone } from 'lucide-react';
 import { ADS_PATH, ADS_WHATSAPP } from '../../adsLanding';
 import { RECEIPT_KEY } from '../../adsTracking';
 import { PHONE_DISPLAY, PHONE_HREF } from '../../siteContent';
-import { CampaignHeader, CampaignFooter } from './CampaignPage';
+import { CampaignHeader, CampaignFooter } from './CampaignChrome';
 import styles from './campaign.module.css';
 
 export default function CampaignThankYou() {

@@ -66,6 +66,12 @@ export function initializeMeasurement() {
   window.gtag('consent', 'default', { ad_storage: 'denied', analytics_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
   window.gtag('consent', 'update', { ad_storage: 'granted', analytics_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'denied' });
   window.gtag('js', new Date());
+  // Never let arbitrary URL query parameters become default event metadata.
+  const attribution = campaignSearch();
+  const safeLocation = `${window.location.origin}${window.location.pathname}${attribution ? `?${attribution}` : ''}`;
+  let safeReferrer = '';
+  try { const referrer = new URL(document.referrer); safeReferrer = `${referrer.origin}${referrer.pathname}`; } catch { /* No referrer. */ }
+  window.gtag('set', { page_location: safeLocation, page_referrer: safeReferrer });
   if (validAds) window.gtag('config', adsId, { send_page_view: false });
   if (validGa) window.gtag('config', gaId, { send_page_view: false, allow_google_signals: false, allow_ad_personalization_signals: false });
   const script = document.createElement('script');
@@ -79,6 +85,7 @@ export function initializeMeasurement() {
 export function trackCampaignPage(pathname: string) {
   if (measurementConsent() !== 'granted' || !measurementConfigured) return;
   initializeMeasurement();
+  window.gtag?.('set', { page_location: `${window.location.origin}${pathname}` });
   if (validGa) window.gtag?.('event', 'page_view', { send_to: gaId, page_location: `${window.location.origin}${pathname}`, page_title: document.title });
 }
 

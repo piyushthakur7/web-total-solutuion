@@ -15,7 +15,7 @@ export default function PrivacyPolicy() {
     <LegalPage
       title="Privacy Policy"
       summary="What information this website collects, why, and who it is shared with."
-      lastUpdated="5 October 2026"
+      lastUpdated="26 October 2026"
     >
       <h2>1. Introduction</h2>
       <p>
@@ -26,8 +26,8 @@ export default function PrivacyPolicy() {
       <h2>2. Information we collect</h2>
       <ul>
         <li>
-          <strong>Information you send us:</strong> your name and email address, and, if you choose to give them, your
-          phone or WhatsApp number, company or website, budget range and a description of your project. You provide
+          <strong>Information you send us:</strong> your name and email address, phone or WhatsApp number where requested,
+          and any optional business name, business type, current website, requested website type, budget, timeline and project details. You provide
           this when you use an enquiry form or contact us by email, phone or WhatsApp.
         </li>
         <li>
@@ -44,6 +44,21 @@ export default function PrivacyPolicy() {
         <li>To keep the website running and secure, and to understand how it is used.</li>
       </ul>
       <p>We do not sell your information.</p>
+
+      <h2>Campaign measurement and your choices</h2>
+      <p>
+        Our website design campaign page can use Google Analytics and Google Ads to measure visits, successful enquiries
+        and clicks on phone or WhatsApp links. Where configured, these tags load only after you choose to allow measurement.
+        You can decline or change your choice using Measurement preferences on the campaign page. The enquiry form works
+        without measurement. Contact details and project descriptions are not sent to Google as measurement events.
+      </p>
+      <p>
+        If you allow measurement, campaign parameters and advertising click identifiers from your visit may be saved in
+        session storage for up to 30 minutes and included with your enquiry to help us understand its source. Google may
+        use cookies for measurement. Your measurement preference is saved in local storage. A temporary enquiry confirmation
+        is kept in session storage so the next-steps page can confirm a submission. Phone and WhatsApp clicks show interest;
+        they do not establish that an enquiry or qualified lead was received.
+      </p>
 
       <h2>4. Who we share it with</h2>
       <ul>

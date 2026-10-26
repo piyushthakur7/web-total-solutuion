@@ -1,12 +1,11 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import { ArrowDown, ArrowUpRight, Check, CheckCheck, Code2, Gauge, Globe2, Layers3, LayoutTemplate, MessageCircle, MonitorSmartphone, MousePointer2, Phone, Search, ShieldCheck } from 'lucide-react';
 import { ADS_CTA, ADS_FAQS, ADS_WHATSAPP, ADS_WEBSITE_TYPES } from '../../adsLanding';
-import { EMAIL, PHONE_DISPLAY, PHONE_HREF, STUDIO_STATS } from '../../siteContent';
+import { PHONE_DISPLAY, PHONE_HREF, STUDIO_STATS } from '../../siteContent';
 import { WORK_CASE_STUDIES } from '../../work';
 import CampaignForm from './CampaignForm';
 import WhatsAppIcon from '../WhatsAppIcon';
-import Logo from '../Logo';
+import { CampaignHeader, CampaignFooter } from './CampaignChrome';
 import styles from './campaign.module.css';
 
 const features = [
@@ -25,20 +24,6 @@ const process = [
   ['Launch with support', 'Go live, receive the handover and begin your agreed support period.'],
 ];
 const proof = WORK_CASE_STUDIES.filter((work) => ['medara-labs', 'mechverses', 'faw-dubai'].includes(work.slug));
-
-export function CampaignHeader() {
-  return <header className={styles.header}><div className={styles.container}>
-    <a href="#" aria-label="Web Total Solution, top of page"><Logo size="sm" /></a>
-    <div className={styles.headerActions}><a className={styles.headerPhone} href={PHONE_HREF}><Phone size={15} aria-hidden="true" /><span>{PHONE_DISPLAY}</span></a><a className={styles.headerWhatsapp} href={ADS_WHATSAPP} target="_blank" rel="noopener noreferrer"><WhatsAppIcon className="size-4" /><span>WhatsApp us</span></a></div>
-  </div></header>;
-}
-
-export function CampaignFooter() {
-  return <footer className={styles.footer}><div className={styles.container}>
-    <div className={styles.footerTop}><Logo size="sm" /><p>Thoughtful websites. Clear next steps.</p><div><a href={PHONE_HREF}>{PHONE_DISPLAY}</a><a href={`mailto:${EMAIL}`}>{EMAIL}</a></div></div>
-    <div className={styles.footerBottom}><p>© {new Date().getFullYear()} Web Total Solution</p><div><Link href="/privacy">Privacy Policy</Link><Link href="/terms">Terms & Conditions</Link></div></div>
-  </div></footer>;
-}
 
 function QuoteButton({ label = ADS_CTA, className = '' }: { label?: string; className?: string }) {
   return <a href="#quote" className={`${styles.primary} ${className}`}>{label}<ArrowUpRight size={18} aria-hidden="true" /></a>;

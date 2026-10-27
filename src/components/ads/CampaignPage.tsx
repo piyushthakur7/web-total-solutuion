@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { ArrowDown, ArrowUpRight, Check, CheckCheck, Gauge, Globe2, Layers3, LayoutTemplate, MessageCircle, MonitorSmartphone, MousePointer2, Phone, Search, ShieldCheck } from 'lucide-react';
+import { ArrowDown, ArrowUpRight, BedDouble, Blocks, Building2, Check, CheckCheck, Gauge, Globe2, GraduationCap, HeartPulse, House, Layers3, LayoutTemplate, MessageCircle, MonitorSmartphone, MousePointer2, Phone, Ruler, Search, ShieldCheck, ShoppingBag } from 'lucide-react';
 import { ADS_CTA, ADS_FAQS, ADS_WHATSAPP, ADS_WEBSITE_TYPES } from '../../adsLanding';
 import { PHONE_DISPLAY, PHONE_HREF, STUDIO_STATS } from '../../siteContent';
 import { WORK_CASE_STUDIES } from '../../work';
@@ -24,6 +24,7 @@ const process = [
   ['Launch with support', 'Go live, receive the handover and begin your agreed support period.'],
 ];
 const proof = WORK_CASE_STUDIES.filter((work) => ['medara-labs', 'mechverses', 'faw-dubai'].includes(work.slug));
+const industryIcons = [Building2, ShoppingBag, GraduationCap, House, Ruler, HeartPulse, BedDouble, Blocks];
 
 function QuoteButton({ label = ADS_CTA, className = '' }: { label?: string; className?: string }) {
   return <a href="#quote" className={`${styles.primary} ${className}`}>{label}<ArrowUpRight size={18} aria-hidden="true" /></a>;
@@ -34,24 +35,29 @@ export default function CampaignPage({ preview }: { preview: boolean }) {
     <CampaignHeader />
     <section className={styles.hero} aria-labelledby="campaign-title"><div className={`${styles.container} ${styles.heroGrid}`}>
       <div className={styles.heroCopy}>
-        <p className={styles.eyebrow}><span /> YOUR BUSINESS. READY FOR WHAT’S NEXT.</p>
-        <h1 id="campaign-title">Professional Website Design & Development <span>for Your Business.</span></h1>
+        <p className={styles.eyebrow}><span /> WEBSITE DESIGN & DEVELOPMENT</p>
+        <h1 id="campaign-title">Your business deserves <span>a better website.</span></h1>
         <p className={styles.heroDescription}>Get a modern, mobile-friendly website that showcases your services, builds credibility and helps potential customers connect with your business.</p>
-        <div className={styles.offer}><div><span>STARTER WEBSITE PACKAGE</span><p>Starting at <strong>₹6,999<span>*</span></strong></p></div><span className={styles.offerMark} aria-hidden="true"><Globe2 size={28} /></span></div>
+        <div className={styles.offer}><span className={styles.offerMark} aria-hidden="true"><Globe2 size={23} /></span><div><span>A PROFESSIONAL START, WITH A CLEAR QUOTE</span><p>Website packages from <strong>₹6,999<span>*</span></strong></p></div></div>
         <div className={styles.heroActions}><QuoteButton /><a className={styles.secondary} href={ADS_WHATSAPP} target="_blank" rel="noopener noreferrer"><WhatsAppIcon className="size-5" /> WhatsApp Us</a></div>
         <p className={styles.offerNote}>*Final scope, taxes and third-party costs confirmed in your written quote.</p>
         <div className={styles.heroReassurance}><span><Check size={15} /> Free consultation</span><span><Check size={15} /> Written quote first</span><span><Check size={15} /> You own your website</span></div>
       </div>
-      <div className={styles.heroArtwork}>
+      <div className={styles.heroShowcase}>
+        <div className={styles.showcaseHeading}><span>GOOD DESIGN MAKES A DIFFERENCE.</span><span>01 / DESIGN</span></div>
+        <div className={styles.heroArtwork}>
         <Image
           src="/images/hero/flowpay-landing-page.png"
           alt="FlowPay payment landing page with orange payment cards and the headline Payments that feel effortless"
           width={1586}
           height={992}
-          sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 1100px) 45vw, 560px"
+          sizes="(max-width: 760px) calc(100vw - 48px), (max-width: 1100px) 48vw, 680px"
           priority
           className={styles.heroArtworkImage}
         />
+        </div>
+        <div className={styles.showcaseBadge}><span><MonitorSmartphone size={23} strokeWidth={1.6} aria-hidden="true" /></span><div><strong>Made for every screen.</strong><p>A considered experience, at every size.</p></div><Check size={17} aria-hidden="true" /></div>
+        <p className={styles.showcaseCaption}>FlowPay · Design reference</p>
       </div>
     </div></section>
 
@@ -61,11 +67,11 @@ export default function CampaignPage({ preview }: { preview: boolean }) {
       <div className={styles.featureGrid}>{features.map(({ icon: Icon, title, text }, i) => <article className={styles.feature} key={title}><div className={styles.featureTop}><Icon size={23} strokeWidth={1.5} aria-hidden="true" /><span>0{i + 1}</span></div><h3>{title}</h3><p>{text}</p></article>)}</div><p className={styles.scopeNote}>Features are available according to your agreed scope. Your written quote confirms exactly what is included.</p>
     </section>
 
-    <section className={styles.industries}><div className={styles.container}><div><p className={styles.kicker}>A WEBSITE THAT FITS</p><h2>Website solutions<br />for every business.</h2><p>From your first business website to a custom build, we start with what your customers need.</p></div><ul>{ADS_WEBSITE_TYPES.map((type, i) => <li key={type}><span className={styles.industryNumber}>0{i + 1}</span>{type}<ArrowUpRight size={16} aria-hidden="true" /></li>)}</ul></div></section>
+    <section className={styles.industries}><div className={styles.container}><div><p className={styles.kicker}>A WEBSITE THAT FITS</p><h2>Different businesses.<br />The same attention to detail.</h2><p>From your first business website to a custom build, we start with what your customers need.</p></div><ul>{ADS_WEBSITE_TYPES.map((type, i) => { const Icon = industryIcons[i]; return <li key={type}><Icon size={20} strokeWidth={1.5} aria-hidden="true" />{type}</li>; })}</ul></div></section>
 
     <section id="work" className={`${styles.section} ${styles.container}`} aria-labelledby="work-title"><div className={styles.sectionHeading}><div><p className={styles.kicker}>REAL BUSINESSES. REAL WEBSITES.</p><h2 id="work-title">Explore our website<br />design work.</h2></div><p>A few projects from our studio. Open the live websites and see the work for yourself.</p></div><div className={styles.workGrid}>{proof.map((work) => <a href={work.websiteUrl} target="_blank" rel="noopener noreferrer" className={styles.workCard} key={work.slug}><div className={styles.workImage}><Image src={work.cover.src} alt={work.cover.alt} width={1440} height={1000} sizes="(max-width: 760px) 90vw, 32vw" loading="lazy" /></div><div className={styles.workInfo}><div><p>{work.category}</p><h3>{work.name}</h3></div><ArrowUpRight size={22} aria-hidden="true" /></div><p className={styles.workSummary}>{work.summary}</p><span className={styles.liveLink}>Visit {work.websiteLabel} <ArrowUpRight size={14} /></span></a>)}</div><p className={styles.scopeNote}>Portfolio examples illustrate our wider work. They are not a representation of the ₹6,999 package scope.</p></section>
 
-    <section className={styles.pricing} aria-labelledby="pricing-title"><div className={styles.container}><div className={styles.sectionHeading}><div><p className={styles.kicker}>START WITH A CLEAR QUOTE</p><h2 id="pricing-title">Affordable website packages<br />for your business.</h2></div><p>Know what you’re getting before the project begins. No vague “everything included” promises.</p></div><div className={styles.pricingGrid}>
+    <section id="packages" className={styles.pricing} aria-labelledby="pricing-title"><div className={styles.container}><div className={styles.sectionHeading}><div><p className={styles.kicker}>START WITH A CLEAR QUOTE</p><h2 id="pricing-title">A clear starting point.<br />Room for what’s next.</h2></div><p>Know what you’re getting before the project begins. No vague “everything included” promises.</p></div><div className={styles.pricingGrid}>
       <article className={styles.starter}><p className={styles.packageTag}>YOUR FIRST STEP ONLINE</p><h3>Starter Website</h3><p className={styles.packageIntro}>For a business that needs a clear, professional place on the web.</p><p className={styles.price}><span>Starting at</span>₹6,999<span>INR · final quote after scope review</span></p><QuoteButton /><p className={styles.pricingSmall}>Your requirements decide the final scope and price.</p><div className={styles.packageFeatures}><p><CheckCheck size={17} /> Business website requirements review</p><p><CheckCheck size={17} /> Written scope and cost breakdown</p><p><CheckCheck size={17} /> Design approval before development</p></div></article>
       <article className={styles.customPackage}><Layers3 size={29} strokeWidth={1.5} aria-hidden="true" /><h3>Need something more?</h3><p>Online stores, bookings, advanced integrations or a fully custom website. We’ll work out a scope that fits.</p><ul><li><Check size={16} /> E-commerce & online payments</li><li><Check size={16} /> Custom features & integrations</li><li><Check size={16} /> Larger sites & website redesigns</li></ul><QuoteButton label="Get My Website Quote" className={styles.customButton} /><span>Priced separately, based on your requirements.</span></article>
     </div><div className={styles.terms}><div><ShieldCheck size={22} /><h3>What your written quote will confirm</h3><p>The starting price is an invitation to scope your project. These details are agreed before you commit.</p></div><dl><div><dt>Pages & features</dt><dd>Exact page count, included features and content responsibilities.</dd></div><div><dt>Revisions & delivery</dt><dd>Number of revision rounds and the delivery estimate.</dd></div><div><dt>Domain & hosting</dt><dd>Provider charges, account ownership and renewal costs itemised separately.</dd></div><div><dt>Support, taxes & recurring costs</dt><dd>Support period, applicable taxes and any ongoing fees stated in writing.</dd></div></dl></div></div></section>

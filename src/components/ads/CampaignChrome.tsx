@@ -9,7 +9,7 @@ import styles from './campaign.module.css';
 export function CampaignHeader() {
   return <header className={styles.header}><div className={styles.container}>
     <a href="#" aria-label="Web Total Solution, top of page"><Logo size="sm" /></a>
-    <div className={styles.headerActions}><a className={styles.headerPhone} href={PHONE_HREF}><Phone size={15} aria-hidden="true" /><span>{PHONE_DISPLAY}</span></a><a className={styles.headerWhatsapp} href={ADS_WHATSAPP} target="_blank" rel="noopener noreferrer"><WhatsAppIcon className="size-4" /><span>WhatsApp us</span></a></div>
+    <div className={styles.headerActions}><nav className={styles.headerNav} aria-label="On this page"><Link href="/website-design-development#work">Our work</Link><Link href="/website-design-development#packages">Packages</Link></nav><a className={styles.headerPhone} href={PHONE_HREF}><Phone size={15} aria-hidden="true" /><span>{PHONE_DISPLAY}</span></a><a className={styles.headerWhatsapp} href={ADS_WHATSAPP} target="_blank" rel="noopener noreferrer"><WhatsAppIcon className="size-4" /><span>Let’s talk</span></a></div>
   </div></header>;
 }
 

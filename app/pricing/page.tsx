@@ -1,3 +1,4 @@
+import { LANDING_PAGE_PACKAGE, STARTUP_GROWTH_PACKAGE, CUSTOM_PRODUCT_PACKAGE, formatUsd } from '../../src/siteContent';
 import { Metadata } from 'next';
 import PricingView from '../../src/components/PricingView';
 import JsonLd, { breadcrumbSchema } from '../../src/components/JsonLd';
@@ -5,7 +6,7 @@ import JsonLd, { breadcrumbSchema } from '../../src/components/JsonLd';
 export const metadata: Metadata = {
   title: 'Startup Website Pricing | Landing Pages & Marketing Sites',
   description:
-    'Website packages with starting prices in USD: Landing Page Sprint from $1,200, Startup Growth Site from $2,500, Custom Product Website from $5,000. Written quote after scope review.',
+    `Website packages with starting prices in USD: Landing Page Sprint from ${formatUsd(LANDING_PAGE_PACKAGE.from)}, Startup Growth Site from ${formatUsd(STARTUP_GROWTH_PACKAGE.from)}, Custom Product Website from ${formatUsd(CUSTOM_PRODUCT_PACKAGE.from)}. Written quote after scope review.`,
   alternates: {
     canonical: 'https://www.webtotalsolution.com/pricing',
   },

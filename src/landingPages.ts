@@ -12,7 +12,7 @@
  * here unless the business supplies a current, separately scoped offer.
  */
 
-import { Faq, SUPPORT_DETAIL } from './siteContent';
+import { Faq, SUPPORT_DETAIL, LANDING_PAGE_PACKAGE, STARTUP_GROWTH_PACKAGE, CUSTOM_PRODUCT_PACKAGE, formatUsd } from './siteContent';
 import { ProjectType } from './lead';
 import { HERO_IMAGES } from './stockImages';
 import { Evidence } from './components/EvidenceBlock';
@@ -382,7 +382,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
       {
         question: 'How much does website development cost in India?',
         answer:
-          'It depends on the number of pages, the custom design involved and the features. Domestic projects are quoted in INR in writing after a scope review. Our published starting prices for startup website packages are in USD, from $1,200.',
+          `It depends on the number of pages, the custom design involved and the features. Domestic projects are quoted in INR in writing after a scope review. Our published starting prices for startup website packages are in USD, from ${formatUsd(LANDING_PAGE_PACKAGE.from)}.`,
         link: { label: 'See the packages', href: '/pricing' },
       },
       {
@@ -557,7 +557,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
     h1: 'Business and startup website development',
     lead: 'A multi-page marketing website that explains what you offer, shows why you are credible and leads visitors to one next step.',
     facts: [
-      { label: 'Package', value: 'Startup Growth Site, from $2,500 USD' },
+      { label: 'Package', value: `Startup Growth Site, from ${formatUsd(STARTUP_GROWTH_PACKAGE.from)} USD` },
       { label: 'Revisions', value: '3 rounds' },
       { label: 'Timeline', value: 'Agreed after scope review' },
       { label: 'Support', value: '30 days after launch' },
@@ -606,7 +606,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
     quote: {
       heading: 'Scope and quote',
       paragraphs: [
-        'The Startup Growth Site starts at $2,500 USD. The quote depends on the number of page templates, CMS content types, copywriting, migration from an existing site and integrations.',
+        `The Startup Growth Site starts at ${formatUsd(STARTUP_GROWTH_PACKAGE.from)} USD. The quote depends on the number of page templates, CMS content types, copywriting, migration from an existing site and integrations.`,
         'Indian businesses are quoted in INR after a scope review. The timeline is agreed at the same time and written into the quote.',
       ],
     },
@@ -637,7 +637,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
     meta: {
       title: 'Business Website Development Company | Web Total Solution',
       description:
-        'Business and startup website development: messaging, design and a responsive build with CMS where scoped. Startup Growth Site from $2,500 USD.',
+        `Business and startup website development: messaging, design and a responsive build with CMS where scoped. Startup Growth Site from ${formatUsd(STARTUP_GROWTH_PACKAGE.from)} USD.`,
       keywords: [
         'business website development',
         'professional website design company',
@@ -701,7 +701,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
       heading: 'Scope and quote',
       paragraphs: [
         'A redesign is quoted after the review, because the cost depends on the number of pages, how much content is rewritten and what is being migrated.',
-        'For a startup marketing site, the Startup Growth Site package from $2,500 USD is the usual reference point. Indian businesses are quoted in INR.',
+        `For a startup marketing site, the Startup Growth Site package from ${formatUsd(STARTUP_GROWTH_PACKAGE.from)} USD is the usual reference point. Indian businesses are quoted in INR.`,
       ],
     },
     faqHeading: 'Website redesign: questions',
@@ -1280,7 +1280,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
       {
         question: 'How much does a startup website cost?',
         answer:
-          'Our published starting prices for startup website packages are in USD, from $1,200, with the inclusions listed on the pricing page. What moves a quote above the starting price is stated for each package. You can ask for an INR quote if you prefer.',
+          `Our published starting prices for startup website packages are in USD, from ${formatUsd(LANDING_PAGE_PACKAGE.from)}, with the inclusions listed on the pricing page. What moves a quote above the starting price is stated for each package. You can ask for an INR quote if you prefer.`,
         link: { label: 'See the packages', href: '/pricing' },
       },
       {
@@ -1444,7 +1444,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
     h1: 'SaaS website design and development',
     lead: 'A marketing website for a software product: what it does, who it is for, what it costs and how to start. Designed and built by a studio that markets a SaaS product of its own.',
     facts: [
-      { label: 'Package', value: 'Startup Growth Site, from $2,500 USD' },
+      { label: 'Package', value: `Startup Growth Site, from ${formatUsd(STARTUP_GROWTH_PACKAGE.from)} USD` },
       { label: 'Our own product', value: 'WTS CRM, at wtscrm.com' },
       { label: 'Stack', value: 'Next.js, React, TypeScript' },
       { label: 'Support', value: '30 days after launch' },
@@ -1495,8 +1495,8 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
     quote: {
       heading: 'SaaS website cost',
       paragraphs: [
-        'A SaaS marketing website is usually the Startup Growth Site, from $2,500 USD. When the site needs interactive product explanations, several content types or integrations, it is the Custom Product Website, from $5,000 USD. The written quote follows a scope review.',
-        'A pre-launch product that needs one page and a waitlist can start with the Landing Page Sprint, from $1,200 USD. Indian companies can ask for a quote in INR.',
+        `A SaaS marketing website is usually the Startup Growth Site, from ${formatUsd(STARTUP_GROWTH_PACKAGE.from)} USD. When the site needs interactive product explanations, several content types or integrations, it is the Custom Product Website, from ${formatUsd(CUSTOM_PRODUCT_PACKAGE.from)} USD. The written quote follows a scope review.`,
+        `A pre-launch product that needs one page and a waitlist can start with the Landing Page Sprint, from ${formatUsd(LANDING_PAGE_PACKAGE.from)} USD. Indian companies can ask for a quote in INR.`,
       ],
     },
     faqHeading: 'SaaS websites: questions',
@@ -1534,7 +1534,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
     meta: {
       title: 'SaaS Website Design & Development Agency | Web Total Solution',
       description:
-        'SaaS website design and development: positioning, product and pricing pages, and a Next.js build. From the studio that markets its own SaaS product. From $2,500 USD.',
+        `SaaS website design and development: positioning, product and pricing pages, and a Next.js build. From the studio that markets its own SaaS product. From ${formatUsd(STARTUP_GROWTH_PACKAGE.from)} USD.`,
       keywords: [
         'saas website design',
         'saas website design agency',

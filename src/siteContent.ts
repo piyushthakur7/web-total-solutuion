@@ -119,7 +119,6 @@ export const NEXT_STEPS = [
 /** The support period included with every website package. */
 export const SUPPORT_DAYS = 30;
 export const SUPPORT_TERM = `${SUPPORT_DAYS} days of post-launch support`;
-export const SUPPORT_DETAIL = `Every website package includes ${SUPPORT_TERM} for fixes, small content changes and technical help. After that, an optional Website Care Plan covers ongoing maintenance from $49/month.`;
 
 export const OWNERSHIP_TERM =
   'You own the domain, hosting account, content and source code of the delivered website.';
@@ -204,6 +203,8 @@ export const WEBSITE_PACKAGES: WebsitePackage[] = [
   },
 ];
 
+export const [LANDING_PAGE_PACKAGE, STARTUP_GROWTH_PACKAGE, CUSTOM_PRODUCT_PACKAGE] = WEBSITE_PACKAGES;
+
 export function getPackage(slug: string | null | undefined) {
   return WEBSITE_PACKAGES.find((pkg) => pkg.slug === slug);
 }
@@ -217,18 +218,6 @@ export function revisionLabel(pkg: WebsitePackage) {
     ? 'Revision rounds agreed in the written scope'
     : `${pkg.revisionRounds} revision rounds`;
 }
-
-/** Notes that apply to every package, shown wherever prices are listed. */
-export const PACKAGE_TERMS = [
-  'Starting prices in USD. The written quote follows a scope review and can be higher.',
-  'Timeline agreed after scope review and confirmed in the written quote.',
-  'Design is approved before development begins.',
-  SUPPORT_DETAIL,
-  OWNERSHIP_TERM,
-  'Hosting, domains, paid plugins and third-party services are billed by their providers and listed in the quote.',
-  'Payment milestones are set out in the written quote.',
-  'Web applications, dashboards and mobile apps are not part of these packages and are scoped separately.',
-];
 
 /* -------------------------------------------------------------------------- */
 /* Website Care Plans                                                         */
@@ -319,6 +308,20 @@ export const CUSTOM_MANAGEMENT = {
     'For SaaS platforms, ecommerce websites, custom applications, high-traffic websites and businesses that need continuous development.',
 };
 
+export const SUPPORT_DETAIL = `Every website package includes ${SUPPORT_TERM} for fixes, small content changes and technical help. After that, an optional Website Care Plan covers ongoing maintenance from ${formatUsd(CARE_PLANS[0].monthly)}/month USD.`;
+
+/** Notes that apply to every package, shown wherever prices are listed. */
+export const PACKAGE_TERMS = [
+  'Starting prices in USD. The written quote follows a scope review and can be higher.',
+  'Timeline agreed after scope review and confirmed in the written quote.',
+  'Design is approved before development begins.',
+  SUPPORT_DETAIL,
+  OWNERSHIP_TERM,
+  'Hosting, domains, paid plugins and third-party services are billed by their providers and listed in the quote.',
+  'Payment milestones are set out in the written quote.',
+  'Web applications, dashboards and mobile apps are not part of these packages and are scoped separately.',
+];
+
 export const CARE_PLAN_SCOPE_NOTE =
   'Website Care Plans cover maintenance, monitoring, support, and minor improvements to your existing website. New pages, major redesigns, custom features, application development, advanced integrations, and large-scale changes are quoted separately.';
 
@@ -397,7 +400,7 @@ export const HOME_FAQS: Faq[] = [
   {
     question: 'How is the price decided?',
     answer:
-      'The three packages have starting prices in USD: Landing Page Sprint from $1,200, Startup Growth Site from $2,500 and Custom Product Website from $5,000. The written quote follows a scope review and depends on the number of page templates, who writes the content, the CMS and the integrations involved.',
+      `The three packages have starting prices in USD: ${WEBSITE_PACKAGES.map((pkg) => `${pkg.name} from ${formatUsd(pkg.from)}`).join(', ')}. The written quote follows a scope review and depends on the number of page templates, who writes the content, the CMS and the integrations involved.`,
     link: { label: 'See what each package includes', href: '/pricing' },
   },
   {

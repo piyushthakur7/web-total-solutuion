@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import CampaignPage from '../../src/components/ads/CampaignPage';
 import { ADS_PATH } from '../../src/adsLanding';
-import { SITE_URL } from '../../src/siteContent';
+import { SITE_URL, LANDING_PAGE_PACKAGE, formatUsd } from '../../src/siteContent';
 
-const title = 'Website Design & Development from ₹6,999';
+const title = `Website Design & Development from ${formatUsd(LANDING_PAGE_PACKAGE.from)} USD`;
 const description = 'A professional, mobile-friendly website for your business. Explore real projects and request a free consultation from Web Total Solution. Final scope confirmed in writing.';
 export const metadata: Metadata = {
   title, description, alternates: { canonical: `${SITE_URL}${ADS_PATH}` },

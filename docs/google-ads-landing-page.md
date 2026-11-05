@@ -6,9 +6,9 @@ Server endpoint: `POST /api/website-enquiry`
 
 The campaign uses its own header, footer and mobile action bar. The main website retains its existing navigation, pricing and forms. The campaign is intentionally `noindex` and excluded from the organic sitemap.
 
-## Offer details needed before paid traffic
+## Shared pricing
 
-The brief supplies a ₹6,999 starting price but does not confirm a page count, revision allowance, delivery estimate, domain/hosting inclusion, support period, tax treatment or recurring costs. The page discloses that those terms are set in the written quote, and portfolio examples show wider studio work rather than the starting package. Replace the provisional wording in `CampaignPage.tsx` and `ADS_FAQS` in `src/adsLanding.ts` with the confirmed offer before launching ads. Do not copy the main site's USD package inclusions into this offer.
+The campaign uses the same website packages and starting prices as `/pricing`, sourced from `src/siteContent.ts`. The entry offer is the Landing Page Sprint; larger marketing websites use the Startup Growth Site or Custom Product Website. Budget options are shared with the main enquiry form. Prices are published in USD, and Indian businesses can request a written quote in INR after scope review. Package inclusions, revisions and post-launch support match the shared configuration. Domain, hosting, third-party costs and applicable taxes are itemised separately. Portfolio examples show the studio's wider work; the written scope confirms the deliverables.
 
 ## Lead delivery
 

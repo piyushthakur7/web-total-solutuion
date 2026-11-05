@@ -8,7 +8,7 @@
  * stock imagery or invented results.
  */
 
-import { Faq, SUPPORT_DETAIL } from './siteContent';
+import { Faq, SUPPORT_DETAIL, LANDING_PAGE_PACKAGE, CUSTOM_PRODUCT_PACKAGE, formatUsd } from './siteContent';
 import { ProjectType } from './lead';
 import { HERO_IMAGES } from './stockImages';
 
@@ -55,7 +55,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
     secondary: false,
     lead: 'One page for one audience, one offer and one action: a demo request, a trial sign-up or a waitlist place. We work out the message first, then design and build the page around it.',
     metaDescription:
-      'Landing page strategy, design and Next.js development for startups. One audience, one offer, one action. Landing Page Sprint from $1,200 USD.',
+      `Landing page strategy, design and Next.js development for startups. One audience, one offer, one action. Landing Page Sprint from ${formatUsd(LANDING_PAGE_PACKAGE.from)} USD.`,
     projectType: 'Landing Page',
     heroImage: HERO_IMAGES.planning,
     package: 'landing-page-sprint',
@@ -115,7 +115,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
     scope: {
       heading: 'Scope and quote',
       paragraphs: [
-        'The Landing Page Sprint starts at $1,200 USD for one page with two revision rounds. Copywriting, extra pages, custom illustration and integrations beyond a form are quoted as additions.',
+        `The Landing Page Sprint starts at ${formatUsd(LANDING_PAGE_PACKAGE.from)} USD for one page with two revision rounds. Copywriting, extra pages, custom illustration and integrations beyond a form are quoted as additions.`,
         'The timeline is agreed after the scope review. It mostly depends on how quickly the message and content are settled.',
       ],
     },
@@ -206,7 +206,7 @@ export const SERVICES_DATA: Record<string, ServiceData> = {
     scope: {
       heading: 'Scope and quote',
       paragraphs: [
-        'Application work is not covered by the website packages. The Custom Product Website, from $5,000 USD, is a product marketing website and does not include a production application.',
+        `Application work is not covered by the website packages. The Custom Product Website, from ${formatUsd(CUSTOM_PRODUCT_PACKAGE.from)} USD, is a product marketing website and does not include a production application.`,
         'A product is quoted after discovery, from the list of flows, roles and integrations. The quote states what the first version includes and what is deferred.',
       ],
     },

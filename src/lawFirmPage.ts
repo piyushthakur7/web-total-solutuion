@@ -1,38 +1,31 @@
-/**
- * Copy for /law-firm-websites — the landing page for law firms in the US, UK
- * and UAE. Offer, price, care plan and call hours are supplied by the
- * business; do not change them or add figures without confirmation.
- *
- * This is a niche offer with its own fixed framing ($2,500, 5–8 pages, three
- * weeks). It sits alongside the general website packages in siteContent and
- * does not replace them.
- */
+/** Law-firm scope and delivery terms use the studio's shared package and care prices. */
+import { STARTUP_GROWTH_PACKAGE, SUPPORT_DETAIL, CARE_PLANS, formatUsd } from './siteContent';
 
 export const LAW_FIRM_PAGE = {
   slug: 'law-firm-websites',
   serviceName: 'Law Firm Website Development',
   meta: {
-    title: 'Next.js Websites for Law Firms | Live in 3 Weeks, From $2,500',
+    title: `Next.js Websites for Law Firms | Live in 3 Weeks, From ${formatUsd(STARTUP_GROWTH_PACKAGE.from)}`,
     description:
-      'Fast, search-ready Next.js websites for law firms in the US, UK and UAE. Live in 3 weeks, from $2,500 with a fixed written quote and full code ownership.',
+      `Fast, search-ready Next.js websites for law firms in the US, UK and UAE. Live in 3 weeks, from ${formatUsd(STARTUP_GROWTH_PACKAGE.from)} with a fixed written quote and full code ownership.`,
     ogTitle: 'Law Firm Websites Built in Next.js — Live in 3 Weeks',
     ogDescription:
-      'A fast, search-ready website for your firm, from $2,500. Fixed written quote in USD, calls in your working hours, and you own the code.',
+      `A fast, search-ready website for your firm, from ${formatUsd(STARTUP_GROWTH_PACKAGE.from)}. Fixed written quote in USD, calls in your working hours, and you own the code.`,
   },
   eyebrow: 'For law firms in the US, UK & UAE',
   h1: 'Next.js websites for law firms — live in 3 weeks',
   subheadline:
     'A fast, search-ready website that presents your firm clearly and turns visitors into enquiries. Fixed written quote in USD before any work begins.',
   offer: {
-    price: 'From $2,500',
+    price: `From ${formatUsd(STARTUP_GROWTH_PACKAGE.from)}`,
     scope: '5–8 pages',
     timeline: 'Live in 3 weeks',
     /** What the three-week timeline depends on. */
     timelineCondition:
       'The three weeks run from the point the scope is approved and your content is ready, and assume design feedback within the agreed review days. The delivery date is confirmed in writing at the start.',
     carePlan: {
-      price: '$250/month',
-      includes: 'Hosting, updates, small edits, and monthly speed and uptime checks.',
+      price: `from ${formatUsd(CARE_PLANS[0].monthly)} USD/month`,
+      includes: 'Website Care Plans cover maintenance, monitoring and support. Hosting and domain charges are billed separately by their providers.',
     },
   },
   problems: {
@@ -151,7 +144,7 @@ export const LAW_FIRM_PAGE = {
     {
       question: 'How much does a law firm website cost?',
       answer:
-        'Projects start from $2,500 for a 5–8 page website. The exact figure depends on the number of pages and the features you need, and you receive it as a fixed written quote in USD before any work begins.',
+        `Projects start from ${formatUsd(STARTUP_GROWTH_PACKAGE.from)} for a 5–8 page website. The exact figure depends on the number of pages and the features you need, and you receive it as a fixed written quote in USD before any work begins.`,
     },
     {
       question: 'How long does the project take?',
@@ -171,7 +164,7 @@ export const LAW_FIRM_PAGE = {
     {
       question: 'What support do we get after launch?',
       answer:
-        'Every project includes 30 days of post-launch support. After that, the optional care plan is $250/month and covers hosting, updates, small edits, and monthly speed and uptime checks.',
+        `${SUPPORT_DETAIL} Hosting and domain charges are billed separately by their providers.`,
     },
     {
       question: 'Why Next.js rather than a template or page builder?',

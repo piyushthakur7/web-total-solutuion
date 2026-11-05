@@ -37,7 +37,7 @@ export const PRICING_FAQS: Faq[] = [
       "Payment milestones are set out in the written quote, alongside the scope and timeline. International projects are quoted and invoiced in USD.",
   },
   {
-    question: "Is a web application or dashboard included in the $5,000 package?",
+    question: `Is a web application or dashboard included in the ${formatUsd(custom.from)} package?`,
     answer:
       "No. The Custom Product Website is a scoped product or marketing website. A production SaaS application, an internal dashboard or a mobile app is a different kind of project and is scoped and quoted separately.",
     link: { label: "How we scope product work", href: "/services/saas-development" },

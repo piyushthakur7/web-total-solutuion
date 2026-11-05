@@ -25,9 +25,8 @@ test('attribution ignores arbitrary parameters and bounds/control-cleans campaig
   assert.equal(campaignFromSearch(`?utm_campaign=${'x'.repeat(500)}`).utm_campaign.length, 200);
   assert.equal(campaignFromSearch('?utm_source=one%0Atwo').utm_source, 'onetwo');
   const summary = adsLeadMessage(valid, { utm_source: 'google' });
-  assert.match(summary, /INR 6,999/);
+  assert.match(summary, /Landing Page Sprint, starting at \$1,200 USD/);
   assert.match(summary, /utm_source: google/);
-  assert.doesNotMatch(summary, /\$1,200/);
 });
 
 test('endpoint rejects cross-origin, bot, oversized and invalid requests before delivery', async () => {

@@ -1,4 +1,7 @@
-/** The domestic campaign is separate from the studio's USD packages. */
+/** Campaign pricing and enquiry budgets match the main website. */
+import { BUDGET_RANGES } from './lead';
+import { LANDING_PAGE_PACKAGE, SUPPORT_DETAIL, WEBSITE_PACKAGES, formatUsd, revisionLabel } from './siteContent';
+
 export const ADS_PATH = '/website-design-development';
 export const ADS_CTA = 'Get My Website Quote';
 export const ADS_WHATSAPP = 'https://wa.me/916291519364?text=Hi%2C%20I%27d%20like%20a%20quote%20for%20a%20business%20website.';
@@ -7,7 +10,7 @@ export const ADS_WEBSITE_TYPES = [
   'Business / Corporate', 'E-commerce', 'School / Coaching', 'Real Estate',
   'Interior Design', 'Clinic / Healthcare', 'Hotel / Hospitality', 'Custom Website',
 ] as const;
-export const ADS_BUDGETS = ['₹6,999–₹15,000', '₹15,000–₹30,000', '₹30,000–₹60,000', '₹60,000+', 'Please advise'] as const;
+export const ADS_BUDGETS = BUDGET_RANGES;
 export const ADS_TIMELINES = ['As soon as possible', 'Within a month', 'Within 1–3 months', 'Just exploring'] as const;
 export const CAMPAIGN_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'gbraid', 'wbraid'] as const;
 
@@ -65,7 +68,7 @@ export function campaignFromSearch(search: string): Record<string, string> {
 export function adsLeadMessage(fields: AdsLead, campaign: Record<string, string>) {
   const lines = [
     'Website design & development campaign enquiry',
-    'Offer viewed: Starter Website, starting at INR 6,999; final scope subject to written quote.',
+    `Offer viewed: ${LANDING_PAGE_PACKAGE.name}, starting at ${formatUsd(LANDING_PAGE_PACKAGE.from)} USD; final scope subject to written quote.`,
     `Name: ${fields.name}`, `Email: ${fields.email}`, `Phone / WhatsApp: ${fields.phone}`,
     fields.business && `Business name: ${fields.business}`,
     fields.businessType && `Business type: ${fields.businessType}`,
@@ -80,12 +83,12 @@ export function adsLeadMessage(fields: AdsLead, campaign: Record<string, string>
 }
 
 export const ADS_FAQS = [
-  { question: 'How much does a business website cost?', answer: 'Our Starter Website offer starts at ₹6,999. Your final price depends on the agreed pages, content and features. We send a written quote before any work begins; e-commerce and custom development are quoted separately.' },
-  { question: 'What is included in the ₹6,999 package?', answer: 'The offer is for a starter business website. The exact page count, features, revision rounds and content responsibilities are confirmed in your written quote. Please share your requirements so we can confirm whether the starting offer fits your project.' },
+  { question: 'How much does a business website cost?', answer: `Our website packages start at ${WEBSITE_PACKAGES.map((pkg) => `${formatUsd(pkg.from)} USD for the ${pkg.name}`).join(', ')}. The final quote follows a scope review. Indian businesses can request a written quote in INR; e-commerce and application development are quoted separately.` },
+  { question: `What is included in the ${LANDING_PAGE_PACKAGE.name}?`, answer: `${LANDING_PAGE_PACKAGE.scope} Included: ${LANDING_PAGE_PACKAGE.includes.join('; ')}. ${revisionLabel(LANDING_PAGE_PACKAGE)}. Additional pages, copywriting and integrations are quoted separately.` },
   { question: 'How long does development take?', answer: 'We confirm a delivery estimate after reviewing your requirements, content and integrations. Your quote includes the agreed schedule. Content readiness and design approvals affect the launch date.' },
   { question: 'Will my website work on mobile?', answer: 'Yes. Websites are built responsively and checked on mobile, tablet and desktop so visitors can read your content and contact your business across screen sizes.' },
   { question: 'Can you redesign my existing website?', answer: 'Yes. Share your current website and what you want to improve. We review the existing pages, content and functionality, then quote for the redesign and any migration work.' },
-  { question: 'Are domain, hosting and taxes included?', answer: 'Domain registration, hosting, renewals, paid tools and any applicable taxes are itemised in the written quote. They are not advertised as included in the ₹6,999 starting price. Ask us for the complete first-year and recurring costs before proceeding.' },
+  { question: 'Are domain, hosting and taxes included?', answer: 'Domain registration, hosting, renewals and paid tools are separate from the package price. These costs and any applicable taxes are itemised in the written quote. Ask us for the complete first-year and recurring costs before proceeding.' },
   { question: 'Can I add an online store or custom features?', answer: 'Yes. Online payments, product catalogues, bookings, dashboards and advanced integrations are scoped and priced separately. Tell us what you need and we will recommend a suitable approach.' },
-  { question: 'What support is available after launch?', answer: 'The support period, included fixes and any ongoing maintenance fees are agreed in your written quote before work starts. Ask us about a care plan if you need regular updates after the included period.' },
+  { question: 'What support is available after launch?', answer: SUPPORT_DETAIL },
 ];

@@ -6,7 +6,7 @@
  * Kept free of React and browser APIs so it can be tested directly.
  */
 
-import { WEBSITE_PACKAGES, getPackage } from './siteContent';
+import { WEBSITE_PACKAGES, getPackage, LANDING_PAGE_PACKAGE, STARTUP_GROWTH_PACKAGE, CUSTOM_PRODUCT_PACKAGE, formatUsd } from './siteContent';
 
 export const PROJECT_TYPES = [
   'Startup Marketing Website',
@@ -29,10 +29,10 @@ export type ProjectType = (typeof PROJECT_TYPES)[number];
  * guessing at a converted figure.
  */
 export const BUDGET_RANGES = [
-  'Under $1,200',
-  '$1,200 – $2,500',
-  '$2,500 – $5,000',
-  '$5,000 – $10,000',
+  `Under ${formatUsd(LANDING_PAGE_PACKAGE.from)}`,
+  `${formatUsd(LANDING_PAGE_PACKAGE.from)} – ${formatUsd(STARTUP_GROWTH_PACKAGE.from)}`,
+  `${formatUsd(STARTUP_GROWTH_PACKAGE.from)} – ${formatUsd(CUSTOM_PRODUCT_PACKAGE.from)}`,
+  `${formatUsd(CUSTOM_PRODUCT_PACKAGE.from)} – $10,000`,
   'Above $10,000',
   'Please quote in INR after scoping',
   'Not sure yet',

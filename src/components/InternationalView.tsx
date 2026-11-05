@@ -115,6 +115,9 @@ export default function InternationalView() {
                 {page.offer.carePlan.includes} It is separate from the project
                 price and starts only if you choose it.
               </p>
+              <div className="mt-3">
+                <TextLink href="/pricing#care-plans">Compare Website Care Plans</TextLink>
+              </div>
             </div>
           </div>
         </div>

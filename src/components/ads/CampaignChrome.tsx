@@ -1,3 +1,4 @@
+import PricingMarketSwitch from '../PricingMarket';
 import Link from 'next/link';
 import { Phone } from 'lucide-react';
 import { ADS_WHATSAPP } from '../../adsLanding';
@@ -16,6 +17,6 @@ export function CampaignHeader() {
 export function CampaignFooter() {
   return <footer className={styles.footer}><div className={styles.container}>
     <div className={styles.footerTop}><Logo size="sm" /><p>Thoughtful websites. Clear next steps.</p><div><a href={PHONE_HREF}>{PHONE_DISPLAY}</a><a href={`mailto:${EMAIL}`}>{EMAIL}</a></div></div>
-    <div className={styles.footerBottom}><p>© {new Date().getFullYear()} Web Total Solution</p><div><Link href="/privacy">Privacy Policy</Link><Link href="/terms">Terms & Conditions</Link></div></div>
+    <div className="py-4"><PricingMarketSwitch /></div><div className={styles.footerBottom}><p>© {new Date().getFullYear()} Web Total Solution</p><div><Link href="/privacy">Privacy Policy</Link><Link href="/terms">Terms & Conditions</Link></div></div>
   </div></footer>;
 }

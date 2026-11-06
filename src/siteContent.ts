@@ -2,7 +2,7 @@
  * Shared facts used across the site: contact details, offices, the founder,
  * the current website packages and the commitments made on every project.
  *
- * This file is the single source for package names, USD starting prices,
+ * This file is the single source for package names, regional starting prices,
  * inclusions, revision counts, the support term and enquiry labels. Pages
  * render from it rather than restating a price or a support period, so a
  * change here changes the whole site.
@@ -129,6 +129,8 @@ export interface WebsitePackage {
   name: string;
   /** Starting price in USD. A starting price, never a fixed fee for any scope. */
   from: number;
+  /** Independent starting price for the Indian market, in INR. */
+  fromInr: number;
   audience: string;
   /** What the starting price is scoped around. */
   scope: string;
@@ -147,6 +149,7 @@ export const WEBSITE_PACKAGES: WebsitePackage[] = [
     slug: 'landing-page-sprint',
     name: 'Landing Page Sprint',
     from: 1200,
+    fromInr: 24999,
     audience: 'For an early-stage startup launching or testing one offer.',
     scope: 'One landing page built around a single audience, offer and action.',
     includes: [
@@ -167,6 +170,7 @@ export const WEBSITE_PACKAGES: WebsitePackage[] = [
     slug: 'startup-growth-site',
     name: 'Startup Growth Site',
     from: 2500,
+    fromInr: 49999,
     audience: 'For a startup that needs a complete marketing website.',
     scope: 'A multi-page marketing website. The page list is agreed in the written scope.',
     includes: [
@@ -186,6 +190,7 @@ export const WEBSITE_PACKAGES: WebsitePackage[] = [
     slug: 'custom-product-website',
     name: 'Custom Product Website',
     from: 5000,
+    fromInr: 99999,
     audience: 'For a product company whose website has more to explain or connect.',
     scope: 'A scoped product or marketing website with custom structure, content types and integrations.',
     includes: [
@@ -312,7 +317,7 @@ export const SUPPORT_DETAIL = `Every website package includes ${SUPPORT_TERM} fo
 
 /** Notes that apply to every package, shown wherever prices are listed. */
 export const PACKAGE_TERMS = [
-  'Starting prices in USD. The written quote follows a scope review and can be higher.',
+  'Regional starting prices in INR for India and USD internationally. The written quote follows a scope review and can be higher.',
   'Timeline agreed after scope review and confirmed in the written quote.',
   'Design is approved before development begins.',
   SUPPORT_DETAIL,
@@ -421,7 +426,7 @@ export const HOME_FAQS: Faq[] = [
   {
     question: 'How do you work with clients outside India?',
     answer:
-      'Quotes and invoices are in USD. Day-to-day communication runs over email, with WhatsApp or Slack if you prefer, and calls are arranged in the overlap between your working day and Indian Standard Time. Design reviews and approvals happen on shared preview links, so nothing depends on being in the same room.',
+      'Indian projects are quoted and invoiced in INR; international projects in USD. Day-to-day communication runs over email, with WhatsApp or Slack if you prefer, and calls are arranged in the overlap between your working day and Indian Standard Time. Design reviews and approvals happen on shared preview links, so nothing depends on being in the same room.',
   },
   {
     question: 'What support is included after launch?',

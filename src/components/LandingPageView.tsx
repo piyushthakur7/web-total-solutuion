@@ -1,4 +1,6 @@
 import React from "react";
+import { getPricingMarket } from "../pricing.server";
+import { localizeWebsiteContent } from "../pricing";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { LandingPageConfig } from "../landingPages";
@@ -40,11 +42,12 @@ const related = [
  * hero, evidence, intro, page-specific sections, quote guidance, FAQ and one
  * enquiry form.
  */
-export default function LandingPageView({
-  config,
+export default async function LandingPageView({
+  config: originalConfig,
 }: {
   config: LandingPageConfig;
 }) {
+  const config = localizeWebsiteContent(originalConfig, await getPricingMarket());
   return (
     <div className="bg-paper pb-16 text-ink sm:pb-24">
       <PageIntro

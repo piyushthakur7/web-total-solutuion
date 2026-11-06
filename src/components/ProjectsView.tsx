@@ -131,7 +131,7 @@ export default function ProjectsView() {
       <section className="studio-container py-14 sm:py-20">
         <SectionHeading
           heading="WTS CRM subscription prices"
-          intro="Monthly prices in Indian rupees for the CRM product. These are separate from our website project pricing, which is quoted in USD."
+          intro="Monthly prices in Indian rupees for the CRM product. These are separate from our website project pricing, which uses regional starting prices."
         />
         <div className="mt-8 overflow-x-auto">
           <table className="w-full min-w-[560px] border-collapse text-left text-[15px]">

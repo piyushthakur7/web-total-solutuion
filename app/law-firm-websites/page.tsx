@@ -1,3 +1,5 @@
+import { getPricingMarket } from '../../src/pricing.server';
+import { localizeWebsiteContent } from '../../src/pricing';
 import { Metadata } from 'next';
 import InternationalView from '../../src/components/InternationalView';
 import JsonLd, { breadcrumbSchema, faqSchema, serviceSchema } from '../../src/components/JsonLd';
@@ -6,7 +8,8 @@ import { LAW_FIRM_PAGE } from '../../src/lawFirmPage';
 const page = LAW_FIRM_PAGE;
 const url = `https://www.webtotalsolution.com/${page.slug}`;
 
-export const metadata: Metadata = {
+export async function generateMetadata(): Promise<Metadata> {
+  return localizeWebsiteContent({
   title: { absolute: page.meta.title },
   description: page.meta.description,
   alternates: { canonical: url },
@@ -25,7 +28,8 @@ export const metadata: Metadata = {
     description: page.meta.ogDescription,
     images: ['/og-image.png'],
   },
-};
+  }, await getPricingMarket());
+}
 
 export default function LawFirmWebsitesPage() {
   return (

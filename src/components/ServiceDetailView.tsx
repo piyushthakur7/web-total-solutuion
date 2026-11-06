@@ -1,19 +1,23 @@
 import React from "react";
+import { getPricingMarket } from "../pricing.server";
+import { formatPackagePrice, pricingCurrency, localizeWebsiteContent } from "../pricing";
 import Link from "next/link";
 import { ArrowUpRight, Check } from "lucide-react";
 import { ServiceData } from "../services";
-import { CTA, getPackage, formatUsd } from "../siteContent";
+import { CTA, getPackage } from "../siteContent";
 import { contactHref } from "../lead";
 import { PageIntro, SectionHeading, TextLink } from "./StudioPrimitives";
 import EvidenceBlock from "./EvidenceBlock";
 import FAQSection from "./FAQSection";
 import LeadForm from "./LeadForm";
 
-export default function ServiceDetailView({
-  service,
+export default async function ServiceDetailView({
+  service: originalService,
 }: {
   service: ServiceData;
 }) {
+  const market = await getPricingMarket();
+  const service = localizeWebsiteContent(originalService, market);
   const pkg = getPackage(service.package);
   const enquiry = contactHref({
     package: service.package,
@@ -113,9 +117,9 @@ export default function ServiceDetailView({
                   <p className="mt-3 text-[15px] text-white/75">
                     From{" "}
                     <span className="font-display text-3xl text-white">
-                      {formatUsd(pkg.from)}
+                      {formatPackagePrice(pkg, market)}
                     </span>{" "}
-                    USD
+                    {pricingCurrency(market)}
                   </p>
                   <p className="mt-3 text-sm leading-relaxed text-white/70">
                     {pkg.scope}

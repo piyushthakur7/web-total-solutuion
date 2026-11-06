@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useId, useState } from "react";
+import { usePricingMarket } from "./PricingMarket";
+import { localizeWebsiteContent } from "../pricing";
 import Link from "next/link";
 import { Plus } from "lucide-react";
 import { Faq, HOME_FAQS } from "../siteContent";
@@ -20,6 +22,7 @@ export default function FAQSection({
 }: FAQSectionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const id = useId();
+  const regionalFaqs = localizeWebsiteContent(faqs, usePricingMarket());
   return (
     <section
       className={`studio-section ${background === "paper" ? "bg-paper" : "bg-white"}`}
@@ -38,7 +41,7 @@ export default function FAQSection({
           </Link>
         </div>
         <div className="lg:col-span-8">
-          {faqs.map((faq, index) => {
+          {regionalFaqs.map((faq, index) => {
             const open = index === openIndex;
             return (
               <div

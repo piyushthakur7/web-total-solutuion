@@ -4,13 +4,16 @@ import { useId, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowUpRight, LockKeyhole } from 'lucide-react';
-import { ADS_BUDGETS, ADS_CTA, ADS_PATH, ADS_TIMELINES, ADS_WEBSITE_TYPES, AdsErrors, AdsLead, EMPTY_ADS_LEAD, validateAdsLead } from '../../adsLanding';
+import { ADS_CTA, ADS_PATH, ADS_TIMELINES, ADS_WEBSITE_TYPES, AdsErrors, AdsLead, EMPTY_ADS_LEAD, validateAdsLead } from '../../adsLanding';
 import { RECEIPT_KEY, campaignSearch, measurementConsent, trackSuccessfulEnquiry } from '../../adsTracking';
 import { EMAIL, PHONE_HREF } from '../../siteContent';
+import { usePricingMarket } from '../PricingMarket';
+import { budgetRanges } from '../../pricing';
 import styles from './campaign.module.css';
 
 export default function CampaignForm({ preview }: { preview: boolean }) {
   const id = useId();
+  const market = usePricingMarket();
   const router = useRouter();
   const formRef = useRef<HTMLFormElement>(null);
   const startedAt = useRef(Date.now());
@@ -25,7 +28,7 @@ export default function CampaignForm({ preview }: { preview: boolean }) {
   const submit = async (event: React.FormEvent) => {
     event.preventDefault();
     if (busy.current || success) return;
-    const found = validateAdsLead(fields);
+    const found = validateAdsLead(fields, market);
     setErrors(found);
     const first = Object.keys(found)[0];
     if (first) { formRef.current?.querySelector<HTMLElement>(`[name="${first}"]`)?.focus(); return; }
@@ -81,7 +84,7 @@ export default function CampaignForm({ preview }: { preview: boolean }) {
       {input('businessType', 'Business type', { placeholder: 'e.g. Interior design studio' })}
       {input('website', 'Current website', { type: 'url', placeholder: 'https://yourwebsite.com', autoComplete: 'url' })}
       {select('websiteType', 'Website type required', ADS_WEBSITE_TYPES)}
-      {select('budget', 'Approximate budget', ADS_BUDGETS)}
+      {select('budget', 'Approximate budget', budgetRanges(market))}
       {select('timeline', 'Expected timeline', ADS_TIMELINES)}
       <div className={styles.field}><label htmlFor={`${id}-details`}>Anything else?<span> (optional)</span></label><textarea id={`${id}-details`} name="details" rows={3} maxLength={2000} value={fields.details} onChange={(e) => setFields((f) => ({ ...f, details: e.target.value }))} placeholder="What should your website help your business do?" /></div>
     </div></details>

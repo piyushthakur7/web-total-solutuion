@@ -1,3 +1,5 @@
+import { getPricingMarket } from '../../src/pricing.server';
+import { localizeWebsiteContent } from '../../src/pricing';
 import { Metadata } from 'next';
 import LandingPageView from '../../src/components/LandingPageView';
 import JsonLd, { breadcrumbSchema, faqSchema, serviceSchema } from '../../src/components/JsonLd';
@@ -9,7 +11,8 @@ const url = `https://www.webtotalsolution.com/${config.slug}`;
 // Portfolio content is served from InsForge; re-check every 5 minutes.
 export const revalidate = 300;
 
-export const metadata: Metadata = {
+export async function generateMetadata(): Promise<Metadata> {
+  return localizeWebsiteContent({
   title: { absolute: config.meta.title },
   description: config.meta.description,
   keywords: config.meta.keywords,
@@ -29,7 +32,8 @@ export const metadata: Metadata = {
     description: config.meta.description,
     images: ['/og-image.png'],
   },
-};
+  }, await getPricingMarket());
+}
 
 export default function WebsiteDevelopmentDelhiPage() {
   return (

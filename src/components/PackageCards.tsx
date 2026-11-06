@@ -1,11 +1,12 @@
 import React from "react";
+import { getPricingMarket } from "../pricing.server";
+import { formatPackagePrice, pricingCurrency } from "../pricing";
 import Link from "next/link";
 import { ArrowUpRight, Check } from "lucide-react";
 import {
   CTA,
   SUPPORT_TERM,
   WEBSITE_PACKAGES,
-  formatUsd,
   revisionLabel,
 } from "../siteContent";
 import { contactHref } from "../lead";
@@ -15,7 +16,7 @@ import { contactHref } from "../lead";
  * `detailed` (the pricing page) lists every inclusion; the summary version
  * shows the audience, scope and starting price.
  */
-export default function PackageCards({
+export default async function PackageCards({
   detailed = false,
   only,
 }: {
@@ -23,6 +24,7 @@ export default function PackageCards({
   /** Show a single package by slug, e.g. on a service page. */
   only?: string;
 }) {
+  const market = await getPricingMarket();
   const packages = only
     ? WEBSITE_PACKAGES.filter((pkg) => pkg.slug === only)
     : WEBSITE_PACKAGES;
@@ -48,9 +50,9 @@ export default function PackageCards({
             <p className="mt-6">
               <span className={`text-sm ${muted}`}>From </span>
               <span className="font-display text-[2.6rem] leading-none tracking-[-0.04em]">
-                {formatUsd(pkg.from)}
+                {formatPackagePrice(pkg, market)}
               </span>
-              <span className={`text-sm ${muted}`}> USD</span>
+              <span className={`text-sm ${muted}`}> {pricingCurrency(market)}</span>
             </p>
             <p className={`mt-4 border-t pt-4 text-sm leading-relaxed ${rule}`}>
               {pkg.scope}

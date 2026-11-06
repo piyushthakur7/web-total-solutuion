@@ -1,3 +1,5 @@
+import { getPricingMarket } from '../../../src/pricing.server';
+import { localizeWebsiteContent } from '../../../src/pricing';
 import { SERVICES_DATA } from '../../../src/services';
 import ServiceDetailView from '../../../src/components/ServiceDetailView';
 import JsonLd, { breadcrumbSchema, faqSchema, serviceSchema } from '../../../src/components/JsonLd';
@@ -13,7 +15,7 @@ import { Metadata } from 'next';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const resolvedParams = await params;
-  const service = SERVICES_DATA[resolvedParams.slug];
+  const service = localizeWebsiteContent(SERVICES_DATA[resolvedParams.slug], await getPricingMarket());
   
   if (!service) {
     return { title: 'Service Not Found' };
@@ -46,7 +48,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function ServicePage({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
-  const service = SERVICES_DATA[resolvedParams.slug];
+  const service = localizeWebsiteContent(SERVICES_DATA[resolvedParams.slug], await getPricingMarket());
 
   if (!service) {
     notFound();

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { AdsLead, EMPTY_ADS_LEAD, adsLeadMessage, campaignFromSearch, validateAdsLead, ADS_PATH } from '../../../src/adsLanding';
 import { LEAD_CAPTURE_KEY, LEAD_CAPTURE_URL } from '../../../src/siteContent';
+import { PRICING_MARKET_COOKIE, resolvePricingMarket } from '../../../src/pricing';
 
 export const runtime = 'nodejs';
 // Best-effort, per-instance protection; provider-side limits remain necessary at scale.
@@ -39,7 +40,8 @@ export async function POST(request: NextRequest) {
     return reply({ error: 'Please take a moment to review your details, then try again.' }, 400);
   }
   const fields = Object.fromEntries(Object.keys(EMPTY_ADS_LEAD).map((key) => [key, typeof body[key] === 'string' ? (body[key] as string).trim() : ''])) as unknown as AdsLead;
-  const errors = validateAdsLead(fields);
+  const market = resolvePricingMarket(request.headers.get('x-vercel-ip-country') || request.headers.get('cf-ipcountry'), request.cookies.get(PRICING_MARKET_COOKIE)?.value);
+  const errors = validateAdsLead(fields, market);
   if (Object.keys(errors).length) return reply({ error: 'Please check the highlighted fields.', errors }, 422);
 
   const now = Date.now();
@@ -68,7 +70,7 @@ export async function POST(request: NextRequest) {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         name: fields.name, phone: fields.phone, email: fields.email,
-        message: adsLeadMessage(fields, campaign), key: captureKey,
+        message: adsLeadMessage(fields, campaign, market), key: captureKey,
         source: 'Google Ads website landing page',
         page_url: `${request.nextUrl.origin}${ADS_PATH}`,
       }),

@@ -1,4 +1,7 @@
 import { HERO_IMAGES } from "../stockImages";
+import PricingMarketSwitch from "./PricingMarket";
+import { getPricingMarket } from "../pricing.server";
+import { localizeWebsiteContent, pricingCurrency } from "../pricing";
 import React from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
@@ -75,20 +78,26 @@ const separateCosts = [
   "Web applications, dashboards and mobile apps",
 ];
 
-export default function PricingView() {
+export default async function PricingView() {
+  const market = await getPricingMarket();
+  const currency = pricingCurrency(market);
   return (
     <div className="bg-paper pb-16 text-ink sm:pb-24">
       <PageIntro
         compact
         label="Pricing"
         image={HERO_IMAGES.planning}
-        title="Three website packages, with starting prices in USD"
+        title={`Three website packages, with starting prices in ${currency}`}
         description="Each package combines strategy, design and development. The price you pay is set in a written quote after we have reviewed the scope together."
       />
       <section className="studio-container pt-10 sm:pt-14">
+        <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
+          <PricingMarketSwitch />
+          <p className="text-sm text-graphite">Starting prices · final quote after scope review</p>
+        </div>
         <PackageCards detailed />
         <p className="mt-5 text-sm leading-relaxed text-graphite">
-          Starting prices in USD. Timeline agreed after scope review. Design is
+          Starting prices in {currency}. Timeline agreed after scope review. Design is
           approved before development begins.
         </p>
       </section>
@@ -96,7 +105,7 @@ export default function PricingView() {
       <section className="studio-container pt-14 sm:pt-20">
         <SectionHeading
           heading="Website Care Plans"
-          intro={`Every package includes ${SUPPORT_TERM}. A care plan covers the site after that. It is optional, billed monthly in USD and separate from the project price.`}
+          intro={`Every package includes ${SUPPORT_TERM}. A care plan covers the site after that. It is optional, billed monthly in USD for all regions and separate from the project price.`}
         />
         <div className="mt-8">
           <CarePlans />
@@ -164,7 +173,7 @@ export default function PricingView() {
       </section>
 
       <FAQSection
-        faqs={PRICING_FAQS}
+        faqs={localizeWebsiteContent(PRICING_FAQS, market)}
         heading="Pricing questions"
         intro="Starting prices, timing, payments and what is not included."
         background="paper"

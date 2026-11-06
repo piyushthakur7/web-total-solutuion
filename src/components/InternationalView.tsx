@@ -1,4 +1,6 @@
 import { HERO_IMAGES } from "../stockImages";
+import { getPricingMarket } from "../pricing.server";
+import { localizeWebsiteContent, pricingCurrency } from "../pricing";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -32,8 +34,10 @@ const ABROAD_ICONS = {
  * fixed framing, quoted in USD; the first conversation happens over WhatsApp
  * or email, so those are the actions here instead of the enquiry form.
  */
-export default function InternationalView() {
-  const page = LAW_FIRM_PAGE;
+export default async function InternationalView() {
+  const market = await getPricingMarket();
+  const currency = pricingCurrency(market);
+  const page = localizeWebsiteContent(LAW_FIRM_PAGE, market);
   const examples = page.examples.flatMap((example) =>
     PORTFOLIO_ITEMS.filter((item) => item.id === example.id).map((item) => ({
       ...example,
@@ -70,7 +74,7 @@ export default function InternationalView() {
         title={page.h1}
         description={page.subheadline}
         facts={[
-          { label: "Price", value: `${page.offer.price} USD` },
+          { label: "Price", value: `${page.offer.price} ${currency}` },
           { label: "Scope", value: page.offer.scope },
           { label: "Timeline", value: page.offer.timeline },
           { label: "Ownership", value: "Domain, hosting and code are yours" },
@@ -91,7 +95,7 @@ export default function InternationalView() {
             <ul>
               {[
                 `${page.offer.scope}, designed around your firm and practice areas`,
-                "A written scope and fixed quote in USD before work begins",
+                `A written scope and fixed quote in ${currency} before work begins`,
                 "Design approved by you before development",
                 "30 days of post-launch support",
               ].map((item) => (
@@ -237,7 +241,7 @@ export default function InternationalView() {
           </h2>
           <p className="mt-4 max-w-md text-base leading-relaxed text-ink/80">
             Send a message with your practice areas and current website. You
-            will get a written scope and a fixed quote in USD.
+            will get a written scope and a fixed quote in {currency}.
           </p>
           <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3">
             <a

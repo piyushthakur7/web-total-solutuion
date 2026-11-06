@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useEffect, useId, useRef, useState } from "react";
+import { usePricingMarket } from "./PricingMarket";
+import { budgetRanges, formatPackagePrice, pricingCurrency } from "../pricing";
 import {
   EMAIL,
   LEAD_CAPTURE_KEY,
@@ -8,11 +10,9 @@ import {
   RESPONSE_EXPECTATION,
   WEBSITE_PACKAGES,
   WHATSAPP_URL,
-  formatUsd,
   getPackage,
 } from "../siteContent";
 import {
-  BUDGET_RANGES,
   EMPTY_LEAD,
   LeadErrors,
   LeadFields,
@@ -57,6 +57,7 @@ export default function LeadForm({
   submitLabel = "Send enquiry",
 }: LeadFormProps) {
   const id = useId();
+  const market = usePricingMarket();
   const [fields, setFields] = useState<LeadFields>({
     ...EMPTY_LEAD,
     projectType: defaultProjectType,
@@ -142,6 +143,7 @@ export default function LeadForm({
             key: LEAD_CAPTURE_KEY,
             source,
             pageUrl: window.location.href,
+            market,
           }),
         ),
       });
@@ -339,7 +341,7 @@ export default function LeadForm({
               className={fieldClass}
             >
               <option value="">Select a range</option>
-              {BUDGET_RANGES.map((range) => (
+              {budgetRanges(market).map((range) => (
                 <option key={range} value={range}>
                   {range}
                 </option>
@@ -363,7 +365,7 @@ export default function LeadForm({
             <option value="">No package in mind</option>
             {WEBSITE_PACKAGES.map((pkg) => (
               <option key={pkg.slug} value={pkg.slug}>
-                {pkg.name} (from {formatUsd(pkg.from)} USD)
+                {pkg.name} (from {formatPackagePrice(pkg, market)} {pricingCurrency(market)})
               </option>
             ))}
           </select>
@@ -415,7 +417,7 @@ export default function LeadForm({
             </p>
             <p className="mt-3 flex flex-wrap gap-x-6 gap-y-2 font-semibold">
               <a
-                href={mailtoFallback(EMAIL, fields, source)}
+                href={mailtoFallback(EMAIL, fields, source, market)}
                 className="underline underline-offset-4"
               >
                 Send by email

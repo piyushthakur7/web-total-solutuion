@@ -6,7 +6,8 @@
  * Kept free of React and browser APIs so it can be tested directly.
  */
 
-import { WEBSITE_PACKAGES, getPackage, LANDING_PAGE_PACKAGE, STARTUP_GROWTH_PACKAGE, CUSTOM_PRODUCT_PACKAGE, formatUsd } from './siteContent';
+import { WEBSITE_PACKAGES, getPackage } from './siteContent';
+import { budgetRanges, formatPackagePrice, pricingCurrency, type PricingMarket } from './pricing';
 
 export const PROJECT_TYPES = [
   'Startup Marketing Website',
@@ -23,20 +24,8 @@ export const PROJECT_TYPES = [
 
 export type ProjectType = (typeof PROJECT_TYPES)[number];
 
-/**
- * Budget is optional and starts unselected. Ranges are in USD to match the
- * published packages; a domestic enquiry can ask for an INR quote instead of
- * guessing at a converted figure.
- */
-export const BUDGET_RANGES = [
-  `Under ${formatUsd(LANDING_PAGE_PACKAGE.from)}`,
-  `${formatUsd(LANDING_PAGE_PACKAGE.from)} – ${formatUsd(STARTUP_GROWTH_PACKAGE.from)}`,
-  `${formatUsd(STARTUP_GROWTH_PACKAGE.from)} – ${formatUsd(CUSTOM_PRODUCT_PACKAGE.from)}`,
-  `${formatUsd(CUSTOM_PRODUCT_PACKAGE.from)} – $10,000`,
-  'Above $10,000',
-  'Please quote in INR after scoping',
-  'Not sure yet',
-] as const;
+/** International defaults for existing consumers; forms use budgetRanges(market). */
+export const BUDGET_RANGES = budgetRanges('international');
 
 export interface LeadFields {
   name: string;
@@ -82,7 +71,7 @@ export function validateLead(fields: LeadFields): LeadErrors {
 }
 
 /** The readable summary stored with the lead and sent in the notification. */
-export function buildLeadMessage(fields: LeadFields, source?: string): string {
+export function buildLeadMessage(fields: LeadFields, source?: string, market: PricingMarket = 'international'): string {
   const pkg = getPackage(fields.packageSlug);
   return [
     `Name: ${fields.name.trim()}`,
@@ -90,7 +79,8 @@ export function buildLeadMessage(fields: LeadFields, source?: string): string {
     fields.phone.trim() ? `Phone / WhatsApp: ${fields.phone.trim()}` : null,
     fields.company.trim() ? `Company / website: ${fields.company.trim()}` : null,
     fields.projectType ? `Project type: ${fields.projectType}` : null,
-    pkg ? `Package: ${pkg.name} (from $${pkg.from.toLocaleString('en-US')} USD)` : null,
+    pkg ? `Package: ${pkg.name} (from ${formatPackagePrice(pkg, market)} ${pricingCurrency(market)})` : null,
+    `Website pricing region: ${market === 'india' ? 'India (INR)' : 'International (USD)'}`,
     fields.budget ? `Budget range: ${fields.budget}` : null,
     source ? `Enquiry source: ${source}` : null,
     '',
@@ -107,13 +97,13 @@ export function buildLeadMessage(fields: LeadFields, source?: string): string {
  */
 export function buildLeadPayload(
   fields: LeadFields,
-  context: { key: string; source?: string; pageUrl: string },
+  context: { key: string; source?: string; pageUrl: string; market?: PricingMarket },
 ) {
   return {
     name: fields.name.trim(),
     phone: fields.phone.trim(),
     email: fields.email.trim(),
-    message: buildLeadMessage(fields, context.source),
+    message: buildLeadMessage(fields, context.source, context.market),
     key: context.key,
     source: context.source || 'Website form',
     page_url: context.pageUrl,
@@ -157,9 +147,9 @@ export function contactHref(context: { package?: string; type?: ProjectType; det
 }
 
 /** mailto: fallback offered when the form cannot be delivered. */
-export function mailtoFallback(email: string, fields: LeadFields, source?: string) {
+export function mailtoFallback(email: string, fields: LeadFields, source?: string, market: PricingMarket = 'international') {
   const subject = `Project enquiry from ${fields.name.trim() || 'the website'}`;
   return `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
-    buildLeadMessage(fields, source),
+    buildLeadMessage(fields, source, market),
   )}`;
 }

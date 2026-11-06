@@ -1,14 +1,17 @@
 import React from 'react';
+import { getPricingMarket } from '../pricing.server';
+import { localizeWebsiteContent } from '../pricing';
 
 /**
  * Renders a structured-data block. Kept as a component so schema stays close to
  * the page it describes instead of being duplicated in the root layout.
  */
-export default function JsonLd({ data }: { data: Record<string, unknown> | Record<string, unknown>[] }) {
+export default async function JsonLd({ data }: { data: Record<string, unknown> | Record<string, unknown>[] }) {
+  const regionalData = localizeWebsiteContent(data, await getPricingMarket());
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(regionalData).replace(/</g, '\\u003c') }}
     />
   );
 }

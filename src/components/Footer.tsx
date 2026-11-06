@@ -1,4 +1,5 @@
 import React from "react";
+import PricingMarketSwitch from "./PricingMarket";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import Logo from "./Logo";
@@ -168,7 +169,10 @@ export default function Footer() {
           ))}
         </div>
         <div className="flex flex-col justify-between gap-4 border-t border-white/15 pt-6 text-[13px] text-white/60 sm:flex-row">
-          <p>© {new Date().getFullYear()} Web Total Solution</p>
+          <div className="flex flex-wrap items-center gap-4">
+            <p>© {new Date().getFullYear()} Web Total Solution</p>
+            <PricingMarketSwitch light />
+          </div>
           <div className="flex gap-5">
             <Link href="/privacy" className="hover:text-white">
               Privacy

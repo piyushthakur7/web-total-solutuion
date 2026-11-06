@@ -6,10 +6,8 @@
  * pages are not find-and-replace copies of each other: duplicate city pages
  * read as doorway pages to a search engine and to a visitor.
  *
- * Pricing rule: these pages do not publish INR price cards. The current
- * published prices are the USD starting prices in WEBSITE_PACKAGES; a domestic
- * project is quoted in writing after a scope review. Do not add a rupee figure
- * here unless the business supplies a current, separately scoped offer.
+ * Pricing rule: package amounts are localized at request time for India and
+ * international visitors. Final quotes follow a scope review.
  */
 
 import { Faq, SUPPORT_DETAIL, LANDING_PAGE_PACKAGE, STARTUP_GROWTH_PACKAGE, CUSTOM_PRODUCT_PACKAGE, formatUsd } from './siteContent';
@@ -53,8 +51,8 @@ export interface LandingPageConfig {
 }
 
 const DOMESTIC_QUOTE = [
-  'We do not publish a fixed rupee price list, because a five-page company site and a product catalogue are different amounts of work. You receive a written quote in INR after a scope review, with the pages, features, timeline and payment milestones listed.',
-  'The deliverables decide the price, not where you are based. Our published starting prices for startup website packages are in USD and are on the pricing page.',
+  'Website packages have regional starting prices on the pricing page. A five-page company site and a product catalogue are different amounts of work. You receive a written quote in INR after a scope review, with the pages, features, timeline and payment milestones listed.',
+  'Website package starting prices are in INR for India and USD internationally. The final quote depends on the deliverables and agreed scope.',
 ];
 
 const RANKING_FAQ: Faq = {
@@ -161,7 +159,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
       {
         question: 'How much does website development cost in Kolkata?',
         answer:
-          'It depends on the number of pages, how much custom design is involved and the features you need. We do not publish a fixed rupee price list. After a scope review you receive a written quote in INR, so you know the full cost before work begins.',
+          'It depends on the number of pages, how much custom design is involved and the features you need. See the pricing page for regional package starting prices. After a scope review you receive a written quote in INR, so you know the full cost before work begins.',
       },
       {
         question: 'How long does it take to build a website?',
@@ -281,7 +279,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
       {
         question: 'How much does website development cost in Delhi?',
         answer:
-          'It depends on the pages, the level of custom design and the features. We do not publish a fixed rupee price list. After a scope review you receive a written quote in INR listing everything included, and the figure does not change unless the scope does.',
+          'It depends on the pages, the level of custom design and the features. See the pricing page for regional package starting prices. After a scope review you receive a written quote in INR listing everything included, and the figure does not change unless the scope does.',
       },
       {
         question: 'Why do website quotes in Delhi vary so much?',
@@ -382,7 +380,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
       {
         question: 'How much does website development cost in India?',
         answer:
-          `It depends on the number of pages, the custom design involved and the features. Domestic projects are quoted in INR in writing after a scope review. Our published starting prices for startup website packages are in USD, from ${formatUsd(LANDING_PAGE_PACKAGE.from)}.`,
+          `It depends on the number of pages, the custom design involved and the features. Domestic projects are quoted in INR in writing after a scope review. Our published starting prices for startup website packages start from ${formatUsd(LANDING_PAGE_PACKAGE.from)}.`,
         link: { label: 'See the packages', href: '/pricing' },
       },
       {
@@ -929,7 +927,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
       {
         question: 'How much does website development cost in Mumbai?',
         answer:
-          'It depends on the pages, the level of custom design and the features. We do not publish a fixed rupee price list. After a scope review you receive a written quote in INR, so you know the full cost before work begins.',
+          'It depends on the pages, the level of custom design and the features. See the pricing page for regional package starting prices. After a scope review you receive a written quote in INR, so you know the full cost before work begins.',
       },
       {
         question: 'Can a studio outside Mumbai understand my market?',
@@ -1044,7 +1042,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
       {
         question: 'How much does website development cost in Pune?',
         answer:
-          'It depends on the pages, the custom design and the features. We do not publish a fixed rupee price list. After a scope review you receive a written quote in INR listing what is included.',
+          'It depends on the pages, the custom design and the features. See the pricing page for regional package starting prices. After a scope review you receive a written quote in INR listing what is included.',
       },
       {
         question: 'I manufacture components. Do I need an online store?',
@@ -1159,7 +1157,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
       {
         question: 'How much does website development cost in Hyderabad?',
         answer:
-          'It depends on the number of pages, the custom design and the features. We do not publish a fixed rupee price list. After a scope review you receive a written quote in INR, so you know the full cost before work begins.',
+          'It depends on the number of pages, the custom design and the features. See the pricing page for regional package starting prices. After a scope review you receive a written quote in INR, so you know the full cost before work begins.',
       },
       {
         question: 'Have you built a website for a pharmaceutical company?',
@@ -1266,8 +1264,8 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
     quote: {
       heading: 'Website development cost in Bengaluru',
       paragraphs: [
-        'Our published starting prices for startup websites are in USD, on the pricing page, so you can compare packages before talking to anyone. A starting price covers a defined scope; features, integrations and content work above it are quoted in writing.',
-        'If you would rather have an INR quote, say so in the enquiry and we will provide one after a scope review. Product and SaaS builds are scoped after discovery.',
+        'Our regional starting prices for startup websites are on the pricing page, so you can compare packages before talking to anyone. A starting price covers a defined scope; features, integrations and content work above it are quoted in writing.',
+        'Indian projects are quoted in INR and international projects in USD after a scope review. Product and SaaS builds are scoped after discovery.',
       ],
     },
     faqHeading: 'Website development for Bengaluru startups: questions',
@@ -1280,7 +1278,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
       {
         question: 'How much does a startup website cost?',
         answer:
-          `Our published starting prices for startup website packages are in USD, from ${formatUsd(LANDING_PAGE_PACKAGE.from)}, with the inclusions listed on the pricing page. What moves a quote above the starting price is stated for each package. You can ask for an INR quote if you prefer.`,
+          `Our published starting prices for startup website packages start from ${formatUsd(LANDING_PAGE_PACKAGE.from)}, with the inclusions listed on the pricing page. What moves a quote above the starting price is stated for each package. Indian projects are quoted in INR.`,
         link: { label: 'See the packages', href: '/pricing' },
       },
       {
@@ -1398,7 +1396,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
       {
         question: 'How much does website development cost in Noida?',
         answer:
-          'It depends on the pages, the custom design and the features. We do not publish a fixed rupee price list. After a scope review you receive a written quote in INR listing everything included, and the figure does not change unless the scope does.',
+          'It depends on the pages, the custom design and the features. See the pricing page for regional package starting prices. After a scope review you receive a written quote in INR listing everything included, and the figure does not change unless the scope does.',
       },
       {
         question: 'I run a manufacturing or export business. Do I need an online store?',
@@ -1496,7 +1494,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
       heading: 'SaaS website cost',
       paragraphs: [
         `A SaaS marketing website is usually the Startup Growth Site, from ${formatUsd(STARTUP_GROWTH_PACKAGE.from)} USD. When the site needs interactive product explanations, several content types or integrations, it is the Custom Product Website, from ${formatUsd(CUSTOM_PRODUCT_PACKAGE.from)} USD. The written quote follows a scope review.`,
-        `A pre-launch product that needs one page and a waitlist can start with the Landing Page Sprint, from ${formatUsd(LANDING_PAGE_PACKAGE.from)} USD. Indian companies can ask for a quote in INR.`,
+        `A pre-launch product that needs one page and a waitlist can start with the Landing Page Sprint, from ${formatUsd(LANDING_PAGE_PACKAGE.from)} USD. Indian companies receive a quote in INR.`,
       ],
     },
     faqHeading: 'SaaS websites: questions',
@@ -1713,7 +1711,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
       heading: 'Education website cost',
       paragraphs: [
         'A school or institute website is quoted after a scope review, in INR for Indian institutions, with the pages, features, timeline and payment milestones listed. The price depends mainly on the number of pages, whether staff need a CMS for notices, and integrations such as fee payments.',
-        'An online test or course platform with accounts and payments is a web application and is scoped separately after discovery. Our published starting prices for website packages are in USD on the pricing page.',
+        'An online test or course platform with accounts and payments is a web application and is scoped separately after discovery. Our regional starting prices for website packages are on the pricing page.',
       ],
     },
     faqHeading: 'Education websites: questions',

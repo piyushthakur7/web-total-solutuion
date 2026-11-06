@@ -6,6 +6,8 @@ import {
 } from "next/font/google";
 import "./globals.css";
 import SiteChrome from "../src/components/SiteChrome";
+import { getPricingMarket } from "../src/pricing.server";
+import { PricingMarketProvider } from "../src/components/PricingMarket";
 
 const hanken = Hanken_Grotesk({
   subsets: ["latin"],
@@ -110,11 +112,12 @@ export const viewport: Viewport = {
   themeColor: "#f5f8fb",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const market = await getPricingMarket();
   return (
     <html
       lang="en-IN"
@@ -360,7 +363,7 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-        <SiteChrome>{children}</SiteChrome>
+        <PricingMarketProvider market={market}><SiteChrome>{children}</SiteChrome></PricingMarketProvider>
       </body>
     </html>
   );

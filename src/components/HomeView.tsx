@@ -222,7 +222,7 @@ export default function HomeView() {
         <div className="studio-container">
           <SectionHeading
             heading="Three packages, priced from"
-            intro="Each has a starting price in USD. The written quote follows a scope review and depends on page templates, content, CMS and integrations."
+            intro="Each has a regional starting price. The written quote follows a scope review and depends on page templates, content, CMS and integrations."
           />
           <div className="mt-10">
             <PackageCards />

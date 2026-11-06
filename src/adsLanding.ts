@@ -1,6 +1,7 @@
 /** Campaign pricing and enquiry budgets match the main website. */
 import { BUDGET_RANGES } from './lead';
 import { LANDING_PAGE_PACKAGE, SUPPORT_DETAIL, WEBSITE_PACKAGES, formatUsd, revisionLabel } from './siteContent';
+import { budgetRanges, formatPackagePrice, pricingCurrency, type PricingMarket } from './pricing';
 
 export const ADS_PATH = '/website-design-development';
 export const ADS_CTA = 'Get My Website Quote';
@@ -32,7 +33,7 @@ export const EMPTY_ADS_LEAD: AdsLead = {
 };
 export type AdsErrors = Partial<Record<keyof AdsLead, string>>;
 
-export function validateAdsLead(fields: AdsLead): AdsErrors {
+export function validateAdsLead(fields: AdsLead, market: PricingMarket = 'international'): AdsErrors {
   const errors: AdsErrors = {};
   if (!fields.name.trim()) errors.name = 'Please enter your full name.';
   else if (fields.name.length > 120) errors.name = 'Please keep your name under 120 characters.';
@@ -50,7 +51,7 @@ export function validateAdsLead(fields: AdsLead): AdsErrors {
     errors.website = 'Enter the full website address, starting with https://, or leave it empty.';
   }
   if (fields.websiteType && !(ADS_WEBSITE_TYPES as readonly string[]).includes(fields.websiteType)) errors.websiteType = 'Choose a website type from the list.';
-  if (fields.budget && !(ADS_BUDGETS as readonly string[]).includes(fields.budget)) errors.budget = 'Choose a budget from the list.';
+  if (fields.budget && !budgetRanges(market).includes(fields.budget)) errors.budget = 'Choose a budget from the list.';
   if (fields.timeline && !(ADS_TIMELINES as readonly string[]).includes(fields.timeline)) errors.timeline = 'Choose a timeline from the list.';
   if (fields.details.length > 2000) errors.details = 'Please keep project details under 2,000 characters.';
   return errors;
@@ -65,10 +66,11 @@ export function campaignFromSearch(search: string): Record<string, string> {
   }));
 }
 
-export function adsLeadMessage(fields: AdsLead, campaign: Record<string, string>) {
+export function adsLeadMessage(fields: AdsLead, campaign: Record<string, string>, market: PricingMarket = 'international') {
   const lines = [
     'Website design & development campaign enquiry',
-    `Offer viewed: ${LANDING_PAGE_PACKAGE.name}, starting at ${formatUsd(LANDING_PAGE_PACKAGE.from)} USD; final scope subject to written quote.`,
+    `Offer viewed: ${LANDING_PAGE_PACKAGE.name}, starting at ${formatPackagePrice(LANDING_PAGE_PACKAGE, market)} ${pricingCurrency(market)}; final scope subject to written quote.`,
+    `Website pricing region: ${market}`,
     `Name: ${fields.name}`, `Email: ${fields.email}`, `Phone / WhatsApp: ${fields.phone}`,
     fields.business && `Business name: ${fields.business}`,
     fields.businessType && `Business type: ${fields.businessType}`,

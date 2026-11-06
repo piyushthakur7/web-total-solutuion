@@ -4,7 +4,7 @@ Website packages have independent starting prices in `src/siteContent.ts`:
 
 | Package | India (INR) | International (USD) |
 | --- | ---: | ---: |
-| Landing Page Sprint | 24,999 | 1,200 |
+| Landing Page Sprint | 9,999 | 1,200 |
 | Startup Growth Site | 49,999 | 2,500 |
 | Custom Product Website | 99,999 | 5,000 |
 

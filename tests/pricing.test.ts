@@ -19,8 +19,8 @@ test('country detection defaults overseas and unknown visitors to international 
 });
 
 test('independent Indian package prices coexist with unchanged international prices', () => {
-  assert.deepEqual(WEBSITE_PACKAGES.map((pkg) => packageAmount(pkg, 'india')), [24999, 49999, 99999]);
-  assert.deepEqual(WEBSITE_PACKAGES.map((pkg) => formatPackagePrice(pkg, 'india')), ['₹24,999', '₹49,999', '₹99,999']);
+  assert.deepEqual(WEBSITE_PACKAGES.map((pkg) => packageAmount(pkg, 'india')), [9999, 49999, 99999]);
+  assert.deepEqual(WEBSITE_PACKAGES.map((pkg) => formatPackagePrice(pkg, 'india')), ['₹9,999', '₹49,999', '₹99,999']);
   assert.deepEqual(WEBSITE_PACKAGES.map((pkg) => formatPackagePrice(pkg, 'international')), ['$1,200', '$2,500', '$5,000']);
   assert.ok(budgetRanges('india').includes('₹99,999 – ₹2,00,000'));
 });
@@ -28,7 +28,7 @@ test('independent Indian package prices coexist with unchanged international pri
 test('regional FAQ copy leaves monthly care prices and shared source content intact', () => {
   const original = JSON.stringify(HOME_FAQS);
   const india = localizeWebsiteContent(HOME_FAQS, 'india');
-  assert.match(JSON.stringify(india), /₹24,999/);
+  assert.match(JSON.stringify(india), /₹9,999/);
   assert.doesNotMatch(JSON.stringify(india), /\$1,200|\$2,500|\$5,000/);
   assert.equal(localizeWebsiteContent(SUPPORT_DETAIL, 'india'), SUPPORT_DETAIL);
   assert.equal(JSON.stringify(HOME_FAQS), original);
@@ -49,7 +49,7 @@ test('campaign validation and summary use the same regional budget list', () => 
   const fields = { ...EMPTY_ADS_LEAD, name: 'Test', email: 'test@example.com', phone: '+91 98765 43210', budget: budgetRanges('india')[1] };
   assert.deepEqual(validateAdsLead(fields, 'india'), {});
   assert.ok(validateAdsLead(fields, 'international').budget);
-  assert.match(adsLeadMessage(fields, {}, 'india'), /starting at ₹24,999 INR/);
+  assert.match(adsLeadMessage(fields, {}, 'india'), /starting at ₹9,999 INR/);
 });
 
 test('campaign endpoint validates region from country or saved preference before delivery', async () => {
@@ -72,7 +72,7 @@ test('campaign endpoint validates region from country or saved preference before
           budget: budgetRanges(market)[1], startedAt: Date.now() - 5000 }),
       });
       assert.equal((await POST(request)).status, 200);
-      assert.ok(messages.at(-1)!.includes(market === 'india' ? '₹24,999 INR' : '$1,200 USD'));
+      assert.ok(messages.at(-1)!.includes(market === 'india' ? '₹9,999 INR' : '$1,200 USD'));
     }
   } finally {
     globalThis.fetch = originalFetch;

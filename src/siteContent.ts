@@ -149,7 +149,7 @@ export const WEBSITE_PACKAGES: WebsitePackage[] = [
     slug: 'landing-page-sprint',
     name: 'Landing Page Sprint',
     from: 1200,
-    fromInr: 24999,
+    fromInr: 9999,
     audience: 'For an early-stage startup launching or testing one offer.',
     scope: 'One landing page built around a single audience, offer and action.',
     includes: [

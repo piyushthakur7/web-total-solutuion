@@ -12,7 +12,7 @@ const links = [
   { label: "Services", path: "/services" },
   { label: "Studio", path: "/about" },
   { label: "Pricing", path: "/pricing" },
-  { label: "Insights", path: "/blog" },
+  { label: "Blog", path: "/blog" },
 ];
 
 /**

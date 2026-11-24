@@ -2,15 +2,13 @@
 
 import React, { useEffect, useId, useRef, useState } from "react";
 import { usePricingMarket } from "./PricingMarket";
-import { budgetRanges, formatPackagePrice, pricingCurrency } from "../pricing";
+import { budgetRanges, formatPackagePrice, pricingCurrency, websitePackageForMarket, websitePackagesForMarket } from "../pricing";
 import {
   EMAIL,
   LEAD_CAPTURE_KEY,
   LEAD_CAPTURE_URL,
   RESPONSE_EXPECTATION,
-  WEBSITE_PACKAGES,
   WHATSAPP_URL,
-  getPackage,
 } from "../siteContent";
 import {
   EMPTY_LEAD,
@@ -78,11 +76,11 @@ export default function LeadForm({
 
   // Context passed by the linking page, e.g. /contact?package=startup-growth-site.
   useEffect(() => {
-    const prefill = parseLeadPrefill(window.location.search);
+    const prefill = parseLeadPrefill(window.location.search, market);
     if (Object.keys(prefill).length > 0) {
       setFields((current) => ({ ...current, ...prefill }));
     }
-  }, []);
+  }, [market]);
 
   useEffect(() => {
     if (status === "sent" || status === "failed") result.current?.focus();
@@ -176,7 +174,7 @@ export default function LeadForm({
       .filter(Boolean)
       .join(" ") || undefined;
 
-  const selectedPackage = getPackage(fields.packageSlug);
+  const selectedPackage = websitePackageForMarket(fields.packageSlug, market);
   const wrapperClass =
     variant === "card"
       ? "rounded-[24px] border border-ink/15 bg-white p-6 sm:p-9"
@@ -363,7 +361,7 @@ export default function LeadForm({
             className={fieldClass}
           >
             <option value="">No package in mind</option>
-            {WEBSITE_PACKAGES.map((pkg) => (
+            {websitePackagesForMarket(market).map((pkg) => (
               <option key={pkg.slug} value={pkg.slug}>
                 {pkg.name} (from {formatPackagePrice(pkg, market)} {pricingCurrency(market)})
               </option>

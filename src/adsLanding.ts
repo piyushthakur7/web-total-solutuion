@@ -1,7 +1,7 @@
 /** Campaign pricing and enquiry budgets match the main website. */
 import { BUDGET_RANGES } from './lead';
-import { LANDING_PAGE_PACKAGE, SUPPORT_DETAIL, WEBSITE_PACKAGES, formatUsd, revisionLabel } from './siteContent';
-import { budgetRanges, formatPackagePrice, pricingCurrency, type PricingMarket } from './pricing';
+import { INDIA_DOMAIN_HOSTING_TERM, SUPPORT_DETAIL, revisionLabel } from './siteContent';
+import { budgetRanges, formatPackagePrice, pricingCurrency, websitePackagesForMarket, type PricingMarket } from './pricing';
 
 export const ADS_PATH = '/website-design-development';
 export const ADS_CTA = 'Get My Website Quote';
@@ -67,9 +67,10 @@ export function campaignFromSearch(search: string): Record<string, string> {
 }
 
 export function adsLeadMessage(fields: AdsLead, campaign: Record<string, string>, market: PricingMarket = 'international') {
+  const [starter] = websitePackagesForMarket(market);
   const lines = [
     'Website design & development campaign enquiry',
-    `Offer viewed: ${LANDING_PAGE_PACKAGE.name}, starting at ${formatPackagePrice(LANDING_PAGE_PACKAGE, market)} ${pricingCurrency(market)}; final scope subject to written quote.`,
+    `Offer viewed: ${starter.name}, starting at ${formatPackagePrice(starter, market)} ${pricingCurrency(market)}; final scope subject to written quote.`,
     `Website pricing region: ${market}`,
     `Name: ${fields.name}`, `Email: ${fields.email}`, `Phone / WhatsApp: ${fields.phone}`,
     fields.business && `Business name: ${fields.business}`,
@@ -84,13 +85,20 @@ export function adsLeadMessage(fields: AdsLead, campaign: Record<string, string>
   return lines.filter(Boolean).join('\n');
 }
 
-export const ADS_FAQS = [
-  { question: 'How much does a business website cost?', answer: `Our website packages start at ${WEBSITE_PACKAGES.map((pkg) => `${formatUsd(pkg.from)} USD for the ${pkg.name}`).join(', ')}. The final quote follows a scope review. Indian businesses can request a written quote in INR; e-commerce and application development are quoted separately.` },
-  { question: `What is included in the ${LANDING_PAGE_PACKAGE.name}?`, answer: `${LANDING_PAGE_PACKAGE.scope} Included: ${LANDING_PAGE_PACKAGE.includes.join('; ')}. ${revisionLabel(LANDING_PAGE_PACKAGE)}. Additional pages, copywriting and integrations are quoted separately.` },
-  { question: 'How long does development take?', answer: 'We confirm a delivery estimate after reviewing your requirements, content and integrations. Your quote includes the agreed schedule. Content readiness and design approvals affect the launch date.' },
-  { question: 'Will my website work on mobile?', answer: 'Yes. Websites are built responsively and checked on mobile, tablet and desktop so visitors can read your content and contact your business across screen sizes.' },
-  { question: 'Can you redesign my existing website?', answer: 'Yes. Share your current website and what you want to improve. We review the existing pages, content and functionality, then quote for the redesign and any migration work.' },
-  { question: 'Are domain, hosting and taxes included?', answer: 'Domain registration, hosting, renewals and paid tools are separate from the package price. These costs and any applicable taxes are itemised in the written quote. Ask us for the complete first-year and recurring costs before proceeding.' },
-  { question: 'Can I add an online store or custom features?', answer: 'Yes. Online payments, product catalogues, bookings, dashboards and advanced integrations are scoped and priced separately. Tell us what you need and we will recommend a suitable approach.' },
-  { question: 'What support is available after launch?', answer: SUPPORT_DETAIL },
-];
+export function adsFaqs(market: PricingMarket) {
+  const packages = websitePackagesForMarket(market);
+  const [starter] = packages;
+  const currency = pricingCurrency(market);
+  return [
+    { question: 'How much does a business website cost?', answer: `Our website packages start at ${packages.map((pkg) => `${formatPackagePrice(pkg, market)} ${currency} for the ${pkg.name}`).join(', ')}. The final quote follows a scope review. E-commerce and application development are quoted separately.` },
+    { question: `What is included in the ${starter.name}?`, answer: `${starter.scope} Included: ${starter.includes.join('; ')}. ${revisionLabel(starter)}. Additional pages, copywriting and integrations are quoted separately.` },
+    { question: 'How long does development take?', answer: 'We confirm a delivery estimate after reviewing your requirements, content and integrations. Your quote includes the agreed schedule. Content readiness and design approvals affect the launch date.' },
+    { question: 'Will my website work on mobile?', answer: 'Yes. Websites are built responsively and checked on mobile, tablet and desktop so visitors can read your content and contact your business across screen sizes.' },
+    { question: 'Can you redesign my existing website?', answer: 'Yes. Share your current website and what you want to improve. We review the existing pages, content and functionality, then quote for the redesign and any migration work.' },
+    { question: 'Are domain, hosting and taxes included?', answer: market === 'india'
+      ? `${INDIA_DOMAIN_HOSTING_TERM} Paid tools and applicable taxes are listed in the quote.`
+      : 'Domain registration, hosting, renewals and paid tools are separate from the package price. These costs and any applicable taxes are itemised in the written quote.' },
+    { question: 'Can I add an online store or custom features?', answer: 'Yes. Online payments, product catalogues, bookings, dashboards and advanced integrations are scoped and priced separately. Tell us what you need and we will recommend a suitable approach.' },
+    { question: 'What support is available after launch?', answer: SUPPORT_DETAIL },
+  ];
+}

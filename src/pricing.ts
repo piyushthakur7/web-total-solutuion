@@ -1,4 +1,4 @@
-import { WEBSITE_PACKAGES, type WebsitePackage, formatUsd } from './siteContent';
+import { WEBSITE_PACKAGES, type WebsitePackage, formatUsd, getPackage } from './siteContent';
 
 export type PricingMarket = 'india' | 'international';
 export const PRICING_MARKET_COOKIE = 'wts_pricing_market';
@@ -11,6 +11,17 @@ export function resolvePricingMarket(country?: string | null, preference?: strin
 
 export function pricingCurrency(market: PricingMarket) {
   return market === 'india' ? 'INR' : 'USD';
+}
+
+export function websitePackagesForMarket(market: PricingMarket): WebsitePackage[] {
+  return market === 'india'
+    ? WEBSITE_PACKAGES.map((pkg) => ({ ...pkg, ...pkg.india }))
+    : WEBSITE_PACKAGES;
+}
+
+export function websitePackageForMarket(slug: string | null | undefined, market: PricingMarket): WebsitePackage | undefined {
+  const pkg = getPackage(slug);
+  return pkg && market === 'india' ? { ...pkg, ...pkg.india } : pkg;
 }
 
 export function packageAmount(pkg: WebsitePackage, market: PricingMarket) {
@@ -33,6 +44,7 @@ export function localizePricingText(text: string, market: PricingMarket): string
   if (market !== 'india') return text;
   let result = text;
   for (const pkg of WEBSITE_PACKAGES) {
+    result = result.replaceAll(pkg.name, pkg.india.name);
     const usd = formatUsd(pkg.from).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     result = result.replace(new RegExp(`${usd}(?!\\d|,\\d)(?: USD)?`, 'g'), (match) =>
       `${formatPackagePrice(pkg, market)}${match.endsWith(' USD') ? ' INR' : ''}`);

@@ -6,8 +6,8 @@
  * Kept free of React and browser APIs so it can be tested directly.
  */
 
-import { WEBSITE_PACKAGES, getPackage } from './siteContent';
-import { budgetRanges, formatPackagePrice, pricingCurrency, type PricingMarket } from './pricing';
+import { WEBSITE_PACKAGES } from './siteContent';
+import { budgetRanges, formatPackagePrice, pricingCurrency, websitePackageForMarket, type PricingMarket } from './pricing';
 
 export const PROJECT_TYPES = [
   'Startup Marketing Website',
@@ -72,7 +72,7 @@ export function validateLead(fields: LeadFields): LeadErrors {
 
 /** The readable summary stored with the lead and sent in the notification. */
 export function buildLeadMessage(fields: LeadFields, source?: string, market: PricingMarket = 'international'): string {
-  const pkg = getPackage(fields.packageSlug);
+  const pkg = websitePackageForMarket(fields.packageSlug, market);
   return [
     `Name: ${fields.name.trim()}`,
     `Email: ${fields.email.trim()}`,
@@ -115,11 +115,11 @@ export function buildLeadPayload(
  * /contact?package=startup-growth-site or /contact?type=Landing%20Page.
  * Unknown values are ignored rather than trusted, and free text is capped.
  */
-export function parseLeadPrefill(search: string): Partial<LeadFields> {
+export function parseLeadPrefill(search: string, market: PricingMarket = 'international'): Partial<LeadFields> {
   const params = new URLSearchParams(search);
   const prefill: Partial<LeadFields> = {};
 
-  const pkg = getPackage(params.get('package'));
+  const pkg = websitePackageForMarket(params.get('package'), market);
   if (pkg) {
     prefill.packageSlug = pkg.slug;
     prefill.projectType = pkg.projectType;

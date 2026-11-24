@@ -10,7 +10,7 @@
  * international visitors. Final quotes follow a scope review.
  */
 
-import { Faq, SUPPORT_DETAIL, LANDING_PAGE_PACKAGE, STARTUP_GROWTH_PACKAGE, CUSTOM_PRODUCT_PACKAGE, formatUsd } from './siteContent';
+import { Faq, SUPPORT_DETAIL, LANDING_PAGE_PACKAGE, STARTUP_GROWTH_PACKAGE, formatUsd } from './siteContent';
 import { ProjectType } from './lead';
 import { HERO_IMAGES } from './stockImages';
 import { Evidence } from './components/EvidenceBlock';
@@ -556,7 +556,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
     lead: 'A multi-page marketing website that explains what you offer, shows why you are credible and leads visitors to one next step.',
     facts: [
       { label: 'Package', value: `Startup Growth Site, from ${formatUsd(STARTUP_GROWTH_PACKAGE.from)} USD` },
-      { label: 'Revisions', value: '3 rounds' },
+      { label: 'Revisions', value: 'Listed in your package and written quote' },
       { label: 'Timeline', value: 'Agreed after scope review' },
       { label: 'Support', value: '30 days after launch' },
     ],
@@ -1493,8 +1493,8 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
     quote: {
       heading: 'SaaS website cost',
       paragraphs: [
-        `A SaaS marketing website is usually the Startup Growth Site, from ${formatUsd(STARTUP_GROWTH_PACKAGE.from)} USD. When the site needs interactive product explanations, several content types or integrations, it is the Custom Product Website, from ${formatUsd(CUSTOM_PRODUCT_PACKAGE.from)} USD. The written quote follows a scope review.`,
-        `A pre-launch product that needs one page and a waitlist can start with the Landing Page Sprint, from ${formatUsd(LANDING_PAGE_PACKAGE.from)} USD. Indian companies receive a quote in INR.`,
+        `A SaaS marketing website is usually the Startup Growth Site, from ${formatUsd(STARTUP_GROWTH_PACKAGE.from)} USD. Interactive product explanations, several content types and custom integrations are scoped separately in the written quote.`,
+        'For a pre-launch product that needs one page and a waitlist, ask about the standalone landing page service. Website packages and regional starting prices are shown on the pricing page.',
       ],
     },
     faqHeading: 'SaaS websites: questions',
@@ -1508,7 +1508,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
       {
         question: 'We have not launched yet. What should the website be?',
         answer:
-          'Usually one page: who the product is for, the problem it solves and a waitlist or demo form. The Landing Page Sprint covers that, and the page can grow into a full site after launch.',
+          'Usually one page: who the product is for, the problem it solves and a waitlist or demo form. A standalone landing page can cover that and grow into a full site after launch.',
         link: { label: 'Landing pages', href: '/services/landing-pages' },
       },
       {

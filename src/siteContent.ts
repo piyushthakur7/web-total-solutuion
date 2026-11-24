@@ -123,6 +123,9 @@ export const SUPPORT_TERM = `${SUPPORT_DAYS} days of post-launch support`;
 export const OWNERSHIP_TERM =
   'You own the domain, hosting account, content and source code of the delivered website.';
 
+export const INDIA_DOMAIN_HOSTING_TERM =
+  'One domain and hosting are included. The written quote confirms the included term and renewal charges.';
+
 export interface WebsitePackage {
   /** Stable key used in enquiry links: /contact?package=<slug>. */
   slug: string;
@@ -131,6 +134,7 @@ export interface WebsitePackage {
   from: number;
   /** Independent starting price for the Indian market, in INR. */
   fromInr: number;
+  india: Pick<WebsitePackage, 'name' | 'audience' | 'scope' | 'includes' | 'revisionRounds' | 'quoteDrivers' | 'projectType'>;
   audience: string;
   /** What the starting price is scoped around. */
   scope: string;
@@ -149,7 +153,24 @@ export const WEBSITE_PACKAGES: WebsitePackage[] = [
     slug: 'landing-page-sprint',
     name: 'Landing Page Sprint',
     from: 1200,
-    fromInr: 9999,
+    fromInr: 6999,
+    india: {
+      name: 'Starter Website',
+      audience: 'For a small business or independent professional putting their services online.',
+      scope: 'A simple, mobile-optimized five-page informational website with one domain and hosting included.',
+      includes: [
+        'Up to five pages, such as Home, About, Services, Gallery and Contact',
+        'Mobile-optimized layout using your supplied content and logo',
+        'One domain and hosting with HTTPS setup',
+        'WhatsApp chat and tap-to-call buttons',
+        'Basic enquiry form',
+        'Page titles and meta descriptions',
+        'Google Maps link if you have a business location',
+      ],
+      revisionRounds: null,
+      quoteDrivers: 'Extra pages, custom features, copywriting or a premium domain cost extra.',
+      projectType: 'Business Website',
+    },
     audience: 'For an early-stage startup launching or testing one offer.',
     scope: 'One landing page built around a single audience, offer and action.',
     includes: [
@@ -170,7 +191,21 @@ export const WEBSITE_PACKAGES: WebsitePackage[] = [
     slug: 'startup-growth-site',
     name: 'Startup Growth Site',
     from: 2500,
-    fromInr: 49999,
+    fromInr: 15000,
+    india: {
+      name: 'Business Website',
+      audience: 'For an established business that wants to showcase more services and customer work.',
+      scope: 'A mobile-optimized business website with up to eight pages.',
+      includes: [
+        'Starter Website features, including one domain and hosting',
+        'Up to eight pages with room for dedicated service pages',
+        'Photo gallery and testimonial section using your supplied content',
+        'XML sitemap and basic on-page SEO',
+      ],
+      revisionRounds: 2,
+      quoteDrivers: 'Extra pages, copywriting, custom designs and integrations are scoped separately.',
+      projectType: 'Business Website',
+    },
     audience: 'For a startup that needs a complete marketing website.',
     scope: 'A multi-page marketing website. The page list is agreed in the written scope.',
     includes: [
@@ -190,7 +225,21 @@ export const WEBSITE_PACKAGES: WebsitePackage[] = [
     slug: 'custom-product-website',
     name: 'Custom Product Website',
     from: 5000,
-    fromInr: 99999,
+    fromInr: 25000,
+    india: {
+      name: 'Growth Website',
+      audience: 'For a growing business that needs more pages and a way to publish updates.',
+      scope: 'A mobile-optimized marketing website with up to twelve pages and an editable blog or updates section.',
+      includes: [
+        'Business Website features, including one domain and hosting',
+        'Up to twelve pages, with a dedicated campaign or product page within that allowance',
+        'Editable blog or company updates section',
+        'Basic analytics and enquiry tracking setup using your accounts',
+      ],
+      revisionRounds: 3,
+      quoteDrivers: 'Online stores, payment gateways, booking systems, complex integrations and extra content are quoted separately.',
+      projectType: 'Business Website',
+    },
     audience: 'For a product company whose website has more to explain or connect.',
     scope: 'A scoped product or marketing website with custom structure, content types and integrations.',
     includes: [
@@ -322,7 +371,7 @@ export const PACKAGE_TERMS = [
   'Design is approved before development begins.',
   SUPPORT_DETAIL,
   OWNERSHIP_TERM,
-  'Hosting, domains, paid plugins and third-party services are billed by their providers and listed in the quote.',
+  'Domain and hosting terms, renewal charges and any third-party fees are listed in the written quote.',
   'Payment milestones are set out in the written quote.',
   'Web applications, dashboards and mobile apps are not part of these packages and are scoped separately.',
 ];

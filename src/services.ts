@@ -10,6 +10,7 @@
 
 import { Faq, SUPPORT_DETAIL, LANDING_PAGE_PACKAGE, CUSTOM_PRODUCT_PACKAGE, formatUsd } from './siteContent';
 import { ProjectType } from './lead';
+import { localizeWebsiteContent, type PricingMarket } from './pricing';
 import { HERO_IMAGES } from './stockImages';
 
 export interface ServiceEvidence {
@@ -45,6 +46,25 @@ export interface ServiceData {
   deliverables: { heading: string; items: { title: string; description: string }[] };
   scope: { heading: string; paragraphs: string[] };
   faqs: Faq[];
+}
+
+export function serviceForMarket(service: ServiceData | undefined, market: PricingMarket) {
+  if (!service) return undefined;
+  const localized = localizeWebsiteContent(service, market);
+  if (market !== 'india' || service.slug !== 'landing-pages') return localized;
+
+  return {
+    ...localized,
+    package: undefined,
+    metaDescription: 'Landing page strategy, design and development in India. Standalone landing pages are quoted after a scope review.',
+    scope: {
+      ...localized.scope,
+      paragraphs: [
+        'Standalone campaign landing pages are quoted separately. The Starter Website is for a simple five-page business site using your supplied content.',
+        ...localized.scope.paragraphs.slice(1),
+      ],
+    },
+  };
 }
 
 export const SERVICES_DATA: Record<string, ServiceData> = {

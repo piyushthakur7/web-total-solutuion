@@ -10,6 +10,7 @@ import {
   CTA,
   Faq,
   OWNERSHIP_TERM,
+  INDIA_DOMAIN_HOSTING_TERM,
   SUPPORT_TERM,
   WEBSITE_PACKAGES,
   formatUsd,
@@ -37,7 +38,7 @@ export const PRICING_FAQS: Faq[] = [
   {
     question: "How do payments work?",
     answer:
-      "Payment milestones are set out in the written quote, alongside the scope and timeline. International projects are quoted and invoiced in USD.",
+      "Payment milestones are set out in the written quote, alongside the scope and timeline. Indian projects are quoted in INR and international projects are quoted in USD.",
   },
   {
     question: `Is a web application or dashboard included in the ${formatUsd(custom.from)} package?`,
@@ -62,7 +63,7 @@ const scopeFactors = [
   },
   {
     title: "Integrations",
-    text: "Forms into a CRM, analytics, payments or a product API are scoped individually. Third-party subscription fees are paid to the provider.",
+    text: "Integrations beyond what your chosen package lists are scoped individually. Third-party subscription fees are paid to the provider.",
   },
   {
     title: "Custom features",
@@ -71,7 +72,6 @@ const scopeFactors = [
 ];
 
 const separateCosts = [
-  "Domain registration and hosting, billed by the provider to your account",
   "Paid plugins, fonts, stock media and third-party subscriptions",
   "Copywriting, where it is not in the agreed scope",
   "Ongoing maintenance after the included support period, on a Website Care Plan",
@@ -81,6 +81,13 @@ const separateCosts = [
 export default async function PricingView() {
   const market = await getPricingMarket();
   const currency = pricingCurrency(market);
+  const isIndia = market === "india";
+  const additionalCosts = [
+    isIndia
+      ? "Domain and hosting renewals after the included term, and any premium domain you choose"
+      : "Domain registration and hosting, billed by the provider to your account",
+    ...separateCosts,
+  ];
   return (
     <div className="bg-paper pb-16 text-ink sm:pb-24">
       <PageIntro
@@ -88,7 +95,9 @@ export default async function PricingView() {
         label="Pricing"
         image={HERO_IMAGES.planning}
         title={`Three website packages, with starting prices in ${currency}`}
-        description="Each package combines strategy, design and development. The price you pay is set in a written quote after we have reviewed the scope together."
+        description={isIndia
+          ? "A five-page business website starts at ₹6,999. Choose more pages or an editable blog as your needs grow. The written quote confirms the scope and total."
+          : "Each package combines strategy, design and development. The price you pay is set in a written quote after we have reviewed the scope together."}
       />
       <section className="studio-container pt-10 sm:pt-14">
         <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
@@ -96,6 +105,7 @@ export default async function PricingView() {
           <p className="text-sm text-graphite">Starting prices · final quote after scope review</p>
         </div>
         <PackageCards detailed />
+        {isIndia && <p className="mt-5 text-sm leading-relaxed text-graphite">{INDIA_DOMAIN_HOSTING_TERM}</p>}
         <p className="mt-5 text-sm leading-relaxed text-graphite">
           Starting prices in {currency}. Timeline agreed after scope review. Design is
           approved before development begins.
@@ -141,7 +151,7 @@ export default async function PricingView() {
               intro="These are not hidden in a package price. Where they apply, they appear as their own lines in the quote."
             />
             <ul className="mt-6">
-              {separateCosts.map((item) => (
+              {additionalCosts.map((item) => (
                 <li
                   key={item}
                   className="border-t border-ink/15 py-3.5 text-[15px] leading-relaxed last:border-b"

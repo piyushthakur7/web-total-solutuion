@@ -164,7 +164,7 @@ export const LAW_FIRM_PAGE = {
     {
       question: 'What support do we get after launch?',
       answer:
-        `${SUPPORT_DETAIL} Hosting and domain charges are billed separately by their providers.`,
+        `${SUPPORT_DETAIL} The written quote confirms domain and hosting coverage and any renewal charges.`,
     },
     {
       question: 'Why Next.js rather than a template or page builder?',

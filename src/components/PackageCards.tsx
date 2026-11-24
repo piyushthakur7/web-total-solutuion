@@ -1,18 +1,17 @@
 import React from "react";
 import { getPricingMarket } from "../pricing.server";
-import { formatPackagePrice, pricingCurrency } from "../pricing";
+import { formatPackagePrice, pricingCurrency, websitePackagesForMarket } from "../pricing";
 import Link from "next/link";
 import { ArrowUpRight, Check } from "lucide-react";
 import {
   CTA,
   SUPPORT_TERM,
-  WEBSITE_PACKAGES,
   revisionLabel,
 } from "../siteContent";
 import { contactHref } from "../lead";
 
 /**
- * The three website packages, rendered from WEBSITE_PACKAGES.
+ * The three website packages for the visitor’s pricing market.
  * `detailed` (the pricing page) lists every inclusion; the summary version
  * shows the audience, scope and starting price.
  */
@@ -25,9 +24,8 @@ export default async function PackageCards({
   only?: string;
 }) {
   const market = await getPricingMarket();
-  const packages = only
-    ? WEBSITE_PACKAGES.filter((pkg) => pkg.slug === only)
-    : WEBSITE_PACKAGES;
+  const available = websitePackagesForMarket(market);
+  const packages = only ? available.filter((pkg) => pkg.slug === only) : available;
   return (
     <div
       className={`grid items-stretch gap-5 ${packages.length > 1 ? "lg:grid-cols-3" : "max-w-xl"}`}
@@ -99,6 +97,23 @@ export default async function PackageCards({
           </article>
         );
       })}
+      {market === "india" && !only && (
+        <article className="flex flex-col gap-5 rounded-[20px] border border-ink/15 bg-white p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8 lg:col-span-3">
+          <div>
+            <h3 className="font-display text-[26px] leading-tight">Custom Project</h3>
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-graphite">
+              For larger sites, online stores, booking systems and custom integrations. We discuss the scope with you and send a written quote.
+            </p>
+          </div>
+          <Link
+            href={contactHref({ details: "I'd like to discuss a custom project and get a quote." })}
+            className="btn btn-ink shrink-0 self-start sm:self-auto"
+          >
+            Discuss a custom project
+            <ArrowUpRight className="size-4" aria-hidden="true" />
+          </Link>
+        </article>
+      )}
     </div>
   );
 }

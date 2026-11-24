@@ -1,10 +1,10 @@
 import React from "react";
 import { getPricingMarket } from "../pricing.server";
-import { formatPackagePrice, pricingCurrency, localizeWebsiteContent } from "../pricing";
+import { formatPackagePrice, pricingCurrency, websitePackageForMarket } from "../pricing";
 import Link from "next/link";
 import { ArrowUpRight, Check } from "lucide-react";
 import { ServiceData } from "../services";
-import { CTA, getPackage } from "../siteContent";
+import { CTA } from "../siteContent";
 import { contactHref } from "../lead";
 import { PageIntro, SectionHeading, TextLink } from "./StudioPrimitives";
 import EvidenceBlock from "./EvidenceBlock";
@@ -12,13 +12,12 @@ import FAQSection from "./FAQSection";
 import LeadForm from "./LeadForm";
 
 export default async function ServiceDetailView({
-  service: originalService,
+  service,
 }: {
   service: ServiceData;
 }) {
   const market = await getPricingMarket();
-  const service = localizeWebsiteContent(originalService, market);
-  const pkg = getPackage(service.package);
+  const pkg = websitePackageForMarket(service.package, market);
   const enquiry = contactHref({
     package: service.package,
     type: service.projectType,

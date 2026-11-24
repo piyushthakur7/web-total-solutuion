@@ -2,11 +2,13 @@
 
 Website packages have independent starting prices in `src/siteContent.ts`:
 
-| Package | India (INR) | International (USD) |
-| --- | ---: | ---: |
-| Landing Page Sprint | 9,999 | 1,200 |
-| Startup Growth Site | 49,999 | 2,500 |
-| Custom Product Website | 99,999 | 5,000 |
+| India package | Starting INR | International package | Starting USD |
+| --- | ---: | --- | ---: |
+| Starter Website | 6,999 | Landing Page Sprint | 1,200 |
+| Business Website | 15,000 | Startup Growth Site | 2,500 |
+| Growth Website | 25,000 | Custom Product Website | 5,000 |
+
+India packages cover up to five, eight and twelve pages respectively. A Custom Project is discussed and quoted separately. Package slugs stay stable so existing enquiry links still work.
 
 Website Care Plans and Custom Management retain their published USD prices for all regions. WTS CRM subscription prices are separate and unchanged.
 

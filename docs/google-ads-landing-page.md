@@ -8,7 +8,7 @@ The campaign uses its own header, footer and mobile action bar. The main website
 
 ## Shared pricing
 
-The campaign uses the same website packages and starting prices as `/pricing`, sourced from `src/siteContent.ts`. The entry offer is the Landing Page Sprint; larger marketing websites use the Startup Growth Site or Custom Product Website. Budget options are shared with the main enquiry form. Prices are published in USD, and Indian businesses can request a written quote in INR after scope review. Package inclusions, revisions and post-launch support match the shared configuration. Domain, hosting, third-party costs and applicable taxes are itemised separately. Portfolio examples show the studio's wider work; the written scope confirms the deliverables.
+The campaign uses the same regional website packages and starting prices as `/pricing`, sourced from `src/siteContent.ts`. India starts at ₹6,999 for the Starter Website, followed by Business Website at ₹15,000 and Growth Website at ₹25,000. Indian packages include a domain and hosting. The written quote confirms the included term, renewal costs and applicable taxes. Custom projects are quoted after discussion. The international packages retain their USD prices and scope. Budget options are shared with the main enquiry form.
 
 ## Lead delivery
 

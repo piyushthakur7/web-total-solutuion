@@ -8,22 +8,28 @@ test('measurement waits for consent, protects conversion receipts and never send
   process.env.NEXT_PUBLIC_GA4_ID = 'G-TEST123';
   const store = () => { const data = new Map<string, string>(); return { getItem: (k: string) => data.get(k) ?? null, setItem: (k: string, v: string) => { data.set(k, v); }, removeItem: (k: string) => { data.delete(k); } }; };
   const previous = { window: globalThis.window, document: globalThis.document, localStorage: globalThis.localStorage, sessionStorage: globalThis.sessionStorage };
-  const scripts: unknown[] = [];
+  const scripts: HTMLScriptElement[] = [];
   Object.assign(globalThis, {
     window: { location: { origin: 'https://example.test', pathname: '/website-design-development', search: '?utm_source=google&gclid=click123&email=private@example.com' } },
-    document: { title: 'Campaign', referrer: 'https://example.test/contact?email=private', head: { appendChild: (script: unknown) => scripts.push(script) }, createElement: () => ({}) },
+    document: { title: 'Campaign', referrer: 'https://example.test/contact?email=private', head: { appendChild: (script: HTMLScriptElement) => scripts.push(script) }, createElement: () => ({}) },
     localStorage: store(), sessionStorage: store(),
   });
   try {
     const tracking = await import('../src/adsTracking');
+    tracking.initializeTagManager();
     tracking.initializeMeasurement();
     tracking.trackSuccessfulEnquiry('not-consented');
     assert.equal(scripts.length, 0);
     assert.equal(window.dataLayer, undefined);
     assert.equal(tracking.campaignSearch(), '');
     tracking.setMeasurementConsent('granted');
+    tracking.initializeTagManager();
+    assert.deepEqual(scripts.map(({ src }) => src), [
+      'https://www.googletagmanager.com/gtm.js?id=GTM-PR2V5BXJ',
+    ]);
     tracking.initializeMeasurement();
-    assert.equal(scripts.length, 1);
+    assert.equal(scripts.length, 2);
+    assert.ok(scripts.every(({ async }) => async));
     assert.match(tracking.campaignSearch(), /gclid=click123/);
     assert.doesNotMatch(tracking.campaignSearch(), /email|private/);
     tracking.trackSuccessfulEnquiry('same-receipt');

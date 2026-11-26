@@ -45,11 +45,11 @@ export default function PrivacyPolicy() {
       </ul>
       <p>We do not sell your information.</p>
 
-      <h2>Campaign measurement and your choices</h2>
+      <h2>Website measurement and your choices</h2>
       <p>
-        Our website design campaign page can use Google Analytics and Google Ads to measure visits, successful enquiries
-        and clicks on phone or WhatsApp links. Where configured, these tags load only after you choose to allow measurement.
-        You can decline or change your choice using Measurement preferences on the campaign page. The enquiry form works
+        This site uses Google Tag Manager to load measurement tags after you choose to allow measurement. Our website
+        design campaign pages can also use Google Analytics and Google Ads to measure visits, successful enquiries and
+        clicks on phone or WhatsApp links. You can change your choice using Measurement preferences. The enquiry form works
         without measurement. Contact details and project descriptions are not sent to Google as measurement events.
       </p>
       <p>

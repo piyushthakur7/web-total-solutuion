@@ -13,6 +13,19 @@ const gaId = process.env.NEXT_PUBLIC_GA4_ID || '';
 const validAds = /^AW-\d+$/.test(adsId);
 const validGa = /^G-[A-Z0-9]+$/.test(gaId);
 export const measurementConfigured = validAds || validGa;
+const deniedConsent = {
+  ad_storage: 'denied',
+  analytics_storage: 'denied',
+  ad_user_data: 'denied',
+  ad_personalization: 'denied',
+};
+const grantedConsent = {
+  ...deniedConsent,
+  ad_storage: 'granted',
+  analytics_storage: 'granted',
+  ad_user_data: 'granted',
+};
+let tagManagerInitialized = false;
 let initialized = false;
 let memoryConsent: 'granted' | 'denied' | null = null;
 const reported = new Set<string>();
@@ -29,11 +42,12 @@ export function setMeasurementConsent(choice: 'granted' | 'denied') {
   memoryConsent = choice;
   try { localStorage.setItem(CONSENT_KEY, choice); } catch { /* Form remains usable without storage. */ }
   if (choice === 'denied') {
-    window.gtag?.('consent', 'update', { ad_storage: 'denied', analytics_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
+    window.gtag?.('consent', 'update', deniedConsent);
     try { sessionStorage.removeItem(ATTRIBUTION_KEY); } catch { /* Storage may be disabled. */ }
     return;
   }
-  initializeMeasurement();
+  if (tagManagerInitialized) window.gtag?.('consent', 'update', grantedConsent);
+  initializeTagManager();
 }
 
 export function campaignSearch() {
@@ -53,32 +67,46 @@ export function campaignSearch() {
   return '';
 }
 
-export function initializeMeasurement() {
-  if (measurementConsent() !== 'granted' || !measurementConfigured) return;
-  if (initialized) {
-    window.gtag?.('consent', 'update', { ad_storage: 'granted', analytics_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'denied' });
-    return;
-  }
-  initialized = true;
+function googleTag() {
+  if (window.gtag) return window.gtag;
   window.dataLayer = window.dataLayer || [];
   // gtag expects an Arguments object in dataLayer.
-  window.gtag = window.gtag || function () { window.dataLayer!.push(arguments); };
-  window.gtag('consent', 'default', { ad_storage: 'denied', analytics_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
-  window.gtag('consent', 'update', { ad_storage: 'granted', analytics_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'denied' });
-  window.gtag('js', new Date());
+  window.gtag = function () { window.dataLayer!.push(arguments); };
+  window.gtag('consent', 'default', deniedConsent);
+  return window.gtag;
+}
+
+export function initializeTagManager() {
+  if (tagManagerInitialized || measurementConsent() !== 'granted') return;
+  const gtag = googleTag();
+  gtag('consent', 'update', grantedConsent);
+  gtag('js', new Date());
+  const script = document.createElement('script');
+  script.id = 'wts-google-tag-manager';
+  script.async = true;
+  script.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-PR2V5BXJ';
+  document.head.appendChild(script);
+  tagManagerInitialized = true;
+}
+
+export function initializeMeasurement() {
+  if (initialized || measurementConsent() !== 'granted' || !measurementConfigured) return;
+  initializeTagManager();
+  const gtag = googleTag();
   // Never let arbitrary URL query parameters become default event metadata.
   const attribution = campaignSearch();
   const safeLocation = `${window.location.origin}${window.location.pathname}${attribution ? `?${attribution}` : ''}`;
   let safeReferrer = '';
   try { const referrer = new URL(document.referrer); safeReferrer = `${referrer.origin}${referrer.pathname}`; } catch { /* No referrer. */ }
-  window.gtag('set', { page_location: safeLocation, page_referrer: safeReferrer });
-  if (validAds) window.gtag('config', adsId, { send_page_view: false });
-  if (validGa) window.gtag('config', gaId, { send_page_view: false, allow_google_signals: false, allow_ad_personalization_signals: false });
+  gtag('set', { page_location: safeLocation, page_referrer: safeReferrer });
+  if (validAds) gtag('config', adsId, { send_page_view: false });
+  if (validGa) gtag('config', gaId, { send_page_view: false, allow_google_signals: false, allow_ad_personalization_signals: false });
   const script = document.createElement('script');
   script.id = 'wts-google-campaign-tag';
   script.async = true;
   script.src = `https://www.googletagmanager.com/gtag/js?id=${validAds ? adsId : gaId}`;
   document.head.appendChild(script);
+  initialized = true;
   campaignSearch();
 }
 
